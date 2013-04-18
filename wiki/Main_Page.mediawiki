@@ -2,15 +2,28 @@
 title: Main Page
 ---
 
-<big>'''MediaWiki has been successfully installed.'''</big>
+== PA-RISC Linux Wiki ==
 
-This is the default wiki page for *.wiki.kernel.org.
+== About ==
 
-Consult the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] for information on using the wiki software.
+This Wiki is meant to be a knowledge base for the [[WikiPedia:PA-RISC|PA-RISC]] Linux port. Its contents are mostly directed to developers, but people wanting to learn more about the PA-RISC Linux kernel and the PA-RISC architecture secrets might find useful data here.
 
-== Getting started ==
+== Resources ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikipedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]
- I am sure that your help was one of the reasons I matched. Your help and relief kept me going. If my schoolmate did not recommend me to buy [http://bestwritingservice.com Research essay], I would not have graded university with A+.
+  * http://www.parisc-linux.org/ - The official PA-RISC/Linux website
+  * http://www.pateam.org/ - The PA/Linux ESIEE Team
+  * http://hwdb.parisc-linux.org/ - The Hardware Database of PA-RISC systems
+  * http://www.debian.org/ports/hppa/ - Debian HPPA port page
+  * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
+
+== Content ==
+
+On this parisc-linux wiki, you can find a collection of information about this port:
+
+  * [[Introduction]]: introduction and history of the PA-RISC Linux project
+  * [[LinuxKernel]]: information about the PA-RISC Linux kernel.
+  * [[ToolChain]]: information about the compiler, the C library, the debugger...
+  * [[Distributions]]: PA-RISC Linux distributions and their issues
+  * [[UserHelp]]: help with installing or using PA-RISC Linux
+  * [[Documentation]]: documentation about the architecture, Linux implementation and other interesting bits
+  * [[People]]: folks who work on the project
