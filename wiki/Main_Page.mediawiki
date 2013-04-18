@@ -6,7 +6,7 @@ title: Main Page
 
 == About ==
 
-This Wiki is meant to be a knowledge base for the [[WikiPedia:PA-RISC|PA-RISC]] Linux port. Its contents are mostly directed to developers, but people wanting to learn more about the PA-RISC Linux kernel and the PA-RISC architecture secrets might find useful data here.
+This Wiki is meant to be an entry point for the [[WikiPedia:PA-RISC|PA-RISC]] Linux port. Its contents are mostly directed to developers, but people wanting to learn more about the PA-RISC Linux kernel and the PA-RISC architecture secrets might find useful data here.
 
 == How to install debian-unstable on PARISC ==
 
