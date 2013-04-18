@@ -11,19 +11,8 @@ This Wiki is meant to be a knowledge base for the [[WikiPedia:PA-RISC|PA-RISC]] 
 == Resources ==
 
   * http://www.parisc-linux.org/ - The official PA-RISC/Linux website
+  * http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
   * http://www.pateam.org/ - The PA/Linux ESIEE Team
   * http://hwdb.parisc-linux.org/ - The Hardware Database of PA-RISC systems
   * http://www.debian.org/ports/hppa/ - Debian HPPA port page
   * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
-
-== Content ==
-
-On this parisc-linux wiki, you can find a collection of information about this port:
-
-  * [[Introduction]]: introduction and history of the PA-RISC Linux project
-  * [[LinuxKernel]]: information about the PA-RISC Linux kernel.
-  * [[ToolChain]]: information about the compiler, the C library, the debugger...
-  * [[Distributions]]: PA-RISC Linux distributions and their issues
-  * [[UserHelp]]: help with installing or using PA-RISC Linux
-  * [[Documentation]]: documentation about the architecture, Linux implementation and other interesting bits
-  * [[People]]: folks who work on the project
