@@ -1,0 +1,5 @@
+---
+title: Technical Documentation
+---
+
+This page holds lots of technical documentation about parisc linux.
