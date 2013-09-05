@@ -1,0 +1,135 @@
+---
+title: Debian Ports Installation
+---
+
+= Installation of PA-RISC Linux  =
+
+HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze).
+That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
+
+The Debian ports project hosts a parisc version of debian unstable.
+We do NOT RECOMMEND to install debian unstable from debian-ports, because this repository has been frozen.
+Furthermore the udev package on debian-ports has a bug which will render your parisc system unusable.
+Nevertheless, the long term goal is to update the debian-ports repository with new versions.
+If you are interested of the current technical status of how parisc is being moved to debian-ports, see [http://wiki.parisc-linux.org/Debian_Ports Debian_Ports].
+
+Recommended installation of a new parisc machine is via the respitory at http://ftp.parisc-linux.org/debian-ports/debian
+
+== Linux kernel for PARISC ==
+We recommend at least a vanilla or stable series Linux kernel 3.10.
+Kernel 3.9 (stable series) should be OK too, as it has most fixes backported.
+Kernel 3.8 (or below) is not recommended any longer.
+
+== New installation of a PARISC machine via repository on http://ftp.parisc-linux.org/debian-ports/debian ==
+* Download the temporary boot image from http://ftp.parisc-linux.org/debian-ports/unstable-boot-image/lifimage
+* Burn the image to a cdrom or make it available as tftp bootimage
+* Turn on your parisc machine and boot this media (via cdrom or tftp)
+* This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, palo, scp, ...) to bootstrap a new debian unstable machine.  
+* use fdisk to partition your disk. Create a palo partition first (fdisk type f0, size >= 16 MB), then a /boot partition (needs to be in the first 2GB of a disk, ext2, fdisk type 83). A good size for the boot partition is 100-160 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system):
+<pre>
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1            2048      165887       81920   f0  Linux/PA-RISC boot
+/dev/sda2          165888      247807       40960   83  Linux
+/dev/sda3          247808   142854143    71303168   83  Linux
+/dev/sda4       142854144   143374737      260297   82  Linux swap / Solaris
+</pre>
+* format the /boot, /root and swap partitions:
+<pre>
+mke2fs /dev/sda2
+mke2fs /dev/sda3
+mkswap /dev/sda4
+</pre>
+* bring up your network. If you have a dhcp server you can run dhclient:
+<pre>
+dhclient eth0
+</pre>
+* mount the new designed /root and /boot filesystem to /mnt/destroot and /mnt/destroot/boot:
+<pre>
+mount /dev/sda3 /mnt/destroot/
+mkdir /mnt/destroot/boot
+mount /dev/sda2 /mnt/destroot/boot/
+</pre>
+* run debootstrap. This may take some time (10-20 Minutes):
+<pre>
+debootstrap --arch=hppa --no-check-gpg --include=palo --exclude=libsigc++-1.2-dev unstable /mnt/destroot http://ftp.parisc-linux.org/debian-ports/debian
+</pre>
+* '''IMPORTANT''': If you work on serial console, please remember to uncomment the following line in '''/etc/inittab''' else you won't see any login prompt on the serial console (kill -HUP 1 activates the change):
+<pre>
+echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /mnt/destroot/etc/inittab
+</pre>
+* '''IMPORTANT''': Remember to set your new root password and add /dev/sda2 as /boot partition:
+<pre>
+echo "/dev/sda2 /boot ext2 defaults 1 1" >> /mnt/destroot/etc/fstab
+chroot /mnt/destroot
+passwd root
+<now enter here your new password for root>
+exit
+</pre>
+* You are now finished with the initial initialization of the filesystem.
+* Now. reboot again from the CD/TFTP and choose to interact with IPL.
+<pre>
+reboot now
+<wait...>
+Interact with IPL (Y, N, or Cancel)?> y
+Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda3"
+/dev/sda3
+and press "b" to boot now.
+</pre>
+* Search for the most recent Linux kernel (example here uses linux-image-3.10-1) and install it with the palo bootloader:
+<pre>
+apt-get install palo
+apt-cache search linux-image
+apt-get install linux-image-3.10-1-parisc64-smp    - for 64bit SMP kernel
+(or)
+apt-get install linux-image-3.10-1-parisc          - for a 32bit UP kernel
+palo --init-partitioned=/dev/sda -k/boot/vmlinux-3.10-1-parisc64-smp --commandline="2/vmlinux-3.10-1-parisc64-smp root=/dev/sda3 HOME=/"
+</pre>
+* You are finished. Reboot and enjoy.
+<pre>
+reboot now
+</pre>
+
+== Old installation medias (Debian Lenny) ==
+
+If you have an older parisc system (not a c8000!) you may use the Debian Lenny installation medias to upgrade.
+ 
+* Download one of the installation medias for Debian 5.0 (lenny) for parisc from one of the following locations:
+** [http://cdimage.debian.org/cdimage/archive/5.0.10/hppa/iso-cd/ official debian cdimage download link]
+** [ftp://ftp.parisc-linux.org/debian-ports/lenny-5.0.10-hppa-iso-cd/cdimage.debian.org/ cdimage mirror on parisc-linux.org FTP server]
+
+* The debian-5010-hppa-netinst.iso or the debian-5010-hppa-xfce+lxde-CD-1.iso may work.
+
+* Install Debian Linux. It's recommended to just install a minimalistic set of packages at this stage, since everything will be updated later to debian-unstable anyway. Furthermore every installed package may prevent your from easily upgrading.
+
+* A very good documenation which covers PARISC specifics (e.g. PARISC bootloader and firmware) is available at http://www.pateam.org/parisc-linux-boot/doc.html.
+
+* After installation you should upgrade to debian-unstable via the debian-ports repository:
+* modify your /etc/apt/sources.list file to have this content:
+<pre>
+deb http://ftp.debian-ports.org/debian unstable main
+deb http://ftp.parisc-linux.org/debian-ports/debian unstable main
+# for unstable sources if you want to compile yourself:
+deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
+</pre>
+
+* now instruct apt to pull the latest package list:
+<pre>
+apt-get update
+</pre>
+
+* packages in the debian-ports repository are signed. You will need to install the debian-ports archive signing key once (details see: http://www.debian-ports.org):
+<pre>
+gpg --recv-keys 1C466F272FF7A9F4
+gpg --export --armor 2FF7A9F4 | apt-key add -
+</pre>
+
+* make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
+ 
+* run the usual command to upgrade your packages:
+<pre>
+apt-get upgrade
+</pre>
+
+* if you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just deinstall some packages
+
+* finally you should be able to update most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list http://lists.debian.org/debian-hppa.
