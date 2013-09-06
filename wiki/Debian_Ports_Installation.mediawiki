@@ -13,7 +13,7 @@ Furthermore the udev package on debian-ports has a bug which will render your pa
 Nevertheless, the long term goal is to update the debian-ports repository with new versions.
 If you are interested of the current technical status of how parisc is being moved to debian-ports, see [http://wiki.parisc-linux.org/Debian_Ports Debian_Ports].
 
-Recommended installation of a new parisc machine is via the respitory at http://ftp.parisc-linux.org/debian-ports/debian
+Recommended installation of a new parisc machine is via the repository at http://ftp.parisc-linux.org/debian-ports/debian
 
 == Linux kernel for PARISC ==
 We recommend at least a vanilla or stable series Linux kernel 3.10.
