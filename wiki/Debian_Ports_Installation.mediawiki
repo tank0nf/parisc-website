@@ -63,6 +63,16 @@ passwd root
 <now enter here your new password for root>
 exit
 </pre>
+* It would be worth to make machine accessible by ssh:
+<pre>
+apt-get install openssh-server
+update-rc.d ssh defaults
+</pre>
+Then activate network auto start by adding the following lines into /etc/network/interfaces
+<pre>
+auto eth0
+iface eth0 inet dhcp # in case of dhcp
+</pre>
 * You are now finished with the initial initialization of the filesystem.
 * Now. reboot again from the CD/TFTP and choose to interact with IPL.
 <pre>
@@ -85,6 +95,7 @@ palo --init-partitioned=/dev/sda --commandline="2/vmlinux-3.10-1-parisc64-smp ro
 <pre>
 reboot now
 </pre>
+If you however observe that none of existing pre-compiled kernels supports your configuration well enough to get you boot into the working system you may return to [[#Now. reboot again from the CD/TFTP and choose to interact with IPL]] step and continue with [[Building_the_Kernel]] from here.
 
 == Old installation medias (Debian Lenny) ==
 
