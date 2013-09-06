@@ -30,7 +30,7 @@ make oldconfig
 </pre></li>
 <li>'''Build Kernel Executables'''
 <pre>
-# 2.6.x
+# current
 make
 
 # 2.4.x needs several steps instead:
