@@ -11,6 +11,7 @@ This Wiki is meant to be an entry point for the [http://en.wikipedia.org/wiki/PA
 == How to install debian-unstable on PARISC ==
 
   * [[Debian_Ports_Installation]] - Installation HOWTO
+  * [[Building_the_Kernel]] - Build Kernel
   * http://wiki.parisc-linux.org/Debian_Ports - current status of migration to debian-ports
   * http://wiki.parisc-linux.org/TODO - current TODO list
 
