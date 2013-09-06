@@ -2,6 +2,11 @@
 title: Building the Kernel
 ---
 
+<div style="padding:0; margin:0 0 0.5em 0; border-style:solid; border-width:medium">
+{| width="100%" align="center" style="text-align:left; "
+| style="padding-left:5px;" | '''IMPORTANT:''' The content of this page is outdated. Please '''[[User:Alex_Ivanov/Building_the_Kernel|check draft]]''' version instead.
+|}</div>
+
 If you are only interested in using Linux/PARISC then please see the [http://www.parisc-linux.org/software/index.html software] information web page.
 
 We no longer advise using the [http://www.parisc-linux.org/software/index.html#xcs pre-built cross compiler] to build a parisc kernel on an x86 linux host. Native compiler/linker tools are better maintained. The old mini-howto describes how to [http://www.parisc-linux.org/kernel/nfsroot.html cross-build kernels] for Net Boot. Please only bother with this if you have a very slow parisc machine and very fast x86 machine.
