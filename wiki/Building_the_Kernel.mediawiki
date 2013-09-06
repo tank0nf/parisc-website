@@ -13,12 +13,13 @@ We no longer advise using the [http://www.parisc-linux.org/software/index.html#x
 
 = How To Build a Kernel =
 Here are details developers care about in order to '''modify, build, test''' parisc-linux kernels. Note that just because a kernel option can be select, does NOT mean it works. Trial and error is usually the only sure way to find out. Reports of such adventures are always welcome on the parisc-linux [mailto:linux-parisc@vger.kernel.org mailing list].
-# '''Install tools'''
+<ol>
+<li>'''Install tools'''
 <pre>
 apt-get install kernel-package gcc binutils lib6-dev
-</pre>
-# '''Obtain kernel source''': Stable kernel sources are available via <tt>apt-get install linux-source-XX</tt> (where XX is something like "2.4.25-32" or "2.6.6-32").
-# '''Configure Kernel Options'''
+</pre></li>
+<li>'''Obtain kernel source''': Stable kernel sources are available via <tt>apt-get install linux-source-XX</tt> (where XX is something like "2.4.25-32" or "2.6.6-32").</li>
+<li>'''Configure Kernel Options'''
 <pre>
 cd /usr/src/linux-2.6
 # clone the nearest _config to start with
@@ -26,8 +27,8 @@ cp arch/parisc/configs/b180_config .config
 # You can also "make config" or "make menuconfig" here
 # to adjust the .config if kernel defaults don't suit you.
 make oldconfig
-</pre>
-# '''Build Kernel Executables'''
+</pre></li>
+<li>'''Build Kernel Executables'''
 <pre>
 # 2.6.x
 make
@@ -37,8 +38,8 @@ make
  
 # must be root user
 make modules_install
-</pre>
-# '''Installing the kernel'''
+</pre></li>
+<li>'''Installing the kernel'''
 The resulting kernel image is <tt>/usr/src/linux-2.6/vmlinux</tt>. Normally, x86-linux will save the existing vmlinux and install the new kernel with <tt>make install</tt>. The "dpkg -i" steps above do about the same thing. Here is one way to do it manually:
 <pre>
 cd /boot
@@ -59,4 +60,5 @@ cp .config /boot/config-2.6.6-pa1
 sync
 reboot
 ...
-</pre>
+</pre></li>
+</ol>
