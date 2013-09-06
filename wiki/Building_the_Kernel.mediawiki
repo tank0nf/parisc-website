@@ -4,51 +4,20 @@ title: Building the Kernel
 
 If you are only interested in using Linux/PARISC then please see the [http://www.parisc-linux.org/software/index.html software] information web page.
 
-Pre-built 2.6 kernels are available on our [http://cvs.parisc-linux.org/download/linux-2.6/ CVS download Server] and via <tt>apt-get install kernel-image-XX</tt> (where XX is something like "2.4.25-32" or "2.6.6-32"). Most users should be pretty happy with kernels they can get from either source.
-
 We no longer advise using the [http://www.parisc-linux.org/software/index.html#xcs pre-built cross compiler] to build a parisc kernel on an x86 linux host. Native compiler/linker tools are better maintained. The old mini-howto describes how to [http://www.parisc-linux.org/kernel/nfsroot.html cross-build kernels] for Net Boot. Please only bother with this if you have a very slow parisc machine and very fast x86 machine.
 
 = Prerequisites For Building Kernels =
 * Internet connection
 * hppa-debian host properly configured so apt-get and ftp work
-* [http://cvs.parisc-linux.org/ parisc-linux source]
+* http://ftp.debian-ports.org/debian and http://ftp.parisc-linux.org/debian-ports/debian apt sources
 
-= Short Recipe to Build a Kernel =
-The short recipe is for when existing kernels from [http://cvs.parisc-linux.org/download/linux-2.6/ CVS download Server] or debian package pool don't have needed config "defaults" or need a different selection of kernel modules. If you want to do more than that, read "The Old, Grotty Way" as well (below).
-<pre>
-# get necessary tools
-apt-get install kernel-package gcc binutils libc6-dev
-cd /usr/src
-# if CVS doesn't work, See "Getting Source" below.
-cvs -d :pserver:anonymous@cvs.parisc-linux.org:/var/cvs login
-cvs -d :pserver:anonymous@cvs.parisc-linux.org:/var/cvs co linux-2.4
-cd linux-2.4
-# adjust a new .config file
-make menuconfig
-# or do it by hand:
-#	vi .config
-#	make oldconfig
-make-kpkg kernel_image
-cd ..
-dpkg -i kernel-image*.deb
-sync
-reboot
-</pre>
-= The Old, Grotty Way To Build a Kernel =
-Here are all the ugly details developers care about in order to '''modify, build, test''' parisc-linux kernels. Note that just because a kernel option can be select, does NOT mean it works. Trial and error is usually the only sure way to find out. Reports of such adventures are always welcome on the parisc-linux [mailto:linux-parisc@vger.kernel.org mailing list].
+= How To Build a Kernel =
+Here are details developers care about in order to '''modify, build, test''' parisc-linux kernels. Note that just because a kernel option can be select, does NOT mean it works. Trial and error is usually the only sure way to find out. Reports of such adventures are always welcome on the parisc-linux [mailto:linux-parisc@vger.kernel.org mailing list].
 # '''Install tools'''
 <pre>
 apt-get install kernel-package gcc binutils lib6-dev
 </pre>
-# '''Fetch kernel source''': The 2.6.x kernel source tree is available via [http://cvs.parisc-linux.org/ CVS] and [http://cvs.parisc-linux.org/download/linux-2.6/ snapshots]. It is better to get a snapshot first and then update using CVS.
-<pre>
-cd /usr/src
-# See http://cvs.parisc-linux.org/download/linux-2.6/
-wget http://cvs.parisc-linux.org/download/linux-2.6/linux-2.6.6-pa2.tar.bz2
-# verify ~350MB free
-df -h .
-tar xjf linux-2.6.6-pa2.tar.bz2
-</pre>
+# '''Obtain kernel source''': Stable kernel sources are available via <tt>apt-get install linux-source-XX</tt> (where XX is something like "2.4.25-32" or "2.6.6-32").
 # '''Configure Kernel Options'''
 <pre>
 cd /usr/src/linux-2.6
