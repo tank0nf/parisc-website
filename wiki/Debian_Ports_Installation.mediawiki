@@ -89,7 +89,7 @@ apt-cache search linux-image
 apt-get install linux-image-3.10-1-parisc64-smp    - for 64bit SMP kernel
 (or)
 apt-get install linux-image-3.10-1-parisc          - for a 32bit UP kernel
-palo --init-partitioned=/dev/sda --commandline="2/vmlinux-3.10-1-parisc64-smp root=/dev/sda3 HOME=/"
+palo --init-partitioned=/dev/sda -k/boot/vmlinux-3.10-1-parisc64-smp --commandline="2/vmlinux-3.10-1-parisc64-smp root=/dev/sda3 HOME=/"
 </pre>
 * You are finished. Reboot and enjoy.
 <pre>
