@@ -25,19 +25,18 @@ Kernel 3.8 (or below) is not recommended any longer.
 * Burn the image as raw one to a cdrom or make it available as tftp bootimage
 * Turn on your parisc machine and boot this media (via cdrom or tftp)
 * This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, palo, scp, ...) to bootstrap a new debian unstable machine.  
-* use fdisk to partition your disk. Create a palo partition first (fdisk type f0, size >= 16 MB), then a /boot partition (needs to be in the first 2GB of a disk, ext2, fdisk type 83). A good size for the boot partition is 100-160 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system):
+* use fdisk to partition your disk. Create a palo boot partition first (needs to be in the first 2GB of a disk, fdisk type f0). A good size for the boot partition is 100-160 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system):
 <pre>
    Device Boot      Start         End      Blocks   Id  System
-/dev/sda1            2048      165887       81920   f0  Linux/PA-RISC boot
-/dev/sda2          165888      247807       40960   83  Linux
-/dev/sda3          247808   142854143    71303168   83  Linux
-/dev/sda4       142854144   143374737      260297   82  Linux swap / Solaris
+/dev/sda1    *       2048      247807      122880   f0  Linux/PA-RISC boot
+/dev/sda2          247808   142854143    71303168   83  Linux
+/dev/sda3       142854144   143374737      260297   82  Linux swap / Solaris
 </pre>
 * format the /boot, /root and swap partitions:
 <pre>
-mke2fs /dev/sda2
-mke2fs -j /dev/sda3
-mkswap /dev/sda4
+palo --format-as=2 --init-partitioned=/dev/sda
+mke2fs -j /dev/sda2
+mkswap /dev/sda3
 </pre>
 * bring up your network (should be already done by an init screen, check your boot console). If you have a dhcp server you can run dhclient:
 <pre>
@@ -45,7 +44,7 @@ dhclient eth0
 </pre>
 * mount the new designed /root to /mnt/destroot:
 <pre>
-mount /dev/sda3 /mnt/destroot/
+mount /dev/sda2 /mnt/destroot/
 </pre>
 * run debootstrap. This may take some time (10-20 Minutes):
 <pre>
@@ -55,9 +54,9 @@ debootstrap --arch=hppa --no-check-gpg --include=palo --exclude=libsigc++-1.2-de
 <pre>
 echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /mnt/destroot/etc/inittab
 </pre>
-* '''IMPORTANT''': Remember to set your new root password and add /dev/sda2 as /boot partition:
+* '''IMPORTANT''': Remember to set your new root password and add /dev/sda1 as /boot partition:
 <pre>
-echo "/dev/sda2 /boot ext2 defaults,noauto 1 1" >> /mnt/destroot/etc/fstab
+echo "/dev/sda1 /boot ext2 defaults,noauto 1 1" >> /mnt/destroot/etc/fstab
 chroot /mnt/destroot
 passwd root
 <now enter here your new password for root>
@@ -79,7 +78,7 @@ iface eth0 inet dhcp # in case of dhcp
 reboot now
 <wait...>
 Interact with IPL (Y, N, or Cancel)?> y
-Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda3" and press "b" to boot now.
+Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda2" and press "b" to boot now.
 </pre>
 * Search for the most recent Linux kernel (example here uses linux-image-3.10-1) and install it with the palo bootloader:
 <pre>
@@ -89,7 +88,7 @@ apt-cache search linux-image
 apt-get install linux-image-3.10-1-parisc64-smp    - for 64bit SMP kernel
 (or)
 apt-get install linux-image-3.10-1-parisc          - for a 32bit UP kernel
-palo --init-partitioned=/dev/sda -k/boot/vmlinux-3.10-1-parisc64-smp --commandline="2/vmlinux-3.10-1-parisc64-smp root=/dev/sda3 HOME=/"
+palo --update-partitioned=/dev/sda --format-as=2 --commandline="1/vmlinux-3.10-1-parisc64-smp root=/dev/sda2 HOME=/"
 </pre>
 * You are finished. Reboot and enjoy.
 <pre>
