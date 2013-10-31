@@ -15,7 +15,10 @@ This Wiki is meant to be an entry point for the [http://en.wikipedia.org/wiki/PA
   * http://wiki.parisc-linux.org/Debian_Ports - current status of migration to debian-ports
   * http://wiki.parisc-linux.org/TODO - current TODO list
 
-== Resources ==
+== Technical Documentation ==
+  * [[Technical Documentation]]
+
+== External Resources ==
 
   * http://www.parisc-linux.org/ - The official PA-RISC/Linux website
   * http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
