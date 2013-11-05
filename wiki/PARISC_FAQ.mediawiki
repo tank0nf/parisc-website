@@ -57,7 +57,13 @@ Yes! "resident" boot expert Martin Petersen knew you would ask! Martin wrote the
 
 ==How can I check if the PDC (firmware) revision is the latest?==
 
-Lots of boot and some performance problems can be attributed to firmware "bugs". All machines print the PDC revision at boot up. Or once at "Main Menu>" or "BOOT_ADMIN>" one can print the PDC revision with "in fv" (c3000) or "in" (712) command. Putting more intelligence in any software module will increase the odds of having bugs. Since firmware updates (aka patches) are freely available (below), the latest firmware is required when reporting problems instead of attempting other workarounds. The official "front door" for all patches (Firmware, HPUX, MPE, OpenVMS, Tru64, Linux, ...) is the [[IT Resource Center]]. But if you know what you need, go directly to the [[catalog of firmware patches]] and then grab the correct firmware update from the [[HP FFS Patch Server]]. The [[PDC Patch Catalog]] lists firmware revs for systems which have upgradeable firmware. If it's not listed either you don't need a patch (yet :^) or it's not upgradeable. Systems older than 712 or 715's (eg 735) are only upgradeable via chip replacement. '''BEWARE''': It's possible to kill a system by either upgrading the wrong firmware or the upgrade doesn't finish properly for any reason. Don't upgrade unless you have evidence of a PDC problem. Text files on the HP patch depot describe what was fixed in each revision since the machine model was released. 
+Lots of boot and some performance problems can be attributed to firmware "bugs". All machines print the PDC revision at boot up. Or once at "Main Menu>" or "BOOT_ADMIN>" one can print the PDC revision with "in fv" (c3000) or "in" (712) command.
+
+Putting more intelligence in any software module will increase the odds of having bugs. Since firmware updates (aka patches) are freely available (below), the latest firmware is required when reporting problems instead of attempting other workarounds. The official "front door" for all patches (Firmware, HPUX, MPE, OpenVMS, Tru64, Linux, ...) is the [[IT Resource Center]]. But if you know what you need, go directly to the [[catalog of firmware patches]] and then grab the correct firmware update from the [[HP FFS Patch Server]].
+
+The [[PDC Patch Catalog]] lists firmware revs for systems which have upgradeable firmware. If it's not listed either you don't need a patch (yet :^) or it's not upgradeable. Systems older than 712 or 715's (eg 735) are only upgradeable via chip replacement.
+
+'''BEWARE''': It's possible to kill a system by either upgrading the wrong firmware or the upgrade doesn't finish properly for any reason. Don't upgrade unless you have evidence of a PDC problem. Text files on the HP patch depot describe what was fixed in each revision since the machine model was released.
 
 ==The system boots up on the STI Console but no "login:" prompt appears, what do I do?==
 
