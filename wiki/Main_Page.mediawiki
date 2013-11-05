@@ -21,6 +21,7 @@ This Wiki is meant to be an entry point for the [http://en.wikipedia.org/wiki/PA
   * [[PARISC FAQ]]
   * [[Hardware support]]
   * [[Graphics howto]]
+  * [[Mailing lists]]
 
 == External Resources ==
 
