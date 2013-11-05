@@ -176,14 +176,10 @@ Short Answer: Voodoo2/ATI Rage XL provide limited functionality. Long Answer: Se
  
 The glibc nscd daemon is broken since quite some time. 
 You may either just disable the nscd daemon, or alternatively 
-put the following lines into your '''/etc/nscd.conf''' file: 
-
-
-<pre>
+put the following lines into your '''/etc/nscd.conf''' file:<pre>
  # Broken on PA-RISC
  enable-cache passwd no
 
  # Broken on PA-RISC
  enable-cache group no 
- 
 </pre>
