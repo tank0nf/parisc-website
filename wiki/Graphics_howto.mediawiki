@@ -1,0 +1,125 @@
+---
+title: Graphics howto
+---
+
+= Graphics cards with PA-RISC Linux =
+ 
+== Which HP graphics cards work with PA-RISC Linux? ==
+ 
+For PCI, only Vis-EG cards (8-bit color) are supported.
+The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not (yet) supported.<br> <br>
+The following GSC cards are not yet supported, as they need patching from 
+the Linux operating system, which is not yet implemented:
+
+
+* Hyperdrive/Hyperbowl (A4071A) graphics card series:
+ * ID = 0x2BCB015A (Version 8.04/8)
+ * ID = 0x2BCB015A (Version 8.04/11)
+
+* Thunder 1 VISUALIZE 48 card:
+ * ID = 0x2F23E5FC (Version 8.05/9)
+
+* Thunder 2 VISUALIZE 48 XP card:
+ * ID = 0x2F8D570E (Version 8.05/12)
+
+* Some Hyperion and ThunderHawk GSC cards
+
+All other HP graphics cards are supported.<br>  
+Unfortunately, the XFree86 drivers only support a frame buffer.
+The available 2D and 3D HW acceleration features are not supported.
+
+ 
+== Configuring XFree86 for HP graphics cards ==
+ 
+Check dmesg output right after booting for this part:
+ 
+<pre>
+STI GSC/PCI graphics driver version 0.9
+STI word mode ROM at f0084000, hpa at fa000000
+STI id 2d08c0a7-9a02587, conforms to spec rev. 8.07
+STI device: INTERNAL_EG_1280
+Console: switching to colour frame buffer device 160x64
+fb0: stifb 1280x1024-8 frame buffer device, id: 2d08c0a7, mmio: 0xfa100000
+</pre>
+ 
+If that output is missing, it means the STI and STIFB drivers
+are not configured in the kernel. One will see penguin (or two
+for SMP) in the top left corner at boot time as well if the
+kernel is correctly configured.
+
+ 
+As "root" user, edit /etc/X11/XF86Config-4 to match the
+fb0 output like this:
+ 
+<pre>
+SubSection "Display"
+	Depth	8
+	Modes	"1280x1024"     # "1024x768" or "1280x1024"
+EndSubSection
+</pre>
+ 
+Use "fbset -i" to determine the supported color depth
+if it's not clear from the STIFB driver output.
+
+ 
+IMPORTANT: Only one "Mode" can be specified!
+
+ 
+If /etc/X11/XF86Config-4 doesn't exist or has no
+Subsection "Display", working examples can be 
+found on
+[[ftp.parisc-linux.org]].
+
+ 
+Help on configuring mouse and keyboard is available in the
+[[FAQ]].
+
+ 
+== Which non-HP PCI graphics cards work with PA-RISC Linux? ==
+ 
+Depends on which graphics card you are using.
+
+Most graphics card have to be initialized by firmware before
+the OS driver can use the card: this may consist of wakeup sequences,
+setting up a proper color map, clearing the video memory, selecting the
+proper video frequency, output interface and much more.<br>
+<br>
+Usually, the graphics card contains the initialization firmware
+in the form of BIOS (on older ix86/PCs), EFI (new IA32 and IA64),
+PDC (on PA-RISC), or OpenFirmware (on Sun and MACs).
+
+
+Unfortunately each flavor of firmware is not compatible on other
+computers. For example, PA-RISC PDC cannot initialize a PC graphics card.
+Therefore the graphics card vendors may produce respective versions for
+each architecture it wishes to sell a particular graphics card.
+E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64,
+PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
+
+ 
+'''This leads to the following problems:'''
+
+ 
+* PA-RISC PDC doesn't know how to use a non-HP graphics card.<br> Eg. One can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.<br> '''Solution:''' use serial console to access the PDC boot menu.
+* You have to initialize a non-HP graphics card somehow before you can use it:<br> Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.<br> '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:   === 1. Linux framebuffer driver ===  Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
+** Matrox cards (eg. Millenium I/II, MGA G200)
+** 3dfx Voodoo and Voodoo2
+** some ATI Mach64 (eg. Rage XL)
+** some old S3
+** some ancient framebuffer cards (eg. TGA, P9000)
+* To date, Matrox Millenium I, Matrox MGA G200, Voodoo2 and ATI Rage XL cards are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.   === 2. XFree86/X.org driver ===  The second approach is to use the XFree86/X.org graphics card drivers.   The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know.   The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
+ 
+Using a non-HP PCI graphics card is currently the only way to get a display
+with 24-bit colour depth on the newer workstations (B/C/Jxxxx) running
+Linux/PA.
+
+
+Some graphics drivers might have minor issues.
+E.g. to ensure the Matrox Millenium graphics card will be initialized
+properly one must physically disconnect the computer from the power line
+before (re)booting - it is not sufficient to just press the power-off button.
+
+ 
+Copyright 2004 "M. Grabert" <xam@nospam.cs.ucc.ie><br>
+Copyright 2004 "Grant Grundler" <grundler@nospam.parisc-linux.org><br>
+Distributed under the Creative Commons License
