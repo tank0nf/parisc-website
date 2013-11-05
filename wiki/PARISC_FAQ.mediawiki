@@ -170,7 +170,7 @@ This may be because your card is running in double buffered mode. To check this,
 
 ==Can I use a non-HP PCI graphic cards with PA-RISC Linux?==
 
-Short Answer: Voodoo2/ATI Rage XL provide limited functionality. Long Answer: See the [[PA-RISC Graphics HOW-TO]].
+Short Answer: Voodoo2/ATI Rage XL provide limited functionality. Long Answer: See the [[Graphics howto]].
 
 ==SSH connections sometimes drop if I ssh into my PA-RISC Linux box. The nscd daemon seems to be broken.==
  
