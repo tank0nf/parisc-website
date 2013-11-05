@@ -95,19 +95,21 @@ device=/dev/input/mice
 type=imps2</pre>
 To use your HIL-, PS/2- or USB-mouse with X-Windows (X11), configure either your /etc/X11/XF86Config-4 or /etc/X11/xorg.conf config file with following values:<pre>
 Section "InputDevice"
-Identifier "Keyboard"
-Driver "keyboard"
-Option "CoreKeyboard"
-#Option "XkbLayout" "de" 
+  Identifier "Keyboard"
+  Driver "keyboard"
+  Option "CoreKeyboard"
+  #Option "XkbLayout" "de" 
 EndSection
+
 Section "InputDevice" 
-Identifier "Mouse" 
-Driver "mouse"
-Option "CorePointer"
-Option "Device" "/dev/input/mice"
-Option "Protocol" "ImPS/2"
-Option "ZAxisMapping" "4 5" 
+  Identifier "Mouse" 
+  Driver "mouse"
+  Option "CorePointer"
+  Option "Device" "/dev/input/mice"
+  Option "Protocol" "ImPS/2"
+  Option "ZAxisMapping" "4 5" 
 EndSection</pre>
+
 Alternatively you might download [[this XF86Config-4 file]] and adjust the resolution and screen color depth [[as described here]] and store your new config file to the /etc/X11/ directory.
 
 ==How to enable my PS/2 mouse and keyboard with Linux Kernel 2.6 ?==
