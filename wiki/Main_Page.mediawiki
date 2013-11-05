@@ -19,6 +19,8 @@ This Wiki is meant to be an entry point for the [http://en.wikipedia.org/wiki/PA
   * [[Technical Documentation]]
   * [[How to report a parisc-linux kernel problem]]
   * [[PARISC FAQ]]
+  * [[Hardware support]]
+
 
 == External Resources ==
 
