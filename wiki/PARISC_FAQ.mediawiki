@@ -1,0 +1,101 @@
+---
+title: PARISC FAQ
+---
+
+= PA-RISC LINUX FAQ =
+ 
+ 
+* [[What binaries will PA-RISC Linux support?]]
+* [[Will parisc-linux work on my system?]]
+* [[Where can I get an Install CD?]]
+* [[Why do I get "ENTRY_INIT failed" booting the Install CD?]]
+* [[How can I switch the console to serial without a keyboard/monitor?]]
+* [[How do I compile the kernel?]]
+* [[Can I use the latest kernel from Linus?]]
+* [[How do I report a kernel problem to the PA-RISC Linux developers?]]
+* [[How do I change the palo/linux kernel boot parameters?]]
+* [[How do I get my system to boot from the network?]]
+* [[Can parisc boot from RAID1?]]
+* [[How can I check if the PDC (firmware) revision is the latest?]]
+* [[The system boots up on the STI Console but no "login:" prompt appears, what do I do?]]
+* [[The system boots up but I get Cannot access the Hardware Clock via any known method. What do I do?]]
+* [[Can I use ISA cards in the EISA slots?]]
+* [[My ISA card is recognized but the IRQ is wrong or not accepted. What can I do?]]
+* [[How do I configure and enable my HIL-, PS/2- and USB-keyboard and mouse for the console and X11?]]
+* [[How to enable my PS/2 mouse and keyboard with Linux Kernel 2.6 ?]]
+* [[Can I run a 64-bit kernel on my machine?]]
+* [[How do I send Magic SysRq over lanconsole?]]
+* [[On my system ksoftirqd uses 70-100 percent of the CPU time. What's wrong?]]
+* [[What are "unaligned access" messages about?]]
+* [[What about XFree and FX graphic cards?]]
+* [[Why do I get corrupted graphics with my Vis-EG/Graffiti/A4450A card?]]
+* [[Can I use a non-HP PCI graphic cards with PA-RISC Linux?]]
+* [[SSH connections sometimes drop if I ssh into my PA-RISC Linux box. The nscd daemon seems to be broken.]]
+ 
+----
+* We currently only support 32-bit ELF executables. Initial bringup 	work was accomplished using HP-UX emulation, but that emulation 	has not been maintained. Eventually, we hope to have support 	for HP-UX 32-bit SOM executables working again, and add support 	for 64-bit ELF executables, both Linux & HP-UX.   We're not promising to get ''all'' HP-UX binaries running on 	Linux. In particular those which are multithreaded are unlikely to 	ever be supported.
+* Please see [[this explanation]].   <br>
+* [[Debian]] suggests several methods to [[acquire Official Install CDs]]. <br> Pre-built 600+MB ISOs can be downloaded from: 	[[.de]] [[.se]] [[.ca.usa]]. <br> Much smaller and less tested, [[daily snapshots]] have newer kernels on them. Caveat Emptor.   <br>
+*  The full error message from the IODC (firmware) looks like:<br> <br>   <pre> 	ENTRY_INIT failed, status = -3: Cannot complete call without error   </pre> <br> <br>   There are three likely causes for the <code>ENTRY_INIT</code> error   and different machines may return different status numbers depending   on the reason type of IO device:
+*# non-bootable CD drive (broken or incompatible)
+*# The CD drive block size (usually a jumper on the back) is not   	set to 512 byte blocks.
+*# The CD has bad blocks where boot data is expected (or is upside down in tray :^)
+*  <br>   The [[How to Burn a Boot CD]]   covers many of the issues below.   The following steps should help the rule out common failures:<br> <br>
+*# Check the integrity of the CD image file used to burn the CD. 	The output of <code>md5sum your_cd_img.iso</code> should match 	the value found in <code>md5sum.txt</code> from the original site.
+*# Use <code>sea ipl</code> from the PDC menu prompt to search 	for bootable media (hard disk or CD).  Interrupt "autoboot" 	to get a PDC (aka Boot Console Handler) command prompt. 	CD, disk, or tape drives with bootable media installed will 	be listed in <code>sea</code> output.  <code>sea</code> is much faster 	if one specifies the HW Path (eg <code>sea SCSI.3.0 ipl</code>). 	Listen for the CD to spin up (a clue the CD is not broken) as 	<code>sea</code> tries to read the boot sectors off the CD drive. 	If a CD drive then shows up in the list, next step is to verify 	the CD does not have bad blocks in the vmlinuz or initrd data.
+*# Test the ability to boot by trying a HP-UX install disk 	then run <code>sea</code> command. 	If that works, the Debian CD was not burned correctly or has 	a defective boot sector(s). 	If <code>sea</code> doesn't work, then it's likely the CDROM drive 	is either broken, misconfigured, or just incompatible. 	Check CD-ROM drive data sheets to verify the drive is using 512byte 	sectors and not 2k sectors. 	The IODC (PARISC "BIOS") can only deal with 512 byte sectors. Some 	older CD-ROMs only support 2k sectors and can not be used to boot.
+*# Verify the integrity of the Debian CD. 	Reading the CD on another linux system using something like 	"<code>dd if=/dev/cdrom of=/dev/null bs=2k</code>". 	If all blocks are readable and a Windows machine was used 	to burn the CD, 	then the CD likely wasn't burned in "raw" mode and the boot blocks 	are mangled. Try burning the CD in "raw" mode. 	If the CD was burned without padding option, the CD integrity 	could also be checked with "<code>dd if=/dev/cdrom | md5sum</code>" 	and the result should match the value of the original iso image.
+* <br>
+* For newer workstations (4-digit B/C/J class), PDC will revert to 	using SERIAL_1 if a USB keyboard is not detected at boot up. For 	some models of older workstations, you can either remove the 	framebuffer card, or hold down TOC for ten seconds while booting 	up. However, this does not work on all models.   <br>
+* Please follow [[the Recipe]].   BTW, We've stopped using CVS for parisc-linux kernel work. Kudos to Matthew Wilcox for writing a [[PA-RISC GIT howto]] that I [ggg] could understand. It contains directions on how pull kernel sources, make diffs using git, and links to a few other practical examples on using git.   <br>
+* Yes. We merge between the PA-RISC Linux repository and Linus' tree regularly.<br> Read the [[PA-RISC GIT howto]] to pull a source tree and then run:   <pre> 	git diff refs/tags/v2.6.28..HEAD   </pre>    (substitute preferred tag for "v2.6.28") to get the current diff.<br>  <br>
+* Randolph Chung wrote a small [[HOWTO]] just for YOU!<br> <br> Ok. It's not that small anymore. But not providing at least a few of the details listed in the HOWTO will just lead to folks (a) asking for the missing info and/or (b) folks ignoring you.   <br>
+*  Occasionally, one needs to change the [[kernel boot parameters]] to boot a system. Check the [[release errata]] and search the [[parisc-linux mail archives]] for parisc specific options. You can also refer to the [[PALO]] section of our HOWTO. <br> Two ways to modify kernel boot parameters via palo:
+** '''Interactive''': During bootup press the escape-key to stop auto-boot.       On older machines enter "<code>BO scsi.X.0 IPL</code>" and replace X       with the SCSI ID of your boot-disc.  Appending <code>IPL</code>       directs palo to interact with the user and offer a menu to change       the boot-parameters '''for this boot only'''.       <br>       On newer systems, <code>IPL</code> isn't needed since the PDC       will ask <code>Interact with IPL (Y/N)?</code><br>
+Just enter Y       here and palo will let you change the parameters.       <br> <br>
+** '''Auto-boot''': To change the palo/linux kernel parameters       '''permanently''', edit <code>/etc/palo.conf</code> and change the       arguments to <code>--commandline</code> parameter. Most importantly       '''run palo once''' to store the new kernel parameters on the       boot disk.  The new parameters will be effective for successive boots.
+* <br>
+* A long time ago, in a galaxy far, far away....well, not really. Just a long time ago Martin Petersen (with help from others) wrote this [[PARISC NFS-Root-HOWTO]] for a fledgling parisc-linux port. The "official" [[NFS-Root-Client-mini-HOWTO]] will probably serve you better. It's also called the "diskless root" if you want to search for more info. <br> It's also worth mentioning the [[PA-RISC/Linux Boot HOWTO]].   <br>
+* Yes! "resident" boot expert Martin Petersen knew you would ask! Martin wrote the [[PA-RISC RAID1 Boot HOW-TO]] to blaze a path for the weak and timid.   <br>
+* Lots of boot and some performance problems can be attributed to firmware "bugs". All machines print the PDC revision at boot up. Or once at "Main Menu>" or "BOOT_ADMIN>" one can print the PDC revision with "in fv" (c3000) or "in" (712) command.   Putting more intelligence in any software module will increase the odds of having bugs. Since firmware updates (aka patches) are freely available (below), the latest firmware is required when reporting problems instead of attempting other workarounds. The official "front door" for all patches (Firmware, HPUX, MPE, OpenVMS, Tru64, Linux, ...) is the [[IT Resource Center]]. But if you know what you need, go directly to the [[catalog of firmware patches]] and then grab the correct firmware update from the [[HP FFS Patch Server]].   The [[PDC Patch Catalog]] lists firmware revs for systems which have upgradeable firmware. If it's not listed either you don't need a patch (yet :^) or it's not upgradeable. Systems older than 712 or 715's (eg 735) are only upgradeable via chip replacement.   '''BEWARE''': It's possible to kill a system by either upgrading the wrong firmware or the upgrade doesn't finish properly for any reason. Don't upgrade unless you have evidence of a PDC problem. Text files on the HP patch depot describe what was fixed in each revision since the machine model was released.   <br>
+* Check the contents of /etc/inittab and make sure the following lines exist and are uncommented.<br> <code> 	1:2345:respawn:/sbin/getty 38400 tty1<br> 	2:23:respawn:/sbin/getty 38400 tty2<br> 	3:23:respawn:/sbin/getty 38400 tty3<br> 	4:23:respawn:/sbin/getty 38400 tty4<br> 	5:23:respawn:/sbin/getty 38400 tty5<br> 	6:23:respawn:/sbin/getty 38400 tty6<br> </code> ''Contributed by: Phillip Beal [[<pdbeal@louisville.edu>]] ''   <br>
+* <br> <code>Cannot access the Hardware Clock via any known method.</code><br>   What do I do?   Create the special /dev/rtc device:<br>   <pre> 	mknod /dev/rtc c 10 135   </pre>   <br>
+* Yes. In general it's possible to use use ISA cards in the EISA slots. We already had some success with ISA NE2000 clones and some other cards, but you need to tell the kernel via the [[eisa_irq_edge]] boot parameter which ISA IRQs should be available for ISA devices.<br> See the next FAQ entry for details.   Also note that busmastering ISA or EISA cards are not yet supported.   <br>
+* In order to get ISA IRQs working you'll need to tell the kernel which IRQs should be set to edge triggered mode and thus be available for ISA devices. Add the kernel boot parameter <code>eisa_irq_edge=3,4,5,7,9,10,11,14,15</code> to the palo command line and replace the numbers in this example with the ISA IRQs you need for your cards.   <br>
+* All Linux kernels greater than version 2.4.18-pa45 - including all 2.6 Kernels - use the standard Linux input layer to access HIL-, PS/2 and USB keyboards and mice:<br> <br> To use your HIL-, PS/2- or USB-mouse with gpm modify your /etc/gpm.conf config file:<br> <code>device=/dev/input/mice</code><br> <code>type=imps2</code><br> <br> To use your HIL-, PS/2- or USB-mouse with X-Windows (X11), configure either your /etc/X11/XF86Config-4 or /etc/X11/xorg.conf config file with following values:<br> <code> 		Section "InputDevice"<br> 		Identifier	"Keyboard"<br> 		Driver		"keyboard"<br> 		Option		"CoreKeyboard"<br> 		#Option		"XkbLayout"	"de"<br> 		EndSection<br> <br> 		Section "InputDevice"<br> 		Identifier	"Mouse"<br> 		Driver		"mouse"<br> 		Option		"CorePointer"<br> 		Option		"Device"		"/dev/input/mice"<br> 		Option		"Protocol"		"ImPS/2"<br> 		Option		"ZAxisMapping"		"4 5"<br> 		EndSection<br> </code> 	Alternatively you might download 	[[this XF86Config-4 file]] 	and adjust the resolution and screen color depth [[as described here]] 	and store your new config file to the /etc/X11/ directory.<br> <br>
+*  In the 2.6 kernel series, we switched from a PA-RISC-only PS/2 mouse/keyboard driver to the standard Linux kernel PS/2 mouse and keyboard drivers. Hence, in order to get your PS/2 mouse/keyboard, which is either directly connected to your system or via a HIL&PS2-HUB, to work you'll have to enable
+** CONFIG_KEYBOARD_ATKBD
+** CONFIG_MOUSE_PS2
+*       in addition to
+** CONFIG_INPUT_KEYBOARD
+** CONFIG_INPUT_MOUSE
+*       You don't need these options for non-HIL PS/2 devices:
+** CONFIG_KEYBOARD_HIL
+** CONFIG_MOUSE_HIL
+** CONFIG_HIL_MLC
+* <br>
+*  First ask yourself: Why do I need to run a 64-bit kernel?<br> Since parisc-linux does not yet support 64-bit userspace, there is no advantage to be gained running a 64-bit kernel on a machine with less than 3.5GB of memory. In fact, there are many disadvantages including more potential bugs, bigger data structures, slightly less performance on many common workloads.   Only PA-RISC 2.0 CPU can run a 64-bit kernel (aka `wide mode'). Check /proc/cpuinfo if you already have linux booted. Or check firmware output at power up time. Systems running the CPU clock speed slower than 160Mhz are PA 1.x and faster than 180Mhz are PA 2.0. Systems between 160Mhz and 180Mhz are either PA 1.1 (PCX-L2, eg C160L) or PA 2.0 (PCX-U, eg C160).   Platform firmware also determines the type of kernel which can be used:
+** '''64-bit Only''' : A500, L/N-class, rpXXXX, Superdome servers,   and all PA-8800 CPUs must run a 64-bit kernel.
+** '''Dual Mode''' : B2000/C3000, similar J-class workstations and   PA 2.0 D/K/R-class system firmware can be called from either 32-bit   or 64-bit mode.
+** '''32-bit Only''' : Workstations up to and including the J2240/C360   and servers of D/R-class have 32-bit firmware.
+* For those who do want to test 64-bit kernels on PA 2.0 machines with 32-bit firmware, recent 2.6 64-bit kernels will auto-detect the firmware type and switch to the correct `mode' (wide or narrow). Older kernels need to be built with the special configuration option `32-bit PDC' appropriately set. Enabling this option will switch the 64-bit kernel to narrow mode before calling 32-bit firmware.   <br>
+* First you have to start a telnet session on your lanconsole, login to GSP, and type 'CO' at the GSP prompt to get the system console. (You might need to type '^Ecf' to gain write access on it).   Then you have to *escape* from the telnet session, by typing '^]' on a QWERTY keyboard ('^-AltGr-]' or '^$' on some AZERTY layouts).   You will get a 'telnet>' prompt. Type 'send break', hit enter to validate. The next key you will hit will be sent as the SysRq, e.g. if you type 'h' it will display the available SysRq keys.   You will have to start all over again from the escape sequence for each SysRq you will need to send.   <br>
+* This is currently a bug/feature related to the HIL drivers.<br> In the HIL drivers we poll the HIL ports with a few timers simultanously and those timers seem to increase the ksoftirqd load a lot.<br> But although the load seems to be very high, the machine will be fully functional at maximum speed and it seems to us as if this is only a cosmetical problem which is maybe caused by some bugs in the load calculation functions in the Linux kernel.<br> '''Update:''' Guy Martin [[posted a patch]] which solves this issue, but this patch is sadly not acceptable for upstream inclusion.   <br>
+* <code> Jan 8 23:52:33 hp kernel: emacs(17795): unaligned access to 0x001cdaf2 at ip=0x0008930b </code>   The message usually means the program in question is buggy and is not meeting address alignment requirements. The unaligned access is trapped and emulated by the kernel, so normally the message itself is simply informational.<br> <br> Like most architectures, PA-RISC loads (and stores) to half-words, words, doublewords have specific address alignment requirements. The address accessed must be divisible by the number of bytes being stored. E.G. word (32-bit) stores should access an address divisible by 4.   <br>
+* FX Graphic adapters are not (and will probably never be) supported as framebuffer devices, and don't have specific XFree drivers.<br> <br> That is to say these cards can only be used through STI Console. Hence, you can't use XFree with any FX card.   <br>
+* This may be because your card is running in double buffered mode. To check this, type '<code>co</code>' and then '<code>mo</code>' at the PDC menu prompt. If 'Double buffered' appears as part of the 'Class', select another monitor type - for instructions on how to do this, type '<code>help mo</code>'.   <br>
+* Short Answer: Voodoo2/ATI Rage XL provide limited functionality.<br> Long Answer: See the 	 [[PA-RISC Graphics HOW-TO]].
+  
+The glibc nscd daemon is broken since quite some time.<br>
+You may either just disable the nscd daemon, or alternatively 
+put the following lines into your '''/etc/nscd.conf''' file:<br>
+
+
+<pre>
+	Broken on PA-RISC
+	enable-cache        passwd        no
+
+	# Broken on PA-RISC
+	enable-cache        group        no 
+  
+</pre>
