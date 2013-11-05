@@ -1,0 +1,193 @@
+---
+title: How to report a parisc-linux kernel problem
+---
+
+= HOW TO REPORT A PARISC-LINUX KERNEL PROBLEM =
+
+== Introduction ==
+
+We often get bug reports on the 
+[[parisc-linux mailing list]] about problems people have with their kernels. This document
+attempts to point out what is the minimal amount of information
+that needs to be included in order for the kernel developers to
+be able to try to track down the problem.<br> <br>
+If you have never posted questions/bug reports to a mailing
+list before, you '''must read''' [[How-To Ask Smart Questions]] first.
+
+
+
+== The Basics ==
+
+Information you should always include in a bug report are:
+
+* Version of the kernel you are running (output of the <code>'''uname -a'''</code> command)
+* What compiler and linker did you use to build the kernel? (gcc 3.0.4? 3.2? What version of binutils? Are you cross-compiling?)
+* What machine you are booting the kernel on? (712/80? B132L? C3000?)
+* Does it have a remote management card?
+* Are you trying to use serial console or graphics console?
+* What kernel command line is palo using?
+* Are you using a 32-bit or 64-bit kernel
+* Register dumps - Usually, when a parisc-linux kernel crashes (or encounters a problem), a register dump (and/or a stack dump -- especially in 2.6 kernels) will be displayed on the console, or logged to syslog. You should include this information in your bug report.
+* '''The System.map file that corresponds to the kernel you are booting''' - it's preferable if you can put it someplace and supply a URL for it. If not, please bzip the file before sending it to the list
+* Console output immediately preceding the crash or problem you observed
+* If you are not using a default config, the .config you used to build your kernel
+
+ 
+== HPMC ==
+
+A HPMC (High-Priority Machine Check) is triggered when the hardware
+detects an illegal operation. When a HPMC occurs, the kernel may not
+be able to print out a register dump. In this case, the firmware should
+have written a copy of the registers into NVRAM. On the next reboot
+of the machine, you can recover the saved HPMC data from the firmware
+prompt.
+
+The command <code>'''ser pim'''</code> at the firmware prompt will
+usually bring up the info needed. Capture the register dump of the HPMC
+output, together with any information reported about requestor/responder
+addresses, etc in your report. If you are booting a SMP kernel, 
+remember to include the output for all the processors in your report.
+
+
+After you have captured the output, issue a <code>'''ser clearpim'''</code>
+command to clear the saved data. This will ensure that you do not
+accidentally pick up stale data the next time around.
+
+
+== "Hung" kernels ==
+
+If a kernel appears "hung", you may be able to determine
+where it's stuck by using the TOC (Transfer of Control) feature of PA
+firmware. A TOC is usually triggered by a small button on the back of
+the machine. On systems with GSP, you can also do this by issuing the
+'TC' command at the GSP prompt. After a TOC is triggered, the machine
+should automatically reboot.
+
+Similar to HPMC data, the TOC data can be recovered from the firmware
+prompt. Enter 'ser pim' to display the saved data, and copy down
+the TOC section of the output in your report.
+
+
+'''Note:''' Once you've captured the output of HPMC or TOC, it may 
+be useful to issue the command 'ser clearpim' to clear the saved data.
+This way, next time when you look at the output of 'ser pim' you can
+be sure you are not looking at stale data.
+
+
+== More advanced bug reports ==
+
+The following information, if available, will help with the
+debugging process. In addition to the information included
+in the "Basic" section above, you may also try to collect
+the following pieces of information.
+
+Let's look at a typical register dump:
+
+<pre>
+Kernel Fault: '''Code=26''' regs=15fb07c0 (Addr=00000000)
+
+     YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
+PSW: 00000000000001001111111100001111 Not tainted
+r00-03  00000000 00000000 '''101f0814''' 102a7ce4
+r04-07  00000500 102a7ce4 00002000 10061c00
+r08-11  10362010 10029c60 00000400 1029e940
+r12-15  000000a0 00000140 00000040 00000000
+r16-19  00005000 15fb04c8 15f4d000 00000013
+r20-23  00000000 00000000 10029c60 00000001
+r24-27  00000000 00080000 00000000 1027e010
+r28-31  00000000 00000400 15fb07c0 101f4264
+sr0-3   00000000 00000000 00000000 00000000
+sr4-7   00000000 00000000 00000000 00000000
+
+IASQ: 00000000 00000000 IAOQ: '''101f4290''' 101f4294
+ IIR: '''0ea01085'''    ISR: 00000000  IOR: 00000000
+ CPU:        0   CR30: 15fb0000 CR31: 102b7000
+ ORIG_R28: 00000000
+
+</pre>
+
+
+Several of these numbers are especially important:
+
+* The "code" at the beginning of the register dump indicates the type of "trap"
+* The r02 register is the "return pointer" - it indicates the calling function
+* The IAOQ contents specify the address of the instruction where the fault occured.
+* IIR is the faulting instruction
+* IOR, for a memory access, indicates the memory location being accessed
+
+
+For IAOQ and R02 addresses, it is helpful to understand
+the following:
+
+* Kernel text section addresses are of the form 0x'''1'''xxxxxxx
+* User text section addresses are usually low
+* Shared libraries are loaded at 0x'''4'''xxxxxxx
+* Stack addresses are at 0x'''f'''xxxxxxx
+* palo addresses are at 0x0'''6'''xxxxxx
+ 
+If the address you get is in the kernel section, you can find the
+function that address belongs to by looking at a System.map file.
+There are two ways to do this, either manually, or with the 'astk' 
+tool in parisc-linux cvs (build-tools module). Here, I will 
+only describe the manual way.
+
+
+Suppose you get an address 0x1014f818 for IAOQ. Your System.map
+will contain entries like this:
+
+
+<pre>
+...
+1014f510 t specific_send_sig_info
+1014f678 t .L1157
+1014f6b8 t .L1152
+1014f790 T force_sig_info
+1014f848 t specific_force_sig_info
+1014f8f8 T __broadcast_thread_group
+...
+
+</pre>
+
+
+You want to find the largest address that is smaller than the one you
+are looking for, ignoring .Lxxxx entries. In this case, the
+function involved is force_sig_info
+
+You should do this lookup for the IAOQ and GR02 addresses if
+they are in kernel space.
+
+
+If the address is in userspace, and it belongs in the shared libs
+region, the output of 'ldd' on the offending program is also useful.
+
+
+Another item that is sometimes useful is the instruction pointed to
+by IIR. Unfortunately, there is no easy way to decode the number
+to the symbolic instruction (unless you are Lamont :-) One way
+that I learned from Richard Hirst is shown below:
+
+
+<pre>
+legolas[12:00] ~% gdb /bin/ls           # most any binary would do....
+(gdb) break main
+Breakpoint 1 at 0x11c30
+(gdb) run
+Starting program: /bin/ls
+Breakpoint 1, 0x00011c30 in main ()
+(gdb) set *(int *)0x11c30 = 0x0ea01085  # we store the instruction we want to decode, 0ea01085 in this example, at the beginning of main
+(gdb) x/i 0x11c30                       # and then ask gdb to decode it for us....
+0x11c30 &lt;main+136&gt;:     ldw 0(sr0,r21),r5
+(gdb) quit
+
+</pre>
+ 
+So, here, the instruction is a ldw from r21. In this particular
+example, r21 is 0, so we have a null pointer dereference of some kind.
+
+
+If the source/target or a load/store instruction is a non-zero register,
+then you should see if that address is again a kernel address. If so, you
+can look it up in System.map using the procedure above as well. This
+is particularly useful to determine which spinlock is being contended, etc
+
+''(originally written by Randolph Chung)''
