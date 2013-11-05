@@ -115,15 +115,15 @@ Alternatively you might download [[this XF86Config-4 file]] and adjust the resol
 ==How to enable my PS/2 mouse and keyboard with Linux Kernel 2.6 ?==
 
 In the 2.6 kernel series, we switched from a PA-RISC-only PS/2 mouse/keyboard driver to the standard Linux kernel PS/2 mouse and keyboard drivers. Hence, in order to get your PS/2 mouse/keyboard, which is either directly connected to your system or via a HIL&PS2-HUB, to work you'll have to enable
-** CONFIG_KEYBOARD_ATKBD
-** CONFIG_MOUSE_PS2
+* CONFIG_KEYBOARD_ATKBD
+* CONFIG_MOUSE_PS2
 in addition to
-** CONFIG_INPUT_KEYBOARD
-** CONFIG_INPUT_MOUSE
+* CONFIG_INPUT_KEYBOARD
+* CONFIG_INPUT_MOUSE
 You don't need these options for non-HIL PS/2 devices:
-** CONFIG_KEYBOARD_HIL
-** CONFIG_MOUSE_HIL
-** CONFIG_HIL_MLC
+* CONFIG_KEYBOARD_HIL
+* CONFIG_MOUSE_HIL
+* CONFIG_HIL_MLC
 
 ==Can I run a 64-bit kernel on my machine?==
 
