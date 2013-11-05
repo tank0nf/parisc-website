@@ -150,7 +150,9 @@ You will have to start all over again from the escape sequence for each SysRq yo
 
 ==On my system ksoftirqd uses 70-100 percent of the CPU time. What's wrong?==
 
-This is currently a bug/feature related to the HIL drivers. In the HIL drivers we poll the HIL ports with a few timers simultanously and those timers seem to increase the ksoftirqd load a lot. But although the load seems to be very high, the machine will be fully functional at maximum speed and it seems to us as if this is only a cosmetical problem which is maybe caused by some bugs in the load calculation functions in the Linux kernel. '''Update:''' Guy Martin [[posted a patch]] which solves this issue, but this patch is sadly not acceptable for upstream inclusion. 
+This is currently a bug/feature related to the HIL drivers. In the HIL drivers we poll the HIL ports with a few timers simultanously and those timers seem to increase the ksoftirqd load a lot. But although the load seems to be very high, the machine will be fully functional at maximum speed and it seems to us as if this is only a cosmetical problem which is maybe caused by some bugs in the load calculation functions in the Linux kernel.
+
+'''Update:''' Guy Martin [[http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled posted a patch]] which solves this issue, but this patch is sadly not acceptable for upstream inclusion.
 
 ==What are "unaligned access" messages about?==
 
