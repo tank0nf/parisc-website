@@ -140,7 +140,13 @@ For those who do want to test 64-bit kernels on PA 2.0 machines with 32-bit firm
 
 ==How do I send Magic SysRq over lanconsole?==
 
-First you have to start a telnet session on your lanconsole, login to GSP, and type 'CO' at the GSP prompt to get the system console. (You might need to type '^Ecf' to gain write access on it). Then you have to *escape* from the telnet session, by typing '^]' on a QWERTY keyboard ('^-AltGr-]' or '^$' on some AZERTY layouts). You will get a 'telnet>' prompt. Type 'send break', hit enter to validate. The next key you will hit will be sent as the SysRq, e.g. if you type 'h' it will display the available SysRq keys. You will have to start all over again from the escape sequence for each SysRq you will need to send. 
+First you have to start a telnet session on your lanconsole, login to GSP, and type 'CO' at the GSP prompt to get the system console. (You might need to type '^Ecf' to gain write access on it).
+
+Then you have to *escape* from the telnet session, by typing '^]' on a QWERTY keyboard ('^-AltGr-]' or '^$' on some AZERTY layouts). 
+
+You will get a 'telnet>' prompt. Type 'send break', hit enter to validate. The next key you will hit will be sent as the SysRq, e.g. if you type 'h' it will display the available SysRq keys.
+
+You will have to start all over again from the escape sequence for each SysRq you will need to send.
 
 ==On my system ksoftirqd uses 70-100 percent of the CPU time. What's wrong?==
 
