@@ -11,7 +11,7 @@ We currently only support 32-bit ELF executables. Initial bringup work was accom
 
 ==Will parisc-linux work on my system?==
 
-Please see [[this explanation]]. 
+Please see [[Hardware support]].
 
 ==Where can I get an Install CD?==
 
