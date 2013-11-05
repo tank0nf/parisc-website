@@ -156,7 +156,9 @@ This is currently a bug/feature related to the HIL drivers. In the HIL drivers w
 
 ==What are "unaligned access" messages about?==
 
-<code> Jan 8 23:52:33 hp kernel: emacs(17795): unaligned access to 0x001cdaf2 at ip=0x0008930b </code> The message usually means the program in question is buggy and is not meeting address alignment requirements. The unaligned access is trapped and emulated by the kernel, so normally the message itself is simply informational. Like most architectures, PA-RISC loads (and stores) to half-words, words, doublewords have specific address alignment requirements. The address accessed must be divisible by the number of bytes being stored. E.G. word (32-bit) stores should access an address divisible by 4. 
+<code>Jan 8 23:52:33 hp kernel: emacs(17795): unaligned access to 0x001cdaf2 at ip=0x0008930b</code>
+
+The message usually means the program in question is buggy and is not meeting address alignment requirements. The unaligned access is trapped and emulated by the kernel, so normally the message itself is simply informational. Like most architectures, PA-RISC loads (and stores) to half-words, words, doublewords have specific address alignment requirements. The address accessed must be divisible by the number of bytes being stored. E.G. word (32-bit) stores should access an address divisible by 4.
 
 ==What about XFree and FX graphic cards?==
 
