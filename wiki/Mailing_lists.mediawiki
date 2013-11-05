@@ -1,0 +1,37 @@
+---
+title: Mailing lists
+---
+
+= MAILING LISTS =
+ 
+'''linux-parisc''' [[[http://www.spinics.net/lists/linux-parisc/ spinics archive]], [[http://dir.gmane.org/gmane.linux.ports.parisc gmane archive]]]
+
+This mailing list exists to serve PA-RISC developers and developement
+communities closely tied to them. This primarily (but not exclusively)
+means linux kernel, gcc, binutils, and glibc work.
+
+To subscribe, please mail [[mailto:majordomo@vger.kernel.org majordomo@vger.kernel.org]] with the message content '''subscribe linux-parisc'''.
+
+
+'''Rules:'''
+
+* Post user space questions to [[mailto:debian-hppa@lists.debian.org debian-hppa]] mailing list.
+* Use '''reportbug''' to file problem reports for specific applications.
+* Before posting a kernel problem report or question:
+ # Review 	[[this list]] of things to check for the answer.
+ # Read 	[[http://www.catb.org/~esr/faqs/smart-questions.html How-To Ask Smart Questions]]
+ # Read 	[[How to report a parisc-linux kernel problem]]
+ # If you want to guess what the problem is, please include a patch.
+* '''Really.''' Read the above stuff at least once. It tells you what we need to know to help and how to communicate that information.
+*  parisc-linux is an '''open list'''. While the list has a spamfilter, we apologize some spam does get through anyway because this list is open.<br> Here is the most basic etiquette for open lists:
+ * '''NEVER''' CC: or cross post to a closed mailing list.
+ * '''NEVER''' answer in private to a mailing-list message.
+ * '''NEVER''' ask if you can ask a question.     		(Just ask it once you've done your homework.)
+
+'''Search the old "parisc-linux@parisc-linux.org" mailing lists (before the switch to "linux-parisc@vger.kernel.org")''' 
+'''parisc-linux-cvs''' [[[archive]]]
+
+'''Note to Microsoft Exchange users:''' Please setup your email client
+so it '''does not''' send automatic "Out-of-Office" replies to list mail.
+Instructions for how to do this with Microsoft Outlook are
+[[http://parisc-linux.org/mailing-lists/outlookooo.html available here]]
