@@ -33,21 +33,17 @@ The [[How to Burn a Boot CD]] covers many of the issues below. The following ste
 
 For newer workstations (4-digit B/C/J class), PDC will revert to using SERIAL_1 if a USB keyboard is not detected at boot up. For some models of older workstations, you can either remove the framebuffer card, or hold down TOC for ten seconds while booting up. However, this does not work on all models. 
 
-==How do I compile the kernel?==
-
-Please follow [[the Recipe]].
-
 ==Can I use the latest kernel from Linus?==
 
-Yes. We merge between the PA-RISC Linux repository and Linus' tree regularly. Read the [[PA-RISC GIT howto]] to pull a source tree and then run: <pre> git diff refs/tags/v2.6.28..HEAD </pre> (substitute preferred tag for "v2.6.28") to get the current diff. 
+Yes. We merge between the PA-RISC Linux repository and Linus' tree regularly.
 
 ==How do I report a kernel problem to the PA-RISC Linux developers?==
 
-Randolph Chung wrote a small [[HOWTO]] just for YOU! Ok. It's not that small anymore. But not providing at least a few of the details listed in the HOWTO will just lead to folks (a) asking for the missing info and/or (b) folks ignoring you. 
+Randolph Chung wrote a small [[How to report a parisc-linux kernel problem]] just for YOU! Ok. It's not that small anymore. But not providing at least a few of the details listed in the HOWTO will just lead to folks (a) asking for the missing info and/or (b) folks ignoring you. 
 
 ==How do I change the palo/linux kernel boot parameters?==
 
-Occasionally, one needs to change the [[kernel boot parameters]] to boot a system. Check the [[release errata]] and search the [[parisc-linux mail archives]] for parisc specific options. You can also refer to the [[PALO]] section of our HOWTO. Two ways to modify kernel boot parameters via palo:
+Occasionally, one needs to change the [[kernel boot parameters]] to boot a system. You can also refer to the PALO section of our HOWTO. Two ways to modify kernel boot parameters via palo:
 ** '''Interactive''': During bootup press the escape-key to stop auto-boot. On older machines enter "<code>BO scsi.X.0 IPL</code>" and replace X with the SCSI ID of your boot-disc. Appending <code>IPL</code> directs palo to interact with the user and offer a menu to change the boot-parameters '''for this boot only'''. On newer systems, <code>IPL</code> isn't needed since the PDC will ask <code>Interact with IPL (Y/N)?</code> 
 Just enter Y here and palo will let you change the parameters. 
 ** '''Auto-boot''': To change the palo/linux kernel parameters '''permanently''', edit <code>/etc/palo.conf</code> and change the arguments to <code>--commandline</code> parameter. Most importantly '''run palo once''' to store the new kernel parameters on the boot disk. The new parameters will be effective for successive boots.
