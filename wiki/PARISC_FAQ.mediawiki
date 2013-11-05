@@ -67,7 +67,14 @@ The [[PDC Patch Catalog]] lists firmware revs for systems which have upgradeable
 
 ==The system boots up on the STI Console but no "login:" prompt appears, what do I do?==
 
-Check the contents of /etc/inittab and make sure the following lines exist and are uncommented. <code> 1:2345:respawn:/sbin/getty 38400 tty1 2:23:respawn:/sbin/getty 38400 tty2 3:23:respawn:/sbin/getty 38400 tty3 4:23:respawn:/sbin/getty 38400 tty4 5:23:respawn:/sbin/getty 38400 tty5 6:23:respawn:/sbin/getty 38400 tty6 </code> ''Contributed by: Phillip Beal [[<pdbeal@louisville.edu>]] '' 
+Check the contents of /etc/inittab and make sure the following lines exist and are uncommented.<pre>
+1:2345:respawn:/sbin/getty 38400 tty1
+2:23:respawn:/sbin/getty 38400 tty2 
+3:23:respawn:/sbin/getty 38400 tty3 
+4:23:respawn:/sbin/getty 38400 tty4 
+5:23:respawn:/sbin/getty 38400 tty5
+6:23:respawn:/sbin/getty 38400 tty6 </pre>
+''Contributed by: Phillip Beal [[<pdbeal@louisville.edu>]] ''
 
 ==The system boots up but I get Cannot access the Hardware Clock via any known method. What do I do?==
 
