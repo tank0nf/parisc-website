@@ -44,9 +44,8 @@ Randolph Chung wrote a small [[How to report a parisc-linux kernel problem]] jus
 ==How do I change the palo/linux kernel boot parameters?==
 
 Occasionally, one needs to change the [[kernel boot parameters]] to boot a system. You can also refer to the PALO section of our HOWTO. Two ways to modify kernel boot parameters via palo:
-** '''Interactive''': During bootup press the escape-key to stop auto-boot. On older machines enter "<code>BO scsi.X.0 IPL</code>" and replace X with the SCSI ID of your boot-disc. Appending <code>IPL</code> directs palo to interact with the user and offer a menu to change the boot-parameters '''for this boot only'''. On newer systems, <code>IPL</code> isn't needed since the PDC will ask <code>Interact with IPL (Y/N)?</code> 
-Just enter Y here and palo will let you change the parameters. 
-** '''Auto-boot''': To change the palo/linux kernel parameters '''permanently''', edit <code>/etc/palo.conf</code> and change the arguments to <code>--commandline</code> parameter. Most importantly '''run palo once''' to store the new kernel parameters on the boot disk. The new parameters will be effective for successive boots.
+* '''Interactive''': During bootup press the escape-key to stop auto-boot. On older machines enter "<code>BO scsi.X.0 IPL</code>" and replace X with the SCSI ID of your boot-disc. Appending <code>IPL</code> directs palo to interact with the user and offer a menu to change the boot-parameters '''for this boot only'''. On newer systems, <code>IPL</code> isn't needed since the PDC will ask <code>Interact with IPL (Y/N)?</code>  Just enter Y here and palo will let you change the parameters. 
+* '''Auto-boot''': To change the palo/linux kernel parameters '''permanently''', edit <code>/etc/palo.conf</code> and change the arguments to <code>--commandline</code> parameter. Most importantly '''run palo once''' to store the new kernel parameters on the boot disk. The new parameters will be effective for successive boots.
 
 ==How do I get my system to boot from the network?==
 
