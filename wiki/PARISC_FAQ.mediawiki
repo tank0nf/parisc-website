@@ -75,7 +75,7 @@ Check the contents of /etc/inittab and make sure the following lines exist and a
 
 ==Can I use ISA cards in the EISA slots?==
 
-Yes. In general it's possible to use use ISA cards in the EISA slots. We already had some success with ISA NE2000 clones and some other cards, but you need to tell the kernel via the [[eisa_irq_edge]] boot parameter which ISA IRQs should be available for ISA devices. See the next FAQ entry for details. Also note that busmastering ISA or EISA cards are not yet supported. 
+Yes. In general it's possible to use use ISA cards in the EISA slots. We already had some success with ISA NE2000 clones and some other cards, but you need to tell the kernel via the '''eisa_irq_edge''' boot parameter which ISA IRQs should be available for ISA devices. See the next FAQ entry for details. Also note that busmastering ISA or EISA cards are not yet supported.
 
 ==My ISA card is recognized but the IRQ is wrong or not accepted. What can I do?==
 
