@@ -2,8 +2,6 @@
 title: Mailing lists
 ---
 
-= MAILING LISTS =
- 
 '''linux-parisc''' [[[http://www.spinics.net/lists/linux-parisc/ spinics archive]], [[http://dir.gmane.org/gmane.linux.ports.parisc gmane archive]]]
 
 This mailing list exists to serve PA-RISC developers and developement
