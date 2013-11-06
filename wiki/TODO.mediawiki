@@ -1,0 +1,153 @@
+---
+title: TODO
+---
+
+= PA-RISC Linux TODO =
+
+== Status & TODO 2013-10-06 (TODO-List by Helge Deller) ==
+* Kernel 3.12 shows after one day of heavy compiling kswapd0/1 eating 100% CPU (Kernel 3.11 is OK). Probably fixed by this commit: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c56b097af26cb11c1f49a4311ba538c825666fed
+* STIcon broken on 64bit with > 4GB RAM -> fix nearly finished - Helge
+* gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
+* glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
+* enable BMC IPMI & disable HP SDC for 64bit defconfigs
+* debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html
+* More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
+* send patches to remove UP from debian kernels.
+
+* Planned for 3.13:
+** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
+** exception table entries can be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/
+** add more supported options of sysrq in /proc/sysrq-trigger - still needed?
+** implement audit functionality, https://patchwork.kernel.org/patch/3046731/
+** avoid dependencies on bzimage during make install, https://patchwork.kernel.org/patch/3069691/
+** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow plus colors in 24bpp mode are wrong) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
+** pdc_chassis LEDs not updated (Attention blinks always) on rp5470 ? (works on B2000), Virtual Front Panel -> why does "Attention" blinks? Code in pdc_chassis.c, see PDC_CHASSIS in http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf
+** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)?
+** defaultconfigs for 32- and 64-bit - https://patchwork.kernel.org/patch/2825923/
+** clean up kernel defconfigs options (default_defconfig oldconfig savedefconfig; cp defconfig...)
+** fix wrong _init notation in kernel
+** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
+
+* Kernel: still missing Linux kernel development (no patches available yet):
+** Implement CONFIG_DEBUG_STACK_USAGE ?
+** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
+** implement alternative coding for UP/SMP. See arch/x86/include/asm/alternative.h
+** check assembly in drivers/parisc/*
+** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
+** arch/parisc/kernel/sys_parisc.c -> use SYSCALL_ALIAS() -> maybe
+** on C8000, report 1 socket with 2 cores.
+** implement HUGE pages (or even better transparent huge pages)
+** Visualize FX! (will probably never happen!)
+** speed up gettimeofday() and clock_gettime() syscalls via (VDSO) gateway page.
+** VDSO: Implement fast getcpu syscall, as in commit: 18ad51dd342a7eb09dbcd059d0b451b616d4dafc
+** Review the gettimeofday implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? This requires adding some backwards compatibility code in userspace since the LWS might not be available on the booted kernel. Detecting LWS is a problem.
+** task_struct/thread_info split -- task_struct should not be visible in entry.S, we need to move some items into thread_info -- this includes pt_regs and maybe some of the flags (ptrace, etc)
+** Superdome support
+** Allow more than BITS_PER_LONG cpu interrupts to be allocated (willy)
+** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
+
+* Kernel: Low priority patches needs further work 
+** disable FP-register save/restore at kernel entry? - Helge
+** enable 16k/64k kernel page sizes (still cacheflushing-issues with SCSI driver, additional work in glibc needed to deal with >4k page size, e.g. ld-loader alignments of data/code segments)
+
+* Debian packaging work:
+** we need a kernel debian package (3.10 based or higher)
+** debian-ports/parisc repository aka. syning debs to there
+*** DONE: Helge to contact Aurelien (aurel32) on #debian-glibc on OFTC IRC
+*** Instructions from Thorsten Glaser - see: http://lists.debian.org/debian-hppa/2013/04/msg00049.html
+*** DONE: try to debootstrap from parisc-linux.org repository and add missing packages.
+*** Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
+** DONE: split repository on parisc-linux.org into stable (wheezy) and unstable (sid)
+
+* Debian packages / Userspace work
+** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
+** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
+   
+* Debian infrastructure work:
+** Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
+** Set up a buildd server for debian-ports/unstable
+*** https://buildd.debian.org/docs/buildd-setup.txt
+** we still need appropriate machines and possibly try to gain access to the previous setup at HP.
+** contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
+** set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013 
+
+* Homepage migration:
+** Migration of parisc-linux.org website
+*** ONGOING: https://parisc.wiki.kernel.org/index.php/Main_Page
+** Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org
+** Technical contact at HP: brett.johnson@hp.com
+
+* palo (PA-RISC Boot Loader):
+** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
+** add xz-compression support, maybe move decompression to Linux kernel instead of palo?
+** DONE: accept /boot/ in front of files, strip path (e.g. "/boot") when given for kernel/ramdisk 
+** DONE: Migrate to git.kernel.org -> done: http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/ (needs further checking if I imported the latest sources...)
+** DONE: add gzip-support (allow loading gzipped vmlinux files)
+** DONE: in interactive mode, add reboot option command
+
+
+== DONE ==
+* Document news and howto on the parisc-linux website on how to upgrade/install parisc servers
+** See [[Debian_Ports_Installation]] and [[https://parisc.wiki.kernel.org]]
+
+* Use reprepro to produce correct apt-able subdirectories for packages on http://ftp.parisc-linux.org/debian-ports/debian/
+
+* Kernel patches:
+** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
+** add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
+** patch to disable -mlong-calls compiler option when building kernel modules - https://patchwork.kernel.org/patch/2480001/
+** James Bottomley's explanation of kernel gateway page - in 3.10
+** lib/atomic64_test.c:131:2: warning: #warning Please implement atomic64_dec_if_positive for your architecture - in 3.10
+** add interrupt statistics like x86 to /proc/interrupts - in 3.10
+** kernel"-crashes in the area of do_softirq() - irq stacks implemented: https://patchwork.kernel.org/patch/2497501/
+** test/build kernel with allmodconfig/allyesconfig
+*** error in lib/mpi/longlong.h,umul_ppmm() uses floating point -> https://patchwork.kernel.org/patch/2521621/
+** update MAINTAINERS file, git tree -> https://patchwork.kernel.org/patch/2580161/
+** lockdep issues with irqstack patch in UP configurations. Fixed -> https://patchwork.kernel.org/patch/2589321/
+** add /proc/interrupt counters for floating point assist and unaligned handler traps -> https://patchwork.kernel.org/patch/2589161
+** CONFIG_PREEMPT works now -> https://patchwork.kernel.org/patch/2624241/
+** Kernel 3.9:
+*** parisc: make default cross compiler search more robust (v3)
+*** parisc: fix SMP races when updating PTE and TLB entries in entry.S
+*** parisc: use long branch in fork_like macro
+*** parisc: only re-enable interrupts if we need to schedule or deliver signals when returning to userspace
+** Kernel 3.10
+*** stifb broken (PCI broken?) -> https://patchwork.kernel.org/patch/2636821/ -> 3.10-rc4
+*** parport hangs / lp -> https://patchwork.kernel.org/patch/2638331/ -> 3.10-rc4
+*** MAINTAINERS update -> https://patchwork.kernel.org/patch/2636601/ -> 3.10-rc4
+** Kernel 3.11:
+*** parport (lp) fix
+*** defaultconfig for C8000
+*** C8000 workstation support in 3.11 and 3.10.X stable (serial port irq, IOMMU range fixes, FireGL radeon AGP fix, vma memory fix)
+*** remove arch/parisc/kernel/sys32.h
+*** pa_memcpy() was broken on 64bit (due to gcc miscompiling nonstandard C-code)
+
+** Kernel 3.12:
+*** Fix 64bit SMP kernel on HP Visualize J-6750, 32bit SMP does work (Machine owners: Dave Land, Domenico Andreoli) -> fixed in 3.12 and backported >= kernel 2.6.12 (http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=54e181e073fc1415e41917d725ebdbd7de956455)
+*** fix kernel crash when running "echo t > /proc/sysrq-trigger" http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=59b33f148cc08fb33cbe823fca1e34f7f023765e
+*** regenerate defconfigs to include CONFIG_DEVTMPFS=y and CONFIG_DEVTMPFS_MOUNT=y to avoid udev/initrd problems. Done. http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c1b14041aa86800cfd9e21b280b0eaee885fa623
+*** IMPI/BMC patch from Thomas Bogendoerfer - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fdbeb7de700a3c8fc85d7e595a6bf1c92a27c0a1 - test with: "ipmitool sdr"
+
+
+* PALO
+** increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
+
+
+== TODO Drivers ==
+
+* write Lasi floppy driver
+* write Suckyio floppy driver
+* write spifi driver (rbrad)
+* modify ncr53c8xx driver for Outfield (735 & 755)
+* write GSC FDDI driver
+* write Timi ASIC (74x) support
+* EISA DMA support
+* IPMI support on rp-class / Support graceful shutdown from BMC on rp servers (`PC -GRACEFUL`)
+
+== Review all the todo entries below! ==
+
+* ns87415 dma doesn't work reliably on suckyio-systems
+
+* investigate not putting in extable entries for put_kernel_asm; will probably reduce kernel size
+
+* fix HIL problem: ksoftirqd/0 eats 56% cpu (kernel 2.4 & kernel 2.6) - see FAQ: http://www.parisc-linux.org/faq/index.html and http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled
