@@ -1,0 +1,59 @@
+---
+title: PA-RISC Linux Project History
+---
+
+= PROJECT HISTORY =
+
+; December 1, 2000  
+: The PA-RISC web site has moved to www.parisc-linux.org domain. Besides the appearance of the Linuxcare penguin Lux (in gear suitable for working on the PA-RISC engine), the PA-RISC site is fresh with a content update, face lift and co-branding with HP.
+
+; December 15, 1999
+: The Puffin Group and Linuxcare join forces, providing us all with additional resources and backing to dedicate to the porting effort. In fact, we are now working even more closely with Hewlett-Packard. While we were in California getting all the details sorted out, a number of people posted to the mailing list with concerns that the project was dead. This couldn't be further from the truth. Martin Fink from HP posted the following message to help clear up the misunderstanding: http://puffin.external.hp.com/mailing-lists/parisc-linux/1999/12-Dec/0073.html.
+
+; November 19, 1999
+: Hewlett-Packard, in cooperation with The Puffin Group, has released the source code to their SOM linker product.
+
+; August 16, 1999
+: The source code repository is now [http://puffin.external.hp.com/lxr/source cross-referenced] online.
+
+; July 6, 1999
+: Philipp Rumpf gets interruptions working, you can now enter them and the system returns from them.
+
+; June 26-27, 1999
+: Matthew Wilcox and Thomas Bogendoerfer in cooperation with HP demonstrate the booting Linux kernel at LinuxTag '99 in Kaiserslautern, Germany.
+
+; June 25, 1999
+: Linux boots on the PA-RISC machine and promptly dies after displaying kernel version information. Much celebration.
+
+; May 19-24, 1999
+: The Puffin Group hosts Bird of Feather session at Linux Expo, and participates in HP's booth. Tremendous interest and support shown for the project.
+
+; May 15, 1999
+: HP, through the The Puffin Group, distributes A180C machines to developers.
+
+; March 9, 1999
+: HP releases first round of documentation on the basic boot up sequence and PDC interfaces. See the [/documentation/index.html Documentation] section on this page.
+
+; March 1999
+: Hewlett-Packard Formally Sponsors Project - At Linux World Expo on March 1st, HP officially announces its support and endorsement of the PARISC Linux project. They promised to provide marketing and technical resources to the project, and talks began towards releasing documentation and hardware through The Puffin Group.
+
+: HP, in conjunction with The Puffin Group, releases documents - On March 9th, HP releases documentation regarding the basic bootup sequence and PDC interfaces. See the [/documentation/index.html Documentation] section.
+
+; February 1999
+: Establishing the Framework - Christopher Beard sets up the web pages and mailing lists, with Phil Schwan configuring the CVS repository. The web pages are then added to several Linux development sites, and there is a noticable increase in interest in the project.
+
+: The Cross-Compiler - Paul Lahaie joins the project, working with Alex deVries on the cross-compiler, based on egcs 1.1.1 and the mkLinux patches.
+
+: Boot Loader - Jason Eckhardt releases the first test boot image for bootstrapping, Alex packages the rpmboot package, so now you can boot ''something''.
+
+; January 1999
+: Getting Machines into the Hands of Developers - Neil Van Dyke offers up a machine on loan to the project, with Michael Fratoni of Boston assisting with shipping arrangements.
+
+: Martin Petersen joins the development team, with limited access to several systems.
+
+: Work continues on getting machines to people who need them, as well as getting the proper adapters for monitors and serial consoles.
+
+; October 1998
+: The PARISC Linux Project Officially Begins - Conceived by Christopher Beard and Alex deVries over lunch at the [http://linuxshowcase.org/ Atlanta Linux Showcase], with Travis Melhiser offering up a machine to be used for development.
+
+: The Puffin Group Formally Sponsors the Project - The Puffin Group, a Linux development and consulting firm, formally sponsors the project providing server space and programming resources.
