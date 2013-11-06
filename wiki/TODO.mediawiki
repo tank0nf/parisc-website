@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2013-10-06 (TODO-List by Helge Deller) ==
+* implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 * Kernel 3.12 shows after one day of heavy compiling kswapd0/1 eating 100% CPU (Kernel 3.11 is OK). Probably fixed by this commit: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c56b097af26cb11c1f49a4311ba538c825666fed
 * STIcon broken on 64bit with > 4GB RAM -> fix nearly finished - Helge
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
@@ -84,7 +85,6 @@ title: TODO
 ** DONE: Migrate to git.kernel.org -> done: http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/ (needs further checking if I imported the latest sources...)
 ** DONE: add gzip-support (allow loading gzipped vmlinux files)
 ** DONE: in interactive mode, add reboot option command
-
 
 == DONE ==
 * Document news and howto on the parisc-linux website on how to upgrade/install parisc servers
