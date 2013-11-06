@@ -83,28 +83,27 @@ the following pieces of information.
 
 Let's look at a typical register dump:
 
-<pre>
-Kernel Fault: '''Code=26''' regs=15fb07c0 (Addr=00000000)
-
-     YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
-PSW: 00000000000001001111111100001111 Not tainted
-r00-03  00000000 00000000 '''101f0814''' 102a7ce4
-r04-07  00000500 102a7ce4 00002000 10061c00
-r08-11  10362010 10029c60 00000400 1029e940
-r12-15  000000a0 00000140 00000040 00000000
-r16-19  00005000 15fb04c8 15f4d000 00000013
-r20-23  00000000 00000000 10029c60 00000001
-r24-27  00000000 00080000 00000000 1027e010
-r28-31  00000000 00000400 15fb07c0 101f4264
-sr0-3   00000000 00000000 00000000 00000000
-sr4-7   00000000 00000000 00000000 00000000
-
-IASQ: 00000000 00000000 IAOQ: '''101f4290''' 101f4294
+<code>
+ Kernel Fault: '''Code=26''' regs=15fb07c0 (Addr=00000000)
+ 
+      YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
+ PSW: 00000000000001001111111100001111 Not tainted
+ r00-03  00000000 00000000 '''101f0814''' 102a7ce4
+ r04-07  00000500 102a7ce4 00002000 10061c00
+ r08-11  10362010 10029c60 00000400 1029e940
+ r12-15  000000a0 00000140 00000040 00000000
+ r16-19  00005000 15fb04c8 15f4d000 00000013
+ r20-23  00000000 00000000 10029c60 00000001
+ r24-27  00000000 00080000 00000000 1027e010
+ r28-31  00000000 00000400 15fb07c0 101f4264
+ sr0-3   00000000 00000000 00000000 00000000
+ sr4-7   00000000 00000000 00000000 00000000
+ 
+ IASQ: 00000000 00000000 IAOQ: '''101f4290''' 101f4294
  IIR: '''0ea01085'''    ISR: 00000000  IOR: 00000000
  CPU:        0   CR30: 15fb0000 CR31: 102b7000
  ORIG_R28: 00000000
-
-</pre>
+</code>
 
 
 Several of these numbers are especially important:
@@ -131,23 +130,18 @@ There are two ways to do this, either manually, or with the 'astk'
 tool in parisc-linux cvs (build-tools module). Here, I will 
 only describe the manual way.
 
-
 Suppose you get an address 0x1014f818 for IAOQ. Your System.map
 will contain entries like this:
-
-
-<pre>
-...
-1014f510 t specific_send_sig_info
-1014f678 t .L1157
-1014f6b8 t .L1152
-1014f790 T force_sig_info
-1014f848 t specific_force_sig_info
-1014f8f8 T __broadcast_thread_group
-...
-
-</pre>
-
+<code>
+ ...
+ 1014f510 t specific_send_sig_info
+ 1014f678 t .L1157
+ 1014f6b8 t .L1152
+ 1014f790 T force_sig_info
+ 1014f848 t specific_force_sig_info
+ 1014f8f8 T __broadcast_thread_group
+ ...
+</code>
 
 You want to find the largest address that is smaller than the one you
 are looking for, ignoring .Lxxxx entries. In this case, the
@@ -156,16 +150,13 @@ function involved is force_sig_info
 You should do this lookup for the IAOQ and GR02 addresses if
 they are in kernel space.
 
-
 If the address is in userspace, and it belongs in the shared libs
 region, the output of 'ldd' on the offending program is also useful.
-
 
 Another item that is sometimes useful is the instruction pointed to
 by IIR. Unfortunately, there is no easy way to decode the number
 to the symbolic instruction (unless you are Lamont :-) One way
 that I learned from Richard Hirst is shown below:
-
 
 <pre>
 legolas[12:00] ~% gdb /bin/ls           # most any binary would do....
@@ -178,12 +169,10 @@ Breakpoint 1, 0x00011c30 in main ()
 (gdb) x/i 0x11c30                       # and then ask gdb to decode it for us....
 0x11c30 &lt;main+136&gt;:     ldw 0(sr0,r21),r5
 (gdb) quit
-
 </pre>
  
 So, here, the instruction is a ldw from r21. In this particular
 example, r21 is 0, so we have a null pointer dereference of some kind.
-
 
 If the source/target or a load/store instruction is a non-zero register,
 then you should see if that address is again a kernel address. If so, you
