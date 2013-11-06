@@ -30,13 +30,6 @@ The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architect
 See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
 That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
 
-== How to install debian-unstable on PARISC ==
-
-  * [http://wiki.parisc-linux.org/Debian_Ports_Installation Debian Ports Installation HOWTO]
-  * [[Building_the_Kernel]] - Build Kernel
-  * [http://wiki.parisc-linux.org/Debian_Ports Current status of migration to debian-ports]
-  * [http://wiki.parisc-linux.org/TODO current TODO list]
-
 == PA-RISC NEWS == 
 
 * '''Aug 2013''' - Linux kernel 3.11 supports C8000 workstation (SMP, serial port, FireGL card, BMC, ...)
@@ -56,25 +49,30 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 * '''Mar 2005''' - The parisc-linux patch set is less than 200K for the first time ever! Thanks to willy for doing such a great job pushing patches upstream!
 * '''Jun 2004''' - [[Support for PA8800/zx1]] committed!
  
+== How to install debian-unstable on PARISC ==
 == PA-RISC FAQ == 
-* [[Is my hardware supported?]]<br>
-* [[How do I install PA-RISC?]]<br>
-* [[How to report a parisc-linux kernel problem]] - My kernel {crashed|hung}, how do I submit a useful bug report?
+
+* [http://wiki.parisc-linux.org/Debian_Ports_Installation Debian Ports Installation HOWTO]
+* [[Building_the_Kernel]] - Build Kernel
+* [http://wiki.parisc-linux.org/Debian_Ports Current status of migration to debian-ports]
+* [http://wiki.parisc-linux.org/TODO current TODO list]
+* [[Is my hardware supported?]]
+* [[How do I install PA-RISC?]]
+* [[How to report a parisc-linux kernel problem|My kernel {crashed|hung}, how do I submit a useful bug report?]]
 * [[PARISC FAQ]]
 
-
 == Technical Documentation ==
-  * [[Technical Documentation]]
-  * [[Hardware support]]
-  * [[Graphics howto]]
-  * [[Mailing lists]]
-  * [[TODO]]
+* [[Technical Documentation]]
+* [[Hardware support]]
+* [[Graphics howto]]
+* [[Mailing lists]]
+* [[TODO]]
 
 == External Resources ==
 
-  * http://www.parisc-linux.org/ - The official PA-RISC/Linux website
-  * http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
-  * http://www.pateam.org/ - The PA/Linux ESIEE Team
-  * http://hwdb.parisc-linux.org/ - The Hardware Database of PA-RISC systems
-  * http://www.debian.org/ports/hppa/ - Debian HPPA port page
-  * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
+* http://www.parisc-linux.org/ - The official PA-RISC/Linux website
+* http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
+* http://www.pateam.org/ - The PA/Linux ESIEE Team
+* http://hwdb.parisc-linux.org/ - The Hardware Database of PA-RISC systems
+* http://www.debian.org/ports/hppa/ - Debian HPPA port page
+* http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
