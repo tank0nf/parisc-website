@@ -125,13 +125,13 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h
 | width="50%" | PA-RISC 1.1 I/O Firmware Architecture Reference Specification:<br />Version and Identification Number Allocation. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc11-v0.96-Ch1-procs.pdf  pdc11-v0.96-Ch1-procs.pdf]
+[[File:Pdc11-v0.96-Ch1-procs.pdf]]
 | width="5%" | 280k
 | width="20%" | March 1999
 | width="50%" | PA-RISC 1.1 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc11-v0.96-Ch3-IODC.pdf  pdc11-v0.96-Ch3-IODC.pdf]
+[[File:Pdc11-v0.96-Ch3-IODC.pdf]]
 | width="5%" | 298k
 | width="20%" | March 1999
 | width="50%" | PA-RISC 1.1 I/O Firmware Architecture Reference Specification: IODC (chapter 3) <br />
