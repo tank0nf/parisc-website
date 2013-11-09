@@ -72,6 +72,8 @@ title: TODO
 
 * Homepage migration:
 ** ONGOING: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
+** Domain ownwer: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014 23:07:58 UTC
+** New domain owner: Thibaut VARENE <T-Bone@parisc-linux.org> <T-Bone@slashdirt.org>
 ** Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org
 ** Technical contact at HP: brett.johnson@hp.com
 
