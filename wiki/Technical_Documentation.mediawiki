@@ -143,7 +143,7 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h
 | width="50%" | PA-RISC 32-bit Runtime Environment (SOM Binaries). Covers PA 1.0, 1.1 and 2.0. <br />
 |- valign="top"
 | width="25%" |
-[[File:sti.pdf sti.pdf]]
+[[File:Sti.pdf]]
 | width="5%" | 409k
 | width="20%" | April 15, 2000
 | width="50%" | Standard Text Interface (STI) <br />
