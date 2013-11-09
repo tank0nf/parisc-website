@@ -65,6 +65,9 @@ title: TODO
 ** Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
 ** ONGOING: Set up a buildd server for debian-ports/unstable
 *** https://buildd.debian.org/docs/buildd-setup.txt
+*** https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer
+*** http://debian.2.n7.nabble.com/buildd-Configuring-buildds-for-dports-td2064003.html 
+*** dpkg-buildpackage -B -m<email>
 ** we still need appropriate machines and possibly try to gain access to the previous setup at HP.
 ** contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
 ** set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013 
