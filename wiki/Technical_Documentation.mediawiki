@@ -2,29 +2,11 @@
 title: Technical Documentation
 ---
 
-{| width="100%"
-| colspan="2" |
 = TECHNICAL DOCUMENTATION =
 
 Nearly all of the documents listed here are copyrighted by HP and made available in the hope they would be useful to all PA-RISC developers and users. Please respect this copyright by not redistributing these documents or use the materials verbatim without written HP (or the respective copyright holder) consent.
 
-{| cellpadding="10"
-|
-[#chipset HP 9000 Chipset Documentation]
-
-[#pa11 PA-RISC 1.1 Architecture Specifications]
-
-[#pa20 PA-RISC 2.0 Architecture Specifications]
-
-[#guides HP 9000 User/Owner Guides]
-
-[#whitepapers PA-RISC Papers and Presentations]
-
-[#useful Other Useful Links]
-
-<br />Â <br />
-
-'''HP 9000 Chipset Documentation'''
+==HP 9000 Chipset Documentation==
 
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
@@ -125,7 +107,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 | WAX ERS - GSC to EISA adapter <br />
 |}<br /><br />
 
-'''PA-RISC 1.1 Architecture Specifications'''
+==PA-RISC 1.1 Architecture Specifications==
 
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
@@ -167,7 +149,7 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h
 | width="50%" | Standard Text Interface (STI) <br />
 |}<br /><br />
 
-'''PA-RISC 2.0 Architecture Specifications'''
+==PA-RISC 2.0 Architecture Specifications==
 
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
@@ -235,7 +217,7 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Operating System Interface (Chapter 6) <br />
 |}<br /><br />
 
-'''HP 9000 User/Owner Guides'''
+==HP 9000 User/Owner Guides==
 
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
@@ -353,7 +335,7 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | J280 Owner's Guide <br />
 |}<br /><br />
 
-'''PA-RISC Papers and Presentations'''
+==PA-RISC Papers and Presentations==
 
 {| width="100%"
 |- valign="top"
@@ -436,7 +418,7 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | Compiler Optimizations for the PA-8000. Anne M. Holler. 11 pages. <br />
 |}
 
-'''OTHER USEFUL LINKS'''
+==OTHER USEFUL LINKS==
 
 * [http://devresource.hp.com/drc/index.jsp  HP's Tech Library ]
 * [http://www.docs.hp.com/hpux/hw/  Details on HP-UX Hardware from the A-class to the V-class. ]
@@ -446,5 +428,3 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 * [http://www.mindshare.com/pdf/eisabook.pdf  "EISA System Architecture" published by Mindshare (pdf) ]
 * [http://www.intel.com/design/archives/periphrl/index.htm  Intel EISA Controllers ] (some used in older HP workstations with EISA)
 * [http://tldp.org/HOWTO/PA-RISC-Linux-Boot-HOWTO/index.html  The PA-RISC/Linux boot HOWTO ]
-|}
-|}
