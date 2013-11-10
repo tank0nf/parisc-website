@@ -6,6 +6,15 @@ title: Main Page
 
 This Wiki is meant to be an entry point for the [http://en.wikipedia.org/wiki/PARISC PA-RISC] Linux port. Its contents are mostly directed to developers, but people wanting to learn more about the PA-RISC Linux kernel and the PA-RISC architecture secrets might find useful data here.
 
+== Introduction to Linux on PA-RISC ==
+
+The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. The port was merged into linux-2.6 and linux-3.x mainstream Linux kernel tree.
+[[PA-RISC Linux Project History]] tells how the project got started and the first steps.
+Contact the [[Mailing lists]] if you want to volunteer your time.
+
+See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
+That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
+
 == Linux distributions with support for PA-RISC Linux == 
 
 PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributions various Linux distributions], whith [http://www.gentoo.org Gentoo Linux] and [http://www.debian.org Debian] being the ones which currently provide the best support for the PA-RISC architecture.
@@ -21,15 +30,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
  
 '''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
-
-== Introduction to Linux on PA-RISC ==
-
-The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. The port was merged into linux-2.6 and linux-3.x mainstream Linux kernel tree.
-[[PA-RISC Linux Project History]] tells how the project got started and the first steps.
-Contact the [[Mailing lists]] if you want to volunteer your time.
-
-See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
-That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
 
 == PA-RISC NEWS == 
 
@@ -50,24 +50,23 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 * '''Mar 2005''' - The parisc-linux patch set is less than 200K for the first time ever! Thanks to willy for doing such a great job pushing patches upstream!
 * '''Jun 2004''' - Support for PA8800/zx1 committed!
 
-== How to install debian-unstable on PARISC ==
 == PA-RISC FAQ == 
-
-* [http://wiki.parisc-linux.org/Debian_Ports_Installation Debian Ports Installation HOWTO]
-* [[Building_the_Kernel]] - Build Kernel
-* [http://wiki.parisc-linux.org/Debian_Ports Current status of migration to debian-ports]
-* [http://wiki.parisc-linux.org/TODO current TODO list]
 * [[Is my hardware supported?]]
-* [[How do I install PA-RISC?]]
-* [[How to report a parisc-linux kernel problem|My kernel {crashed|hung}, how do I submit a useful bug report?]]
 * [[PARISC FAQ]]
+* [[How to report a parisc-linux kernel problem|My kernel {crashed|hung}, how do I submit a useful bug report?]]
+* [[Mailing lists]]
+* [[Hardware support]]
+* [[Graphics howto]]
+* [[Building_the_Kernel]] - Build Kernel
+* [[TODO]]
+
+== How to install PARISC Linux == 
+* [http://wiki.parisc-linux.org/Debian_Ports_Installation Debian Ports Installation HOWTO]
+* [http://wiki.parisc-linux.org/Debian_Ports Current status of migration to debian-ports]
+* [[How do I install PA-RISC?]]
 
 == Technical Documentation ==
 * [[Technical Documentation]]
-* [[Hardware support]]
-* [[Graphics howto]]
-* [[Mailing lists]]
-* [[TODO]]
 
 == External Resources ==
 
