@@ -48,8 +48,8 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 * '''Dec 2005''' - PCMCIA support added (e.g. used in Tadpole PA-RISC laptops)
 * '''Jun 2005''' - Debian 3.1!
 * '''Mar 2005''' - The parisc-linux patch set is less than 200K for the first time ever! Thanks to willy for doing such a great job pushing patches upstream!
-* '''Jun 2004''' - [[Support for PA8800/zx1]] committed!
- 
+* '''Jun 2004''' - Support for PA8800/zx1 committed!
+
 == How to install debian-unstable on PARISC ==
 == PA-RISC FAQ == 
 
