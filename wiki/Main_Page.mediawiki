@@ -71,9 +71,8 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 
 == External Resources ==
 
-* http://www.parisc-linux.org/ - The official PA-RISC/Linux website
+* http://www.parisc-linux.org/ - The (former) official PA-RISC/Linux website
 * http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
 * http://www.pateam.org/ - The PA/Linux ESIEE Team
-* http://hwdb.parisc-linux.org/ - The Hardware Database of PA-RISC systems
 * http://www.debian.org/ports/hppa/ - Debian HPPA port page
 * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
