@@ -17,12 +17,9 @@ To subscribe, please mail [mailto:majordomo@vger.kernel.org majordomo@vger.kerne
 # Post user space questions to [mailto:debian-hppa@lists.debian.org debian-hppa mailing list].
 # Use '''reportbug''' to file problem reports for specific applications.
 # Before posting a kernel problem report or question:
-## Review 	[[this list]] of things to check for the answer.
+## Read 	the [[PARISC FAQ]] to check for the answer.
 ## Read 	[http://www.catb.org/~esr/faqs/smart-questions.html How-To Ask Smart Questions]
 ## Read 	[[How to report a parisc-linux kernel problem]]
 ## If you want to guess what the problem is, please include a patch.
 
 '''Really.''' Read the above stuff at least once. It tells you what we need to know to help and how to communicate that information.
-
-'''Search the old "parisc-linux@parisc-linux.org" mailing lists (before the switch to "linux-parisc@vger.kernel.org")''' 
-'''parisc-linux-cvs''' [[[archive]]]
