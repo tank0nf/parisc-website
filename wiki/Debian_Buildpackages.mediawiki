@@ -1,0 +1,12 @@
+---
+title: Debian Buildpackages
+---
+
+==How to build debian packages==
+
+Main description:
+* http://www.debian-ports.org/archive 
+
+How to build a package:
+* dpkg-buildpackage --force-sign -B -sa -m<email>
+where source package has been changed with dch --bin-nmu Rebuild b1
