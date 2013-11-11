@@ -1,0 +1,108 @@
+---
+title: Glossary
+---
+
+= GLOSSARY =
+
+There are a ''lot'' of different codewords and jargon involved with HP hardware. This page attempts to help.
+
+; '''Artist'''
+: GSC Graphics Accelerator
+; '''ASP'''
+: Host bus adapter used in older workstations. The predecessor to [#lasi Lasi].
+; '''Astro'''
+: Integrated Runway to Ropes bridge, Memory controller, and IOA.
+; '''Bravehawk'''
+: The PA-8200 based K class servers.
+; '''CIO'''
+: Channel I/O. The predecessor to [#hppb HP-PB].
+; '''Crayon'''
+: Also a graphics thingy (thanks to Martin Petersen for this answer)
+; '''Cujo'''
+: [#dino Dino] with a 64-bit data path. Doesn't support dual address cycle.
+; '''Dino'''
+: GSC to PCI Bridge. Integrated PS/2, Serial port, and fire extinguisher.
+; '''ELF'''
+: Executable &amp; Linking Format. Linux/PA-RISC executables &amp; libraries all use this format. HP-UX uses it for 64-bit executables.
+; '''Elroy'''
+: Ropes to PCI Bridge. Used in current B/C/J/L/N-class machines. Supports 4X PCI and dual address cycle.
+; '''EPIC'''
+: Excalibur PCI-bus Interface Chip. Integrated IOA. Used in V-class.
+; '''Gecko'''
+: The codename for the 712 series of workstations.
+; '''GSC'''
+: HP proprietary bus. Initially used for I/O, but PA-7100LC &amp; PA-7300LC processors connect directly to the GSC bus. GSC comes in several variants:
+:; '''GSC-1X'''
+:: The original GSC bus implemented on PCX-L and used in the Gecko, Mirage and Electra computers. Peak Bandwidth 142MB/s w/DMA, 106 MB/s with PIO writes.
+:; '''GSC '''
+:: Enhancements added for KittyHawk/SkyHawk (U2 chip) that allow for pending transactions. GSC enhancements are orthogonal to the GSC-1.5X and GSC-2X enhancements. Aka "Extended GSC" or "EGSC".
+:; '''GSC-1.5X'''
+:: GSC-1X with an additional variable length write transaction.
+:; '''GSC-2X'''
+:: GSC-1.5X with a protocol enhancement to allow data to be sent at double the GCLK rate (Peak bandwidth = 256 MB/s)
+; '''Harmony'''
+: Lasi sound device
+; '''HIL'''
+: Human Interface Loop. A HP proprietary interface for connecting I/O devices like keyboards, mice or tablets.
+; '''HPMC'''
+: High Priority Machine Check. Fatal system error. PDC saves machine state in the [#pim PIM].
+; '''HP-PB'''
+: Hewlett Packard-Precision Bus. HP proprietary I/O bus. Aka NIO.
+; '''IOA'''
+: IO Adapter. Aka "I/O MMU". Generally handles I/O coherency.
+; '''Kittyhawk'''
+: The PA-7200 based K class servers.
+; '''Lasi'''
+: An integrated IO controller (serial, parallel, SCSI, PS/2 keyboard and mouse) found in many workstations.
+; '''LPMC'''
+: Low Priority Machine Check. Generally a recoverable system error.
+; '''Mirage'''
+: The codename for the later series of 715 workstations.
+; '''Mohawk'''
+: The PA-8000 based K class servers.
+; '''Mongoose'''
+: The EISA bus adapter found in 715/720/725/730/735/750/755 machines.
+; '''Nova'''
+: The codename for the F, G, H and I class servers.
+; '''NIO'''
+: See [#hppb HP-PB]
+; '''PDC'''
+: Processor dependent code. Machine specific assembler code from flash memory or ROM.
+; '''PIM'''
+: Processor Internal Memory. Machine state is saved here for [#hpmc HPMC], [#lpmc LPMC], and [#toc TOC]'s. See PDC_PIM in "PDC Procedures" chapter of PA I/O ACD.
+; '''Runway'''
+: PA-7200, -8000, -8200, -8500 processors connect directly to the Runway bus.
+; '''SAGA'''
+: [#epic EPIC] with a 64-bit data path. Doesn't support dual address cycle.
+; '''Scorpio'''
+: The codename for the earlier series of 715 workstations.
+; '''SGC'''
+: Systems Graphics Connect.
+; '''Snakes'''
+: The original HP workstations; the 705, 710, 720, 730 and 750.
+; '''SOM'''
+: Spectrum Object Format. This is the executable &amp; library format used by HP-UX for 32-bit executables. Spectrum was the codename for PA-RISC.
+; '''STI'''
+: Standard Text Interface.
+; '''SuckyIO'''
+: National Semiconductor PC87560UBD, aka "SuperIO". Provides IDE, USB 1.1, Floppy Disk Controller, parallel port, 2 serial ports, UIR (infrared), etc. But since National denies the existence of this chip and HP was the only client for this buggy PoS, the name "SuckyIO" has stuck.
+; '''Summit'''
+: A proprietary bus used in the T-class.
+; '''SuperIO'''
+: See [#suckyio SuckyIO].
+; '''TOC'''
+: Transfer of Control. On workstations which have it, basically a "RESET" button. Servers may have more advanced features.
+; '''U2'''
+: Runway to GSC Bus bridge &amp; IOA. Found in some C/D/J/K/R-class systems.
+; '''UltraLight'''
+: The codename for the D class servers.
+; '''Uturn'''
+: [#u2 U2] follow on. Differences not visible to OS software.
+; '''Venom'''
+: Graphics Accelerator found in older workstations
+; '''Viper'''
+: Memory controller
+; '''Wax'''
+: GSC to EISA Bridge found in older systems (including B/C/D/R-class). Has often one integrated [#hil HIL port] and one serial port.
+; '''Wright Brothers'''
+: The codename for the E class servers.
