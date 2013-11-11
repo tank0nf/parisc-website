@@ -65,7 +65,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 | width="50%" | Elroy PCI Controller ERS (Edited)<br /> (eg in A500/C3000) <br />
 |- valign="top"
 | width="25%" |
-[[File:dino_ers.ps dino_ers.ps]], [[File:Dino_3_1_Errata.html  Dino_3_1_Errata.html]]
+[[File:dino_ers.pdf dino_ers.pdf]], [[File:Dino_3_1_Errata.html  Dino_3_1_Errata.html]]
 | width="5%" | 5794k, 7k
 | width="20%" | June 3, 1999
 | width="50%" | DINO PCI bus controller<br /> (eg in A180/B180/C360) <br />
