@@ -11,97 +11,97 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/zx1-mio.pdf zx1-mio.pdf]
+[[File:zx1-mio.pdf zx1-mio.pdf]]
 | width="5%" | 2500k
 | width="20%" | April 17, 2003
 | width="50%" | zx1 Memory and I/O controllers ERS (Edited) aka "Pluto" <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/zx1-ioa-mercury_ers.pdf zx1-ioa-mercury_ers.pdf]
+[[File:zx1-ioa-mercury_ers.pdf zx1-ioa-mercury_ers.pdf]]
 | width="5%" | 633k
 | width="20%" | April 18, 2003
 | width="50%" | zx1 Mercury ERS (Edited) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_intro.ps astro_intro.ps]
+[[File:astro_intro.ps astro_intro.ps]]
 | width="5%" | 39k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Overview (IOMMU/Mem Controller) <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_errors.ps astro_errors.ps]
+[[File:astro_errors.ps astro_errors.ps]]
 | width="5%" | 1522k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Error Handling <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_ioc.ps astro_ioc.ps]
+[[File:astro_ioc.ps astro_ioc.ps]]
 | width="5%" | 2393k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro R2I Operation/Registers <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_regmap.ps astro_regmap.ps]
+[[File:astro_regmap.ps astro_regmap.ps]]
 | width="5%" | 338k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Register Map <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_runway.ps astro_runway.ps]
+[[File:astro_runway.ps astro_runway.ps]]
 | width="5%" | 2038k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Runway Interface <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/astro_sysmap.ps astro_sysmap.ps]
+[[File:astro_sysmap.ps astro_sysmap.ps]]
 | width="5%" | 128k
 | width="20%" | Feb 17, 2000
 | width="50%" | Memory Map of an Astro based system <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/elroy_ers.ps elroy_ers.ps]
+[[File:elroy_ers.ps elroy_ers.ps]]
 | width="5%" | 4707k
 | width="20%" | Feb 17, 2000
 | width="50%" | Elroy PCI Controller ERS (Edited)<br /> (eg in A500/C3000) <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/dino_ers.ps dino_ers.ps], [http://ftp.parisc-linux.org/docs/chips/Dino_3_1_Errata.html  Dino_3_1_Errata.html]
+[[File:dino_ers.ps dino_ers.ps]], [[File:Dino_3_1_Errata.html  Dino_3_1_Errata.html]]
 | width="5%" | 5794k, 7k
 | width="20%" | June 3, 1999
 | width="50%" | DINO PCI bus controller<br /> (eg in A180/B180/C360) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/PCXL_ers.pdf PCXL_ers.pdf], [http://ftp.parisc-linux.org/docs/chips/PCXL_ers.ps PCXL_ers.ps]
+[[File:PCXL_ers.pdf PCXL_ers.pdf]], [[File:PCXL_ers.ps PCXL_ers.ps]]
 | width="5%" | 401k, 462k
 | width="20%" | July 20, 1999
 | width="50%" | PA-RISC 1.1 7100 PCXL CPU ERS <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/pcxl2_ers.pdf pcxl2_ers.pdf], [http://ftp.parisc-linux.org/docs/chips/pcxl2_ers.ps pcxl2_ers.ps]
+[[File:pcxl2_ers.pdf pcxl2_ers.pdf]], [[File:pcxl2_ers.ps pcxl2_ers.ps]]
 | width="5%" | 716k, 4127k
 | width="20%" | July 20, 1999
 | width="50%" | PA RISC 1.1 7300 PCXL2 CPU ERS <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/lasi_ers.ps lasi_ers.ps]
+[[File:lasi_ers.ps lasi_ers.ps]]
 | width="5%" | 4344k
 | width="20%" | June 3, 1999
 | width="50%" | LASI Core IO Device ERS<br /> (eg in 712/715/725/A180/B180/C360) <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/hardball_ers.pdf  hardball_ers.pdf]
+[[File:hardball_ers.pdf  hardball_ers.pdf]]
 | 4235k
 | November 2001
 | Hardball ERS - 735/755 (Outfield, Cutoff, etc.) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/PC87415.pdf  PC87415.pdf]
+[[File:PC87415.pdf  PC87415.pdf]]
 | 381k
 | Aug 1996
 | National Semiconductor PC87415 Dual Channel IDE controller Data Sheet. (integrated in PC87560UBD SuckyIO "Legacy IO Controller") <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/chips/WAX_ERS_V1.0_Redacted.pdf  WAX_ERS pdf (Redacted)]
+[[File:WAX_ERS_V1.0_Redacted.pdf  WAX_ERS pdf (Redacted)]
 | 12MB
 | October 2007
 | WAX ERS - GSC to EISA adapter <br />
@@ -116,7 +116,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 | width="5%" | 1.4M
 | width="20%" | Feb 1994
 | width="50%" |
-PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h21007.www2.hp.com/dspp/tech/tech_TechDocumentDetailPage_IDX/1,1701,958,00.html HTML] [http://h21007.www2.hp.com/dspp/files/unprotected/devresource/Docs/Refs/PA1_1/acd.pdf PDF] [http://h21007.www2.hp.com/dspp/tech/tech_TechDocumentDetailPage_IDX/1,1701,958,00.html HP DSPP] ) <br />
+PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 |- valign="top"
 | width="25%" |
 [[File:Ver_nums.pdf]]
@@ -154,64 +154,64 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/parisc2.0.pdf parisc2.0.pdf]
+[[File:parisc2.0.pdf parisc2.0.pdf]]
 | width="5%" | 2.3M
 | width="20%" | 1995
 | width="50%" |
-PA-RISC 2.0 Instruction Set Architecture<br /> (Updated from HP : [http://h21007.www2.hp.com/dspp/tech/tech_TechDocumentDetailPage_IDX/1,1701,959,00.html HTML] [http://h21007.www2.hp.com/dspp/tech/tech_TechDocumentDetailPage_IDX/1,1701,2533,00.html PDF]) [http://h21007.www2.hp.com/dspp/tech/tech_TechDocumentDetailPage_IDX/1,1701,592,00.html Errata]<br />
+PA-RISC 2.0 Instruction Set Architecture
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pa64rt.pdf pa64rt.pdf]
+[[File:pa64rt.pdf pa64rt.pdf]]
 | width="5%" | 127k
 | width="20%" | 1997
 | width="50%" | 64-Bit Runtime Architecture for PA-RISC 2.0<br /><br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/unwind.pdf unwind.pdf]
+[[File:unwind.pdf unwind.pdf]]
 | width="5%" | 138k
 | width="20%" | Sep 16,1997
 | width="50%" | UNWIND PA64 Functional Specification. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/rad_11_0_32.pdf  rad_11_0_32.pdf]
+[[File:rad_11_0_32.pdf  rad_11_0_32.pdf]]
 | width="5%" | 575k
 | width="20%" | 1997
 | width="50%" | HPUX 11.0 32-bit Runtime Environment. Only covers PA2.0. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc20-v0.36-ChC-datafmt.pdf  pdc20-v0.36-ChC-datafmt.pdf]
+[[File:pdc20-v0.36-ChC-datafmt.pdf  pdc20-v0.36-ChC-datafmt.pdf]]
 | width="5%" | 32k
 | width="20%" | March 1999
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference:<br />Memory Data Formats. <br />
 |- valign="top"
 | width="25%" |
-[http://docs.hp.com/hpux/pdf/92432-90012.pdf  92432-90012.pdf]
+[http://docs.hp.com/hpux/pdf/92432-90012.pdf  92432-90012.pdf]]
 | width="5%" | 312k
 | width="20%" | June 1998
 | width="50%" | HP Assembler Reference Manual <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch3-pdce.pdf pdc20-v1.1-Ch3-pdce.pdf]
+[[File:pdc20-v1.1-Ch3-pdce.pdf pdc20-v1.1-Ch3-pdce.pdf]]
 | width="5%" | 196k
 | width="20%" | July 2004
 | width="50%" |
-PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [http://ftp.parisc-linux.org/docs/arch/pdc20-v1.0-Ch3-entry.pdf v1.0]) (older [http://ftp.parisc-linux.org/docs/arch/pdc20-v0.36-Ch1-entry.pdf v0.36]) <br />
+PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [[File:pdc20-v1.0-Ch3-entry.pdf v1.0]) (older [[File:pdc20-v0.36-Ch1-entry.pdf v0.36]) <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf pdc20-v1.1-Ch4-pdc.pdf]
+[[File:pdc20-v1.1-Ch4-pdc.pdf pdc20-v1.1-Ch4-pdc.pdf]]
 | width="5%" | 356k
 | width="20%" | July 2004
 | width="50%" |
-PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures (Chapter 4) (older [http://ftp.parisc-linux.org/docs/arch/pdc20-v1.0-Ch4-procs.pdf v1.0]) (older [http://ftp.parisc-linux.org/docs/arch/pdc20-v0.36-Ch2-procs.pdf v0.36]) <br />
+PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures (Chapter 4) (older [[File:pdc20-v1.0-Ch4-procs.pdf v1.0]) (older [[File:pdc20-v0.36-Ch2-procs.pdf v0.36]) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch5-iodc.pdf pdc20-v1.1-Ch5-iodc.pdf]
+[[File:pdc20-v1.1-Ch5-iodc.pdf pdc20-v1.1-Ch5-iodc.pdf]]
 | width="5%" | 304k
 | width="20%" | July 2004
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference Specification: IODC (Chapter 5) <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch6-os_interface.pdf  pdc20-v1.1-Ch6-os_interface.pdf]
+[[File:pdc20-v1.1-Ch6-os_interface.pdf  pdc20-v1.1-Ch6-os_interface.pdf]]
 | width="5%" | 48k
 | width="20%" | July 2004
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Operating System Interface (Chapter 6) <br />
@@ -222,31 +222,31 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/980723.pdf 980723.pdf]
+[[File:980723.pdf 980723.pdf]]
 | width="5%" | 9259k
 | width="20%" | May 9, 1999
 | width="50%" | HP-UX Workstation HCL (Hardware Compatibility List):<br /> This explains the features of released hardware. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/980723ng.pdf  980723ng.pdf]
+[[File:980723ng.pdf  980723ng.pdf]]
 | width="5%" | 1115k
 | width="20%" | May 9, 1999
 | width="50%" | HP-UX Workstation HCL (Hardware Compatibility List):<br /> This explains the features of previously released hardware. This provides supplemental materials to 980723.pdf (above). <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/712_service-handbook.pdf  712_service-handbook.pdf]
+[[File:712_service-handbook.pdf  712_service-handbook.pdf]]
 | width="5%" | 4637k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/712 Service Handbook <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/712_technical_manual.pdf  712_technical_manual.pdf]
+[[File:712_technical_manual.pdf  712_technical_manual.pdf]]
 | width="5%" | 3825k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/712 Technical Manual <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/715_service-handbook.pdf  715_service-handbook.pdf]
+[[File:715_service-handbook.pdf  715_service-handbook.pdf]]
 | width="5%" | 5225K
 | width="20%" | August, 1995
 | width="50%" | HP 9000/715 Service Handbook 4th Ed. <br />
@@ -257,79 +257,79 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/720-730_owners-guide.pdf  720-730_owners-guide.pdf]
+[[File:720-730_owners-guide.pdf  720-730_owners-guide.pdf]]
 | width="5%" | 1830k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/720 and 730 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/735_service.pdf  735_service.pdf]
+[[File:735_service.pdf  735_service.pdf]]
 | width="5%" | 7408k
 | width="20%" | July 11, 2003
 | width="50%" | Overview of A180 features: <br /> HP 9000/735 Service Handbook
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/750_owners-guide.pdf  750_owners-guide.pdf]
+[[File:750_owners-guide.pdf  750_owners-guide.pdf]]
 | width="5%" | 2150k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/750 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/a180.pdf  a180.pdf]
+[[File:a180.pdf  a180.pdf]]
 | width="5%" | 64k
 | width="20%" | May 9, 1999
 | width="50%" | Overview of A180[C] features: <br /> This provides the first docs on the A180 internals. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/a180-user.pdf  a180-user.pdf]
+[[File:a180-user.pdf  a180-user.pdf]]
 | width="5%" | 935k
 | width="20%" | July 11, 2003
 | width="50%" | A180[C] User Manual <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/b1xx-owners.pdf  b1xx-owners.pdf]
+[[File:b1xx-owners.pdf  b1xx-owners.pdf]]
 | width="5%" | 1549k
 | width="20%" | July 11, 2003
 | width="50%" | B-Class (B1xxL) Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/b1xx-service.pdf  b1xx-service.pdf]
+[[File:b1xx-service.pdf  b1xx-service.pdf]]
 | width="5%" | 1029k
 | width="20%" | July 11, 2003
 | width="50%" | B-Class (B1xxL) Service Manual <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/c100_110-owners.pdf  c100_110-owners.pdf]
+[[File:c100_110-owners.pdf  c100_110-owners.pdf]]
 | width="5%" | 1716k
 | width="20%" | July 11, 2003
 | width="50%" | C100/C110 Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/c160_thru_c360-owners.pdf  c160_thru_c360-owners.pdf]
+[[File:c160_thru_c360-owners.pdf  c160_thru_c360-owners.pdf]]
 | width="5%" | 1495k
 | width="20%" | July 11, 2003
 | width="50%" | C160/C180/C200/C240/C360 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/c160l_owners.pdf  c160l_owners.pdf]
+[[File:c160l_owners.pdf  c160l_owners.pdf]]
 | width="5%" | 1760k
 | width="20%" | July 11, 2003
 | width="50%" | C160L Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/cxxx-service.pdf  cxxx-service.pdf]
+[[File:cxxx-service.pdf  cxxx-service.pdf]]
 | width="5%" | 1715k
 | width="20%" | July 11, 2003
 | width="50%" | C-Class (Cxxx[L]) Service Manual <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/e-class_hpjournal.pdf  e-class_hpjournal.pdf]
+[[File:e-class_hpjournal.pdf  e-class_hpjournal.pdf]]
 | width="5%" | 104k
 | width="20%" | July 11, 2003
 | width="50%" | E-Class (Ex5) HP Journal Article <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/platforms/j280_owners.pdf  j280_owners.pdf]
+[[File:j280_owners.pdf  j280_owners.pdf]]
 | width="5%" | 6442k
 | width="20%" | July 11, 2003
 | width="50%" | J280 Owner's Guide <br />
@@ -340,79 +340,79 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 {| width="100%"
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/PA-8700wp.pdf  PA-8700wp.pdf]
+[[File:PA-8700wp.pdf  PA-8700wp.pdf]]
 | width="5%" | 189KB
 | width="20%" | April, 2000
 | width="50%" | PA-RISC 8x00 Family of Microprocessors with Focus on PA-8700:<br /> Summary of PA-RISC architecture and implementations up to PA-8600 and features of the PA 8700 implementation. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/PA_PerfGuide_vs2.pdf PA_PerfGuide_vs2.pdf]
+[[File:PA_PerfGuide_vs2.pdf PA_PerfGuide_vs2.pdf]]
 | width="5%" | 162KB
 | width="20%" | October 8, 1997
 | width="50%" | Enabling Optimizations to Achieve Higher Performance on the HP PA-RISC Architecture. Discusses how to measure CPU perf, what impacts it, and HP compiler options. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa7300lc_config.pdf  pa7300lc_config.pdf]
+[[File:pa7300lc_config.pdf  pa7300lc_config.pdf]]
 | width="5%" | 11KB
 | width="20%" | June, 1997
 | width="50%" | Configurability of the PA 7300LC. One page summary of config options for PA7300LC system designers. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/four_way_superscalar.pdf four_way_superscalar.pdf]
+[[File:four_way_superscalar.pdf four_way_superscalar.pdf]]
 | width="5%" | 195KB
 | width="20%" | August, 1997
 | width="50%" | Four-Way Superscalar PA-RISC Processors:<br /> HP PA 8000 and PA 8200 PA-RISC CPU features. First published in HP Journal, August 1997. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa7300lc_design.pdf  pa7300lc_design.pdf]
+[[File:pa7300lc_design.pdf  pa7300lc_design.pdf]]
 | width="5%" | 118KB
 | width="20%" | June, 1997
 | width="50%" | High-Performance Processor Design Guided by System Costs. 10 pages. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa7300lc_on_chip.pdf pa7300lc_on_chip.pdf]
+[[File:pa7300lc_on_chip.pdf pa7300lc_on_chip.pdf]]
 | width="5%" | 49KB
 | width="20%" | June, 1997
 | width="50%" | The PA 7300LC Microprocessor: A Highly Integrated System on a Chip. 5 Pages. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/isscc.8500.pdf isscc.8500.pdf]
+[[File:isscc.8500.pdf isscc.8500.pdf]]
 | width="5%" | 91KB
 | width="20%" | Feb, 1999
 | width="50%" | PA8500: A 500 MHz 64 bit RISC CPU with 1.5Mbyte on chip Cache <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/isscc_cache_talk.pdf isscc_cache_talk.pdf]
+[[File:isscc_cache_talk.pdf isscc_cache_talk.pdf]]
 | width="5%" | 144KB
 | width="20%" | 1997?
 | width="50%" | PA8500: A 500MHz 1.5 MByte Cache with On-Chip CPU. Jonathan Lachman and J. Michael Hill. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/isscc_cache_talk_2.pdf isscc_cache_talk_2.pdf]
+[[File:isscc_cache_talk_2.pdf isscc_cache_talk_2.pdf]]
 | width="5%" | 119KB
 | width="20%" | 2000
 | width="50%" | PA8700: A 900MHz 2.25MByte Cache with On Chip CPU. Jonathan Lachman and J. Michael Hill. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/mako_mpf_2001.pdf mako_mpf_2001.pdf]
+[[File:mako_mpf_2001.pdf mako_mpf_2001.pdf]]
 | width="5%" | 1409KB
 | width="20%" | October, 2001
 | width="50%" | HP's PA-8800 Processor:<br /> Slideset from the 2001 Microprocessor Forum. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa2c96.pdf pa2c96.pdf]
+[[File:pa2c96.pdf pa2c96.pdf]]
 | width="5%" | 66KB
 | width="20%" | 1996
 | width="50%" | 64-bit and Multimedia Extensions in the PA-RISC 2.0 Architecture. Ruby Lee and Jerry Huck. 10 pages. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa7200_design.pdf pa7200_design.pdf]
+[[File:pa7200_design.pdf pa7200_design.pdf]]
 | width="5%" | 171KB
 | width="20%" | February, 1996
 | width="50%" | Design of the HP PA 7200 CPU. Kenneth K Chan, et al. 11 pages. <br />
 |- valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/whitepapers/pa8000-compiler_opt.pdf pa8000-compiler_opt.pdf]
+[[File:pa8000-compiler_opt.pdf pa8000-compiler_opt.pdf]]
 | width="5%" | 47KB
 | width="20%" | 1997?
 | width="50%" | Compiler Optimizations for the PA-8000. Anne M. Holler. 11 pages. <br />
