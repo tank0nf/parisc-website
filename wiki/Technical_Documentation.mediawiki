@@ -11,97 +11,97 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:zx1-mio.pdf zx1-mio.pdf]]
+[[File:zx1-mio.pdf]]
 | width="5%" | 2500k
 | width="20%" | April 17, 2003
 | width="50%" | zx1 Memory and I/O controllers ERS (Edited) aka "Pluto" <br />
 |- valign="top"
 | width="25%" |
-[[File:zx1-ioa-mercury_ers.pdf zx1-ioa-mercury_ers.pdf]]
+[[File:zx1-ioa-mercury_ers.pdf]]
 | width="5%" | 633k
 | width="20%" | April 18, 2003
 | width="50%" | zx1 Mercury ERS (Edited) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:astro_intro.ps astro_intro.ps]]
+[[File:astro_intro.ps]]
 | width="5%" | 39k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Overview (IOMMU/Mem Controller) <br />
 |- valign="top"
 | width="25%" |
-[[File:astro_errors.ps astro_errors.ps]]
+[[File:astro_errors.pdf]]
 | width="5%" | 1522k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Error Handling <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:astro_ioc.ps astro_ioc.ps]]
+[[File:astro_ioc.pdf]]
 | width="5%" | 2393k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro R2I Operation/Registers <br />
 |- valign="top"
 | width="25%" |
-[[File:astro_regmap.ps astro_regmap.ps]]
+[[File:astro_regmap.pdf]]
 | width="5%" | 338k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Register Map <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:astro_runway.ps astro_runway.ps]]
+[[File:astro_runway.pdf]]
 | width="5%" | 2038k
 | width="20%" | Feb 17, 2000
 | width="50%" | Astro Runway Interface <br />
 |- valign="top"
 | width="25%" |
-[[File:astro_sysmap.ps astro_sysmap.ps]]
+[[File:astro_sysmap.pdf]]
 | width="5%" | 128k
 | width="20%" | Feb 17, 2000
 | width="50%" | Memory Map of an Astro based system <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:elroy_ers.ps elroy_ers.ps]]
+[[File:elroy_ers.pdf]]
 | width="5%" | 4707k
 | width="20%" | Feb 17, 2000
 | width="50%" | Elroy PCI Controller ERS (Edited)<br /> (eg in A500/C3000) <br />
 |- valign="top"
 | width="25%" |
-[[File:dino_ers.pdf dino_ers.pdf]], [[File:Dino_3_1_Errata.html  Dino_3_1_Errata.html]]
+[[File:dino_ers.pdf]], [[File:Dino_3_1_Errata.html]]
 | width="5%" | 5794k, 7k
 | width="20%" | June 3, 1999
 | width="50%" | DINO PCI bus controller<br /> (eg in A180/B180/C360) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:PCXL_ers.pdf PCXL_ers.pdf]], [[File:PCXL_ers.ps PCXL_ers.ps]]
+[[File:PCXL_ers.pdf]]
 | width="5%" | 401k, 462k
 | width="20%" | July 20, 1999
 | width="50%" | PA-RISC 1.1 7100 PCXL CPU ERS <br />
 |- valign="top"
 | width="25%" |
-[[File:pcxl2_ers.pdf pcxl2_ers.pdf]], [[File:pcxl2_ers.ps pcxl2_ers.ps]]
+[[File:pcxl2_ers.pdf]]
 | width="5%" | 716k, 4127k
 | width="20%" | July 20, 1999
 | width="50%" | PA RISC 1.1 7300 PCXL2 CPU ERS <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:lasi_ers.ps lasi_ers.ps]]
+[[File:lasi_ers.pdf]]
 | width="5%" | 4344k
 | width="20%" | June 3, 1999
 | width="50%" | LASI Core IO Device ERS<br /> (eg in 712/715/725/A180/B180/C360) <br />
 |- valign="top"
 | width="25%" |
-[[File:hardball_ers.pdf  hardball_ers.pdf]]
+[[File:hardball_ers.pdf]]
 | 4235k
 | November 2001
 | Hardball ERS - 735/755 (Outfield, Cutoff, etc.) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:PC87415.pdf  PC87415.pdf]]
+[[File:PC87415.pdf]]
 | 381k
 | Aug 1996
 | National Semiconductor PC87415 Dual Channel IDE controller Data Sheet. (integrated in PC87560UBD SuckyIO "Legacy IO Controller") <br />
 |- valign="top"
 | width="25%" |
-[[File:WAX_ERS_V1.0_Redacted.pdf  WAX_ERS pdf (Redacted)]
+[[File:WAX_ERS_V1.0_Redacted.pdf]]
 | 12MB
 | October 2007
 | WAX ERS - GSC to EISA adapter <br />
