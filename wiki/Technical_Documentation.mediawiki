@@ -112,7 +112,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pa11_acd.pdf pa11_acd.pdf]
+[[File:pa11_acd.pdf]]
 | width="5%" | 1.4M
 | width="20%" | Feb 1994
 | width="50%" |
@@ -137,7 +137,7 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual <br /> ( [http://h
 | width="50%" | PA-RISC 1.1 I/O Firmware Architecture Reference Specification: IODC (chapter 3) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[http://ftp.parisc-linux.org/docs/arch/pa-runtime-32-SOM.pdf pa-runtime-32-SOM.pdf]
+[[File:pa-runtime-32-SOM.pdf]]
 | width="5%" | 1.1M
 | width="20%" | 1997
 | width="50%" | PA-RISC 32-bit Runtime Environment (SOM Binaries). Covers PA 1.0, 1.1 and 2.0. <br />
