@@ -4,9 +4,14 @@ title: Debian Buildpackages
 
 ==How to build debian packages==
 
-Main description:
-* http://www.debian-ports.org/archive 
+; Main description:
+: http://www.debian-ports.org/archive 
 
-How to build a package:
-* dpkg-buildpackage --force-sign -B -sa -m<email>
-where source package has been changed with dch --bin-nmu Rebuild b1
+; How to build a package (without modifying source):
+: dpkg-buildpackage --force-sign -B -sa -m<email>
+
+; How to build a package (*with* modified source):
+: dpkg-buildpackage --force-sign -B -sa -m<email>  dch --bin-nmu Rebuild b1
+
+; How to sign packages (without debsign)
+: http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
