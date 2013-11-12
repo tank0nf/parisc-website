@@ -19,7 +19,6 @@ title: TODO
 
 * currently planned features for 3.13 / 3.14:
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
-** PDC Chassis codes on rp5470: Attention LED always blinks - Reading the Error Log (command: SL) in GSC turns off the Attention LED.  Accessing this buffer is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level.
 ** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
 * Kernel: Hard to solve outstanding issues
