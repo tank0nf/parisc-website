@@ -138,9 +138,14 @@ title: TODO
 ** add gzip-support (allow loading gzipped vmlinux files)
 ** in interactive mode, add reboot option command
 
+== Kernel Testing Tools ==
+
+* https://github.com/linux-test-project/ltp - Linux Test Project
+* http://codemonkey.org.uk/projects/trinity/ - Trinity - A Linux System call fuzz tester.
 
 == TODO Drivers ==
 
+* IPMI support on rp-class / Support graceful shutdown from BMC on rp servers (`PC -GRACEFUL`)
 * write Lasi floppy driver
 * write Suckyio floppy driver
 * write spifi driver (rbrad)
@@ -148,7 +153,6 @@ title: TODO
 * write GSC FDDI driver
 * write Timi ASIC (74x) support
 * EISA DMA support
-* IPMI support on rp-class / Support graceful shutdown from BMC on rp servers (`PC -GRACEFUL`)
 
 == Review all the todo entries below! ==
 
