@@ -2,8 +2,6 @@
 title: Hardware support
 ---
 
-= HARDWARE SUPPORT =
-
 == Workstations ==
  
 PA-RISC Linux supports all HP PA-RISC workstations. Not everything is
@@ -19,7 +17,7 @@ PA-RISC VME boards are based on workstation designs.
 PA-RISC Linux does boot on a 743.
 
 Please submit bugs (or patches!) for missing/broken functionality
-to the parisc-linux [[mailing list]].
+to the parisc-linux [[mailing lists]].
 
 == Servers ==
  
