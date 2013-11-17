@@ -11,6 +11,7 @@ title: TODO
 * debian-ports.org access
 
 == Status & TODO 2013-10-09 (TODO-List by Helge Deller) ==
+* add telnet server to installable lifimage (for Dave)
 * send patches to remove UP from debian kernels, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
