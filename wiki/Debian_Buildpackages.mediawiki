@@ -19,5 +19,8 @@ title: Debian Buildpackages
 ; How to build a package (*with* modified source):
 : dpkg-buildpackage --force-sign -B -sa -m<email>  dch --bin-nmu Rebuild b1
 
+; How to use subkeys for signing on buildds
+: http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/
+
 ; How to sign packages (without debsign)
 : http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
