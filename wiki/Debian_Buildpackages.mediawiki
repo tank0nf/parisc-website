@@ -4,7 +4,13 @@ title: Debian Buildpackages
 
 ==How to build debian packages==
 
-; Main description:
+; DebianWannaBuildInfrastructureOnOneServer
+: https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer
+
+; Another description on how to set up a buildd 
+: https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd
+
+; debian-ports policy and description:
 : http://www.debian-ports.org/archive 
 
 ; How to build a package (without modifying source):
