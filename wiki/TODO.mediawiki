@@ -11,6 +11,7 @@ title: TODO
 * debian-ports.org access
 
 == Status & TODO 2013-10-09 (TODO-List by Helge Deller) ==
+* SLUB/SLAB problems with CONFIG_LONGCALL=n ?, see: http://lwn.net/Articles/439472/
 * add wiki page about kernel cross-compiling
 * return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191
