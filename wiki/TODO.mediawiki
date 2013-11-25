@@ -13,11 +13,11 @@ title: TODO
 == Status & TODO 2013-10-09 (TODO-List by Helge Deller) ==
 * CONFIG_LONGCALL=n problems?, see: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/)
 * add wiki page about kernel cross-compiling
-* return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
-* debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html
+* return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
+* debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567
 * More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 
 * currently planned features for 3.13 / 3.14:
