@@ -25,3 +25,8 @@ title: Debian Buildpackages
 
 ; How to sign packages (without debsign)
 : http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
+
+==Debian Buildservers==
+
+; Where is (old) Peri ?
+: http://db.debian.org/machines.cgi?host=peri
