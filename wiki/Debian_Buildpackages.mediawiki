@@ -18,7 +18,7 @@ title: Debian Buildpackages
 : e.g.: dpkg-buildpackage --force-sign -sa -mHelge\ Deller\ \<deller@gmx.de\> -kB51E3864 -j5
 
 ; How to build a package (*with* modified source):
-: dch --bin-nmu Rebuild b1
+: dch --distribution unstable --bin-nmu Rebuild b1
 : dpkg-buildpackage --force-sign -B -sa -m<email>
 
 ; How to use subkeys for signing on buildds
