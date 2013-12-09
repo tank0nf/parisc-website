@@ -27,7 +27,8 @@ title: Debian Buildpackages
 ; How to sign packages (without debsign)
 : http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
 
-; Create Debian chroot  
+; Create Debian chroot
+: apt-get install debian-ports-archive-keyring
 : /usr/sbin/sbuild-createchroot --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg unstable build/chroot-unstable http://ftp.debian-ports.org/debian/
 
 ==Debian Buildservers==
