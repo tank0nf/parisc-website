@@ -30,7 +30,7 @@ title: Debian Buildpackages
 ; Create Debian chroot
 : https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd
 : apt-get install debian-ports-archive-keyring
-: /usr/sbin/sbuild-createchroot --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg unstable build/chroot-unstable http://ftp.debian-ports.org/debian/
+: /usr/sbin/sbuild-createchroot --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring unstable build/chroot-unstable http://ftp.debian-ports.org/debian/
 
 ==Debian Buildservers==
 
