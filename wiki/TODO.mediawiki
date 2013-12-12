@@ -12,6 +12,7 @@ title: TODO
 
 == Status & TODO 2013-12-05 (TODO-List by Helge Deller) ==
 * Drop HP-UX-Support, change EWOULDBLOCK=EAGAIN, possibly change number of signals (for systemd), .. what else?
+* Native types in  uapi/asm/stat.h
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem,
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 * gcc-4.8 switch on debian, perl-bug (mmap of small files).
