@@ -31,6 +31,8 @@ title: Debian Buildpackages
 : https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd
 : apt-get install debian-ports-archive-keyring
 : /usr/sbin/sbuild-createchroot --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring unstable build/chroot-unstable http://ftp.debian-ports.org/debian/
+: https://wiki.debian.org/sbuild
+: https://www.ca-zephyr.org/mediawiki/index.php/Some_Notes
 
 ==Debian Buildservers==
 
