@@ -38,6 +38,7 @@ title: Debian Buildpackages
 : https://wiki.debian.org/M68k/Porting#binNMU_notes
 : http://lists.debian.org/debian-68k/2012/12/msg00124.html
 : http://lists.debian.org/debian-68k/2013/10/msg00021.html
+: http://kmuto.jp/open.cgi?buildd
 
 ==Debian Buildservers==
 
