@@ -199,7 +199,6 @@ If you have an older parisc system (not a c8000!) you may use the Debian Lenny i
 * modify your /etc/apt/sources.list file to have this content:
 <pre>
 deb http://ftp.debian-ports.org/debian unstable main
-deb http://ftp.parisc-linux.org/debian-ports/debian unstable main
 # for unstable sources if you want to compile yourself:
 deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
 </pre>
