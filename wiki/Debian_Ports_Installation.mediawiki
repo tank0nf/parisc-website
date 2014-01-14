@@ -170,7 +170,7 @@ Type: 'service networking stop' and then 'service networking start' (no quotes) 
  You can check interface and connectivity status by typing: 'network-test' (no quotes)
 </pre>
 
-* For more detailed networking info, look[http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure HERE]
+* For more detailed networking info, look [http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure HERE].
 
 * ...and that's it! ifplugd has the added advantage of automatically detecting external USB drives at boot time also.
 
