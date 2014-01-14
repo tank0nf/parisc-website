@@ -32,7 +32,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Jan 2014''' - Updated install instructions. 5 new buildd servers online now! 'debootstrap' now moved to debian-ports.org.
+* '''Jan 2014''' - Updated Debian unstable install instructions. 'debootstrap' now moved to debian-ports.org.
+* '''Dec 2013''' - 5 buildd servers for debian unstable online. Stable Debian kernel 3.12 available. 
 * '''Aug 2013''' - Linux kernel 3.11 supports C8000 workstation (SMP, serial port, FireGL card, BMC, ...)
 * '''Apr 2013''' - Website updated, added Debian-ports installation instructions and updated TODO list.
 * '''Mar 2013''' - Many Debian 7.0 (wheezy) now available.
