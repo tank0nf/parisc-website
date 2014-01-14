@@ -137,14 +137,17 @@ ln -s vmlinux* vmlinux
 <pre>
 palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline="2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
 </pre>
+
 * '''Reboot now and HPPA Linux should now load from the hard drive.'''
+
 * At this time you can install a couple handy utilities to make sure your network always starts on boot, and your hotplug devices load properly (external USB drives, etc.)
 <pre>
 First run: nano /etc/network/interfaces and add the following lines:
+
 auto lo
 iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
 
-iface eth0 inet dhcp (This will bring up eth0 when the system is booted.. (don't add 'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
+iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
 
 Do this for any additional interfaces leaving a blank line between each one.
 </pre>
