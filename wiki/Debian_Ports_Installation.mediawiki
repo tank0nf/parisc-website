@@ -4,97 +4,179 @@ title: Debian Ports Installation
 
 = Installation of PA-RISC Linux  =
 
-HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze).
-That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
+HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze). That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
 
-The Debian ports project hosts a parisc version of debian unstable.
-We do NOT RECOMMEND to install debian unstable from debian-ports, because this repository has been frozen.
-Furthermore the udev package on debian-ports has a bug which will render your parisc system unusable.
-Nevertheless, the long term goal is to update the debian-ports repository with new versions.
-If you are interested of the current technical status of how parisc is being moved to debian-ports, see [http://wiki.parisc-linux.org/Debian_Ports Debian_Ports].
-
-Recommended installation of a new parisc machine is via the repository at http://ftp.parisc-linux.org/debian-ports/debian
+The Debian ports project hosts a parisc version of debian unstable. Recommended installation of a new parisc machine is via the debian-ports respitory at http://debian-ports.org
 
 == Linux kernel for PARISC ==
-We recommend at least a vanilla or stable series Linux kernel 3.10.
-Kernel 3.9 (stable series) should be OK too, as it has most fixes backported.
-Kernel 3.8 (or below) is not recommended any longer.
+We recommend at least a vanilla or stable series Linux kernel 3.12. Kernel 3.9 (stable series) should be OK too, as it has most fixes backported. Kernel 3.8 (or below) is not recommended any longer. 
 
-== New installation of a PARISC machine via repository on http://ftp.parisc-linux.org/debian-ports/debian ==
-* Download the temporary boot image from http://ftp.parisc-linux.org/debian-ports/unstable-boot-image/lifimage
-* Burn the image as raw one to a cdrom or make it available as tftp bootimage
-* Turn on your parisc machine and boot this media (via cdrom or tftp)
-* This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, palo, scp, ...) to bootstrap a new debian unstable machine.  
-* use fdisk to partition your disk. Create a palo boot partition first (needs to be in the first 2GB of a disk, fdisk type f0). A good size for the boot partition is 100-160 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system):
+== New installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
+* *NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this.
+
+*Download the temporary boot image from http://ftp.parisc-linux.org/debian-ports/unstable-boot-image/lifimage or http://debian-ports.org/~deller/DEBIAN_PORTS_HPPA_BOOTIMAGE/lifimage
+*Burn the image to a cdrom or make it available as tftp bootimage
+*Turn on your parisc machine and boot this media (via cdrom or tftp)
+*This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, palo, scp, ...) to bootstrap a new debian unstable machine.
+
+*use fdisk to partition your disk. Create a palo partition first (fdisk type f0, size >= 50 MB), then a /boot partition (needs to be in the first 2GB of a disk, ext2, fdisk type 83). A good size for the boot partition is 200-400 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system) If you have multiple drives and would like to put your '/home', '/var', or other partition (including extra swap space) on a second internal drive, you may set them up accordingly with 'fdisk /dev/sdb' (or whatever drive is suitable):
 <pre>
    Device Boot      Start         End      Blocks   Id  System
-/dev/sda1    *       2048      247807      122880   f0  Linux/PA-RISC boot
-/dev/sda2          247808   142854143    71303168   83  Linux
-/dev/sda3       142854144   143374737      260297   82  Linux swap / Solaris
+/dev/sda1            2048      165887       81920   f0  Linux/PA-RISC boot
+/dev/sda2          165888      247807       40960   83  Linux
+/dev/sda3          247808   142854143    71303168   83  Linux
+/dev/sda4       142854144   143374737      260297   82  Linux swap / Solaris
 </pre>
-* format the /boot, /root and swap partitions:
+* format the /boot, /root, /home, etc. and swap partitions. We give those partitions a name (BOOT/ROOT/HOME/(etc.)) to make it easier. You may also assign labels to your swap partitions to make sure the OS sees them properly and to make it easier to setup /etc/fstab (explained later), e.g. mkswap -L SWAP0 or SWAP1, etc.
 <pre>
-palo --format-as=2 --init-partitioned=/dev/sda
-mke2fs -j /dev/sda2
-mkswap /dev/sda3
+mke2fs -L BOOT /dev/sda2
+mke2fs -j -L ROOT /dev/sda3
+mke2fs -j -L HOME /dev/sdb1 ...and so on.
+mkswap /dev/sda4 or mkswap -L SWAP0
 </pre>
-* bring up your network (should be already done by an init screen, check your boot console). If you have a dhcp server you can run dhclient:
+* Now, bring up your network. If you have a dhcp server you can run dhclient
 <pre>
 dhclient eth0
 </pre>
-* mount the new designed /root to /mnt/destroot:
+* Mount the newly designed /root, /boot, /home, and other necessary filesystems to /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
 <pre>
-mount /dev/sda2 /mnt/destroot/
+mount LABEL=ROOT /mnt/destroot/
+mkdir /mnt/destroot/boot then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot.
+mount LABEL=BOOT /mnt/destroot/boot/ mount LABEL=HOME /mnt/destroot/home/, etc.
 </pre>
-* run debootstrap. This may take some time (10-20 Minutes):
+* '''IMPORTANT!''': If you are behind a proxy server, you will need to create a /root/.wgetrc file and export the proxy setting on the command line. Here is an example:
 <pre>
-debootstrap --arch=hppa --no-check-gpg --include=palo --exclude=libsigc++-1.2-dev unstable /mnt/destroot http://ftp.parisc-linux.org/debian-ports/debian
+export http_proxy=http://proxy:8080
+echo $http_proxy > /root/.wgetrc
+echo "use_proxy = on" >> /root/.wgetrc
 </pre>
-* '''IMPORTANT''': If you work on serial console, please remember to uncomment the following line in '''/etc/inittab''' else you won't see any login prompt on the serial console (kill -HUP 1 activates the change):
+* Now run debootstrap. This may take some time... (10-20 minutes depending on your connection speed):
+<pre>
+debootstrap --arch=hppa --no-check-gpg  unstable  /mnt/destroot http://ftp.debian-ports.org/debian/
+</pre>
+* copy over the palo package from the boot image to the new filesystem and create 'palo.conf'
+<pre>
+cp /palo*deb /mnt/destroot | touch /mnt/destroot/etc/palo.conf
+</pre> 
+* '''IMPORTANT!''': If you work on a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console (kill -HUP 1 activates the change):
 <pre>
 echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /mnt/destroot/etc/inittab
 </pre>
-* '''IMPORTANT''': Remember to set your new root password and add /dev/sda1 as /boot partition:
-<pre>
-echo "/dev/sda1 /boot ext2 defaults,noauto 1 1" >> /mnt/destroot/etc/fstab
+* '''IMPORTANT!''': Remember to set your new root password and add LABEL=BOOT as /boot partition and also set your hostname.
+<pre> 
+echo "LABEL=ROOT     /      ext3 defaults 1 1" >> /mnt/destroot/etc/fstab
+echo "LABEL=BOOT     /boot  ext2 defaults 1 1" >> /mnt/destroot/etc/fstab
+echo "LABEL=HOME     /home  ext3 defaults 0 2" >> /mnt/destroot/etc/fstab
+echo "LABEL=SWAP0     none  swap sw,pri=3 0 0" >> /mnt/destroot/etc/fstab
+..and so forth for other necessary partitions.
+
+(You may also use 'nano' to edit /mnt/destroot/etc/fstab directly if desired)
+
 chroot /mnt/destroot
 passwd root
-<now enter here your new password for root>
-exit
-</pre>
-* It would be worth to make machine accessible by ssh:
-<pre>
-apt-get install openssh-server
-update-rc.d ssh defaults
-</pre>
-Then activate network auto start by adding the following lines into /etc/network/interfaces
-<pre>
-auto eth0
-iface eth0 inet dhcp # in case of dhcp
+<enter your new password for the 'root' user>
+Type 'exit' to get out of the chroot.
+
+echo "your hostname" >> /mnt/destroot/etc/hostname
 </pre>
 * You are now finished with the initial initialization of the filesystem.
-* Now. reboot again from the CD/TFTP and choose to interact with IPL.
+* You may now run the blkid command to take a look at your partitions. 
+<pre>
+blkid
+</pre>
+* Now reboot again from the CD/TFTP and choose to interact with IPL.
 <pre>
 reboot now
-<wait...>
+<nowiki> <wait...> </nowiki>
 Interact with IPL (Y, N, or Cancel)?> y
-Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda2" and press "b" to boot now.
 </pre>
-* Search for the most recent Linux kernel (example here uses linux-image-3.10-1) and install it with the palo bootloader:
+* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
 <pre>
-mount /boot
-apt-get install palo
-apt-cache search linux-image
-apt-get install linux-image-3.10-1-parisc64-smp    - for 64bit SMP kernel
+0/vmlinux64 (64 Bit) or 0/vmlinux32 (32 Bit)
+</pre>
+* Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda3" (look at the output of blkid above):
+<pre>
+root=/dev/sda3
+</pre>
+* and then press "b" to boot this configuration.
+* The machine should now have booted into the shell on /dev/sda3. Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
+* Install the most recent 32- or 64-bit Linux kernel and install the palo bootloader (See networking bug workaround below): 
+* First of all: make sure the boot partition is mounted correctly
+<pre>
+mount LABEL=BOOT /boot
+</pre>
+* Networking bug Work-around: Due to a minor bug, networking doesn't start automatically, and the RSA keys for debian-ports.org are not available. Here is the current solution:
+<pre>
+Type 'dhclient eth0' to re-start the network
+
+then: gpg --recv-keys 1C466F272FF7A9F4 --keyserver http://ftp.debian-ports.org/debian
+
+(It will error out the first time, so just run the above command again and it will import keys.)
+
+then: gpg --export --armor 2FF7A9F4 | apt-key add -
+
+Now you can successfully run - 'apt-get update' and 'apt-get install openssh-server'
+</pre>
+* Install 'palo'
+<pre>
+dpkg -i /palo*deb
+</pre>
+* and select your new kernel...
+<pre>
+apt-get install linux-image-parisc64-smp   # for a 64bit SMP kernel
 (or)
-apt-get install linux-image-3.10-1-parisc          - for a 32bit UP kernel
-palo --update-partitioned=/dev/sda --format-as=2 --commandline="1/vmlinux-3.10-1-parisc64-smp root=/dev/sda2 HOME=/"
+apt-get install linux-image-parisc         # for a 32bit UP kernel
 </pre>
-* You are finished. Reboot and enjoy.
+* Don't forget to set up your symlinks in /boot
 <pre>
-reboot now
+cd /boot
+ln -s initrd* initrd.img
+ln -s vmlinux* vmlinux
 </pre>
-If you however observe that none of existing pre-compiled kernels supports your configuration well enough to get you boot into the working system you may return to [[#Now. reboot again from the CD/TFTP and choose to interact with IPL]] step and continue with [[Building_the_Kernel]] from here.
+* Now you can run the palo configuration:
+<pre>
+palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline="2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
+</pre>
+* '''Reboot now and HPPA Linux should now load from the hard drive.'''
+* At this time you can install a couple handy utilities to make sure your network always starts on boot, and your hotplug devices load properly (external USB drives, etc.)
+<pre>
+First run: nano /etc/network/interfaces and add the following lines:
+auto lo
+iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
+
+iface eth0 inet dhcp (This will bring up eth0 when the system is booted.. (don't add 'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
+
+Do this for any additional interfaces leaving a blank line between each one.
+</pre>
+* Re-start your network:
+<pre>
+dhclient eth0
+</pre>
+* Now for ifupdown-extra and ifplugd
+<pre>
+apt-get install ifupdown-extra ifplugd
+Run: dpkg-reconfigure ifplugd
+Use 'auto' (no quotes) as the "static interfaces to be watched by ifplugd". Select 'OK' to go to the next screen.
+Use 'all' (no quotes) as the "hotplugged interfaces to be watched by ifplugd". Select 'OK' to go to the next screen.
+In the 'arguments to ifplugd' screen you can stick to the defaults unless there is a problem with the daemon.
+Select 'OK' to go to the next screen for 'suspend behavior' Select 'suspend' to compensate for any broken net drivers.
+Select 'OK' to finish
+
+Type: 'service networking stop' and then 'service networking start' (no quotes) to reload all daemons.
+
+ You can check interface and connectivity status by typing: 'network-test' (no quotes)
+</pre>
+
+* For more detailed networking info, look here:[http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure]
+
+* ...and that's it! ifplugd has the added advantage of automatically detecting external USB drives at boot time also.
+
+* Now add more packages and have fun!
+
+
+--[[User:Dave Land|Dave Land]] ([[User talk:Dave Land|talk]]) 13:48, 14 January 2014 (UTC)
+
+
 
 == Old installation medias (Debian Lenny) ==
 
@@ -137,6 +219,6 @@ gpg --export --armor 2FF7A9F4 | apt-key add -
 apt-get upgrade
 </pre>
 
-* if you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just deinstall some packages
+* if you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just uninstall some packages
 
-* finally you should be able to update most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list http://lists.debian.org/debian-hppa.
+* finally you should be able to update most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa].
