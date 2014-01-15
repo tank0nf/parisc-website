@@ -9,7 +9,7 @@ HPPA became an officially supported Debian architecture in release 3.0 (woody) a
 The Debian ports project hosts a parisc version of debian unstable. Recommended installation of a new parisc machine is via the debian-ports respitory at http://debian-ports.org
 
 == New installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
-* *NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this.
+* '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimag is based on older binaries which would need to be rebuilt.'''''
 
 *Download the temporary boot image from http://ftp.parisc-linux.org/debian-ports/unstable-boot-image/lifimage or http://debian-ports.org/~deller/DEBIAN_PORTS_HPPA_BOOTIMAGE/lifimage
 *Burn the image to a cdrom or make it available as tftp bootimage
@@ -53,7 +53,8 @@ debootstrap --arch=hppa --no-check-gpg  unstable  /mnt/destroot http://ftp.debia
 </pre>
 * copy over the palo package from the boot image to the new filesystem and create 'palo.conf'
 <pre>
-cp /palo*deb /mnt/destroot | touch /mnt/destroot/etc/palo.conf
+cp /palo*deb /mnt/destroot
+touch /mnt/destroot/etc/palo.conf
 </pre> 
 * '''IMPORTANT!''': If you work on a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console (kill -HUP 1 activates the change):
 <pre>
