@@ -114,7 +114,9 @@ then: gpg --recv-keys 1C466F272FF7A9F4 --keyserver http://ftp.debian-ports.org/d
 
 then: gpg --export --armor 2FF7A9F4 | apt-key add -
 
-Now you can successfully run - 'apt-get update' and 'apt-get install openssh-server'
+Now you can successfully run - 'apt-get update' and
+apt-get install openssh-server locales 
+dpkg-reconfigure locales
 </pre>
 * Install 'palo'
 <pre>
