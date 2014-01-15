@@ -56,7 +56,7 @@ debootstrap --arch=hppa --no-check-gpg  unstable  /mnt/destroot http://ftp.debia
 cp /palo*deb /mnt/destroot
 touch /mnt/destroot/etc/palo.conf
 </pre> 
-* '''IMPORTANT!''': If you work on a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console (kill -HUP 1 activates the change):
+* '''IMPORTANT!''': If you install via GSP console or via a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console after bootup (kill -HUP 1 activates the change):
 <pre>
 echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /mnt/destroot/etc/inittab
 </pre>
