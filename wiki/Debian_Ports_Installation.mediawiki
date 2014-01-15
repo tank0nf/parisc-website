@@ -9,7 +9,7 @@ HPPA became an officially supported Debian architecture in release 3.0 (woody) a
 The Debian ports project hosts a parisc version of debian unstable. Recommended installation of a new parisc machine is via the debian-ports respitory at http://debian-ports.org
 
 == New installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
-* '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimag is based on older binaries which would need to be rebuilt.'''''
+* '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimage is based on older binaries which would need to be rebuilt.'''''
 
 *Download the temporary boot image from http://ftp.parisc-linux.org/debian-ports/unstable-boot-image/lifimage or http://debian-ports.org/~deller/DEBIAN_PORTS_HPPA_BOOTIMAGE/lifimage
 *Burn the image to a cdrom or make it available as tftp bootimage
@@ -97,7 +97,8 @@ Interact with IPL (Y, N, or Cancel)?> y
 root=/dev/sda3
 </pre>
 * and then press "b" to boot this configuration.
-* The machine should now have booted into the shell on /dev/sda3. Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
+* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
+* Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
 * Install the most recent 32- or 64-bit Linux kernel and install the palo bootloader (See networking bug workaround below): 
 * First of all: make sure the boot partition is mounted correctly
 <pre>
