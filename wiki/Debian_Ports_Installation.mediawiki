@@ -8,9 +8,6 @@ HPPA became an officially supported Debian architecture in release 3.0 (woody) a
 
 The Debian ports project hosts a parisc version of debian unstable. Recommended installation of a new parisc machine is via the debian-ports respitory at http://debian-ports.org
 
-== Linux kernel for PARISC ==
-We recommend at least a vanilla or stable series Linux kernel 3.12. Kernel 3.9 (stable series) should be OK too, as it has most fixes backported. Kernel 3.8 (or below) is not recommended any longer. 
-
 == New installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
 * *NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this.
 
