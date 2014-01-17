@@ -9,25 +9,23 @@ title: TODO
 * Dave found O_SYNC bug in glibc (Typo in hppa __O_SYNC define in <bits/fcntl.h>)
 * Migration parisc-linux.org
 * debian-ports.org access
+* 3.13 with all patches in (coherency)
+* buildds running
 
-== Status & TODO 2013-12-05 (TODO-List by Helge Deller) ==
-* Problem building libcap-ng...
-* check "Security File Capabilities", error updating iputils-ping to 3:20121221-2, CONFIG_EXT3_FS_SECURITY ? (from Dave)
-* Drop HP-UX-Support, change EWOULDBLOCK=EAGAIN, possibly change number of signals (for systemd), .. what else? (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.)
-We have a more diverse user space under Linux and I believe in supporting open source, so we should
-focus on it.
+== Status & TODO 2014-01-17 (TODO-List by Helge Deller) ==
+* Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
+* From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
+* Drop HP-UX-Support, change EWOULDBLOCK=EAGAIN, possibly change number of signals (for systemd), .. what else? (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it.
+* More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 * Native types in  uapi/asm/stat.h
-* From Dave: gcc thread issues including thread cancellation, glib2.0 problem,
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
-* gcc-4.8 switch on debian, perl-bug (mmap of small files).
-* CONFIG_LONGCALL=n problems?, see: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
+* gcc-4.8 switch on debian, perl-bug (mmap of small files). https://patchwork.kernel.org/patch/3279031/
+* sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 * add wiki page about kernel cross-compiling
-* send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567
-* More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 
 * currently planned features for 3.13 / 3.14:
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
@@ -52,7 +50,7 @@ focus on it.
 ** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 
 * Kernel: Low priority patches needs further work 
-** Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/
+** Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - partly done.
 ** disable FP-register save/restore at kernel entry? - Helge
 ** enable 16k/64k kernel page sizes (still cacheflushing-issues with SCSI driver, additional work in glibc needed to deal with >4k page size, e.g. ld-loader alignments of data/code segments)
 ** Superdome support - can someone test? Should work better now with latest kernels.
@@ -67,6 +65,7 @@ focus on it.
 *** Instructions from Thorsten Glaser - see: http://lists.debian.org/debian-hppa/2013/04/msg00049.html
 *** DONE: try to debootstrap from parisc-linux.org repository and add missing packages.
 ** DONE: split repository on parisc-linux.org into stable (wheezy) and unstable (sid)
+** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
 
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
@@ -142,7 +141,6 @@ focus on it.
 *** implement audit functionality, https://patchwork.kernel.org/patch/3046731/
 *** avoid dependencies on bzimage during make install, https://patchwork.kernel.org/patch/3069691/
 *** exception table entries can be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/
-
 
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
 ** increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
