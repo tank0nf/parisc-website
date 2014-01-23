@@ -47,6 +47,10 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * '''Mar 2005''' - The parisc-linux patch set is less than 200K for the first time ever! Thanks to willy for doing such a great job pushing patches upstream!
 * '''Jun 2004''' - Support for PA8800/zx1 committed!
 
+== How to install PARISC Linux == 
+* [[Debian Ports Installation]]
+* [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Gentoo Installation]
+
 == PA-RISC FAQ == 
 * [[Hardware_supported|Is my hardware supported?]]
 * [[PARISC FAQ]]
@@ -57,9 +61,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * [[Building_the_Kernel]] - Build Kernel
 * [[TODO]]
 * [[Debian_Buildpackages]] - How to build packages for debian?
-
-== How to install PARISC Linux == 
-* [[Debian Ports Installation]]
 
 == Technical Documentation ==
 * [[Technical Documentation]]
