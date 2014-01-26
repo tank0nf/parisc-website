@@ -99,8 +99,7 @@ Interact with IPL (Y, N, or Cancel)?> y
 root=/dev/sda3
 </pre>
 * and then press "b" to boot this configuration.
-* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, 
-  but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
+* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
 * Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
 * Install the most recent 32- or 64-bit Linux kernel and install the palo bootloader (See networking bug workaround below): 
 * First of all: make sure the boot partition is mounted correctly
