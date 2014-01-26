@@ -108,11 +108,11 @@ mount LABEL=BOOT /boot
 <pre>
 Type 'dhclient eth0' to re-start the network
 
-then: gpg --recv-keys 1C466F272FF7A9F4 --keyserver http://ftp.debian-ports.org/debian
+then: gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/debian
 
 (It will error out the first time, so just run the above command again and it will import keys.)
 
-then: gpg --export --armor 2FF7A9F4 | apt-key add -
+then: gpg --export --armor 623DB0B8 | apt-key add -
 
 Now you can successfully run - 'apt-get update' and
 apt-get install openssh-server locales debian-ports-archive-keyring
