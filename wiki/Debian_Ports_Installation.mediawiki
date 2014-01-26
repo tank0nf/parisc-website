@@ -35,7 +35,8 @@ mkswap /dev/sda4 or mkswap -L SWAP0
 <pre>
 dhclient eth0
 </pre>
-* Mount the newly designed /root, /boot, /home, and other necessary filesystems to /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
+* Mount the newly designed /root, /boot, /home, and other necessary filesystems to 
+  /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
 <pre>
 mount LABEL=ROOT /mnt/destroot/
 mkdir /mnt/destroot/boot then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot.
@@ -88,7 +89,8 @@ reboot now
 <nowiki> <wait...> </nowiki>
 Interact with IPL (Y, N, or Cancel)?> y
 </pre>
-* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
+* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" 
+  to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
 <pre>
 0/vmlinux64 (64 Bit) or 0/vmlinux32 (32 Bit)
 </pre>
@@ -97,7 +99,8 @@ Interact with IPL (Y, N, or Cancel)?> y
 root=/dev/sda3
 </pre>
 * and then press "b" to boot this configuration.
-* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
+* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, 
+  but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
 * Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
 * Install the most recent 32- or 64-bit Linux kernel and install the palo bootloader (See networking bug workaround below): 
 * First of all: make sure the boot partition is mounted correctly
@@ -136,7 +139,8 @@ ln -s vmlinux* vmlinux
 </pre>
 * Now you can run the palo configuration:
 <pre>
-palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline="2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
+palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline=
+"2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
 </pre>
 
 * '''Reboot now and HPPA Linux should now load from the hard drive.'''
@@ -148,7 +152,8 @@ First run: nano /etc/network/interfaces and add the following lines:
 auto lo
 iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
 
-iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
+iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 
+'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
 
 Do this for any additional interfaces leaving a blank line between each one.
 </pre>
@@ -160,15 +165,19 @@ dhclient eth0
 <pre>
 apt-get install ifupdown-extra ifplugd
 Run: dpkg-reconfigure ifplugd
-Use 'auto' (no quotes) as the "static interfaces to be watched by ifplugd". Select 'OK' to go to the next screen.
-Use 'all' (no quotes) as the "hotplugged interfaces to be watched by ifplugd". Select 'OK' to go to the next screen.
-In the 'arguments to ifplugd' screen you can stick to the defaults unless there is a problem with the daemon.
-Select 'OK' to go to the next screen for 'suspend behavior' Select 'suspend' to compensate for any broken net drivers.
+Use 'auto' (no quotes) as the "static interfaces to be watched by ifplugd". 
+Select 'OK' to go to the next screen.
+Use 'all' (no quotes) as the "hotplugged interfaces to be watched by ifplugd". 
+Select 'OK' to go to the next screen.
+In the 'arguments to ifplugd' screen you can stick to the defaults unless 
+there is a problem with the daemon.
+Select 'OK' to go to the next screen for 'suspend behavior' Select 'suspend' 
+to compensate for any broken net drivers.
 Select 'OK' to finish
 
 Type: 'service networking stop' and then 'service networking start' (no quotes) to reload all daemons.
 
- You can check interface and connectivity status by typing: 'network-test' (no quotes)
+You can check interface and connectivity status by typing: 'network-test' (no quotes)
 </pre>
 
 * For more detailed networking info, look [http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure HERE].
