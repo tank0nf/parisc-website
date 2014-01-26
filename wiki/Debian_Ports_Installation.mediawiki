@@ -209,8 +209,8 @@ apt-get update
 
 * packages in the debian-ports repository are signed. You will need to install the debian-ports archive signing key once (details see: http://www.debian-ports.org):
 <pre>
-gpg --recv-keys 1C466F272FF7A9F4
-gpg --export --armor 2FF7A9F4 | apt-key add -
+gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/debian 
+gpg --export --armor 623DB0B8 | apt-key add -
 </pre>
 
 * make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
