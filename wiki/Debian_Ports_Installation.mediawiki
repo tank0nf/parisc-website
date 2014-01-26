@@ -186,7 +186,7 @@ If you have an older parisc system (not a c8000!) you may use the Debian Lenny i
  
 * Download one of the installation medias for Debian 5.0 (lenny) for parisc from the following location:
 
-** [http://cdimage.debian.org/cdimage/archive/5.0.10/hppa/iso-cd/ official debian cdimage download link]
+* [http://cdimage.debian.org/cdimage/archive/5.0.10/hppa/iso-cd/ official debian cdimage download link]
 
 * The debian-5010-hppa-netinst.iso or the debian-5010-hppa-xfce+lxde-CD-1.iso may work.
 
