@@ -184,9 +184,9 @@ Type: 'service networking stop' and then 'service networking start' (no quotes) 
 
 If you have an older parisc system (not a c8000!) you may use the Debian Lenny installation medias to upgrade.
  
-* Download one of the installation medias for Debian 5.0 (lenny) for parisc from one of the following locations:
+* Download one of the installation medias for Debian 5.0 (lenny) for parisc from the following location:
+
 ** [http://cdimage.debian.org/cdimage/archive/5.0.10/hppa/iso-cd/ official debian cdimage download link]
-** [ftp://ftp.parisc-linux.org/debian-ports/lenny-5.0.10-hppa-iso-cd/cdimage.debian.org/ cdimage mirror on parisc-linux.org FTP server]
 
 * The debian-5010-hppa-netinst.iso or the debian-5010-hppa-xfce+lxde-CD-1.iso may work.
 
