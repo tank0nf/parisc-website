@@ -201,16 +201,14 @@ deb http://ftp.debian-ports.org/debian unstable main
 # for unstable sources if you want to compile yourself:
 deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
 </pre>
-
-* now instruct apt to pull the latest package list:
-<pre>
-apt-get update
-</pre>
-
 * packages in the debian-ports repository are signed. You will need to install the debian-ports archive signing key once (details see: http://www.debian-ports.org):
 <pre>
 gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/debian 
 gpg --export --armor 623DB0B8 | apt-key add -
+</pre>
+* now instruct apt to pull the latest package list:
+<pre>
+apt-get update
 </pre>
 
 * make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
