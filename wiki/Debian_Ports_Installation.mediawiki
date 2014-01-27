@@ -190,7 +190,7 @@ You can check interface and connectivity status by typing: 'network-test' (no qu
 
 == Old installation medias (Debian Lenny) ==
 
-If you have an older parisc system (not a c8000!) you may use the Debian Lenny installation medias to upgrade.
+If you have an older parisc system (not a c8000!), you may use the Debian Lenny installation medias to upgrade.
  
 * Download one of the installation medias for Debian 5.0 (lenny) for parisc from the following location:
 
@@ -198,36 +198,34 @@ If you have an older parisc system (not a c8000!) you may use the Debian Lenny i
 
 * The debian-5010-hppa-netinst.iso or the debian-5010-hppa-xfce+lxde-CD-1.iso may work.
 
-* Install Debian Linux. It's recommended to just install a minimalistic set of packages at this stage, since everything will be updated later to debian-unstable anyway. Furthermore every installed package may prevent your from easily upgrading.
+* Install Debian Linux. It's recommended to just install a minimalistic set of packages at this stage, since everything will be updated later to debian-unstable anyway. Furthermore, every installed package may prevent your from easily upgrading.
 
 * A very good documenation which covers PARISC specifics (e.g. PARISC bootloader and firmware) is available at http://www.pateam.org/parisc-linux-boot/doc.html.
-
-* After installation you should upgrade to debian-unstable via the debian-ports repository:
-* modify your /etc/apt/sources.list file to have this content:
-<pre>
-deb http://ftp.debian-ports.org/debian unstable main
-# for unstable sources if you want to compile yourself:
-deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
-</pre>
-* packages in the debian-ports repository are signed. You can bypass this temporarily using the following:
-* This will instruct apt to pull the latest package list.
+* '''Important!''' Make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
+* Packages in the debian-ports repository are signed. You can bypass this temporarily using the following: (This will instruct apt to pull the latest package list.)
 <pre>
 apt-get --allow-unauthenticated update
 </pre>
-* make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
 * To upgrade your packages:
 <pre>
 apt-get --allow-unauthenticated upgrade
 </pre>
 * You might want to get the latest version of the debian-ports-archive-keyring and a few other important packages if you don't already have them:
 <pre>
-apt-get install openssh-server locales debian-ports-archive-keyring
+apt-get --allow-unauthenticated install openssh-server locales debian-ports-archive-keyring
 </pre>
-* and then set your current locale
+* ...and then set your current locale
 <pre>
 dpkg-reconfigure locales
 </pre>
+* After installation you should upgrade to debian-unstable via the debian-ports repository:
+* Modify your /etc/apt/sources.list file to have this content:
+<pre>
+deb http://ftp.debian-ports.org/debian unstable main
+# For unstable sources, if you want to compile yourself:
+deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
+</pre>
 
-* if you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just uninstall some packages
+* If you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just un-install some packages.
 
-* finally you should be able to update/upgrade most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa].
+* Finally you should be able to update/upgrade most packages to a more recent (unstable) version. If you're missing some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa HERE].
