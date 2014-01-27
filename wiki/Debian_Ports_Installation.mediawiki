@@ -225,6 +225,8 @@ apt-get --allow-unauthenticated install openssh-server locales debian-ports-arch
 dpkg-reconfigure locales
 </pre>
 
+'''Re-boot Now'''
+
 * If you run into issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just un-install some packages.
 
-* Finally, you should be able to update/upgrade most packages to a more recent (unstable) version. If you're missing some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa HERE].
+* Finally, you should be able to update/upgrade most packages & your kernel to a more recent (unstable) version. If you're missing some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa HERE].
