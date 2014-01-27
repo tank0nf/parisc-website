@@ -209,23 +209,25 @@ deb http://ftp.debian-ports.org/debian unstable main
 # for unstable sources if you want to compile yourself:
 deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
 </pre>
-* packages in the debian-ports repository are signed. You will need to install the debian-ports archive signing key once (details see: http://www.debian-ports.org):
+* packages in the debian-ports repository are signed. You can bypass this temporarily using the following:
+* This will instruct apt to pull the latest package list.
 <pre>
-gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/debian 
-gpg --export --armor 623DB0B8 | apt-key add -
+apt-get --allow-unauthenticated update
 </pre>
-* now instruct apt to pull the latest package list:
-<pre>
-apt-get update
-</pre>
-
 * make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
- 
-* run the usual command to upgrade your packages:
+* To upgrade your packages:
 <pre>
-apt-get upgrade
+apt-get --allow-unauthenticated upgrade
+</pre>
+* You might want to get the latest version of the debian-ports-archive-keyring and a few other important packages if you don't already have them:
+<pre>
+apt-get install openssh-server locales debian-ports-archive-keyring
+</pre>
+* and then set your current locale
+<pre>
+dpkg-reconfigure locales
 </pre>
 
 * if you run issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just uninstall some packages
 
-* finally you should be able to update most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa].
+* finally you should be able to update/upgrade most packages to a more recent (unstable) version. If you miss some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa].
