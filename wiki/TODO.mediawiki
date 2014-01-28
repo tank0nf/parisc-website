@@ -17,7 +17,7 @@ title: TODO
 * More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 
 == Status & TODO 2014-01-17 (TODO-List by Helge Deller) ==
-* test xorriso
+* test xorriso (Thomas Schmitt, scdbackup)
 * sticon font problem, mail from 27.01.2014: -#ifdef CONFIG_FONTS +#ifdef CONFIG_FONT_SUPPORT
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
