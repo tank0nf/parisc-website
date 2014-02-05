@@ -68,7 +68,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 == External Resources ==
 
 * http://www.parisc-linux.org/ - The (former) official PA-RISC/Linux website
-* http://wiki.parisc-linux.org/ - The official PA-RISC/Linux Wiki
 * http://www.pateam.org/ - The PA/Linux ESIEE Team
 * http://www.debian.org/ports/hppa/ - Debian HPPA port page
 * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
