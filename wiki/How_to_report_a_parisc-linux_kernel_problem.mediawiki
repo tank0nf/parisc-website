@@ -7,14 +7,12 @@ title: How to report a parisc-linux kernel problem
 == Introduction ==
 
 We often get bug reports on the 
-[[parisc-linux mailing list]] about problems people have with their kernels. This document
+[[Mailing_lists|parisc linux mailing list]] about problems people have with their kernels. This document
 attempts to point out what is the minimal amount of information
 that needs to be included in order for the kernel developers to
 be able to try to track down the problem.<br> <br>
 If you have never posted questions/bug reports to a mailing
 list before, you '''must read''' [[How-To Ask Smart Questions]] first.
-
-
 
 == The Basics ==
 
