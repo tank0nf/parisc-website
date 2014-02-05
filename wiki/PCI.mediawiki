@@ -78,7 +78,6 @@ The workstations all used a hybrid "Legacy PDC" that could also support
 Elroy incorporates an [[IO-SAPIC]] and a separate iosapic driver deals with
 IRQ routing and delivery at run-time.
 
-
 == Mercury with PAT PDC ==
 
 Mercury is a PCI-X 1.0 controller with a programming model essentially compatible
