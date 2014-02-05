@@ -19,9 +19,9 @@ Also keep an eye on the [[hotspots]] and the available TestCases
 ** So far there is only basic framebuffer support via stifb. Lack of manuals/time.
 * Full HP-UX support
 ** Right now only a very poor level of compatibility is provided. Actually it is possible that even this will be removed in the future; support for executing HP-UX binaries is difficult to do, and some things like HP-UX style threads will never work on linux.
+** Note: HP-UX compatibility was dropped with kernel 3.14 since we defined EWOULDBLOCK == EAGAIN to better support Linux userspace apps.
 * HP-PB bus and HP-PB cards
 ** This bus system and type of cards are mainly used on old HP9000/800 servers. Much of the programming manuals are not available, and since there is not much demand to support such old machines progress for these devices is almost non-existent (although some brave souls have been seen hacking on them from time to time)
-* PA-8800 and PA-8900 support - the current kernel is quite unstable on these machines. The problem appears to have to do with cache management.
 * ccio and ncr53c8xx (ncr53c720) - apparently not 64 bit clean
 * ns87415 - DMA support doesn't seem to work (transfer speeds <=3MB/s)
 * snd_ad1889 - playing music with alsa native interface produces garbled sound, OSS emu does work however. This is because alsa native use mmap on the device, which parisc-linux doesn't support (yet).
@@ -30,9 +30,6 @@ Also keep an eye on the [[hotspots]] and the available TestCases
 * LBA version TR4.0 (0x5) found at 0xfffffffffed3c000 allocation failed: out of vmalloc space - use vmalloc=<size> to increase size.
 * PCI-to-PCI bridge issue (loop in `/proc/iomem` `/proc/ioports`)
 * Builtin Tulip failing autoneg
-* Figure out why PA-8800 userspace is broken.
-* Freeing unused kernel memory: BUG: warning at arch/parisc/kernel/smp.c:348/smp_call_function()
-* On pa8800: {{{parisc_cache_init: Only equivalent aliasing supported!}}}
 * The "Ctrl-C" bug
 
 == Broken Device Drivers and File Systems ==
@@ -41,8 +38,6 @@ Hardware drivers, networking support, file systems etc. that are expected to wor
 
 * matroxfb - 64 bit kernel issue: screen stays black, i.e. graphics card is not properly initialized  <-- HAS THIS BEEN FIXED?
 * Promise IDE P-ATA controller (PDC202XX_NEW) - DMA issues, but booting with 'nodma' works. Try a siimage controller if you really need IDE.
-* --(XFS seems to be broken (heavy filesystem corruption))-- Fixed by James Bottomley with this [[http://article.gmane.org/gmane.linux.kernel.cross-arch/4364|patchset]]
-
 
 == PTE/TLB issues ==
 
@@ -85,37 +80,17 @@ page fault (cpu1)
 It may be possible to use locking to ensure that purges aren't lost.  However,
 this is a bit tricky...
 
-== SMP perf / cache issue ==
-
-We must keep track of these:
-
-http://lists.parisc-linux.org/pipermail/parisc-linux/2005-October/027547.html
- <nowiki>
-<kyle> there's no doubt we flush too much.
-<jejb> There was a 50% speed up in the UP case when I removed the excess flushing ... that's in the archives too
- </nowiki>
-http://linux-voyager.bkbits.net:8080/parisc-noflush-2.6/?PAGE=patch&REV=1.1371.687.11
- <nowiki>
-<ggg> willy: chada thinks we are missing an i-cache flush someplace...aliasing rules might clear the d-cache but not clear the i-cache on pa8800.
- </nowiki>
-
-
 == Other Missing Features (related to palo, glibc, userspace etc.) ==
-
 
 '''''PA-hackers, please check whether the following list is up to date'''''
 
 Other items that do not fit into the other sections ...
 
-* signal handling bug - in some cases signals appears to be dropped silently, or delivered to the wrong process.
-* interrupt delivery bug?
-* interrupt affinity bug (maybe both are related), see [[http://article.gmane.org/gmane.linux.ports.parisc/2808|this thread]]
 * 64 bit userland, missing bits:
 ** 64 bit binutils that will build DSO's
 ** 64 bit glibc
 ** Multiple stub sections for the 64 bit linker.
 * Low latency
-* Preempt
 * XFree86/X.org BIOS init emulation support
 * CPU hotplug
 * HugeTLB page support
