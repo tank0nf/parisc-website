@@ -1,0 +1,73 @@
+---
+title: VirtualMemorySubsystem
+---
+
+= Virtual Memory =
+
+If you don't feel very comfortable with the Linux Virtual Memory Management, you might want to take a look here: http://www.informit.com/articles/article.asp?p=336868
+This article explain the general concepts underlying the way Linux deals with Virtual Memory (VM).
+
+== Page Tables ==
+
+Currently, only 4k pages are supported.
+
+PA-RISC Linux uses different page table layouts for 32-bit vs 64-bit kernels.
+
+On 32-bit, the page table has 2 levels. We use 9 bits to index the Page Table Entry (PTE), 0 bits for the Page Middle Directory (PMD), and 11 bits to index the Page Global Directory (PGD).
+
+On 64-bit, the page table has 3 levels. We use 9 bits to index the PTE, 11 bits to index the PMD, and 11 bits to index the PGD.
+
+A hybrid approach is used to optimize page table lookups for processes that address <4GB of memory -- the PGD is allocated together with the first PMD for the process. The PGD/PMDs are sized so that if the Virtual Address (VA) is <4GB, the PMD can be located by doing an offset-load from the PGD, instead of an extra level of pointer dereference.
+
+An additional trick is used to reduce the amount of memory required to store the PMD/PTE pointers in the page table. This also has the advantage of making the code paths for 32-bit and 64-bit kernels more similar because they always use pointers of the same size -- PMD/PTE pointers are always stored in a 32-bit pointer. We take advantage of the fact that in a 64-bit PMD/PTE pointer, the lower 12 bits (offset) are always zero. Normally these bits are used to store some page flags. In the case of the PMD/PTE pointers, we do not need the full set of page flags, so only 4 bits are reserved for flags. This means that we can right-shift a PMD/PTE pointer by 8 bits before storing it into the PGD/PMD. This allows us to address 40 bits (1TB) of physical space with a 32-bit pointer.
+
+== VM Initialization ==
+
+DeviceInventory during bootup creates a physical memory map of the system. For each memory region, the starting physical address and the extent are saved to `pmem_ranges`. 
+
+If `CONFIG_DISCONTIGMEM` is not set, then only the first of these memory regions will be initialized, and a linear `mem_map` is used.  Otherwise, if DiscontiguousMemorySupport is enabled, multiple "nodes" are created to represent each of the memory regions. 
+
+TODO: Put something here about vmalloc space is allocated on parisc?
+
+A gateway page is also initialized during VM initialization. The page is not mapped into userspace,
+but instead resides in kernel space (sr2) at address 0x0. During the initialization process the page is
+copied from the kernel text address 'linux_gateway_page' into place at address 0x0. All references in that gateway page must be relocatable and hence PIC in some way. The page is used for raising the priority
+of a process during kernel entry for syscalls, light-weight-syscalls, and setting the thread register (NOTE: Technically setting the thread register should have been a light-weight-syscall but it was fixed
+as part of the ABI before LWS was available).
+
+== Page Fault Handling ==
+
+`TODO`
+
+== translation_exists() ==
+
+PA-RISC is a '''VIPT''' architecture, so that would ordinarily entail a lot of
+cache flushing through process spaces for shared pages.  However, we use
+an optimisation of making all user space shared pages congruent, so
+flushing a single one makes the cache coherent for all the others (this
+is also a cache usage optimisation).
+
+So, what our `flush_dcache_page()` does is it selects the first user page
+it comes across to flush knowing that flushing this is sufficient to
+flush all the others.
+
+Unfortunately, there's a catch: the page we're flushing must have been
+mapped into the user process (not guaranteed even if the area is in the
+vma list) otherwise the flush has no effect (a VIPT cache flush must
+know the translation of the page it's flushing), so we have to check the
+validity of the translation before doing the flush.
+
+On parisc, if we try to flush a page without a translation, it's picked
+up by our software ''tlb miss handlers'', which actually nullify the
+instruction (but since we have to flush a page as a set of non
+interlocking cache line flushes [about 128 of them per page with a cache
+width of 32]) and the tlb handler is invoked for every flush instruction
+(because the translation continues not to exist) it makes that flush
+operation extremely slow. (128 interruptions of the execution stream per
+flush)
+
+So, the uses of `translation_exists()` are threefold
+
+ 1. Make sure we execute `flush_dcache_page()` correctly (rather than executing a flush that has no effect)
+ 1. Optimise single page flushing: don't excite the tlb miss handlers if there's no translation
+ 1. Optimise pte lookup (that's why `translation_exists()` returns the pte pointer); since we already have to walk the page tables to answer the question, the return value may as well be the pte entry or `NULL` rather than true or false.
