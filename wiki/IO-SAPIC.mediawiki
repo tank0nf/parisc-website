@@ -14,14 +14,14 @@ Signaled Interrupt'' (aka ''Transaction Based Interrupt'', TBI).
 
 == Acronyms ==
 
- HPA:: Hard Physical Address (aka MMIO address)
- IRQ:: Interrupt Re``Quest. Implies Line based interrupt.
- IRT:: Interrupt Routing Table (provided by PAT firmware)
- IRdT:: Interrupt Redirection Table. IRQ line to TXN ADDR/DATA table which is implemented in I/O SAPIC.
- ISR:: Interrupt Service Routine. aka Interrupt handler.
- MSI:: Message Signaled Interrupt. PCI 2.2 functionality. aka Transaction Based Interrupt (or TBI).
- PA:: Precision Architecture. HP's RISC architecture.
- RISC:: Reduced Instruction Set Computer.
+* HPA:: Hard Physical Address (aka MMIO address)
+* IRQ:: Interrupt Re``Quest. Implies Line based interrupt.
+* IRT:: Interrupt Routing Table (provided by PAT firmware)
+* IRdT:: Interrupt Redirection Table. IRQ line to TXN ADDR/DATA table which is implemented in I/O SAPIC.
+* ISR:: Interrupt Service Routine. aka Interrupt handler.
+* MSI:: Message Signaled Interrupt. PCI 2.2 functionality. aka Transaction Based Interrupt (or TBI).
+* PA:: Precision Architecture. HP's RISC architecture.
+* RISC:: Reduced Instruction Set Computer.
 
 == What's a Message Signalled Interrupt? ==
 
