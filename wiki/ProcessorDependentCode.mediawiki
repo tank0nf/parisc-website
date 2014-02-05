@@ -16,5 +16,5 @@ PDC comes in several flavours, that behaves differently when dealing with device
 
 == Code Documentation ==
 
- * PdcChassis / PdcChassisLog
- * PdcStableStorage
+* [[PdcChassis]] / [[PdcChassisLog]]
+* [[PdcStableStorage]]
