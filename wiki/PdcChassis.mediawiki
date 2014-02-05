@@ -7,9 +7,9 @@ title: PdcChassis
 We are dealing with some kind of PA-RISC specific firmware: the ProcessorDependentCode (PDC).
 
 Files:
-* `include/asm-parisc/pdc_chassis.h`
-* `arch/parisc/kernel/pdc_chassis.c`
-* `arch/parisc/kernel/firmware.c`
+* include/asm-parisc/pdc_chassis.h
+* arch/parisc/kernel/pdc_chassis.c
+* arch/parisc/kernel/firmware.c
 
 == What is PDC CHASSIS ==
 
@@ -20,7 +20,7 @@ The `CHASSIS` PDC procedure aims at two things:
 
 The first part consists in sending the PDC some messages reflecting the current state of the system. Messages can be one of ''Off'', ''Fault'', ''Test'', ''Initialize'', ''Shutdown'', ''Warning'', ''Run'' or ''All On''. The second part allows the retrieval of chassis status. It's possible to get data about failing PSU, Fan or other (encoded in a HVERSION-dependent way), and to know whether NVRAM battery is getting low, and if ''Temp-Low'' and ''Temp-Mid'' temperature threshold have been exceeded.
 
-On `PAT PDC` boxes, featuring a GuardianServiceProcessor, it is possible to send messages to the VirtualFrontPanel. This code deals with that too, see PdcChassisLog.
+On `PAT PDC` boxes, featuring a [[GuardianServiceProcessor]], it is possible to send messages to the VirtualFrontPanel. This code deals with that too, see PdcChassisLog.
 
 == What are we trying to do? ==
 
@@ -44,7 +44,7 @@ We had to implement the missing abstraction logic in `firmware.c` to access Chas
 | This call retrieves the chassis status in `*warn`
 |}
 
-The `PAT_PDC` implementation is discussed in PdcChassisLog.
+The `PAT_PDC` implementation is discussed in [[PdcChassisLog]].
 
 === Linking kernel events to messages ===
 
@@ -67,4 +67,4 @@ We have added panic and reboot notifiers in `pdc_chassis.c`; and we have added a
 
 == Kernel parameter ==
 
-Last but not least, if enabled at build time in the kernel, this "driver" -- so to speak -- can be disabled at boot time by passing `pdcchassis=0` on the kernel command line. This is especially useful on GSP-featuring machines, when debugging the kernel during the boot sequence, as it avoids the console to be clobbered with informative messages from the VirtualFrontPanel.
+Last but not least, if enabled at build time in the kernel, this "driver" -- so to speak -- can be disabled at boot time by passing `pdcchassis=0` on the kernel command line. This is especially useful on [[GuardianServiceProcessor -featuring]] machines, when debugging the kernel during the boot sequence, as it avoids the console to be clobbered with informative messages from the VirtualFrontPanel.
