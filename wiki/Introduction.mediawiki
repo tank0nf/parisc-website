@@ -1,0 +1,15 @@
+---
+title: Introduction
+---
+
+= The PA-RISC/Linux Project =
+
+== What is it? ==
+
+PA-RISC is the proprietary HP RISC processor architecture originally designed for HP-UX. Project to run Linux on these machines started in October 1998. Linux first booted on PA-RISC on 25 June 1999. The PA-RISC LinuxKernel is now integrated into 2.6 mainline (the parisc git tree is [[http://git.kernel.org/?p=linux/kernel/git/kyle/parisc-2.6.git;a=summary|here]]). 2.4 is nonetheless way out of sync with mainline (you need to use the [[http://cvs.parisc-linux.org/download/linux-2.4/|CVS snapshot]] to build it). Two linux [[Distributions]] now support PA-RISC: Debian (since woody 3.0, released) and Gentoo (experimental). PA-RISC linux is not officially supported by HP.
+
+== How does it work? ==
+
+Palinux describes the project for getting Linux running on the PA-RISC processor. There are two elements: The LinuxKernel which supports the hardware and the user applications. A third piece is the boot loader (also known as PALO, the equivalent of LILO) which is part of the BootingSystem. 
+
+You can find more information about the PA-RISC architecture at http://www.openpa.net/
