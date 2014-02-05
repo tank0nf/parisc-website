@@ -5,41 +5,43 @@ title: Hall of Fame
 = CONTRIBUTORS =
 
 These brave souls have either submitted code or ideas to the PA-RISC Linux project so far. Sorted alphabetically by family name.
+People who have contributed a lot are marked bold. If you are missing here, please let us know.  
 
-* Michael Ang [mailto:mang@subcarrier.org mang@subcarrier.org]<br />
-* J. David Anglin [mailto:dave.anglin@nrc.ca dave.anglin@nrc.ca]<br />
-* Paul Bame [mailto:bame@parisc-linux.org bame@parisc-linux.org]<br />
+* Michael Ang [mailto:mang@subcarrier.org mang@subcarrier.org]
+* '''John David Anglin [mailto:dave.anglin@nrc.ca dave.anglin@nrc.ca]''' - Kernel, Toolchain, Userspace, Debian packages,  ...
+* '''Paul Bame [mailto:bame@parisc-linux.org bame@parisc-linux.org]''' - Palo, various
 * Christopher Beard [mailto:chris@tholm.org chris@tholm.org]<br />
-* Thomas Bogendörfer [mailto:tsbogend@alpha.franken.de tsbogend@alpha.franken.de]<br />
-* Ryan Bradetich [mailto:rbradetich@uswest.net rbradetich@uswest.net]<br />
-* Stuart Brady [mailto:sdbrady@ntlworld.com sdbrady@ntlworld.com]<br />
-* James Braid [mailto:james.braid@peace.com james.braid@peace.com]<br />
-* Laurent Canet [mailto:canetl@esiee.fr canetl@esiee.fr]<br />
-* Randolph Chung [mailto:randolph@tausq.org randolph@tausq.org]<br />
-* Alan Cox [mailto:alan@redhat.com alan@redhat.com]<br />
-* Xavier Debacker [mailto:debackex@esiee.fr debackex@esiee.fr]<br />
-* Matthieu Delahaye [mailto:delahaym@esiee.fr delahaym@esiee.fr]<br />
-* Helge Deller [mailto:deller@gmx.de deller@gmx.de]<br />
-* Alex deVries [mailto:alex@linuxcare.com alex@linuxcare.com]<br />
-* Ulrich Drepper [mailto:drepper@cygnus.com drepper@cygnus.com]<br />
-* Jason Eckhardt [mailto:jle@redhat.com jle@redhat.com]<br />
-* Bdale Garbee [mailto:bdale@gag.com bdale@gag.com]<br />
-* Grant Grundler [mailto:grundler@parisc-linux.org grundler@parisc-linux.org]<br />
-* Richard Hirst [mailto:rhirst@linuxcare.com rhirst@linuxcare.com]<br />
-* David Huggins-Daines [mailto:dhd@eradicator.org dhd@eradicator.org]<br />
-* Lamont Jones [mailto:lamont@debian.org lamont@debian.org]<br />
-* David Kennedy[mailto:dkennedy@linuxcare.com dkennedy@linuxcare.com]<br />
-* Paul Lahaie [mailto:pjlahaie@steamballoon.com pjlahaie@steamballoon.com]<br />
-* Thomas Marteau [mailto:marteaut@tuxfamily.org marteaut@tuxfamily.org]<br />
-* John Marvin [mailto:john_marvin@hp.com john_marvin@hp.com]<br />
-* Kyle McMartin [mailto:kyle@debian.org kyle@debian.org]<br />
-* Alan Modra [mailto:amodra@bigpond.net.au amodra@bigpond.net.au]<br />
-* Clement Moyroud [mailto:moyroudc@esiee.fr moyroudc@esiee.fr]<br />
-* Carlos O'Donell [mailto:carlos@baldric.uwo.ca carlos@baldric.uwo.ca]<br />
+* '''Thomas Bogendörfer [mailto:tsbogend@alpha.franken.de tsbogend@alpha.franken.de]''' - Kernel, graphics, drivers, ...
+* Ryan Bradetich [mailto:rbradetich@uswest.net rbradetich@uswest.net]
+* Stuart Brady [mailto:sdbrady@ntlworld.com sdbrady@ntlworld.com]
+* James Braid [mailto:james.braid@peace.com james.braid@peace.com]
+* Laurent Canet [mailto:canetl@esiee.fr canetl@esiee.fr]
+* '''Randolph Chung [mailto:randolph@tausq.org randolph@tausq.org]''' - Kernel, various
+* Alan Cox [mailto:alan@redhat.com alan@redhat.com]
+* Xavier Debacker [mailto:debackex@esiee.fr debackex@esiee.fr]
+* Matthieu Delahaye [mailto:delahaym@esiee.fr delahaym@esiee.fr]
+* '''Helge Deller [mailto:deller@gmx.de deller@gmx.de]''' - Kernel, drivers, Userspace, Debian build server maintainer
+* Alex deVries [mailto:alex@linuxcare.com alex@linuxcare.com]
+* Ulrich Drepper [mailto:drepper@cygnus.com drepper@cygnus.com]
+* Jason Eckhardt [mailto:jle@redhat.com jle@redhat.com]
+* Bdale Garbee [mailto:bdale@gag.com bdale@gag.com]
+* '''Grant Grundler [mailto:grundler@parisc-linux.org grundler@parisc-linux.org]''' - Kernel, drivers, Userspace, ...
+* Richard Hirst [mailto:rhirst@linuxcare.com rhirst@linuxcare.com]
+* David Huggins-Daines [mailto:dhd@eradicator.org dhd@eradicator.org]
+* Lamont Jones [mailto:lamont@debian.org lamont@debian.org] - Debian
+* David Kennedy[mailto:dkennedy@linuxcare.com dkennedy@linuxcare.com]
+* Paul Lahaie [mailto:pjlahaie@steamballoon.com pjlahaie@steamballoon.com]
+* '''Dave Land [mailto:xmechanic@landcomp.net xmechanic@landcomp.net]''' - Debian buildd server owner, maintenance, Website, ...
+* Thomas Marteau [mailto:marteaut@tuxfamily.org marteaut@tuxfamily.org]
+* John Marvin [mailto:john_marvin@hp.com john_marvin@hp.com]
+* '''Kyle McMartin [mailto:kyle@debian.org kyle@debian.org]''' - Kernel, drivers, various
+* Alan Modra [mailto:amodra@bigpond.net.au amodra@bigpond.net.au]
+* Clement Moyroud [mailto:moyroudc@esiee.fr moyroudc@esiee.fr]
+* '''Carlos O'Donell [mailto:carlos@baldric.uwo.ca carlos@baldric.uwo.ca]''' - Toolchain, Userspace
 * Martin Petersen [mailto:mkp@mkp.net mkp@mkp.net]<br />
-* Christoph Plattner [mailto:christoph.plattner@gmx.at christoph.plattner@gmx.at]<br />
-* Philipp Rumpf [mailto:prumpf@tux.org prumpf@tux.org]<br />
-* Phil Schwan [mailto:phil@off.net phil@off.net]<br />
-* Matt Taggart [mailto:taggart@fc.hp.com taggart@fc.hp.com]<br />
-* Thibaut Varene [mailto:varenet@parisc-linux.org varenet@parisc-linux.org]<br />
+* Christoph Plattner [mailto:christoph.plattner@gmx.at christoph.plattner@gmx.at]
+* '''Philipp Rumpf [mailto:prumpf@tux.org prumpf@tux.org]''' - Kernel, drivers, various
+* Phil Schwan [mailto:phil@off.net phil@off.net]
+* Matt Taggart [mailto:taggart@fc.hp.com taggart@fc.hp.com]
+* '''Thibaut Varene [mailto:varenet@parisc-linux.org varenet@parisc-linux.org]''' - Kernel, drivers, Website, Wiki, ...
 * Matthew Wilcox [mailto:matthew@wil.cx matthew@wil.cx]
