@@ -1,0 +1,92 @@
+---
+title: AD1889
+---
+
+= AD1889 Driver =
+
+What are we talking about (give related wiki links).
+We are dealing here with a special kind of drivers, namely [[http://www.alsa-project.org|ALSA]] device drivers.
+
+Files:
+* sound/pci/ad1889.c
+* sound/pci/ad1889.h
+
+This driver is being developed by KyleMcMartin and ThibautVarene.
+
+== What is AD1889 ==
+
+What does it refer to (from a hw/sw point of view).
+
+Analog Devices AD1889 PCI SoundMAX Controller is yet another Sucky``Chip, which HP seemingly bought the wholesale, and which is very poorly documented and probably a bit buggy as well.
+
+The audio system is in fact made of two parts: the [[http://ftp.parisc-linux.org/docs/chips/AD1889.pdf|AD1889]] chip, which handles the interfacing to the PCI host bus, the DMA transfers and primary operations on the streams (resampling, digital mixing, OPL3), and ACPI; and the AC97 codec attached to it (an [[http://ftp.parisc-linux.org/docs/chips/AD1819.pdf|AD1819]]), which handles the actual audio stream output/input (DAC/ADC conversions), special effects ("3D" emphasis) and loopback (line in -> line out).
+
+It's also worth mentioning that the codec is wired in its own special way, the available I/O are:
+* Line IN
+* Line OUT
+* Headphones
+* Mic
+
+''Headphones'' is basically an amplified ''Line OUT'', and both volumes can only be controled using '''Master''' volume. The internal speaker volume is controled by '''Master Mono'''. ''Line IN'' is hooked to the '''Line''' knob.
+
+The AD1889 chip has four DMA channels:
+* WAVE:: that's the main output channel to the AC97 DAC. Knobs: Sample rate, format, attenuation, mute.
+* ADC:: that's the AC97 ADC input. Knobs: format. Sample rate is controlled directly by the AC97 codec.
+* SYN:: that's a second output channel. Knobs: attenuation, mute. Enabling this appears to disable the OPL3 synthesiser.
+* RES:: that's a second input channel. Knobs: Sample rate. The source can be the OPL3, or the SYN channel. 
+
+During normal basic operation, the stream sent to the AC97 codec DAC is internally resampled to the codec's native rate of 48kHz.
+
+== What are we trying to do? ==
+
+What does the code do?
+
+The goal of this driver is to provide the glue to the AD1889 chip for the ALSA layer, so that it can be used as any other audio device on a Linux system. Given it's a PCI device, we have to keep in mind specifics about the PA-RISC [[PCI]] implementation and [[IO-MMU]].
+
+For now we provide support for '''full duplex''' playback (WAVE output) with Various Sample Rate (VSR) support, mono/stereo 8/16bit, and capture (ADC input) at fixed sample rate (48kHz), mono/stereo, 8/16bit.
+
+== How do we do it? ==
+
+Here we detail special hat-tricks.
+
+In alsa terminology, the ALSA layer declares the maximum size of the DMA channel as "''buffer size''", then, in that maximum memory area, it allocates chunks known as "''periods''". What we do in the whole process, is that we switch from a period to the next one.
+
+The base address of the DMA stream is loaded in the '''Address''' counters, the ALSA buffer size is loaded into the '''Count''' registers, and the ALSA period size is loaded into the '''Interrupt Count''' registers (we load both '''Base''' and '''Current''' registers at once). When using '''Interrupt on Count''' and '''DMA Loop''' as we do, the '''Base''' values are automatically loaded by the AD1889 hardware into the '''Current''' counters when these reach 0 (they keep track of how many bytes have been transfered). When the '''Interrupt Current Count''' register reaches 0, an IRQ is generated, so basically we're generating an interrupt period after period.
+
+In the interrupt handler, the only thing we have to do is to call `snd_pcm_period_elapsed()` since we don't have to reprogram any register as the buffer size doesn't change for a given stream, nor does the base address or the period size. The hardware will read the whole DMA buffer, generating interrupts after each period, and then automatically loop back when the end of the buffer has been reached.
+
+This approach has also the advantage of solving the problem that the DMA accesses for one period go beyond the buffer when the number of periods per buffer is not an integer.
+
+----
+
+'''That driver has been successfully tested on PA-RISC and PowerPC architectures.'''
+
+== Bugs & Issues ==
+
+=== Mixer Sliders Wrapping ===
+
+All sliders (aside the Master ones) wrap around at 50%. It's actually quite strange because these sliders control the AC97 codec which is well documented (it's an AD1819), and which is out of the scope of this driver (we don't implement our own mixer). Actually, this is handled directly by the ALSA layer. So maybe the hardware is not compliant with the specs, or maybe there's some knob missing, yet, it didn't seem to me like a big deal :)
+
+For the curious people, the difference between the "Master" knobs and the others, according the the AD1819 codec doc, is that Masters range from 0 to -46.5dB as the value written to register goes from `0x0000` to `0x1F1F` (left is bits 13-8, right is 5-0), and any bigger value doesn't change the attenuation.
+
+For the other knobs, otoh, the range is +12dB to -34.5dB for left/right, with the following scheme: `0x0000` is +12dB, `0x0808` is 0dB and `0x1F1F` is -34.5dB. What seems to happen in our case, is that the hardware doesn't implement the "gain" range, contrary to what the doc says.
+
+------
+'''Only affecting PA-RISC''' (and unrelated to this driver):
+
+Doing `Ctrl-C` when playing a track with eg. `mpg123` can panic the kernel. This bug is a hard one, and needs tracking.
+
+== TODO ==
+
+* Maybe we could use finer grained locking (separate locks for pb/cap)
+* Do we need to care about CCS register?
+* Can we fix the sliders wrapup without being ugly?
+
+== Whishlist ==
+
+* Control Interface (mixer) support
+* Better AC97 support? (eg disabling unwired channels)
+* PM support
+* MIDI support
+* Game Port support
+* SG DMA support (this will need *alot* of work)
