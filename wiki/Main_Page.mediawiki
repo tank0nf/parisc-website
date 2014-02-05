@@ -62,8 +62,11 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * [[TODO]]
 * [[Debian_Buildpackages]] - How to build packages for debian?
 
-== Technical Documentation ==
-* [[Technical Documentation]]
+== Documentation ==
+* [[Technical Documentation]] - hardware and platform documents
+* [[LinuxKernel]] - Implementation details of Linux kernel on parisc
+* [[Debian Buildpackages]] - how to build debian packages for parisc
+* [[TestCases]] - To be checked testcases which produced problems in the past
 
 == External Resources ==
 
