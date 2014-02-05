@@ -2,6 +2,8 @@
 title: Mailing lists
 ---
 
+== PA-RISC Linux Kernel mailing list ==
+
 The [mailto:linux-parisc@vger.kernel.org linux-parisc@vger.kernel.org] mailing list exists to serve PA-RISC developers and developement
 communities closely tied to them. This primarily (but not exclusively)
 means linux kernel, gcc, binutils, and glibc work.
@@ -22,4 +24,14 @@ To subscribe, please mail [mailto:majordomo@vger.kernel.org majordomo@vger.kerne
 ## Read 	[[How to report a parisc-linux kernel problem]]
 ## If you want to guess what the problem is, please include a patch.
 
-'''Really.''' Read the above stuff at least once. It tells you what we need to know to help and how to communicate that information.
+'''Really: Read the above stuff at least once. It tells you what we need to know to help and how to communicate that information.'''
+
+== PA-RISC Debian mailing list ==
+
+The [mailto:debian-hppa@lists.debian.org debian-hppa@lists.debian.org] mailing list exists to answer and discuss PA-RISC developement issues for Debian on the PA-RISC architecture.
+
+An archive is available at gmane.org at [http://blog.gmane.org/gmane.linux.debian.ports.hppa http://blog.gmane.org/gmane.linux.debian.ports.hppa].
+
+== PA-RISC Gentoo mailing list ==
+
+See http://www.gentoo.org/proj/en/base/hppa for details to contact Gentoo developers.
