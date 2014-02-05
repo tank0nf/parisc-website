@@ -1,0 +1,125 @@
+---
+title: KnownIssues
+---
+
+= Known Issues with the PA-RISC Linux Kernel =
+
+This page lists known limitations of the current implementation of the PA-RISC Linux '''kernel'''. If not mentioned otherwise, this list applies to the latest GIT version (at the time of this writing this means version 2.6.22-rc2).
+Please note that this list is likely to be incomplete and is NOT meant to be a [[TODO]] or "wanted features" page! BTW, if you think you have found a bug not listed here then please report it to the PA-RISC Linux mailing list.
+
+Some of the issues described here might never be resolved, partly due to the fact that documentation is unavailable/missing, it would not fit with the current kernel design or there is simply lack of manpower.
+
+Also keep an eye on the [[hotspots]] and the available TestCases
+
+== Missing/Incomplete PA-RISC specific Drivers ==
+
+  * VisualizeFX graphics cards
+    No graphics support written, cards can only be used in text mode via the sticon driver. There is interest in a driver being written, but because no programming documentation has been released by HP this will be a difficult task.
+  * Accelerated X11 support for Visualize-EG graphics cards
+    So far there is only basic framebuffer support via stifb. Lack of manuals/time.
+  * Full HP-UX support
+    Right now only a very poor level of compatibility is provided. Actually it is possible that even this will be removed in the future; support for executing HP-UX binaries is difficult to do, and some things like HP-UX style threads will never work on linux.
+  * HP-PB bus and HP-PB cards
+    This bus system and type of cards are mainly used on old HP9000/800 servers. Much of the programming manuals are not available, and since there is not much demand to support such old machines progress for these devices is almost non-existent (although some brave souls have been seen hacking on them from time to time)
+  * PA-8800 and PA-8900 support - the current kernel is quite unstable on these machines. The problem appears to have to do with cache management.
+  * ccio and ncr53c8xx (ncr53c720) - apparently not 64 bit clean
+  * ns87415 - DMA support doesn't seem to work (transfer speeds <=3MB/s)
+  * snd_ad1889 - playing music with alsa native interface produces garbled sound, OSS emu does work however. This is because alsa native use mmap on the device, which parisc-linux doesn't support (yet).
+  * EISA DMA support is not implemented yet
+
+ * {{{LBA version TR4.0 (0x5) found at 0xfffffffffed3c000
+allocation failed: out of vmalloc space - use vmalloc=<size> to increase size.}}}
+ * PCI-to-PCI bridge issue (loop in `/proc/iomem` `/proc/ioports`)
+ * Builtin Tulip failing autoneg
+ * Figure out why PA-8800 userspace is broken.
+ * {{{Freeing unused kernel memory: BUG: warning at arch/parisc/kernel/smp.c:348/smp_call_function()}}}
+ * On pa8800: {{{parisc_cache_init: Only equivalent aliasing supported!}}}
+ * The "Ctrl-C" bug
+
+== Broken Device Drivers and File Systems ==
+
+Hardware drivers, networking support, file systems etc. that are expected to work on all supported architectures of the Linux kernel, but don't function properly on PA-RISC Linux:
+
+  * matroxfb - 64 bit kernel issue: screen stays black, i.e. graphics card is not properly initialized  <-- HAS THIS BEEN FIXED?
+  * Promise IDE P-ATA controller (PDC202XX_NEW) - DMA issues, but booting with 'nodma' works. Try a siimage controller if you really need IDE.
+
+  * --(XFS seems to be broken (heavy filesystem corruption))-- Fixed by James Bottomley with this [[http://article.gmane.org/gmane.linux.kernel.cross-arch/4364|patchset]]
+
+
+== PTE/TLB issues ==
+
+Quoting [[http://article.gmane.org/gmane.linux.ports.parisc/2814|James David Anglin]]:
+
+1) minifail bug
+
+As previously identified, there is a cache flush problem in ptep_set_wrprotect.
+I did a kernel build with a "`WARN_ON(pte_present(old_pte) && pte_dirty(old_pte)`" in `ptep_set_wrprotect` an it triggered immediately.  So, we have to deal with
+a dirty cache in `ptep_set_wrprotect`.  As far as I can tell, this problem
+is fixed by putting the flush inside `preempt_disable()/preempt_enable()`.
+
+Helge is triggering other PTE issues when he runs multiple copies of
+minifail.  The minifail program fails on a UP system.  With the above fix,
+it doesn't fail.
+
+2) SMP page table entry corruption
+
+The needs to be a lock around pte updates to ensure that pte modifications
+are consistent on SMP machines.  I have done this and it helps stability
+on rp3440.
+
+3) SMP PTE/TLB consistency
+
+We are not purging existing translations when an update to a PTE value
+is done such as in `ptep_set_wrprotect`.  As a result, the parent of a fork
+doesn't immediately trigger a COW break on a page when a write occurs
+if there is an existing translation.
+
+Adding a TLB purge helps, but even this may be lost.  For example,
+
+{{{
+page fault (cpu1)
+ -> load old pte (cpu1)
+   -> store new pte (cpu2)
+     -> global tlb purge (cpu2)
+       -> insert old pte into tlb (cpu1)
+}}}
+
+It may be possible to use locking to ensure that purges aren't lost.  However,
+this is a bit tricky...
+
+== SMP perf / cache issue ==
+
+We must keep track of these:
+
+http://lists.parisc-linux.org/pipermail/parisc-linux/2005-October/027547.html
+{{{
+<kyle> there's no doubt we flush too much.
+<jejb> There was a 50% speed up in the UP case when I removed the excess flushing ... that's in the archives too
+}}}
+http://linux-voyager.bkbits.net:8080/parisc-noflush-2.6/?PAGE=patch&REV=1.1371.687.11
+{{{
+<ggg> willy: chada thinks we are missing an i-cache flush someplace...aliasing rules might clear the d-cache but not clear the i-cache on pa8800.
+}}}
+
+
+== Other Missing Features (related to palo, glibc, userspace etc.) ==
+
+
+'''''PA-hackers, please check whether the following list is up to date'''''
+
+Other items that do not fit into the other sections ...
+
+  * signal handling bug - in some cases signals appears to be dropped silently, or delivered to the wrong process.
+  * interrupt delivery bug?
+  * interrupt affinity bug (maybe both are related), see [[http://article.gmane.org/gmane.linux.ports.parisc/2808|this thread]]
+  * 64 bit userland
+    missing bits:
+    * 64 bit binutils that will build DSO's
+    * 64 bit glibc
+    * Multiple stub sections for the 64 bit linker.
+  * Low latency
+  * Preempt
+  * XFree86/X.org BIOS init emulation support
+  * CPU hotplug
+  * HugeTLB page support
+  * MSI/MSI-X PCI device support
