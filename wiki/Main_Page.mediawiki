@@ -28,6 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Feb 2014''' - The new parisc Wiki is now at http://parisc.wiki.kernel.org. Contents of the old Wiki at wiki.parisc-linux.org was moved here and the requests gets redirected now here.
 * '''Jan 2014''' - Updated Debian unstable install instructions. More than 8000 newly built native Debian packages available.
 * '''Dec 2013''' - 5 buildd servers for debian unstable online. Stable Debian kernel 3.12 available. 
 * '''Aug 2013''' - Linux kernel 3.11 supports C8000 workstation (SMP, serial port, FireGL card, BMC, ...)
