@@ -20,6 +20,7 @@ title: TODO
 * zeromq3 package: It's quite simple.  In spite of the fact that PTHREAD_THREADS_MAX is 1024, pthread_create fails after creating less than 40 threads.  It will do 10.
 
 == Status & TODO 2014-01-31 (TODO-List by Helge Deller) ==
+* why does mc hangs when exiting on sticon ?
 * crash via GSP, is everything visible (GSP reset?) 
 * test xorriso (Thomas Schmitt, scdbackup)
 * RIO: 0000:00:04.1: ttyS3 at MMIO 0xfffffffff8000030 (irq = 70, base_baud = 115200) is a 16550A
