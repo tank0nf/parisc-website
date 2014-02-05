@@ -1,0 +1,18 @@
+---
+title: Locks
+---
+
+PA-RISC provides a spartan set of atomic locking primitives; the two instructions 'LDCW' and 'LDCD' which load and zero (respectively) a 4 byte and 8 byte quantity.  The latter is only available in 64-bit mode and we don't have a use for it at the moment.  While this would be tricky enough, there is also the alignment restriction that they both operate on a 16-byte aligned address.
+
+We have tried a number of schemes in the past, such as tagging locks with the GCC extension {{{__attribute__((aligned(16)))}}}.  This fails when dealing with objects allocated on the stack; we are only guaranteed an 8-byte alignment for these.
+
+In the kernel, we can do without the alignment when running on a PA 2.0 processor as we know they relaxed the architectural requirement.  See [[http://lists.parisc-linux.org/pipermail/parisc-linux/2005-June/026670.html|Jim Hull's message]] for details.
+
+In glibc, things are more complex.  Not only do we want to support PA 1.1 processors which require the 16-byte alignment, we also want to support locks which have been initialised to 0 (with memset).  Here's the current scheme, sometimes called Lock-Equivalent Position Deferred:
+
+# Define locks to be an array of 4 words.  The ''Lock word'' is the word which is 16-byte aligned.  The ''Sentinel word'' is the first word of the array, unless the array is 16-byte aligned, in which case it is the second word.
+# To acquire a lock, first execute Load-and-Clear-Word on the ''lock word''.  If the contents were 1, we now have acquired the lock.  Return.
+# Load the value from the ''sentinel word''.  If it is non-zero, the lock has been initialised, so spin on the ''lock word''.
+# Use the CAS lightweight syscall to atomically set the ''sentinel word'' to a non-zero value
+# If we lost the race to initialise the lock, spin on the ''lock word''
+# If we successfully initialised the lock, set the other two words of the lock to a non-zero value, then return.
