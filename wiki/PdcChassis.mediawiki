@@ -7,16 +7,16 @@ title: PdcChassis
 We are dealing with some kind of PA-RISC specific firmware: the ProcessorDependentCode (PDC).
 
 Files:
- * `include/asm-parisc/pdc_chassis.h`
- * `arch/parisc/kernel/pdc_chassis.c`
- * `arch/parisc/kernel/firmware.c`
+* `include/asm-parisc/pdc_chassis.h`
+* `arch/parisc/kernel/pdc_chassis.c`
+* `arch/parisc/kernel/firmware.c`
 
 == What is PDC CHASSIS ==
 
 The `CHASSIS` PDC procedure aims at two things:
 
- 1. Informing the hardware of the current state of the operating system.
- 1. Informing the OS of the current state of the hardware.
+# Informing the hardware of the current state of the operating system.
+# Informing the OS of the current state of the hardware.
 
 The first part consists in sending the PDC some messages reflecting the current state of the system. Messages can be one of ''Off'', ''Fault'', ''Test'', ''Initialize'', ''Shutdown'', ''Warning'', ''Run'' or ''All On''. The second part allows the retrieval of chassis status. It's possible to get data about failing PSU, Fan or other (encoded in a HVERSION-dependent way), and to know whether NVRAM battery is getting low, and if ''Temp-Low'' and ''Temp-Mid'' temperature threshold have been exceeded.
 
@@ -32,10 +32,17 @@ It also adds a `proc` entry named `chassis`, giving some info about the chassis 
 
 We had to implement the missing abstraction logic in `firmware.c` to access Chassis. We had to add the required interfaces to PDC_CHASSIS calls:
 
-||||<tablewidth="100%">'''Interfaces (`firmware.c`)'''||
-|| '''Function''' || '''Role''' ||
-|| int pdc_chassis_disp(unsigned long disp) || This call sends the state expressed by `disp` PDC CHASSIS ||
-|| int pdc_chassis_warn(unsigned long *warn) || This call retrieves the chassis status in `*warn` ||
+{| class="wikitable"
+|-
+| '''Interfaces (`firmware.c`)'''
+| '''Function'''
+|-
+| int pdc_chassis_disp(unsigned long disp)
+| This call sends the state expressed by `disp` PDC CHASSIS
+|-
+| int pdc_chassis_warn(unsigned long *warn)
+| This call retrieves the chassis status in `*warn`
+|}
 
 The `PAT_PDC` implementation is discussed in PdcChassisLog.
 
