@@ -83,38 +83,38 @@ issue the ''End Of Interrupt'' command to the IO-SAPIC.
 
 (caveat: code isn't finished yet - this is just the plan)
 
-`iosapic_init`:
- * initialize globals (lock, etc)
- * try to read IRT. Presence of IRT determines if this is a PAT platform or not.
+;`iosapic_init`:
+: initialize globals (lock, etc)
+: try to read IRT. Presence of IRT determines if this is a PAT platform or not.
 
-`iosapic_register()`:
- * create `iosapic_info` instance data structure
- * allocate `vector_info` array for this iosapic
- * initialize `vector_info` - read corresponding IRdT?
+;`iosapic_register()`:
+: create `iosapic_info` instance data structure
+: allocate `vector_info` array for this iosapic
+: initialize `vector_info` - read corresponding IRdT?
 
-`iosapic_xlate_pin`: (only called by fixup_irq for PAT platform)
- * `intr_pin = read cfg (INTERRUPT_PIN);`
- * if (device under PCI-PCI bridge) 
-   * translate slot/pin
+;`iosapic_xlate_pin`: (only called by fixup_irq for PAT platform)
+: `intr_pin = read cfg (INTERRUPT_PIN);`
+: if (device under PCI-PCI bridge) 
+:: translate slot/pin
 
-`iosapic_fixup_irq`:
- * if PAT platform (IRT present)
-   * `intr_pin = iosapic_xlate_pin(isi,pcidev)`
-   * `intr_line = find IRT entry(isi, PCI_SLOT(pcidev), intr_pin)`
-   * save IRT entry into vector_info later
-   * write cfg `INTERRUPT_LINE` (with intr_line)?
- * else
-   * `intr_line = pcidev->irq`
-   * IRT pointer = `NULL`
- * endif
- * locate `vector_info` (needs: `isi, intr_line`)
- * allocate processor "irq" and get `txn_addr/data`
- * `request_irq(processor_irq,  iosapic_interrupt, vector_info,...)`
+;`iosapic_fixup_irq`:
+: if PAT platform (IRT present)
+:: `intr_pin = iosapic_xlate_pin(isi,pcidev)`
+:: `intr_line = find IRT entry(isi, PCI_SLOT(pcidev), intr_pin)`
+:: save IRT entry into vector_info later
+:: write cfg `INTERRUPT_LINE` (with intr_line)?
+: else
+:: `intr_line = pcidev->irq`
+::  IRT pointer = `NULL`
+: endif
+: locate `vector_info` (needs: `isi, intr_line`)
+: allocate processor "irq" and get `txn_addr/data`
+: `request_irq(processor_irq,  iosapic_interrupt, vector_info,...)`
 
-`iosapic_enable_irq`:
- * clear any pending IRQ on that line
- * enable IRdT - call `enable_irq(vector[line]->processor_irq)`
- * write EOI in case line is already asserted.
+;`iosapic_enable_irq`:
+: clear any pending IRQ on that line
+: enable IRdT - call `enable_irq(vector[line]->processor_irq)`
+: write EOI in case line is already asserted.
 
-`iosapic_disable_irq`:
- * disable IRdT - call `disable_irq(vector[line]->processor_irq)`
+; `iosapic_disable_irq`:
+: disable IRdT - call `disable_irq(vector[line]->processor_irq)`
