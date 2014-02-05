@@ -7,7 +7,7 @@ title: LinuxKernel
 == Kernel issues ==
 
 Nothing to brag about, but it's important, so let's keep it visible:
-Kernel [[hotspots]] and problems [[KnownIssues]].
+Kernel [[HotSpots]] and problems [[KnownIssues]].
 
 == Kernel flavours ==
 
