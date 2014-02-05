@@ -1,0 +1,97 @@
+---
+title: OLS PARISC BOF 2006
+---
+
+= OLS PARISC BOF 2006 =
+
+== BOF Topics ==
+
+1. PA8800
+
+2. NPTL Debugging
+
+3. State of the kernel
+
+4. tmpalias flushing
+
+5. Git
+
+6. H/W Support
+
+7. 64-bit Userspace
+
+8. Debian Etch
+
+=== 1. PA8800 ===
+
+* Random insn run.
+
+* 2 sockets HPMC (L2 Error?)
+
+* Logging TLB inserts?
+
+* sshd and telnetd are repeatable triggers
+
+* Make and Bash will sometimes segfault
+
+* Force prefetches?
+
+* Disable L2 (Grant)
+
+=== 2. NPTL Debugging ===
+
+* More debugging required
+
+* Mutex, lowlevellock, and futex should be reviewed
+
+=== 3. State of the Kernel ===
+
+* Good!
+
+* Tulip?
+
+* USB?
+
+* Missing futex routines?
+
+* pselect / ppoll!
+
+* gen irq!!
+
+* Kernel headers
+
+* Header installs
+
+* Soft lockups gcc 3.4 vs gcc?
+
+* RW locks broken? RW lock testsuite?
+
+* Signals bug?
+
+* process stuck in read()?
+
+* mremap fails?
+
+=== 4. tmplalias flushing ===
+
+No comments.
+
+=== 5. GIT ===
+
+* Shutdown CVS
+
+* Migrate to?
+
+* Where do we put userspace/ web/ linux-2.6/ build-tools/?
+
+=== 6. H/W Support ===
+
+Some people poke fun at other people with really old hardware.
+
+=== 7. 64-bit Userspace ===
+
+Some people poke fun at Carlos.
+
+=== 8. Debian Etch ===
+
+Raise the SEP field!
