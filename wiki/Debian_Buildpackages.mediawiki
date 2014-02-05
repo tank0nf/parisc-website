@@ -40,7 +40,21 @@ title: Debian Buildpackages
 : http://lists.debian.org/debian-68k/2013/10/msg00021.html
 : http://kmuto.jp/open.cgi?buildd
 
-==Debian Buildservers==
+== PA-RISC Linux Debian Ports Support ==
 
-; Where is (old) Peri ?
-: http://db.debian.org/machines.cgi?host=peri
+The hppa linux port has moved to the debian-ports distribution.
+
+For more information about debian-ports see http://www.debian-ports.org.
+
+[[Debian_Ports_Installation]] describes instructions on how to install or upgrade a PARISC box with the "Debian Ports" unstable release.
+
+=== Debian Buildservers ===
+
+; Since December 2013 we have debian unstable buildservers
+: http://unstable.buildd.net/index-hppa.html
+: http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid
+
+; Contacts for the debian HPPA buildds
+: Helge Deller <deller@gmx.de>, PA-RISC Kernel maintainer, buildd maintainer
+: John David Anglin <dave.anglin@bell.net>, HPPA GCC, and binutils maintainer
+: Dave Land <xmechanic@landcomp.net>, owner of a few of the hppa buildd servers
