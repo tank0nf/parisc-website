@@ -10,8 +10,8 @@ No testcase.
 
 == Threads and fork on VIPT-WB machines ==
 
-  * Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=561203|#561203]].
-  * Discussed on [[http://thread.gmane.org/gmane.linux.ports.parisc/2503|this thread]] and [[http://thread.gmane.org/gmane.linux.ports.parisc/2751|this thread]]
+* Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=561203|#561203]].
+* Discussed on [[http://thread.gmane.org/gmane.linux.ports.parisc/2503|this thread]] and [[http://thread.gmane.org/gmane.linux.ports.parisc/2751|this thread]]
 
 Summary from [[http://article.gmane.org/gmane.linux.ports.parisc/2823|JDA]]:
 
@@ -26,18 +26,16 @@ Initial patch [[http://marc.info/?l=linux-parisc&m=126202676424518&q=p3|syscall.
 First testcase [[http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=25;filename=minifail.cpp;att=1;bug=561203|minifail.cpp]]
 
 Build with:
-{{{
-$ g++ -I/usr/include/qt4 -lQtCore minifail.cpp -o minifail -O0 -g
-}}}
+* g++ -I/usr/include/qt4 -lQtCore minifail.cpp -o minifail -O0 -g
 
 Fails occasionally with:
-{{{
+ <nowiki>
 $ i=0; while true; do i=$(($i+1)); echo Run $i; ./minifail; done;
 $ i=0; while true; do i=$(($i+1)); echo Run $i; ./minifail qt; done;
-}}}
+ </nowiki>
 
 Typical observed failure:
-{{{
+ <nowiki>
 Run 21
 Segmentation fault
 Run 22
@@ -46,14 +44,14 @@ Thread OK.
 Run 23
 Thread OK.
 Segmentation fault
-}}}
+ </nowiki>
 
-  * Reduced [[http://marc.info/?l=linux-parisc&m=126503924510791&q=p4|minifail6.cpp]], from [[http://article.gmane.org/gmane.linux.ports.parisc/2606|this post]]:
-  * Tentative [[http://marc.info/?l=linux-parisc&m=126514540817084&q=p3|patch]], see this [[http://article.gmane.org/gmane.linux.ports.parisc/2615|post]]
-  * Other version [[http://marc.info/?l=linux-parisc&m=126523464015510&q=p3|minifail3.c]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2618|Helge Deller]]
-  * Other version [[http://marc.info/?l=linux-parisc&m=126835038716389&q=p3|minifail9.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2685|JDA]]
-  * Other version [[http://marc.info/?l=linux-parisc&m=126919558329853&q=p3|minifail12.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2693|JDA]]
-  * '''Final''' (?) version [[http://marc.info/?l=linux-parisc&m=127275273129566&q=p3|minifail_dave.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2824|Helge Deller]]
+* Reduced [[http://marc.info/?l=linux-parisc&m=126503924510791&q=p4|minifail6.cpp]], from [[http://article.gmane.org/gmane.linux.ports.parisc/2606|this post]]:
+* Tentative [[http://marc.info/?l=linux-parisc&m=126514540817084&q=p3|patch]], see this [[http://article.gmane.org/gmane.linux.ports.parisc/2615|post]]
+* Other version [[http://marc.info/?l=linux-parisc&m=126523464015510&q=p3|minifail3.c]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2618|Helge Deller]]
+* Other version [[http://marc.info/?l=linux-parisc&m=126835038716389&q=p3|minifail9.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2685|JDA]]
+* Other version [[http://marc.info/?l=linux-parisc&m=126919558329853&q=p3|minifail12.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2693|JDA]]
+* '''Final''' (?) version [[http://marc.info/?l=linux-parisc&m=127275273129566&q=p3|minifail_dave.cpp]] from [[http://article.gmane.org/gmane.linux.ports.parisc/2824|Helge Deller]]
 
 ----
 
@@ -61,7 +59,8 @@ Other testcase from [[http://article.gmane.org/gmane.linux.ports.parisc/2774|JDA
 
 Compile with `-static` to link with libc.a. Testcase prints incorrect parent pid.:
 
-{{{#!cplusplus
+ <nowiki>
+#!cplusplus
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -97,32 +96,32 @@ int main (void)
 
   return 0;
 }
-}}}
+ </nowiki>
 
 === Patches ===
 
-  * [[https://patchwork.kernel.org/patch/76829/|parisc_lock_v2.patch]] from Helge Deller - Not Applicable (not-upstream)
-  * [[https://patchwork.kernel.org/patch/85865/|entry.S.patch]] from JDA (not-upstream)
-  * [[https://patchwork.kernel.org/patch/90467/|patch1]] from JDA - Superseded by patch2 (not-upstream)
-  * [[https://patchwork.kernel.org/patch/90596/|patch2]] from JDA - Included in patch3 (not-upstream)
-  * [[https://patchwork.kernel.org/patch/91525/|bundle patch3]] from JDA - Partially split into
-     * [[https://patchwork.kernel.org/patch/91916/|Call pagefault_disable/pagefault_enable in kmap_atomic/kunmap_atomic]] (on-buildds)
-     * [[https://patchwork.kernel.org/patch/91918/|Remove unnecessary macros from entry.S]] (on-buildds)
-     * [[https://patchwork.kernel.org/patch/91919/|Delete unnecessary nop's in entry.S]] (on-buildds)
-     * [[https://patchwork.kernel.org/patch/91922/|Avoid interruption in critical region in entry.S]] (on-buildds)
-     * [[https://patchwork.kernel.org/patch/91924/|LWS fixes for syscall.S]] (on-buildds)
-     * '''Note:''' some bits from patch3 have not be separately submitted (futex.h, etc) - Needs review
-  * [[https://patchwork.kernel.org/patch/91933/|pgtable.h patch update]], initially found in patch3 from JDA (not-upstream)
-  * [[https://patchwork.kernel.org/patch/93520/|bundle patch4]] aka `pte.2.d` from JDA, updating parts of patch3 (not-upstream)
-  * [[https://patchwork.kernel.org/patch/95969/|patch]] from James Bottomley for kmap issues fixing '''minifail6.cpp''' (not-upstream)
-  * [[https://patchwork.kernel.org/patch/97971/|bundle patch5]] from JDA with a slightly modified version of James' patch (not-upstream)
-  * [[https://patchwork.kernel.org/patch/99861/|bundle patch6]] from JDA, with apparently good results both on pa8800 and previous CPUs (not-upstream)
-  * [[https://patchwork.kernel.org/patch/101741/|bundle patch7]] from JDA, with reworked pacache.s and cache.c (not-upstream)
+* [[https://patchwork.kernel.org/patch/76829/|parisc_lock_v2.patch]] from Helge Deller - Not Applicable (not-upstream)
+* [[https://patchwork.kernel.org/patch/85865/|entry.S.patch]] from JDA (not-upstream)
+* [[https://patchwork.kernel.org/patch/90467/|patch1]] from JDA - Superseded by patch2 (not-upstream)
+* [[https://patchwork.kernel.org/patch/90596/|patch2]] from JDA - Included in patch3 (not-upstream)
+* [[https://patchwork.kernel.org/patch/91525/|bundle patch3]] from JDA - Partially split into
+** [[https://patchwork.kernel.org/patch/91916/|Call pagefault_disable/pagefault_enable in kmap_atomic/kunmap_atomic]] (on-buildds)
+** [[https://patchwork.kernel.org/patch/91918/|Remove unnecessary macros from entry.S]] (on-buildds)
+** [[https://patchwork.kernel.org/patch/91919/|Delete unnecessary nop's in entry.S]] (on-buildds)
+** [[https://patchwork.kernel.org/patch/91922/|Avoid interruption in critical region in entry.S]] (on-buildds)
+** [[https://patchwork.kernel.org/patch/91924/|LWS fixes for syscall.S]] (on-buildds)
+** '''Note:''' some bits from patch3 have not be separately submitted (futex.h, etc) - Needs review
+* [[https://patchwork.kernel.org/patch/91933/|pgtable.h patch update]], initially found in patch3 from JDA (not-upstream)
+* [[https://patchwork.kernel.org/patch/93520/|bundle patch4]] aka `pte.2.d` from JDA, updating parts of patch3 (not-upstream)
+* [[https://patchwork.kernel.org/patch/95969/|patch]] from James Bottomley for kmap issues fixing '''minifail6.cpp''' (not-upstream)
+* [[https://patchwork.kernel.org/patch/97971/|bundle patch5]] from JDA with a slightly modified version of James' patch (not-upstream)
+* [[https://patchwork.kernel.org/patch/99861/|bundle patch6]] from JDA, with apparently good results both on pa8800 and previous CPUs (not-upstream)
+* [[https://patchwork.kernel.org/patch/101741/|bundle patch7]] from JDA, with reworked pacache.s and cache.c (not-upstream)
 
 == vfork/execve ==
 
-  * Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=558905|#558905]]
-  * Discussed by Carlos O'Donell in [[http://thread.gmane.org/gmane.linux.ports.parisc/2403|this thread]]:
+* Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=558905|#558905]]
+* Discussed by Carlos O'Donell in [[http://thread.gmane.org/gmane.linux.ports.parisc/2403|this thread]]:
 
 ''I have constructed a vfork test case which shows some of the problems
 I have using vfork reliably. This fails every time on my PA8700 system
@@ -130,11 +129,11 @@ running 2.6.32-rc6. It appears as though r28 (ret0) in the parent is
 being corrupted.''
 
 The intent of the testcase is to do the following:
-  a. vfork
-  a. Launch "ls -l" in the vfork'd child.
-  a. Print some information in the parent.
+# vfork
+# Launch "ls -l" in the vfork'd child.
+# Print some information in the parent.
 
-{{{#!cplusplus
+ <nowiki>
 /* vfork.c */
 #include <stdio.h>
 #include <stdlib.h>
@@ -161,13 +160,12 @@ int main (void)
 
   return 0;
 }
-}}}
+ </nowiki>
 
 Compile this test case twice:
-{{{
-gcc -O1 -g -o vfork-O1 vfork.c
-gcc -O0 -g -o vfork-O0 vfork.c
-}}}
+# gcc -O1 -g -o vfork-O1 vfork.c
+# gcc -O0 -g -o vfork-O0 vfork.c
+
 
 The return from vfork is corrupted in the parent.
 This gets worse at -O0.
@@ -178,37 +176,37 @@ implementation as used by glibc. [[http://marc.info/?l=linux-parisc&m=1260134363
 You can compile the test case using: `cc -O1 -g -o vfork-O1 vfork.c pt-vfork.s`
 
 In summary:
-  * Test case works on x86.
-  * Test case fails on hppa.
-  * Test case works on hppa under strace.
+* Test case works on x86.
+* Test case fails on hppa.
+* Test case works on hppa under strace.
 
 More discussion by Carlos O'Donell in [[http://thread.gmane.org/gmane.linux.ports.parisc/2725|this thread]]
 
-  * Other testcase [[http://marc.info/?l=linux-parisc&m=126979720816005&q=p3|vforktest.tgz]] by Carlos O'Donell
-  * Updated (?) testcase [[http://marc.info/?l=linux-parisc&m=126980206121937&q=p3|vforktest.tgz]] by Carlos O'Donell
+* Other testcase [[http://marc.info/?l=linux-parisc&m=126979720816005&q=p3|vforktest.tgz]] by Carlos O'Donell
+* Updated (?) testcase [[http://marc.info/?l=linux-parisc&m=126980206121937&q=p3|vforktest.tgz]] by Carlos O'Donell
 
 === Patches ===
 
-  * [[https://patchwork.kernel.org/patch/90144/|Patch]] from JDA (not-upstream)
-  * [[https://patchwork.kernel.org/patch/90018/|Patch]] from Carlos O'Donell - Comments/cleanup (on-buildds)
+* [[https://patchwork.kernel.org/patch/90144/|Patch]] from JDA (not-upstream)
+* [[https://patchwork.kernel.org/patch/90018/|Patch]] from Carlos O'Donell - Comments/cleanup (on-buildds)
 
 
 == floating point SIGFPE not trapped ==
 
-  * Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559406|#559406]]
-  * Testcase [[http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=33;filename=fputest.c;att=1;bug=559406|fputest.c]]
+* Affects [[http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=559406|#559406]]
+* Testcase [[http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=33;filename=fputest.c;att=1;bug=559406|fputest.c]]
 
 === Patches ===
 
-  * [[https://patchwork.kernel.org/patch/96558/|Patch]] from Helge Deller (in-debian, on-buildds)
+* [[https://patchwork.kernel.org/patch/96558/|Patch]] from Helge Deller (in-debian, on-buildds)
 
 = GCC TestCases =
 
 == MMAP ==
 
-  * Affects [[http://gcc.gnu.org/bugzilla/show_bug.cgi?id=40505|PR40505]].
-  * Discussed by Carlos O'Donell on [[http://thread.gmane.org/gmane.linux.debian.devel.release/30830/focus=31039|this thread]].
-  * Testcase [[http://marc.info/?l=linux-parisc&m=124689818116647&q=p3|test-mmap.c]] from Carlos O'Donell
+* Affects [[http://gcc.gnu.org/bugzilla/show_bug.cgi?id=40505|PR40505]].
+* Discussed by Carlos O'Donell on [[http://thread.gmane.org/gmane.linux.debian.devel.release/30830/focus=31039|this thread]].
+* Testcase [[http://marc.info/?l=linux-parisc&m=124689818116647&q=p3|test-mmap.c]] from Carlos O'Donell
 
 
 = GLIBC TestCases =
@@ -218,7 +216,7 @@ More discussion by Carlos O'Donell in [[http://thread.gmane.org/gmane.linux.port
 Discussed in [[http://thread.gmane.org/gmane.linux.ports.parisc/2585|this thread]]
 
 Testcase from [[http://marc.info/?l=linux-parisc&m=126477688209053|JDA]]: Compile with `g++ -o xx -static -pthread xx.C`
-{{{#!cplusplus
+ <nowiki>
 // This test only applies to glibc (NPTL) targets.
 // { dg-do run { target *-*-linux* } }
 // { dg-options "-pthread" }
@@ -244,4 +242,4 @@ int main()
       return 1;
     }
 }
-}}}
+ </nowiki>
