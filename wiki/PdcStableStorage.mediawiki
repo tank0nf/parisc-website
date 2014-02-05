@@ -7,13 +7,13 @@ title: PdcStableStorage
 We are dealing here with a part of the BootingSystem, namely the ProcessorDependentCode (PDC).
 
 Files:
- * `drivers/parisc/pdc_stable.c`
- * `arch/parisc/kernel/firmware.c`
- * `arch/parisc/kernel/drivers.c`
+* drivers/parisc/pdc_stable.c
+* arch/parisc/kernel/firmware.c
+* arch/parisc/kernel/drivers.c
 
 ==== Brief version history ====
 
-This driver was first released in kernel `2.6.11-rc1-pa2`. A major update (`v0.22`) was released in kernel `2.6.15-pa3`. Code to access OS Dependent data was added in `v0.30` released in kernel `2.6.17-rc3-pa3`.
+This driver was first released in kernel 2.6.11-rc1-pa2. A major update (v0.22) was released in kernel 2.6.15-pa3. Code to access OS Dependent data was added in v0.30 released in kernel 2.6.17-rc3-pa3.
 
 == What is Stable Storage? ==
 
@@ -22,8 +22,8 @@ According to http://ftp.parisc-linux.org/docs/arch/pdc20-v1.0-Ch4-procs.pdf page
 == What are we trying to do? ==
 
 The main idea underlying this piece of code is to provide an interface between the kernel and that firmware storage area, in order to:
-  * Get an interface to know what the current settings are.
-  * Get an interface to be able to change the settings at will while Linux is running.
+* Get an interface to know what the current settings are.
+* Get an interface to be able to change the settings at will while Linux is running.
 The "settings" being Autoboot, Autosearch, Paths, etc.
 
 == How do we do it? ==
@@ -32,19 +32,24 @@ The "settings" being Autoboot, Autosearch, Paths, etc.
 
 First, we had to implement the missing abstraction logic in `firmware.c` to access the Stable Storage. We had to code all the required interfaces to PDC_STABLE calls:
 
-||||<tablewidth="100%">'''Interfaces (`firmware.c`)'''||
-|| '''Function''' || '''Role''' ||
-|| int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count) || This call ''reads'' `count` bytes from address `staddr` and writes the result in preallocated `memaddr` space ||
-|| int pdc_stable_write(unsigned long staddr, void *memaddr, unsigned long count) || This call ''writes'' `count` bytes at address `staddr` from address `memaddr` ||
-|| int pdc_stable_get_size(unsigned long *size) || This call gets the size of the Stable Storage area ||
-|| int pdc_stable_verify_contents(void) || This call checks the integrity of the contents of Stable Storage ||
-|| int pdc_stable_initialize(void) || This call initialize Stable Storage to zero ||
+{| class="wikitable"
+|-
+! Interfaces (`firmware.c`)                                          !! Function
+|-
+| int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count) || This call ''reads'' `count` bytes from address `staddr` and writes the result in preallocated `memaddr` space
+|-
+| int pdc_stable_write(unsigned long staddr, void *memaddr, unsigned long count) || This call ''writes'' `count` bytes at address `staddr` from address `memaddr`
+|-
+| int pdc_stable_get_size(unsigned long *size) || This call gets the size of the Stable Storage area
+|-
+| int pdc_stable_verify_contents(void) || This call checks the integrity of the contents of Stable Storage
+|-
+| int pdc_stable_initialize(void) || This call initialize Stable Storage to zero
+|}
 
 Now a few details: as it is noted in the above mentioned document, `staddr` and `memaddr` must be word-aligned. `count` must be multiple of 4. The Stable Storage address space starts at `0x0`, and both read and write calls will fail if `staddr + count > size`.
 
 Everything is now setup to get and write useful data from Stable Storage. Thanks to the documentation, we know where the various Paths and other variables are stored. There is a trick, though. Paths are '''''BC Paths''''', also known as ''hardware paths'' in the PA-RISC terminology. That means that when reading a path, we have to convert it to the actual device and map it to a human readable device name, and when writing it, we will have to provide a ''human writeable'' way of designing a device, and then convert it back to its hardware path.
-
--------
 
 === Converting Paths ===
 
@@ -77,8 +82,6 @@ If it can't find a matching device, then `hwpath_to_device()` simply returns a `
 We need that when ''writing'' the new configuration to Stable Storage.
 
 Fortunately this is alot easier to do, the logic is already existing (`get_node_path()`). We just wrote a wrapper for that function, which we called `device_to_hwpath()` for obvious consistency reasons. That wrapper takes a `struct device` pointer and a preallocated `struct hardware_path` pointer as arguments, and will fill the later with the path corresponding to the former, doing appropriate stuff depending on the type of the device (be it a PCI or PA-RISC device, for instance).
-
--------
 
 === Kernel Interface ===
 
@@ -117,16 +120,15 @@ Here is the tree we are presenting in SysFS:
 
 Roughly put, all global data (such as the boot flags, the amount of RAM checked during boot, etc) is shown in the various files placed at the root of the `stable` directory, while we are creating in the `paths/` subfolder 4 more - whenever possible - sub directories (one per boot path: Primary, Alternative, Console and Keyboard), each containing 2 files and (usually) one symlink:
 
-  * `device` is the symlink to the actual device folder in SysFS.
-  * `layer` contains the hardware layer, in the form `x y z`, where `x,y,z` are unsigned decimals.
-  * `hwpath` contains the hardware path, in the form `x/y/z`, where `x,y,z` are unsigned decimals.
+* `device` is the symlink to the actual device folder in SysFS.
+* `layer` contains the hardware layer, in the form `x y z`, where `x,y,z` are unsigned decimals.
+* `hwpath` contains the hardware path, in the form `x/y/z`, where `x,y,z` are unsigned decimals.
 
-----
 
 In order for the kernel to change the boot paths values, `layer` and `hwpath` can be modified by writing to them (as super user) data in the following form:
 
-  * `x/y/z` for `hwpath`, where `x,y,z` are unsigned decimals, to change the hardware path.
-  * `x.y.z` for `layer`, where `x,y,z` are unsigned decimals, to change `layer[0]`->`layer[n]`, `n` < 6.
+* `x/y/z` for `hwpath`, where `x,y,z` are unsigned decimals, to change the hardware path.
+* `x.y.z` for `layer`, where `x,y,z` are unsigned decimals, to change `layer[0]`->`layer[n]`, `n` < 6.
 
 For instance, one can do the following:
  <nowiki>
@@ -141,11 +143,9 @@ If the user attempts to set an unmappable `hwpath`, an error message is sent to 
 
 In fact, minimal integrity checkings are performed (see bellow for more information):
 
-  * For `hwpath`, the code makes sure it can map the provided path to an existing device, and fails otherwise.
-  * For `layer`, the code simply checks arguments are integers.
+* For `hwpath`, the code makes sure it can map the provided path to an existing device, and fails otherwise.
+* For `layer`, the code simply checks arguments are integers.
 
-
-----
 
 Finally, one can toggle '''Autoboot''' and '''Autosearch''' flags by writing to the `autoboot` and `autosearch` files, as follows:
  <nowiki>
@@ -211,9 +211,9 @@ Of course, the key interest of these files is the fact that their content is pre
 ==== File Permissions ====
 
 The general policy toward file access shall respect the following rules:
- 1. Write permission granted to `root` only
- 1. Read permission to files that trigger PDC calls granted to `root` only
- 1. Read permission to other files granted to everyone
+# Write permission granted to `root` only
+# Read permission to files that trigger PDC calls granted to `root` only
+# Read permission to other files granted to everyone
 
 In particular, the following files are `root` accessible only:
  <nowiki>
@@ -230,8 +230,8 @@ In particular, the following files are `root` accessible only:
 
 Currently the code is unable to deal properly with some kinds of devices, especially '''SuckyIO''' ones and '''EISA''' ones. In particular, it is impossible for the underlying mechanism to map a path pointing to a SuckyIO or EISA device to the corresponding generic `device` pointer. This has two main consequences: 
 
-  * When such a boot path is encountered, no symlink is created in the corresponding SysFS folder.
-  * It is impossible to set any hwpath to such a device, the code will complaint that it can't map the path provided to an existing device.
+* When such a boot path is encountered, no symlink is created in the corresponding SysFS folder.
+* It is impossible to set any hwpath to such a device, the code will complaint that it can't map the path provided to an existing device.
 
 On the other hand, that kind of check is barely enough: a PCI bridge, or even worse, a CPU, would yield a valid device and thus nothing prevents anyone to setup their CPU as primary boot path. Keep in mind that this driver aims at being a ''facility'', providing a syntax to be used. Thorough checking is left to userspace. What's more, only the super user can change the settings...
 
