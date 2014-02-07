@@ -19,14 +19,14 @@ title: TODO
 == Testsuites - to be checked ==
 * zeromq3 package: It's quite simple.  In spite of the fact that PTHREAD_THREADS_MAX is 1024, pthread_create fails after creating less than 40 threads.  It will do 10.
 
-== Status & TODO 2014-01-31 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-02-07 (TODO-List by Helge Deller) ==
+* Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 * why does mc hangs when exiting on sticon ?
 * crash via GSP, is everything visible (GSP reset?) 
 * test xorriso (Thomas Schmitt, scdbackup)
 * RIO: 0000:00:04.1: ttyS3 at MMIO 0xfffffffff8000030 (irq = 70, base_baud = 115200) is a 16550A
 ** Couldn't register serial port 0000:00:04.1: -28
-* sticon font problem, mail from 27.01.2014: -#ifdef CONFIG_FONTS +#ifdef CONFIG_FONT_SUPPORT
-* Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
+* 3.14 partly: sticon font problem, mail from 27.01.2014: -#ifdef CONFIG_FONTS +#ifdef CONFIG_FONT_SUPPORT
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 * Native types in  uapi/asm/stat.h
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
