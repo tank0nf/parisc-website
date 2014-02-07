@@ -23,7 +23,6 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-02-07 (TODO-List by Helge Deller) ==
-* gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * why does mc hangs when exiting on sticon ?
 * test xorriso (Thomas Schmitt, scdbackup)
 * crash via GSP, is everything visible (GSP reset?) 
@@ -34,6 +33,8 @@ title: TODO
 * 3.14 partly: debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 * sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
+* gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
+
 * add wiki page about kernel cross-compiling
 
 * currently planned features for 3.13 / 3.14:
@@ -45,7 +46,7 @@ title: TODO
 ** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow plus colors in 24bpp mode are wrong) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
 
 * Kernel: still missing Linux kernel development (no patches available yet):
-* Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
+** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** Implement CONFIG_DEBUG_STACK_USAGE ?
 ** fix wrong _init notation in kernel
@@ -67,11 +68,10 @@ title: TODO
 ** Visualize FX support (will probably never happen!)
 
 * Debian packaging work:
-** Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
+** STARTED: Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
 ** DONE: we need a kernel debian package (3.10 based or higher)
-** ONGOING: debian-ports/parisc repository aka. syning debs to there
+** DONE: debian-ports/parisc repository aka. syning debs to there
 *** DONE: Helge to contact Aurelien (aurel32) on #debian-glibc on OFTC IRC
-*** Instructions from Thorsten Glaser - see: http://lists.debian.org/debian-hppa/2013/04/msg00049.html
 *** DONE: try to debootstrap from parisc-linux.org repository and add missing packages.
 ** DONE: split repository on parisc-linux.org into stable (wheezy) and unstable (sid)
 ** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
@@ -82,20 +82,14 @@ title: TODO
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
    
 * Debian infrastructure work:
-** Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
-** ONGOING: Set up a buildd server for debian-ports/unstable
-*** Debian ports policy: http://www.debian-ports.org/archive
-*** https://buildd.debian.org/docs/buildd-setup.txt
-*** https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer
-*** http://debian.2.n7.nabble.com/buildd-Configuring-buildds-for-dports-td2064003.html 
-*** dpkg-buildpackage -B -m<email>
-** we still need appropriate machines and possibly try to gain access to the previous setup at HP.
-** contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
-** set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013 
-** DONE: Use reprepro to produce correct apt-able subdirectories for packages on http://ftp.parisc-linux.org/debian-ports/debian/
+** DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
+** DONE: Set up a buildd server for debian-ports/unstable & experimental -> http://unstable.buildd.net/index-hppa.html
+** DONE: contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
+** DONE: set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013 
 
 * Homepage migration:
 ** ONGOING: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
+** DONE: Migration of wiki.parisc-linux.org website to https://parisc.wiki.kernel.org
 ** Domain ownwer: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014 23:07:58 UTC
 ** DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
 ** New domain owner: Thibaut VARENE <T-Bone@parisc-linux.org> <T-Bone@slashdirt.org>
@@ -104,7 +98,7 @@ title: TODO
 
 * palo (PA-RISC Boot Loader):
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
-** add xz-compression support, maybe move decompression to Linux kernel instead of palo?
+** move decompression to Linux kernel instead of palo
 
 == DONE ==
 * Document news and howto on the parisc-linux website on how to upgrade/install parisc servers
