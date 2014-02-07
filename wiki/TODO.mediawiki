@@ -99,20 +99,20 @@ title: TODO
 ** See [[Debian_Ports_Installation]] and [[https://parisc.wiki.kernel.org]]
 
 == Kernel patches ==
-* Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
-* add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
-* patch to disable -mlong-calls compiler option when building kernel modules - https://patchwork.kernel.org/patch/2480001/
-* James Bottomley's explanation of kernel gateway page - in 3.10
-* lib/atomic64_test.c:131:2: warning: #warning Please implement atomic64_dec_if_positive for your architecture - in 3.10
-* add interrupt statistics like x86 to /proc/interrupts - in 3.10
-* kernel"-crashes in the area of do_softirq() - irq stacks implemented: https://patchwork.kernel.org/patch/2497501/
-* test/build kernel with allmodconfig/allyesconfig
-** error in lib/mpi/longlong.h,umul_ppmm() uses floating point -> https://patchwork.kernel.org/patch/2521621/
-* update MAINTAINERS file, git tree -> https://patchwork.kernel.org/patch/2580161/
-* lockdep issues with irqstack patch in UP configurations. Fixed -> https://patchwork.kernel.org/patch/2589321/
-* add /proc/interrupt counters for floating point assist and unaligned handler traps -> https://patchwork.kernel.org/patch/2589161
-* CONFIG_PREEMPT works now -> https://patchwork.kernel.org/patch/2624241/
 * Kernel 3.9:
+** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
+** add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
+** patch to disable -mlong-calls compiler option when building kernel modules - https://patchwork.kernel.org/patch/2480001/
+** James Bottomley's explanation of kernel gateway page - in 3.10
+** lib/atomic64_test.c:131:2: warning: #warning Please implement atomic64_dec_if_positive for your architecture - in 3.10
+** add interrupt statistics like x86 to /proc/interrupts - in 3.10
+** kernel"-crashes in the area of do_softirq() - irq stacks implemented: https://patchwork.kernel.org/patch/2497501/
+** test/build kernel with allmodconfig/allyesconfig
+** error in lib/mpi/longlong.h,umul_ppmm() uses floating point -> https://patchwork.kernel.org/patch/2521621/
+** update MAINTAINERS file, git tree -> https://patchwork.kernel.org/patch/2580161/
+** lockdep issues with irqstack patch in UP configurations. Fixed -> https://patchwork.kernel.org/patch/2589321/
+** add /proc/interrupt counters for floating point assist and unaligned handler traps -> https://patchwork.kernel.org/patch/2589161
+** CONFIG_PREEMPT works now -> https://patchwork.kernel.org/patch/2624241/
 ** parisc: make default cross compiler search more robust (v3)
 ** parisc: fix SMP races when updating PTE and TLB entries in entry.S
 ** parisc: use long branch in fork_like macro
