@@ -6,7 +6,7 @@ title: Debian Ports Installation
 
 HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze). That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
 
-The Debian ports project hosts a parisc version of debian unstable. Recommended installation of a new parisc machine is via the debian-ports respitory at http://debian-ports.org
+The Debian ports project hosts a parisc version of debian unstable. Today the recommended installation of a new parisc machine is via the debian-ports respository at http://debian-ports.org
 
 == Recommended: Installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
 * '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimage is based on older binaries which would need to be rebuilt.'''''
@@ -185,8 +185,15 @@ You can check interface and connectivity status by typing: 'network-test' (no qu
 
 * Now add more packages and have fun!
 
-
 --[[User:Dave Land|Dave Land]] ([[User talk:Dave Land|talk]]) 13:48, 14 January 2014 (UTC)
+
+== New installation media (Debian unstable via debian-ports) ==
+
+As of February 2014, Helge is currently working on getting a netboot install-CD working with debian-ports.
+
+A pre-release version of this install media is available at http://debian-ports.org/~deller/NETINST_CD_TRY4/
+
+Since palo (our bootloader program) isn't in the unstable repository yet, the installation with this image will not help you to get a bootable system installed.
 
 == Old installation medias (Debian Lenny) ==
 
