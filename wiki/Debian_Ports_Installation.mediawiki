@@ -76,7 +76,7 @@ passwd root
 <enter your new password for the 'root' user>
 Type 'exit' to get out of the chroot.
 
-echo "your hostname" >> /mnt/destroot/etc/hostname
+echo "your hostname" >> /mnt/destroot/etc/hostname and edit /mnt/destroot/etc/hosts
 </pre>
 * You are now finished with the initial initialization of the filesystem.
 * You may now run the blkid command to take a look at your partitions. 
@@ -116,9 +116,11 @@ then: gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/d
 
 then: gpg --export --armor 623DB0B8 | apt-key add -
 
-Now you can successfully run - 'apt-get update' and
-apt-get install openssh-server locales debian-ports-archive-keyring
+Now you can successfully run - 'aptitude update' and
+aptitude install openssh-server locales localepurge console-setup debian-ports-archive-keyring
+dpkg-reconfigure tzdata
 dpkg-reconfigure locales
+dpkg-reconfigure console-setup
 </pre>
 * Install 'palo'
 <pre>
@@ -126,9 +128,9 @@ dpkg -i /palo*deb
 </pre>
 * and select your new kernel...
 <pre>
-apt-get install linux-image-parisc64-smp   # for a 64bit SMP kernel
+aptitude install linux-image-parisc64-smp   # for a 64bit SMP kernel
 (or)
-apt-get install linux-image-parisc         # for a 32bit UP kernel
+aptitude install linux-image-parisc         # for a 32bit UP kernel
 </pre>
 * Don't forget to set up your symlinks in /boot
 <pre>
@@ -162,7 +164,7 @@ dhclient eth0
 </pre>
 * Now for ifupdown-extra and ifplugd
 <pre>
-apt-get install ifupdown-extra ifplugd
+aptitude install ifupdown-extra ifplugd
 Run: dpkg-reconfigure ifplugd
 Use 'auto' (no quotes) as the "static interfaces to be watched by ifplugd". 
 Select 'OK' to go to the next screen.
