@@ -23,6 +23,7 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-02-07 (TODO-List by Helge Deller) ==
+* SLAB breaks, SLUB works, why? Mail from Guy Martin.
 * why does mc hangs when exiting on sticon ?
 * test xorriso (Thomas Schmitt, scdbackup)
 * crash via GSP, is everything visible (GSP reset?) 
