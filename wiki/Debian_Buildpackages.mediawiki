@@ -16,6 +16,7 @@ title: Debian Buildpackages
 ; How to build a package (without modifying source):
 : dpkg-buildpackage --force-sign -B -sa -m<email>
 : e.g.: dpkg-buildpackage --force-sign -sa -mHelge\ Deller\ \<deller@gmx.de\> -kB51E3864 -j5
+: DEB_BUILD_OPTIONS=nocheck
 
 ; How to build a package (*with* modified source):
 : dch --distribution unstable --bin-nmu Rebuild b1
