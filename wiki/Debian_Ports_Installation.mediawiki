@@ -239,3 +239,132 @@ dpkg-reconfigure locales
 * If you run into issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just un-install some packages.
 
 * Finally, you should be able to update/upgrade most packages & your kernel to a more recent (unstable) version. If you're missing some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa HERE].
+
+
+== Old installation medias (Debian Lenny) - notes by Tom Hogland <thogland@alaskatech.org> ==
+
+This was written from notes taken while installing Debian on a C180. It refused to use the lifimage (as of Feb 2014) so I used the Lenny (5.0.10) CD method (specifically the full Lenny CD1). Note that the wiki is slightly incomplete, or out of date - there are packages needed that aren't accessible any longer, old repositories missing, etc.
+
+I'd highly recommend having another system nearby to refence the install instructions. I kept a laptop next to the console so I could use Google, refence the wiki, etc. Once Lenny is installed, moving to a SSH session is MUCH easier - you can cut/paste into it, rather than typing all the download names.
+
+To upgrade from Debian Lenny 5.0.10 to debian-ports.org unstable:
+
+From console:
+Follow parisc.wiki.kernel.org for basic Lenny install. DON'T install any 'roles' when prompted - de-select the 'standard system' role. Everything installed at this point causes problems later.
+Install openssh-server (and suggested).
+
+(Move to working system with a browser - there's several manual downloads, and cut/paste is your friend, not the console... )
+
+Add new sources:
+<pre>
+'deb http://archive.debian.org/debian-backports/ lenny-backports main contrib non-free'
+'deb http://archive.debian.org/debian/ lenny main contrib non-free'
+</pre>
+(this gets *everything* in lenny into your package list, not just the CD)
+
+<pre>
+apt-get update, upgrade, dist-upgrade
+</pre>
+(should be nothing or not much)
+
+Download these using wget:
+<pre>
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/d/dpkg/dpkg_1.15.8.10_hppa.deb
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/x/xz-utils/liblzma2_5.0.0-2_hppa.deb
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/x/xz-utils/xz-utils_5.0.0-2_hppa.deb
+</pre>
+(Note that these may change - you may have to browse  in debian-snapshot to find a current path.)
+
+Install in this order: 'dpkg -i liblzma2*.deb xz-utils*.deb dpkg*.deb'
+
+Download these using wget:
+<pre>
+http://archive.debian.org/debian-backports/pool/main/l/linux-2.6/linux-base_2.6.32-35~bpo50+1_all.deb
+http://archive.debian.org/debian-backports/pool/main/l/linux-2.6/linux-image-2.6.32-bpo.4-parisc_2.6.32-11~bpo50+1_hppa.deb
+(or parisc-smp, parisc64, parisc64-smp for linux-image - pick appropriately for your system)
+</pre>
+
+To install:
+<pre>
+'apt-get install libuuid-perl' (needed for new kernel)
+'dpkg -i linux-base*.deb linux-image*.deb'
+</pre>
+(may be a few errors, but should still install cleanly)
+
+Reboot - should have a base system with kernel 2.6.32 and SSH server.
+
+Add unstable source from wiki:
+<pre>
+'deb http://ftp.debian-ports.org/debian unstable main'
+</pre>
+
+(Note - at some point after here you may start getting locale errors, and that it's falling back to using 'C'. Shouldn't break anything, and we'll fix it later.)
+
+<pre>
+'apt-get --allow-unauthenticated update'
+'apt-get --allow-unauthenticated install debian-ports-archive-keyring' (to fix the unauthenticated source error)
+</pre>
+(downloads 30+MB of updates plus the 17kb file you asked for)
+
+(Error about an old ldconfig comes up here, apt disables ldconfig with message "don't worry - we'll install a new libc-bin and it'll fix it". then things stop with errors, since libc-bin isn't what's being installed...)
+
+<pre>
+'cd /var/cache/apt/archive'
+'apt-get download libc-bin'
+dpkg -x libc-bin*.deb libcbin/'
+'cp libcbin/sbin/ldconfig* /sbin/'
+'apt-get -f install' (lots of errors, but gets past them)
+'apt-get --allow-unauthenticated install debian-ports-archive-keyring' (try again - and fails again)
+'apt-get -f install'
+(more stuff installs - next error is that user 'libuuid' exists already... this breaks the libuuid1 upgrade and stops the install)
+'deluser libuuid'
+'apt-get -f install'
+(no more errors!)
+'apt-get --allow-unauthenticated install debian-ports-archive-keyring' (yes, again - still not installed yet. Works this time though)
+(errors that Release file for lenny-backports is expired. Can use 'apt-get -o Acquire::Check-Valid-Until=false update', or ignore, or even remove from sources.list - I ignored it, as we won't update again for a while.)
+</pre>
+
+(and finally...)
+<pre>
+'apt-get update'
+'apt-get upgrade' (100+ packages)
+(I got a ldd error here during install of initrd-tools - had to 'apt-get install --reinstall libc-bin' and it cleared up)
+'apt-get upgrade' (nothing)
+</pre>
+
+(I kept getting messages about extra unneeded packages, starting at the ldconfig fix - at this point I did 'apt-get autoremove' to clean it up)
+
+<pre>
+'apt-get dist-upgrade' (70 upgrade, 170 installs)
+</pre>
+
+(During the dist-upgrade the locale errors change to 'locale: cannot set <x> to default locale: no such file or directory'. Now that everything's installed...)
+<pre>
+'dpkg-reconfigure locales' (I used en_US.ISO-8859-1 and en_US.UTF-8 as that's me, changed default from en_US to en_US.UTF-8. Errors gone.)
+'vi /etc/apt/sources.list' (removed lenny-backports)
+'apt-get update' (updates, gives missing key error)
+'gpg --recv-keys 4d270d06f42584e6 --keyserver http://ftp.debian-ports.org/debian' (errors first time, repeat and it succeeds)
+'gpg --export --armor f42584e6 | apt-key add -' 
+'apt-get update' (no more key error)
+'apt-get upgrade'/'apt-get dist-upgrade'/'apt-get autoremove' (should be nothing to install, autoremove cleans up a final few old packages)
+</pre>
+
+Some final cleanup - reference the wiki's installation doc. This is listed at the end of the "Recommended" installation docs.
+edit /etc/network/interfaces, see if 'allow-hotplug eth0' is in there. Take it out if it is.
+<pre>
+'apt-get install ifupdown-extra ifplugd'
+'dpkg-reconfigure ifplugd'
+"Static interfaces to be watched" - 'auto'
+"Hotplugged interfaces to be watched" - 'all'
+"arguments to ifplugd" - leave default
+"suspend behavior" - 'suspend'
+Select OK to finish.
+</pre>
+
+Before rebooting - check /etc/fstab for correctness. Mine was converted to UUIDs - change back if you desire. 
+
+Check palo.conf - the default debian install needs 'rootfstype=ext3' (or whatever you used) added after the 'root=' item. Run palo afterwards. (I missed this step, and the system won't mount the root FS on reboot - you end up in busybox with no networking. At least you can mount the partitions, chroot in and fix things.
+
+Reboot once more to bring up new kernel - should now be 3.13....
+
+(notes by Tom Hogland <thogland@alaskatech.org>, Feb 2014)
