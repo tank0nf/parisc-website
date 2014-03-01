@@ -25,9 +25,10 @@ title: TODO
 == Status & TODO 2014-02-07 (TODO-List by Helge Deller) ==
 * SLAB breaks, SLUB works, why? Mail from Guy Martin.
 * why does mc hangs when exiting on sticon ?
+* implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 * test xorriso (Thomas Schmitt, scdbackup)
 * crash via GSP, is everything visible (GSP reset?) 
-* implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
+* remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
 * 3.14 partly: sticon font problem, mail from 27.01.2014: -#ifdef CONFIG_FONTS +#ifdef CONFIG_FONT_SUPPORT
 * 3.14 partly: gcc-4.8 switch on debian, perl-bug (mmap of small files). https://patchwork.kernel.org/patch/3279031/
 * 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
