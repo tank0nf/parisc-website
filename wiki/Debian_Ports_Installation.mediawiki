@@ -35,8 +35,7 @@ mkswap /dev/sda4 or mkswap -L SWAP0
 <pre>
 dhclient eth0
 </pre>
-* Mount the newly designed /root, /boot, /home, and other necessary filesystems to 
-  /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
+* Mount the newly designed /root, /boot, /home, and other necessary filesystems to /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
 <pre>
 mount LABEL=ROOT /mnt/destroot/
 mkdir /mnt/destroot/boot then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot.
@@ -89,8 +88,7 @@ reboot now
 <nowiki> <wait...> </nowiki>
 Interact with IPL (Y, N, or Cancel)?> y
 </pre>
-* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" 
-  to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
+* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
 <pre>
 0/vmlinux64 (64 Bit) or 0/vmlinux32 (32 Bit)
 </pre>
@@ -146,17 +144,12 @@ palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandlin
 
 * '''Reboot now and HPPA Linux should now load from the hard drive.'''
 
-* At this time you can install a couple handy utilities to make sure your network always starts on boot, and your hotplug devices load properly (external USB drives, etc.)
+* At this time you can install a couple handy utilities to make sure your network always starts on boot, and your hotplug devices load properly (external USB drives, etc.). First run: nano /etc/network/interfaces and add the following lines. Do this for any additional interfaces leaving a blank line between each one.
 <pre>
-First run: nano /etc/network/interfaces and add the following lines:
-
 auto lo
 iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
-
 iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 
 'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
-
-Do this for any additional interfaces leaving a blank line between each one.
 </pre>
 * Re-start your network:
 <pre>
