@@ -1,0 +1,103 @@
+---
+title: PALO
+---
+
+= INSTALLING PA-RISC Linux =
+
+These days PA-RISC Linux is installed using a fairly standard [http://www.debian.org/ Debian Linux] installer, usually from a CD. If you can't use the standard CD-ROM install, there are several other methods (network, tape, etc...). This [http://www.pateam.org/doc.html PA-RISC/linux-boot HOWTO] by the [http://www.pateam.org/ ESIEE] team in France may be helpful. And if you get stuck please ask the [mailto:linux-parisc@vger.kernel.org parisc-linux] mailing list. You might want to [http://vger.kernel.org/vger-lists.html#linux-parisc join it] too.
+
+The old completely unautomated method is [#old described below] for people with special situations where no Debian install works.
+
+This document explains some of the ways that PA-RISC Linux is different from other Debian Linuces so you can be better prepared during the installation process -- '''this is not an installation manual'''. Since most things are common between PA-RISC and other flavors of Debian Linux, you can use the fine documentation at [http://www.debian.org/ www.debian.org].
+
+== HP-UX and Linux on a Single PA-RISC Box ==
+
+You'll need a separate disk drive for Linux from HP-UX. Sorry for that limitation but it's the way things are.
+
+During the installation process, you will need to partition a disk and you need to choose the right one! Start by interrupting the boot process following the instructions, either pressing ESCAPE or "any key" within a certain time limit.
+
+Once you're talking to the boot firmware, type "path". This will give you a message like:
+
+     Primary:    FWSCSI.6.0
+
+That tells you your current boot path is the disk at SCSI address 6 (it's almost always 6). To see what disks are present, ask the firmware to "search". After a while it will give a list of bootable devices it found which may include disks, tape, cd-rom(IDE), and network(LAN), including the disk mentioned by the "path" command above.
+
+Linux names SCSI disks /dev/sda, /dev/sdb, etc... starting with the '''LOWEST''' SCSI ID, so from the list above you can figure out what names Linux will assign and be sure to avoid the ones imporant to HP-UX.
+
+== Our Boot Loader isn't Lilo ==
+
+Our boot loader is ''palo'', not ''lilo''. The [http://ftp.parisc-linux.org/cgi-bin/cvslite/palo/README.html palo README] is a bit out of date but still useful if you want to know the icky details. For installation you need to know palo is different from lilo in two important ways:
+
+# palo can boot a kernel right out of a normal Linux "ext2" disk partition -- no need to run palo every time the kernel changes.
+# palo needs a special disk partition for itself because of the way PA-RISC firmware works, so read the next section.
+
+== Disk Partitions ==
+
+During your Debian install, you will be asked to partition a disk. If you have multiple disks, you might want to read the information about disk names in the "HP-UX and Linux" section above.
+
+'''You must place two special partitions on your boot disk''' and '''they must fit entirely within the first 2Gbytes of your disk'''. The first special partition is the "palo" partition, which will hold the secondary boot loader image and a Linux kernel. We usually call this the "recovery" kernel because you'll usually boot a kernel out of a normal partition, but in an emergency you can use this one.
+
+I usually recommend 16Mb for the palo partition because it can optionally hold a second kernel and a ramdisk image, but 8Mb is just fine if you want to save space. The numeric (hex) code for the palo partition is "f0". When you are in the disk partitioning tool you must change the type of your intended palo partition to "f0".
+
+The next special partition is the one which will be a normal ext2 file system where you'll be storing your kernel. If your disk is larger than 2Gbytes, it's convenient to make a small partition which will be mounted as /boot which is contained within the first 2Gbytes of the disk. I often use a 32-Mbyte /boot partition so I can keep several kernels around.
+
+After this you'll want to add the usual Linux partitions -- one or more swap partitions and one or more ext2 partitions. They are not required to be within the first 2 Gbytes or anything. Here's a working setup as shown by '''cfdisk''', the partitioning program used by the Debian installer.
+                               Disk Drive: /dev/sda
+                             Size: 73407865856 bytes
+               Heads: 255   Sectors per Track: 63   Cylinders: 8924
+ 
+     Name        Flags      Part Type  FS Type          [Label]        Size (MB)
+  ------------------------------------------------------------------------------
+     sda1                    Primary   Linux/PA-RISC boot                  24.68
+     sda2                    Primary   Linux ext2                          41.13
+     sda3                    Primary   Linux swap                         542.87
+     sda5                    Logical   Linux ext3                        2155.03
+     sda6                    Logical   Linux ext3                        2155.03
+     sda7                    Logical   Linux ext3                       68483.69
+
+== ---- Obsolete Install Instructions ---- ==
+
+''Written by: Paul Bame [mailto:bame@fc.hp.com &lt;bame@fc.hp.com&gt;]''<br /> NOTE: These instructions were originally on the Developer's Release "0.5" CD-ROM which was very crude and contained no "installer". All modern installs should use one of the standard Debian methods (CD, network, ...) thus '''these instructions are obsolete''' unless you have a strange situation. <br />
+
+You can initialize a hard disk in your PA-RISC computer from this CD and boot from it.
+
+* '''Warning #1''' - These steps will DESTROY anything on the disk you choose for installation!!
+* '''Warning #2''' - These steps assume you are a fairly familiar with Linux disk administration (fdisk, mkfs). These steps may make assumptions common among people with this type of experience. That is, we may have left out steps, and expect you to work with that.
+* '''Warning #3''' - You should also be familiar with working at the boot prompt of your PA-RISC computer. Since this varies from model to model there are no specific instructions here.
+* '''Warning #4''' - The way Linux and HPUX "name" disks is different! If you're installing this on one of two disks in a healthy HP-UX box, be VERY CAREFUL choosing disk names!!!
+
+Decide which hard drive you'll use. You can ask your boot firmware to search the SCSI bus/busses to help identify the possibilities. If you have multiple SCSI drives, the one with the LOWEST SCSI ID will be called /dev/sda by Linux, and the next lowest ID will be called /dev/sdb.<br />
+THESE INSTRUCTIONS ASSUME: You have a single hard drive which is at SCSI ID 6 -- a common setup for HP boxes. If you have something different you will have to change every disk name in these instructions.
+Back up this drive if you care anything about it. All will be lost.<br /><br />
+* Boot from this CD. Login as 'root' password 'root'
+* Partition the target hard drive using fdisk.
+ 		$ fdisk /dev/sda
+Within the first 2 Gbytes of the drive you will need at least two partitions:
+** a small partition, perhaps 10Mb (as small as 4Mb)<br /> *** SET THIS PARTITION TYPE TO f0 WITH FDISK ***
+** a Linux file system partition. For now it can be as small as 150Mb, but you may want a larger one later so go as large as you can. <br /> later on you'll need a swap partition. Reserve as much space as you have physical RAM for this partition. Here's my setup and THESE INSTRUCTIONS ARE BASED ON THIS SETUP:<br />
+ 	Disk /dev/sda: 67 heads, 62 sectors, 1009 cylinders
+ 	Units = cylinders of 4154 * 512 bytes
+ 
+ 	   Device Boot   Start      End   Blocks   Id  System
+ 	/dev/sda1            1       32    66433   82  Linux swap
+ 	/dev/sda2           33       37    10385   f0  Unknown
+ 	/dev/sda3           38     1009  2018844   83  Linux native
+* run 'mkswap' on your swap partition
+ 		$ mkswap /dev/sda1
+* run 'mke2fs' on your Linux file system partition,
+ 		$ mke2fs /dev/sda3
+* Mount your Linux file system on /mnt
+ 		$ mount /dev/sda3 /mnt
+* Copy the CD to /mnt:
+ 		$ find / -xdev | cpio -pmudv /mnt
+or you can omit the web site and ftp mirror using the appropriate find(1) command.<br /><br /> If the system crashes during this step, reboot it, run 'fsck' on the partition before re-mounting it and trying this step again.<br /><br />
+* Initialize the boot loader (roughly equivalent to lilo): *** NOTE *** change both '3's in the following command to use your partition number
+ 		$ palo -k /boot/vmlinux -b /boot/iplboot \
+ 			-c '3/boot/vmlinux TERM=linux HOME=/ root=/dev/sda3' \
+ 			-I /dev/sda
+* (optional) change /mnt/etc/rc (there is a 'vi' clone on the system to do this) to remove the mounting of the ramdisks. You may also want to have it remount your hard disk read/write. You can have it 'swapon /dev/sda2' (using your swap partition instead of course) if you want, but at this time the kernel isn't swapping so it doesn't matter yet.<br /><br />
+* Unmount:
+ 		$ umount /mnt
+* Reboot:
+ 		$ reboot
+* Stop the boot at the boot prompt and instruct it to boot from your SCSI disk rather than the CD-ROM.
