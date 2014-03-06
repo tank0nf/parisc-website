@@ -195,14 +195,14 @@ PA-RISC 2.0 Instruction Set Architecture
 | width="5%" | 196k
 | width="20%" | July 2004
 | width="50%" |
-PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [[File:pdc20-v1.0-Ch3-entry.pdf]) (older [[File:pdc20-v0.36-Ch1-entry.pdf]) <br />
+PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [[File:pdc20-v1.0-Ch3-entry.pdf]]) (older [[File:pdc20-v0.36-Ch1-entry.pdf]]) <br />
 |- valign="top"
 | width="25%" |
 [[File:pdc20-v1.1-Ch4-pdc.pdf]]
 | width="5%" | 356k
 | width="20%" | July 2004
 | width="50%" |
-PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures (Chapter 4) (older [[File:pdc20-v1.0-Ch4-procs.pdf v1.0]) (older [[File:pdc20-v0.36-Ch2-procs.pdf v0.36]) <br />
+PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures (Chapter 4) (older v1.0 [[File:pdc20-v1.0-Ch4-procs.pdf]]) (older v0.36 [[File:pdc20-v0.36-Ch2-procs.pdf]]) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
 [[File:pdc20-v1.1-Ch5-iodc.pdf]]
