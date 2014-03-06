@@ -154,6 +154,13 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 | width="5%" | 409k
 | width="20%" | April 15, 2000
 | width="50%" | Standard Text Interface (STI) <br />
+|- bgcolor="#dcdcdc" valign="top"
+| width="25%" |
+[[File:pa-arch.zip]]
+| 7MB
+|
+| All documents above (and more) in a ZIP file<br />
+|- bgcolor="#dcdcdc" valign="top"
 |}<br /><br />
 
 ==PA-RISC 2.0 Architecture Specifications==
