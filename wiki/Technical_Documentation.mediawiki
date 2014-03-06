@@ -185,7 +185,7 @@ PA-RISC 2.0 Instruction Set Architecture
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference:<br />Memory Data Formats. <br />
 |- valign="top"
 | width="25%" |
-[File:92432-90012.pdf]]
+[[File:92432-90012.pdf]]
 | width="5%" | 312k
 | width="20%" | June 1998
 | width="50%" | HP Assembler Reference Manual <br />
