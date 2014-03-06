@@ -154,32 +154,32 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:parisc2.0.pdf parisc2.0.pdf]]
+[[File:parisc2.0.pdf]]
 | width="5%" | 2.3M
 | width="20%" | 1995
 | width="50%" |
 PA-RISC 2.0 Instruction Set Architecture
 |- valign="top"
 | width="25%" |
-[[File:pa64rt.pdf pa64rt.pdf]]
+[[File:pa64rt.pdf]]
 | width="5%" | 127k
 | width="20%" | 1997
 | width="50%" | 64-Bit Runtime Architecture for PA-RISC 2.0<br /><br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:unwind.pdf unwind.pdf]]
+[[File:unwind.pdf]]
 | width="5%" | 138k
 | width="20%" | Sep 16,1997
 | width="50%" | UNWIND PA64 Functional Specification. <br />
 |- valign="top"
 | width="25%" |
-[[File:rad_11_0_32.pdf  rad_11_0_32.pdf]]
+[[File:rad_11_0_32.pdf]]
 | width="5%" | 575k
 | width="20%" | 1997
 | width="50%" | HPUX 11.0 32-bit Runtime Environment. Only covers PA2.0. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pdc20-v0.36-ChC-datafmt.pdf  pdc20-v0.36-ChC-datafmt.pdf]]
+[[File:pdc20-v0.36-ChC-datafmt.pdf]]
 | width="5%" | 32k
 | width="20%" | March 1999
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference:<br />Memory Data Formats. <br />
@@ -191,27 +191,27 @@ PA-RISC 2.0 Instruction Set Architecture
 | width="50%" | HP Assembler Reference Manual <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pdc20-v1.1-Ch3-pdce.pdf pdc20-v1.1-Ch3-pdce.pdf]]
+[[File:pdc20-v1.1-Ch3-pdce.pdf]]
 | width="5%" | 196k
 | width="20%" | July 2004
 | width="50%" |
-PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [[File:pdc20-v1.0-Ch3-entry.pdf v1.0]) (older [[File:pdc20-v0.36-Ch1-entry.pdf v0.36]) <br />
+PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Entry Points. (Chapter 3) (older [[File:pdc20-v1.0-Ch3-entry.pdf]) (older [[File:pdc20-v0.36-Ch1-entry.pdf]) <br />
 |- valign="top"
 | width="25%" |
-[[File:pdc20-v1.1-Ch4-pdc.pdf pdc20-v1.1-Ch4-pdc.pdf]]
+[[File:pdc20-v1.1-Ch4-pdc.pdf]]
 | width="5%" | 356k
 | width="20%" | July 2004
 | width="50%" |
 PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Dependent Code (PDC) Procedures (Chapter 4) (older [[File:pdc20-v1.0-Ch4-procs.pdf v1.0]) (older [[File:pdc20-v0.36-Ch2-procs.pdf v0.36]) <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pdc20-v1.1-Ch5-iodc.pdf pdc20-v1.1-Ch5-iodc.pdf]]
+[[File:pdc20-v1.1-Ch5-iodc.pdf]]
 | width="5%" | 304k
 | width="20%" | July 2004
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference Specification: IODC (Chapter 5) <br />
 |- valign="top"
 | width="25%" |
-[[File:pdc20-v1.1-Ch6-os_interface.pdf  pdc20-v1.1-Ch6-os_interface.pdf]]
+[[File:pdc20-v1.1-Ch6-os_interface.pdf]]
 | width="5%" | 48k
 | width="20%" | July 2004
 | width="50%" | PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Operating System Interface (Chapter 6) <br />
