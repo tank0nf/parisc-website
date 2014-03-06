@@ -108,7 +108,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
 [[File:pa-chips.zip]]
-| 7MB
+| 23MB
 |
 | All documents above (and more) in a ZIP file<br />
 |- bgcolor="#dcdcdc" valign="top"
