@@ -107,7 +107,7 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 | WAX ERS - GSC to EISA adapter
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pa-arch.zip]]
+[[File:pa-chips.zip]]
 | 7MB
 |
 | All documents above (and more) in a ZIP file<br />
