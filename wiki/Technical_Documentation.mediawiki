@@ -222,31 +222,31 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 {| width="100%"
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:980723.pdf 980723.pdf]]
+[[File:980723.pdf]]
 | width="5%" | 9259k
 | width="20%" | May 9, 1999
 | width="50%" | HP-UX Workstation HCL (Hardware Compatibility List):<br /> This explains the features of released hardware. <br />
 |- valign="top"
 | width="25%" |
-[[File:980723ng.pdf  980723ng.pdf]]
+[[File:980723ng.pdf]]
 | width="5%" | 1115k
 | width="20%" | May 9, 1999
 | width="50%" | HP-UX Workstation HCL (Hardware Compatibility List):<br /> This explains the features of previously released hardware. This provides supplemental materials to 980723.pdf (above). <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:712_service-handbook.pdf  712_service-handbook.pdf]]
+[[File:712_service-handbook.pdf]]
 | width="5%" | 4637k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/712 Service Handbook <br />
 |- valign="top"
 | width="25%" |
-[[File:712_technical_manual.pdf  712_technical_manual.pdf]]
+[[File:712_technical_manual.pdf]]
 | width="5%" | 3825k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/712 Technical Manual <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:715_service-handbook.pdf  715_service-handbook.pdf]]
+[[File:715_service-handbook.pdf]]
 | width="5%" | 5225K
 | width="20%" | August, 1995
 | width="50%" | HP 9000/715 Service Handbook 4th Ed. <br />
@@ -257,79 +257,79 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:720-730_owners-guide.pdf  720-730_owners-guide.pdf]]
+[[File:720-730_owners-guide.pdf]]
 | width="5%" | 1830k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/720 and 730 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[[File:735_service.pdf  735_service.pdf]]
+[[File:735_service.pdf]]
 | width="5%" | 7408k
 | width="20%" | July 11, 2003
 | width="50%" | Overview of A180 features: <br /> HP 9000/735 Service Handbook
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:750_owners-guide.pdf  750_owners-guide.pdf]]
+[[File:750_owners-guide.pdf]]
 | width="5%" | 2150k
 | width="20%" | July 11, 2003
 | width="50%" | HP 9000/750 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[[File:a180.pdf  a180.pdf]]
+[[File:a180.pdf]]
 | width="5%" | 64k
 | width="20%" | May 9, 1999
 | width="50%" | Overview of A180[C] features: <br /> This provides the first docs on the A180 internals. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:a180-user.pdf  a180-user.pdf]]
+[[File:a180-user.pdf]]
 | width="5%" | 935k
 | width="20%" | July 11, 2003
 | width="50%" | A180[C] User Manual <br />
 |- valign="top"
 | width="25%" |
-[[File:b1xx-owners.pdf  b1xx-owners.pdf]]
+[[File:b1xx-owners.pdf]]
 | width="5%" | 1549k
 | width="20%" | July 11, 2003
 | width="50%" | B-Class (B1xxL) Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:b1xx-service.pdf  b1xx-service.pdf]]
+[[File:b1xx-service.pdf]]
 | width="5%" | 1029k
 | width="20%" | July 11, 2003
 | width="50%" | B-Class (B1xxL) Service Manual <br />
 |- valign="top"
 | width="25%" |
-[[File:c100_110-owners.pdf  c100_110-owners.pdf]]
+[[File:c100_110-owners.pdf]]
 | width="5%" | 1716k
 | width="20%" | July 11, 2003
 | width="50%" | C100/C110 Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:c160_thru_c360-owners.pdf  c160_thru_c360-owners.pdf]]
+[[File:c160_thru_c360-owners.pdf]]
 | width="5%" | 1495k
 | width="20%" | July 11, 2003
 | width="50%" | C160/C180/C200/C240/C360 Owner's Guide <br />
 |- valign="top"
 | width="25%" |
-[[File:c160l_owners.pdf  c160l_owners.pdf]]
+[[File:c160l_owners.pdf]]
 | width="5%" | 1760k
 | width="20%" | July 11, 2003
 | width="50%" | C160L Owner's Guide <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:cxxx-service.pdf  cxxx-service.pdf]]
+[[File:cxxx-service.pdf]]
 | width="5%" | 1715k
 | width="20%" | July 11, 2003
 | width="50%" | C-Class (Cxxx[L]) Service Manual <br />
 |- valign="top"
 | width="25%" |
-[[File:e-class_hpjournal.pdf  e-class_hpjournal.pdf]]
+[[File:e-class_hpjournal.pdf]]
 | width="5%" | 104k
 | width="20%" | July 11, 2003
 | width="50%" | E-Class (Ex5) HP Journal Article <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:j280_owners.pdf  j280_owners.pdf]]
+[[File:j280_owners.pdf]]
 | width="5%" | 6442k
 | width="20%" | July 11, 2003
 | width="50%" | J280 Owner's Guide <br />
