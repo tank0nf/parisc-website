@@ -187,4 +187,4 @@ put the following lines into your '''/etc/nscd.conf''' file:<pre>
 ==On my rp5470, rpXXXX machine, the Attention LED is flashing==
 
 The Attention LED is flashing  because there was some problem somewhen in the past.
-To turn it off, log in to the GSP console and read the error log (command: SL). Accessing this error log is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level. You do not need to read all error messages. Accessing this log once is sufficient to turn the LED off.
+To turn it off, log in to the GSP console and read the error log (command: SL, then choose 'E' for error log). Accessing this error log is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level. You do not need to read all error messages. Accessing this log once is sufficient to turn the LED off.
