@@ -28,6 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Mar 2014''' - Our A500 which hosted our main webpage is being moved to OSUOSL.org. More than 9500 debian packages built.
 * '''Feb 2014''' - The new parisc Wiki is now at http://parisc.wiki.kernel.org. Contents of the old Wiki at wiki.parisc-linux.org was moved and the webpage redirects here.
 * '''Jan 2014''' - Updated [[Debian_Ports_Installation|Debian unstable install instructions]]. More than [http://buildd.debian-ports.org/stats 8000 newly built native Debian packages] available.
 * '''Dec 2013''' - [http://unstable.buildd.net/index-hppa.html 5 buildd servers for debian unstable online]. Stable Debian kernel 3.12 available. 
