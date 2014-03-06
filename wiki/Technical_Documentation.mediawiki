@@ -101,10 +101,17 @@ Nearly all of the documents listed here are copyrighted by HP and made available
 | National Semiconductor PC87415 Dual Channel IDE controller Data Sheet. (integrated in PC87560UBD SuckyIO "Legacy IO Controller") <br />
 |- valign="top"
 | width="25%" |
-[[File:WAX_ERS_V1.0_Redacted.pdf]]
+[[File:WAX_ERS_V1.0_Redacted.pdf]] 
 | 12MB
 | October 2007
-| WAX ERS - GSC to EISA adapter <br />
+| WAX ERS - GSC to EISA adapter
+|- bgcolor="#dcdcdc" valign="top"
+| width="25%" |
+[[File:pa-arch.zip]]
+| 7MB
+|
+| All documents above (and more) in a ZIP file<br />
+|- bgcolor="#dcdcdc" valign="top"
 |}<br /><br />
 
 ==PA-RISC 1.1 Architecture Specifications==
