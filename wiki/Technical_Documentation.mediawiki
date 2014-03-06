@@ -340,79 +340,79 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 {| width="100%"
 |- valign="top"
 | width="25%" |
-[[File:PA-8700wp.pdf  PA-8700wp.pdf]]
+[[File:PA-8700wp.pdf]]
 | width="5%" | 189KB
 | width="20%" | April, 2000
 | width="50%" | PA-RISC 8x00 Family of Microprocessors with Focus on PA-8700:<br /> Summary of PA-RISC architecture and implementations up to PA-8600 and features of the PA 8700 implementation. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:PA_PerfGuide_vs2.pdf PA_PerfGuide_vs2.pdf]]
+[[File:PA_PerfGuide_vs2.pdf]]
 | width="5%" | 162KB
 | width="20%" | October 8, 1997
 | width="50%" | Enabling Optimizations to Achieve Higher Performance on the HP PA-RISC Architecture. Discusses how to measure CPU perf, what impacts it, and HP compiler options. <br />
 |- valign="top"
 | width="25%" |
-[[File:pa7300lc_config.pdf  pa7300lc_config.pdf]]
+[[File:pa7300lc_config.pdf]]
 | width="5%" | 11KB
 | width="20%" | June, 1997
 | width="50%" | Configurability of the PA 7300LC. One page summary of config options for PA7300LC system designers. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:four_way_superscalar.pdf four_way_superscalar.pdf]]
+[[File:four_way_superscalar.pdf]]
 | width="5%" | 195KB
 | width="20%" | August, 1997
 | width="50%" | Four-Way Superscalar PA-RISC Processors:<br /> HP PA 8000 and PA 8200 PA-RISC CPU features. First published in HP Journal, August 1997. <br />
 |- valign="top"
 | width="25%" |
-[[File:pa7300lc_design.pdf  pa7300lc_design.pdf]]
+[[File:pa7300lc_design.pdf]]
 | width="5%" | 118KB
 | width="20%" | June, 1997
 | width="50%" | High-Performance Processor Design Guided by System Costs. 10 pages. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pa7300lc_on_chip.pdf pa7300lc_on_chip.pdf]]
+[[File:pa7300lc_on_chip.pdf]]
 | width="5%" | 49KB
 | width="20%" | June, 1997
 | width="50%" | The PA 7300LC Microprocessor: A Highly Integrated System on a Chip. 5 Pages. <br />
 |- valign="top"
 | width="25%" |
-[[File:isscc.8500.pdf isscc.8500.pdf]]
+[[File:isscc.8500.pdf]]
 | width="5%" | 91KB
 | width="20%" | Feb, 1999
 | width="50%" | PA8500: A 500 MHz 64 bit RISC CPU with 1.5Mbyte on chip Cache <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:isscc_cache_talk.pdf isscc_cache_talk.pdf]]
+[[File:isscc_cache_talk.pdf]]
 | width="5%" | 144KB
 | width="20%" | 1997?
 | width="50%" | PA8500: A 500MHz 1.5 MByte Cache with On-Chip CPU. Jonathan Lachman and J. Michael Hill. <br />
 |- valign="top"
 | width="25%" |
-[[File:isscc_cache_talk_2.pdf isscc_cache_talk_2.pdf]]
+[[File:isscc_cache_talk_2.pdf]]
 | width="5%" | 119KB
 | width="20%" | 2000
 | width="50%" | PA8700: A 900MHz 2.25MByte Cache with On Chip CPU. Jonathan Lachman and J. Michael Hill. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:mako_mpf_2001.pdf mako_mpf_2001.pdf]]
+[[File:mako_mpf_2001.pdf]]
 | width="5%" | 1409KB
 | width="20%" | October, 2001
 | width="50%" | HP's PA-8800 Processor:<br /> Slideset from the 2001 Microprocessor Forum. <br />
 |- valign="top"
 | width="25%" |
-[[File:pa2c96.pdf pa2c96.pdf]]
+[[File:pa2c96.pdf]]
 | width="5%" | 66KB
 | width="20%" | 1996
 | width="50%" | 64-bit and Multimedia Extensions in the PA-RISC 2.0 Architecture. Ruby Lee and Jerry Huck. 10 pages. <br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
-[[File:pa7200_design.pdf pa7200_design.pdf]]
+[[File:pa7200_design.pdf]]
 | width="5%" | 171KB
 | width="20%" | February, 1996
 | width="50%" | Design of the HP PA 7200 CPU. Kenneth K Chan, et al. 11 pages. <br />
 |- valign="top"
 | width="25%" |
-[[File:pa8000-compiler_opt.pdf pa8000-compiler_opt.pdf]]
+[[File:pa8000-compiler_opt.pdf]]
 | width="5%" | 47KB
 | width="20%" | 1997?
 | width="50%" | Compiler Optimizations for the PA-8000. Anne M. Holler. 11 pages. <br />
