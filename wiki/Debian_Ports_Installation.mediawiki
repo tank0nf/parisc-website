@@ -47,7 +47,7 @@ export http_proxy=http://proxy:8080
 echo "http_proxy=$http_proxy" > /root/.wgetrc
 echo "use_proxy = on" >> /root/.wgetrc
 </pre>
-* Now run debootstrap. This may take some time... (10-20 minutes depending on your connection speed):
+* Now run debootstrap. This may take some time... (on a fast machine ~10-20 minutes, on a slow machine like B180L ~1-2 hours, and depending on your network connection speed):
 <pre>
 debootstrap --arch=hppa --no-check-gpg  unstable  /mnt/destroot http://ftp.debian-ports.org/debian/
 </pre>
