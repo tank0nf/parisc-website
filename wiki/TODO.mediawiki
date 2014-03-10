@@ -23,6 +23,7 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-03-01 (TODO-List by Helge Deller) ==
+* eglibc mmap bug with localedef (see debian bugzilla #)
 * SLAB breaks, SLUB works, why? Mail from Guy Martin.
 * why does mc hangs when exiting on sticon ?
 * implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
