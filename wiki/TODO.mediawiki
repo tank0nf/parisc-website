@@ -81,6 +81,7 @@ title: TODO
 ** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
 
 * Debian packages / Userspace work
+** qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
 ** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
