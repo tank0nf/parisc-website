@@ -14,7 +14,7 @@ title: TODO
 * wiki migration finished (05 Feb)
 
 == Potential ABI breakage ==
-* Drop HP-UX-Support, change EWOULDBLOCK=EAGAIN, possibly change number of signals (for systemd), .. what else? (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it. https://patchwork.kernel.org/patch/3499551/
+* We dropped HP-UX-Support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN, possibly change number of signals (for systemd), .. what else? (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it. https://patchwork.kernel.org/patch/3499551/
 * More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 
 == Testsuites - to be checked ==
@@ -31,7 +31,6 @@ title: TODO
 * crash in GSP, is everything visible (GSP reset?) 
 * remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
 * Add loop module to debian kernel.
-* 3.14 partly: sticon font problem, mail from 27.01.2014: -#ifdef CONFIG_FONTS +#ifdef CONFIG_FONT_SUPPORT
 * 3.14 partly: gcc-4.8 switch on debian, perl-bug (mmap of small files). https://patchwork.kernel.org/patch/3279031/
 * 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * 3.14 partly: debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
@@ -146,6 +145,7 @@ title: TODO
 * Kernel 3.14
 ** Native types in uapi/asm/stat.h
 ** Dropped HP-UX Support: changed EWOULDBLOCK = EAGAIN -> https://patchwork.kernel.org/patch/3499551/
+** sticon font problem fixed, sticon now automatically chooses the Linux fb fonts if available instead of using the HP fonts
 
 == Debian userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
