@@ -4,6 +4,23 @@ title: TestCases
 
 = Kernel Testcases =
 
+== Math test case ==
+
+should return 0.0: (hppa floating point error)
+
+ #include <stdio.h>
+ #include <math.h>
+ int
+ main (void) {
+  double result = exp (-4.3682654441477153e+19);
+  printf ("%g\n", result);
+  if (result != 0.0)
+   return 1;
+  return 0;
+ }
+
+
+
 == Futex wait failure ==
 
 No testcase.
