@@ -38,8 +38,10 @@ dhclient eth0
 * Mount the newly designed /root, /boot, /home, and other necessary filesystems to /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
 <pre>
 mount LABEL=ROOT /mnt/destroot/
-mkdir /mnt/destroot/boot then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot.
-mount LABEL=BOOT /mnt/destroot/boot/ mount LABEL=HOME /mnt/destroot/home/, etc.
+mkdir /mnt/destroot/boot 
+mount LABEL=BOOT /mnt/destroot/boot/
+  then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot, e.g.:
+  mount LABEL=HOME /mnt/destroot/home/, etc.
 </pre>
 * '''IMPORTANT!''': If you are behind a proxy server, you will need to create a /root/.wgetrc file and export the proxy setting on the command line. Here is an example:
 <pre>
