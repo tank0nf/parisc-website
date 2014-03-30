@@ -90,10 +90,6 @@ reboot now
 <nowiki> <wait...> </nowiki>
 Interact with IPL (Y, N, or Cancel)?> y
 </pre>
-* Press "0" to change the "0/vmlinux" line, and replace this line by "0/vmlinux64" to boot the 64bit kernel or "0/vmlinux32 on 32 bit machines.
-<pre>
-0/vmlinux64 (64 Bit) or 0/vmlinux32 (32 Bit)
-</pre>
 * Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda3" (look at the output of blkid above):
 <pre>
 root=/dev/sda3
