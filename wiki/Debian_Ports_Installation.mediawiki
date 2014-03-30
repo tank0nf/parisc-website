@@ -102,7 +102,7 @@ root=/dev/sda3
 <pre>
 mount LABEL=BOOT /boot
 </pre>
-* Networking bug Work-around: Due to a minor bug, networking doesn't start automatically, and the RSA keys for debian-ports.org are not available. Here is the current solution:
+* Networking bug Work-around: Due to a minor bug, networking doesn't start automatically, and the RSA keys for debian-ports.org are not available. Here is the current solution (you may need to set the proxy environment variables like described above!):
 <pre>
 Type 'dhclient eth0' to re-start the network
 
@@ -112,8 +112,8 @@ then: gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/d
 
 then: gpg --export --armor 623DB0B8 | apt-key add -
 
-Now you can successfully run - 'aptitude update' and
-aptitude install openssh-server locales localepurge console-setup debian-ports-archive-keyring
+Now you can successfully run - 'apt-get update' and
+apt-get install openssh-server locales console-setup debian-ports-archive-keyring
 dpkg-reconfigure tzdata
 dpkg-reconfigure locales
 dpkg-reconfigure console-setup
@@ -124,9 +124,9 @@ dpkg -i /palo*deb
 </pre>
 * and select your new kernel...
 <pre>
-aptitude install linux-image-parisc64-smp   # for a 64bit SMP kernel
+apt-get install linux-image-parisc64-smp   # for a 64bit SMP kernel
 (or)
-aptitude install linux-image-parisc         # for a 32bit UP kernel
+apt-get install linux-image-parisc         # for a 32bit UP kernel
 </pre>
 * Don't forget to set up your symlinks in /boot
 <pre>
@@ -136,45 +136,23 @@ ln -s vmlinux* vmlinux
 </pre>
 * Now you can run the palo configuration:
 <pre>
-palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline=
-"2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
+palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline="2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
 </pre>
 
 * '''Reboot now and HPPA Linux should now load from the hard drive.'''
 
-* At this time you can install a couple handy utilities to make sure your network always starts on boot, and your hotplug devices load properly (external USB drives, etc.). First run: nano /etc/network/interfaces and add the following lines. Do this for any additional interfaces leaving a blank line between each one.
+* At this time you can install a couple handy utilities to make sure your network always starts on boot. First run: nano /etc/network/interfaces and add the following lines. Do this for any additional interfaces leaving a blank line between each one.
 <pre>
 auto lo
 iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
 iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 
-'allow-hotplug eth0', as this will interfere with 'ifplugd' later).
 </pre>
 * Re-start your network:
 <pre>
 dhclient eth0
 </pre>
-* Now for ifupdown-extra and ifplugd
-<pre>
-aptitude install ifupdown-extra ifplugd
-Run: dpkg-reconfigure ifplugd
-Use 'auto' (no quotes) as the "static interfaces to be watched by ifplugd". 
-Select 'OK' to go to the next screen.
-Use 'all' (no quotes) as the "hotplugged interfaces to be watched by ifplugd". 
-Select 'OK' to go to the next screen.
-In the 'arguments to ifplugd' screen you can stick to the defaults unless 
-there is a problem with the daemon.
-Select 'OK' to go to the next screen for 'suspend behavior' Select 'suspend' 
-to compensate for any broken net drivers.
-Select 'OK' to finish
-
-Type: 'service networking stop' and then 'service networking start' (no quotes) to reload all daemons.
-
-You can check interface and connectivity status by typing: 'network-test' (no quotes)
-</pre>
 
 * For more detailed networking info, look [http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure HERE].
-
-* ...and that's it! ifplugd has the added advantage of automatically detecting external USB drives at boot time also.
 
 * Now add more packages and have fun!
 
