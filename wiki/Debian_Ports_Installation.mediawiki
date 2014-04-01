@@ -14,7 +14,7 @@ The Debian ports project hosts a parisc version of debian unstable. Today the re
 *Download the temporary boot image from http://debian-ports.org/~deller/DEBIAN_PORTS_HPPA_BOOTIMAGE/lifimage
 *Burn the image to a cdrom *or* make it available as tftp bootimage, *or* if you have a spare disc drive in the machine you can just "dd" this image (e.g. "dd if=lifimage of=/dev/sdb") to this drive and boot from it.
 *Turn on your parisc machine and boot this media (via cdrom or tftp)
-*This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, palo, scp, ...) to bootstrap a new debian unstable machine.
+*This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, scp, ...) to bootstrap a new debian unstable machine.
 
 *use fdisk to partition your disk. Create a palo partition first (fdisk type f0, size >= 50 MB), then a /boot partition (needs to be in the first 2GB of a disk, ext2, fdisk type 83). A good size for the boot partition is 200-400 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system) If you have multiple drives and would like to put your '/home', '/var', or other partition (including extra swap space) on a second internal drive, you may set them up accordingly with 'fdisk /dev/sdb' (or whatever drive is suitable):
 <pre>
@@ -49,13 +49,12 @@ export http_proxy=http://proxy:8080
 echo "http_proxy=$http_proxy" > /root/.wgetrc
 echo "use_proxy = on" >> /root/.wgetrc
 </pre>
-* Now run debootstrap. This may take some time... (on a fast machine ~10-20 minutes, on a slow machine like B180L ~1-2 hours, and depending on your network connection speed):
+* Now run debootstrap. Make sure to add the palo bootloader as one additional package to install. This may take some time... (on a fast machine ~10-20 minutes, on a slow machine like B180L ~1-2 hours, and depending on your network connection speed):
 <pre>
-debootstrap --arch=hppa --no-check-gpg  unstable  /mnt/destroot http://ftp.debian-ports.org/debian/
+debootstrap --arch=hppa --no-check-gpg  --include=palo unstable  /mnt/destroot http://ftp.debian-ports.org/debian/
 </pre>
-* copy over the palo package from the boot image to the new filesystem and create 'palo.conf'
+* create an empty 'palo.conf' file:
 <pre>
-cp /palo*deb /mnt/destroot
 touch /mnt/destroot/etc/palo.conf
 </pre> 
 * '''IMPORTANT!''': If you install via GSP console or via a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console after bootup (kill -HUP 1 activates the change):
@@ -117,10 +116,6 @@ apt-get install openssh-server locales console-setup debian-ports-archive-keyrin
 dpkg-reconfigure tzdata
 dpkg-reconfigure locales
 dpkg-reconfigure console-setup
-</pre>
-* Install 'palo'
-<pre>
-dpkg -i /palo*deb
 </pre>
 * and select your new kernel...
 <pre>
