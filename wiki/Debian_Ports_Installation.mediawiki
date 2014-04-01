@@ -160,11 +160,10 @@ dhclient eth0
 
 == New installation media (Debian unstable via debian-ports) ==
 
-As of February 2014, Helge is currently working on getting a netboot install-CD working with debian-ports.
-
+Since February 2014, Helge is working on getting a netboot install-CD working with debian-ports.
 A pre-release version of this install media is available at http://debian-ports.org/~deller/NETINST_CD_TRY4/
 
-Since palo (our bootloader program) isn't in the unstable repository yet, the installation with this image will not help you to get a bootable system installed.
+Update April 2014: palo (our PA-RISC bootloader program) is now back in the debian unstable repository. This will make it easier to get an install-CD created.
 
 == Old installation medias (Debian Lenny) ==
 
