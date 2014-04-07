@@ -24,6 +24,11 @@ title: Debian Buildpackages
 : dch --distribution unstable --bin-nmu Rebuild b1
 : dpkg-buildpackage --force-sign -B -sa -m<email>
 
+; How to modify debian changelog:
+: dch --distribution unstable --bin-nmu Rebuild b1
+: dch-git --since <commit_nr> 
+
+
 ; How to use subkeys for signing on buildds
 : http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/
 
