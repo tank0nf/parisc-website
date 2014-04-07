@@ -17,6 +17,8 @@ title: Debian Buildpackages
 : dpkg-buildpackage --force-sign -B -sa -m<email>
 : e.g.: dpkg-buildpackage --force-sign -sa -mHelge\ Deller\ \<deller@gmx.de\> -kB51E3864 -j5
 : DEB_BUILD_OPTIONS=nocheck
+: or in a chroot environment:
+: DEB_BUILD_OPTIONS=nocheck sbuild  -s -mHelge\ Deller\ \<deller@gmx.de\> --dist=unstable --no-arch-all -j5
 
 ; How to build a package (*with* modified source):
 : dch --distribution unstable --bin-nmu Rebuild b1
