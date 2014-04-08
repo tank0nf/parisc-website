@@ -349,7 +349,7 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 | width="50%" | J280 Owner's Guide <br /> 
 |- valign="top"
 | width="25%" |
-[[File:emr_na-c00044188-1.pdf]]
+[[File:Users_Manual_HP_9000_Model_A-180.pdf]]
 | width="5%" | 5.6M
 | width="20%" | February 2000
 | width="50%" | User's Manual - HP 9000 Model A-180<br />
