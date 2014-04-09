@@ -24,6 +24,9 @@ title: TODO
 
 == Status & TODO 2014-03-25 (TODO-List by Helge Deller) ==
 * eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
+** change kernel and glibc SHMLBA=PAGE_SIZE (mail vom 03.04.2014)
+** debian-cd to use xorriso
+** debian-cd: do not compress kernel.
 * SLAB breaks, SLUB works, why? Mail from Guy Martin.
 * why does mc hangs when exiting on sticon ?
 * implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
