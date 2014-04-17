@@ -11,19 +11,18 @@ The Debian ports project hosts a parisc version of debian unstable. Today the re
 == RECOMMENDED: New installation media (Debian unstable via debian-ports) ==
 
 The latest installation media to directly install Debian unstable is available for download here:
-# http://mkhppa3.esiee.fr/debian-cd/  (ISO Images), or
-# http://mkhppa3.esiee.fr/preseed/lifimage (LIF Images, which can be booted via network)
-You can either
+# http://mkhppa3.esiee.fr/preseed/lifimage (LIF Image file, which can be booted directly via network/disk/...), or
+# http://mkhppa3.esiee.fr/debian-cd/  (ISO Images)
+For either of the ones above, you can:
 # burn the ISO image or lifimage to a CD, or
-# boot either of them via tftpboot/bootp, or
+# boot them via tftpboot/bootp, or
 # use "dd" to copy it to an empty hard disc drive and tell IPL to boot from it.
 
 Notes:
-* If your machine is behind a firewall, add this option to the Linux kernel command line at the IPL command prompt: 
+* The images above have hardcoded to download this preseed file: http://mkhppa3.esiee.fr/preseed/preseed.cfg
+* If your machine is behind a firewall, change the Linux kernel command line at the IPL command prompt: 
    mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need!)
 * On a C8000 you need to install via serial port. ATI graphics drivers are not yet in the boot kernel of the installation media.
-* After sucessfull installation and reboot, edit the /etc/apt/sources.list file and add this line to receive updates from debian-ports:
-   deb http://ftp.debian-ports.org/debian/ unstable main
 * In case you installed via serial port, you need to uncommend the getty lines in /etc/inittab and run "kill -HUP 1" to get a login prompt on the monitor: 
    1:2345:respawn:/sbin/getty 38400 tty1
 
