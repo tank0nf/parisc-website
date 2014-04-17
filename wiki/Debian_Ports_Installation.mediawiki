@@ -18,15 +18,14 @@ You can either
 # boot either of them via tftpboot/bootp, or
 # use "dd" to copy it to an empty hard disc drive and tell IPL to boot from it.
 
-If your machine is behind a firewall, add this option to the Linux kernel command line at the IPL command prompt: 
- mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need!)
-
-After sucessfull installation and reboot, edit the /etc/apt/sources.list file and add this line to receive updates from debian-ports:
- deb http://ftp.debian-ports.org/debian/ unstable main
-
-In case you installed via serial port, you need to uncommend the getty lines in /etc/inittab and run "kill -HUP 1" to get a login prompt on the monitor: 
- 1:2345:respawn:/sbin/getty 38400 tty1
-
+Notes:
+* If your machine is behind a firewall, add this option to the Linux kernel command line at the IPL command prompt: 
+   mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need!)
+* On a C8000 you need to install via serial port. ATI graphics drivers are not yet in the boot kernel of the installation media.
+* After sucessfull installation and reboot, edit the /etc/apt/sources.list file and add this line to receive updates from debian-ports:
+   deb http://ftp.debian-ports.org/debian/ unstable main
+* In case you installed via serial port, you need to uncommend the getty lines in /etc/inittab and run "kill -HUP 1" to get a login prompt on the monitor: 
+   1:2345:respawn:/sbin/getty 38400 tty1
 
 == Installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
 * '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimage is based on older binaries which would need to be rebuilt.'''''
