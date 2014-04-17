@@ -18,7 +18,8 @@ title: TODO
 * More signals? > Can we change _NSIG to 69 so there are 32 RT signals as on other arches? It looks like it needs to be a power of 2.  MIPS uses 128. 
 
 == Testsuites - to be checked ==
-* libio-epoll-perl test fail - This test package fails to build with what looks like a kernel issue (poll).  I know we also have a problem with poll in rpcbind on 32-bit kernels.
+* tests in debian packages libio-epoll-perl and python-falcon fail -> kernel issue with epoll(). Bugfix: https://patchwork.kernel.org/patch/3973381/.
+* We also have a problem with poll in rpcbind on 32-bit kernels. Runs forever. Not analyzed yet.
 * zeromq3 package: It's quite simple.  In spite of the fact that PTHREAD_THREADS_MAX is 1024, pthread_create fails after creating less than 40 threads.  It will do 10.
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
