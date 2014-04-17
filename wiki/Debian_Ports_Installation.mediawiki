@@ -12,7 +12,7 @@ The Debian ports project hosts a parisc version of debian unstable. Today the re
 
 The latest installation media to directly install Debian unstable is available for download here:
 # http://mkhppa3.esiee.fr/preseed/lifimage (LIF Image file, which can be booted directly via network/disk/...), or
-# http://mkhppa3.esiee.fr/debian-cd/  (ISO Images)
+# http://mkhppa3.esiee.fr/debian-cd/  (NETINST and CD ISO Images)
 For either of the ones above, you can:
 # burn the ISO image or lifimage to a CD, or
 # boot them via tftpboot/bootp, or
