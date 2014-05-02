@@ -25,7 +25,7 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2014-03-25 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
 * eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 ** change kernel and glibc SHMLBA=PAGE_SIZE (mail vom 03.04.2014)
 ** debian-cd to use xorriso
@@ -55,6 +55,7 @@ title: TODO
 ** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow plus colors in 24bpp mode are wrong) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
 
 * Kernel: still missing Linux kernel development (no patches available yet):
+** add new LWS CAS: 1, 4 (already implemented), and 8 are useful today. Need 16 to keep up with the newer Intel hardware support compare and exchange on int128_t. So just add a 1, 8, and 16 to the list as future proof and ready for tomorrow.
 ** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** Implement CONFIG_DEBUG_STACK_USAGE ?
