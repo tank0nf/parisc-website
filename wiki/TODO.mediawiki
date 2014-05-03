@@ -24,6 +24,8 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
+* Enable BMC in c8000 default kernel config - ipmi driver
+* Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...)
 * eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 ** DONE: change kernel SHMLBA=PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26
 ** glibc patch to set SHMLBA=PAGE_SIZE -> https://patchwork.kernel.org/patch/3933841/
