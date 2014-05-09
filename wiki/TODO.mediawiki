@@ -24,6 +24,7 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
+* Import old hppa mailing list archives to gmane.org
 * Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y)
 * Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits 
 * eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
