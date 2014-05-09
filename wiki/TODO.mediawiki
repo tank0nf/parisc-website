@@ -25,11 +25,10 @@ title: TODO
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
 * Import old hppa mailing list archives to gmane.org
-* Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y)
-* Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits 
+* Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
+* Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits - https://patchwork.kernel.org/patch/4115901/
 * eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 ** DONE: change kernel SHMLBA=PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26
-** glibc patch to set SHMLBA=PAGE_SIZE -> https://patchwork.kernel.org/patch/3933841/
 ** debian-cd to use xorriso
 ** debian-cd: do not compress kernel.
 * SLAB breaks, SLUB works, why? Mail from Guy Martin.
@@ -39,7 +38,6 @@ title: TODO
 * crash in GSP, is everything visible (GSP reset?) 
 * DONE: remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
 * Add loop module to debian kernel.
-* 3.14 partly: gcc-4.8 switch on debian, perl-bug (mmap of small files). https://patchwork.kernel.org/patch/3279031/
 * 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * 3.14 partly: debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
@@ -73,7 +71,7 @@ title: TODO
 
 * Kernel: Low priority patches needs further work 
 ** Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - partly done.
-** disable FP-register save/restore at kernel entry? - Helge
+** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
 ** enable 16k/64k kernel page sizes (still cacheflushing-issues with SCSI driver, additional work in glibc needed to deal with >4k page size, e.g. ld-loader alignments of data/code segments)
 ** Superdome support - can someone test? Should work better now with latest kernels.
 ** task_struct/thread_info split -- task_struct should not be visible in entry.S, we need to move some items into thread_info -- this includes pt_regs and maybe some of the flags (ptrace, etc)
