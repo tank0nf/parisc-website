@@ -21,6 +21,7 @@ With this "lifimage" file you can:
 Instructions to install:
 * If your machine is behind a firewall, enter the proxy at the IPL command line the Linux kernel command line (change parameter 7): 
    mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need and drop the underscores)
+* You might need to add "pkgsel/include=python"  (maybe: openssh-server) too.
 * If asked to "Continue the install without loading kernel modules?" choose YES
 * The loading of the udev-udeb package will fail during installation. Just ignore this.
 * At the end of the installation do NOT reboot the machine, but choose "back" and in the menu choose to execute a shell.
