@@ -8,8 +8,8 @@ What are we talking about (give related wiki links).
 We are dealing here with a special kind of drivers, namely [http://www.alsa-project.org ALSA] device drivers.
 
 Files:
-* sound/pci/ad1889.c
-* sound/pci/ad1889.h
+* <tt>sound/pci/ad1889.c</tt>
+* <tt>sound/pci/ad1889.h</tt>
 
 This driver is being developed by [[User:Kyle_McMartin|Kyle_McMartin]] and [[User:Thibaut_Varene|Thibaut_Varene]].
 
