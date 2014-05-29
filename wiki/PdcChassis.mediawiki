@@ -35,8 +35,8 @@ We had to implement the missing abstraction logic in <tt>firmware.c</tt> to acce
 {| class="wikitable"
 |-
 |+ '''Interfaces (<tt>firmware.c</tt>)'''
-| '''Function'''
-| '''Role'''
+! Function
+! Role
 |-
 | <code>int pdc_chassis_disp(unsigned long disp)</code>
 | This call sends the state expressed by <tt>disp</tt> PDC CHASSIS
