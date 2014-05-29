@@ -33,8 +33,9 @@ The "settings" being Autoboot, Autosearch, Paths, etc.
 First, we had to implement the missing abstraction logic in <tt>firmware.c</tt> to access the Stable Storage. We had to code all the required interfaces to PDC_STABLE calls:
 
 {| class="wikitable"
+|+ Interfaces (<tt>firmware.c</tt>)
 |-
-! Interfaces (<tt>firmware.c</tt>)                                          !! Function
+! Function                                          !! Role
 |-
 | <code>int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count)</code> || This call ''reads'' <tt>count</tt> bytes from address <tt>staddr</tt> and writes the result in preallocated <tt>memaddr</tt> space
 |-
