@@ -53,7 +53,7 @@ In alsa terminology, the ALSA layer declares the maximum size of the DMA channel
 
 The base address of the DMA stream is loaded in the '''Address''' counters, the ALSA buffer size is loaded into the '''Count''' registers, and the ALSA period size is loaded into the '''Interrupt Count''' registers (we load both '''Base''' and '''Current''' registers at once). When using '''Interrupt on Count''' and '''DMA Loop''' as we do, the '''Base''' values are automatically loaded by the AD1889 hardware into the '''Current''' counters when these reach 0 (they keep track of how many bytes have been transfered). When the '''Interrupt Current Count''' register reaches 0, an IRQ is generated, so basically we're generating an interrupt period after period.
 
-In the interrupt handler, the only thing we have to do is to call `snd_pcm_period_elapsed()` since we don't have to reprogram any register as the buffer size doesn't change for a given stream, nor does the base address or the period size. The hardware will read the whole DMA buffer, generating interrupts after each period, and then automatically loop back when the end of the buffer has been reached.
+In the interrupt handler, the only thing we have to do is to call <tt>snd_pcm_period_elapsed()</tt> since we don't have to reprogram any register as the buffer size doesn't change for a given stream, nor does the base address or the period size. The hardware will read the whole DMA buffer, generating interrupts after each period, and then automatically loop back when the end of the buffer has been reached.
 
 This approach has also the advantage of solving the problem that the DMA accesses for one period go beyond the buffer when the number of periods per buffer is not an integer.
 
@@ -67,14 +67,14 @@ This approach has also the advantage of solving the problem that the DMA accesse
 
 All sliders (aside the Master ones) wrap around at 50%. It's actually quite strange because these sliders control the AC97 codec which is well documented (it's an AD1819), and which is out of the scope of this driver (we don't implement our own mixer). Actually, this is handled directly by the ALSA layer. So maybe the hardware is not compliant with the specs, or maybe there's some knob missing, yet, it didn't seem to me like a big deal :)
 
-For the curious people, the difference between the "Master" knobs and the others, according the the AD1819 codec doc, is that Masters range from 0 to -46.5dB as the value written to register goes from `0x0000` to `0x1F1F` (left is bits 13-8, right is 5-0), and any bigger value doesn't change the attenuation.
+For the curious people, the difference between the "Master" knobs and the others, according the the AD1819 codec doc, is that Masters range from 0 to -46.5dB as the value written to register goes from <tt>0x0000</tt> to <tt>0x1F1F</tt> (left is bits 13-8, right is 5-0), and any bigger value doesn't change the attenuation.
 
-For the other knobs, otoh, the range is +12dB to -34.5dB for left/right, with the following scheme: `0x0000` is +12dB, `0x0808` is 0dB and `0x1F1F` is -34.5dB. What seems to happen in our case, is that the hardware doesn't implement the "gain" range, contrary to what the doc says.
+For the other knobs, otoh, the range is +12dB to -34.5dB for left/right, with the following scheme: <tt>0x0000</tt> is +12dB, <tt>0x0808</tt> is 0dB and <tt>0x1F1F</tt> is -34.5dB. What seems to happen in our case, is that the hardware doesn't implement the "gain" range, contrary to what the doc says.
 
 ------
 '''Only affecting PA-RISC''' (and unrelated to this driver):
 
-Doing `Ctrl-C` when playing a track with eg. `mpg123` can panic the kernel. This bug is a hard one, and needs tracking.
+Doing <tt>Ctrl-C</tt> when playing a track with eg. <tt>mpg123</tt> can panic the kernel. This bug is a hard one, and needs tracking.
 
 == TODO ==
 
