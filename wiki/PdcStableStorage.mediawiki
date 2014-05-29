@@ -4,12 +4,12 @@ title: PdcStableStorage
 
 = PDC Stable Storage =
 
-We are dealing here with a part of the BootingSystem, namely the ProcessorDependentCode (PDC).
+We are dealing here with a part of the [[BootingSystem]], namely the [[ProcessorDependentCode]] (PDC).
 
 Files:
-* drivers/parisc/pdc_stable.c
-* arch/parisc/kernel/firmware.c
-* arch/parisc/kernel/drivers.c
+* <tt>drivers/parisc/pdc_stable.c</tt>
+* <tt>arch/parisc/kernel/firmware.c</tt>
+* <tt>arch/parisc/kernel/drivers.c</tt>
 
 ==== Brief version history ====
 
@@ -30,24 +30,24 @@ The "settings" being Autoboot, Autosearch, Paths, etc.
 
 === Accessing the PDC ===
 
-First, we had to implement the missing abstraction logic in `firmware.c` to access the Stable Storage. We had to code all the required interfaces to PDC_STABLE calls:
+First, we had to implement the missing abstraction logic in <tt>firmware.c</tt> to access the Stable Storage. We had to code all the required interfaces to PDC_STABLE calls:
 
 {| class="wikitable"
 |-
-! Interfaces (`firmware.c`)                                          !! Function
+! Interfaces (<tt>firmware.c</tt>)                                          !! Function
 |-
-| int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count) || This call ''reads'' `count` bytes from address `staddr` and writes the result in preallocated `memaddr` space
+| <code>int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count)</code> || This call ''reads'' <tt>count</tt> bytes from address <tt>staddr</tt> and writes the result in preallocated <tt>memaddr</tt> space
 |-
-| int pdc_stable_write(unsigned long staddr, void *memaddr, unsigned long count) || This call ''writes'' `count` bytes at address `staddr` from address `memaddr`
+| <code>int pdc_stable_write(unsigned long staddr, void *memaddr, unsigned long count)</code> || This call ''writes'' <tt>count</tt> bytes at address <tt>staddr</tt> from address <tt>memaddr</tt>
 |-
-| int pdc_stable_get_size(unsigned long *size) || This call gets the size of the Stable Storage area
+| <code>int pdc_stable_get_size(unsigned long *size)</code> || This call gets the size of the Stable Storage area
 |-
-| int pdc_stable_verify_contents(void) || This call checks the integrity of the contents of Stable Storage
+| <code>int pdc_stable_verify_contents(void)</code> || This call checks the integrity of the contents of Stable Storage
 |-
-| int pdc_stable_initialize(void) || This call initialize Stable Storage to zero
+| <code>int pdc_stable_initialize(void)</code> || This call initialize Stable Storage to zero
 |}
 
-Now a few details: as it is noted in the above mentioned document, `staddr` and `memaddr` must be word-aligned. `count` must be multiple of 4. The Stable Storage address space starts at `0x0`, and both read and write calls will fail if `staddr + count > size`.
+Now a few details: as it is noted in the above mentioned document, <tt>staddr</tt> and <tt>memaddr</tt> must be word-aligned. <tt>count</tt> must be multiple of 4. The Stable Storage address space starts at <tt>0x0</tt>, and both read and write calls will fail if <code>staddr + count > size</code>.
 
 Everything is now setup to get and write useful data from Stable Storage. Thanks to the documentation, we know where the various Paths and other variables are stored. There is a trick, though. Paths are '''''BC Paths''''', also known as ''hardware paths'' in the PA-RISC terminology. That means that when reading a path, we have to convert it to the actual device and map it to a human readable device name, and when writing it, we will have to provide a ''human writeable'' way of designing a device, and then convert it back to its hardware path.
 
@@ -57,31 +57,31 @@ The first thing that comes to mind is that we will need to convert hardware path
 
 ==== Anatomy Of Paths ====
 
-The paths described by Stable Storage are made of two separate entities. First, they begin with a ''flag'' byte, which is only used in '''Primary Boot Path''' to store the values of '''Autoboot''', '''Autosearch''' and the '''Timer'''. Then comes a regular BC path, made of 6 ''BC fields'' (bytes which values specify the fixed field of the bus converter port's HPA), and a ''MOD field'' (byte which is the fixed field of the specified module). Following these 8 bytes is an array of 6 longs (32 bits), called ''layers'', used to describe the portion of the path to a device that is beyond the module and/or to contain device-dependent information. Typically, for a given SCSI device, `layer[0]` will be the SCSI ID, and `layer[1]` the SCSI LUN; or for a RS232 device, the layers will contains the serial port being used.
+The paths described by Stable Storage are made of two separate entities. First, they begin with a ''flag'' byte, which is only used in '''Primary Boot Path''' to store the values of '''Autoboot''', '''Autosearch''' and the '''Timer'''. Then comes a regular BC path, made of 6 ''BC fields'' (bytes which values specify the fixed field of the bus converter port's HPA), and a ''MOD field'' (byte which is the fixed field of the specified module). Following these 8 bytes is an array of 6 longs (32 bits), called ''layers'', used to describe the portion of the path to a device that is beyond the module and/or to contain device-dependent information. Typically, for a given SCSI device, <tt>layer[0]</tt> will be the SCSI ID, and <tt>layer[1]</tt> the SCSI LUN; or for a RS232 device, the layers will contains the serial port being used.
 
 ==== The Algorithms ====
 
-These are implemented in `arch/parisc/kernel/drivers.c`.
+These are implemented in <tt>arch/parisc/kernel/drivers.c</tt>.
 
 ===== Matching an existing hwpath back to its original device =====
 
 That's what we want when ''reading'' the Stable Storage configuration.
 
-When trying to convert a hardware path to the matching device, a first problem occured: we cannot use `find_parisc_device()`, for the actual device may not necessarily be a `parisc_device` (in particular, it's likely that it will be a `pci_dev` for a SCSI device).
+When trying to convert a hardware path to the matching device, a first problem occured: we cannot use <tt>find_parisc_device()</tt>, for the actual device may not necessarily be a <tt>parisc_device</tt> (in particular, it's likely that it will be a <tt>pci_dev</tt> for a SCSI device).
 
-What we did was first to write clones of `create_parisc_device()` and `alloc_tree_node()`, changing their logic a little. `hwpath_to_device()` deals with generic devices instead of parisc ones. `parse_tree_node()` no longer allocates anything, but instead check each device of a given level to match it against the current hardware path (depending on its type: `parisc_device`, `pci_dev`, etc), when a matching device is found, it's returned back to the caller (`hwpath_to_device()` in the present case) which will use it back into a recursive call. Thanks to MatthewWilcox who rewrote the parisc device layer to use generic devices, this code could be made much easier.
+What we did was first to write clones of <tt>create_parisc_device()</tt> and <tt>alloc_tree_node()</tt>, changing their logic a little. <tt>hwpath_to_device()</tt> deals with generic devices instead of parisc ones. <tt>parse_tree_node()</tt> no longer allocates anything, but instead check each device of a given level to match it against the current hardware path (depending on its type: <tt>parisc_device</tt>, <tt>pci_dev</tt>, etc), when a matching device is found, it's returned back to the caller (<tt>hwpath_to_device()</tt> in the present case) which will use it back into a recursive call. Thanks to [[User:MatthewWilcox|MatthewWilcox]] who rewrote the parisc device layer to use generic devices, this code could be made much easier.
 
-If it is a `parisc_device` (`bus_type == &parisc_bus_type`), then it tries to match the current device `hw_path` with the expected one.
+If it is a <tt>parisc_device</tt> (<code>bus_type == &parisc_bus_type</code>), then it tries to match the current device <tt>hw_path</tt> with the expected one.
 
-If it is a `pci_dev` (`bus_type == &pci_bus_type`), then it parses the remaining tree to look either for a PCI bridge, or for a PCI device. In the case of a PCI device, we have to go down one level more in the hardware path, since PCI devices occupy the last BC field '''and''' the MOD field.
+If it is a <tt>pci_dev</tt> (<code>bus_type == &pci_bus_type</code>), then it parses the remaining tree to look either for a PCI bridge, or for a PCI device. In the case of a PCI device, we have to go down one level more in the hardware path, since PCI devices occupy the last BC field '''and''' the MOD field.
 
-If it can't find a matching device, then `hwpath_to_device()` simply returns a `NULL` pointer.
+If it can't find a matching device, then <tt>hwpath_to_device()</tt> simply returns a <tt>NULL</tt> pointer.
 
 ===== Matching an existing device to its corresponding hardware path =====
 
 We need that when ''writing'' the new configuration to Stable Storage.
 
-Fortunately this is alot easier to do, the logic is already existing (`get_node_path()`). We just wrote a wrapper for that function, which we called `device_to_hwpath()` for obvious consistency reasons. That wrapper takes a `struct device` pointer and a preallocated `struct hardware_path` pointer as arguments, and will fill the later with the path corresponding to the former, doing appropriate stuff depending on the type of the device (be it a PCI or PA-RISC device, for instance).
+Fortunately this is alot easier to do, the logic is already existing (<tt>get_node_path()</tt>). We just wrote a wrapper for that function, which we called <tt>device_to_hwpath()</tt> for obvious consistency reasons. That wrapper takes a <tt>struct device</tt> pointer and a preallocated <tt>struct hardware_path</tt> pointer as arguments, and will fill the later with the path corresponding to the former, doing appropriate stuff depending on the type of the device (be it a PCI or PA-RISC device, for instance).
 
 === Kernel Interface ===
 
@@ -118,17 +118,17 @@ Here is the tree we are presenting in SysFS:
 /sys/firmware/stable/size
  </nowiki>
 
-Roughly put, all global data (such as the boot flags, the amount of RAM checked during boot, etc) is shown in the various files placed at the root of the `stable` directory, while we are creating in the `paths/` subfolder 4 more - whenever possible - sub directories (one per boot path: Primary, Alternative, Console and Keyboard), each containing 2 files and (usually) one symlink:
+Roughly put, all global data (such as the boot flags, the amount of RAM checked during boot, etc) is shown in the various files placed at the root of the <tt>stable</tt> directory, while we are creating in the <tt>paths/</tt> subfolder 4 more - whenever possible - sub directories (one per boot path: Primary, Alternative, Console and Keyboard), each containing 2 files and (usually) one symlink:
 
-* `device` is the symlink to the actual device folder in SysFS.
-* `layer` contains the hardware layer, in the form `x y z`, where `x,y,z` are unsigned decimals.
-* `hwpath` contains the hardware path, in the form `x/y/z`, where `x,y,z` are unsigned decimals.
+* <tt>device</tt> is the symlink to the actual device folder in SysFS.
+* <tt>layer</tt> contains the hardware layer, in the form <tt>x y z</tt>, where <tt>x,y,z</tt> are unsigned decimals.
+* <tt>hwpath</tt> contains the hardware path, in the form <tt>x/y/z</tt>, where <tt>x,y,z</tt> are unsigned decimals.
 
 
-In order for the kernel to change the boot paths values, `layer` and `hwpath` can be modified by writing to them (as super user) data in the following form:
+In order for the kernel to change the boot paths values, <tt>layer</tt> and <tt>hwpath</tt> can be modified by writing to them (as super user) data in the following form:
 
-* `x/y/z` for `hwpath`, where `x,y,z` are unsigned decimals, to change the hardware path.
-* `x.y.z` for `layer`, where `x,y,z` are unsigned decimals, to change `layer[0]`->`layer[n]`, `n` < 6.
+* <tt>x/y/z</tt> for <tt>hwpath</tt>, where <tt>x,y,z</tt> are unsigned decimals, to change the hardware path.
+* <tt>x.y.z</tt> for <tt>layer</tt>, where <tt>x,y,z</tt> are unsigned decimals, to change <tt>layer[0]</tt>-><tt>layer[n]</tt>, <tt>n</tt> < 6.
 
 For instance, one can do the following:
  <nowiki>
@@ -139,15 +139,15 @@ PDC Stable Storage: changed "alternative" layers to "15"
  </nowiki>
 
 The "`PDC Stable Storage:`" messages are printed to '''INFO''' loglevel upon successful completion.
-If the user attempts to set an unmappable `hwpath`, an error message is sent to the '''WARNING''' loglevel.
+If the user attempts to set an unmappable <tt>hwpath</tt>, an error message is sent to the '''WARNING''' loglevel.
 
-In fact, minimal integrity checkings are performed (see bellow for more information):
+In fact, minimal integrity checks are performed (see bellow for more information):
 
-* For `hwpath`, the code makes sure it can map the provided path to an existing device, and fails otherwise.
-* For `layer`, the code simply checks arguments are integers.
+* For <tt>hwpath</tt>, the code makes sure it can map the provided path to an existing device, and fails otherwise.
+* For <tt>layer</tt>, the code simply checks arguments are integers.
 
 
-Finally, one can toggle '''Autoboot''' and '''Autosearch''' flags by writing to the `autoboot` and `autosearch` files, as follows:
+Finally, one can toggle '''Autoboot''' and '''Autosearch''' flags by writing to the <tt>autoboot</tt> and <tt>autosearch</tt> files, as follows:
  <nowiki>
 # echo 1 > /sys/firmware/stable/autoboot
 PDC Stable Storage: changed "autoboot" to "On"
@@ -164,11 +164,11 @@ On
 Off
  </nowiki>
 
-The content of the `diagnostic` file are pretty cryptic. It's not documented, so the file reflects the raw hex value.
+The content of the <tt>diagnostic</tt> file are pretty cryptic. It's not documented, so the file reflects the raw hex value.
 
 ==== OS-Dependent Data ====
 
-Two files are of particular interest: `osdep1` and `osdep2`. These two files are read/write accessible, as they contain OS-Dependent data, that is, data that can be modified by the host's operating system. The first file should always be available, according to the PDC specs. The second one will always be there, but may not necessary contain anything, as the size of the second OS-Dependent area is `HVERSION`-dependent. Most of the time it's 32 bytes. If there's no data available, reading will return '''-ENODATA''', and writing to the file will return '''-ENOSYS'''.
+Two files are of particular interest: <tt>osdep1</tt> and <tt>osdep2</tt>. These two files are read/write accessible, as they contain OS-Dependent data, that is, data that can be modified by the host's operating system. The first file should always be available, according to the PDC specs. The second one will always be there, but may not necessary contain anything, as the size of the second OS-Dependent area is <tt>HVERSION</tt>-dependent. Most of the time it's 32 bytes. If there's no data available, reading will return '''-ENODATA''', and writing to the file will return '''-ENOSYS'''.
 
 The read/write access is pretty basic:
  * Reading the file will display raw hex values, 32 bits per line.
@@ -188,7 +188,7 @@ The read/write access is pretty basic:
 0x00000000
  </nowiki>
 
-`0x31` is ascii "1", `0x32` is ascii "`2`", and `0x33` is ascii "`3`".
+<tt>0x31</tt> is ascii "1", <tt>0x32</tt> is ascii "2", and <tt>0x33</tt> is ascii "3".
 Another example:
 
  <nowiki>
@@ -200,22 +200,22 @@ Another example:
 0x00000000
  </nowiki>
 
-`0x0a` is ascii "`\n`".
+<tt>0x0a</tt> is ascii "<tt>\n</tt>".
 
 If you try to write more than the available storage size, you will get '''-EMSGSIZE'''.
 
-Note: reading/writing from/to `osdep2` is much more expensive than from/to `osdep1` (see the source for details).
+Note: reading/writing from/to <tt>osdep2</tt> is much more expensive than from/to <tt>osdep1</tt> (see the source for details).
 
 Of course, the key interest of these files is the fact that their content is preserved accross reboots (it's ''Stable'' Storage, remember? ;) )
 
 ==== File Permissions ====
 
 The general policy toward file access shall respect the following rules:
-# Write permission granted to `root` only
-# Read permission to files that trigger PDC calls granted to `root` only
+# Write permission granted to <tt>root</tt> only
+# Read permission to files that trigger PDC calls granted to <tt>root</tt> only
 # Read permission to other files granted to everyone
 
-In particular, the following files are `root` accessible only:
+In particular, the following files are <tt>root</tt> accessible only:
  <nowiki>
 /sys/firmware/stable/diagnostic
 /sys/firmware/stable/fastsize
@@ -237,10 +237,10 @@ On the other hand, that kind of check is barely enough: a PCI bridge, or even wo
 
 Another thing to bear in mind is the high dependency of the code on the PDC calls reliability. Truth told, should one of this call fail (especially the write call), the system would most likely end-up in a rather bad shape upon next reboot. The same applies in case of a sudden power failure while the content of the Stable Storage is being modified, but heh, ''it's not supposed to happen anyway, right?'' ;)
 
-In fact, we do not care that much about that issue since should a '''Bad Thing^TM^''' occur, first, you'll be warned (error message sent to '''ERR''' loglevel), and it'll be easily fixable through the PDC boot console when the system powers up. In other word, there is no way that code would leave the system in such a bad shape it'd be impossible to fix and would need some HP techie to repair it! Relieved, heh? :)
+In fact, we do not care that much about that issue since should a '''Bad Thing&trade;''' occur, first, you'll be warned (error message sent to '''ERR''' loglevel), and it'll be easily fixable through the PDC boot console when the system powers up. In other word, there is no way that code would leave the system in such a bad shape it'd be impossible to fix and would need some HP techie to repair it! Relieved, heh? :)
 
 === TODO List ===
 
 Something that would be nice to have is a userland tool that would help setting the path in an easy way, providing some user-friendly glue between the mechanism in /sys and the way a normal user would designate a device (eg: ''/dev/sda4'', ''/dev/ttyS0'', etc).
 
-The hooks for such a tool to work are mostly there (in particular since the code can be passed a `struct device` pointer, it'll be able to deal with it fine), so my guess is that it's a matter of finding the proper glue (that is probably not trivial) and eventually add a `sysctl`, if one wants not to use the SysFS interface.
+The hooks for such a tool to work are mostly there (in particular since the code can be passed a <tt>struct device</tt> pointer, it'll be able to deal with it fine), so my guess is that it's a matter of finding the proper glue (that is probably not trivial) and eventually add a <tt>sysctl</tt>, if one wants not to use the SysFS interface.
