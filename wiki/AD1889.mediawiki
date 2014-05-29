@@ -5,21 +5,21 @@ title: AD1889
 = AD1889 Driver =
 
 What are we talking about (give related wiki links).
-We are dealing here with a special kind of drivers, namely [[http://www.alsa-project.org|ALSA]] device drivers.
+We are dealing here with a special kind of drivers, namely [http://www.alsa-project.org ALSA] device drivers.
 
 Files:
 * sound/pci/ad1889.c
 * sound/pci/ad1889.h
 
-This driver is being developed by KyleMcMartin and ThibautVarene.
+This driver is being developed by [[User:Kyle_McMartin|Kyle_McMartin]] and [[User:Thibaut_Varene|Thibaut_Varene]].
 
 == What is AD1889 ==
 
 What does it refer to (from a hw/sw point of view).
 
-Analog Devices AD1889 PCI SoundMAX Controller is yet another Sucky``Chip, which HP seemingly bought the wholesale, and which is very poorly documented and probably a bit buggy as well.
+Analog Devices AD1889 PCI SoundMAX Controller is yet another SuckyChip, which HP seemingly bought the wholesale, and which is very poorly documented and probably a bit buggy as well.
 
-The audio system is in fact made of two parts: the [[http://ftp.parisc-linux.org/docs/chips/AD1889.pdf|AD1889]] chip, which handles the interfacing to the PCI host bus, the DMA transfers and primary operations on the streams (resampling, digital mixing, OPL3), and ACPI; and the AC97 codec attached to it (an [[http://ftp.parisc-linux.org/docs/chips/AD1819.pdf|AD1819]]), which handles the actual audio stream output/input (DAC/ADC conversions), special effects ("3D" emphasis) and loopback (line in -> line out).
+The audio system is in fact made of two parts: the [http://ftp.parisc-linux.org/docs/chips/AD1889.pdf AD1889] chip, which handles the interfacing to the PCI host bus, the DMA transfers and primary operations on the streams (resampling, digital mixing, OPL3), and ACPI; and the AC97 codec attached to it (an [http://ftp.parisc-linux.org/docs/chips/AD1819.pdf AD1819]), which handles the actual audio stream output/input (DAC/ADC conversions), special effects ("3D" emphasis) and loopback (line in -> line out).
 
 It's also worth mentioning that the codec is wired in its own special way, the available I/O are:
 * Line IN
@@ -30,10 +30,10 @@ It's also worth mentioning that the codec is wired in its own special way, the a
 ''Headphones'' is basically an amplified ''Line OUT'', and both volumes can only be controled using '''Master''' volume. The internal speaker volume is controled by '''Master Mono'''. ''Line IN'' is hooked to the '''Line''' knob.
 
 The AD1889 chip has four DMA channels:
-* WAVE:: that's the main output channel to the AC97 DAC. Knobs: Sample rate, format, attenuation, mute.
-* ADC:: that's the AC97 ADC input. Knobs: format. Sample rate is controlled directly by the AC97 codec.
-* SYN:: that's a second output channel. Knobs: attenuation, mute. Enabling this appears to disable the OPL3 synthesiser.
-* RES:: that's a second input channel. Knobs: Sample rate. The source can be the OPL3, or the SYN channel. 
+;WAVE: that's the main output channel to the AC97 DAC. Knobs: Sample rate, format, attenuation, mute.
+;ADC: that's the AC97 ADC input. Knobs: format. Sample rate is controlled directly by the AC97 codec.
+;SYN: that's a second output channel. Knobs: attenuation, mute. Enabling this appears to disable the OPL3 synthesiser.
+;RES: that's a second input channel. Knobs: Sample rate. The source can be the OPL3, or the SYN channel. 
 
 During normal basic operation, the stream sent to the AC97 codec DAC is internally resampled to the codec's native rate of 48kHz.
 
