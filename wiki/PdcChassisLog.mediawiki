@@ -20,9 +20,9 @@ First, we had to implement the missing abstraction logic in <tt>firmware.c</tt> 
 
 {| class="wikitable"
 |-
-|+ '''Interfaces (<tt>firmware.c</tt>)'''
-| '''Function'''
-| '''Role'''
+|+ Interfaces (<tt>firmware.c</tt>)
+! Function
+! Role
 |-
 | <code>int pdc_pat_chassis_send_log(unsigned long state, unsigned long data)</code>
 | This call sends the message expressed by `state` and `data` to the PAT PDC logs
