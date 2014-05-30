@@ -60,7 +60,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * [[PARISC FAQ]]
 * [[How to report a parisc-linux kernel problem|My kernel {crashed|hung}, how do I submit a useful bug report?]]
 * [[Mailing lists]]
-* [[Hardware support]]
 * [[Graphics howto]]
 * [[Building_the_Kernel]] - Build Kernel
 * [[TODO]]
