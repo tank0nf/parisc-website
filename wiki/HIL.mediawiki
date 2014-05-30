@@ -53,4 +53,4 @@ If you want to use HIL mice as well, you need to configure Debian to load the fu
 
 This is a known problem and we are working on it. The problem is related to how the HIL drivers poll the HIL bus, and how the interrupts and kernel tasklets interact with each other. Currently we try to solve this issue by migrating the HIL drivers to use kernel workqueues and kernel threads instead.
 
-Guy Martin posted once a patch [[http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled]] to the parisc mailing list, which temporarily solves this issue, but this patch will not be accepted upstream.
+Guy Martin posted once a [http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled patch] to the parisc mailing list, which temporarily solves this issue, but this patch will not be accepted upstream.
