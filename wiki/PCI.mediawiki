@@ -41,12 +41,12 @@ does not support DAC.
 "Legacy PDC" (system firmware, see ProcessorDependentCode) is responsible for filling in most of
 the PCI Configuration space for each PCI device.
 
-PDC fills in `PCI_INTERRUPT_LINE` (becomes `pci_dev->irq`)
-value with the DINO input Interrupt Line (ie index into `dino->global_irq[]`).
+PDC fills in <tt>PCI_INTERRUPT_LINE</tt> (becomes <tt>pci_dev->irq</tt>)
+value with the DINO input Interrupt Line (ie index into <tt>dino->global_irq[]</tt>).
 This is used by dino code instead of a "Routing Table".
 
 Other PA-RISC  and most architectures use some form of 
-"IRQ Line Routing Table" to communicate PCI device `IRQ_PIN` output
+"IRQ Line Routing Table" to communicate PCI device <tt>IRQ_PIN</tt> output
 to Interrupt Controller input lines mappings to the OS.
 
 == Card-Mode Dino ==
