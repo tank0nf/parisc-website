@@ -6,7 +6,7 @@ title: IO-SAPIC
 
 This is part of the PA-RISC [[Interrupts]] handling system.
 
-The following content is extracted from the file `drivers/parisc/iosapic.c`:
+The following content is extracted from the file <tt>drivers/parisc/iosapic.c</tt>:
 
 The I/O sapic driver manages the ''Interrupt Redirection Table'' which is
 the control logic to convert [[PCI]] line based interrupts into a ''Message
@@ -47,7 +47,7 @@ DMA'd data by the ISR.
 
 PA-RISC platforms have two fundementally different types of firmware (see ProcessorDependentCode).
 
-For [[PCI]] devices, "''Legacy''" PDC initializes the `INTERRUPT_LINE` register
+For [[PCI]] devices, "''Legacy''" PDC initializes the <tt>INTERRUPT_LINE</tt> register
 and BARs similar to a traditional PC BIOS.
 The newer "''PAT''" firmware supports PDC calls which return tables.
 PAT firmware only initializes PCI Console and Boot interface.
@@ -56,7 +56,7 @@ With these tables, the OS can progam all other PCI devices.
 One such PAT PDC call returns the "''Interrupt Routing Table''" (IRT).
 The IRT maps each PCI slot's INTA-D "output" line to an I/O SAPIC
 input line.  If the IRT is not available, this driver assumes
-`INTERRUPT_LINE` register has been programmed by firmware. The latter
+<tt>INTERRUPT_LINE</tt> register has been programmed by firmware. The latter
 case also means online addition of PCI cards can '''NOT''' be supported
 even if HW support is present.
 
@@ -69,7 +69,7 @@ I/O sapic is part of the "Core Electronics Complex". And on HP platforms
 it's integrated as part of the PCI bus adapter, [[LBA]].  So no bus walk
 will discover I/O Sapic. I/O Sapic driver learns about each device
 when LBA driver advertises the presence of the I/O sapic by calling
-`iosapic_register()`.
+<tt>iosapic_register()</tt>.
 
 == IRQ handling notes ==
 
@@ -83,38 +83,38 @@ issue the ''End Of Interrupt'' command to the IO-SAPIC.
 
 (caveat: code isn't finished yet - this is just the plan)
 
-;`iosapic_init`:
+;<tt>iosapic_init</tt>:
 : initialize globals (lock, etc)
 : try to read IRT. Presence of IRT determines if this is a PAT platform or not.
 
-;`iosapic_register()`:
-: create `iosapic_info` instance data structure
-: allocate `vector_info` array for this iosapic
-: initialize `vector_info` - read corresponding IRdT?
+;<tt>iosapic_register()</tt>:
+: create <tt>iosapic_info</tt> instance data structure
+: allocate <tt>vector_info</tt> array for this iosapic
+: initialize <tt>vector_info</tt> - read corresponding IRdT?
 
-;`iosapic_xlate_pin`: (only called by fixup_irq for PAT platform)
-: `intr_pin = read cfg (INTERRUPT_PIN);`
+;<tt>iosapic_xlate_pin</tt>: (only called by fixup_irq for PAT platform)
+: <code>intr_pin = read cfg (INTERRUPT_PIN);</code>
 : if (device under PCI-PCI bridge) 
 :: translate slot/pin
 
-;`iosapic_fixup_irq`:
+;<tt>iosapic_fixup_irq</tt>:
 : if PAT platform (IRT present)
-:: `intr_pin = iosapic_xlate_pin(isi,pcidev)`
-:: `intr_line = find IRT entry(isi, PCI_SLOT(pcidev), intr_pin)`
+:: <code>intr_pin = iosapic_xlate_pin(isi,pcidev)</code>
+:: <code>intr_line = find IRT entry(isi, PCI_SLOT(pcidev), intr_pin)</code>
 :: save IRT entry into vector_info later
-:: write cfg `INTERRUPT_LINE` (with intr_line)?
+:: write cfg <tt>INTERRUPT_LINE</tt> (with intr_line)?
 : else
-:: `intr_line = pcidev->irq`
-::  IRT pointer = `NULL`
+:: <tt>intr_line = pcidev->irq</tt>
+::  IRT pointer = <tt>NULL</tt>
 : endif
-: locate `vector_info` (needs: `isi, intr_line`)
-: allocate processor "irq" and get `txn_addr/data`
-: `request_irq(processor_irq,  iosapic_interrupt, vector_info,...)`
+: locate <tt>vector_info</tt> (needs: <tt>isi, intr_line</tt>)
+: allocate processor "irq" and get <tt>txn_addr/data</tt>
+: <code>request_irq(processor_irq,  iosapic_interrupt, vector_info,...)</code>
 
-;`iosapic_enable_irq`:
+;<tt>iosapic_enable_irq</tt>:
 : clear any pending IRQ on that line
-: enable IRdT - call `enable_irq(vector[line]->processor_irq)`
+: enable IRdT - call <tt>enable_irq(vector[line]->processor_irq)</tt>
 : write EOI in case line is already asserted.
 
-; `iosapic_disable_irq`:
-: disable IRdT - call `disable_irq(vector[line]->processor_irq)`
+; <tt>iosapic_disable_irq</tt>:
+: disable IRdT - call <tt>disable_irq(vector[line]->processor_irq)</tt>
