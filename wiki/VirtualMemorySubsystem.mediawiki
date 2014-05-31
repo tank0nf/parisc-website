@@ -23,9 +23,9 @@ An additional trick is used to reduce the amount of memory required to store the
 
 == VM Initialization ==
 
-DeviceInventory during bootup creates a physical memory map of the system. For each memory region, the starting physical address and the extent are saved to `pmem_ranges`. 
+[[DeviceInventory]] during bootup creates a physical memory map of the system. For each memory region, the starting physical address and the extent are saved to `pmem_ranges`. 
 
-If `CONFIG_DISCONTIGMEM` is not set, then only the first of these memory regions will be initialized, and a linear `mem_map` is used.  Otherwise, if DiscontiguousMemorySupport is enabled, multiple "nodes" are created to represent each of the memory regions. 
+If `CONFIG_DISCONTIGMEM` is not set, then only the first of these memory regions will be initialized, and a linear `mem_map` is used.  Otherwise, if [[DiscontiguousMemorySupport]] is enabled, multiple "nodes" are created to represent each of the memory regions. 
 
 TODO: Put something here about vmalloc space is allocated on parisc?
 
