@@ -45,7 +45,7 @@ DMA'd data by the ISR.
 
 == PA Firmware ==
 
-PA-RISC platforms have two fundementally different types of firmware (see ProcessorDependentCode).
+PA-RISC platforms have two fundementally different types of firmware (see [[ProcessorDependentCode]]).
 
 For [[PCI]] devices, "''Legacy''" PDC initializes the <tt>INTERRUPT_LINE</tt> register
 and BARs similar to a traditional PC BIOS.
