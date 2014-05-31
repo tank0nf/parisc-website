@@ -47,7 +47,7 @@ an optimisation of making all user space shared pages congruent, so
 flushing a single one makes the cache coherent for all the others (this
 is also a cache usage optimisation).
 
-So, what our `flush_dcache_page()` does is it selects the first user page
+So, what our <tt>flush_dcache_page()</tt> does is it selects the first user page
 it comes across to flush knowing that flushing this is sufficient to
 flush all the others.
 
@@ -66,8 +66,8 @@ width of 32]) and the tlb handler is invoked for every flush instruction
 operation extremely slow. (128 interruptions of the execution stream per
 flush)
 
-So, the uses of `translation_exists()` are threefold
+So, the uses of <tt>translation_exists()</tt> are threefold
 
- 1. Make sure we execute `flush_dcache_page()` correctly (rather than executing a flush that has no effect)
- 1. Optimise single page flushing: don't excite the tlb miss handlers if there's no translation
- 1. Optimise pte lookup (that's why `translation_exists()` returns the pte pointer); since we already have to walk the page tables to answer the question, the return value may as well be the pte entry or `NULL` rather than true or false.
+# Make sure we execute <tt>flush_dcache_page()</tt> correctly (rather than executing a flush that has no effect)
+# Optimise single page flushing: don't excite the tlb miss handlers if there's no translation
+# Optimise pte lookup (that's why <tt>translation_exists()</tt> returns the pte pointer); since we already have to walk the page tables to answer the question, the return value may as well be the pte entry or <tt>NULL</tt> rather than true or false.
