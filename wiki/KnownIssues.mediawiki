@@ -9,7 +9,7 @@ Please note that this list is likely to be incomplete and is NOT meant to be a [
 
 Some of the issues described here might never be resolved, partly due to the fact that documentation is unavailable/missing, it would not fit with the current kernel design or there is simply lack of manpower.
 
-Also keep an eye on the [[hotspots]] and the available TestCases
+Also keep an eye on the [[hotspots]] and the available [[TestCases]]
 
 == Missing/Incomplete PA-RISC specific Drivers ==
 
@@ -41,7 +41,7 @@ Hardware drivers, networking support, file systems etc. that are expected to wor
 
 == PTE/TLB issues ==
 
-Quoting [[http://article.gmane.org/gmane.linux.ports.parisc/2814|James David Anglin]]:
+Quoting [[http://article.gmane.org/gmane.linux.ports.parisc/2814 James David Anglin]]:
 
 1) minifail bug
 
