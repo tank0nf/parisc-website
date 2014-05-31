@@ -1,0 +1,27 @@
+---
+title: ToolChain
+---
+
+= Toolchain =
+
+In order to build applications you need:
+
+* A compiler: [[gcc]] has built parisc-linux targets since version 3.x
+* A linker: GNU [[binutils]] supplies the linker, assembler and various binary utilities
+* A library: GNU [[glibc]] supplies this
+* And maybe a debugger: [[gdb]] in case you want to figure out why "it's not working?!"
+
+These elements are called the tool chain. The palinux tool chain is somewhat temperamental. However, palinux builds are now self hosting (the installed system can compile and build itself) 
+
+Currently, only 32-bit userspace is well-supported. There has been some discussions to implement a 64-bit userspace ([[userspace64]]), but a lot of work still needs to be done.
+
+While there are some documents that describe the PA-RISC runtime, there is also a lot of undocumented pieces. Some information is collected below:
+
+* The PA-RISC Linux 32-bit ELF runtime is based heavily on the HPUX 32-bit [http://ftp.parisc-linux.org/docs/arch/pa-runtime-32-SOM.pdf SOM runtime].
+* Summary of the [[RuntimeConventions]]
+* The 32-bit and 64-bit ELF relocations are described in the [http://ftp.parisc-linux.org/docs/arch/elf-pa-hp.pdf Processor-specific supplement for PA-RISC]. Not all the relocations described in that document are implemented currently.
+* [[StackUnwinding]] explains how stack frames are setup on palinux, and how to unwind through them
+
+Currently, we are working on supporting [[ThreadLocalStorage]] and NPTL for glibc.
+
+There is also a [[MonoPorting]] effort underway.
