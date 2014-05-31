@@ -1,0 +1,24 @@
+---
+title: Documentation
+---
+
+= Documentation =
+
+* [[Glossary]]: glossary of terms used in this wiki, or commonly used on PA-RISC Linux
+* [[Technical Documentation]] harvested from the www.parisc-linux.org website
+* You can also find hints about various part of the [[LinuxKernel]], the [[ToolChain]], and the [[BootingSystem]] (PDC + PALO)
+* The [[KnownIssues]] : list of known issues of the PA-RISC Linux kernel, such as outstanding bugs, broken drivers, missing hardware support or yet unimplemented features found in other ports of the Linux kernel
+* Some debugging help stuff: [[RegistersDump]] and its meaning
+* Anyone hacking code on PA-RISC must take a look at the [[ProcessorLimitations]] and their consequences
+* [[DocumentationWishList]]: wishlist for docs from HP
+* Finally there's the [[TODO]] list!
+
+= Developments in Progress =
+
+* [[VisualizeFX]] driver effort
+* [[MonoPorting]] effort
+
+= Interwiki Links =
+ 
+* WikiPedia has a nice article about [http://en.wikipedia.org/wiki/PA-RISC PA-RISC]
+* Check also the article about the [http://en.wikipedia.org/wiki/GSC_bus GSC bus]
