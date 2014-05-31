@@ -2,12 +2,6 @@
 title: SpaceRegisters
 ---
 
-= PA-RISC Processor Registers =
-
-Register usage for Linux/PA-RISC is documented in the Linux kernel source tree in 
-the file Documentation/parisc/registers:
-https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/parisc/registers
-
 = PA-RISC Space Registers and How to use them =
 
 == Instructions ==
