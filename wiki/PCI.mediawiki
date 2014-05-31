@@ -38,7 +38,7 @@ Dino does NOT support Dual Address Cycle (DAC).
 Dino's bigger brother, '''Cujo''' does support 64-bit data path but also
 does not support DAC.
 
-"Legacy PDC" (system firmware, see ProcessorDependentCode) is responsible for filling in most of
+"Legacy PDC" (system firmware, see [[ProcessorDependentCode]]) is responsible for filling in most of
 the PCI Configuration space for each PCI device.
 
 PDC fills in <tt>PCI_INTERRUPT_LINE</tt> (becomes <tt>pci_dev->irq</tt>)
