@@ -1,0 +1,151 @@
+---
+title: Glibc
+---
+
+= Welcome to the glibc building instructions =
+
+Source for glibc can be found at:
+http://sources.redhat.com/glibc/
+
+CVS is available at:
+ <nowiki>
+cvs -z 9 -d :pserver:anoncvs@sources.redhat.com:/cvs/glibc login
+{enter "anoncvs" as the password}
+cvs -z 9 -d :pserver:anoncvs@sources.redhat.com:/cvs/glibc co libc
+ </nowiki>
+
+To additionally fetch the unsupported contributed ports add-on:
+ <nowiki>
+cd libc
+cvs -z 9 -d :pserver:anoncvs@sources.redhat.com:/cvs/glibc co ports
+ </nowiki>
+
+If you ever modify any configure.in file, then from the top source directory
+you can execute:
+ <nowiki>
+autoconf <path to your configure.in>/configure.in > \
+ <path to your configure.in>/configure
+ </nowiki>
+
+If you find yourself wishing to rebuild files in a single directory and you 
+don't want the recursive make to take that long, then you can execute from
+the the '''top of the build directory''' (e.g. to rebuild the elf subdirectory):
+ <nowiki>
+make -r PARALLELMFLAGS="" CVSOPTS="" -C ../libc/elf subdir=elf objdir=`pwd` all
+ </nowiki>
+Note that it is less likely to work if you aren't in the top directory,
+and objdir is not <tt>pwd</tt>.
+
+If you are running tests and you want to rebuild a particular directory
+that has your changed test then:
+ <nowiki>
+make -r PARALLELMFLAGS="" CVSOPTS="" -C ../libc/elf subdir=elf objdir=`pwd` check
+ <nowiki>
+
+
+More will be added here about parameters and options to use when building.
+
+= Welcome to the glibc loader internals reference manual =
+
+The C library is a complex piece of the GNU/Linux OS. Infact so complicated that it takes a lot of time to get used to all the funny directories
+and in particular the startup sequence for the loader. Attached here is my annotated loader startup sequence, this is the order things run in
+just before a user program is started. Included are some special annotations for <tt>sysdeps/unix/sysv/linux/hppa/dl-machine</tt> which contains the
+important hppa specific functions used in relocation calls.
+
+Loader start sequence looks like this:
+-------------------------------------------
+ <nowiki>
+RTLD_START (sysdep/<arch>/dl-machine.h)
+  _dl_start (elf/rtld.c)
+    ELF_MACHINE_BEFORE_RTLD_RELOC (sysdep/<arch>/dl-machine.h)
+    ELF_DYNAMIC_RELOCATE (sysdep/<arch>/dl-machine.h, Relocate the loader)
+    _dl_start_final (elf/rtld.c, bottom half of _dl_start)
+      entry = _dl_sysdep_start (sysdep/generic/dl-sysdep.c)
+       user_entry = (ElfW(Addr)) ENTRY_POINT;
+       dl_main (elf/rtld.c, main entry point for loader)
+         _dl_debug_initialize (elf/dl-debug.c, initialization of _r_debug and DT_DEBUG)
+       DL_SYSDEP_INIT;
+       DL_PLATFORM_INIT; (sysdeps/<arch>/dl-machine.h)
+       /* Last action of _dl_sysdep_start return the user entry point */
+       return user_entry;
+    /* Last action of _dl_start returns the user entry point */      
+    ELF_MACHINE_START_ADDRESS (GL(dl_loaded), entry); (sysdep/<arch>/dl-machine.h)
+  _dl_init (elf/dl-init.c, run DSO initializers)
+    call_init (elf/dl-init.c)
+  jump to return of _dl_start (sysdep/<arch>/dl-machine.h)
+  /*User code is now executing*/
+ </nowiki>
+----------
+
+Relocation Order:
+------------------
+ <nowiki>
+ELF_DYNAMIC_RELOCATE(map, lazy, consider_profile)
+ elf_machine_runtime_setup(map,lazy,consider_profile) <- Does all the lazy setup.
+ ELF_DYNAMIC_DO_RELA
+  _ELF_DYNAMIC_DO_RELOC (RELA, rela,  map, lazy, _ELF_CHECK_REL)
+   elf_dynamic_do_rel(map,...) <- Does everything else.
+    if(lazy)
+      elf_machine_lazy_rel(map, l_addr, r);
+    else
+    
+  {
+        DO_ELF_MACHINE_RELA_RELATIVE(map, l_addr, relative, l_addr + relative->r_offset);
+	  elf_machine_rela_relative(map, l_addr, relative, l_addr + relative->r_offset)
+	    {
+              value = l_addr + relative->r_addend;
+	      reloc_addr = reloc_addr_arg = l_addr + relative->r_offset; /* Cast */
+
+	        R_PARISC_DIR32:
+	          *reloc_addr = value; /* Unaligned case */
+	        R_PARISC_PLABEL32: break;
+	        R_PARISC_IPLT:
+	          elf_machine_fixup_plt(NULL,map,relative,reloc_addr,value);
+		    reloc_addr[1] = D_PTR ( map, l_info[DT_PLTGOT] );
+		    reloc_addr[0] = value;
+		    return reloc_addr;
+		  return;
+                R_PARISC_NONE: break;
+
+	      *reloc_addr = value;
+	    }
+	elf_machine_rela(...)
+	  {
+            sym_map = RESOLVE_MAP(&sym, version, r_type)
+	  
+	    if ( sym_map )
+	      value = sym ? sym_map->l_addr + sym->st_value + reloc->r_addend : reloc->r_addend;
+	    else
+	      value = 0;
+	    
+	    reloc_addr = reloc_addr_arg = ...;
+	    refsym = sym;
+	    
+	    
+            R_PARISC_DIR32:
+	      *reloc_addr = value;
+	    R_PARISC_PLABEL32:
+	    R_PARISC_IPLT:
+	    R_PARISC_COPY:
+	    R_PARISC_NONE:
+	  }
+      }
+ </nowiki>
+
+== Restartable System Calls ==
+
+Sometimes, the kernel decides to restart a system call. For example, if an application calls <tt>nanosleep()</tt>, and a signal occurs.
+
+A special syscall number is allocated for a "restart syscall". This will restart the syscall from the restart block structure stored with the process.
+
+On some platforms, restartable syscalls are thus implemented by changing the syscall number in the syscall register, and branching back in the user code to the place where the user executed the system call. On PA-RISC, this is not possible because the syscall number is embedded in the instruction sequence and occurs in the delay slot of the syscall instruction. i.e. our syscall sequence looks like:
+
+ <nowiki>
+   /* load some arguments ... */
+   ble 0x100(%sr2,%r0)
+   ldi <syscall number>, %r20
+ </nowiki>
+
+We cannot modify <tt>%r20</tt> and branch to the <tt>ble</tt> instruction to restart the system call. Instead, this is implemented by writing a small stack trampoline to the user stack, and branching to it. 
+
+There is a potential problem with this scheme: If you take a signal while in userspace, and that is a restart, then you will overwrite the restart you promised to restart. Need to look at i386 for the proper magic to disable restart during the restart sequence.
