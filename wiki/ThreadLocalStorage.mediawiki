@@ -119,7 +119,7 @@ On other archs, <tt>__tls_get_addr</tt> is implemented as a function supplied by
 
 Dave Anglin suggested these sequences for calling <tt>__tls_get_addr</tt>:
 
-{{{
+ <nowiki>
 1) Short PIC
 
         {bl|b,l} __tls_get_addr,%r2
@@ -152,17 +152,17 @@ Dave Anglin suggested these sequences for calling <tt>__tls_get_addr</tt>:
         ldo R'%0-$PIC_pcrel$0+8(%r1),%r1
         bve,l (%r1),%r2
         nop
-}}}
+ </nowiki>
 
 The lengths of the call sequences are 8, 12 and 20 bytes.  2a and 2b
 are the same (just a change in instruction syntax).  3b saves one instruction
 if the delay slot can be utilized.  I've used %r2 as the link register as
 this provides 22-bit branch offsets on PA 2.0.
-Here's some alternative sequences if we made `__tls_get_addr` a millicode
+Here's some alternative sequences if we made <tt>__tls_get_addr</tt> a millicode
 routine and used r31 as the link register.  Some of these are shorter if
 the delay slot can be used.
 
-{{{
+ <nowiki>
 1) Short PIC
 
         {bl|b,l} __tls_get_addr,%r31
@@ -195,58 +195,58 @@ the delay slot can be used.
         ldo R'%0-$PIC_pcrel$0+8(%r1),%r1
         be,l 0(%sr4,%r1),%sr0,%r31
         nop
-}}}
+ </nowiki>
 
 == gas ==
 gas needs to understand these constructs:
- $tls_gdidx$:: Generate R_PARISC_TLS_GD21L/R_PARISC_TLS_GD14R relocations
- $tls_ldidx$:: Generate R_PARISC_TLS_LD21L/R_PARISC_TLS_LD14R relocations
- $tls_dtpoff$:: Generate R_PARISC_TLS_LDO21L/R_PARISC_TLS_LDO14R relocations
- $tls_ieoff$:: Generate R_PARISC_TLS_IE21L/R_PARISC_TLS_IE14R relocations
- $tls_leoff$:: Generate R_PARISC_TLS_LE21L/R_PARISC_TLS_LE14R relocations
+;$tls_gdidx$: Generate R_PARISC_TLS_GD21L/R_PARISC_TLS_GD14R relocations
+;$tls_ldidx$: Generate R_PARISC_TLS_LD21L/R_PARISC_TLS_LD14R relocations
+;$tls_dtpoff$: Generate R_PARISC_TLS_LDO21L/R_PARISC_TLS_LDO14R relocations
+;$tls_ieoff$: Generate R_PARISC_TLS_IE21L/R_PARISC_TLS_IE14R relocations
+;$tls_leoff$: Generate R_PARISC_TLS_LE21L/R_PARISC_TLS_LE14R relocations
 
 == ld ==
 Additional entries need to be created in the GOT:
 
- R_PARISC_TLS_GD21L/14R:: Allocate two contiguous entries in the GOT to hold a TLS index structure for passing to `__tls_get_addr`. At runtime, the ti_module field (R_PARISC_TLS_DTPMOD32) and ti_offset (R_PARISC_TLS_DTPOFF32) fields are filled in to point to the correct module/offset.
+;R_PARISC_TLS_GD21L/14R: Allocate two contiguous entries in the GOT to hold a TLS index structure for passing to <tt>__tls_get_addr</tt>. At runtime, the ti_module field (R_PARISC_TLS_DTPMOD32) and ti_offset (R_PARISC_TLS_DTPOFF32) fields are filled in to point to the correct module/offset.
 
- R_PARISC_TLS_LDM21L/14R:: Similar to the above, but the ti_module parameter is always 0.
+;R_PARISC_TLS_LDM21L/14R: Similar to the above, but the ti_module parameter is always 0.
 
- R_PARISC_TLS_IE21L/14R:: Allocate an entry in the GOT to hold the variable offset from the static TLS area. 
+;R_PARISC_TLS_IE21L/14R: Allocate an entry in the GOT to hold the variable offset from the static TLS area. 
 
 Relocation processing:
- R_PARISC_TLS_GD21L/14R, R_PARISC_LDM21L/14R:: Fill in the offset to the created GOT entry in the instruction.
- R_PARISC_TLS_LDO21L/14R:: Calculate the offset of the variable relative to the TLS block it is contained in and fill in the offset in the instruction. 
- R_PARISC_TLS_IE21L/14R:: Fill in offset to GOT entry which contains the variable offset from the TLS block
- R_PARISC_TLS_LE21L/14R:: Fill in offset to GOT entry which contains the variable offset from the static TLS block
+;R_PARISC_TLS_GD21L/14R, R_PARISC_LDM21L/14R: Fill in the offset to the created GOT entry in the instruction.
+;R_PARISC_TLS_LDO21L/14R: Calculate the offset of the variable relative to the TLS block it is contained in and fill in the offset in the instruction. 
+;R_PARISC_TLS_IE21L/14R: Fill in offset to GOT entry which contains the variable offset from the TLS block
+;R_PARISC_TLS_LE21L/14R: Fill in offset to GOT entry which contains the variable offset from the static TLS block
 
- R_PARISC_TLS_GDCALL/R_PARISC_TLS_LDMCALL:: Tag the function calls to __tls_get_addr so they can removed by the linker during TLS optimizations.
+;R_PARISC_TLS_GDCALL/R_PARISC_TLS_LDMCALL: Tag the function calls to <tt>__tls_get_addr</tt> so they can removed by the linker during TLS optimizations.
 
 == glibc ==
 
 We use the TLS_DTV_AT_TP layout:
 
-{{{
+ <nowiki>
   /* Memory layout is:
      [ TLS_PRE_TCB_SIZE ] [ TLS_TCB_SIZE ] [ TLS blocks ]
                           ^ This should be returned.  */
-}}}
+ </nowiki>
 
-where `TLS_PRE_TCB_SIZE` is `sizeof(_pthread_descr_struct)` or `sizeof(struct pthread)`, and `TLS_TCB_SIZE` is `sizeof(tcbhead_t)` (defined below).
+where <tt>TLS_PRE_TCB_SIZE</tt> is <tt>sizeof(_pthread_descr_struct)</tt> or <tt>sizeof(struct pthread)</tt>, and <tt>TLS_TCB_SIZE</tt> is <tt>sizeof(tcbhead_t)</tt> (defined below).
 
-Implement `__tls_get_addr`; initially, with no linker optimizations, we can use this (similar to alpha, ia64, etc)
+Implement <tt>__tls_get_addr</tt>; initially, with no linker optimizations, we can use this (similar to alpha, ia64, etc)
 
-{{{
+ <nowiki>
 void *
 __tls_get_addr(tls_index *ti)
 {
   dtv_t *dtv = THREAD_DTV();
   return (char *)dtv[1].pointer + ti->ti_offset;
 }
-}}}
+ </nowiki>
 
 where THREAD_DTV() is defined as:
-{{{
+ <nowiki>
 typedef union dtv {
   size_t counter;
   void *pointer;
@@ -259,11 +259,11 @@ typedef struct {
 
 #define THREAD_DTV() \
   (((tcbhead_t *)__thread_self)->dtv)
-}}}
+ </nowiki>
 
-With this layout, since the thread pointer points to the middle of the allocated thread structure, the thread structure (`_pthread_descr_struct` or `struct pthread`) is available as:
+With this layout, since the thread pointer points to the middle of the allocated thread structure, the thread structure (<tt>_pthread_descr_struct</tt> or <tt>struct pthread</tt>) is available as:
 
-{{{
+ <nowiki>
 static inline struct _pthread_descr_struct * __get_cr27(void)
 {
         long cr27;
@@ -281,7 +281,7 @@ static inline struct pthread * __get_cr27(void)
         return (struct _pthread_descr_struct *) cr27;
 }
 # define THREAD_SELF (__get_cr27() - 1)
-}}}
+ </nowiki>
 
 == kernel ==
 
@@ -289,18 +289,18 @@ static inline struct pthread * __get_cr27(void)
 == References ==
 Implementations from other archs:
 
-  * SH TLS for binutils: http://sources.redhat.com/ml/binutils/2002-10/msg00199.html
-  * PPC TLS for binutils: http://sources.redhat.com/ml/binutils/2003-02/msg00254.html
-  * PPC64 TLS for binutils: http://sources.redhat.com/ml/binutils/2003-02/msg00031.html
-  * x86-64 TLS for binutils: http://sources.redhat.com/ml/binutils/2002-09/msg00574.html
-  * alpha TLS for binutils: http://sources.redhat.com/ml/binutils/2002-05/msg00710.html
-  * sparc TLS for binutils: http://sources.redhat.com/ml/binutils/2003-01/msg00296.html
+* SH TLS for binutils: http://sources.redhat.com/ml/binutils/2002-10/msg00199.html
+* PPC TLS for binutils: http://sources.redhat.com/ml/binutils/2003-02/msg00254.html
+* PPC64 TLS for binutils: http://sources.redhat.com/ml/binutils/2003-02/msg00031.html
+* x86-64 TLS for binutils: http://sources.redhat.com/ml/binutils/2002-09/msg00574.html
+* alpha TLS for binutils: http://sources.redhat.com/ml/binutils/2002-05/msg00710.html
+* sparc TLS for binutils: http://sources.redhat.com/ml/binutils/2003-01/msg00296.html
 
-  * PPC TLS for glibc: http://sources.redhat.com/ml/libc-alpha/2003-02/msg00241.html
-  * IA64 TLS for glibc: http://sources.redhat.com/ml/libc-hacker/2003-01/msg00083.html
+* PPC TLS for glibc: http://sources.redhat.com/ml/libc-alpha/2003-02/msg00241.html
+* IA64 TLS for glibc: http://sources.redhat.com/ml/libc-hacker/2003-01/msg00083.html
 
-  * alpha TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2002-05/msg02639.html
-  * SH TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-02/msg01392.html
-  * PPC TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-05/msg00774.html
-  * sparc TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-09/msg00456.html
-  * IA64 TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2002-05/msg02038.html
+* alpha TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2002-05/msg02639.html
+* SH TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-02/msg01392.html
+* PPC TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-05/msg00774.html
+* sparc TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2003-09/msg00456.html
+* IA64 TLS for gcc: http://gcc.gnu.org/ml/gcc-patches/2002-05/msg02038.html
