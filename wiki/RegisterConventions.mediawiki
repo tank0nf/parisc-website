@@ -1,0 +1,32 @@
+---
+title: RegisterConventions
+---
+
+= PA-RISC Linux Register Conventions =
+
+A file in the kernel tree describes the [[Registers]] specified by the ABI.
+
+A stack frame for a function in the 32-bit runtime looks like this:
+
+ <nowiki>
+   Offset
+        [ Variable args ]
+   SP = (4*(n+9))       arg word N
+   ...
+   SP-52                arg word 4
+        [ Fixed args ]
+   SP-48                arg word 3
+   SP-44                arg word 2
+   SP-40                arg word 1
+   SP-36                arg word 0
+        [ Frame marker ]
+   ...
+   SP-20                RP
+   SP-4                 previous SP
+ </nowiki>
+
+* First 4 non-FP 32-bit args are passed in <tt>gr26</tt>, <tt>gr25</tt>, <tt>gr24</tt> and <tt>gr23</tt>
+* First 2 non-FP 64-bit args are passed in register pairs, starting on an even numbered register (i.e. <tt>r26/r25</tt> and <tt>r24+r23</tt>)
+* First 4 FP 32-bit arguments are passed in <tt>fr4L</tt>, <tt>fr5L</tt>, <tt>fr6L</tt> and <tt>fr7L</tt>
+* First 2 FP 64-bit arguments are passed in <tt>fr5</tt> and <tt>fr7</tt>
+* The rest are passed on the stack starting at <tt>SP-52</tt>, but 64-bit arguments need to be aligned to an 8-byte boundary
