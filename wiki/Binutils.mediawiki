@@ -1,0 +1,187 @@
+---
+title: Binutils
+---
+
+= binutils =
+
+Upstream webpage: http://sources.redhat.com/binutils
+
+Binutils contains the GNU assembler, linker and binary utilities. For PA-RISC, binutils supports several targets, including <tt>hppa-linux</tt>, <tt>hppa64-linux</tt>, <tt>hppa-netbsd</tt>, <tt>hppa-hpux</tt>, <tt>hppa64-hpux</tt>.
+
+== BFD ==
+A large part of binutils is the "bfd" library. According to the README that comes with bfd:
+
+ <nowiki>
+BFD is an object file library.  It permits applications to use the
+same routines to process object files regardless of their format.
+
+BFD is used by the GNU debugger, assembler, linker, and the binary
+utilities.
+
+The documentation on using BFD is scanty and may be occasionally
+incorrect.  Pointers to documentation problems, or an entirely
+rewritten manual, would be appreciated.
+ </nowiki>
+
+Sigh...
+
+The interesting files for this port are:
+* bfd/elf-hppa.h
+* bfd/elf32-hppa.[ch]
+* bfd/elf64-hppa.[ch]
+* bfd/libhppa.h
+* include/elf/hppa.h
+
+One of the wishlist TODO items is to merge the 32 and 64-bit implementations into a single file, so that it can be maintained more easily. Currently there is quite a bit of overlap, but also a lot of differences between the two targets.
+
+=== bfd/elf32.hppa.c ===
+Data structures:
+
+<tt>elf32_hppa_link_hash_table</tt> is derived from <tt>elf_link_hash_table</tt>. It is passed around to most of the linker functions (usually as a parameter called <tt>info</tt>). "Global" data is placed in this structure.
+
+<tt>elf32_hppa_link_hash_entry</tt> is derived from <tt>elf_link_hash_entry</tt>. One of these are created for each dynamic symbol.
+
+Embedded in the <tt>elf32_hppa_link_hash_table</tt> is a generic ELF hash table <tt>stub_hash_table</tt>. This is used to hold information about a variety of linker-generated stubs. 
+
+On hppa-linux, the following stub types are used:
+* Long branch stub: used when a branch (R_PARISC_PCREL17F or R_PARISC_PCREL22F) cannot reach its destination (non-PIC and PIC versions)
+* Import stub: used to call a shared library function. There is one version for calling a sharedlib function from other sharedlib, and another for calling a sharedlib function from an executable.
+
+Since hppa-linux doesn't support multiple subspaces, we do not need export stubs.
+
+TODO: put call sequence here
+
+* `elf32_hppa_link_hash_table_create` - create the link hash table structure
+* `elf32_hppa_create_dynamic_sections` - create the .got and .plt sections, and possibly .dynamic
+* `elf32_hppa_copy_indirect_symbol`
+* `elf32_hppa_check_relocs` - Do some preliminary checks on relocs, if needed allocate space for local GOT/PLT entries, do some checking on TLS references
+* `elf32_hppa_gc_mark_hook`
+* `elf32_hppa_gc_sweep_hook`
+* `elf32_hppa_hide_symbol`
+* `elf32_hppa_adjust_dynamic_symbol`
+* `elf32_hppa_size_dynamic_sections`
+** `allocate_plt_static`
+** `allocate_dynrelocs`
+** `clobber_millicode_symbols`
+** `readonly_dynrelocs`
+* `elf32_hppa_setup_section_lists`
+* `elf32_hppa_next_input_section`
+** `elf32_hppa_size_stubs`
+** `group_sections`
+** `get_local_syms`
+* `elf32_hppa_set_gp`
+* `elf32_hppa_build_stubs`
+* `elf32_hppa_final_link`
+* `elf32_hppa_relocate_section`
+** `hppa_record_segment_addr`
+** `final_link_relocate`
+* `elf32_hppa_finish_dynamic_symbol`
+* `elf32_hppa_reloc_type_class`
+* `elf32_hppa_finish_dynamic_sections`
+* `elf32_hppa_post_process_headers`
+* `elf32_hppa_elf_get_symbol_type`
+
+
+
+=== bfd/elf64-hppa.c ===
+TODO: put call sequence here
+
+
+== Assembler (gas) ==
+The interesting files for this port are:
+* gas/config/tc-hppa.c
+* gas/config/tc-hppa.h
+* include/opcode/hppa.h: description of all the insns
+* include/elf/hppa.h: ELF constants
+
+
+== Linker (ld) ==
+
+The gnu linker is an interesting piece of software that uses a weird
+combination of templates to generate a working cross linker. I still
+don't fully understand all this.
+
+Files of interest are:
+* ld/emultmpl/hppaelf.em
+* ld/emulparams/hppaelf.sh
+* ld/emulparams/hppalinux.sh
+
+There a number of other files that might be of interest, including
+the elf64 stuff:
+* ld/emulparams/elf64hppa.sh
+* ld/emulparams/hppa64linux.sh
+
+TODO: The 64-bit linker doesn't have multiple stub sections. Therefore
+the stub might not be able to reach the intended target if the distance
+is too large. We need to add multiple stub section support for the 64-bit
+linker.
+
+Should trace the linker function calls in order to determine how 
+the mechanics work for 32-bit.
+
+For example, for 32-bit from the ld/emultmpl/hppaelf.em definition
+we will call:
+
+ <nowiki>
+gld${EMULATION_NAME}_finish (void) [ld]
+  elf32_hppa_size_stubs [bfd]
+    get_local_syms [bfd]
+      if we need an export stub
+        if (stub_entry == NULL)
+          hppa_add_stub [bfd]
+ </nowiki>
+
+In hppa_add_stub(...) if the stub_sec is empty,
+then we check to see if the stub_sec in the link_sec is
+empty, and if both those conditions are met then we use the
+generic add_stub_section(...) to create and place a stub in
+htab->stub_group[link_sec->id].stub_sec. If there is a stub
+section in the link_sec already then it is used as the
+section stub section e.g.
+htab->stub_group[section->id].stub_sec = stub_sec.
+
+Here is how the ld code calls into the hppa-specific code for the 32-bit target. Line numbers are from binutils-2.15
+
+ <nowiki>
+main()
+  -> [ldmain.c:466] lang_process()
+     -> [ldlang.c:4160] lang_for_each_statement_worker()
+        -> [ldlang.c:289] ldlang_open_output()
+           -> [ldlang.c:1779] open_output()
+              -> [ldlang.c:1764] elf32_hppa_link_hash_table_create()
+     -> [ldlang.c:4172] open_input_bfds()
+        -> [ldlang.c:1888] load_symbols()
+           -> [ldlang.c:1475] elf_link_add_object_symbols()
+              -> [elflink.c:2995] _bfd_elf_link_create_dynamic_sections()
+                 -> [elflink.c:237] elf32_hppa_create_dynamic_sections()
+              -> [elflink.c:4055] elf32_hppa_check_relocs()
+     -> [ldlang.c:4233] ldemul_before_allocation()
+        -> [ldemul.c:77] gldhppa_linux_before_allocation()
+           -> [ehppalinux.c:1073] bfd_elf_size_dynamic_sections()
+              -> [elflink.c:4981] elf32_hppa_size_dynamic_sections
+     -> [ldlang.c:4311] ldemul_finish()
+        -> [ldemul.c:90] gldhppalinux_finish()
+           -> [ehppalinux.c:295] elf32_hppa_setup_section_lists()
+           -> [ehppalinux.c:305] lang_for_each_statement_worker()
+              -> [ldlang.c:294] elf32_hppa_next_input_section()
+           -> [ehppalinux.c:328] elf32_hppa_set_gp()
+           -> [ehppalinux.c:337] elf32_hppa_build_stubs()
+  -> [ldmain.c:475] ldwrite()
+     -> [ldwrite.c:565] elf32_hppa_final_link()
+        -> [elf32-hppa.c:3195] bfd_elf_final_link()
+           -> [elflink.c:7579] elf_link_input_bfd()
+              -> [elflink.c:6652] elf32_hppa_relocate_section()
+           -> [elflink.c:7702] bfd_hash_traverse()
+              -> [hash.c:492] elf_link_output_extsym()
+                 -> [elflink.c:6124] elf32_hppa_finish_dynamic_symbol()
+           -> [elflink.c:7960] elf32_hppa_finish_dynamic_sections()
+           -> [elflink.c:7334] _bfd_elf_compute_section_file_positions()
+              -> [elf.c:3068] elf32_hppa_post_process_headers()
+ </nowiki>
+
+== Disassembler (objdump) ==
+
+Objdump is (in part) a disassembler.  Interesting files:
+* opcodes/hppa-dis.c
+* opcodes/libhppa.h
+* include/opcode/hppa.h: Shared with gas
