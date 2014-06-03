@@ -6,7 +6,7 @@ title: PdcChassisLog
 
 == What is PDC Chassis Log ==
 
-The Chassis Log is a feature of some specific type of PDC: ''PAT PDC'' equipped with a GuardianServiceProcessor (GSP), which can be found on recent systems (in particular high-end PA``8X00 servers). This feature has two hardware "expression": the VirtualFrontPanel (VFP) and the GSP Logs. The former is the LED panel found on the front bezel of some machines, with '''Run''', '''Attn''', '''Fault''', '''Power''' and '''Remote''' LEDs; while the latter is about logging special events to the GuardianServiceProcessor logs.
+The Chassis Log is a feature of some specific type of PDC: ''PAT PDC'' equipped with a [[GuardianServiceProcessor]] (GSP), which can be found on recent systems (in particular high-end PA8X00 servers). This feature has two hardware "expression": the [[VirtualFrontPanel]] (VFP) and the GSP Logs. The former is the LED panel found on the front bezel of some machines, with '''Run''', '''Attn''', '''Fault''', '''Power''' and '''Remote''' LEDs; while the latter is about logging special events to the GuardianServiceProcessor logs.
 
 == What are we trying to do? ==
 
