@@ -2,5 +2,6 @@
 title: Saying
 ---
 
-* Now, if PA-RISC was a major architecture, we'd have to figure this out. But as it is, PA-RISC is just about the shittiest RISC ever invented (with original sparc being a strong contender), and let's face it, nobody really uses it.  It's a "fun project", but it is not something that we should use to mess up either ACCESS_ONCE() or the MCS locks.
-** Linus Torvalds in an [email discussion|http://article.gmane.org/gmane.linux.ports.parisc/5835]
+Linus Torvalds in an [http://article.gmane.org/gmane.linux.ports.parisc/5835 email discussion]:
+* ''Now, if PA-RISC was a major architecture, we'd have to figure this out. But as it is, PA-RISC is just about the shittiest RISC ever invented (with original sparc being a strong contender), and let's face it, nobody really uses it.  It's a "fun project", but it is not something that we should use to mess up either ACCESS_ONCE() or the MCS locks.
+''
