@@ -24,7 +24,7 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
-* modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..(ipmi-chassis --get-chassis-status crashes the machine).
+* modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
 * Import old hppa mailing list archives to gmane.org
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
