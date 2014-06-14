@@ -11,9 +11,9 @@ The Debian ports project hosts a parisc version of debian unstable. Today the re
 == RECOMMENDED: New installation media (Debian unstable via debian-ports) ==
 
 The latest installation media to directly install Debian unstable is available for download here:
-* http://ftp.debian-ports.org/debian-cd/hppa/lifimage (LIF Image file, which can be booted directly via network/disk/...), or
+* http://ftp.debian-ports.org/debian-cd/hppa/debian-7.0-hppa-CD-1.iso
 
-With this "lifimage" file you can:
+This ISO file you can:
  * either burn it to a CD, or
  * boot it via tftpboot/bootp, or
  * use "dd" to copy it to an empty hard disc drive and tell IPL to boot from it.
