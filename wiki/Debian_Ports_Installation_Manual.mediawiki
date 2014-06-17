@@ -1,0 +1,352 @@
+---
+title: Debian Ports Installation Manual
+---
+
+= Manual steps to install PA-RISC Linux =
+
+All steps described below will help you to manually install Debian on PA-RISC.
+Nevertheless, we suggest you follow the steps as described in [[Debian_Ports_Installation]] instead.
+
+
+== Manual installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
+* '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimage is based on older binaries which would need to be rebuilt.'''''
+
+*Download the temporary boot image from http://debian-ports.org/~deller/OLD_DEBIAN_HPPA_BOOTIMAGE/lifimage
+*Burn the image to a cdrom *or* make it available as tftp bootimage, *or* if you have a spare disc drive in the machine you can just "dd" this image (e.g. "dd if=lifimage of=/dev/sdb") to this drive and boot from it.
+*Turn on your parisc machine and boot this media (via cdrom or tftp)
+*This bootimage contains all tools (32- and 64bit bootkernel, fdisk, debootstrap, scp, ...) to bootstrap a new debian unstable machine.
+
+*use fdisk to partition your disk. Create a palo partition first (fdisk type f0, size >= 50 MB), then a /boot partition (needs to be in the first 2GB of a disk, ext2, fdisk type 83). A good size for the boot partition is 200-400 MB. Then create a root partition (any size) and a swap partition. Here is an example what "fdisk -l" could report (The Start and End sectors here are just examples. They can be different on your system) If you have multiple drives and would like to put your '/home', '/var', or other partition (including extra swap space) on a second internal drive, you may set them up accordingly with 'fdisk /dev/sdb' (or whatever drive is suitable):
+<pre>
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1            2048      165887       81920   f0  Linux/PA-RISC boot
+/dev/sda2          165888      247807       40960   83  Linux
+/dev/sda3          247808   142854143    71303168   83  Linux
+/dev/sda4       142854144   143374737      260297   82  Linux swap / Solaris
+</pre>
+* format the /boot, /root, /home, etc. and swap partitions. We give those partitions a name (BOOT/ROOT/HOME/(etc.)) to make it easier. You may also assign labels to your swap partitions to make sure the OS sees them properly and to make it easier to setup /etc/fstab (explained later), e.g. mkswap -L SWAP0 or SWAP1, etc.
+<pre>
+mke2fs -L BOOT /dev/sda2
+mke2fs -j -L ROOT /dev/sda3
+mke2fs -j -L HOME /dev/sdb1 ...and so on.
+mkswap /dev/sda4 or mkswap -L SWAP0
+</pre>
+* Now, bring up your network. If you have a dhcp server you can run dhclient
+<pre>
+dhclient eth0
+</pre>
+* Mount the newly designed /root, /boot, /home, and other necessary filesystems to /mnt/destroot, /mnt/destroot/boot, /mnt/destroot/home, etc.:
+<pre>
+mount LABEL=ROOT /mnt/destroot/
+mkdir /mnt/destroot/boot 
+mount LABEL=BOOT /mnt/destroot/boot/
+  then mkdir /mnt/destroot/home and any other filesystems that need to be mounted at the next boot, e.g.:
+  mount LABEL=HOME /mnt/destroot/home/, etc.
+</pre>
+* '''IMPORTANT!''': If you are behind a proxy server, you will need to create a /root/.wgetrc file and export the proxy setting on the command line. Here is an example:
+<pre>
+export http_proxy=http://proxy:8080
+echo "http_proxy=$http_proxy" > /root/.wgetrc
+echo "use_proxy = on" >> /root/.wgetrc
+</pre>
+* Now run debootstrap. Make sure to add the palo bootloader as one additional package to install. This may take some time... (on a fast machine ~10-20 minutes, on a slow machine like B180L ~1-2 hours, and depending on your network connection speed):
+<pre>
+debootstrap --arch=hppa --no-check-gpg  --include=palo,python unstable  /mnt/destroot http://ftp.debian-ports.org/debian/
+</pre>
+* create an empty 'palo.conf' file:
+<pre>
+touch /mnt/destroot/etc/palo.conf
+</pre> 
+* '''IMPORTANT!''': If you install via GSP console or via a serial console, please remember to un-comment the following line in '''/etc/inittab''' or you won't see a login prompt on the serial console after bootup (kill -HUP 1 activates the change):
+<pre>
+echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /mnt/destroot/etc/inittab
+</pre>
+* '''IMPORTANT!''': Remember to set your new root password and add LABEL=BOOT as /boot partition and also set your hostname.
+<pre> 
+echo "LABEL=ROOT     /      ext3 defaults 1 1" >> /mnt/destroot/etc/fstab
+echo "LABEL=BOOT     /boot  ext2 defaults 1 1" >> /mnt/destroot/etc/fstab
+echo "LABEL=HOME     /home  ext3 defaults 0 2" >> /mnt/destroot/etc/fstab
+echo "LABEL=SWAP0     none  swap sw,pri=3 0 0" >> /mnt/destroot/etc/fstab
+..and so forth for other necessary partitions.
+
+(You may also use 'nano' to edit /mnt/destroot/etc/fstab directly if desired)
+
+chroot /mnt/destroot
+passwd root
+<enter your new password for the 'root' user>
+Type 'exit' to get out of the chroot.
+
+echo "your hostname" >> /mnt/destroot/etc/hostname and edit /mnt/destroot/etc/hosts
+</pre>
+* You are now finished with the initial initialization of the filesystem.
+* You may now run the blkid command to take a look at your partitions. 
+<pre>
+blkid
+</pre>
+* Now reboot again from the CD/TFTP and choose to interact with IPL.
+<pre>
+reboot now
+<nowiki> <wait...> </nowiki>
+Interact with IPL (Y, N, or Cancel)?> y
+</pre>
+* Press "1" to change the "initrd=0/ramdisk" line, replace this line by "root=/dev/sda3" (look at the output of blkid above):
+<pre>
+root=/dev/sda3
+</pre>
+* and then press "b" to boot this configuration.
+* The machine should now have booted into the shell on /dev/sda3. If you see that it booted up, but you don't get a login shell, then you forgot to enable the serial terminal (see the IMPORTANT section with the "getty" line above!)
+* Login as 'root' with your new password. You can use tools like blkid, mount and such to see if everything is correct. 
+* Install the most recent 32- or 64-bit Linux kernel and install the palo bootloader (See networking bug workaround below): 
+* First of all: make sure the boot partition is mounted correctly
+<pre>
+mount LABEL=BOOT /boot
+</pre>
+* Networking bug Work-around: Due to a minor bug, networking doesn't start automatically, and the RSA keys for debian-ports.org are not available. Here is the current solution (you may need to set the proxy environment variables like described above!):
+<pre>
+Type 'dhclient eth0' to re-start the network
+
+then: gpg --recv-keys AA651E74623DB0B8 --keyserver http://ftp.debian-ports.org/debian
+
+(It will error out the first time, so just run the above command again and it will import keys.)
+
+then: gpg --export --armor 623DB0B8 | apt-key add -
+
+Now you can successfully run - 'apt-get update' and
+apt-get install openssh-server locales console-setup debian-ports-archive-keyring
+dpkg-reconfigure tzdata
+dpkg-reconfigure locales
+dpkg-reconfigure console-setup
+</pre>
+* and select your new kernel...
+<pre>
+apt-get install linux-image-parisc64-smp   # for a 64bit SMP kernel
+(or)
+apt-get install linux-image-parisc         # for a 32bit UP kernel
+</pre>
+* Don't forget to set up your symlinks in /boot
+<pre>
+cd /boot
+ln -s initrd* initrd.img
+ln -s vmlinux* vmlinux
+</pre>
+* Now you can run the palo configuration:
+<pre>
+palo --init-partitioned=/dev/sda -k/boot/vmlinux -r/boot/initrd.img --commandline="2/vmlinux initrd=2/initrd.img root=LABEL=ROOT rootfstype=ext3  HOME=/ panic_timeout=60 panic=-1"
+</pre>
+
+* '''Reboot now and HPPA Linux should now load from the hard drive.'''
+
+* At this time you can install a couple handy utilities to make sure your network always starts on boot. First run: nano /etc/network/interfaces and add the following lines. Do this for any additional interfaces leaving a blank line between each one.
+<pre>
+auto lo
+iface lo inet loopback (This brings up the local loopback network 'lo' on system boot)
+iface eth0 inet dhcp   (This will bring up eth0 when the system is booted.. (don't add 
+</pre>
+* Re-start your network:
+<pre>
+dhclient eth0
+</pre>
+
+* For more detailed networking info, look [http://www.debian.org/doc/manuals/debian-reference/ch05.en.html#_the_basic_network_infrastructure HERE].
+
+* Now add more packages and have fun!
+
+--[[User:Dave Land|Dave Land]] ([[User talk:Dave Land|talk]]) 13:48, 14 January 2014 (UTC)
+
+== Old installation medias (Debian Lenny) ==
+
+If you have an older parisc system (not a c8000!), you may use the Debian Lenny installation media to upgrade. (Note that as of 2/2014 this doesn't seem to work - see below)
+ 
+* Download one of the installation medias for Debian 5.0 (lenny) for parisc from the following location:
+
+* [http://cdimage.debian.org/cdimage/archive/5.0.10/hppa/iso-cd/ official debian cdimage download link]
+
+* The debian-5010-hppa-netinst.iso or the debian-5010-hppa-xfce+lxde-CD-1.iso may work.
+
+* Install Debian Linux. It's recommended to just install a minimalistic set of packages at this stage, since everything will be updated later to debian-unstable anyway. Furthermore, every installed package may prevent you from easily upgrading.
+* After installation you should upgrade to debian-unstable via the debian-ports repository:
+* Modify your /etc/apt/sources.list file to have this content:
+<pre>
+deb http://ftp.debian-ports.org/debian unstable main
+# For unstable sources, if you want to compile yourself:
+deb-src http://ftp.debian.org/debian/ unstable main contrib non-free  
+</pre>
+* '''Important!''' Make sure you run a recent Linux kernel, at least 2.6.32. If possible upgrade to at least kernel 3.9 which seems to be the most stable release.
+* A very good set of documenation which covers PARISC specifics (e.g. PARISC bootloader and firmware) is available at http://www.pateam.org/parisc-linux-boot/doc.html.
+* Packages in the debian-ports repository are signed. You can bypass this temporarily using the following: (This will instruct apt to pull the latest package list.)
+<pre>
+apt-get --allow-unauthenticated update
+</pre>
+* To upgrade your packages:
+<pre>
+apt-get --allow-unauthenticated upgrade
+</pre>
+* You might want to get the latest version of the debian-ports-archive-keyring and a few other important packages if you don't already have them:
+<pre>
+apt-get --allow-unauthenticated install openssh-server locales debian-ports-archive-keyring
+</pre>
+* ...and then set your current locale
+<pre>
+dpkg-reconfigure locales
+</pre>
+
+'''Re-boot Now'''
+
+* If you run into issues during upgrading packages, e.g. by strange dependency problems, it's often helpful to just un-install some packages.
+
+* Finally, you should be able to update/upgrade most packages & your kernel to a more recent (unstable) version. If you're missing some packages, please drop us an email on the mailing list [http://lists.debian.org/debian-hppa HERE].
+
+
+== Old installation medias (Debian Lenny) - notes by Tom Hogland <thogland@alaskatech.org> ==
+
+This was written from notes taken while installing Debian on a C180. It refused to use the lifimage (as of Feb 2014) so I used the Lenny (5.0.10) CD method (specifically the full Lenny CD1). Note that the above section of the wiki is slightly out of date - there are packages needed that aren't accessible any longer, old repositories missing, etc. You can no longer (2/2014) install Lenny, then change repositories and upgrade to unstable due to missing dependencies. We need to install Lenny, then use debian-archive repositories (and a little creative use of wget in debian-snapshots and debian-backports) to allow us to upgrade things enough to actually use the latest unstable sources.
+
+The hurdles here are that 1) we need at least dpkg 1.15 to read *any* even remotely new packages, and 2) we need a 2.6.32 kernel running to update libc6 enough to install the latest packages. Lenny has neither of them, and the normal debian sources no longer have Lenny-era packages available. So, we use archive.debian.org and debian-snapshot to get what we need.
+
+I'd highly recommend having another system nearby to reference the install instructions. I kept a laptop next to the console so I could use Google, reference the wiki, etc. Once Lenny is installed, moving to a SSH session is MUCH easier - you can cut/paste into it, rather than typing all the download names.
+
+To upgrade from Debian Lenny 5.0.10 to debian-ports.org unstable:
+
+From console:
+Follow parisc.wiki.kernel.org for basic Lenny install. DON'T install any 'roles' when prompted - de-select the 'standard system' role. Everything installed at this point causes problems later. DAMHIK...
+Install openssh-server (and suggested).
+
+(Move to working system with a browser and SSH in - there's several manual downloads, and cut/paste is your friend, not the console... )
+
+Add new sources to the end of /etc/apt/sources.list:
+
+<pre>
+deb http://archive.debian.org/debian-backports/ lenny-backports main contrib non-free
+deb http://archive.debian.org/debian/ lenny main contrib non-free
+</pre>
+(this gets *everything* in lenny into your package list, not just the CD)
+
+<pre>
+apt-get update/apt-get upgrade/apt-get dist-upgrade
+</pre>
+(should be nothing or not much)
+
+Download these using wget:
+<pre>
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/d/dpkg/dpkg_1.15.8.10_hppa.deb
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/x/xz-utils/liblzma2_5.0.0-2_hppa.deb
+http://ftp.debian-ports.org/debian-snapshot/2013-08-01/pool-hppa/main/x/xz-utils/xz-utils_5.0.0-2_hppa.deb
+</pre>
+(Note that these may change - you may have to browse in debian-snapshot to find a current path.)
+
+Install in this order: 'dpkg -i liblzma2*.deb xz-utils*.deb dpkg*.deb'
+
+Download these using wget:
+<pre>
+http://archive.debian.org/debian-backports/pool/main/l/linux-2.6/linux-base_2.6.32-35~bpo50+1_all.deb
+http://archive.debian.org/debian-backports/pool/main/l/linux-2.6/linux-image-2.6.32-bpo.4-parisc_2.6.32-11~bpo50+1_hppa.deb
+(or parisc-smp, parisc64, parisc64-smp for linux-image - pick appropriately for your system)
+</pre>
+
+To install:
+<pre>
+apt-get install libuuid-perl (needed for new kernel)
+dpkg -i linux-base*.deb linux-image*.deb
+</pre>
+
+There may be a few errors, but everything should still install cleanly.
+
+Reboot - you should have a base system with kernel 2.6.32 and SSH server.
+
+Add unstable source from wiki to /etc/apt/sources.list:
+<pre>
+deb http://ftp.debian-ports.org/debian unstable main
+</pre>
+
+Note - at some point after here you may start getting locale errors, and that it's falling back to using 'C'. Shouldn't break anything, and we'll fix it later.
+
+Now, according to the docs, we should fix the 'unauthenticated source' error like this:
+
+<pre>
+apt-get --allow-unauthenticated update
+apt-get --allow-unauthenticated install debian-ports-archive-keyring
+</pre>
+(this downloads 30+MB of updates plus the 17kb file you asked for)
+
+An error occurs here about an old ldconfig, and apt disables ldconfig with message "don't worry - we'll install a new libc-bin and it'll fix everything". Right after, things stop with errors, since libc-bin isn't what's being installed, and having no ldconfig is A Bad Thing(tm). 
+
+So we fix it:
+
+<pre>
+cd /var/cache/apt/archive
+apt-get download libc-bin
+dpkg -x libc-bin*.deb libcbin/
+cp libcbin/sbin/ldconfig* /sbin/
+apt-get -f install (lots of errors, but gets past them)
+apt-get --allow-unauthenticated install debian-ports-archive-keyring (try again - and fails again)
+apt-get -f install
+</pre>
+
+More stuff installs, and now you'll start to get messages that there's extra unneeded packages. Ignore it - we've got other issues still...
+
+The next error is that user 'libuuid' exists already... this breaks the libuuid1 upgrade and stops the install. Not sure where it happened, but we'll fix it...
+
+<pre>
+deluser libuuid
+apt-get -f install (no more errors!)
+apt-get --allow-unauthenticated install debian-ports-archive-keyring (yes, again - still not installed yet. Works this time though)
+</pre>
+
+Here I started getting errors that the Release file for lenny-backports is expired. There's a few options to fix it - you can use 'apt-get -o Acquire::Check-Valid-Until=false update', or ignore it, or even remove lenny-backports from your sources.list - I ignored it.
+
+And, finally...
+
+<pre>
+apt-get update
+apt-get upgrade (100+ packages)
+(I got a ldd error here during install of initrd-tools - had to run 'apt-get install --reinstall libc-bin' and it cleared up)
+apt-get upgrade (nothing)
+</pre>
+
+At this point, since the fixing is  mostly done, I did 'apt-get autoremove' to clean up the "extra unneeded packages" messages.
+
+One more upgrade:
+
+<pre>
+apt-get dist-upgrade (70 upgrade, 170 installs)
+</pre>
+
+During the dist-upgrade the locale errors change to 'locale: cannot set <x> to default locale: no such file or directory'. Now that everything's installed, we clean that up:
+
+<pre>
+dpkg-reconfigure locales (I used en_US.ISO-8859-1 and en_US.UTF-8 as that's what I need, changed default from en_US to en_US.UTF-8. Errors gone.)
+vi /etc/apt/sources.list (removed lenny-backports)
+apt-get update (updates, gives a missing key error)
+gpg --recv-keys 4d270d06f42584e6 --keyserver http://ftp.debian-ports.org/debian (errors first time, repeat and it succeeds)
+gpg --export --armor f42584e6 | apt-key add - 
+apt-get update (no more key error)
+apt-get upgrade/apt-get dist-upgrade/apt-get autoremove (should be nothing to install, autoremove cleans up a final few old packages)
+</pre>
+
+Note that you may have to change the key ID above from 4d270d06f42584e6 to your actual missing key, depending on your particular error. If so, be sure to change the export command to match the last 8 characters of the key you download.
+
+Some final cleanup - reference the wiki's installation doc. This is listed at the end of the "Recommended" installation docs.
+
+Edit /etc/network/interfaces, see if 'allow-hotplug eth0' is in there. Take it out if it is.
+
+<pre>
+apt-get install ifupdown-extra ifplugd
+dpkg-reconfigure ifplugd
+   "Static interfaces to be watched" - 'auto'
+   "Hotplugged interfaces to be watched" - 'all'
+   "arguments to ifplugd" - leave default
+   "suspend behavior" - 'suspend'
+Select OK to finish.
+</pre>
+
+'''*** IMPORTANT *** Before rebooting ***'''
+
+- Check /etc/fstab for correctness. Mine was converted to UUIDs - change back to device paths or labels if you desire. 
+
+- Check palo.conf - the default debian install needs 'rootfstype=ext3' (or whatever you used) added after the 'root=' item. '''Run palo afterwards!''' If you miss this step, the system won't mount the root FS on reboot. You'll end up in busybox with no networking. At least you can mount the partitions, chroot in and fix things.
+
+Reboot once more to bring up new kernel - should now be 3.13.... 
+
+Congratulations - you've got a complete and up-to-date Debian-HPPA unstable system, which at this point does absolutely nothing, as we never actually installed anything useful (except the SSH server). So go ahead, install something and enjoy!
+
+(notes by Tom Hogland <thogland@alaskatech.org>, Feb 2014)
