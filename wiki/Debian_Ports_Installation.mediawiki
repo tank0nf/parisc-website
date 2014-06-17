@@ -23,7 +23,8 @@ Instructions to install:
    mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need and drop the underscores)
 * At the end of the installation do not reboot the machine, but choose "back" and in the menu choose to execute a shell. In there, type this command:
   echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
-* Type exit and reboot the machine.
+* Type "exit" to quit the shell and return to the main menu.
+* In the main menu choose to "Finish the installation" and let it reboot the machine.
 
 == Installation of a PARISC machine via repository on http://ftp.debian-ports.org/debian ==
 * '''''*NOTE:* On PA8800/PA8900 and some PA8700 CPUs you may see kernel messages like: INEQUIVALENT ALIASES 0x40288000 and 0x40289000 in file xxx.so. Just ignore this. Those messages are printed because the lifimage is based on older binaries which would need to be rebuilt.'''''
