@@ -14,15 +14,15 @@ If you want to install debian the hard way with many manual steps, you can read 
 
 == Installation of Debian unstable via debian-ports repository ==
 
-The latest debian-7.0-hppa-CD-1.iso file for installation of Debian unstable is available at either one of the following locations:
+The latest installation medias for Debian unstable is available at either one of the following locations:
 * http://parisc.osuosl.org/debian-cd/
 * http://ftp.debian-ports.org/debian-cd/
 * http://landcomp.net:884/debian/debian-cd/
 
-This ISO file you can:
- * either burn to a CD, or
- * boot it via tftpboot/bootp, or
- * use "dd" to copy it to an empty hard disc drive and tell IPL to boot from it.
+In those directories you find (you need to download only one of those):
+* lifimage file, used for tftp/netbooting the installation
+* debian-7.0-hppa-NETINST-1.iso, ISO image to burn to a CD/DVD for booting
+* debian-7.0-hppa-CD-1.iso, full ISO image with all packages for booting via CD/DVD
 
 Instructions to install:
 * If your machine is behind a firewall, enter the proxy at the IPL command line the Linux kernel command line (change parameter 7):
