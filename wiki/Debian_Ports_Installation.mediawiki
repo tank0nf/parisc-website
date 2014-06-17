@@ -10,18 +10,21 @@ The Debian ports project hosts a parisc version of debian unstable. Today the re
 
 == RECOMMENDED: New installation media (Debian unstable via debian-ports) ==
 
-The latest installation media to directly install Debian unstable is available for download here:
-* http://ftp.debian-ports.org/debian-cd/hppa/debian-7.0-hppa-CD-1.iso
+The latest debian-7.0-hppa-CD-1.iso file for installation of Debian unstable is available at either one of the following locations:
+* http://parisc.osuosl.org/debian-cd/
+* http://ftp.debian-ports.org/debian-cd/
+* http://landcomp.net:884/debian/debian-cd/
 
 This ISO file you can:
- * either burn it to a CD, or
+ * either burn to a CD, or
  * boot it via tftpboot/bootp, or
  * use "dd" to copy it to an empty hard disc drive and tell IPL to boot from it.
 
 Instructions to install:
 * If your machine is behind a firewall, enter the proxy at the IPL command line the Linux kernel command line (change parameter 7):
    mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need and drop the underscores)
-* At the end of the installation do not reboot the machine, but choose "back" and in the menu choose to execute a shell. In there, type this command:
+* At the "Software selection" screen, do not enable other software than "SSH server" yet. You can install additional software later!
+* At the end of the installation do not reboot the machine, but choose "back" and in the main menu choose to execute a shell. In there, type this command to enable serial console (needed e.g. for boot console on GSP):
   echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
 * Type "exit" to quit the shell and return to the main menu.
 * In the main menu choose to "Finish the installation" and let it reboot the machine.
