@@ -41,7 +41,7 @@ In those directories you find (you need to download only one of those):
 == Technical background ==
 
 : The installer images mentioned above pull the debian packages from the repository at http://parisc.osuosl.org/debian/ which contains only the minimal set of necessary files for installation.
-: This is realized by the ""preseed/url=http://parisc.osuosl.org/debian/preseed.cfg"" Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
+: This is realized by the ''preseed/url=http://parisc.osuosl.org/debian/preseed.cfg'' Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
 : We would have liked to directly install from the official debian unstable repository at http://ftp.debian-ports.org/debian/ but this is not possible, because:
 :# The debian ports repository is a moving target, which means that the Linux kernel udeb packages which are needed by the kernel on the ISO/liffile may not be available any longer at a later date, and
 :# The debian ports repository is missing the http://parisc.osuosl.org/debian/palo-installer_0.0.15_hppa.udeb and http://parisc.osuosl.org/debian/partman-palo_20_hppa.udeb packages which are needed to install the palo bootloader during installation.
