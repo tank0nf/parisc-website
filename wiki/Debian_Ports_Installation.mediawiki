@@ -35,7 +35,7 @@ In those directories you find (you need to download only one of those):
 * In the main menu choose to "Finish the installation" and let it reboot the machine.
 
 '''Notes:'''
-* After reboot the sshd daemon will not accept password-logins for root. You may need to log in as user and then become root via "su -". To change the sshd behaviour, edit '''/etc/ssh/sshd_config''' file and change the value of '''PermitRootLogin to yes'''.
+* After reboot the sshd daemon will not accept password-logins for root. You need to log in as the user which you created during installation and then become root via "su -". To change this sshd behaviour, edit '''/etc/ssh/sshd_config''' file and change the value of '''PermitRootLogin to yes''' (not recommended!).
 * After reboot, run '''apt-get install debian-ports-archive-keyring''' to receive the latest debian ports archive keys (avoids this warning: ''W: GPG error: http://ftp.debian-ports.org unstable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY AA651E74623DB0B8'')
 
 == Technical background ==
