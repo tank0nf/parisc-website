@@ -9,8 +9,9 @@ communities closely tied to them. This primarily (but not exclusively)
 means linux kernel, gcc, binutils, and glibc work.
 
 Archives for [mailto:linux-parisc@vger.kernel.org linux-parisc] are available at:
-* [http://www.spinics.net/lists/linux-parisc/ spinics archive]
 * [http://dir.gmane.org/gmane.linux.ports.parisc gmane archive]
+* [http://www.spinics.net/lists/linux-parisc/ spinics archive]
+* [https://marc.info/?l=linux-parisc MARC archive]
 
 To subscribe, please mail [mailto:majordomo@vger.kernel.org majordomo@vger.kernel.org] with the message content '''subscribe linux-parisc'''.
 
