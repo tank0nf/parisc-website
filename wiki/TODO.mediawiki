@@ -24,6 +24,9 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
+* check if gcc option -fno-gnu-unique fixes kernel build
+* remove SA_RESTORER define (patch by Dave)
+* why does acl2 build hangs process ?
 * modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
 * Import old hppa mailing list archives to gmane.org
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
