@@ -25,10 +25,12 @@ title: TODO
 
 == Status & TODO 2014-05-01 (TODO-List by Helge Deller) ==
 * check if gcc option -fno-gnu-unique fixes kernel build
-* remove SA_RESTORER define (patch by Dave)
+* why is GNU AS so slow (e.g. when building yade) ? Optimize it!
+* implement 1,2 and 8 byte CAS by Guy Martin - https://patchwork.kernel.org/patch/4642161/
+* DONE: remove SA_RESTORER define (patch by Dave)
 * why does acl2 build hangs process ?
 * modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
-* Import old hppa mailing list archives to gmane.org
+* started: Import old hppa mailing list archives to gmane.org
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
 * Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits - https://patchwork.kernel.org/patch/4115901/
