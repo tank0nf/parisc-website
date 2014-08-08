@@ -25,6 +25,7 @@ title: TODO
 
 == Status & TODO 2014-07-31 (TODO-List by Helge Deller) ==
 * check if gcc option -fno-gnu-unique fixes kernel build
+* report papi debian package patches for hppa upstream.
 * why is GNU AS so slow (e.g. when building yade) ? Optimize it!
 * implement kexec syscall
 * implement 1,2 and 8 byte CAS by Guy Martin - https://patchwork.kernel.org/patch/4642161/
