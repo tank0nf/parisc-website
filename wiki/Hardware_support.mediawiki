@@ -4,11 +4,17 @@ title: Hardware support
 
 == Workstations ==
 
-PA-RISC Linux supports all HP PA-RISC workstations. Not everything is perfectly functional - but nearly all of it works. The unlettered 700-series workstations (eg 712/715/735) and the B/C/J class machines (eg B132L, Tadpole B160L laptop, C180L, C200, C3000, J5000, C8000) systems are supported. Fast-Wide Differential SCSI does not work on 735 or 755 (but does on other machiines). Most standard HP graphic cards work (Visualize-EG, Artist, HCRX, ...) in 8 and 24bpp modes. Support for the Vis-FX series is still missing.
+PA-RISC Linux supports all HP PA-RISC workstations. Not everything is perfectly functional - but nearly all of it works.
+The unlettered 700-series workstations (eg 712/715/735) and the B/C/J class machines (e.g. B132L, Tadpole B160L laptop, C180L, C200, B1000, B2000, C3000, J5000, C8000) systems are supported.
+Fast-Wide Differential SCSI does not work on 735 or 755 (but does on other machiines).
+
+Most standard HP graphic cards work (Visualize-EG, Artist, HCRX, ...) in 8 and 24bpp modes.
+Support for the Vis-FX series is still missing and will probably not be supported. 
 
 PA-RISC VME boards are based on workstation designs. PA-RISC Linux does boot on a 743.
 
-Search the [[Mailing_lists|mailing lists]] to see if your workstation (or server) has any known problems. Please submit bugs (or patches!) for missing/broken functionality to the parisc-linux [[Mailing_lists|mailing list]].
+Search the [[Mailing_lists|mailing lists]] to see if your workstation (or server) has any known problems.
+Please submit bugs (or patches!) for missing/broken functionality to the parisc-linux [[Mailing_lists|mailing list]].
 
 == Servers ==
 
