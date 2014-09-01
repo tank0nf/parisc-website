@@ -29,6 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Sep 2014''' - [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid We now have more than 10.200 pre-built debian unstable packages].
 * '''Aug 2014''' - [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid We now have more than 10.100 pre-built debian unstable packages].
 * '''Jul 2014''' - New [[Debian Ports Installation | Debian unstable installer images available]]. Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.000 pre-built debian unstable packages].
 * '''Jun 2014''' - The A500-44 is up and running as additional debian buildd server at http://parisc.osuosl.org. Kernel 3.15 is out. Added a very fast 4-way 1GHz C8000 machine with 250GB SATA SSD drive as additional Debian buildd server (sibaris.parisc-linux.org), machine and hosting sponsored by Németh Bálint.
