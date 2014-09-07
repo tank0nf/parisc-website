@@ -25,6 +25,7 @@ In those directories you find (you need to download only one of those):
 * debian-7.0-hppa-CD-1.iso, full ISO image with all packages for booting via CD/DVD
 
 '''Installation instructions'''
+* Instructions to burn the ISO image on a Mac: https://discussions.apple.com/thread/5132196
 * '''IMPORTANT: ''' If your machine has a DVD-drive, you should better burn the image to a DVD disc. The first-generation DVD-drives in some older PA-RISC machines may have problems booting from e.g. a CD-RW so you may get this error message: ''IPL error: bad LIF magic.''
 * Those images should work on all machines, with 32- and 64bit kernels. Installation of a C8000 workstation needs to happen via serial console since the installer imager will not activate the ATI graphics card. After installation the ATI cards will work in non-accelerated mode though.  
 * If your machine is behind a firewall, enter the proxy at the IPL command line the Linux kernel command line (change parameter 7):
