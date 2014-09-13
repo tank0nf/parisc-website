@@ -24,10 +24,11 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2014-08-20 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-09-13 (TODO-List by Helge Deller) ==
+* DONE Sept 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
+* DONE Sept 12 2014: restore web-based http://ftp.parisc-linux.org service
 * further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * check if gcc option -fno-gnu-unique fixes kernel build
-* report papi debian package patches for hppa upstream.
 * why is GNU AS so slow (e.g. when building yade) ? Optimize it!
 * implement kexec syscall
 * implement 1,2 and 8 byte CAS by Guy Martin - https://patchwork.kernel.org/patch/4642161/
