@@ -35,3 +35,4 @@ A list of currently supported hardware is maintained by the ESIEE Team, you shou
 == External Resources ==
 
 * http://www.openpa.net/systems/index.html - OpenPA.net Overview of PA-RISC Computers
+* http://www.pateam.org/list.html - ESIEE Team Detailed Hardware Support (partly outdated as last update was in Jan 2009)
