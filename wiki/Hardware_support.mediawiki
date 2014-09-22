@@ -31,3 +31,7 @@ The A180, L1000/2000/3000, N4000, and A400/A500 servers are supported. Support f
 People ask about V-class. V-class has a very different architecture from other HP machines. See the [http://docs.hp.com/hpux/hw/  Server Architecture Reference] for details. One major known problem with supporting V-class is the complexity of its PCI bus adapter (EPIC and SAGA). Support for the V-class isn't going to happen until some really masochistic person who has access to a V-class is, uh, challenged by this.
 
 A list of currently supported hardware is maintained by the ESIEE Team, you should take a look [http://www.pateam.org/list.html here] for any precise material.
+
+== External Resources ==
+
+* http://www.openpa.net/systems/index.html - OpenPA.net Overview of PA-RISC Computers
