@@ -29,6 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Oct 2014''' - [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid Reached 10.300 pre-built debian unstable packages]. [https://patchwork.kernel.org/patch/5048751 Upcoming patches to support systemd on hppa]
 * '''Sep 2014''' - Browsers will now automatically be transferred to this Wiki if one visits http://www.parisc-linux.org . [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid We now have more than 10.200 pre-built debian unstable packages].
 * '''Aug 2014''' - [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid We now have more than 10.100 pre-built debian unstable packages].
 * '''Jul 2014''' - New [[Debian Ports Installation | Debian unstable installer images available]]. Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.000 pre-built debian unstable packages].
