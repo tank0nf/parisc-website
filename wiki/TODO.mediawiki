@@ -182,6 +182,10 @@ title: TODO
 
 * Debian kernel
 ** DONE: Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
+** DONE: remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
+
+* Debian installer:
+** DONE: test xorriso (Thomas Schmitt, scdbackup)
 
 == parisc-linux.org and Debian infrastructure work ==
 * DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
