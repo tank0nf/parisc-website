@@ -25,27 +25,25 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2014-10-11 (TODO-List by Helge Deller) ==
-* debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, serial and usb-serial debian-installer packages
+* debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 * PARTLY DONE: push gcc patch for variable CAS upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
-* further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * ONGOING: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
-* why is GNU AS so slow (e.g. when building yade) ? Optimize it!
+* further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * implement kexec syscall
 * modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
+* use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * why does acl2 build hangs process ?
-** debian-cd to use xorriso
-** debian-cd: do not compress kernel.
 * SLAB breaks, SLUB works, why? Mail from Guy Martin.
+* why is GNU AS so slow (e.g. when building yade) ? Optimize it!
+* gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
+* debian-cd to use xorriso
+* debian-cd: do not compress kernel.
 * why does mc hangs when exiting on sticon ?
 * implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
-* crash in GSP, is everything visible (GSP reset?) 
-* Add loop module to debian kernel.
 * 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * 3.14 partly: debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
-* use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 * sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
-* gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 
 * add wiki page about kernel cross-compiling
 
