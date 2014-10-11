@@ -192,8 +192,9 @@ title: TODO
 * DONE: contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
 * Offer from mike@csystems.co.nz for A400 system as buildd - mail from 18.09.2014
 * DONE: set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013
-* DONE Sept 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
-* DONE Sept 12 2014: restore web-based http://ftp.parisc-linux.org service
+* DONE Sep 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
+* DONE Sep 12 2014: restore web-based http://ftp.parisc-linux.org service
+* started Aug 2014: Import old hppa mailing list archives to gmane.org
 
 = Kernel Testing Tools =
 
