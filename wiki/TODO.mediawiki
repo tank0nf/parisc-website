@@ -168,6 +168,10 @@ title: TODO
 * Kernel 3.15
 ** epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98
 ** pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca
+* Kernel 3.16
+* Kernel 3.17
+** CAS implementation: implement 1,2,4 and 8 byte CAS -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b (backported to Kernel >= 3.13) 
+* Kernel 3.18
 
 == Debian userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
