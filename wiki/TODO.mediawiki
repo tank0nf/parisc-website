@@ -173,6 +173,13 @@ title: TODO
 ** CAS implementation: implement 1,2,4 and 8 byte CAS -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b (backported to Kernel >= 3.13) 
 * Kernel 3.18
 
+* unsorted:
+** DONE: remove SA_RESTORER define (patch by Dave)
+** DONE: Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits - https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fef47e2a2e1e75fe50a10f634a80f16808348cc6
+** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
+** DONE: change kernel SHMLBA=PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26
+** RTSIGMIN = 32 (upcoming)
+
 == Debian kernel and userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 
