@@ -156,17 +156,40 @@ title: TODO
 * Kernel 3.15
 ** epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98
 ** pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca
+** parisc: add renameat2 syscall
+** parisc: Improve LWS-CAS performance
+** parisc: ratelimit userspace segfault printing
+** parisc: Use generic uapi/asm/resource.h file
+** parisc: remove _STK_LIM_MAX override
+** parisc: fix epoll_pwait syscall on compat kernel
+** parisc: change value of SHMLBA from 0x00400000 to PAGE_SIZE
+** parisc: Replace __get_cpu_var uses for address calculation
+** parisc: locks: remove redundant arch_*_relax operations
+** parisc: wire up sys_utimes
+** parisc: Remove unused CONFIG_PARISC_TMPALIAS code
 * Kernel 3.16
+** parisc: Eliminate memset after alloc_bootmem_pages
+** parisc: Remove SA_RESTORER define
+** parisc: drop unused defines and header includes
+** parisc: fix fanotify_mark() syscall on 32bit compat kernel
+** parisc: add serial ports of C8000/1GHz machine to hardware database
 * Kernel 3.17
-** CAS implementation: implement 1,2,4 and 8 byte CAS -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b (backported to Kernel >= 3.13) 
+** parisc: Fix serial console for machines with serial port on superio chip
+** parisc: Only use -mfast-indirect-calls option for 32-bit kernel builds
+** parisc: pdc_stable.c: Avoid potential stack overflows
+** parisc: pdc_stable.c: Cleaning up unnecessary use of memset in conjunction with strncpy
+** parisc: ptrace: use secure_computing_strict()
+** parisc: Implement new LWS CAS supporting 64 bit operations, CAS implementation: implement 1,2,4 and 8 byte CAS -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b (backported to Kernel >= 3.13) 
+** parisc: Wire up seccomp, getrandom and memfd_create syscalls
+** parisc: dino: fix %d confusingly prefixed with 0x in format string
+** parisc: sys_hpux: NUL terminator is one past the end
+** parisc: Use get_signal() signal_setup_done()
 * Kernel 3.18
+** RTSIGMIN = 32 (upcoming) 
 
 * unsorted:
-** DONE: remove SA_RESTORER define (patch by Dave)
-** DONE: Make it possible to disable logs of userspace crashes (do_page_fault() pid=1082...) testcases: acl2, aapits - https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fef47e2a2e1e75fe50a10f634a80f16808348cc6
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 ** DONE: change kernel SHMLBA=PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26
-** RTSIGMIN = 32 (upcoming)
 
 == Debian kernel and userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
