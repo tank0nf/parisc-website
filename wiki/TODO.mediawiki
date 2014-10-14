@@ -24,32 +24,34 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2014-10-11 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-10-14 (TODO-List by Helge Deller) ==
 * debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 * PARTLY DONE: push gcc patch for variable CAS upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
 * ONGOING: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
 * further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * implement kexec syscall
-* modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
+* why does mc hangs when exiting on sticon ?
+* implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
+* modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
+* SLAB breaks, SLUB works, why? Mail from Guy Martin.
+* sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
+
+* Debian userspace
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * why does acl2 build hangs process ?
-* SLAB breaks, SLUB works, why? Mail from Guy Martin.
 * why is GNU AS so slow (e.g. when building yade) ? Optimize it!
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * debian-cd to use xorriso
 * debian-cd: do not compress kernel.
-* why does mc hangs when exiting on sticon ?
-* implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
+
 * 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 * 3.14 partly: debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
-* sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 
 * add wiki page about kernel cross-compiling
 
-* currently planned features for 3.13 / 3.14:
-** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
-** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
+* better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
+* physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
 * Kernel: Hard to solve outstanding issues
 ** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian
