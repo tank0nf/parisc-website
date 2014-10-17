@@ -17,7 +17,6 @@ If you want to install debian the hard way with many manual steps, you can read 
 The latest installation medias for Debian unstable is available at either one of the following locations:
 # http://parisc.osuosl.org/debian-cd/
 # http://ftp.debian-ports.org/debian-cd/
-# http://landcomp.net:884/debian/debian-cd/
 
 In those directories you find (you need to download only one of those):
 * lifimage file, used for tftp/netbooting the installation
