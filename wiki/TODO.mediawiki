@@ -38,6 +38,7 @@ title: TODO
 * sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 
 * Debian userspace
+* provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * why does acl2 build hangs process ?
 * why is GNU AS so slow (e.g. when building yade) ? Optimize it!
