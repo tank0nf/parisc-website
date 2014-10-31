@@ -26,7 +26,9 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2014-10-14 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-10-30 (TODO-List by Helge Deller) ==
+* fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
+* fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)  
 * debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 * PARTLY DONE: push gcc patch for variable CAS upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
 * ONGOING: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
