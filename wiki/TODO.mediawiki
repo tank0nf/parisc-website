@@ -21,6 +21,8 @@ title: TODO
 ** debian glibc report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605
 ** debian kernel bug report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635
 ** First delivery with vmlinux-3.16.0-4 (aka linux-image-3.16.0-4-parisc64-smp_3.16.7-1_hppa.deb)
+** rebuild of following packages needed:
+*** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
 
 == Testsuites - to be checked ==
 * We also have a problem with poll in rpcbind on 32-bit kernels. Runs forever. Not analyzed yet.
