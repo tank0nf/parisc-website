@@ -24,6 +24,8 @@ title: TODO
 ** rebuild of following packages needed:
 *** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
 *** strace, gdb: fix signal names/numbers
+*** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
+*** (maybe) gcc-4.9 which links against libgc...?
 
 == Testsuites - to be checked ==
 * We also have a problem with poll in rpcbind on 32-bit kernels. Runs forever. Not analyzed yet.
