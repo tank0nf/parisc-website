@@ -16,14 +16,14 @@ title: TODO
 * parisc-linux domain is now owned by Helge (August)
 
 == ABI breakages (HP-UX support) ==
-* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN, possibly change number of signals (for systemd), .. what else? (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it. https://patchwork.kernel.org/patch/3499551/
+* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it. https://patchwork.kernel.org/patch/3499551/
 * Changed RTSIGMIN to 32 (from 37) - https://patchwork.kernel.org/patch/5067181/
 ** debian glibc report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605
 ** debian kernel bug report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635
 ** September 7th 2014: First delivery with vmlinux-3.16.0-4 (aka linux-image-3.16.0-4-parisc64-smp_3.16.7-1_hppa.deb)
 ** rebuild of following packages needed:
 *** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
-*** strace, gdb: fix signal names/numbers
+*** strace and gdb: fix signal names/numbers
 *** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
 *** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
 
