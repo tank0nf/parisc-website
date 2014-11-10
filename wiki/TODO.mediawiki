@@ -34,6 +34,7 @@ title: TODO
 
 == Status & TODO 2014-10-30 (TODO-List by Helge Deller) ==
 * fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
+* shmctl(0, SHM_INFO, (void *)&info) bug -> shows up/crashes debian procenv package
 * fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)  
 * debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 * PARTLY DONE: push gcc patch for variable CAS upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
