@@ -16,7 +16,7 @@ title: TODO
 * parisc-linux domain is now owned by Helge (August)
 
 == ABI breakages (HP-UX support) ==
-* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it. https://patchwork.kernel.org/patch/3499551/
+* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450
 * Changed RTSIGMIN to 32 (from 37) - https://patchwork.kernel.org/patch/5067181/
 ** debian glibc report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605
 ** debian kernel bug report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635
