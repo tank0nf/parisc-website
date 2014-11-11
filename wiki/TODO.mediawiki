@@ -26,7 +26,7 @@ title: TODO
 *** strace and gdb: fix signal names/numbers
 *** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
 *** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
-*** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: rebuild util-vserver package
+*** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: make patch for dietlibc to use LONG_LONG_PAIR for ftruncate64() and then rebuild util-vserver package
 
 == Testsuites - to be checked ==
 * We also have a problem with poll in rpcbind on 32-bit kernels. Runs forever. Not analyzed yet.
