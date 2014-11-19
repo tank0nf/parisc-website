@@ -171,6 +171,7 @@ title: TODO
 * Kernel 3.15
 ** epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98
 ** pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca
+** parisc: change value of SHMLBA from 0x00400000 to PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26 (backported to v3.13+)
 ** parisc: add renameat2 syscall
 ** parisc: Improve LWS-CAS performance
 ** parisc: ratelimit userspace segfault printing
@@ -200,11 +201,14 @@ title: TODO
 ** parisc: sys_hpux: NUL terminator is one past the end
 ** parisc: Use get_signal() signal_setup_done()
 * Kernel 3.18
-** RTSIGMIN = 32 (upcoming) 
+** parisc: Reduce SIGRTMIN from 37 to 32 to behave like other Linux architectures
+** parisc: Avoid using CONFIG_64BIT in userspace exported headers      
+** parisc: Use compat layer for msgctl, shmat, shmctl and semtimedop syscalls (backported to v3.10+)
+** parisc: Use BUILD_BUG() instead of undefined functions
+** parisc: Wire up bpf syscall
 
 * unsorted:
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
-** DONE: change kernel SHMLBA=PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26
 
 == Debian kernel and userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
