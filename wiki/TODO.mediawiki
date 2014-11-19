@@ -33,13 +33,13 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2014-10-30 (TODO-List by Helge Deller) ==
+== Status & TODO 2014-11-19 (TODO-List by Helge Deller) ==
 * fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
-* shmctl(0, SHM_INFO, (void *)&info) bug -> shows up/crashes debian procenv package -> https://patchwork.kernel.org/patch/5269301/
 * fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)  
-* debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 * PARTLY DONE: push gcc patch for variable CAS upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
-* ONGOING: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
+* DONE: shmctl(0, SHM_INFO, (void *)&info) bug -> shows up/crashes debian procenv package -> https://patchwork.kernel.org/patch/5269301/
+* DONE: debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
+* DONE: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
 * further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * implement kexec syscall
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
@@ -102,23 +102,21 @@ title: TODO
 ** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
 
 * Debian packages / Userspace work
-** qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
+** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
 ** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
    
 * Homepage migration:
-** ONGOING: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
+** DONE: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
 ** DONE: Migration of wiki.parisc-linux.org website to https://parisc.wiki.kernel.org
-** Domain ownwer: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014 23:07:58 UTC
-** DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
-** New domain owner: Thibaut VARENE <T-Bone@parisc-linux.org> <T-Bone@slashdirt.org>
-** Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org
-** Technical contact at HP: brett.johnson@hp.com
+** DONE: Domain owner before: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014; Since August 2014 is Helge Deller domain owner of parisc-linux.org
+** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
+** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
 
 * palo (PA-RISC Boot Loader):
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
-** move decompression to Linux kernel instead of palo
+** move decompression of Kernel to Linux kernel code instead of palo
 
 = DONE =
 * Document news and howto on the parisc-linux website on how to upgrade/install parisc servers
