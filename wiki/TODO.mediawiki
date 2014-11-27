@@ -12,7 +12,8 @@ title: TODO
 * debian-ports.org access
 * 3.13 with all patches in (coherency)
 * buildds running
-* wiki migration finished (05 Feb)
+* wiki migration finished (05 Feb 2014)
+* old parisc-linux kernel mailinglist imported into gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc - 23 Nov 2014
 * parisc-linux domain is now owned by Helge (August)
 
 == ABI breakages (HP-UX support) ==
