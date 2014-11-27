@@ -234,7 +234,7 @@ title: TODO
 * DONE: set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013
 * DONE Sep 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
 * DONE Sep 12 2014: restore web-based http://ftp.parisc-linux.org service
-* started Aug 2014: Import old hppa mailing list archives to gmane.org
+* MOSTLY DONE Nov 24 2014: Import old hppa mailing list archives to gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc
 
 = Kernel Testing Tools =
 
