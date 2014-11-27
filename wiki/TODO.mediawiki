@@ -54,7 +54,7 @@ title: TODO
 * provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 * fix firebird2.5 build by fixing libatomic-ops-dev debian package
 * why does acl2 build hangs process ?
-* why is GNU AS so slow (e.g. when building yade) ? Optimize it!
+* why is GNU AS so slow (e.g. when building yade) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%)
 * gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 * debian-cd to use xorriso
 * debian-cd: do not compress kernel.
