@@ -35,7 +35,8 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2015-01-07 (TODO-List by Helge Deller) ==
-* debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load.
+* Implement ltrace on hppa
+* DONE: debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load. (3.17 & 3.16 kernel)
 * fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
 * fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0), http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?id=9dabf60dc4abe6e06bebcc2ee46b4d76ec8741f2
 * PARTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops, x265, ceph, firebird2.5, gauche, idba, mapsembler2, padevchooser
