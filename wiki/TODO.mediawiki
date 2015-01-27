@@ -36,6 +36,7 @@ title: TODO
 
 == Status & TODO 2015-01-07 (TODO-List by Helge Deller) ==
 * Implement ltrace on hppa
+* Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
 * DONE: debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load. (3.17 & 3.16 kernel)
 * fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
 * fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0), http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?id=9dabf60dc4abe6e06bebcc2ee46b4d76ec8741f2
