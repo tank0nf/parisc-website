@@ -35,6 +35,7 @@ title: TODO
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
 == Status & TODO 2015-01-07 (TODO-List by Helge Deller) ==
+* Drop HPUX-support from kernel
 * Implement ltrace on hppa
 * Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
 * DONE: debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load. (3.17 & 3.16 kernel)
