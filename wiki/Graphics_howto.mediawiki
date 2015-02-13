@@ -96,6 +96,8 @@ each architecture it wishes to sell a particular graphics card.
 E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64,
 PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
 
+However, this is not the case for the later PA-RISC machines, like C8000, which has x86 emulator in PDC and can POST PC graphics card http://permalink.gmane.org/gmane.linux.ports.parisc/5446
+
  
 '''This leads to the following problems:'''
 
