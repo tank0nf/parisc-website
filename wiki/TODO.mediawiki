@@ -72,7 +72,7 @@ title: TODO
 
 * Kernel: Hard to solve outstanding issues
 ** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian
-** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
+** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow <strike>plus colors in 24bpp mode are wrong</strike> seems ok in debian 8 sid / 3.16.7 kernel) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
 
 * Kernel: still missing Linux kernel development (no patches available yet):
 ** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
