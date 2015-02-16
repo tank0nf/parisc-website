@@ -93,3 +93,4 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
 * http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
 * https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
+* http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
