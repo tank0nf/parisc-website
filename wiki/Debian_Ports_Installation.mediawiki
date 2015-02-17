@@ -55,7 +55,10 @@ In those directories you find (you need to download only one of those):
 
 == Technical background ==
 
-: The installer images mentioned above pull the debian packages from the repository at http://parisc.osuosl.org/debian/ which contains only the minimal set of necessary files for installation.
+: The installer images mentioned above pull the debian packages from the repositories at 
+:: (for debian-7.0): http://parisc.osuosl.org/debian/ 
+:: (for debian-8.0): http://backup.parisc-linux.org/debian/ 
+: which contains only the minimal set of necessary files for installation.
 : This is realized by the ''preseed/url=http://parisc.osuosl.org/debian/preseed.cfg'' Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
 : I would prefer to directly install from the official debian unstable repository at http://ftp.debian-ports.org/debian/ but this is not possible, because:
 :# The debian ports repository is a moving target, which means that the Linux kernel udeb packages which are needed by the kernel on the ISO/liffile may not be available any longer at a later date, and
