@@ -33,8 +33,8 @@ In those directories you find (you need to download only one of those):
 * Choose the automatic disc partitioning, unless you know all details about disc partitions for PA-RISC (e.g. PALO bootloader needs ext2).
 * The palo bootloader needs to reside on a SCSI disc. The installer will detect SATA discs and will not complain if you install to a SATA disc!
 * At the "Software selection" screen, 
-** for the debian 7.0 disc: do not enable other software than "SSH server" . You can install additional software later!
-** for the debian 8.0 disc: You can install SSH, web- and print server. Desktop installation hasn't been tested completely yet, so please try it after having sucessfully installed debian.
+** for the debian 7.0 disc: do not enable any software other than "SSH server" . You can install additional software later!
+** for the debian 8.0 disc: You can choose to install the KDE-, LXDE-, MATE- or Xfce desktops, SSH, web- and print server. Do not choose to install the GNOME desktop since it will fail (we are still missing iceweasel on hppa!). 
 * for the debian 7.0 disc:
 ** When the installation finished, do not press "Continue" to reboot the machine, but instead choose "Go Back" and then in the main menu choose to execute a shell. In the shell type the following command to enable serial console (needed e.g. for boot console on GSP):
     echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
