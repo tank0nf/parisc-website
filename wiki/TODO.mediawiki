@@ -35,8 +35,8 @@ title: TODO
 * glib2.0 atomic bug: Dave: I see the problem building various packages -- apt is is one. It occurs when multiple dot processes are started by graph when package documentation is being generated.  The number of dot processes spawned depends on the number of processors on the build system.  However, the faults occur even on a UP system. I debugged one of these segvs enough to see that the problem occurred in a glib2.0 library.  It's using the GCC "sync" interface. 
 * From Dave: gcc thread issues including thread cancellation, glib2.0 problem, maybe __tls_get_addr clobber too?
 
-== Status & TODO 2015-01-07 (TODO-List by Helge Deller) ==
-* Drop HPUX-support from kernel
+== Status & TODO 2015-02-22 (TODO-List by Helge Deller) ==
+* DONE: Drop HPUX-support from kernel
 * Implement ltrace on hppa
 * Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
 * DONE: debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load. (3.17 & 3.16 kernel)
