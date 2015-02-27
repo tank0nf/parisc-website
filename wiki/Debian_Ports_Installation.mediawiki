@@ -27,14 +27,14 @@ In those directories you find (you need to download only one of those):
 '''Installation instructions'''
 * Instructions to burn the ISO image on a Mac: https://discussions.apple.com/thread/5132196
 * '''IMPORTANT: ''' If your machine has a DVD-drive, you should better burn the image to a DVD disc. The first-generation DVD-drives in some older PA-RISC machines may have problems booting from e.g. a CD-RW so you may get this error message: ''IPL error: bad LIF magic.''
-* Those images should work on all machines, with 32- and 64bit kernels. Installation of a C8000 workstation needs to happen via serial console since the installer imager will not activate the ATI graphics card. After installation the ATI cards will work in non-accelerated mode though.  
+* Those images should work on all machines, with 32- and 64bit kernels. Installation of a C8000 workstation needs to happen via serial console since the install image will not activate the ATI graphics card. After installation the ATI cards will work in non-accelerated mode though.  
 * If your machine is behind a firewall, enter the proxy at the IPL command line the Linux kernel command line (change parameter 7):
    mirror/http/proxy=http://proxy:8080   (adjust the proxy settings to your need and drop the underscores)
 * Choose the automatic disc partitioning, unless you know all details about disc partitions for PA-RISC (e.g. PALO bootloader needs ext2).
 * The palo bootloader needs to reside on a SCSI disc. The installer will detect SATA discs and will not complain if you install to a SATA disc!
 * At the "Software selection" screen, 
 ** for the debian 7.0 disc: do not enable any software other than "SSH server" . You can install additional software later!
-** for the debian 8.0 disc: You can choose to install the (not yet: KDE-, LXDE-, MATE- or Xfce desktops,) SSH, web- and print server. Do not choose to install the GNOME desktop since it will fail (we are still missing iceweasel on hppa!). 
+** for the debian 8.0 disc: You can choose to install the KDE-, LXDE-, MATE- or Xfce desktops, SSH, web- and print server. Do not choose to install the GNOME desktop since it will fail (we are still having problems to compile a recent-enough iceweasel on hppa!). 
 * for the debian 7.0 disc:
 ** When the installation finished, do not press "Continue" to reboot the machine, but instead choose "Go Back" and then in the main menu choose to execute a shell. In the shell type the following command to enable serial console (needed e.g. for boot console on GSP):
     echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
