@@ -28,7 +28,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Feb 2015''' - DEBIAN 8.0 Installer images available at http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/.  Installation instructions are [[Debian_Ports_Installation|available in this wiki]].
+* '''Mar 2015''' - Installation numbers of hppa debian machines grow to 25 in the [http://popcon.debian.org Debian Popularity Contest].
+* '''Feb 2015''' - [http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/ DEBIAN 8.0 Installer images] and [[Debian_Ports_Installation|Installation instructions]] now available.
 * '''Jan 2015''' - Compared to other architectures on debian-ports, the PA-RISC / HPPA architecture now has the most number of packages up-to-date:  http://buildd.debian-ports.org/stats/graph2-week-big.png
 * '''Dec 2014''' - Full range of gcc atomic builtins committed into gcc-4.9 - so we now have more than 10.400 prebuilt debian packages.
 * '''Nov 2014''' - We now fully support systemd with debian packages glibc-2.19-13 and linux-image-3.16.0-4 (kernel 3.16.7).
