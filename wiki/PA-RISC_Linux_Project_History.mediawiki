@@ -4,8 +4,8 @@ title: PA-RISC Linux Project History
 
 = PROJECT HISTORY =
 
-[[File:Www_parisc-linux_org-front.jpg|thumb|400px|Front of http://www.parisc-linux.org]]
-[[File:Www_parisc-linux_org-back.jpg|thumb|400px|Back of http://www.parisc-linux.org]]
+[[File:Www_parisc-linux_org-front.jpg|thumb|400px|Front of http://parisc.parisc-linux.org]]
+[[File:Www_parisc-linux_org-back.jpg|thumb|400px|Back of http://parisc.parisc-linux.org]]
 
 ; December 1, 2000  
 : The PA-RISC web site has moved to www.parisc-linux.org domain. Besides the appearance of the Linuxcare penguin Lux (in gear suitable for working on the PA-RISC engine), the PA-RISC site is fresh with a content update, face lift and co-branding with HP.
