@@ -4,6 +4,8 @@ title: Debian Ports Installation
 
 = Installation of PA-RISC Linux  =
 
+[[File:Sibaris.jpg|thumb|400px|In the middle you see our HP C8000 machine (sibaris) which acts as Debian buildd server and currently builds most of the hppa packages. An overview of all our build servers is at http://unstable.buildd.net/index-hppa.html]]
+
 HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze).
 That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
 
