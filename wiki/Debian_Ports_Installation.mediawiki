@@ -55,7 +55,19 @@ In those directories you find (you need to download only one of those):
 
 * The debian 8.0 installer image does successfully installs systemd if you like.
 
-== Technical background ==
+== How to disable systemd and switch to sysvinit ==
+
+Debian 8 installs systemd by default. There is no way around it.
+
+So, if you want to switch back to sysvinit, e.g. if you do kernel developement without initrd, then first install Debian as described above. After the first boot follow those steps and finally reboot again.
+# apt-get install sysvinit-core sysvinit sysvinit-utils
+# if you are running on serial console, either make sure that a getty gets started on the ttyS0 device in /etc/inittab, or run this command: 
+ echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
+
+Futher instructions are on this external website:
+[http://without-systemd.org/wiki/index.php/How_to_remove_systemd_from_a_Debian_jessie/sid_installation How to remove systemd from a Debian jessie/sid installation]
+
+== Technical background of the install images ==
 
 : The installer images mentioned above pull the debian packages from the repositories at 
 :: (for debian-7.0): http://parisc.osuosl.org/debian/ 
