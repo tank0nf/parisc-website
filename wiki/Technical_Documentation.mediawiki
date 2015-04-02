@@ -454,6 +454,7 @@ PA-RISC 2.0 Firmware Architecture Reference Specification:<br />Processor Depend
 
 ==OTHER USEFUL LINKS==
 
+* [http://www.hpmuseum.net/collection_document.php HP Computer Museum]
 * [http://h20566.www2.hp.com/portal/site/hpsc/template.PAGE/public/psi/selector/?javax.portlet.tpst=867000c4cf25636cc859bfdeb053ce01&javax.portlet.prp_867000c4cf25636cc859bfdeb053ce01=wsrp-navigationalState%3D_queryText%25253DHP%252B9000%252Bservers%25257CimplicitModel%25253Dtrue%25257C_op%25253Dfind&javax.portlet.begCacheTok=com.vignette.cachetoken&javax.portlet.endCacheTok=com.vignette.cachetoken HP Support Center]
 * [http://devresource.hp.com/drc/index.jsp  HP's Tech Library ]
 * [http://www.docs.hp.com/hpux/hw/  Details on HP-UX Hardware from the A-class to the V-class. ]
