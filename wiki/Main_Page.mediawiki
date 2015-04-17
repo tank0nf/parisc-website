@@ -22,7 +22,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 ; Debian Linux:
 : The PA-RISC Linux development community is proud to have been officially part of the Debian 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
-: As of Debian 6.0 (squeeze) PA-RISC Linux was dropped in July 2011 as officially supported platform which is why the PA-RISC Linux development currently happens as Debian-unofficial architecture in the [http://www.debian-ports.org Debian Ports] project. A new Debian 8 (jessie) install image has been released for PA-RISC, which is available at [ftp://ftp.debian-ports.org/debian-cd/hppa/debian-8.0 the debian-ports download site] and his Wiki contains a [[Debian Ports Installation | description on how to install Debian Linux]].
+: As of Debian 6.0 (squeeze) PA-RISC Linux was dropped in July 2011 as officially supported platform which is why the PA-RISC Linux development currently happens as Debian-unofficial architecture in the [http://www.debian-ports.org Debian Ports] project. A new Debian 8 (jessie) install image has been released for PA-RISC, which is available at [http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0 the debian-ports download site] and his Wiki contains a [[Debian Ports Installation | description on how to install Debian Linux]].
  
 '''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
