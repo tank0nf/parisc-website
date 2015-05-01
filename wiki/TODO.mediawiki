@@ -60,7 +60,7 @@ title: TODO
 ** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 ** why does acl2 build hangs process ?
-** why is GNU AS so slow (e.g. when building quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ...
+** why is GNU AS so slow (e.g. when building freeorion, quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ...
 ** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 ** debian-cd to use xorriso
 ** debian-cd: do not compress kernel.
