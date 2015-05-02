@@ -57,7 +57,7 @@ title: TODO
 
 * userspace
 ** fix linker -fpie support (fixes debian package ??)
-** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc)
+** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 ** why does acl2 build hangs process ?
 ** why is GNU AS so slow (e.g. when building freeorion, quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ...
