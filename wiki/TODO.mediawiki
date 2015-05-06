@@ -57,7 +57,7 @@ title: TODO
 
 * userspace
 ** fix haskell hangs (ghc, futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument), possible idea: https://ghc.haskell.org/trac/ghc/ticket/8134)
-** fix linker -fpie support (fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/)
+** fix linker -fpie support (fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/, https://github.com/grosskur/binutils-220-rpm/blob/master/binutils-2.20.51.0.2-ppc64-pie.patch)
 ** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 ** why does acl2 build hangs process ?
