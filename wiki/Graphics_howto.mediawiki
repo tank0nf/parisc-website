@@ -6,29 +6,27 @@ title: Graphics howto
  
 == Which HP graphics cards work with PA-RISC Linux? ==
  
-For PCI, only Vis-EG cards (8-bit color) are supported.
-The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not (yet) supported.<br> <br>
-The following GSC cards are not yet supported, as they need patching from 
-the Linux operating system, which is not yet implemented:
+; PCI cards
+: '''only Vis-EG cards (8-bit color) are supported'''. Graphic is un-accelerated.
+: The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not supported.
+: The ATI FireGL graphics card in the C8000 workstation is supported in un-accelerated mode.
 
 
-* Hyperdrive/Hyperbowl (A4071A) graphics card series:
- * ID = 0x2BCB015A (Version 8.04/8)
- * ID = 0x2BCB015A (Version 8.04/11)
+; GSC cards
+: The following GSC cards are not yet supported, as they need patching from the Linux operating system, which is not yet implemented:
+:; Hyperdrive/Hyperbowl (A4071A) graphics card series:
+:: ID = 0x2BCB015A (Version 8.04/8)
+:: ID = 0x2BCB015A (Version 8.04/11)
+:; Thunder 1 VISUALIZE 48 card:
+:: ID = 0x2F23E5FC (Version 8.05/9)
+:; Thunder 2 VISUALIZE 48 XP card:
+:: ID = 0x2F8D570E (Version 8.05/12)
+:; Some Hyperion and ThunderHawk GSC cards
+:; All other HP GSC-based graphics cards are supported.
+:
+: Unfortunately, the XFree86 drivers only support a frame buffer.
+: The available 2D and 3D HW acceleration features are not supported.
 
-* Thunder 1 VISUALIZE 48 card:
- * ID = 0x2F23E5FC (Version 8.05/9)
-
-* Thunder 2 VISUALIZE 48 XP card:
- * ID = 0x2F8D570E (Version 8.05/12)
-
-* Some Hyperion and ThunderHawk GSC cards
-
-All other HP graphics cards are supported.<br>  
-Unfortunately, the XFree86 drivers only support a frame buffer.
-The available 2D and 3D HW acceleration features are not supported.
-
- 
 == Configuring XFree86 for HP graphics cards ==
  
 Check dmesg output right after booting for this part:
