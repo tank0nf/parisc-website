@@ -71,7 +71,6 @@ E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64, PA-RISC, and 
 
 However, this is not the case for the later PA-RISC machines, like C8000, which has x86 emulator in PDC and can POST PC graphics card http://permalink.gmane.org/gmane.linux.ports.parisc/5446
 
-
 '''This leads to the following problems:'''
  
 * PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.
@@ -79,24 +78,21 @@ However, this is not the case for the later PA-RISC machines, like C8000, which 
 * You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
 ** '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:
 
-=== 1. Linux framebuffer driver ===  Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
-** Matrox cards (eg. Millenium I/II, MGA G200)
-** 3dfx Voodoo and Voodoo2
-** some ATI Mach64 (eg. Rage XL)
-** some old S3
-** some ancient framebuffer cards (eg. TGA, P9000)
-* To date, Matrox Millenium I, Matrox MGA G200, Voodoo2 and ATI Rage XL cards are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.   === 2. XFree86/X.org driver ===  The second approach is to use the XFree86/X.org graphics card drivers.   The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know.   The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
+=== Linux framebuffer driver ===
+Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
+* Matrox cards (eg. Millenium I/II, MGA G200)
+* 3dfx Voodoo and Voodoo2
+* some ATI Mach64 (eg. Rage XL)
+* some old S3
+* some ancient framebuffer cards (eg. TGA, P9000)
+To date, Matrox Millenium I, Matrox MGA G200, Voodoo2 and ATI Rage XL cards are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
+
+=== XFree86/X.org driver ===
+The second approach is to use the XFree86/X.org graphics card drivers. The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know. The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
  
-Using a non-HP PCI graphics card is currently the only way to get a display
-with 24-bit colour depth on the newer workstations (B/C/Jxxxx) running
-Linux/PA.
+Using a non-HP PCI graphics card is currently the only way to get a display with 24-bit color depth on the newer workstations (B/C/Jxxxx) running Linux/PA.
 
-
-Some graphics drivers might have minor issues.
-E.g. to ensure the Matrox Millenium graphics card will be initialized
-properly one must physically disconnect the computer from the power line
-before (re)booting - it is not sufficient to just press the power-off button.
-
+Some graphics drivers might have minor issues. E.g. to ensure the Matrox Millenium graphics card will be initialized properly one must physically disconnect the computer from the power line before (re)booting - it is not sufficient to just press the power-off button.
  
 Copyright 2004 "M. Grabert" <xam@nospam.cs.ucc.ie><br>
 Copyright 2004 "Grant Grundler" <grundler@nospam.parisc-linux.org><br>
