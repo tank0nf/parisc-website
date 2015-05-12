@@ -75,33 +75,27 @@ Help on configuring mouse and keyboard is available in the
  
 == Which non-HP PCI graphics cards work with PA-RISC Linux? ==
  
-Depends on which graphics card you are using.
+This depends on which graphics card you are using.
 
-Most graphics card have to be initialized by firmware before
-the OS driver can use the card: this may consist of wakeup sequences,
-setting up a proper color map, clearing the video memory, selecting the
-proper video frequency, output interface and much more.<br>
-<br>
-Usually, the graphics card contains the initialization firmware
-in the form of BIOS (on older ix86/PCs), EFI (new IA32 and IA64),
+Most graphics card have to be initialized by firmware before the OS driver can use the card: this may consist of wakeup sequences,
+setting up a proper color map, clearing the video memory, selecting the proper video frequency, output interface and much more.
+Usually, the graphics card contains the initialization firmware in the form of BIOS (on older ix86/PCs), EFI (new IA32 and IA64),
 PDC (on PA-RISC), or OpenFirmware (on Sun and MACs).
-
-
-Unfortunately each flavor of firmware is not compatible on other
-computers. For example, PA-RISC PDC cannot initialize a PC graphics card.
-Therefore the graphics card vendors may produce respective versions for
-each architecture it wishes to sell a particular graphics card.
-E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64,
-PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
+Unfortunately each flavor of firmware is not compatible on other computers. For example, PA-RISC PDC cannot initialize a PC graphics card.
+Therefore the graphics card vendors may produce respective versions for each architecture it wishes to sell a particular graphics card.
+E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64, PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
 
 However, this is not the case for the later PA-RISC machines, like C8000, which has x86 emulator in PDC and can POST PC graphics card http://permalink.gmane.org/gmane.linux.ports.parisc/5446
 
- 
-'''This leads to the following problems:'''
 
+'''This leads to the following problems:'''
  
-* PA-RISC PDC doesn't know how to use a non-HP graphics card.<br> Eg. One can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.<br> '''Solution:''' use serial console to access the PDC boot menu.
-* You have to initialize a non-HP graphics card somehow before you can use it:<br> Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.<br> '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:   === 1. Linux framebuffer driver ===  Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
+* PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.
+** '''Solution:''' use serial console to access the PDC boot menu.
+* You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
+** '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:
+
+=== 1. Linux framebuffer driver ===  Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
 ** Matrox cards (eg. Millenium I/II, MGA G200)
 ** 3dfx Voodoo and Voodoo2
 ** some ATI Mach64 (eg. Rage XL)
