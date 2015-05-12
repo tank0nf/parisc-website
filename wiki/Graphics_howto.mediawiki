@@ -30,7 +30,6 @@ title: Graphics howto
 == Configuring XFree86 for HP graphics cards ==
  
 Check dmesg output right after booting for this part:
- 
 <pre>
 STI GSC/PCI graphics driver version 0.9
 STI word mode ROM at f0084000, hpa at fa000000
@@ -40,15 +39,10 @@ Console: switching to colour frame buffer device 160x64
 fb0: stifb 1280x1024-8 frame buffer device, id: 2d08c0a7, mmio: 0xfa100000
 </pre>
  
-If that output is missing, it means the STI and STIFB drivers
-are not configured in the kernel. One will see penguin (or two
-for SMP) in the top left corner at boot time as well if the
-kernel is correctly configured.
-
+If that output is missing, it means the STI and STIFB drivers are not configured in the kernel. 
+One will see penguin (or two for SMP) in the top left corner at boot time as well if the kernel is correctly configured.
  
-As "root" user, edit /etc/X11/XF86Config-4 to match the
-fb0 output like this:
- 
+As "root" user, edit /etc/X11/XF86Config-4 to match the fb0 output like this:
 <pre>
 SubSection "Display"
 	Depth	8
@@ -56,23 +50,13 @@ SubSection "Display"
 EndSubSection
 </pre>
  
-Use "fbset -i" to determine the supported color depth
-if it's not clear from the STIFB driver output.
-
- 
+Use "fbset -i" to determine the supported color depth if it's not clear from the STIFB driver output.
 IMPORTANT: Only one "Mode" can be specified!
-
  
-If /etc/X11/XF86Config-4 doesn't exist or has no
-Subsection "Display", working examples can be 
-found on
-[[ftp.parisc-linux.org]].
+If /etc/X11/XF86Config-4 doesn't exist or has no Subsection "Display", working examples can be found on [[ftp.parisc-linux.org]].
 
- 
-Help on configuring mouse and keyboard is available in the
-[[FAQ]].
+Help on configuring mouse and keyboard is available in the [[FAQ]].
 
- 
 == Which non-HP PCI graphics cards work with PA-RISC Linux? ==
  
 This depends on which graphics card you are using.
