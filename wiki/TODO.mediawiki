@@ -228,9 +228,6 @@ title: TODO
 ** parisc: Replace PT_NLEVELS with CONFIG_PGTABLE_LEVELS
 ** parisc: Eliminate sg_virt_addr() and private scatterlist.h
 
-* Userspace packages:
-** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
-
 == Debian kernel and userspace programs ==
 * Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 
