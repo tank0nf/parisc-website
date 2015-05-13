@@ -126,10 +126,6 @@ title: TODO
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
 ** move decompression of Kernel to Linux kernel code instead of palo
 
-= DONE =
-* Document news and howto on the parisc-linux website on how to upgrade/install parisc servers
-** See [[Debian_Ports_Installation]] and [[https://parisc.wiki.kernel.org]]
-
 == Kernel patches ==
 * Kernel 3.9:
 ** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
