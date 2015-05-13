@@ -4,42 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Updates for next newsletter ==
-* fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM
-* Dave found O_SYNC bug in glibc (Typo in hppa __O_SYNC define in <bits/fcntl.h>)
-* syscall fixes with compat kernel
-* Migration parisc-linux.org
-* debian-ports.org access
-* 3.13 with all patches in (coherency)
-* buildds running
-* wiki migration finished (05 Feb 2014)
-* old parisc-linux kernel mailinglist imported into gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc - 23 Nov 2014
-* parisc-linux domain is now owned by Helge (August 2014)
-
-== ABI breakages (HP-UX support) ==
-* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450
-* Changed RTSIGMIN to 32 (from 37) - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1f25df2eff5b25f52c139d3ff31bc883eee9a0ab
-** debian glibc report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605
-** debian kernel bug report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635
-** September 7th 2014: First delivery with vmlinux-3.16.0-4 (aka linux-image-3.16.0-4-parisc64-smp_3.16.7-1_hppa.deb)
-** rebuild of following packages needed:
-*** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
-*** strace and gdb: fix signal names/numbers
-*** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
-*** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
-*** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: make patch for dietlibc to use LONG_LONG_PAIR for ftruncate64() and then rebuild util-vserver package
-
-== Status & TODO 2015-02-22 (TODO-List by Helge Deller) ==
-* DONE: Drop HPUX-support from kernel
+== Status & TODO 2015-05-13 (TODO-List by Helge Deller) ==
 * Implement ltrace on hppa
 * Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
-* DONE: debian-kernel: add ppdev driver, needed by CUPS, systemd reports missing module load. (3.17 & 3.16 kernel)
-* fix debian installer/partitioner to keep /boot below 2GB of size to prevent boot problems
-* fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0), http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?id=9dabf60dc4abe6e06bebcc2ee46b4d76ec8741f2
+* fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0), http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?id=9dabf60dc4abe6e06bebcc2ee46b4d76ec8741f2, fix is: https://patchwork.kernel.org/patch/6383731/
 * PARTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, firebird2.5, gauche, idba, mapsembler2, padevchooser
-* DONE: shmctl(0, SHM_INFO, (void *)&info) bug -> shows up/crashes debian procenv package -> https://patchwork.kernel.org/patch/5269301/
-* DONE: debian kernel: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
-* DONE: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
 * further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 * implement kexec syscall
 * use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
@@ -55,7 +24,7 @@ title: TODO
 ** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 ** why does acl2 build hangs process ?
-** why is GNU AS so slow (e.g. when building freeorion, quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ...
+** STARTED: why is GNU AS so slow (e.g. when building freeorion, quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ...
 ** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 ** debian-cd to use xorriso
 ** debian-cd: do not compress kernel.
@@ -94,28 +63,11 @@ title: TODO
 ** task_struct/thread_info split -- task_struct should not be visible in entry.S, we need to move some items into thread_info -- this includes pt_regs and maybe some of the flags (ptrace, etc)
 ** Visualize FX support (will probably never happen!)
 
-* Debian packaging work:
-** STARTED: Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
-** DONE: we need a kernel debian package (3.10 based or higher)
-** DONE: debian-ports/parisc repository aka. syning debs to there
-*** DONE: Helge to contact Aurelien (aurel32) on #debian-glibc on OFTC IRC
-*** DONE: try to debootstrap from parisc-linux.org repository and add missing packages.
-** DONE: split repository on parisc-linux.org into stable (wheezy) and unstable (sid)
-** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
-
 * Debian packages / Userspace work
-** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
 ** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
    
-* Homepage migration:
-** DONE: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
-** DONE: Migration of wiki.parisc-linux.org website to https://parisc.wiki.kernel.org
-** DONE: Domain owner before: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014; Since August 2014 is Helge Deller domain owner of parisc-linux.org
-** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
-** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
-
 * palo (PA-RISC Boot Loader):
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
 ** move decompression of Kernel to Linux kernel code instead of palo
@@ -223,26 +175,48 @@ title: TODO
 ** parisc: Eliminate sg_virt_addr() and private scatterlist.h
 
 == Debian kernel and userspace programs ==
-* Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
-
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
-** increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
-** accept /boot/ in front of files, strip path (e.g. "/boot") when given for kernel/ramdisk 
-** Migrate to git.kernel.org -> done: http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/
-** add gzip-support (allow loading gzipped vmlinux files)
-** in interactive mode, add reboot option command
+** DONE: increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
+** DONE: accept /boot/ in front of files, strip path (e.g. "/boot") when given for kernel/ramdisk 
+** DONE: Migrate to git.kernel.org -> done: http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/
+** DONE: add gzip-support (allow loading gzipped vmlinux files)
+** DONE: in interactive mode, add reboot option command
 
 * Debian kernel
+** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
 ** DONE: Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
 ** DONE: remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
+** DONE: add ppdev driver, needed by CUPS, systemd reports missing module load (3.17 & 3.16 kernel)
+** DONE: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
+** DONE: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
+** DONE: Drop HPUX-support from kernel (Kernel 4.0)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
+** DONE: Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
+** DONE: we need a kernel debian package (3.10 based or higher)
 
-* Debian userspace:
+* glibc:
+* DONE: Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 
-== parisc-linux.org and Debian infrastructure work ==
+* Debian userspace:
+** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
+
+== ABI breakages (HP-UX support) ==
+* We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450
+* Changed RTSIGMIN to 32 (from 37) - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1f25df2eff5b25f52c139d3ff31bc883eee9a0ab
+** debian glibc report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605
+** debian kernel bug report: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635
+** September 7th 2014: First delivery with vmlinux-3.16.0-4 (aka linux-image-3.16.0-4-parisc64-smp_3.16.7-1_hppa.deb)
+** rebuild of following packages needed:
+*** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
+*** strace and gdb: fix signal names/numbers
+*** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
+*** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
+*** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: make patch for dietlibc to use LONG_LONG_PAIR for ftruncate64() and then rebuild util-vserver package
+
+== parisc-linux.org Homepage and Debian build server infrastructure work ==
 * DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
 * DONE: Set up a buildd server for debian-ports/unstable & experimental -> http://unstable.buildd.net/index-hppa.html
 * DONE: contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
@@ -251,6 +225,25 @@ title: TODO
 * DONE Sep 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
 * DONE Sep 12 2014: restore web-based http://ftp.parisc-linux.org service
 * DONE Nov 24 2014: Import old hppa mailing list archives to gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc
+* Homepage migration:
+** DONE: Migration of parisc-linux.org website to https://parisc.wiki.kernel.org
+** DONE: Migration of wiki.parisc-linux.org website to https://parisc.wiki.kernel.org
+** DONE: Domain owner before: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014; Since August 2014 is Helge Deller domain owner of parisc-linux.org
+** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
+** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
+
+== Updates for next newsletter ==
+* fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM
+* Dave found O_SYNC bug in glibc (Typo in hppa __O_SYNC define in <bits/fcntl.h>)
+* lots of syscall fixes regarding compat kernel
+* Migration parisc-linux.org
+* debian-ports.org access
+* 3.13 with all patches in (coherency)
+* buildds running
+* wiki migration finished (05 Feb 2014)
+* old parisc-linux kernel mailinglist imported into gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc - 23 Nov 2014
+* parisc-linux domain is now owned by Helge (August 2014)
+* Debian 8.0 installer images available.
 
 = Testsuites, kernel and userspace testing tools =
 
