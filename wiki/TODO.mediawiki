@@ -212,8 +212,27 @@ title: TODO
 ** parisc: Use compat layer for msgctl, shmat, shmctl and semtimedop syscalls (backported to v3.10+)
 ** parisc: Use BUILD_BUG() instead of undefined functions
 ** parisc: Wire up bpf syscall
+* Kernel 3.19
+** parisc: fix out-of-register compiler error in ldcw inline assembler function
+* Kernel 4.0
+** parisc: Wire up execveat syscall
+** parisc: Add error checks when building up signal trampoline handler
+** '''parisc: hpux - Drop support for HP-UX binaries''''
+** parisc: hpux - Do not compile hpux subdirectory
+** parisc: hpux - Delete files in hpux subdirectory
+** parisc: hpux - Remove hpux gateway page
+** parisc: hpux - Remove HPUX syscall numbers
+** fs/binfmt_som: Drop kernel support for HP-UX SOM binaries
+** parisc/uaccess: fix sparse errors
+** parisc: macro whitespace fixes
+** parisc: Add compile-time check when adding new syscalls
+** parisc: Fix pmd code to depend on PT_NLEVELS value, not on CONFIG_64BIT
+** parisc: mm: don't count preallocated pmds
+* Kernel 4.1
+** parisc: Replace PT_NLEVELS with CONFIG_PGTABLE_LEVELS
+** parisc: Eliminate sg_virt_addr() and private scatterlist.h
 
-* unsorted:
+* Userspace packages:
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
 
 == Debian kernel and userspace programs ==
