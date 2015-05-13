@@ -245,6 +245,9 @@ title: TODO
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
 
+* Debian userspace:
+** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
+
 == parisc-linux.org and Debian infrastructure work ==
 * DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
 * DONE: Set up a buildd server for debian-ports/unstable & experimental -> http://unstable.buildd.net/index-hppa.html
