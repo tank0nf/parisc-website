@@ -117,7 +117,7 @@ title: TODO
 ** '''Dropped HP-UX Support: changed EWOULDBLOCK = EAGAIN -> https://patchwork.kernel.org/patch/3499551/''' (important ABI change!)
 ** parisc: Make EWOULDBLOCK be equal to EAGAIN on parisc
 ** sticon font problem fixed, sticon now automatically chooses the Linux fb fonts if available instead of using the HP fonts
-** parisc: add flexible mmap memory layout support
+** '''parisc: add flexible mmap memory layout support'''
 ** parisc: convert uapi/asm/stat.h to use native types only
 ** parisc: wire up sched_setattr and sched_getattr
 ** parisc: fix cache-flushing
