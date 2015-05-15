@@ -115,7 +115,12 @@ title: TODO
 * Kernel 3.14
 ** Native types in uapi/asm/stat.h
 ** '''Dropped HP-UX Support: changed EWOULDBLOCK = EAGAIN -> https://patchwork.kernel.org/patch/3499551/''' (important ABI change!)
+** parisc: Make EWOULDBLOCK be equal to EAGAIN on parisc
 ** sticon font problem fixed, sticon now automatically chooses the Linux fb fonts if available instead of using the HP fonts
+** parisc: add flexible mmap memory layout support
+** parisc: convert uapi/asm/stat.h to use native types only
+** parisc: wire up sched_setattr and sched_getattr
+** parisc: fix cache-flushing
 * Kernel 3.15
 ** epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98
 ** pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca
