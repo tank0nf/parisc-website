@@ -179,7 +179,7 @@ title: TODO
 ** parisc: Replace PT_NLEVELS with CONFIG_PGTABLE_LEVELS
 ** parisc: Eliminate sg_virt_addr() and private scatterlist.h
 ** parisc: copy_thread(): rename 'arg' argument to 'kthread_arg'
-** parisc,metag: Fix crashes due to stack randomization on stack-grows-upwards architectures
+** '''parisc,metag: Fix crashes due to stack randomization on stack-grows-upwards architectures'''
 *** DONE: fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)
 ** parisc: %pf is only for function pointers
 
