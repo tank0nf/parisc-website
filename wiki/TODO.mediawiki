@@ -230,7 +230,7 @@ title: TODO
 * DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
 * DONE: Set up a buildd server for debian-ports/unstable & experimental -> http://unstable.buildd.net/index-hppa.html
 * DONE: contact pannonmage@gmail.com (Nemeth Balint, Budapest) to set up buildd server - mail from 04.08.2013
-* Offer from mike@csystems.co.nz for A400 system as buildd - mail from 18.09.2014
+* Offer from mike@csystems.co.nz for A400 system as buildd - mail from 18.09.2014 and 17.05.2015
 * DONE: set up buildd server on ESIEE's A500 (Thibaut) - mail from 13.08.2013
 * DONE Sep 12 2014: migrate mail forward service for parisc-linux.org to A500 machine
 * DONE Sep 12 2014: restore web-based http://ftp.parisc-linux.org service
