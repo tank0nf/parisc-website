@@ -25,8 +25,11 @@ title: TODO
 ** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
 * userspace
-** STARTED: fix linker -fpie support (https://sourceware.org/bugzilla/show_bug.cgi?id=18421, fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/)
-** STARTED: why is GNU AS so slow (e.g. when building freeorion, quantlib-swig or yade packages) ? Optimize it! -> function pa_undefine_label() takes most of the time (>80%), testcases: openturns, ... https://sourceware.org/bugzilla/show_bug.cgi?id=18427
+** STARTED: fix linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
+*** fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/
+*** TODO: Fix kernel to load -fpie compiled programs not at 0x400000
+** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
+*** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
 ** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
 ** Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
