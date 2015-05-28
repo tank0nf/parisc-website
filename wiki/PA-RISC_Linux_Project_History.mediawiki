@@ -27,7 +27,7 @@ title: PA-RISC Linux Project History
 : Matthew Wilcox and Thomas Bogendoerfer in cooperation with HP demonstrate the booting Linux kernel at LinuxTag '99 in Kaiserslautern, Germany.
 
 ; June 25, 1999
-: Helge Deller boots the first time Linux on a 715/64 PA-RISC machine and promptly dies after displaying kernel version information. Much celebration.
+: Helge Deller boots the first time Linux on a 715/64 PA-RISC machine which promptly dies after displaying kernel version information. Much celebration.
 
 ; May 19-24, 1999
 : The Puffin Group hosts Bird of Feather session at Linux Expo, and participates in HP's booth. Tremendous interest and support shown for the project.
