@@ -2,7 +2,10 @@
 title: NGLE
 ---
 
-ngledoblt.S
+This page aims to reveal pieces needed for hardware acceleration on [https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/drivers/video/fbdev/stifb.c NGLE] family of graphics cards. HP decided to keep them closed.
+
+== Blitter ==
+ngledoblt.S is from X11R6.3 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's its translation
  <nowiki>
 .import ngleScreenPrivIndex,data
 
@@ -117,7 +120,6 @@ $ngle4:
 ngledoblt.o.8.07
  <nowiki>
 $CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
-$CODE$:00000000 # Input CRC32 : D00DFC36
 $CODE$:00000000
 $CODE$:00000000 ngleDepth8_CopyAreaFromToScreen:
 $CODE$:00000000
@@ -219,7 +221,7 @@ $CODE$:00000130                 bv              %r0(%rp)
 $CODE$:00000134                 ldo             -0x80(%sp), %sp
 </nowiki>
 
-ngledoblt.c
+Resurrected ngledoblt.c
  <nowiki>
 void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
                 short x, short y, BoxPtr pbox, int alu, unsigned long planeMask)
@@ -246,7 +248,7 @@ void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
 }
 </nowiki>
 
-x11perf
+Rough x11perf results under MkLinux
 {| class="wikitable"
 ! '''Type''' !! '''scroll10''' !! '''scroll100''' !! '''scroll500''' !! '''copywinwin10''' !! '''copywinwin100''' !! '''copywinwin500''' 
 |-
