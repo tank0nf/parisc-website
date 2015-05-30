@@ -1,0 +1,259 @@
+---
+title: NGLE
+---
+
+ngledoblt.S
+ <nowiki>
+.import ngleScreenPrivIndex,data
+
+ngleDepth8_CopyAreaFromToScreen
+	ldo 0x40(sp),sp
+	stw arg0,-0x64(sp) ;pSrcDraw
+	stw arg1,-0x68(sp) ;pDstDraw
+	stw arg2,-0x6c(sp) ;pptSrc->x
+	stw arg3,-0x70(sp) ;pptSrc->y
+	ldw -0x68(sp),r1  ;pDstDraw
+	ldw 0x10(r1),r31  ;->pScreen
+	ldw 0x19c(r31),t4 ;->devPrivates
+	ldil L%ngleScreenPrivIndex,t3
+	ldw  R%ngleScreenPrivIndex(t3),t3
+	ldwx,s t3(t4),t2 ;devPrivates[ngleScreenPrivIndex].ptr => NgleScreenPrivPtr pScreenPriv
+	stw t2,-0x38(sp)
+	ldw -0x38(sp),t1 ;pScreenPriv
+	ldw 0x14(t1),r1  ;->pDregs
+	stw r1,-0x34(sp)
+	ldw -0x34(sp),r31
+	zdepi 1,10,1,t4
+	add t4,r31,t3 ;pDregs+0x200000 => REG_15b0
+	stw t3,-0x28(sp)
+	ldw -0x28(sp),t2
+;SETUP_HW()
+$ngle2:	
+	ldb 0(t2),t1 ;read1(REG_15b0) => val1
+	extrs t1,31,8,r1
+	stb r1,-0x2c(sp)
+	ldb -0x2c(sp),r31
+	extrs r31,31,8,t4
+	comibf,=,n 0,t4,$ngle1 ;if (val1) goto ngle1
+	ldw -0x28(sp),t3
+	ldb 0(t3),t2 ;read1(REG_15b0) => val1
+	extrs t2,31,8,t1
+	stb t1,-0x2c(sp)
+$ngle1:
+	ldb -0x2c(sp),r1
+	extrs r1,31,8,r31
+	comibf,=,n 0,r31,$ngle2 ;if (val1) goto ngle2
+;
+	ldw -0x28(sp),t2
+	ldw -0x38(sp),t4 ;pScreenPriv
+	ldw 0x10(t4),t3  ;->deviceID
+	.word 0x22B88578	/*  ldil 0x2bcb0000,t2 */
+	ldo 0x15a(t2),t1
+	combf,=,n t3,t1,$ngle3 ;if (deviceID != S9000_ID_HCRX) goto ngle3
+	ldw -0x34(sp),r1
+	.word 0x23e10274	/* ldil 0x13a02000,r31 */
+	.word 0x282c0000	/* addil 0x18000,r1 */
+	stw r31,0(r1) ;write4(0x13a02000,REG_10)
+	b $ngle4
+	ldw -0x78(sp),t2 ;arg5 = alu
+$ngle3:	
+	ldw -0x34(sp),t4
+	.word 0x22802274	/* ldil 0x13a01000,t3 */
+	.word 0x2a6c0000	/* addil 0x18000,t4 */
+	stw t3,0(r1) ;write4(0x13a01000,REG_10)
+	ldw -0x78(sp),t2
+$ngle4:	
+	.word 0x23e00460	/* ldil 0x23000000,r31 */
+	zdep t2,23,4,r1 ;(alu << (31-23)) & 0x00000f00
+	or r1,r31,t4    ;| 0x23000000 => val2
+	ldw -0x34(sp),t3
+	.word 0x2a8c0000	/* addil 0x18000,t3 */
+	stw t4,0x1c(r1) ;write4(val2,REG_14)
+	ldw -0x34(sp),t2
+	ldw -0x7c(sp),t1 ;arg6 = planeMask
+	.word 0x2aac0000	/* addil 0x18000,t2 */
+	stw t1,0x18(r1) ;write4(planeMask,REG_13)
+	ldw -0x6c(sp),r1
+	sth r1,-0x30(sp) ;x
+	ldw -0x70(sp),r31
+	sth r31,-0x2e(sp) ;y
+	ldw -0x34(sp),t4
+	ldw -0x30(sp),t3
+	stw t3,0x808(t4) ;write4((x << 16) | y,REG_24)
+	ldw -0x74(sp),t2 ;arg4 = pbox
+	ldh 4(t2),t1     ;->x2
+	extrs t1,31,16,r1
+	ldw -0x74(sp),r31 ;pbox
+	ldh 0(r31),t4     ;->x1
+	extrs t4,31,16,t3
+	sub r1,t3,t2
+	sth t2,-0x30(sp) ;x2 - x1 => w
+	ldw -0x74(sp),t1 ;pbox
+	ldh 6(t1),r1     ;->y2
+	extrs r1,31,16,r31
+	ldw -0x74(sp),t4 ;pbox
+	ldh 2(t4),t3     ;->y1
+	extrs t3,31,16,t2
+	sub r31,t2,t1
+	sth t1,-0x2e(sp) ;y2 - y1 => h
+	ldw -0x34(sp),r1
+	ldw -0x30(sp),r31
+	stw r31,0x804(r1) ;write4((w << 16) | h,REG_7)
+	ldw -0x74(sp),t4 ;pbox
+	ldh 0(t4),t3     ;->x1
+	extrs t3,31,16,t2
+	sth t2,-0x30(sp)
+	ldw -0x74(sp),t1 ;pbox
+	ldh 2(t1),r1     ;->y1
+	extrs r1,31,16,r31
+	sth r31,-0x2e(sp)
+	ldw -0x34(sp),t4
+	ldw -0x30(sp),t3
+	stw t3,0xb00(t4) ;write4((x1 << 16) | y1,REG_25)
+	bv r0(rp)
+	ldo -0x40(sp),sp
+</nowiki>
+
+ngledoblt.o.8.07
+ <nowiki>
+$CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
+$CODE$:00000000 # Input CRC32 : D00DFC36
+$CODE$:00000000
+$CODE$:00000000 ngleDepth8_CopyAreaFromToScreen:
+$CODE$:00000000
+$CODE$:00000000 planeMask       =  0x3C
+$CODE$:00000000 alu             =  0x38
+$CODE$:00000000 pbox            =  0x34
+$CODE$:00000000 REG_15b0        = -0x3C
+$CODE$:00000000 val1            = -0x43
+$CODE$:00000000 x               = -0x44
+$CODE$:00000000 y               = -0x46
+$CODE$:00000000 pDregs          = -0x48
+$CODE$:00000000 pScreenPriv     = -0x4C
+$CODE$:00000000
+$CODE$:00000000                 ldo             0x80(%sp), %sp
+$CODE$:00000004                 ldw             0x10(%r25), %r1
+$CODE$:00000008                 ldw             0x19C(%r1), %r31
+$CODE$:0000000C                 addil           0, %dp, %r1
+$CODE$:00000010                 ldw             0(%r1), %r19
+$CODE$:00000014                 ldw,s           %r19(%r31), %r20
+$CODE$:00000018                 stw             %r20, -(0x80+pScreenPriv)(%sp)
+$CODE$:0000001C                 ldw             -(0x80+pScreenPriv)(%sp), %r21
+$CODE$:00000020                 ldw             0x14(%r21), %r22
+$CODE$:00000024                 stw             %r22, -(0x80+pDregs)(%sp)
+$CODE$:00000028                 ldw             -(0x80+pDregs)(%sp), %r1
+$CODE$:0000002C                 addil           0x200000, %r1, %r1
+$CODE$:00000030                 stw             %r1, -(0x80+REG_15b0)(%sp)
+$CODE$:00000034                 ldw             -(0x80+REG_15b0)(%sp), %r31
+$CODE$:00000034
+$CODE$:00000038
+$CODE$:00000038 ngle2:                                  # CODE XREF: ngleDepth8_CopyAreaFromToScreen+58�j
+$CODE$:00000038                 ldb             0(%r31), %r19
+$CODE$:0000003C                 stb             %r19, -(0x80+val1)(%sp)
+$CODE$:00000040                 ldb             -(0x80+val1)(%sp), %r20
+$CODE$:00000044                 cmpib,<>,n      0, %r20, ngle1
+$CODE$:00000044
+$CODE$:00000048                 ldw             -(0x80+REG_15b0)(%sp), %r21
+$CODE$:0000004C                 ldb             0(%r21), %r22
+$CODE$:00000050                 stb             %r22, -(0x80+val1)(%sp)
+$CODE$:00000050
+$CODE$:00000054
+$CODE$:00000054 ngle1:                                  # CODE XREF: ngleDepth8_CopyAreaFromToScreen+44�j
+$CODE$:00000054                 ldb             -(0x80+val1)(%sp), %r1
+$CODE$:00000058                 cmpib,<>,n      0, %r1, ngle2
+$CODE$:00000058
+$CODE$:0000005C                 ldw             -(0x80+REG_15b0)(%sp), %r31
+$CODE$:00000060                 ldw             -(0x80+pDregs)(%sp), %r31
+$CODE$:00000064                 ldil            0x13A01000, %r19
+$CODE$:00000068                 addil           0x18000, %r31, %r1
+$CODE$:0000006C                 stw             %r19, 0(%r1)
+$CODE$:00000070                 ldw             -(0x80+alu)(%sp), %r20
+$CODE$:00000074                 ldil            0x23000000, %r1
+$CODE$:00000078                 depw,z          %r20, 23, 4, %r22
+$CODE$:0000007C                 or              %r22, %r1, %r31
+$CODE$:00000080                 ldw             -(0x80+pDregs)(%sp), %r19
+$CODE$:00000084                 addil           0x18000, %r19, %r1
+$CODE$:00000088                 stw             %r31, 0x1C(%r1)
+$CODE$:0000008C                 ldw             -(0x80+planeMask)(%sp), %r20
+$CODE$:00000090                 ldw             -(0x80+pDregs)(%sp), %r21
+$CODE$:00000094                 addil           0x18000, %r21, %r1
+$CODE$:00000098                 stw             %r20, 0x18(%r1)
+$CODE$:0000009C                 sth             %r24, -(0x80+x)(%sp)
+$CODE$:000000A0                 sth             %r23, -(0x80+y)(%sp)
+$CODE$:000000A4                 ldo             -(0x80+x)(%sp), %r22
+$CODE$:000000A8                 ldw             -(0x80+pDregs)(%sp), %r1
+$CODE$:000000AC                 ldo             0x808(%r1), %r31
+$CODE$:000000B0                 ldw             0(%r22), %r19
+$CODE$:000000B4                 stw             %r19, 0(%r31)
+$CODE$:000000B8                 ldw             -(0x80+pbox)(%sp), %r20
+$CODE$:000000BC                 ldh             4(%r20), %r21
+$CODE$:000000C0                 extrw           %r21, 31, 16, %r1
+$CODE$:000000C4                 ldw             -(0x80+pbox)(%sp), %r31
+$CODE$:000000C8                 ldh             0(%r31), %r19
+$CODE$:000000CC                 extrw           %r19, 31, 16, %r20
+$CODE$:000000D0                 sub             %r1, %r20, %r21
+$CODE$:000000D4                 sth             %r21, -(0x80+x)(%sp)
+$CODE$:000000D8                 ldw             -(0x80+pbox)(%sp), %r1
+$CODE$:000000DC                 ldh             6(%r1), %r31
+$CODE$:000000E0                 extrw           %r31, 31, 16, %r19
+$CODE$:000000E4                 ldw             -(0x80+pbox)(%sp), %r20
+$CODE$:000000E8                 ldh             2(%r20), %r21
+$CODE$:000000EC                 extrw           %r21, 31, 16, %r1
+$CODE$:000000F0                 sub             %r19, %r1, %r31
+$CODE$:000000F4                 sth             %r31, -(0x80+y)(%sp)
+$CODE$:000000F8                 ldw             -(0x80+pDregs)(%sp), %r19
+$CODE$:000000FC                 ldo             0x804(%r19), %r20
+$CODE$:00000100                 ldw             0(%r22), %r21
+$CODE$:00000104                 stw             %r21, 0(%r20)
+$CODE$:00000108                 ldw             -(0x80+pbox)(%sp), %r1
+$CODE$:0000010C                 ldh             0(%r1), %r31
+$CODE$:00000110                 sth             %r31, -(0x80+x)(%sp)
+$CODE$:00000114                 ldw             -(0x80+pbox)(%sp), %r19
+$CODE$:00000118                 ldh             2(%r19), %r20
+$CODE$:0000011C                 sth             %r20, -(0x80+y)(%sp)
+$CODE$:00000120                 ldw             -(0x80+pDregs)(%sp), %r21
+$CODE$:00000124                 ldo             0xB00(%r21), %r1
+$CODE$:00000128                 ldw             0(%r22), %r31
+$CODE$:0000012C                 stw             %r31, 0(%r1)
+$CODE$:00000130                 bv              %r0(%rp)
+$CODE$:00000134                 ldo             -0x80(%sp), %sp
+</nowiki>
+
+ngledoblt.c
+ <nowiki>
+void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
+                short x, short y, BoxPtr pbox, int alu, unsigned long planeMask)
+{
+        NgleScreenPrivPtr   pScreenPriv;
+        NgleHdwPtr          pDregs;
+
+        pScreenPriv = NGLE_SCREEN_PRIV(pDstDraw->pScreen);
+        pDregs = (NgleHdwPtr) pScreenPriv->pDregs;  
+
+        SETUP_HW(pDregs);
+
+        if (pScreenPriv->deviceID != S9000_ID_HCRX)
+             pDregs->reg10 = 0x13a01000;
+        else
+             pDregs->reg10 = 0x13a02000;
+
+        pDregs->reg14.all = ((alu << 8) & 0x00000f00) | 0x23000000;
+        pDregs->reg13 = planeMask;
+
+        pDregs->reg24.all = (x << 16) | y;
+        pDregs->reg7.all = ((pbox->x2 - pbox->x1) << 16) | (pbox->y2 - pbox->y1);
+        pDregs->reg25.all = (pbox->x1 << 16) | pbox->y1;
+}
+</nowiki>
+
+x11perf
+{| class="wikitable"
+! '''Type''' !! '''scroll10''' !! '''scroll100''' !! '''scroll500''' !! '''copywinwin10''' !! '''copywinwin100''' !! '''copywinwin500''' 
+|-
+| soft || 12300 || 457 || 21 || 15700 || 432 || 20
+|-
+| hw || 26700 || 3380 || 157 || 26800 || 3380 || 158
+|}
+
+Copyright 2015 "Artem Falcon" <lomka@nospam.gero.in><br>
+Distributed under the Creative Commons License
