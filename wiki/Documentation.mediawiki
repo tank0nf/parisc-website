@@ -16,7 +16,7 @@ title: Documentation
 = Developments in Progress =
 
 * [[VisualizeFX]] driver effort
-* [[NGLE]] reveals some info about NGLE graphics cards not known before
+* [[NGLE]] hardware acceleration
 * [[MonoPorting]] effort
 
 = Interwiki Links =
