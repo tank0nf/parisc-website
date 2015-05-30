@@ -2,10 +2,10 @@
 title: NGLE
 ---
 
-This page aims to reveal pieces needed for hardware acceleration on [https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/drivers/video/fbdev/stifb.c NGLE] family of graphics cards. HP decided to keep them closed.
+This page aims to reveal pieces needed for hardware acceleration on [https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/drivers/video/fbdev/stifb.c NGLE] family of graphics cards. Vendor decided to keep them closed.
 
 == Blitter ==
-ngledoblt.S is from X11R6.3 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's its translation
+ngledoblt.S is from X11R6.3 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's the annotation
  <nowiki>
 .import ngleScreenPrivIndex,data
 
@@ -221,7 +221,7 @@ $CODE$:00000130                 bv              %r0(%rp)
 $CODE$:00000134                 ldo             -0x80(%sp), %sp
 </nowiki>
 
-Resurrected ngledoblt.c
+Resurrected and working ngledoblt.c
  <nowiki>
 void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
                 short x, short y, BoxPtr pbox, int alu, unsigned long planeMask)
@@ -248,7 +248,7 @@ void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
 }
 </nowiki>
 
-Rough x11perf results under MkLinux
+Rough x11perf results under MkLinux showing the difference
 {| class="wikitable"
 ! '''Type''' !! '''scroll10''' !! '''scroll100''' !! '''scroll500''' !! '''copywinwin10''' !! '''copywinwin100''' !! '''copywinwin500''' 
 |-
