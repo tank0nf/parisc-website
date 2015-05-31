@@ -116,7 +116,7 @@ $ngle4:
 	bv r0(rp)
 	ldo -0x40(sp),sp
 </nowiki>
-ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10).<br><br>
+ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10) which resembles SETUP_FB() routine.<br><br>
 
 ngledoblt.o.8.07 is in original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 contributed] by vendor to X11 project. Matches ngledoblt.S. 8.07 means STI ROM revision.
  <nowiki>
