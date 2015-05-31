@@ -116,6 +116,7 @@ $ngle4:
 	bv r0(rp)
 	ldo -0x40(sp),sp
 </nowiki>
+ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10).<br><br>
 
 ngledoblt.o.8.07
  <nowiki>
