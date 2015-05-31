@@ -5,7 +5,7 @@ title: NGLE
 This page aims to reveal those pieces needed for hardware acceleration on [https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/drivers/video/fbdev/stifb.c NGLE] family of graphics cards, which vendor decided to keep obscure.
 
 == Blitter ==
-ngledoblt.S is from X11 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's the annotation
+ngledoblt.S is from X11 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's the translation
  <nowiki>
 .import ngleScreenPrivIndex,data
 
@@ -118,7 +118,7 @@ $ngle4:
 </nowiki>
 ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10) which resembles SETUP_FB() routine.<br><br>
 
-ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 contributed] by vendor to X11 project. Matches ngledoblt.S. 8.07 means STI ROM revision.
+ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 contributed] by vendor to X11 project, which matches ngledoblt.S. 8.07 means STI ROM revision.
  <nowiki>
 $CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
 $CODE$:00000000
