@@ -8,7 +8,7 @@ title: Graphics howto
  
 ; PCI cards
 : '''only Vis-EG cards (8-bit color) are supported'''. Graphic is un-accelerated.
-: The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not supported.
+: The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not supported. See [[VisualizeFX]] for further progress.
 : The ATI FireGL graphics card in the C8000 workstation is supported in un-accelerated mode.
 
 
@@ -25,7 +25,7 @@ title: Graphics howto
 :; All other HP GSC-based graphics cards are supported.
 :
 : Unfortunately, the XFree86 drivers only support a frame buffer.
-: The available 2D and 3D HW acceleration features are not supported.
+: The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
 
 == Configuring XFree86 for HP graphics cards ==
  
