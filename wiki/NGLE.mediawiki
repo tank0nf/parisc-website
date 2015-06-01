@@ -118,7 +118,7 @@ $ngle4:
 </nowiki>
 ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10) which resembles SETUP_FB() routine.<br><br>
 
-ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 contributed] by vendor to X11 project, which matches ngledoblt.S. 8.07 means STI ROM revision.
+ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 provided] by vendor to X11 project, which matches ngledoblt.S. 8.07 means max STI ROM revision.
  <nowiki>
 $CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
 $CODE$:00000000
@@ -225,7 +225,7 @@ $CODE$:00000134                 ldo             -0x80(%sp), %sp
 Resurrected and working ngledoblt.c to be used within [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3]
  <nowiki>
 void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
-                short x, short y, BoxPtr pbox, int alu, unsigned long planeMask)
+                short srcx, short srcy, BoxPtr pbox, int alu, unsigned long planeMask)
 {
         NgleScreenPrivPtr   pScreenPriv;
         NgleHdwPtr          pDregs;
@@ -240,12 +240,12 @@ void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
         else
              pDregs->reg10 = 0x13a02000;
 
-        pDregs->reg14.all = ((alu << 8) & 0x00000f00) | 0x23000000;
+        pDregs->reg14.all = ((alu << 8) & 0x00000f00) | 0x23000000; // raster op
         pDregs->reg13 = planeMask;
 
-        pDregs->reg24.all = (x << 16) | y;
+        pDregs->reg24.all = (srcx << 16) | srcy;
         pDregs->reg7.all = ((pbox->x2 - pbox->x1) << 16) | (pbox->y2 - pbox->y1);
-        pDregs->reg25.all = (pbox->x1 << 16) | pbox->y1;
+        pDregs->reg25.all = (pbox->x1 << 16) | pbox->y1; // destination
 }
 </nowiki>
 
