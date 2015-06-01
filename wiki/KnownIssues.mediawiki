@@ -14,9 +14,9 @@ Also keep an eye on the [[hotspots]] and the available [[TestCases]]
 == Missing/Incomplete PA-RISC specific Drivers ==
 
 * VisualizeFX graphics cards
-** No graphics support written, cards can only be used in text mode via the sticon driver. There is interest in a driver being written, but because no programming documentation has been released by HP this will be a difficult task.
+** No graphics support written, cards can only be used in text mode via the sticon driver. There is interest in a driver being written, but because no programming documentation has been released by HP this will be a difficult task. There is a reverse engineering attempt on [[VisualizeFX]].
 * Accelerated X11 support for Visualize-EG graphics cards
-** So far there is only basic framebuffer support via stifb. Lack of manuals/time.
+** So far there is only basic framebuffer support via stifb. Lack of manuals/time. Acceleration support for [[NGLE]] cards is in progress.
 * Full HP-UX support
 ** Right now only a very poor level of compatibility is provided. Actually it is possible that even this will be removed in the future; support for executing HP-UX binaries is difficult to do, and some things like HP-UX style threads will never work on linux.
 ** Note: HP-UX compatibility was dropped with kernel 3.14 since we defined EWOULDBLOCK == EAGAIN to better support Linux userspace apps.
