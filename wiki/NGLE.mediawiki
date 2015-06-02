@@ -222,7 +222,7 @@ $CODE$:00000130                 bv              %r0(%rp)
 $CODE$:00000134                 ldo             -0x80(%sp), %sp
 </nowiki>
 
-Resurrected and working ngledoblt.c to be used within [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3]
+Resurrected and properly working ngledoblt.c to be used under [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3] and vendor X server.
  <nowiki>
 void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
                 short srcx, short srcy, BoxPtr pbox, int alu, unsigned long planeMask)
