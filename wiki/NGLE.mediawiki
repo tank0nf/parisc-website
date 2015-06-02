@@ -266,6 +266,8 @@ Vendor doesn't provide solid fill acceleration hooks for its cfb X server, howev
 === NGLE_REALLY_SET_IMAGE_PLANEMASK(planeMask) ===
 = reg13 write
 === NGLE_REALLY_SET_IMAGE_FG_COLOR(fg) ===
+=== NGLE_SET_DSTXY ===
+=== SET_LENXY_START_RECFILL ===
 <br><br>
 
 === NGLE_QUICK_SET_CTL_PLN_REG(ctlPlaneReg) ===
