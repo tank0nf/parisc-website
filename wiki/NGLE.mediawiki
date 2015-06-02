@@ -118,7 +118,7 @@ $ngle4:
 </nowiki>
 ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10) which resembles SETUP_FB() routine.<br><br>
 
-ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 provided] by vendor to X11 project, which matches ngledoblt.S. 8.07 means max STI ROM revision.
+ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 provided] by vendor to X11 project, which matches ngledoblt.S. 8.07 means max STI ROM revision
  <nowiki>
 $CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
 $CODE$:00000000
@@ -222,7 +222,7 @@ $CODE$:00000130                 bv              %r0(%rp)
 $CODE$:00000134                 ldo             -0x80(%sp), %sp
 </nowiki>
 
-Resurrected and properly working ngledoblt.c to be used under [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3] and vendor X server.
+Resurrected and properly working ngledoblt.c to be used under [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3] and vendor cfb X server
  <nowiki>
 void ngleDepth8_CopyAreaFromToScreen(DrawablePtr pSrcDraw, DrawablePtr pDstDraw,
                 short srcx, short srcy, BoxPtr pbox, int alu, unsigned long planeMask)
@@ -258,5 +258,19 @@ Rough x11perf results under MkLinux showing the difference
 | hw || 26700 || 3380 || 157 || 26800 || 3380 || 158
 |}
 
+== Rectangle fills ==
+Vendor doesn't provide solid fill acceleration hooks for its cfb X server, however it seems to provide needed methods via ngleDepth*_ClearImagePlanes, ngleResetAttrPlanes and ngleClearOverlayPlanes functions (used to draw on image, attribute and overlay planes accordingly), which are called just to clear the planes on HCRX (Hyperdrive) cards upon server (de)init/reset. First one and last one are able to draw, ehm... a rectangle of a desired size and color at a desired position within X session on top everything but below the cursor, at least on [[Glossary|Artist]] card. Its worth to document some methods here
+
+=== NGLE_QUICK_SET_IMAGE_BITMAP_OP(alu) ===
+= reg14 write. XXX bit setting
+=== NGLE_REALLY_SET_IMAGE_PLANEMASK(planeMask) ===
+= reg13 write
+=== NGLE_REALLY_SET_IMAGE_FG_COLOR(fg) ===
+<br><br>
+
+=== NGLE_QUICK_SET_CTL_PLN_REG(ctlPlaneReg) ===
+= reg12 write, where ctlPlaneReg is most likely based upon the one supplied to SETUP_ATTR_ACCESS()
+
+<br>
 Copyright 2015 "Artem Falcon" <lomka@nospam.gero.in><br>
 Distributed under the Creative Commons License
