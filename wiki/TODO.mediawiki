@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-05-29 ==
+== Status & TODO 2015-06-02 ==
 * MOSTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, firebird2.5, gauche, idba, mapsembler2, padevchooser, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
 
 * kernel
@@ -33,6 +33,7 @@ title: TODO
 *** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
 ** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
+** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
 ** Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
 ** fix haskell hangs (ghc, futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument), possible idea: https://ghc.haskell.org/trac/ghc/ticket/8134)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
