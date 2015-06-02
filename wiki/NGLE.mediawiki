@@ -269,7 +269,7 @@ Vendor doesn't provide solid fill acceleration hooks for its cfb X server, howev
 <br><br>
 
 === NGLE_QUICK_SET_CTL_PLN_REG(ctlPlaneReg) ===
-= reg12 write, where ctlPlaneReg is most likely based upon the one supplied to SETUP_ATTR_ACCESS()
+= reg12 write, where ctlPlaneReg is based upon the one supplied to SETUP_ATTR_ACCESS()
 
 <br>
 Copyright 2015 "Artem Falcon" <lomka@nospam.gero.in><br>
