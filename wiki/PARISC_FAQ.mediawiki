@@ -162,7 +162,7 @@ The message usually means the program in question is buggy and is not meeting ad
 
 ==What about XFree and FX graphic cards?==
 
-FX Graphic adapters are not (and will probably never be) supported as framebuffer devices, and don't have specific XFree drivers. That is to say these cards can only be used through STI Console. Hence, you can't use XFree with any FX card. 
+FX Graphic adapters are not (and will probably never be) supported as framebuffer devices, and don't have specific XFree drivers. That is to say these cards can only be used through STI Console. Hence, you can't use XFree with any FX card. Anyway, there is a reverse engineering attempt on [[VisualizeFX]].
 
 ==Why do I get corrupted graphics with my Vis-EG/Graffiti/A4450A card?==
 
