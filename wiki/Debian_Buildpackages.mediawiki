@@ -43,9 +43,14 @@ title: Debian Buildpackages
 : https://www.ca-zephyr.org/mediawiki/index.php/Some_Notes
 
 ; In each chroot to be fixed:
-: In each chroot, you need to remove the link in the /usr/hppa64-linux-gnu directory to /usr/include.  If you want, you can create a /usr/hppa64-linux-gnu/include directory but nothing gets installed there.
+: Remove the link in the /usr/hppa64-linux-gnu directory to /usr/include:
 : ls -lad /home/build*/build*/chroot-*/usr/hppa64*/include
 
+; In each chroot, /etc/hosts has to look like this:
+ 127.0.0.1       sibaris localhost localhost.localdomain
+ ::1             localhost ip6-localhost ip6-loopback
+ ff02::1         ip6-allnodes
+ ff02::2         ip6-allrouters
 
 ; wanna-build interface:
 : https://wiki.debian.org/M68k/Porting#binNMU_notes
