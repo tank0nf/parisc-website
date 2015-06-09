@@ -46,7 +46,7 @@ title: Debian Buildpackages
 : Remove the link in the /usr/hppa64-linux-gnu directory to /usr/include:
 : ls -lad /home/build*/build*/chroot-*/usr/hppa64*/include
 
-; In each chroot, /etc/hosts has to look like this:
+; In each chroot, /etc/hosts has to look like this (e.g. needed for mod-gnutls package)
  127.0.0.1       sibaris localhost localhost.localdomain
  ::1             localhost ip6-localhost ip6-loopback
  ff02::1         ip6-allnodes
