@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2015-06-02 ==
 * MOSTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, firebird2.5, gauche, idba, mapsembler2, padevchooser, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
+** `__sync_val_compare_and_swap_8 missing in: openvdb, ...
 
 * kernel
 ** add asm/io.h file, needed for some debian packages, e.g. crrcsim
