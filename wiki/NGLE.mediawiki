@@ -259,9 +259,9 @@ Rough x11perf results under MkLinux showing the difference
 |}
 
 == Rectangle fills ==
-Vendor doesn't provide solid fill acceleration hooks for its cfb X server, however it seems to provide needed methods via ngleDepth*_ClearImagePlanes, ngleResetAttrPlanes and ngleClearOverlayPlanes functions (used to draw on image, attribute and overlay planes accordingly), which are called just to clear the planes on HCRX (Hyperdrive) cards upon server (de)init/reset. First one and last one are able to draw, ehm... a rectangle of a desired size and color at a desired position within X session on top everything but below the cursor. It worth to document some methods here
+Vendor doesn't provide solid fill acceleration hooks for its cfb X server, however it seems to provide needed methods via ngleDepth*_ClearImagePlanes, ngleResetAttrPlanes and ngleClearOverlayPlanes functions (used to draw on image, attribute and overlay planes accordingly), which are called just to clear the planes on HCRX (Hyperdrive) cards upon server (de)init/reset. First one and last one are able to draw, ehm... a rectangle of a desired size and color at a desired position within X session. It worth to document some methods here
 
-=== NGLE_QUICK_SET_IMAGE_BITMAP_OP(alu) ===
+=== NGLE_QUICK_SET_IMAGE_BITMAP_OP(IBOvals(alu,...)) ===
 = reg14 write. XXX bit setting
 === NGLE_REALLY_SET_IMAGE_PLANEMASK(planeMask) ===
 = reg13 write
