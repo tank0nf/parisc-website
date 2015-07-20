@@ -191,11 +191,10 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d045c77c1a69703143a36169c224429c48b9eecd '''parisc,metag: Fix crashes due to stack randomization on stack-grows-upwards architectures''']  (backported to v3.16+)
 *** DONE: fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)
 ** parisc: %pf is only for function pointers
-* Kernel 4.2
 ** parisc: copy_thread(): rename 'arg' argument to 'kthread_arg'
+* Kernel 4.2
 ** parisc: don't use module_init for non-modular core pdc_cons code
 ** parisc: use for_each_sg()
-** parisc: don't use module_init for non-modular core pdc_cons code
 ** stifb: Implement hardware accelerated copyarea
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=01ab60570427caa24b9debc369e452e86cd9beb4 parisc: Fix some PTE/TLB race conditions and optimize __flush_tlb_range based on timing results] (backported to v3.18+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c4ac9a48ac512c6b5a6cca06cfad2ad96e8caaa '''parisc: mm: Fix a memory leak related to pmd not attached to the pgd'''] (backported to v4.0+)
