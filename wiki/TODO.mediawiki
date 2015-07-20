@@ -131,9 +131,9 @@ title: TODO
 ** parisc: wire up sched_setattr and sched_getattr
 ** parisc: fix cache-flushing
 * Kernel 3.15
-** epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98
-** pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca
-** parisc: change value of SHMLBA from 0x00400000 to PAGE_SIZE -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26 (backported to v3.13+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ab3e55b119c9653b19ea4edffb86f04db867ac98 epoll_pwait bug: debian packages libio-epoll-perl and python-falcon failed]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5f3c61d06165c3dddddbc30772f079c2c8589ca pthread_create() out-of-memory bug, failed only when used with GNU make, e.g. zeromq3 package. Reason: stack hard limit problems]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0ef36bd2b37815719e31a72d2beecc28ca8ecd26 parisc: change value of SHMLBA from 0x00400000 to PAGE_SIZE] (backported to v3.13+)
 ** parisc: add renameat2 syscall
 ** parisc: Improve LWS-CAS performance
 ** parisc: ratelimit userspace segfault printing
@@ -157,7 +157,7 @@ title: TODO
 ** parisc: pdc_stable.c: Avoid potential stack overflows
 ** parisc: pdc_stable.c: Cleaning up unnecessary use of memset in conjunction with strncpy
 ** parisc: ptrace: use secure_computing_strict()
-** parisc: Implement new LWS CAS supporting 64 bit operations, CAS implementation: implement 1,2,4 and 8 byte CAS -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b (backported to Kernel >= 3.13) 
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b parisc: Implement new LWS CAS supporting 64 bit operations, CAS implementation: implement 1,2,4 and 8 byte CAS]  (backported to v3.13+) 
 ** parisc: Wire up seccomp, getrandom and memfd_create syscalls
 ** parisc: dino: fix %d confusingly prefixed with 0x in format string
 ** parisc: sys_hpux: NUL terminator is one past the end
@@ -188,9 +188,17 @@ title: TODO
 ** parisc: Replace PT_NLEVELS with CONFIG_PGTABLE_LEVELS
 ** parisc: Eliminate sg_virt_addr() and private scatterlist.h
 ** parisc: copy_thread(): rename 'arg' argument to 'kthread_arg'
-** '''parisc,metag: Fix crashes due to stack randomization on stack-grows-upwards architectures'''
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d045c77c1a69703143a36169c224429c48b9eecd '''parisc,metag: Fix crashes due to stack randomization on stack-grows-upwards architectures''']  (backported to v3.16+)
 *** DONE: fix VA randomization regarding to stack limits (testcase: ocaml build, temporarily fix: echo 0 > /proc/sys/kernel/randomize_va_space or add to /etc/sysctl.conf: sys.kernel.randomize_va_space = 0)
 ** parisc: %pf is only for function pointers
+* Kernel 4.2
+** parisc: copy_thread(): rename 'arg' argument to 'kthread_arg'
+** parisc: don't use module_init for non-modular core pdc_cons code
+** parisc: use for_each_sg()
+** parisc: don't use module_init for non-modular core pdc_cons code
+** stifb: Implement hardware accelerated copyarea
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=01ab60570427caa24b9debc369e452e86cd9beb4 parisc: Fix some PTE/TLB race conditions and optimize __flush_tlb_range based on timing results] (backported to v3.18+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c4ac9a48ac512c6b5a6cca06cfad2ad96e8caaa parisc: mm: Fix a memory leak related to pmd not attached to the pgd ] (backported to v4.0+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
