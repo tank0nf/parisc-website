@@ -198,7 +198,7 @@ title: TODO
 ** parisc: don't use module_init for non-modular core pdc_cons code
 ** stifb: Implement hardware accelerated copyarea
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=01ab60570427caa24b9debc369e452e86cd9beb4 parisc: Fix some PTE/TLB race conditions and optimize __flush_tlb_range based on timing results] (backported to v3.18+)
-** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c4ac9a48ac512c6b5a6cca06cfad2ad96e8caaa parisc: mm: Fix a memory leak related to pmd not attached to the pgd ] (backported to v4.0+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c4ac9a48ac512c6b5a6cca06cfad2ad96e8caaa '''parisc: mm: Fix a memory leak related to pmd not attached to the pgd'''] (backported to v4.0+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
