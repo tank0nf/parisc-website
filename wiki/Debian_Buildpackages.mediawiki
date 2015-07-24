@@ -59,7 +59,15 @@ title: Debian Buildpackages
 : http://kmuto.jp/open.cgi?buildd
 
 ; How to create a palo iplboot image from official Debian install CD
-: alo --init-tape=lifimage -k vmlinux-3.13-1-parisc.gz -k vmlinux-3.13-1-parisc64-smp.gz -r initrd.gz --commandline='0/vmlinux initrd=0/ramdisk panic_timeout=60 panic=-1 debian-installer/allow_unauthenticated=true mirror/http/hostname=mkhppa3.esiee.fr mirror/http/directory=/debian'
+: palo --init-tape=lifimage -k vmlinux-3.13-1-parisc.gz -k vmlinux-3.13-1-parisc64-smp.gz -r initrd.gz --commandline='0/vmlinux initrd=0/ramdisk panic_timeout=60 panic=-1 debian-installer/allow_unauthenticated=true mirror/http/hostname=mkhppa3.esiee.fr mirror/http/directory=/debian'
+
+; How to build haskell/uuagc:
+: http://foswiki.cs.uu.nl/foswiki/HUT/AttributeGrammarManual
+ cd <uuagc source directory>
+ ghc --make Setup.hs -o setup -package Cabal
+ ./setup configure
+ ./setup build
+ ./setup install
 
 == PA-RISC Linux Debian Ports Support ==
 
