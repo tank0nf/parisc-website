@@ -26,7 +26,6 @@ title: TODO
 ** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
 * userspace
-** debian installer: fix palo entry "root=/dev/sda5" to become "root=LABEL=XXX" or "root=UUID=XXXX"
 ** STARTED: fix linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
 *** fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/
 *** TODO: Fix kernel to load -fpie compiled programs not at 0x400000
@@ -220,6 +219,7 @@ title: TODO
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
 ** DONE: Build real debian-installer CD. See: https://wiki.debian.org/Simple-CDD/Howto
 ** DONE: we need a kernel debian package (3.10 based or higher)
+** DONE: [http://anonscm.debian.org/cgit/d-i/attic/palo-installer.git/ palo-installer: fix palo entry "root=/dev/sda5" to become "root=UUID=XXXX"]  
 
 * glibc:
 ** DONE: Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
