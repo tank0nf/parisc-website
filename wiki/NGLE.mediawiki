@@ -259,10 +259,10 @@ Rough x11perf results under MkLinux showing the difference
 |}
 
 == Rectangle fill ==
-Vendor doesn't provide solid fill acceleration hooks for its cfb X server, however it seems to provide needed methods via ngleDepth*_ClearImagePlanes, ngleResetAttrPlanes and ngleClearOverlayPlanes functions (used to draw on image, attribute and overlay planes accordingly), which are called just to clear the planes on HCRX (Hyperdrive) cards upon server (de)init/reset. First one and last one are able to draw, ehm... a rectangle of a desired size and color at a desired position. It worth to document some methods here
+Vendor doesn't provide solid fill acceleration hooks for its cfb X server, however it seems to provide needed methods via ngleDepth*_ClearImagePlanes, ngleResetAttrPlanes and ngleClearOverlayPlanes functions (used to draw on image, attribute and overlay planes accordingly), which are called just to clear the planes on HCRX (Hyperdrive) cards upon server (de)init/reset. First one and last one are able to draw, ehm... a rectangle of a desired size and color at a desired position. It worth to document some methods here.
 
 === NGLE_QUICK_SET_IMAGE_BITMAP_OP(IBOvals(alu,...)) ===
-= reg14 write. Raster operations numbers are standard. At least GXcopy (3) and GXxor (6) work.
+= reg14 write. Raster operations numbers are standard. At least GXcopy (3) and GXxor (6) work
 
 === NGLE_REALLY_SET_IMAGE_PLANEMASK(planeMask) ===
 = reg13 write
@@ -275,5 +275,5 @@ Vendor doesn't provide solid fill acceleration hooks for its cfb X server, howev
 = reg12 write, where ctlPlaneReg is based upon the one supplied to SETUP_ATTR_ACCESS()
 
 <br>
-Copyright 2015 "Artem Falcon" <lomka@nospam.gero.in><br>
+Copyright 2015 "Artem Falcon" <lomka@gero.in><br>
 Distributed under the Creative Commons License
