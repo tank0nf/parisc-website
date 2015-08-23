@@ -4,6 +4,9 @@ title: Debian Buildpackages
 
 ==How to build debian packages==
 
+; Setting up buildd server with btrfs:
+: https://lists.debian.org/debian-68k/2013/10/msg00006.html
+
 ; DebianWannaBuildInfrastructureOnOneServer
 : https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer
 
