@@ -45,6 +45,9 @@ title: Debian Buildpackages
 : https://wiki.debian.org/sbuild
 : https://www.ca-zephyr.org/mediawiki/index.php/Some_Notes
 
+; On the physical server (outside of chroot) for building experimental:
+: adduser --force-badname --system -home /var/empty  --no-create-home --quiet _apt
+
 ; In each chroot to be fixed:
 : Remove the link in the /usr/hppa64-linux-gnu directory to /usr/include:
 : ls -lad /home/build*/build*/chroot-*/usr/hppa64*/include
