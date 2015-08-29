@@ -16,6 +16,9 @@ title: Debian Buildpackages
 ; debian-ports policy and description:
 : http://www.debian-ports.org/archive 
 
+; How to get a specific version of a source package
+: apt-get source packagename=version
+
 ; How to build a package (without modifying source):
 : dpkg-buildpackage --force-sign -B -sa -m<email>
 : e.g.: dpkg-buildpackage --force-sign -sa -mHelge\ Deller\ \<deller@gmx.de\> -kB51E3864 -j5
