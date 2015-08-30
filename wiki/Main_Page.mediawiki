@@ -28,6 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Aug 2015''' - Our buildd server hpviz died. Debian-ports archive was joint with Debian buildd service. 
 * '''Jul 2015''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.700 pre-built debian unstable packages]. 
 * '''Jun 2015''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.600 pre-built debian unstable packages]. 
 * '''Apr 2015''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.520 pre-built debian unstable packages] which is just around 60 packages less than the leading debian-ports architectures alpha and ppc64. 
