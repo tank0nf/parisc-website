@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-09-06 ==
+== Status & TODO 2015-09-09 ==
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * Due to very bad performance running multiple copies of dot program (Dave):
 ** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMEN
@@ -202,6 +202,15 @@ title: TODO
 ** stifb: Implement hardware accelerated copyarea
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=01ab60570427caa24b9debc369e452e86cd9beb4 parisc: Fix some PTE/TLB race conditions and optimize __flush_tlb_range based on timing results] (backported to v3.18+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4c4ac9a48ac512c6b5a6cca06cfad2ad96e8caaa '''parisc: mm: Fix a memory leak related to pmd not attached to the pgd'''] (backported to v4.0+)
+* Kernel 4.3
+** parisc: Define ioremap_uc and ioremap_wc
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e02a653e15d8d32e9e768fd99a3271aafe5c5d77 '''PCI,parisc: Enable 64-bit bus addresses on PA-RISC''']
+** parisc: Additionally check for in_atomic() in page fault handler
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b1b4e435e4ef7de77f07bf2a42c8380b960c2d44 '''parisc: Filter out spurious interrupts in PA-RISC irq handler'''] - fixes crashes due to serial ports at boot on C8000 with PA8900 CPUs (backported to all) 
+** parisc: Drop CONFIG_SMP around update_cr16_clocksource()
+** parisc: Use platform_device_register_simple("rtc-generic")
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1b59ddfcf1678de38a1f8ca9fb8ea5eebeff1843 '''parisc: Use double word condition in 64bit CAS operation'''] - fixes 64bit gcc builtin atomics (backported to all)
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
