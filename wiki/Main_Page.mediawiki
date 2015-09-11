@@ -28,7 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Sep 2015''' - A new buildd server (phantom) will be online soon. Dave fixes 64bit CAS LWS so that we will get 64bit gcc atomic builtins. Helge fixes boot on C8000 PA8900 CPUs.
+* '''Sep 2015''' - We have a new buildd server (phantom.parisc-linux.org with 4xPA8900, 1GHz, 12GB RAM, 120GB SSD) online. Dave fixes 64bit CAS LWS so that we will get 64bit gcc atomic builtins. Helge fixes boot problems because of serial port irqs on C8000 with PA8900 CPUs.
 * '''Aug 2015''' - One of our buildd servers (hpviz) died. Debian-ports archive is now integrated with Debian buildd service again. 
 * '''Jul 2015''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.700 pre-built debian unstable packages]. 
 * '''Jun 2015''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.600 pre-built debian unstable packages]. 
