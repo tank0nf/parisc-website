@@ -61,6 +61,16 @@ title: Debian Buildpackages
  ff02::1         ip6-allnodes
  ff02::2         ip6-allrouters
 
+; In each chroot modify (for unstable) /etc/apt/sources.list
+ deb http://ftp.debian-ports.org/debian/ unstable main
+ deb http://incoming.debian-ports.org/buildd unstable main
+ deb [arch=all] http://incoming.debian.org/debian-buildd buildd-unstable main
+ deb [arch=all] http://ftp.debian.org/debian unstable main
+ # main/debian-installer
+ deb-src http://ftp.debian.org/debian unstable main
+ deb-src http://incoming.debian-ports.org/buildd unstable main
+ deb-src http://incoming.debian.org/debian-buildd buildd-unstable main
+
 ; wanna-build interface:
 : https://wiki.debian.org/M68k/Porting#binNMU_notes
 : http://lists.debian.org/debian-68k/2012/12/msg00124.html
