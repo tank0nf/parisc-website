@@ -82,7 +82,7 @@ title: Debian Buildpackages
 : Add user buildd2 to groups sbuild and buildd in /etc/group  
 : Copy original homedir from buildd to /home/buildd2 (you won't need existing Logs and upload-debs)
 : Change ownership of /home/buildd2: "chmod -R buildd2.buildd /home/buildd2"
-: Create a new chroot (e.g. "unstable2"). Update the generated /etc/schroot/chroot.d/XXX file. Usually I have my chroots then under /home/buildd2/build-trees/chroots/
+: Create a new chroot with /usr/sbin/sbuild-createchroot (name e.g. "unstable2"). Update the generated /etc/schroot/chroot.d/XXX file. Usually I have my chroots then under /home/buildd2/build-trees/chroots/
 : In ~buildd2  create new .sbuildrc und .builddrc files, and change wanna_build_db_user => "buildd_hppa-phantom2" and sbuild_chroot => "unstable2-hppa-sbuild"
 : Log in as buildd2 and manually run "buildd" to check if everything works.
 : If everything worked add the buildd-cronjobs for buildd2 in /etc/cron.d/buildd (copy existing entries and change copied entries to use "buildd2" instead of "buildd" 
