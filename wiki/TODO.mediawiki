@@ -30,7 +30,7 @@ title: TODO
 ** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
 * userspace
-** add/port debian openmpi package 
+** add/port debian openmpi package (done: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730)
 ** teach "blkid" about palo partition
 ** STARTED (by Dave): fix haskell (ghc) hangs: futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument). Solution: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=756260#15
 ** STARTED: fix linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
