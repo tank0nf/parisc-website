@@ -6,7 +6,7 @@ title: TODO
 
 == Status & TODO 2015-10-23 ==
 * Debian packages:
-# started: kde signal issue -- reduced test case available, problem is currently being fixed in gcc.
+# started: kde signal issue -- reduced test case available, problem is currently being fixed in gcc, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
 # started: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix in glibc is ongoing.
 # harfbuzz -- testsuite error: __gmon_start__ exposed, probably same problem as with vlc.
 # elfutils -- testsuite error
