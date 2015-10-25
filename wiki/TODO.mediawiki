@@ -16,6 +16,7 @@ title: TODO
 # libsoup2.4 -- testsuite error
 # vtk6
 # cupt
+# libqb - testsuite error
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * compiler/linker bug (e.g. debian package idba): XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX
