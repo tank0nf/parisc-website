@@ -7,13 +7,15 @@ title: TODO
 == Status & TODO 2015-10-23 ==
 * Debian packages:
 # started: Qt/KDE signal/slot issue -- reduced test case available, problem is currently being fixed in gcc, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
-# started: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix in glibc is ongoing.
+# started: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # harfbuzz -- testsuite error: __gmon_start__ exposed, probably same problem as with vlc.
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 -- testsuite error
 # glibc -- update patches for 2.21
 # libsoup2.4 -- testsuite error
+# vtk6
+# cupt
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * compiler/linker bug (e.g. debian package idba): XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX
