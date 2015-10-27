@@ -17,7 +17,7 @@ title: TODO
 # vtk6
 # cupt
 # libqb - testsuite error
-# capnproto - testsuite errors: 1) nan != nan,  2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
+# capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * compiler/linker bug (e.g. debian package idba): XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX
