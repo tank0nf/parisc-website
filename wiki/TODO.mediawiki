@@ -6,15 +6,15 @@ title: TODO
 
 == Status & TODO 2015-10-27 ==
 * Debian packages:
-# started: Qt/KDE signal/slot issue -- reduced test case available, problem is currently being fixed in gcc, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
-# started: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
-# harfbuzz -- testsuite error: __gmon_start__ exposed, probably same problem as with vlc.
+# DONE: Qt/KDE signal/slot issue -- reduced test case available, problem is currently being fixed in gcc, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
+# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
+# DONE: testsuite error: __gmon_start__ exposed, probably same problem as with vlc.
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 -- testsuite error
 # glibc -- update patches for 2.21
 # libsoup2.4 -- testsuite error
-# vtk6
+# vtk6 - dependency issues (other platforms have same problem)
 # cupt
 # libqb - testsuite error
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
