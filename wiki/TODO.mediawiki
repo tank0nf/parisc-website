@@ -17,6 +17,7 @@ title: TODO
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
 # vtk6 - dependency issues (other platforms have same problem)
 
+* glibc: Ask to change the shm_nattch member of shmid64_ds from long to int (for 64bit userspace)  
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * Due to very bad performance running multiple copies of dot program (Dave):
 ** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
