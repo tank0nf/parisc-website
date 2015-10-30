@@ -6,23 +6,19 @@ title: TODO
 
 == Status & TODO 2015-10-27 ==
 * Debian packages:
-# DONE: Qt/KDE signal/slot issue -- reduced test case available, problem is currently being fixed in gcc, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
-# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved by libX11 shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
-# DONE: testsuite error: __gmon_start__ exposed, probably same problem as with vlc.
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 -- testsuite error
 # glibc -- update patches for 2.21
 # libsoup2.4 -- testsuite error
-# vtk6 - dependency issues (other platforms have same problem)
 # cupt
 # libqb - testsuite error
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
+# vtk6 - dependency issues (other platforms have same problem)
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
-* compiler/linker bug (e.g. debian package idba): XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX
 * Due to very bad performance running multiple copies of dot program (Dave):
-** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMEN
+** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 ** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 * MOSTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
 ** `__sync_val_compare_and_swap_8 missing in: openvdb, idba, lizardfs, ...
@@ -56,10 +52,8 @@ title: TODO
 ** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
 *** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
 *** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
-** Fix linker to drop unused references (see "checking linker EH-compatible garbage collection of sections" in gcc build log, should fix debian package vlc (edit debian/rules to not set BORKED=yes), ld option --as-needed, see: https://sigquit.wordpress.com/2011/02/16/why-asneeded-doesnt-work-as-expected-for-your-libraries-on-your-autotools-project/)
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
 ** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
-** Fix octave build failure (libinterp/octave-value/ov-class.cc-tst .................panic: Aborted -- stopping myself...)
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
 ** why does acl2 build hangs process ?
 ** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
