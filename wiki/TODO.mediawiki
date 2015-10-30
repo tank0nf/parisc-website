@@ -247,6 +247,14 @@ title: TODO
 ** DONE: we need a kernel debian package (3.10 based or higher)
 ** DONE: [http://anonscm.debian.org/cgit/d-i/attic/palo-installer.git/ palo-installer: fix palo entry "root=/dev/sda5" to become "root=UUID=XXXX"]  
 
+* binutils:
+** DONE: linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
+
+* gcc:
+** DONE: Linker reports "XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX"
+*** [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commitdiff;h=da6e19a92645583da12dc2d15f54d2bd240fd3f2;hp=7d8a636c9a234354c9b2ecf01b6e405bece190a1 binutils fix in bfd/elf32-hppa] and [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=67834 gcc upstream bug report] and [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=801531 Debian binutils bug report]
+** DONE: Qt5/KDE signal & slot issue: Pointers to method types need canonicalization before comparison, fixed in gcc: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
+
 * glibc:
 ** DONE: Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
