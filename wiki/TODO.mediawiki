@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2015-10-27 ==
 * Debian packages:
+# STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 -- testsuite error
