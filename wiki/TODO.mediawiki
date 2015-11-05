@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-10-27 ==
+== Status & TODO 2015-11-06 ==
 * Debian packages:
 # STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
@@ -224,7 +224,13 @@ title: TODO
 ** parisc: Drop CONFIG_SMP around update_cr16_clocksource()
 ** parisc: Use platform_device_register_simple("rtc-generic")
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1b59ddfcf1678de38a1f8ca9fb8ea5eebeff1843 '''parisc: Use double word condition in 64bit CAS operation'''] - fixes 64bit gcc builtin atomics (backported to all)
-
+* Kernel 4.4
+** parisc: Change L1_CACHE_BYTES to 16
+** net/xps: Fix calculation of initial number of xps queues
+** parisc: reduce syslog debug output
+** parisc: serial/mux: Convert to uart_console_device instead of open-coded
+** parisc: Wire up userfaultfd syscall
+** parisc: allocate sys_membarrier system call number
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
