@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-11-06 ==
+== Status & TODO 2015-11-10 ==
 * Debian packages:
 # STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
@@ -23,7 +23,7 @@ title: TODO
 ** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 ** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 * MOSTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
-** `__sync_val_compare_and_swap_8 missing in: openvdb, idba, lizardfs, ...
+** __sync_val_compare_and_swap_8 missing in: openvdb, idba, lizardfs, ...
 ** gcc-4.9 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227914
 ** gcc-5.0 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227913
 
@@ -191,7 +191,7 @@ title: TODO
 * Kernel 4.0
 ** parisc: Wire up execveat syscall
 ** parisc: Add error checks when building up signal trampoline handler
-** '''parisc: hpux - Drop support for HP-UX binaries''''
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=04c1614977168fb8f002e2d81f704eeabe0c5ebd '''parisc: hpux - Drop support for HP-UX binaries''']
 ** parisc: hpux - Do not compile hpux subdirectory
 ** parisc: hpux - Delete files in hpux subdirectory
 ** parisc: hpux - Remove hpux gateway page
@@ -225,12 +225,14 @@ title: TODO
 ** parisc: Use platform_device_register_simple("rtc-generic")
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1b59ddfcf1678de38a1f8ca9fb8ea5eebeff1843 '''parisc: Use double word condition in 64bit CAS operation'''] - fixes 64bit gcc builtin atomics (backported to all)
 * Kernel 4.4
-** parisc: Change L1_CACHE_BYTES to 16
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=a01fece2e4185ac173abd16d10304d73d47ebf00 parisc: Change L1_CACHE_BYTES to 16]
 ** net/xps: Fix calculation of initial number of xps queues
 ** parisc: reduce syslog debug output
 ** parisc: serial/mux: Convert to uart_console_device instead of open-coded
 ** parisc: Wire up userfaultfd syscall
 ** parisc: allocate sys_membarrier system call number
+** parisc: Drop hpux_stat64 struct from stat.h header file
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d0cf62fb63f760e98244d31396b3b58f3a1e326b '''parisc: Fixes and cleanups in kernel uapi header files'''] (backported to 3.18+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
