@@ -234,6 +234,15 @@ title: TODO
 ** parisc: allocate sys_membarrier system call number
 ** parisc: Drop hpux_stat64 struct from stat.h header file
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d0cf62fb63f760e98244d31396b3b58f3a1e326b '''parisc: Fixes and cleanups in kernel uapi header files'''] (backported to 3.18+)
+** parisc: Fix wrong comment regarding first pmd entry flags
+** parisc: Drop definition of start_thread_som for HP-UX SOM binaries
+** parisc: Drop unused MADV_xxxK_PAGES flags from asm/mman.h
+** parisc: Add defines for Huge page support
+** parisc: Initialize the fault vector earlier in the boot process.
+** parisc: Increase initial kernel mapping to 32MB on 64bit kernel
+** parisc: Use long branch to do_syscall_trace_exit
+** parisc: Add Huge Page and HUGETLBFS support
+** parisc: Map kernel text and data on huge pages
 ** parisc: Remove unused pcibios_init_bus()
 ** parisc: Wire up mlock2 syscall
 ** parisc: Disable huge pages on Mako machines
