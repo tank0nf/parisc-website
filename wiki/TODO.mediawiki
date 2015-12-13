@@ -234,6 +234,10 @@ title: TODO
 ** parisc: allocate sys_membarrier system call number
 ** parisc: Drop hpux_stat64 struct from stat.h header file
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d0cf62fb63f760e98244d31396b3b58f3a1e326b '''parisc: Fixes and cleanups in kernel uapi header files'''] (backported to 3.18+)
+** parisc: Remove unused pcibios_init_bus()
+** parisc: Wire up mlock2 syscall
+** parisc: Disable huge pages on Mako machines
+** [[http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e46e31a3696ae2d66f32c207df3969613726e636 parisc iommu: fix panic due to trying to allocate too large region] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
