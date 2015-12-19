@@ -92,14 +92,16 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 == External Resources ==
 
-* http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
-* http://www.pateam.org/ - The PA/Linux ESIEE Team
+* http://www.openpa.net/index.html - The OpenPA Project
 * http://www.debian.org/ports/hppa/ - Debian HPPA port page
 * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
-* http://www.openpa.net/index.html - The OpenPA Project
 * http://www.hpmuseum.net/collection_document.php - HP Computer Museum
 * http://www.mach-linux.org/ - OSF Mach-Linux
 * http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
 * http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
 * https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
 * http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
+
+* Archived webpages:
+** http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
+** http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage)
