@@ -102,6 +102,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 * https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
 * http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
 
-* Archived webpages:
+* Archived historical webpages:
 ** http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
 ** http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage)
