@@ -42,6 +42,7 @@ The instructions should - with minor modifcations - work for other architectures
 # Read [https://wiki.debian.org/DebianInstaller/CheckOut|on how to check out the debian installer]. It's done below.
 
   apt-get install mr subversion
+  apt-get build-dep debian-installer
   mkdir -p /extra/deller/DEBIAN_INSTALLER/{TEMP,bootstrap}
   
   # See: https://wiki.debian.org/DebianInstaller/CheckOut
