@@ -42,7 +42,7 @@ The instructions should - with minor modifcations - work for other architectures
 # Read [https://wiki.debian.org/DebianInstaller/CheckOut|on how to check out the debian installer]. It's done below.
 
   apt-get install mr subversion
-  mkdir -p /extra/deller/DEBIAN_INSTALLER/{TEMP,bootstrap,debian-cd}
+  mkdir -p /extra/deller/DEBIAN_INSTALLER/{TEMP,bootstrap}
   
   # See: https://wiki.debian.org/DebianInstaller/CheckOut
   cd /extra/deller/DEBIAN_INSTALLER/
@@ -69,32 +69,40 @@ The instructions should - with minor modifcations - work for other architectures
   cd /extra/deller/DEBIAN_INSTALLER/debian-installer/installer
   dpkg-buildpackage
 
-=== Add missing boot loader / partitioning tools packages to the repository ===
+=== Add boot loader installer and partitioning tools packages to the repository ===
 The architecture-specific packages (palo-installer, silo-installer, ...) were built above.
 Install them into your local reprepro archive directory
   cd /extra/deller/debian-alpha-archive/
   reprepro includeudeb /extra/deller/DEBIAN_INSTALLER/debian-installer/packages/*udeb
 
 === Build your platform boot loader ===
-Build palo, silo.... and install the deb as done above (use includedeb instead of includeudeb). 
+Build the boot loader for your platform (palo, silo, ...) and install the deb package 
+as done above (use includedeb instead of includeudeb). 
   cd /extra/deller/debian-alpha-archive/
   reprepro includedeb <path_to_your_bootloader>
 
-=== Prepare preseed.cfg configuration ===
-: The installer images mentioned above pull the debian packages from the repositories at 
-:: (for debian-7.0): http://parisc.osuosl.org/debian/ 
-:: (for debian-8.0): http://backup.parisc-linux.org/debian/ 
-: which contains only the minimal set of necessary files for installation.
-: This is realized by the ''preseed/url=http://parisc.osuosl.org/debian/preseed.cfg'' Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
-
-=== Build the final iso image ===
-We need debian-cd. See [[File:Debian-cd.diff.gz]] the diff which was used to build them for parisc.
+=== Set up debian-cd ===
+debian-cd will build the installer images.
+Download it, configure it and let it build the image:
 
   cd /extra/deller/DEBIAN_INSTALLER
-  pushd debian-cd
+  git clone https://alioth.debian.org/anonscm/git/debian-cd/debian-cd.git
+  
+  # patch debian-cd
+  cd debian-cd
+  wget https://parisc.wiki.kernel.org/images-parisc/2/2e/Debian-cd.patch.txt
+  patch -p1 -s < Debian-cd.patch.txt
+  # after patching check changes with "git diff" and modify as needed
+  # adjust the kernel options (KERNEL_PARAMS in CONF.sh)
+
+=== Build the final iso image ===
+
+  cd /extra/deller/DEBIAN_INSTALLER/debian-cd
+  
   ./easy-build.sh NETINST alpha
   ./easy-build.sh CD alpha
-  popd
+
+
 
 
 
