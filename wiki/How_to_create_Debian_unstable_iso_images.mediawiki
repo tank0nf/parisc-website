@@ -68,6 +68,7 @@ The instructions should - with minor modifcations - work for other architectures
   
   # then build the debian-installer with all packages
   cd /extra/deller/DEBIAN_INSTALLER/debian-installer/installer
+  export ONLINE=n
   dpkg-buildpackage
 
 === Add boot loader installer and partitioning tools packages to the repository ===
