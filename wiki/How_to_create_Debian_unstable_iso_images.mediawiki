@@ -8,23 +8,34 @@ This website describes the basic steps how you can create such images yourself.
 The instructions should - with minor modifcations - work for other architectures like alpha or sparc too.
 
 
-What you need to know:
+== What you need to know ==
 : Prebuilt debian unstable packages are available at the repository at http://ftp.debian-ports.org/debian/
 : In most cases it's not possible to install from the debian ports repository, because
 # it is a moving target, which means that the Linux kernel udeb packages which are needed by the kernel on the ISO/liffile may not be available any longer at a later date, and
 # the bootloader (e.g. palo for parisc, aboot for alpha, silo for sparc) is not available there (because those architectures are not any longer release architectures, so the bootloaders are not being built any long), and 
 # the partitioning tools during installation for the architecture might be missing for the same reason (e.g. partman-palo for parisc).
 
-
-That said, this is in short what we will do:
+== Basic steps ==
 # Create a local copy of the debian-ports repository
 # Build the debian-installer packages
 # Add missing boot loader / partitioning tools packages to the repository
 # Build the final iso image
 
-== Create a local copy of the debian-ports repository ==
+=== Create a local copy of the debian-ports repository ===
 # Install reprepro (apt-get install reprepro)
-# Create a 
+# Create a directory which will hold the copied packages (around 60 GB storage needed!)
+
+  apt-get install reprepro
+  mkdir -p /extra/deller/debian-alpha-archive/
+  cd /extra/deller/debian-alpha-archive/
+  tar xvfz /tmp/reprepro-conf-alpha.tgz
+  # modify the files in conf/* to your needs
+  # now run "reprepro update" to pull all files from debian-ports
+  reprepro update
+
+=== Build the debian-installer packages ===
+=== Add missing boot loader / partitioning tools packages to the repository ===
+=== Build the final iso image ===
 
 
 ....
