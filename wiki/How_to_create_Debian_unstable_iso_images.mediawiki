@@ -1,0 +1,41 @@
+---
+title: How to create Debian unstable iso images
+---
+
+PA-RISC is not any longer an official Debian distribution and as such, Debian ISO install images are not produced any longer by the Debian developers.
+
+This website describes the basic steps how you can create such images yourself.
+The instructions should - with minor modifcations - work for other architectures like alpha or sparc too.
+
+
+What you need to know:
+: Prebuilt debian unstable packages are available at the repository at http://ftp.debian-ports.org/debian/
+: In most cases it's not possible to install from the debian ports repository, because
+# it is a moving target, which means that the Linux kernel udeb packages which are needed by the kernel on the ISO/liffile may not be available any longer at a later date, and
+# the bootloader (e.g. palo for parisc, aboot for alpha, silo for sparc) is not available there (because those architectures are not any longer release architectures, so the bootloaders are not being built any long), and 
+# the partitioning tools during installation for the architecture might be missing for the same reason (e.g. partman-palo for parisc).
+
+
+That said, this is in short what we will do:
+# Create a local copy of the debian-ports repository
+# Build the debian-installer packages
+# Add missing boot loader / partitioning tools packages to the repository
+# Build the final iso image
+
+== Create a local copy of the debian-ports repository ==
+# Install reprepro (apt-get install reprepro)
+# Create a 
+
+
+....
+
+: The installer images mentioned above pull the debian packages from the repositories at 
+:: (for debian-7.0): http://parisc.osuosl.org/debian/ 
+:: (for debian-8.0): http://backup.parisc-linux.org/debian/ 
+: which contains only the minimal set of necessary files for installation.
+: This is realized by the ''preseed/url=http://parisc.osuosl.org/debian/preseed.cfg'' Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
+
+For parisc:
+* created with debian-cd, [[File:Debian-cd.diff.gz]] is the diff which was used to build them.
+* http://parisc.osuosl.org/debian/palo-installer_0.0.15_hppa.udeb
+* http://parisc.osuosl.org/debian/partman-palo_20_hppa.udeb
