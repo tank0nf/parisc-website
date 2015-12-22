@@ -26,29 +26,78 @@ The instructions should - with minor modifcations - work for other architectures
 # Create a directory which will hold the copied packages (around 60 GB storage needed!)
 
   apt-get install reprepro
+  
   mkdir -p /extra/deller/debian-alpha-archive/
   cd /extra/deller/debian-alpha-archive/
+  
   wget https://parisc.wiki.kernel.org/images-parisc/2/26/Reprepro-conf-alpha.zip
   unzip Reprepro-conf-alpha.zip
   rm Reprepro-conf-alpha.zip
+  
   # now modify the files in conf/* to your needs
   # now run "reprepro update" to pull all files from debian-ports
   reprepro update
 
 === Build the debian-installer packages ===
+# Read [https://wiki.debian.org/DebianInstaller/CheckOut|on how to check out the debian installer]. It's done below.
+
+  apt-get install mr subversion
+  mkdir -p /extra/deller/DEBIAN_INSTALLER/{TEMP,bootstrap,debian-cd}
+  
+  # See: https://wiki.debian.org/DebianInstaller/CheckOut
+  cd /extra/deller/DEBIAN_INSTALLER/
+  svn co svn://anonscm.debian.org/svn/d-i/trunk debian-installer
+  cd debian-installer
+  scripts/git-setup
+  mr -p checkout
+  
+  # check out other packes for your architecture into the packages directory
+  # for a list see here: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?a=project_list;pf=d-i
+  
+  cd /extra/deller/DEBIAN_INSTALLER/debian-installer/packages
+  
+  # for alpha:
+  git clone https://anonscm.debian.org/git/d-i/attic/aboot.git
+  git clone https://anonscm.debian.org/git/d-i/attic/aboot-installer.git
+  # for parisc:
+  git clone https://alioth.debian.org/anonscm/git/d-i/attic/palo-installer.git
+  git clone https://alioth.debian.org/anonscm/git/d-i/attic/partman-palo.git
+  # for sparc:
+  git clone https://alioth.debian.org/anonscm/git/d-i/attic/silo-installer.git
+  
+  # then build the debian-installer with all packages
+  cd /extra/deller/DEBIAN_INSTALLER/debian-installer/installer
+  dpkg-buildpackage
+
 === Add missing boot loader / partitioning tools packages to the repository ===
-=== Build the final iso image ===
+The architecture-specific packages (palo-installer, silo-installer, ...) were built above.
+Install them into your local reprepro archive directory
+  cd /extra/deller/debian-alpha-archive/
+  reprepro includeudeb /extra/deller/DEBIAN_INSTALLER/debian-installer/packages/*udeb
 
+=== Build your platform boot loader ===
+Build palo, silo.... and install the deb as done above (use includedeb instead of includeudeb). 
+  cd /extra/deller/debian-alpha-archive/
+  reprepro includedeb <path_to_your_bootloader>
 
-....
-
+=== Prepare preseed.cfg configuration ===
 : The installer images mentioned above pull the debian packages from the repositories at 
 :: (for debian-7.0): http://parisc.osuosl.org/debian/ 
 :: (for debian-8.0): http://backup.parisc-linux.org/debian/ 
 : which contains only the minimal set of necessary files for installation.
 : This is realized by the ''preseed/url=http://parisc.osuosl.org/debian/preseed.cfg'' Linux kernel parameter which is hardcoded in the palo bootloader code in those images.
 
-For parisc:
-* created with debian-cd, [[File:Debian-cd.diff.gz]] is the diff which was used to build them.
+=== Build the final iso image ===
+We need debian-cd. See [[File:Debian-cd.diff.gz]] the diff which was used to build them for parisc.
+
+  cd /extra/deller/DEBIAN_INSTALLER
+  pushd debian-cd
+  ./easy-build.sh NETINST alpha
+  ./easy-build.sh CD alpha
+  popd
+
+
+
+Other prebuilt files for parisc:
 * http://parisc.osuosl.org/debian/palo-installer_0.0.15_hppa.udeb
 * http://parisc.osuosl.org/debian/partman-palo_20_hppa.udeb
