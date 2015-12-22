@@ -115,4 +115,3 @@ For more information about debian-ports see http://www.debian-ports.org.
 ; Contacts for the debian HPPA buildds
 : Helge Deller <deller@gmx.de>, PA-RISC Kernel maintainer, buildd maintainer
 : John David Anglin <dave.anglin@bell.net>, HPPA GCC, and binutils maintainer
-: Dave Land <xmechanic@landcomp.net>, owner of a few of the hppa buildd servers
