@@ -80,3 +80,4 @@ Futher instructions are on this external website:
 :# The debian ports repository is a moving target, which means that the Linux kernel udeb packages which are needed by the kernel on the ISO/liffile may not be available any longer at a later date, and
 :# The debian ports repository is missing the http://parisc.osuosl.org/debian/palo-installer_0.0.15_hppa.udeb and http://parisc.osuosl.org/debian/partman-palo_20_hppa.udeb packages which are needed to install the palo bootloader during installation.
 : The iso images were created with debian-cd, [[File:Debian-cd.diff.gz]] is the diff which was used to build them.
+: See [[How to create Debian unstable iso images]] on how the images were created.
