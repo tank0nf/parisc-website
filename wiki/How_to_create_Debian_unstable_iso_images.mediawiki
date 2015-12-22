@@ -28,8 +28,10 @@ The instructions should - with minor modifcations - work for other architectures
   apt-get install reprepro
   mkdir -p /extra/deller/debian-alpha-archive/
   cd /extra/deller/debian-alpha-archive/
-  tar xvfz /tmp/reprepro-conf-alpha.tgz
-  # modify the files in conf/* to your needs
+  wget https://parisc.wiki.kernel.org/images-parisc/2/26/Reprepro-conf-alpha.zip
+  unzip Reprepro-conf-alpha.zip
+  rm Reprepro-conf-alpha.zip
+  # now modify the files in conf/* to your needs
   # now run "reprepro update" to pull all files from debian-ports
   reprepro update
 
