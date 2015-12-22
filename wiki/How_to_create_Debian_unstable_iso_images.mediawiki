@@ -99,8 +99,8 @@ Download it, configure it and let it build the image:
 
   cd /extra/deller/DEBIAN_INSTALLER/debian-cd
   
-  ./easy-build.sh NETINST alpha
-  ./easy-build.sh CD alpha
+  ./easy-build.sh NETINST $HOSTTYPE
+  ./easy-build.sh CD $HOSTTYPE
 
 
 
