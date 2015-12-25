@@ -81,7 +81,7 @@ Install them into your local reprepro archive directory
 Build the boot loader for your platform (palo, silo, ...) and install the deb package 
 as done above (use includedeb instead of includeudeb). 
   cd /extra/deller/debian-alpha-archive/
-  reprepro includedeb <path_to_your_bootloader>
+  reprepro includedeb unstable <path_to_your_bootloader>
 
 === Set up debian-cd ===
 debian-cd will build the installer images.
