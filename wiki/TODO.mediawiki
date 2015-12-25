@@ -249,7 +249,8 @@ title: TODO
 ** parisc: Remove unused pcibios_init_bus()
 ** parisc: Wire up mlock2 syscall
 ** parisc: Disable huge pages on Mako machines
-** [[http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e46e31a3696ae2d66f32c207df3969613726e636 parisc iommu: fix panic due to trying to allocate too large region] (backported to all)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e46e31a3696ae2d66f32c207df3969613726e636 '''parisc iommu: fix panic due to trying to allocate too large region'''] (backported to all)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=71a71fb5374a23be36a91981b5614590b9e722c3 '''parisc: Fix syscall restarts'''] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
