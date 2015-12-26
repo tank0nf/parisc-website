@@ -4,12 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-12-25 ==
+== Status & TODO 2015-12-26 ==
 * MOSTLY DONE: Check with https://patchwork.kernel.org/patch/7738911/ (pci bridge timings)
 * MOSTLY DONE: syscall restart bug -> https://patchwork.kernel.org/patch/7866161/  and https://patchwork.kernel.org/patch/7894341/
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273
 * MOSTLY DONE: implement HUGE pages  (or even better transparent huge pages)
-* implement BUG() and WARN() so that int happens in delay branch
 * Debian packages:
 # STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
@@ -93,6 +92,7 @@ title: TODO
 ** Superdome support - can someone test? Should work better now with latest kernels.
 ** task_struct/thread_info split -- task_struct should not be visible in entry.S, we need to move some items into thread_info -- this includes pt_regs and maybe some of the flags (ptrace, etc)
 ** Visualize FX support (will probably never happen!)
+* PROBABLY NOT POSSIBLE: implement BUG() and WARN() so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Not possible, because this gives "control reaches end of non-void function" warnings/errors.
 
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
