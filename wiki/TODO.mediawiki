@@ -16,6 +16,7 @@ title: TODO
 # gtk+3.0 -- testsuite error
 # glibc -- update patches for 2.21
 # libsoup2.4 -- testsuite error
+# nss - problem with glibc dladdr() - see: http://article.gmane.org/gmane.linux.ports.parisc/26290
 # cupt
 # libqb - testsuite error
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
