@@ -4,11 +4,13 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2015-12-26 ==
+== Status & TODO 2016-01-05 ==
 * MOSTLY DONE: Check with https://patchwork.kernel.org/patch/7738911/ (pci bridge timings)
 * MOSTLY DONE: syscall restart bug -> https://patchwork.kernel.org/patch/7866161/  and https://patchwork.kernel.org/patch/7894341/
+* MOSTLY DONE: kernel timerfd_settime/timerfd_gettime issue, debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273
 * MOSTLY DONE: implement HUGE pages  (or even better transparent huge pages)
+* Add KASLR (Kernel Address Layout Randomization) - like arm64
 * Debian packages:
 # STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
