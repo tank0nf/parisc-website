@@ -39,13 +39,15 @@ In those directories you find (you need to download only one of those):
 ** for the debian 8.0 disc: You can choose to install the KDE-, LXDE-, MATE- or Xfce desktops, SSH, web- and print server. Do not choose to install the GNOME desktop since it will fail (we are still having problems to compile a recent-enough iceweasel on hppa!). 
 * for the debian 7.0 disc:
 ** When the installation finished, do not press "Continue" to reboot the machine, but instead choose "Go Back" and then in the main menu choose to execute a shell. In the shell type the following command to enable serial console (needed e.g. for boot console on GSP):
-    echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
+   echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
 ** Type "exit" to quit the shell and return to the main menu.
 ** In the main menu choose to "Finish the installation" and let it reboot the machine.
 
 '''Notes:'''
+* After reboot add this line to /etc/apt/sources.list and run '''apt-get update''':
+   deb http://ftp.debian-ports.org/debian/ unstable main
 * After reboot the sshd daemon will not accept password-logins for root. You need to log in as the user which you created during installation and then become root via "su -". To change this sshd behaviour, edit '''/etc/ssh/sshd_config''' file and change the value of '''PermitRootLogin to yes''' (not recommended!).
-* After reboot, run '''apt-get install debian-ports-archive-keyring''' to receive the latest debian ports archive keys (avoids this warning: ''W: GPG error: http://ftp.debian-ports.org unstable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY AA651E74623DB0B8 or A53AB45AC448326E'')
+* Run '''apt-get install debian-ports-archive-keyring''' to receive the latest debian ports archive keys (avoids this warning: ''W: GPG error: http://ftp.debian-ports.org unstable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY AA651E74623DB0B8 or A53AB45AC448326E'')
 * You could run "dpkg-reconfigure locales" and "dpkg-reconfigure tzdata" to reconfigure locales and timezone 
 * We are happy to hear from you, if you installed PA-RISC Linux on your machine. Please send us a short mail to [mailto:debian-hppa@lists.debian.org debian-hppa@lists.debian.org]. Thanks!
 * If you install on a HP 712 workstation you may need the kernel option "hp_sdc.no_hpsdc=1" to [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787794 avoid an endless loop of "HP SDC: Transaction add failed: transaction already queued ?" messages]
