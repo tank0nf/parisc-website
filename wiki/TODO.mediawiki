@@ -4,9 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-01-05 ==
-* MOSTLY DONE: Check with https://patchwork.kernel.org/patch/7738911/ (pci bridge timings)
-* MOSTLY DONE: syscall restart bug -> https://patchwork.kernel.org/patch/7866161/  and https://patchwork.kernel.org/patch/7894341/
+== Status & TODO 2016-01-18 ==
+* DONE: Check with https://patchwork.kernel.org/patch/7738911/ (pci bridge timings)
+* DONE: syscall restart bug -> https://patchwork.kernel.org/patch/7866161/  and https://patchwork.kernel.org/patch/7894341/
 * MOSTLY DONE: kernel timerfd_settime/timerfd_gettime issue, debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273
 * MOSTLY DONE: implement HUGE pages  (or even better transparent huge pages)
@@ -254,6 +254,13 @@ title: TODO
 ** parisc: Disable huge pages on Mako machines
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e46e31a3696ae2d66f32c207df3969613726e636 '''parisc iommu: fix panic due to trying to allocate too large region'''] (backported to all)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=71a71fb5374a23be36a91981b5614590b9e722c3 '''parisc: Fix syscall restarts'''] (backported to all)
+* Kernel 4.5
+** parisc: Protect huge page pte changes with spinlocks 
+** parisc: Imporove debug info about space registers and TLB configuration
+** parisc: Drop parisc-specific NSIGTRAP define
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e60fc5aa608eb38b47ba4ee058f306f739eb70a0 '''parisc: Fix __ARCH_SI_PREAMBLE_SIZE'''] (backported to all)
+** parisc: Reduce overhead of parisc_requires_coherency()
+** parisc: Initialize PCI bridge cache line and default latency
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
