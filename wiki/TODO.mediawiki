@@ -5,14 +5,12 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2016-01-18 ==
-* DONE: Check with https://patchwork.kernel.org/patch/7738911/ (pci bridge timings)
-* DONE: syscall restart bug -> https://patchwork.kernel.org/patch/7866161/  and https://patchwork.kernel.org/patch/7894341/
 * MOSTLY DONE: kernel timerfd_settime/timerfd_gettime issue, debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/
-* kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273
-* MOSTLY DONE: implement HUGE pages  (or even better transparent huge pages)
+* kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
+* MOSTLY DONE: implement HUGE pages (DONE), implement transparent huge pages (TODO?)
 * Add KASLR (Kernel Address Layout Randomization) - like arm64
 * Debian packages:
-# STARTED: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
+# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 -- testsuite error
@@ -24,7 +22,6 @@ title: TODO
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
 # vtk6 - dependency issues (other platforms have same problem)
 
-* glibc: Ask to change the shm_nattch member of shmid64_ds from long to int (for 64bit userspace)  
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * Due to very bad performance running multiple copies of dot program (Dave):
 ** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
@@ -260,7 +257,7 @@ title: TODO
 ** parisc: Drop parisc-specific NSIGTRAP define
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e60fc5aa608eb38b47ba4ee058f306f739eb70a0 '''parisc: Fix __ARCH_SI_PREAMBLE_SIZE'''] (backported to all)
 ** parisc: Reduce overhead of parisc_requires_coherency()
-** parisc: Initialize PCI bridge cache line and default latency
+** parisc: Initialize PCI bridge cache line and default latency  (related to https://patchwork.kernel.org/patch/7738911/)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
