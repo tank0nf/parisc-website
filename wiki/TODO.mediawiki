@@ -22,6 +22,7 @@ title: TODO
 # libqb - testsuite error
 # capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
 # vtk6 - dependency issues (other platforms have same problem)
+# libgadu - testsuite fails probably due to missing pthread cancellation in glibc.
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * Due to very bad performance running multiple copies of dot program (Dave):
