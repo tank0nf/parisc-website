@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2016-01-18 ==
 * MOSTLY DONE: kernel timerfd_settime/timerfd_gettime issue, debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/
+* Implement kernel VDSO support
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
 * MOSTLY DONE: implement HUGE pages (DONE), implement transparent huge pages (TODO?)
 * Add KASLR (Kernel Address Layout Randomization) - like arm64
