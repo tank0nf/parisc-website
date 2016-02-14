@@ -4,29 +4,28 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-02-12 ==
-* MOSTLY DONE: kernel timerfd_settime/timerfd_gettime issue, debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/
+== Status & TODO 2016-02-14 ==
+* DONE: kernel timerfd_settime/timerfd_gettime issue, test with debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/, backported to all kernels
 * Implement kernel VDSO support
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
-* MOSTLY DONE: implement HUGE pages (DONE), implement transparent huge pages (TODO?)
+* DONE: implement HUGE pages
+* implement transparent huge pages (TODO?)
 * Add KASLR (Kernel Address Layout Randomization) - like arm64
 * Debian packages:
-# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
 # elfutils -- testsuite error
 # glib2.0 -- testsuite error
 # gtk+3.0 succeeds by adding these two lines to debian/rules:
 ## touch testsuite/reftests/color-transition.ui.known_fail
 ## touch testsuite/reftests/linear-gradient-transition-to-other.ui.known_fail 
-# heimdal suceeds by increasing timeout for iprop test to 120 seconds.
-# libsoup2.4 -- testsuite error
-# nss - problem with glibc dladdr() - see: http://article.gmane.org/gmane.linux.ports.parisc/26290
-# cupt
-# libqb - testsuite error
-# capnproto - testsuite errors: 1) nan != nan ->quiet vs. signalling nans"? __builtin_nanf("") returns 0x7fbfffff,     2) info._sifields._rt.si_sigval.sival_ptr -> hppa behaves correctly. Testsuite is wrong.
-# vtk6 - dependency issues (other platforms have same problem)
 # libgadu - testsuite fails probably due to missing pthread cancellation in glibc.
 # glibc pthread cancellation: the main issue is the target specific code needed to handle stubs and signal frames.  See linux-unwind.h and hpux-unwind.h in gcc's libgcc/config/pa directory.  The function pa32_fallback_frame_state does the hard work for linux.  Hopefully, the signal tramp hasn't changed. All the unwind tests in gcc pass, so I think the implementation there is okay. It may be we need something similar to pa32_fallback_frame_state in glibc to fix cancellation
-# mathicgb fails on big endian systems
+# heimdal suceeds by increasing timeout for iprop test to 120 seconds.
+# cupt
+# libqb - testsuite error
+# libsoup2.4 -- testsuite error
+# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
+# DONE: nss - dladdr from glibc returns wrong names on hppa, http://article.gmane.org/gmane.linux.ports.parisc/26290, Solution: https://sourceware.org/bugzilla/show_bug.cgi?id=19415
+# DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
 
 * convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 * Due to very bad performance running multiple copies of dot program (Dave):
@@ -102,6 +101,7 @@ title: TODO
 
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
+** Fix qemu
 ** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
    
