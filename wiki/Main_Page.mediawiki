@@ -28,6 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Feb 2016''' - We now have [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 11.000 pre-built debian unstable packages]. Many bugs in kernel and userspace were fixed. 
 * '''Jan 2016''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.900 pre-built debian unstable packages]. 
 * '''Dec 2015''' - [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=736d2169338a50c8814efc186b5423aee43b0c68 Huge Page support for PA-RISC was added to the Linux Kernel]. A long-standing [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=71a71fb5374a23be36a91981b5614590b9e722c3 syscall restart bug was fixed].
 * '''Oct 2015''' - Dave & Helge fixed some bugs in [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079 gcc] and [https://sourceware.org/bugzilla/show_bug.cgi?id=19170 glibc] which e.g. fixed the build of Qt5/KDE packages. For the first time ever we now have more pre-built debian packages than alpha or ppc64 and reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.800 packages].
