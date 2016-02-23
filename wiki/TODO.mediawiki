@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2016-02-14 ==
 * ALPHA: Add https://lkml.org/lkml/2007/8/14/259 aboot patch
+* ALPHA: Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
 * DONE: kernel timerfd_settime/timerfd_gettime issue, test with debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/, backported to all kernels
 * Implement kernel VDSO support
 * kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
