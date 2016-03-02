@@ -266,6 +266,9 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e60fc5aa608eb38b47ba4ee058f306f739eb70a0 '''parisc: Fix __ARCH_SI_PREAMBLE_SIZE'''] (backported to all)
 ** parisc: Reduce overhead of parisc_requires_coherency()
 ** parisc: Initialize PCI bridge cache line and default latency  (related to https://patchwork.kernel.org/patch/7738911/)
+** parisc: Use parentheses around expression in floppy.h
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=98e8b6c9ac9d1b1e9d1122dfa6783d5d566bb8f7 '''parisc: Fix ptrace syscall number and return value modification'''] (backported to v4.0+)
+** parisc: Wire up copy_file_range syscall
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
