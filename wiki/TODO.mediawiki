@@ -377,6 +377,4 @@ title: TODO
 
 * ns87415 dma doesn't work reliably on suckyio-systems
 
-* investigate not putting in extable entries for put_kernel_asm; will probably reduce kernel size
-
 * fix HIL problem: ksoftirqd/0 eats 56% cpu (kernel 2.4 & kernel 2.6) - see FAQ: http://www.parisc-linux.org/faq/index.html and http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled
