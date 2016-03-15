@@ -28,7 +28,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Mar 2016''' - Investigating a [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70188 bug in gcc-4.9 (and higher)] which [http://article.gmane.org/gmane.linux.ports.parisc/26425 crashes with kernel 4.3 (and higher) in the SCSI/block layer]. 
+* '''Mar 2016''' - Investigating a [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70188 bug in gcc-4.9 (and higher)] which [http://article.gmane.org/gmane.linux.ports.parisc/26425 crashes kernel 4.3+ in the SCSI/block layer]. 
 * '''Feb 2016''' - We now have [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 11.000 pre-built debian unstable packages]. Many bugs in kernel and userspace were fixed. 
 * '''Jan 2016''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.900 pre-built debian unstable packages]. 
 * '''Dec 2015''' - [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=736d2169338a50c8814efc186b5423aee43b0c68 Huge Page support for PA-RISC was added to the Linux Kernel]. A long-standing [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=71a71fb5374a23be36a91981b5614590b9e722c3 syscall restart bug was fixed].
