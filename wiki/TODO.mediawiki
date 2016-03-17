@@ -4,49 +4,26 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-02-14 ==
-* fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
+== Status & TODO 2016-03-17 ==
+* add wiki page about kernel cross-compiling
 
-* ALPHA: Add https://lkml.org/lkml/2007/8/14/259 aboot patch
-* ALPHA: Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
-* DONE: kernel timerfd_settime/timerfd_gettime issue, test with debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/, backported to all kernels
-* Implement kernel VDSO support
-* kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
-* DONE: implement HUGE pages
-* implement transparent huge pages (TODO?)
-* Add KASLR (Kernel Address Layout Randomization) - like arm64
-* Debian packages:
-# elfutils -- testsuite error
-# glib2.0 -- testsuite error
-# gtk+3.0 succeeds by adding these two lines to debian/rules:
-## touch testsuite/reftests/color-transition.ui.known_fail
-## touch testsuite/reftests/linear-gradient-transition-to-other.ui.known_fail 
-# libgadu - testsuite fails probably due to missing pthread cancellation in glibc.
-# glibc pthread cancellation: the main issue is the target specific code needed to handle stubs and signal frames.  See linux-unwind.h and hpux-unwind.h in gcc's libgcc/config/pa directory.  The function pa32_fallback_frame_state does the hard work for linux.  Hopefully, the signal tramp hasn't changed. All the unwind tests in gcc pass, so I think the implementation there is okay. It may be we need something similar to pa32_fallback_frame_state in glibc to fix cancellation
-# heimdal suceeds by increasing timeout for iprop test to 120 seconds.
-# cupt
-# libqb - testsuite error
-# libsoup2.4 -- testsuite error
-# DONE: vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741, problem arises due to __gmon_start__ symbol which then wrongly gets resolved e.g. by other shared libs. Fix for glibc is reported: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
-# DONE: nss - dladdr from glibc returns wrong names on hppa, http://article.gmane.org/gmane.linux.ports.parisc/26290, Solution: https://sourceware.org/bugzilla/show_bug.cgi?id=19415
-# DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
-
-* convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
-* Due to very bad performance running multiple copies of dot program (Dave):
-** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
-** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
-* MOSTLY DONE: push gcc patch for variable CAS (gcc atomic ops, __sync_XXX) upstream (Kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b) - packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
-** __sync_val_compare_and_swap_8 missing in: openvdb, idba, lizardfs, ...
-** gcc-4.9 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227914
-** gcc-5.0 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227913
-
-* kernel
+* kernel work
+** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
+** STARTED: Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - partly done.
+** further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
+** ALPHA processor port:
+*** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
+*** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
+** Implement kernel VDSO support
+** Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - like arm64
+** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
+** Due to very bad performance running multiple copies of dot program (Dave):
+*** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
+*** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** add asm/io.h file, needed for some debian packages, e.g. crrcsim
-** implement ARCH_HAS_ELF_RANDOMIZE (arch_mmap_rnd() and such)
 ** use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 ** implement kexec syscall
 ** Implement ltrace on hppa
-** further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 ** modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
@@ -57,31 +34,13 @@ title: TODO
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 ** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
 
-* userspace
-** add/port debian openmpi package (done: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730)
-** teach "blkid" about palo partition
-** STARTED (by Dave): fix haskell (ghc) hangs: futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument). Solution: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=756260#15
-** STARTED: fix linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
-*** fixes debian package iceweasel and others, see: http://www.openbsd.org/papers/nycbsdcon08-pie/
-*** TODO: Fix kernel to load -fpie compiled programs not at 0x400000
-** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
-*** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
-*** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
-** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
-** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
-** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
-** why does acl2 build hangs process ?
-** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
-** debian-cd to use xorriso
-** debian-cd: do not compress kernel.
-
-* add wiki page about kernel cross-compiling
-
 * Kernel: Hard to solve outstanding issues
 ** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian -> maybe patch https://patchwork.kernel.org/patch/7738911/ needed to enable PCI-PCI bridge?
 ** Fix FireGL X1/X3 in C8000 - currently broken (no DRM and software accel is incredibly slow <strike>plus colors in 24bpp mode are wrong</strike> seems ok in debian 8 sid / 3.16.7 kernel) - Info: manual "Radeon R5xx Acceleration" - http://www.x.org/docs/AMD/R5xx_Acceleration_v1.1.pdf  and generic: http://www.botchco.com/agd5f/?p=50 
 
 * Kernel: still missing Linux kernel development (no patches available yet):
+** Fix kernel to load -fpie compiled programs not at 0x400000
+** maybe implement transparent huge pages (due to cache coherency technically only possible on PA8500-PA8700 CPUs, not possible on PA8800-PA8900 CPUs)
 ** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** Implement CONFIG_DEBUG_STACK_USAGE ?
@@ -91,29 +50,48 @@ title: TODO
 ** check assembly in drivers/parisc/*
 ** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
 ** arch/parisc/kernel/sys_parisc.c -> use SYSCALL_ALIAS() -> maybe
-** on C8000, report 1 socket with 2 cores.
+** implement libnuma kernel support to report on C8000 one socket with 2 cores.
 ** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 
 * Kernel: Low priority patches needs further work 
-** Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - partly done.
 ** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
 ** enable 16k/64k kernel page sizes (still cacheflushing-issues with SCSI driver, additional work in glibc needed to deal with >4k page size, e.g. ld-loader alignments of data/code segments)
 ** Superdome support - can someone test? Should work better now with latest kernels.
-** task_struct/thread_info split -- task_struct should not be visible in entry.S, we need to move some items into thread_info -- this includes pt_regs and maybe some of the flags (ptrace, etc)
 ** Visualize FX support (will probably never happen!)
-* PROBABLY NOT POSSIBLE: implement BUG() and WARN() so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Not possible, because this gives "control reaches end of non-void function" warnings/errors.
+** implement BUG() and WARN() with inline assembly so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Probably not possible, because gcc will report "control reaches end of non-void function" warnings/errors.
 
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
 ** Fix qemu
 ** 64-bit userspace, 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
+* userspace
+** elfutils -- testsuite error
+** glib2.0 -- testsuite error
+** gtk+3.0 succeeds by adding this to debian/rules: touch testsuite/reftests/color-transition.ui.known_fail testsuite/reftests/linear-gradient-transition-to-other.ui.known_fail
+** libgadu - testsuite fails probably due to missing pthread cancellation in glibc.
+** glibc pthread cancellation: the main issue is the target specific code needed to handle stubs and signal frames.  See linux-unwind.h and hpux-unwind.h in gcc's libgcc/config/pa directory.  The function pa32_fallback_frame_state does the hard work for linux.  Hopefully, the signal tramp hasn't changed. All the unwind tests in gcc pass, so I think the implementation there is okay. It may be we need something similar to pa32_fallback_frame_state in glibc to fix cancellation
+** heimdal suceeds by increasing timeout for iprop test to 120 seconds.
+** cupt - build errors
+** libqb - testsuite error
+** libsoup2.4 -- testsuite error
+** DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
+** teach "blkid" about palo partition
+** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
+*** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
+*** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
+** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
+** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
+** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
+** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
+** debian-cd to use xorriso
+** debian-cd: do not compress kernel.
    
 * palo (PA-RISC Boot Loader):
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
 ** move decompression of Kernel to Linux kernel code instead of palo
 
-== Kernel patches ==
+== Upstream PA-RISC-related kernel patch history ==
 * Kernel 3.9:
 ** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
 ** add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
@@ -280,7 +258,9 @@ title: TODO
 ** DONE: add gzip-support (allow loading gzipped vmlinux files)
 ** DONE: in interactive mode, add reboot option command
 
-* Debian kernel
+* Debian kernel / Generic Kernel bugs fixed
+** DONE: Fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM (Kernel 3.12)
+** DONE: Lots of syscall fixes regarding compat kernel
 ** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
 ** DONE: Enable BMC in c8000 default kernel config - ipmi driver (CONFIG_IPMI_HANDLER=y) - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=747482
 ** DONE: remove HIL RTC from debian kernel - it creates a backtrace at boot because we have already another rtc0 active.
@@ -288,6 +268,9 @@ title: TODO
 ** DONE: Add crc-modules, event, isofs, jfs, mouse, sata, sound, squashfs, udf, uinput, scsi-common, scsi-extra, loop, serial and usb-serial debian-installer packages
 ** DONE: Kernel build problem: a) disable -mfast-indirect-calls in Makefile, b) gcc compiler bug in > gcc-4.8.3-3
 ** DONE: Drop HPUX-support from kernel (Kernel 4.0)
+** DONE: implemented HUGE pages
+** DONE: kernel timerfd_settime/timerfd_gettime issue, test with debian package:  liblinux-fd-perl -> https://patchwork.kernel.org/patch/7951661/, backported to all kernels
+** DONE: kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
@@ -296,7 +279,8 @@ title: TODO
 ** DONE: [http://anonscm.debian.org/cgit/d-i/attic/palo-installer.git/ palo-installer: fix palo entry "root=/dev/sda5" to become "root=UUID=XXXX"]  
 
 * binutils:
-** DONE: linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421
+** DONE: Add linker -fpie support, https://sourceware.org/bugzilla/show_bug.cgi?id=18421, debian package iceweasel and others
+** DONE: Using "gcc -o /dev/null" gives "ld: final link failed: File truncated" error: https://sourceware.org/bugzilla/show_bug.cgi?id=19526
 
 * gcc:
 ** DONE: Linker reports "XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX"
@@ -305,10 +289,20 @@ title: TODO
 
 * glibc:
 ** DONE: Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
+** DONE: O_SYNC wrongly defined in glibc (typo in hppa __O_SYNC define in <bits/fcntl.h>)
 ** DONE: eglibc mmap bug with localedef (see debian bugzilla http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741243)
+** DONE: Wrong __gmon_start__ symbol, showed in vlc - linker does not drop dependencies to unneeded shared libs, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770741. glibc bug report: https://sourceware.org/bugzilla/show_bug.cgi?id=19170
+** DONE: nss - dladdr from glibc returns wrong names on hppa, http://article.gmane.org/gmane.linux.ports.parisc/26290, Solution: https://sourceware.org/bugzilla/show_bug.cgi?id=19415
+** DONE: gcc userspace support for variable CAS (gcc atomic ops, __sync_XXX), initial support in kernel 3.17, http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89206491201cbd1571009b36292af781cef74c1b)
+*** gcc-4.9 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227914
+*** gcc-5.0 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227913
+*** packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
+*** __sync_val_compare_and_swap_8 was missing in: openvdb, idba, lizardfs, ...
 
 * Debian userspace:
 ** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
+** DONE: haskell (ghc) hangs: futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument). Solution: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=756260#15
+** DONE: port openmpi package: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730
 
 == ABI breakages (HP-UX support) ==
 * We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450
@@ -340,12 +334,8 @@ title: TODO
 ** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
 
 == Updates for next newsletter ==
-* fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM
-* Dave found O_SYNC bug in glibc (Typo in hppa __O_SYNC define in <bits/fcntl.h>)
-* lots of syscall fixes regarding compat kernel
 * Migration parisc-linux.org
 * debian-ports.org access
-* 3.13 with all patches in (coherency)
 * buildds running
 * wiki migration finished (05 Feb 2014)
 * old parisc-linux kernel mailinglist imported into gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc - 23 Nov 2014
