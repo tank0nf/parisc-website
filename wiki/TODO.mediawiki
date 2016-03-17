@@ -333,15 +333,6 @@ title: TODO
 ** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
 ** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
 
-== Updates for next newsletter ==
-* Migration parisc-linux.org
-* debian-ports.org access
-* buildds running
-* wiki migration finished (05 Feb 2014)
-* old parisc-linux kernel mailinglist imported into gmane.org - http://dir.gmane.org/gmane.linux.ports.parisc - 23 Nov 2014
-* parisc-linux domain is now owned by Helge (August 2014)
-* Debian 8.0 installer images available.
-
 = Testsuites, kernel and userspace testing tools =
 
 * https://github.com/linux-test-project/ltp - Linux Test Project
