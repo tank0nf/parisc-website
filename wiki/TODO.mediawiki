@@ -8,8 +8,9 @@ title: TODO
 * add wiki page about kernel cross-compiling
 
 * kernel work
+** STARTED: Implement CONFIG_DEBUG_STACK_USAGE: https://patchwork.kernel.org/patch/8625481/
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
-** STARTED: Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - partly done.
+** STARTED: Fix exception table entries to be of type int (32bit), even on 64bit kernel -> saves space. - https://patchwork.kernel.org/patch/3033801/ - patch done, waiting for upstream patches first.
 ** further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 ** ALPHA processor port:
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
@@ -43,7 +44,6 @@ title: TODO
 ** maybe implement transparent huge pages (due to cache coherency technically only possible on PA8500-PA8700 CPUs, not possible on PA8800-PA8900 CPUs)
 ** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
-** Implement CONFIG_DEBUG_STACK_USAGE ?
 ** fix wrong _init notation in kernel
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 ** implement alternative coding for UP/SMP. See arch/x86/include/asm/alternative.h
