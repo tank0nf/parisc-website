@@ -250,6 +250,12 @@ title: TODO
 ** parisc: Use parentheses around expression in floppy.h
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=98e8b6c9ac9d1b1e9d1122dfa6783d5d566bb8f7 '''parisc: Fix ptrace syscall number and return value modification'''] (backported to v4.0+)
 ** parisc: Wire up copy_file_range syscall
+* Kernel 4.6
+** parisc: Panic immediately when panic_on_oops
+** parisc: Drop alloc_hugepages and free_hugepages syscalls
+** parisc,metag: Implement CONFIG_DEBUG_STACK_USAGE option
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0de798584bdedfdad19db21e3c7aec84f252f4f3 parisc: Use generic extable search and sort routines]
+** parisc: Wire up preadv2 and pwritev2 syscalls
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
