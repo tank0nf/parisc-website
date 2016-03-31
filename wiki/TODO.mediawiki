@@ -254,6 +254,8 @@ title: TODO
 ** parisc,metag: Implement CONFIG_DEBUG_STACK_USAGE option
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0de798584bdedfdad19db21e3c7aec84f252f4f3 parisc: Use generic extable search and sort routines]
 ** parisc: Wire up preadv2 and pwritev2 syscalls
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4f4acc9472e54ce702f1d85fc9e6d57767dec91f parisc: Fix SIGSYS signals in compat case]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=910cd32e552ea09caa89cdbe328e468979b030dd parisc: Fix and enable seccomp filter support]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
