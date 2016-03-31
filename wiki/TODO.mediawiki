@@ -4,11 +4,12 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-03-27 ==
+== Status & TODO 2016-03-31 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
-** further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
+** STARTED: further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
+** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 ** ALPHA processor port:
@@ -254,8 +255,8 @@ title: TODO
 ** parisc,metag: Implement CONFIG_DEBUG_STACK_USAGE option
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0de798584bdedfdad19db21e3c7aec84f252f4f3 parisc: Use generic extable search and sort routines]
 ** parisc: Wire up preadv2 and pwritev2 syscalls
-** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4f4acc9472e54ce702f1d85fc9e6d57767dec91f parisc: Fix SIGSYS signals in compat case]
-** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=910cd32e552ea09caa89cdbe328e468979b030dd parisc: Fix and enable seccomp filter support]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4f4acc9472e54ce702f1d85fc9e6d57767dec91f parisc: Fix SIGSYS signals in compat case] (backported to v4.5)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=910cd32e552ea09caa89cdbe328e468979b030dd parisc: Fix and enable seccomp filter support] (backported to v4.5)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
