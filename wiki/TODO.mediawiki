@@ -8,6 +8,7 @@ title: TODO
 * add wiki page about kernel cross-compiling
 
 * kernel work
+** Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ?
 ** STARTED: further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
 ** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
