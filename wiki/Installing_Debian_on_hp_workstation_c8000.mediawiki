@@ -1,0 +1,8 @@
+---
+title: Installing Debian on hp workstation c8000
+---
+
+//** WORK IN PROGRESS **//
+
+The hp c8000 workstation is one of the last PA-RISC models built by Hewelett Packard - Paolo Alto. Usually, it comes with HP-UX v11 (a proprietary UNIX version) preinstalled. If you have it, keep it: HP-UX can be handy.
+Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need
