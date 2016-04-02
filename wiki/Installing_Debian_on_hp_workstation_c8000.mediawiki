@@ -6,11 +6,13 @@ title: Installing Debian on hp workstation c8000
 
 MOTIVATIONS AND SCOPES
 
-Probably you have recovered a disposed wokstation or you are looking around for a new exotic device where install Linux and pursue the "total domination strategy" (of the information technology space) started by Linus Torvalds in 1990.  The hp c8000 is a very solid hardware that you can easily find on internet electronic markets for 100E/$ or less. Using it intensively, probably you are going to spend more than 100E/$ in electricity bill in a year. If you upgrade it to the max, probably you will finish with a Linux box with the same firepower of a Rasperry Pi 3, a credit card size ARM Linux PC wich a maximum power consumption of 4 Watts (against the +650W of a c8000).
+This wiki already hosts a dedicated page about generic Linux Debian 8.0 installation procedure for PA-RISC machines. We have decided to make a specific page for the hp c8000 workstation not because it is easy, but because it is hard. Installing Linux on the c8000 is _very_ hard (respect the average) because this top-level hardware needs special attentions. We hope that this how-to will help. 
+
+Probably you have recovered a disposed workstation or you are looking around for a new exotic device where install Linux and pursue the "total domination strategy" (of the information technology space) started by Linus Torvalds in 1990.  The hp c8000 is a very solid hardware that you can easily find on internet electronic markets for 100E/$ or less. Using it intensively, probably you are going to spend more than 100E/$ in electricity bill in a year. If you upgrade it to the max, you will finish with a Linux box with the same firepower of a Rasperry Pi 3, a credit card size ARM Linux PC wich a maximum power consumption of 4 Watts (against the +650W of a c8000).
 
 Why so much ado and heat about nothing?
 
-Fist: because it is fun! Installing Linux on exotic hardware oblige you to understand a lot of small details and techniques usually fully trasparent for classical x86-PC hardware (because somebody else has already done all the dirty work for you).
+Fist: because it is fun! Installing Linux on exotic hardware oblige you to understand a lot of small details and techniques, usually fully trasparent for classical x86-PC hardware (because somebody else has already done all the really dirty work for you).
 
 Second: have a different point of view. In a world where all the PCs look the same, an old piece of silicon art like the c8000 can show you another way: see different, make different, think different. 
 
@@ -18,17 +20,53 @@ Third: learn how to interact with other - very competent - people on a maling li
   
 Fouth: total domination. Show to the world how you can install Linux _everywhere_. Linux (and the other indespensable Free Software tools like the GCC C compiler suite) can be more powerful than nuclear energy: you should learn how to use it wisely.  
 
-
 STEP_1: Find a free-as-freedom hard disk where install Linux
 
 The hp c8000 workstation is one of the last PA-RISC models built by Hewelett Packard - Paolo Alto. Usually, it comes with HP-UX v11 (a proprietary UNIX version) preinstalled. If you have it, keep it: HP-UX can be handy.
 Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need a second hard disk. The good news is that you can use hard disks with EIDE/PATA or SCSI-68pins interfaces. The c8000 has a modular, four slots bay where you can install any combination of SCSI and EIDE/PATA HDs. If you need to buy a new one, start with UTRA-320 SCSI models with 68 pins interface. Check the interface before buy because the ULTRA-320 SCSI disks may have different hardware connectors. 
 
 STEP_2: Find a serial terminal and a null modem cable
+To install Linux on the c8000 and do other useful things, you _really_ need a serial terminal. No terminal, no party. Luckly, there are less expensive alternatives to buy a 30 or 60 years old, 50 Kg beast with a CRT screen and a mechanical keyboard. Basically, you can use a normal PC with an USB to serial (RS-232) converter. To connect the serial port of your PC-emulated-teminal to the c8000 Serial Port A, you need a female-female-DB9 null-modem cable. Instead that buy a cable, you can make one with two female DB-9 connectors, a three poles cable and a soldering iron. Cross the pins 2 and 3 (RX and TX) and make a direct connection on pin 5 (common ground). The terminal emulator program depends by your host operating system. I'm using my personal game laptop with Windows 8.1 and PUTTY. Putty is very easy to use and offer a very good logging on text file (you can save the session and report the issues copying and pasting the messages. When you plug-and-pray the USB-to-serial adapter, the operating sustem will assign it a communication port. In my case, is named "COM3" (take note of the port because you will need it later) 
 
-To install Linux on the c8000 and do other useful things, you _really_ need a serial terminal. No terminal, no party. Luckly, there are less expensive alternatives to buy a 30 or 60 years old, 50 Kg beast with a CRT screen and a mechanical keyboard. Basically, you can use a normal PC with an USB to serial (RS-232) converter. To connect the serial port of your PC-emulated-teminal to the c8000 Serial Port A, you need a female-female-DB9 null-modem cable. Instead that buy a cable, you can make one with two female DB-9 connectors, a three poles cable and a soldering iron. Cross the pins 2 and 3 (RX and TX) and make a direct connection on pin 5 (common ground). The terminal emulator program depends by your host operating system. I'm using my personal game laptop with Windows 8.1 and PUTTY. Putty is very easy to use and offer a very good logging on text file (you can save the session and report the issues copiyng and pasting the messages.
-
-STEP_3: RTFM: Read The F#@=$! MANUAL and plant a tree
+STEP_3: RTFM: Read The F#@=$! Manual and plant a tree
 Yes, the c8000 comes with a very good, nicely formatted, very useful user manual, available in PDF format here. If you can, don't print it. Save the paper and save the world: to use the c8000 you are going to emit a lot of CO2. Plant a tree (two if you own a dual-CPUs/quad-cores model) if you can.
 
-STEP_4: Download
+STEP_4: Provide an Internet connection
+To install Linux, you need an internet connection. No internet, no party: the HPPA Debian 8.0 installation disk contains only the basic - text only - Linux environment: all the packages will be downloaded from external repository. My modem router offer DCHP capability, therefore a simple Ethernet cable between the c8000 and the modem/router is sufficent.  
+
+STEP_5: Download the Debian 8.0 install disk and burn it
+You can donwload the ISO image here, then you must burn it on a writable CD or DVD. On my c8000 both CD and DVD works; failure to boot from CD has been reported on some models.
+
+STEP_6: Set-up and power-on
+Before push on the power-on button, please check the checklist:
+a) unplug the power cable
+b) install the second HDD (where you are going to install Linux)
+c) if present, disconnect the HDD with HP-UX (better safe than sorry)
+d) unplug the monitor from the VGA card
+e) unplug USB keyboard and mouse
+f) connect the Ethernet cable
+g) connect the serial cable and USB-Serial adapter
+h) run the serial terminal program; set it with the right communication port; serial port parameters are: 9600 baud, 8 bits, 1 stop bit, no parity bit;
+i) plug the power cable
+j) push on the button; the c8000 should starts to produce some fan noise and some LEDs activity (looks on the back panel)
+k) if you are luckly, you should see some activity on the serial terminal; something like this messages:
+<Cpu0> 3400006300e00000  0000000000000000  CC_BOOT_START
+<Cpu0> 1600128000e00000  0000000000000000  CC_BOOT_CCQUEUE_START
+<Cpu0> 160012be00e00000  0000000000000213  CC_BOOT_INIT_CHASSIS_CODES
+<Cpu0> 0b00104b00e00000  0007e00402051428  CC_BOOT_TIMESTAMP
+<Cpu0> 2100127000e00000  fffffff0f0430000  CC_NVM_RESTARTED
+<Cpu0> 1600127300e00000  00000009000176c0  CC_NVM_PARMS
+<Cpu0> 1600128100e00000  0000000000000004  CC_BOOT_CCQUEUE_END
+<Cpu0> 1600104700e00000  00000000000000fc  CC_BOOT_CPUS_PRESENTL
+<Cpu0> 160012be00e00000  0000000000000213  CC_BOOT_INIT_CHASSIS_CODES
+<Cpu0> 0b00104b00e00000  0007e00402051430  CC_BOOT_TIMESTAMP
+<Cpu0> 2100127000e00000  fffffff0f0430000  CC_NVM_RESTARTED
+<Cpu0> 1600127300e00000  00000009000176c0  CC_NVM_PARMS
+<Cpu0> 1600104700e00000  00000000000000fc  CC_BOOT_CPUS_PRESENTL
+<Cpu0> 160012bb00e00000  0000000000000000  CC_BOOT_CPU_CACHE_FUSE_INIT
+<Cpu2> 160012bb02e00000  0000000000000002  CC_BOOT_CPU_CACHE_FUSE_INIT
+<Cpu1> 160012bb01e00000  0000000000000001  CC_BOOT_CPU_CACHE_FUSE_INIT
+.....
+
+STEP_7: Be ready to switch to manual control
+You are a pilot, not a monkey, therefore you must be ready to take manual control
