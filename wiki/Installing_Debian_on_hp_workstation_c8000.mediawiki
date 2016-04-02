@@ -50,6 +50,7 @@ h) run the serial terminal program; set it with the right communication port; se
 i) plug the power cable
 j) push on the button; the c8000 should starts to produce some fan noise and some LEDs activity (looks on the back panel)
 k) if you are luckly, you should see some activity on the serial terminal; something like this messages:
+
 <Cpu0> 3400006300e00000  0000000000000000  CC_BOOT_START
 
 <Cpu0> 1600128000e00000  0000000000000000  CC_BOOT_CCQUEUE_START
