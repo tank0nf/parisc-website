@@ -2,13 +2,13 @@
 title: Installing Debian on hp workstation c8000
 ---
 
-//** WORK IN PROGRESS **//
+//** WORK IN PROGRESS, ver. 0.01 / 2016-04-02 **//
 
 MOTIVATIONS AND SCOPES
 
-This wiki already hosts a dedicated page about generic Linux Debian 8.0 installation procedure for PA-RISC machines. We have decided to make a specific page for the hp c8000 workstation not because it is easy, but because it is hard. Installing Linux on the c8000 is _very_ hard (respect the average) because this top-level hardware needs special attentions. We hope that this how-to will help. 
+This wiki already hosts a dedicated page about generic Linux Debian 8.0 installation procedure for PA-RISC machines here. We have decided to make a specific page for the hp c8000 workstation not because it is easy, but because it is hard. Installing Linux on the c8000 is _very_ hard (respect the average) because this top-level hardware needs special attentions. We hope that this how-to will help the future users. 
 
-Probably you have recovered a disposed workstation or you are looking around for a new exotic device where install Linux and pursue the "total domination strategy" (of the information technology space) started by Linus Torvalds in 1990.  The hp c8000 is a very solid hardware that you can easily find on internet electronic markets for 100E/$ or less. Using it intensively, probably you are going to spend more than 100E/$ in electricity bill in a year. If you upgrade it to the max, you will finish with a Linux box with the same firepower of a Rasperry Pi 3, a credit card size ARM Linux PC wich a maximum power consumption of 4 Watts (against the +650W of a c8000).
+Probably you have recovered a disposed workstation or you are looking around for a new exotic device where install Linux and pursue the "total domination strategy" (of the information technology space) started by Linus Torvalds in 1990.  The hp c8000 is a very solid hardware that you can easily find on internet electronic markets for 100E/$ or less. Using it intensively, probably you are going to spend more than 100E/$ in electricity bill in a year (the c8000 has a +650W power supply, three system fans, two CPUs fans, and a dedicated PSU fan). 
 
 Why so much ado and heat about nothing?
 
@@ -22,8 +22,8 @@ Fouth: total domination. Show to the world how you can install Linux _everywhere
 
 STEP_1: Find a free-as-freedom hard disk where install Linux
 
-The hp c8000 workstation is one of the last PA-RISC models built by Hewelett Packard - Paolo Alto. Usually, it comes with HP-UX v11 (a proprietary UNIX version) preinstalled. If you have it, keep it: HP-UX can be handy.
-Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need a second hard disk. The good news is that you can use hard disks with EIDE/PATA or SCSI-68pins interfaces. The c8000 has a modular, four slots bay where you can install any combination of SCSI and EIDE/PATA HDs. If you need to buy a new one, start with UTRA-320 SCSI models with 68 pins interface. Check the interface before buy because the ULTRA-320 SCSI disks may have different hardware connectors. 
+The hp c8000 workstation is the last PA-RISC models built by Hewelett Packard - Paolo Alto. HP has designed the c8000 with the Intel Itanium processor in mind: c8000's  ZX1 chipset is electrically and logically compatible with the Itanium. Usually, the c8000 comes with HP-UX v11 (a proprietary UNIX version) preinstalled. If you have it, keep it: HP-UX can be handy.
+Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need a second hard disk. The good news is that you can use hard disks with EIDE/PATA or SCSI-68pins interfaces. The c8000 has a modular, fan cooled,  four slots bay where you can install any combination of SCSI and EIDE/PATA HDs. If you need to buy a new one, start with UTRA-320 SCSI models with 68 pins interface. Check the interface before buy because the ULTRA-320 SCSI disks may have different hardware connectors. 
 
 STEP_2: Find a serial terminal and a null modem cable
 To install Linux on the c8000 and do other useful things, you _really_ need a serial terminal. No terminal, no party. Luckly, there are less expensive alternatives to buy a 30 or 60 years old, 50 Kg beast with a CRT screen and a mechanical keyboard. Basically, you can use a normal PC with an USB to serial (RS-232) converter. To connect the serial port of your PC-emulated-teminal to the c8000 Serial Port A, you need a female-female-DB9 null-modem cable. Instead that buy a cable, you can make one with two female DB-9 connectors, a three poles cable and a soldering iron. Cross the pins 2 and 3 (RX and TX) and make a direct connection on pin 5 (common ground). The terminal emulator program depends by your host operating system. I'm using my personal game laptop with Windows 8.1 and PUTTY. Putty is very easy to use and offer a very good logging on text file (you can save the session and report the issues copying and pasting the messages. When you plug-and-pray the USB-to-serial adapter, the operating sustem will assign it a communication port. In my case, is named "COM3" (take note of the port because you will need it later) 
