@@ -4,5 +4,19 @@ title: Installing Debian on hp workstation c8000
 
 //** WORK IN PROGRESS **//
 
+MOTIVATIONS AND SCOPES
+
+Probably you have recovered a disposed wokstation or you are looking around for a new exotic device where install Linux and pursue the "total domination strategy" (of the information technology space) started by Linus Torvalds in 1990.  The hp c8000 is a very solid hardware that you can easily find on internet electronic markets for 100E/$ or less. Using it intensively, probably you are going to spend more than 100E/$ in electricity bill in a year. If you upgrade it to the max, probably you will finish with a Linux box with the same firepower of a Rasperry Pi 3, a credit card size ARM Linux PC wich a maximum power consumption of 4 Watts (against the +650W of a c8000). So much ado and heat about nothing?
+Fist: because it is fun! Installing Linux on exotic hardware oblige you to understand a lot of small details and techniques usually fully trasparent for classical x86-PC hardware (because somebody else has already done all the dirty work for you). Second: have a different point of view. In a world where all the PCs and workstations look the same, an old piece of silicon art like the c8000 can show you another way. Third: learn how to interact with other - very competent - people on a maling list. Report technical issues by email is a combination of art and science that you can learn only by doing. Sometime, the natural delay between the question and the answer give you the sensation to be alone on Mars. Forget real-time communication: you will learn how-to use the dead time between   
+  
+
+
+
+STEP_0: Find an hp c8000 workstation
+
+
+
 The hp c8000 workstation is one of the last PA-RISC models built by Hewelett Packard - Paolo Alto. Usually, it comes with HP-UX v11 (a proprietary UNIX version) preinstalled. If you have it, keep it: HP-UX can be handy.
-Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need
+Unfortunately, you cannot partion a disk for multiple operating system: to install Linux you need a second hard disk. The good news is that you can use hard disks with EIDE/PATA or SCSI-68pins interfaces. The c8000 has a modular, four slots bay where you can install any combination of SCSI and EIDE/PATA HDs. If you need to buy a new one, start with UTRA-320 SCSI models with 68 pins interface. Check the interface before buy because the ULTRA-320 SCSI disks may have different hardware connectors. 
+
+STEP_1: Find a free-as-freedom hard disk where install Linux
