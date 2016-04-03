@@ -122,7 +122,7 @@ title: TODO
 ** remove arch/parisc/kernel/sys32.h
 ** pa_memcpy() was broken on 64bit (due to gcc miscompiling nonstandard C-code)
 * Kernel 3.12:
-** Fix 64bit SMP kernel on HP Visualize J-6750, 32bit SMP does work (Machine owners: Dave Land, Domenico Andreoli) -> fixed in 3.12 and backported >= kernel 2.6.12 (http://git.kernel.org/cgit/linux/kernelgit/torvalds/linux.git/commit/?id=54e181e073fc1415e41917d725ebdbd7de956455)
+** Fix 64bit SMP kernel on HP Visualize J-6750, 32bit SMP does work (Machine owners: Dave Land, Domenico Andreoli) -> fixed in 3.12 and backported >= kernel 2.6.12 (http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=54e181e073fc1415e41917d725ebdbd7de956455)
 ** fix kernel crash when running "echo t > /proc/sysrq-trigger" http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=59b33f148cc08fb33cbe823fca1e34f7f023765e
 ** regenerate defconfigs to include CONFIG_DEVTMPFS=y and CONFIG_DEVTMPFS_MOUNT=y to avoid udev/initrd problems. Done. http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c1b14041aa86800cfd9e21b280b0eaee885fa623
 ** IMPI/BMC patch from Thomas Bogendoerfer - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fdbeb7de700a3c8fc85d7e595a6bf1c92a27c0a1 - test with: "ipmitool sdr"
