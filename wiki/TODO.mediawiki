@@ -4,12 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-03-31 ==
+== Status & TODO 2016-04-10 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
-** Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ?
-** STARTED: further implement seccomp syscal, e.g. more modes than just: SECCOMP_MODE_STRICT
+** STARTED: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
 ** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
@@ -258,6 +257,11 @@ title: TODO
 ** parisc: Wire up preadv2 and pwritev2 syscalls
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4f4acc9472e54ce702f1d85fc9e6d57767dec91f parisc: Fix SIGSYS signals in compat case] (backported to v4.5)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=910cd32e552ea09caa89cdbe328e468979b030dd parisc: Fix and enable seccomp filter support] (backported to v4.5)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=592570c950fb455226cd255603de7cede2be83e6 parisc: Handle R_PARISC_PCREL32 relocations in kernel modules]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=e3893027a300927049efc1572f852201eb785142 '''parisc: Avoid function pointers for kernel exception routines'''] - backported to all
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ef72f3110d8b19f4c098a0bff7ed7d11945e70c6 '''parisc: Fix kernel crash with reversed copy_from_user()'''] - backported to all
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=2ef4dfd9d9f288943e249b78365a69e3ea3ec072 '''parisc: Unbreak handling exceptions from kernel modules'''] - backported to all
+** parisc: Update comment regarding relative extable support
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -282,6 +286,7 @@ title: TODO
 ** DONE: kernel ptrace bug: http://thread.gmane.org/gmane.linux.ports.parisc/26273, possible fix: https://patchwork.kernel.org/patch/8063301/
 ** DONE: Implement CONFIG_DEBUG_STACK_USAGE, in kernel 4.6
 ** DONE: Use 32bit exception table entries, in kernel 4.6
+** DONE: implemented seccomp syscal, including SECCOMP_MODE_STRICT and mode 2
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
