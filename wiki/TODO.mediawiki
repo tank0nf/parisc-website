@@ -4,10 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-04-10 ==
+== Status & TODO 2016-04-13 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
+** build kernel with gcc-5
+** update defconfigs
+** STARTED: Fix FTRACE: https://patchwork.kernel.org/patch/8828531/ (old: https://patchwork.kernel.org/patch/3554391/)
+** STARTED: Add syscall ftrace support
 ** STARTED: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
 ** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
@@ -42,7 +46,6 @@ title: TODO
 * Kernel: still missing Linux kernel development (no patches available yet):
 ** Fix kernel to load -fpie compiled programs not at 0x400000
 ** maybe implement transparent huge pages (due to cache coherency technically only possible on PA8500-PA8700 CPUs, not possible on PA8800-PA8900 CPUs)
-** Fix FTRACE: https://patchwork.kernel.org/patch/3554391/
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** fix wrong _init notation in kernel
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
