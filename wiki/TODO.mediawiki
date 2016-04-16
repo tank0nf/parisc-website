@@ -8,7 +8,6 @@ title: TODO
 * add wiki page about kernel cross-compiling
 
 * kernel work
-** build kernel with gcc-5
 ** update defconfigs
 ** STARTED: Add syscall ftrace support
 ** STARTED: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
