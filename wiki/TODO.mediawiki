@@ -289,6 +289,7 @@ title: TODO
 ** DONE: Implement CONFIG_DEBUG_STACK_USAGE, in kernel 4.6
 ** DONE: Use 32bit exception table entries, in kernel 4.6
 ** DONE: implemented seccomp syscal, including SECCOMP_MODE_STRICT and mode 2
+** DONE: Fixed FTRACE support (http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=366dd4ea9d5f0eb78fdf4982d76506f99480ec0a)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
