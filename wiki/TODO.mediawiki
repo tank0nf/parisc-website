@@ -4,13 +4,12 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-04-13 ==
+== Status & TODO 2016-04-16 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
 ** build kernel with gcc-5
 ** update defconfigs
-** STARTED: Fix FTRACE: https://patchwork.kernel.org/patch/8828531/ (old: https://patchwork.kernel.org/patch/3554391/)
 ** STARTED: Add syscall ftrace support
 ** STARTED: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
 ** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
@@ -265,6 +264,7 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ef72f3110d8b19f4c098a0bff7ed7d11945e70c6 '''parisc: Fix kernel crash with reversed copy_from_user()'''] - backported to all
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=2ef4dfd9d9f288943e249b78365a69e3ea3ec072 '''parisc: Unbreak handling exceptions from kernel modules'''] - backported to all
 ** parisc: Update comment regarding relative extable support
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=366dd4ea9d5f0eb78fdf4982d76506f99480ec0a '''parisc: Fix ftrace function tracer'''] (not backported, maybe it should have been?)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
