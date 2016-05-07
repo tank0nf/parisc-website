@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-04-16 ==
+== Status & TODO 2016-05-07 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
@@ -266,6 +266,7 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=2ef4dfd9d9f288943e249b78365a69e3ea3ec072 '''parisc: Unbreak handling exceptions from kernel modules'''] - backported to all
 ** parisc: Update comment regarding relative extable support
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=366dd4ea9d5f0eb78fdf4982d76506f99480ec0a '''parisc: Fix ftrace function tracer'''] (not backported, maybe it should have been?)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f0b22d1bb2a37a665a969e95785c75a4f49d1499 parisc: fix a bug when syscall number of tracee is __NR_Linux_syscalls] (backported to v4.0+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
