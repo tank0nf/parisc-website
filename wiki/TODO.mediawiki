@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-05-07 ==
+== Status & TODO 2016-05-13 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
@@ -22,7 +22,8 @@ title: TODO
 ** Implement kernel VDSO support
 ** Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - like arm64
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
-** Due to very bad performance running multiple copies of dot program (Dave):
+** Due to very bad performance running multiple copies of dot program (Dave)
+*** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** add asm/io.h file, needed for some debian packages, e.g. crrcsim
