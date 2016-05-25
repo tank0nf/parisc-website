@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-05-13 ==
+== Status & TODO 2016-05-24 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
@@ -268,6 +268,21 @@ title: TODO
 ** parisc: Update comment regarding relative extable support
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=366dd4ea9d5f0eb78fdf4982d76506f99480ec0a '''parisc: Fix ftrace function tracer'''] (not backported, maybe it should have been?)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f0b22d1bb2a37a665a969e95785c75a4f49d1499 parisc: fix a bug when syscall number of tracee is __NR_Linux_syscalls] (backported to v4.0+)
+* Kernel 4.7
+** parisc: Fix typo in pdc.h
+** parisc: Fix typo in ldcw.h
+** parisc: Fix typos in eisa_eeprom.h
+** parisc: Fix typo in fpudispatch.c
+** parisc: Add syscall tracepoint support
+** parisc: Simplify and speed up get_user() and put_user()
+** parisc: Add 64bit get_user() and put_user() for 32bit kernel
+** parisc: Add ARCH_TRACEHOOK and regset support
+** parisc: Add native high-resolution sched_clock() implementation
+** parisc: Merge ftrace C-helper and assembler functions into .text.hot section
+** parisc: Use long jump to reach ftrace_return_to_handler()
+** parisc: Whitespace cleanups in unistd.h
+** parisc: Update futex.h to match generic implementation
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
