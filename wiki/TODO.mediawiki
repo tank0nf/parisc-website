@@ -4,16 +4,16 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-05-24 ==
+== Status & TODO 2016-05-25 ==
 * add wiki page about kernel cross-compiling
 
 * kernel work
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** update defconfigs
-** STARTED: Add syscall ftrace support
-** STARTED: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
-** STARTED: Add tracehook support (needed for seccomp testcases, gdb, ...)
+** DONE: Add syscall ftrace support
+** DONE: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
+** DONE: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 ** ALPHA processor port:
@@ -273,11 +273,11 @@ title: TODO
 ** parisc: Fix typo in ldcw.h
 ** parisc: Fix typos in eisa_eeprom.h
 ** parisc: Fix typo in fpudispatch.c
-** parisc: Add syscall tracepoint support
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fc79168a7c75423047d60a033dc4844955ccae0b parisc: Add syscall tracepoint support]
 ** parisc: Simplify and speed up get_user() and put_user()
 ** parisc: Add 64bit get_user() and put_user() for 32bit kernel
-** parisc: Add ARCH_TRACEHOOK and regset support
-** parisc: Add native high-resolution sched_clock() implementation
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=64e2a42bca12e408f0258c56adcf3595bcd116e7 parisc: Add ARCH_TRACEHOOK and regset support]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=54b668009076caddbede8fde513ca2c982590bfe '''parisc: Add native high-resolution sched_clock() implementation''']
 ** parisc: Merge ftrace C-helper and assembler functions into .text.hot section
 ** parisc: Use long jump to reach ftrace_return_to_handler()
 ** parisc: Whitespace cleanups in unistd.h
