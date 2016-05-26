@@ -29,7 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Apr 2016''' - Improved kernel ftrace support and added kernel regset support. Added native high-resolution clock support into Linux Kernel. Additional debian buildd make server added (savaria.parisc-linux.org). 
+* '''Apr 2016''' - Linux kernel 4.7 got improved kernel ftrace support, kernel regset support and a native high-resolution clock/timing support. Additional debian buildd make server added (savaria.parisc-linux.org). 
 * '''Mar 2016''' - Solved a [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70188 bug in gcc-4.9 (and higher)] which [http://article.gmane.org/gmane.linux.ports.parisc/26425 crashes kernel 4.3+ in the SCSI/block layer]. 
 * '''Feb 2016''' - We now have [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 11.000 pre-built debian unstable packages]. Many bugs in kernel and userspace were fixed. 
 * '''Jan 2016''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 10.900 pre-built debian unstable packages]. 
