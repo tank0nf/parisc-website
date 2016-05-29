@@ -71,6 +71,20 @@ title: Debian Buildpackages
  deb-src http://incoming.debian-ports.org/buildd unstable main
  deb-src http://incoming.debian.org/debian-buildd buildd-unstable main
 
+; For building debian packages in the chroots, add a file /etc/profile.d/fix-buildd.sh 
+
+ # Various fixes for the debian builds
+ # 1. vtk6 builds fail if DOT_NUM_THREADS is not set to 1 (machine gets unresponsive)
+ # uncomment ENVIRONMENT_FILTER in /etc/sbuild/sbuild.conf and add '^DOT_NUM_THREADS$' too!
+ DOT_NUM_THREADS=1
+ export DOT_NUM_THREADS
+ # 2. enable parallel building of packages
+ NUMCPU=$(getconf _NPROCESSORS_ONLN)
+ DEB_BUILD_OPTIONS="parallel=$NUMCPU"
+ export DEB_BUILD_OPTIONS
+
+; additionally, modify /etc/sbuild/sbuild.conf by uncommenting ENVIRONMENT_FILTER and add '^DOT_NUM_THREADS$' there.
+
 ; wanna-build interface:
 : https://wiki.debian.org/M68k/Porting#binNMU_notes
 : http://lists.debian.org/debian-68k/2012/12/msg00124.html
