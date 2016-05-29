@@ -307,6 +307,9 @@ title: TODO
 ** DONE: Use 32bit exception table entries, in kernel 4.6
 ** DONE: implemented seccomp syscal, including SECCOMP_MODE_STRICT and mode 2
 ** DONE: Fixed FTRACE support (http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=366dd4ea9d5f0eb78fdf4982d76506f99480ec0a)
+** DONE: Add syscall ftrace support
+** DONE: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage.
+** DONE: Add tracehook support (needed for seccomp testcases, gdb, ...)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
