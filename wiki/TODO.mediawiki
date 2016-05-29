@@ -4,16 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-05-25 ==
+== Status & TODO 2016-05-29 ==
 * add wiki page about kernel cross-compiling
-
 * kernel work
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
+** add dynamic ftrace support
+** revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** update defconfigs
-** DONE: Add syscall ftrace support
-** DONE: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage ? Is it need to run an if() ? - https://patchwork.kernel.org/patch/8787671/
-** DONE: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 ** ALPHA processor port:
