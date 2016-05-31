@@ -7,6 +7,7 @@ title: TODO
 == Status & TODO 2016-05-29 ==
 * add wiki page about kernel cross-compiling
 * kernel work
+** check failure of https://buildd.debian.org/status/logs.php?pkg=libsys-syscall-perl&arch=hppa
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
 ** add dynamic ftrace support
 ** revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
