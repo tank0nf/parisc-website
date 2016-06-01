@@ -4,11 +4,6 @@ title: NGLE
 
 This page aims to reveal those pieces needed for hardware acceleration on [https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/drivers/video/fbdev/stifb.c NGLE] family of graphics cards, which vendor decided to keep obscure.
 
-'''Info'''
-
-NGLE graphics subsystem overview: http://www.hpl.hp.com/hpjournal/95apr/apr95a5.pdf<br>
-Summary. Capabilities: from/to block transfer, block move, vectors, fast text (color expansion), solid fill, hw cursor. FIFO buffer for command queuing, offscreen memory accommodates data for cursor, clut and attributes.
-
 == Copy area ==
 ngledoblt.S is from X11 support [http://ftp.sunet.se/pub/Linux/distributions/mklinux/hppa/x11r6-linuxhppa.patch patch] for MkLinux on PA-RISC. It comes in assembler form only, so here's the translation
  <nowiki>
