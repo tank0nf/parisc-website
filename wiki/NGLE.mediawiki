@@ -118,7 +118,9 @@ $ngle4:
 </nowiki>
 ngleDepth24_CopyAreaFromToScreen differs only in reg10 init: write4(-0x445f6000,reg10) which resembles SETUP_FB() routine.<br><br>
 
+<div class="toccolours mw-collapsible mw-collapsed">
 ngledoblt.o.8.07 is an original blob realizing bit blit function [http://cvsweb.xfree86.org/cvsweb/xc/programs/Xserver/hw/hp/ngle/Attic/ngledoblt.o.8.07 provided] by vendor to X11 project, which matches ngledoblt.S. 8.07 means max STI ROM revision
+<div class="mw-collapsible-content">
  <nowiki>
 $CODE$:00000000 # Input MD5   : 195E3A8D90B0DFE5D09F3E05E2B4D9B7
 $CODE$:00000000
@@ -221,6 +223,7 @@ $CODE$:0000012C                 stw             %r31, 0(%r1)
 $CODE$:00000130                 bv              %r0(%rp)
 $CODE$:00000134                 ldo             -0x80(%sp), %sp
 </nowiki>
+</div></div><br>
 
 Resurrected and properly working ngledoblt.c to be used under [http://xorg.freedesktop.org/releases/X11R6.3/tars/ X11R6.3] and vendor cfb X server
  <nowiki>
