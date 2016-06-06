@@ -4,13 +4,12 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-05-29 ==
+== Status & TODO 2016-06-06 ==
 * add wiki page about kernel cross-compiling
 * kernel work
-** check failure of https://buildd.debian.org/status/logs.php?pkg=libsys-syscall-perl&arch=hppa
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
 ** add dynamic ftrace support
-** revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
+** STARTED: revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** update defconfigs
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
@@ -281,7 +280,10 @@ title: TODO
 ** parisc: Use long jump to reach ftrace_return_to_handler()
 ** parisc: Whitespace cleanups in unistd.h
 ** parisc: Update futex.h to match generic implementation
-
+** parisc: Fix printk time during boot
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=8b78f260887df532da529f225c49195d18fef36b parisc: Fix pagefault crash in unaligned __get_user() call] - backported to all
+** parisc: Move die_if_kernel() prototype into traps.h header
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=be24a89700eef61bedaba40f3b05ef07f5806e38 parisc: Fix backtrace on PA-RISC]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
