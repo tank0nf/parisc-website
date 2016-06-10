@@ -4,11 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-06-06 ==
+== Status & TODO 2016-06-10 ==
 * add wiki page about kernel cross-compiling
 * kernel work
+** Fix 32bit SMP kernel (crashes at bootup during memory initialization)
+** Started: Fix 53c700 SCSI driver (32bit)
+** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
-** add dynamic ftrace support
+** Started: add dynamic ftrace support
 ** STARTED: revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** update defconfigs
