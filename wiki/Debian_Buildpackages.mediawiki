@@ -71,19 +71,28 @@ title: Debian Buildpackages
  deb-src http://ftp.debian.org/debian unstable main
  deb-src http://incoming.debian.org/debian-buildd buildd-unstable main
 
-; For building debian packages in the chroots, add a file /etc/profile.d/fix-buildd.sh (see below) 
-; and modify /etc/sbuild/sbuild.conf by uncommenting ENVIRONMENT_FILTER and add '^DOT_NUM_THREADS$'.
+; For building debian packages in the chroots, store the following script as /usr/bin/fix-buildd into the chroots, 
+; and modify the chroot definitions in /etc/schroot/chroot.d/ to include this line: command-prefix=fix-buildd
 
+ #!/bin/sh
+ #-
  # Various fixes for the debian builds
- # 1. vtk6 builds fail if DOT_NUM_THREADS is not set to 1 (machine gets unresponsive)
- # uncomment ENVIRONMENT_FILTER in /etc/sbuild/sbuild.conf and add '^DOT_NUM_THREADS$' too!
- DOT_NUM_THREADS=1
- export DOT_NUM_THREADS
- # 2. enable parallel building of packages
- NUMCPU=$(getconf _NPROCESSORS_ONLN)
- DEB_BUILD_OPTIONS="parallel=$NUMCPU"
- export DEB_BUILD_OPTIONS
-
+ # everything in a function to avoid environment pollution
+ runprog() {
+   local cmd
+   # 1. vtk6 builds fail if DOT_NUM_THREADS is not set to 1 (machine gets unresponsive)
+   DOT_NUM_THREADS=1
+   export DOT_NUM_THREADS
+   # 2. enable parallel building of packages
+   NUMCPU=$(getconf _NPROCESSORS_ONLN)
+   DEB_BUILD_OPTIONS="parallel=$NUMCPU"
+   export DEB_BUILD_OPTIONS
+   # execute the command
+   cmd=$1
+   shift
+   exec "$cmd" "$@"
+ }
+ runprog "$@"
 
 ; wanna-build interface:
 : https://wiki.debian.org/M68k/Porting#binNMU_notes
