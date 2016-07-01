@@ -62,11 +62,11 @@ title: Debian Buildpackages
  ff02::2         ip6-allrouters
 
 ; In each chroot modify (for unstable) /etc/apt/sources.list
+ deb [arch=all] http://incoming.debian.org/debian-buildd buildd-unstable main
+ deb [arch=all] http://ftp.debian.org/debian unstable main
  deb http://ftp.ports.debian.org/debian-ports unstable main
  deb http://incoming.ports.debian.org/buildd unstable main
  # deb http://ftp.ports.debian.org/debian-ports experimental main
- deb [arch=all] http://incoming.debian.org/debian-buildd buildd-unstable main
- deb [arch=all] http://ftp.debian.org/debian unstable main
  # main/debian-installer
  deb-src http://ftp.debian.org/debian unstable main
  deb-src http://incoming.debian.org/debian-buildd buildd-unstable main
