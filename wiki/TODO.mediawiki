@@ -4,8 +4,10 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-06-28 ==
+== Status & TODO 2016-07-15 ==
 
+* Add patch for "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
+* Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/
 * add wiki page about kernel cross-compiling
 * kernel work
 ** Fix 32bit SMP kernel (crashes at bootup during memory initialization)
