@@ -291,6 +291,7 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=8b78f260887df532da529f225c49195d18fef36b parisc: Fix pagefault crash in unaligned __get_user() call] - backported to all
 ** parisc: Move die_if_kernel() prototype into traps.h header
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=be24a89700eef61bedaba40f3b05ef07f5806e38 parisc: Fix backtrace on PA-RISC]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=8beb330044d0d1878c7b92290e91c0b889e92633 '''53c700: fix BUG on untagged commands'''] - fixes SCSI on 712/715 machines with sym7xx driver (backported to 4.6)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
