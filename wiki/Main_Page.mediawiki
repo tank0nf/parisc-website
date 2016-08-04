@@ -29,6 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+* '''Aug 2016''' - Debian transitions to gcc-6 and boost1.61, Debian on hppa changes the default mpi implementation from mpich to openmpi
 * '''Jul 2016''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 11.200 pre-built debian unstable packages].
 * '''Jun 2016''' - Reached [http://buildd.debian-ports.org/status/architecture.php?a=hppa&suite=sid more than 11.100 pre-built debian unstable packages].
 * '''Apr 2016''' - Linux kernel 4.7 got improved kernel ftrace support, kernel regset support and a native high-resolution clock/timing support. Additional debian buildd make server added (savaria.parisc-linux.org). 
