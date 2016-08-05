@@ -292,6 +292,10 @@ title: TODO
 ** parisc: Move die_if_kernel() prototype into traps.h header
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=be24a89700eef61bedaba40f3b05ef07f5806e38 parisc: Fix backtrace on PA-RISC]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=8beb330044d0d1878c7b92290e91c0b889e92633 '''53c700: fix BUG on untagged commands'''] - fixes SCSI on 712/715 machines with sym7xx driver (backported to 4.6)
+* Kernel 4.8
+** parisc: Change structure intialisation to C99 style in iomap.c
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=773e1c5fa4bf1faa25e119490b26ece2ef1bdb46 parisc: Add <asm/hash.h>]
+** parisc: Add break statements to pdc_pat_io_pci_cfg_read()
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
