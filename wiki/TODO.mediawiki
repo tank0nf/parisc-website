@@ -7,21 +7,18 @@ title: TODO
 == Status & TODO 2016-08-05 ==
 
 * Fix msgpuck: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
-* Add patch for "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
-* Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/
+* Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * add wiki page about kernel cross-compiling
 * kernel work
+** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
+** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
+** update defconfigs
 ** Fix 32bit SMP kernel (crashes at bootup during memory initialization)
 ** Why does CONFIG_DEBUG_TIMEKEEPING=y does not work?
-** Started: Fix 53c700 SCSI driver (32bit)
 ** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
-** Started: add dynamic ftrace support
-** STARTED: revisit hash functions - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7e0fb73c52c4037b4d5ef9ff56c7296a3151bd92
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
-** update defconfigs
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
-** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 ** ALPHA processor port:
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
