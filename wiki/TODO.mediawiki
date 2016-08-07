@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2016-08-05 ==
 
+* Add GENERIC_CLOCKEVENTS to kernel config?  Fixes maybe clock_getres()
 * Fix msgpuck: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
 * Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * add wiki page about kernel cross-compiling
