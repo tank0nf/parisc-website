@@ -50,6 +50,7 @@ title: Debian Buildpackages
 
 ; On the physical server (outside of chroot) for building experimental:
 : adduser --force-badname --system -home /var/empty  --no-create-home --quiet _apt
+; chmod 666 /dev/ptmx  # if permissions aren't that yet
 
 ; In each chroot to be fixed:
 : Remove the link in the /usr/hppa64-linux-gnu directory to /usr/include:
