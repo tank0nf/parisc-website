@@ -4,11 +4,10 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-08-05 ==
+== Status & TODO 2016-08-20 ==
 
 * Add HAVE_ARCH_HARDENED_USERCOPY - see commit 73d35887e24da77e8d1321b2e92bd9b9128e2fc2
 * Add GENERIC_CLOCKEVENTS to kernel config?  Fixes maybe clock_getres()
-* Fix msgpuck: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
 * Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * add wiki page about kernel cross-compiling
 * kernel work
@@ -296,6 +295,8 @@ title: TODO
 ** parisc: Change structure intialisation to C99 style in iomap.c
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=773e1c5fa4bf1faa25e119490b26ece2ef1bdb46 parisc: Add <asm/hash.h>]
 ** parisc: Add break statements to pdc_pat_io_pci_cfg_read()
+** '''parisc: Fix automatic selection of cr16 clocksource''' (backported to 4.7)
+** '''parisc: Fix order of EREFUSED define in errno.h''' (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -357,6 +358,7 @@ title: TODO
 ** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
 ** DONE: haskell (ghc) hangs: futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument). Solution: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=756260#15
 ** DONE: port openmpi package: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730
+** DONE: Fix msgpuck build breakage: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
 
 == ABI breakages (HP-UX support) ==
 * We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN. (I believe we should pull the plug on HP-UX entirely.  If there ever was enough interest, It should be supported in a VM.  Machines are relatively cheap now.  So, if someone needs hpux, they can buy a machine for it.) We have a more diverse user space under Linux and I believe in supporting open source, so we should focus on it -> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450
