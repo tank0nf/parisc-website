@@ -295,8 +295,8 @@ title: TODO
 ** parisc: Change structure intialisation to C99 style in iomap.c
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=773e1c5fa4bf1faa25e119490b26ece2ef1bdb46 parisc: Add <asm/hash.h>]
 ** parisc: Add break statements to pdc_pat_io_pci_cfg_read()
-** '''parisc: Fix automatic selection of cr16 clocksource''' (backported to 4.7)
-** '''parisc: Fix order of EREFUSED define in errno.h''' (backported to all)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ae141830b118c3fb5b7eab6fa7c8ab7b7224b0a4 '''parisc: Fix automatic selection of cr16 clocksource'''] (backported to 4.7)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=3eb53b20d7bd1374598cfb1feaa081fcac0e76cd '''parisc: Fix order of EREFUSED define in errno.h'''] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
