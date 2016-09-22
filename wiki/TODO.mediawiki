@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-08-20 ==
+== Status & TODO 2016-09-22 ==
 
+* unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * rebuild packages with kernel 4.7 which has better timing: ismrmrd, haskell-http-conduit, ... 
 * Add HAVE_ARCH_HARDENED_USERCOPY - see commit 73d35887e24da77e8d1321b2e92bd9b9128e2fc2
 * Add GENERIC_CLOCKEVENTS to kernel config?  Fixes maybe clock_getres()
