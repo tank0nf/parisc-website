@@ -370,6 +370,12 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 | width="50%" | User's Manual - HP C8000 Workstation - Technical Reference Guide<br />
 |- bgcolor="#dcdcdc" valign="top"
 | width="25%" |
+[[File:GSP_User_Guide.pdf]]
+| width="5%" | 0.8M
+| width="20%" | 2000
+| width="50%" | Service Processor (GSP or MP) User Guide<br />
+|- valign="top"
+| width="25%" |
 |}<br /><br />
 
 ==PA-RISC Papers and Presentations==
