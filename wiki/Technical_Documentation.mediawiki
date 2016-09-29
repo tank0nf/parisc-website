@@ -372,7 +372,7 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 | width="25%" |
 [[File:GSP_User_Guide.pdf]]
 | width="5%" | 0.8M
-| width="20%" | 2000
+| width="20%" | 2009
 | width="50%" | Service Processor (GSP or MP) User Guide<br />
 |- valign="top"
 | width="25%" |
