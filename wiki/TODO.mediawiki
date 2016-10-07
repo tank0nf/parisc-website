@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-10-06 ==
+== Status & TODO 2016-10-07 ==
 
 * Add kasan checks ?
-* convert from bootmem to memblock, see: 0e46c1115f5816949220d62dd3ff04aa68e7ac6b, https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html
+* DONE: Fix 32bit SMP kernel (crashes at bootup during memory initialization)
+* DONE: convert from bootmem to memblock, see: 0e46c1115f5816949220d62dd3ff04aa68e7ac6b, https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html
 * DONE: Add cfi_startproc / cfi_endproc to asm code, see: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=49deffe0b0e4c2030696c7a6fd680bacf4761069
 * Find reproducer for gcc bug in espresso: https://buildd.debian.org/status/fetch.php?pkg=espresso&arch=hppa&ver=5.4.0%2Bdfsg-5&stamp=1474830912
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
@@ -20,7 +21,6 @@ title: TODO
 ** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 ** update defconfigs
-** Fix 32bit SMP kernel (crashes at bootup during memory initialization)
 ** Why does CONFIG_DEBUG_TIMEKEEPING=y does not work?
 ** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
