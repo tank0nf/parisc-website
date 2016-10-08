@@ -299,10 +299,17 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ae141830b118c3fb5b7eab6fa7c8ab7b7224b0a4 '''parisc: Fix automatic selection of cr16 clocksource'''] (backported to 4.7)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=3eb53b20d7bd1374598cfb1feaa081fcac0e76cd '''parisc: Fix order of EREFUSED define in errno.h'''] (backported to all)
 * Kernel 4.9
-* DONE: Fix 32bit SMP kernel (crashes at bootup during memory initialization)
-* DONE: convert from bootmem to memblock, see: 0e46c1115f5816949220d62dd3ff04aa68e7ac6b, https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html
-* DONE: Add cfi_startproc / cfi_endproc to asm code, see: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=49deffe0b0e4c2030696c7a6fd680bacf4761069
-* DONE: Add HAVE_ARCH_HARDENED_USERCOPY - see commit 73d35887e24da77e8d1321b2e92bd9b9128e2fc2
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=690d097c00c88fa9d93d198591e184164b1d8c20 '''parisc: Increase KERNEL_INITIAL_SIZE for 32-bit SMP kernels'''] (backported to 4.4+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4fe9e1d957e45ad8eba9885ee860a0e93d13a7c7 parisc: Drop bootmem and switch to memblock]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9e91db6b4abecd58647a5e984d538187f1c2ea09 parisc: Add hardened usercopy feature]
+** parisc: Add cfi_startproc and cfi_endproc to assembly code
+** parisc: Move hpmc stack into page aligned bss section
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=92420bd0d01f040bbf754e1d090be49ca6a1c8d6 '''parisc: Fix self-detected CPU stall warnings on Mako machines'''] (backported to 4.7+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b391667eb45a5a888bc9372462c5f647418c31af parisc: Report trap type as human readable string]
+** parisc: Update comment regarding implementation of copy_user_page_asm
+** parisc: Use kmalloc_array() in add_system_map_addresses()
+** parisc: Check return value of smp_boot_one_cpu()
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5d5cf2b8a68618a8ec646cab5746e2f539dc244 parisc: Drop BROKEN_RODATA config option]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
