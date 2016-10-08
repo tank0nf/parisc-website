@@ -318,8 +318,9 @@ title: TODO
 ** DONE: Migrate to git.kernel.org -> done: http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/
 ** DONE: add gzip-support (allow loading gzipped vmlinux files)
 ** DONE: in interactive mode, add reboot option command
+** DONE: [https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/commit/?id=70bd7a9a41e318c0575755a78c4d18ad97495c47 '''Unbreak loading Linux kernels bigger than 16 MB'''] (fixed in palo 1.96, Oct. 2016)
 
-* Debian kernel / Generic Kernel bugs fixed
+Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM (Kernel 3.12)
 ** DONE: Lots of syscall fixes regarding compat kernel
 ** DONE: send patches to remove UP from debian kernels, use sil680 instead of siimage, see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721191 -> fixed in 3.12 / 3.13
