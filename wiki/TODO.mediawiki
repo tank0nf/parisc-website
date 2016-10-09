@@ -7,6 +7,7 @@ title: TODO
 == Status & TODO 2016-10-07 ==
 
 * Add kasan checks ?
+* Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave) 
 * Find reproducer for gcc bug in espresso: https://buildd.debian.org/status/fetch.php?pkg=espresso&arch=hppa&ver=5.4.0%2Bdfsg-5&stamp=1474830912
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * rebuild packages with kernel 4.7 which has better timing: ismrmrd, haskell-http-conduit, ... 
