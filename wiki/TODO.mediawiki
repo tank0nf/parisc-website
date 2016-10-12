@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-10-07 ==
+== Status & TODO 2016-10-12 ==
 
 * Why does CONFIG_DEBUG_TIMEKEEPING=y does not work? -> maybe: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=604a830d4fb5bf2334263bd597de22652e63b7e6* Add kasan checks ?
 * Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave) 
@@ -310,6 +310,13 @@ title: TODO
 ** parisc: Use kmalloc_array() in add_system_map_addresses()
 ** parisc: Check return value of smp_boot_one_cpu()
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b5d5cf2b8a68618a8ec646cab5746e2f539dc244 parisc: Drop BROKEN_RODATA config option]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=65bf34f59594c11f13d371c5334a6a0a385cd7ae '''parisc: Increase initial kernel mapping size'''] (backported to v4.4+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f8850abb7ba68229838014b3409460e576751c6d '''parisc: Fix kernel memory layout regarding position of __gp'''] (backported to v4.4+)
+** parisc: Move exception table into read-only section
+** parisc: Zero-initialize newly alloced memblock
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0a862485f42af7df530b0b5f0e5ba8ffbb3a4a12 parisc: Show trap name in kernel crash]
+** parisc: Migrate exception table users off module.h and onto extable.h
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
