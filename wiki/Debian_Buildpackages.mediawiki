@@ -111,6 +111,9 @@ title: Debian Buildpackages
 : Log in as buildd2 and manually run "buildd" to check if everything works.
 : If everything worked add the buildd-cronjobs for buildd2 in /etc/cron.d/buildd (copy existing entries and change copied entries to use "buildd2" instead of "buildd" 
 
+; How to setup a dd porterbox.
+: See https://wiki.debian.org/NonDSAPorterBoxSetUp
+
 ; How to create a palo iplboot image from official Debian install CD
 : palo --init-tape=lifimage -k vmlinux-3.13-1-parisc.gz -k vmlinux-3.13-1-parisc64-smp.gz -r initrd.gz --commandline='0/vmlinux initrd=0/ramdisk panic_timeout=60 panic=-1 debian-installer/allow_unauthenticated=true mirror/http/hostname=mkhppa3.esiee.fr mirror/http/directory=/debian'
 
