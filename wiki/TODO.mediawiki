@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-10-12 ==
+== Status & TODO 2016-10-16 ==
 
+* STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
 * Why does CONFIG_DEBUG_TIMEKEEPING=y does not work? -> maybe: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=604a830d4fb5bf2334263bd597de22652e63b7e6* Add kasan checks ?
 * Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave) 
 * Find reproducer for gcc bug in espresso: https://buildd.debian.org/status/fetch.php?pkg=espresso&arch=hppa&ver=5.4.0%2Bdfsg-5&stamp=1474830912
@@ -26,7 +27,6 @@ title: TODO
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
 ** Implement kernel VDSO support
-** Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - like arm64
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 ** Due to very bad performance running multiple copies of dot program (Dave)
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
