@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-10-28 ==
+== Status & TODO 2016-11-04 ==
 
 * Enable UBSAN and fix allouts
 * STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
@@ -317,6 +317,11 @@ title: TODO
 ** parisc: Zero-initialize newly alloced memblock
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=0a862485f42af7df530b0b5f0e5ba8ffbb3a4a12 parisc: Show trap name in kernel crash]
 ** parisc: Migrate exception table users off module.h and onto extable.h
+** parisc: use KERN_CONT when printing device inventory
+** parisc: Use LINUX_GATEWAY_ADDR define instead of hardcoded value
+** parisc: Ignore the pkey system calls for now
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f4125cfdb3008363137f744c101e5d76ead760ba '''parisc: Avoid trashing sr2 and sr3 in LWS code''']
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=6ed518328d0189e0fdf1bb7c73290d546143ea66 '''parisc: Ensure consistent state when switching to kernel stack at syscall entry'''] (backported to all)
 
 
 == Debian kernel and userspace programs ==
