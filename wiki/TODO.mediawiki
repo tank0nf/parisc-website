@@ -44,7 +44,7 @@ title: TODO
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 ** why does mc hangs when exiting on sticon ?
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
-** physically broken memory in Dave's machine - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/
+** detect physically broken memory - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/,  new idea: use: PDC_PAT_MEM_PD_INFO (see pdcpat.h)
 
 * Kernel: Hard to solve outstanding issues
 ** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian -> maybe patch https://patchwork.kernel.org/patch/7738911/ needed to enable PCI-PCI bridge?
