@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-11-04 ==
+== Status & TODO 2016-11-25 ==
 
 * Enable UBSAN and fix allouts
 * STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
@@ -13,7 +13,7 @@ title: TODO
 * Find reproducer for gcc bug in espresso: https://buildd.debian.org/status/fetch.php?pkg=espresso&arch=hppa&ver=5.4.0%2Bdfsg-5&stamp=1474830912
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * rebuild packages with kernel 4.7 which has better timing: ismrmrd, haskell-http-conduit, ... 
-* Add GENERIC_CLOCKEVENTS to kernel config?  Fixes maybe clock_getres()
+* Implement GENERIC_CLOCKEVENTS with cr16 cycle counter ? (kernel 4.9)
 * Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * add wiki page about kernel cross-compiling
 * kernel work
@@ -322,7 +322,11 @@ title: TODO
 ** parisc: Ignore the pkey system calls for now
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f4125cfdb3008363137f744c101e5d76ead760ba '''parisc: Avoid trashing sr2 and sr3 in LWS code''']
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=6ed518328d0189e0fdf1bb7c73290d546143ea66 '''parisc: Ensure consistent state when switching to kernel stack at syscall entry'''] (backported to all)
-
+** parisc: Fix printk continuations in system detection
+** parisc: Switch to generic sched_clock implementation
+** parisc: Fix races in parisc_setup_cache_timing()
+** parisc: Fix race in pci-dma.c
+** parisc: Also flush data TLB in flush_icache_page_asm
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
