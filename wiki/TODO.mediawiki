@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2016-11-28 ==
 
+* Fix palo (iplloader) to not break if /boot/vmlinux is a broken symlink (report from Meelis Roos)
 * Enable UBSAN and fix allouts
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
 * STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
