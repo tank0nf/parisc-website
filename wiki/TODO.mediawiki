@@ -4,9 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-11-28 ==
+== Status & TODO 2016-12-09 ==
 
-* Fix palo (iplloader) to not break if /boot/vmlinux is a broken symlink (report from Meelis Roos)
+* Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
 * Enable UBSAN and fix allouts
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
 * STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
@@ -327,6 +327,9 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=741dc7bf1c7c7d93b853bb55efe77baa27e1b0a9 '''parisc: Fix races in parisc_setup_cache_timing()'''] (backported to v3.18+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c0452fb9fb8f49c7d68ab9fa0ad092016be7b45f '''parisc: Fix race in pci-dma.c'''] (backported to v3.16+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5035b230e7b67ac12691ed3b5495bbb617027b68 '''parisc: Also flush data TLB in flush_icache_page_asm'''] (backported to v3.16+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24d0492b7d5d321a9c5846c8c974eba9823ffaa0 parisc: Fix TLB related boot crash on SMP machines] (backported to v3.18+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c78e710c1c9fbeff43dddc0aa3d0ff458e70b0cc parisc: Purge TLB before setting PTE] (backported to v3.16+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=febe42964fe182281859b3d43d844bb25ca49367 parisc: Remove unnecessary TLB purges from flush_dcache_page_asm and flush_icache_page_asm] (backported to v3.16+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
