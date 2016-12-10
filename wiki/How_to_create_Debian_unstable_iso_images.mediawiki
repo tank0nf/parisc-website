@@ -96,6 +96,7 @@ Download it, configure it and let it build the image:
   patch -p1 -s < Debian-cd.patch.txt
   # after patching check changes with "git diff" and modify as needed
   # adjust the kernel options (KERNEL_PARAMS in CONF.sh)
+  # modify DI_DIR in easy-build.sh to point to the cdrom directory (instead of netboot dir)
 
 === Build the final iso image ===
 
