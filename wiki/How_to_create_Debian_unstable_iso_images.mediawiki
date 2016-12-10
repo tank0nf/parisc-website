@@ -106,6 +106,9 @@ Download it, configure it and let it build the image:
   ./easy-build.sh CD $HOSTTYPE
 
 
+=== External HOWTOs ===
+
+https://wiki.debian.org/PortsDocs/CreateDebianInstallerImages
 
 
 
