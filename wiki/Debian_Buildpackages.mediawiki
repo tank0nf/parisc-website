@@ -2,19 +2,26 @@
 title: Debian Buildpackages
 ---
 
-==How to build debian packages==
+=== Debian Buildservers ===
 
-; Setting up buildd server with btrfs:
-: https://lists.debian.org/debian-68k/2013/10/msg00006.html
+; Since December 2013 we have debian unstable buildservers.
+: Current build status is here: https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid
 
-; DebianWannaBuildInfrastructureOnOneServer
-: https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer
+; Contacts for the debian HPPA buildds
+: Helge Deller <deller@gmx.de>, PA-RISC Kernel maintainer, buildd maintainer
+: John David Anglin <dave.anglin@bell.net>, HPPA GCC, and binutils maintainer
 
-; Another description on how to set up a buildd 
-: https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd
+; James Clarke provides easy-to-use scripts to set up a buildd server:
+: https://wiki.debian.org/PortsDocs/BuilddSetup
 
-; debian-ports policy and description:
-: http://www.debian-ports.org/archive 
+Some other info:
+
+* [https://lists.debian.org/debian-68k/2013/10/msg00006.html Setting up buildd server with btrfs]
+* [https://wiki.debian.org/DebianWannaBuildInfrastructureOnOneServer DebianWannaBuildInfrastructureOnOneServer]
+* [https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd Another description on how to set up a buildd]
+* [http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/ How to use subkeys for signing on buildds]
+
+== How to manually build debian packages ==
 
 ; How to get a specific version of a source package
 : apt-get source packagename=version
@@ -33,10 +40,6 @@ title: Debian Buildpackages
 ; How to modify debian changelog:
 : dch --distribution unstable --bin-nmu Rebuild b1
 : dch-git --since <commit_nr> 
-
-
-; How to use subkeys for signing on buildds
-: http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/
 
 ; How to sign packages (without debsign)
 : http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
@@ -132,12 +135,3 @@ The hppa linux port has moved to the debian-ports distribution.
 For more information about debian-ports see http://www.debian-ports.org.
 
 [[Debian_Ports_Installation]] describes instructions on how to install or upgrade a PARISC box with the "Debian Ports" unstable release.
-
-=== Debian Buildservers ===
-
-; Since December 2013 we have debian unstable buildservers
-: https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid
-
-; Contacts for the debian HPPA buildds
-: Helge Deller <deller@gmx.de>, PA-RISC Kernel maintainer, buildd maintainer
-: John David Anglin <dave.anglin@bell.net>, HPPA GCC, and binutils maintainer
