@@ -4,13 +4,12 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-12-10 ==
+== Status & TODO 2016-12-21 ==
 
 * Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
 * Enable UBSAN and fix allouts
 * Enable huge pages on kernel text for C8000 as well
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
-* STARTED: Add KASLR (Kernel Address Layout Randomization, ARCH_HAS_ELF_RANDOMIZE, arch_mmap_rnd() and such) - https://patchwork.kernel.org/patch/9377963/
 ** Fix kernel to load -fpie compiled programs not at 0x400000
 * STARTED: detect physically broken memory - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/,  new idea: use: PDC_PAT_MEM_PD_INFO (see pdcpat.h)
 * STARTED: Implement GENERIC_CLOCKEVENTS with cr16 cycle counter ? (kernel 4.9)
@@ -331,6 +330,12 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24d0492b7d5d321a9c5846c8c974eba9823ffaa0 parisc: Fix TLB related boot crash on SMP machines] (backported to v3.18+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c78e710c1c9fbeff43dddc0aa3d0ff458e70b0cc parisc: Purge TLB before setting PTE] (backported to v3.16+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=febe42964fe182281859b3d43d844bb25ca49367 parisc: Remove unnecessary TLB purges from flush_dcache_page_asm and flush_icache_page_asm] (backported to v3.16+)
+* Kernel 4.10
+** parisc: perf: return -EFAULT on error
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=18d98a79382cbe5a7569788d5b7b18e7015506f2 parisc: Enable KASLR]
+** parisc: Re-enable interrupts early
+** parisc: Enhance CPU detection code on PAT machines
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=160494d381373cfa21208484aea4e5db2d3cb0a8 parisc: Optimize timer interrupt function]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
