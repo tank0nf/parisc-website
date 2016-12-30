@@ -29,7 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-* '''Dec 2016''' - Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.400 pre-built debian unstable packages].
+* '''Dec 2016''' - Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.400 pre-built debian unstable packages]. John David Anglin and John Paul Adrian Glaubitz fix the [https://buildd.debian.org/status/package.php?p=firefox&suite=sid Firefox webbrowser] with help of Michael Karcher.  
 * '''Nov 2016''' - [https://marc.info/?l=glibc-alpha&m=147869603031638&w=2 Richard Henderson announced initial work on a user-only target of hppa to QEMU]. The website and domain http://pateam.org has expired and all content is now archived at http://pateam.parisc-linux.org/. Thanks to Thibaut Varene for his work on pateam.org.
 * '''Oct 2016''' - New [https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/ palo v1.96 bugfix release available]. 
 * '''Sep 2016''' - Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.300 pre-built debian unstable packages]. Linux Kernel 4.7 now [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=54b668009076caddbede8fde513ca2c982590bfe includes a high-resolution timer] based on the cr16 clocksource. Debian perl transition finished. Debian Linux Kernel 4.7.5 available.
