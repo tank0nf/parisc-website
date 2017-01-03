@@ -17,6 +17,7 @@ If you want to install debian the hard way with many manual steps, you can read 
 == Installation of Debian unstable via debian-ports repository ==
 
 The latest installation medias for Debian unstable is available at either one of the following locations:
+# http://prometheus.parisc-linux.org/debian-cd/debian-9.0/debian-9.0r1/ (Debian 9, provided by Mike Hosken)
 # http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/
 # http://backup.parisc-linux.org/debian-cd/
 # http://parisc.osuosl.org/debian-cd/
