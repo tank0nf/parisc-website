@@ -13,6 +13,7 @@ title: Debian Buildpackages
 
 ; James Clarke provides easy-to-use scripts to set up a buildd server:
 : https://wiki.debian.org/PortsDocs/BuilddSetup
+: https://anonscm.debian.org/git/users/jrtc27/dsa-puppet.git/
 
 Some other info:
 
