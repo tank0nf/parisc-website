@@ -336,9 +336,9 @@ title: TODO
 ** parisc: Re-enable interrupts early
 ** parisc: Enhance CPU detection code on PAT machines
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=160494d381373cfa21208484aea4e5db2d3cb0a8 parisc: Optimize timer interrupt function]
-** '''parisc: Mark cr16 clocksource unstable on SMP systems''' (backported to v4.8+)
-** parisc: Drop TIF_RESTORE_SIGMASK and switch to generic code
-** parisc: Add line-break when printing segfault info (backported to v4.9)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=41744213602a206f24adcb4a2b7551db3c700e72 '''parisc: Mark cr16 clocksource unstable on SMP systems'''] (backported to v4.8+)
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1fe0a7e0bc52024a445945c9e7691551aba97390 parisc: Drop TIF_RESTORE_SIGMASK and switch to generic code]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b4a9eb4cd5966c8aad3d007d206a2cbda97d6928 parisc: Add line-break when printing segfault info] (backported to v4.9)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
