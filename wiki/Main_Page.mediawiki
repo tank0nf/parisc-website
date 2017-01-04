@@ -29,6 +29,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
+Last updated: 20:49, 4 January 2017 (UTC) by [[User:Deller|Helge Deller]] ([[User talk:Deller|talk]])
 {|
 | style="vertical-align:top;" |'''Jan 2017'''||[https://lists.debian.org/debian-hppa/2017/01/msg00001.html New Debian-9 installation CDs] by Mike Hosken.
 Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.500 pre-built debian unstable packages].
@@ -47,7 +48,6 @@ Linux Kernel 4.7 now [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux
 Debian perl transition finished.
 Debian Linux Kernel 4.7.5 available.
 |-
---[[User:Deller|Helge Deller]] ([[User talk:Deller|talk]]) 20:39, 4 January 2017 (UTC)
 | style="vertical-align:top;" |'''Aug 2016'''||Debian transitions to gcc-6 and boost1.61, Debian on hppa changes the default mpi implementation from mpich to openmpi
 |-
 | style="vertical-align:top;" |'''Jul 2016'''||Reached more than 11.200 pre-built debian unstable packages.
