@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2016-12-21 ==
+== Status & TODO 2017-01-12 ==
 
+* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation)
 * Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
 * Enable UBSAN and fix allouts
 * Enable huge pages on kernel text for C8000 as well
