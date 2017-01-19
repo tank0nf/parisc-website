@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2017-01-15 ==
 
+* Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation)
 * Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
 * Enable UBSAN and fix allouts
