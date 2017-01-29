@@ -335,8 +335,8 @@ title: TODO
 * Kernel 4.10
 ** parisc: perf: return -EFAULT on error
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=18d98a79382cbe5a7569788d5b7b18e7015506f2 parisc: Enable KASLR]
-** parisc: Re-enable interrupts early
-** parisc: Enhance CPU detection code on PAT machines
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5c38602d83e584047906b41b162ababd4db4106d parisc: Re-enable interrupts early]
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=637250cc8f5e2bfc5c3a96802d1d96b4987a1d62 parisc: Enhance CPU detection code on PAT machines]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=160494d381373cfa21208484aea4e5db2d3cb0a8 parisc: Optimize timer interrupt function]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=41744213602a206f24adcb4a2b7551db3c700e72 '''parisc: Mark cr16 clocksource unstable on SMP systems'''] (backported to v4.8+)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1fe0a7e0bc52024a445945c9e7691551aba97390 parisc: Drop TIF_RESTORE_SIGMASK and switch to generic code]
