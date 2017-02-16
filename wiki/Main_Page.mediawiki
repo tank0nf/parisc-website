@@ -29,8 +29,10 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-Last updated: 20:49, 4 January 2017 (UTC) by [[User:Deller|Helge Deller]] ([[User talk:Deller|talk]])
+Last updated: [[User:Deller|Helge Deller]] ([[User talk:Deller|talk]]) 19:43, 16 February 2017 (UTC)
 {|
+| style="vertical-align:top;" |'''Feb 2017'''||[https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8a3cacb06d6ecfbe3ab0e0059bf6a4eb8b4b9dc6 Alan Modra and Dave Anglin fix pie support on hppa].
+|-
 | style="vertical-align:top;" |'''Jan 2017'''||[https://lists.debian.org/debian-hppa/2017/01/msg00001.html New Debian-9 installation CDs] by Mike Hosken.
 Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.500 pre-built debian unstable packages].
 |-
