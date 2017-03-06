@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-01-29 ==
+== Status & TODO 2017-03-06 ==
 
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation)
@@ -343,6 +343,13 @@ title: TODO
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b4a9eb4cd5966c8aad3d007d206a2cbda97d6928 parisc: Add line-break when printing segfault info] (backported to v4.9)
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=83b5d1e3d3013dbf90645a5d07179d018c8243fa parisc, parport_gsc: Fixes for printk continuation lines]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=2ad5d52d42810bed95100a3d912679d8864421ec '''parisc: Don't use BITS_PER_LONG in userspace-exported swab.h header'''] (backported to all, build-fix for qemu)
+* Kernel 4.11
+** parisc: eisa: Remove coding style errors
+** parisc: eisa: Fix resource leaks in error paths
+** parisc: ccio-dma: Handle return NULL error from ioremap_nocache
+** parisc: fix a printk
+** parisc: Define access_ok() as macro
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=ef470a60e10eb12635d7b84c9502cea3028d44e8 parisc: Remove flush_user_dcache_range and flush_user_icache_range]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
