@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-03-19 ==
+== Status & TODO 2017-03-25 ==
 
+* Fix boot crash from Al Viro with sti gfx card (24.03.17)
 * test and maybe issue message about de-configured processors.
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation)
