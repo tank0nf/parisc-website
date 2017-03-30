@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-03-25 ==
+== Status & TODO 2017-03-30 ==
 
+* Fix shutdown: I had issued a "shutdown -r".  As noted above, a panic occurred during the reboot (all CPUs were up). After this, stall messages were output to console after the bios version was printed.  So yes, maybe CPUs should be "stopped" before a panic reboot? (by Dave) 
 * Fix boot crash from Al Viro with sti gfx card (24.03.17)
 * test and maybe issue message about de-configured processors.
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
