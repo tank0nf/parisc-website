@@ -153,6 +153,7 @@ Another item that is sometimes useful is the instruction pointed to
 by IIR. Unfortunately, there is no easy way to decode the number
 to the symbolic instruction (unless you are Lamont :-) One way
 that I learned from Richard Hirst is shown below:
+(You can download this disasm tool to automate the disassembly: ftp://parisc.parisc-linux.org/source/checkedout/build-tools/disasm)
 
 <pre>
 legolas[12:00] ~% gdb /bin/ls           # most any binary would do....
