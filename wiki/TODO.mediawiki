@@ -358,7 +358,10 @@ title: TODO
 ** parisc: Avoid compiler warnings with access_ok()
 ** parisc: Fix system shutdown halt
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=316ec0624f951166daedbe446988ef92ae72b59f parisc: Optimize flush_kernel_vmap_range and invalidate_kernel_vmap_range]
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f655322b1ba4bd46e26e307d04098f9c84df764 parisc: support R_PARISC_SECREL32 relocation in modules]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f655322b1ba4bd46e26e307d04098f9c84df764 parisc: support R_PARISC_SECREL32 relocation in modules] (backported to v4.10+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=554bfeceb8a22d448cd986fc9efce25e833278a1 '''parisc: Fix access fault handling in pa_memcpy()'''] (backported to v4.9+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=554bfeceb8a22d448cd986fc9efce25e833278a1 '''parisc: Clean up fixup routines for get_user()/put_user()'''] (backported to v4.9+)
+** parisc: Avoid stalled CPU warnings after system shutdown (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
