@@ -31,6 +31,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 == PA-RISC NEWS == 
 Last updated: [[User:Deller|Helge Deller]] ([[User talk:Deller|talk]]) 19:43, 16 February 2017 (UTC)
 {|
+| style="vertical-align:top;" |'''Apr 2017'''||John Paul Adrian Glaubitz and James Clarke made the [https://lists.debian.org/debian-powerpc/2017/04/msg00023.html debian-installer available in debian-ports repositories]
+|-
 | style="vertical-align:top;" |'''Feb 2017'''||Alan Modra and Dave Anglin [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8a3cacb06d6ecfbe3ab0e0059bf6a4eb8b4b9dc6 fix pie support on hppa] and [https://sourceware.org/bugzilla/show_bug.cgi?id=21000 add -z relro support to binutils]
 |-
 | style="vertical-align:top;" |'''Jan 2017'''||[https://lists.debian.org/debian-hppa/2017/01/msg00001.html New Debian-9 installation CDs] by Mike Hosken.
