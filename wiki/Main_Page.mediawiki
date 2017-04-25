@@ -29,7 +29,6 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == PA-RISC NEWS == 
-Last updated: [[User:Deller|Helge Deller]] ([[User talk:Deller|talk]]) 19:43, 16 February 2017 (UTC)
 {|
 | style="vertical-align:top;" |'''Apr 2017'''||John Paul Adrian Glaubitz and James Clarke made the [https://lists.debian.org/debian-powerpc/2017/04/msg00023.html debian-installer available in debian-ports repositories]
 |-
