@@ -364,6 +364,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=554bfeceb8a22d448cd986fc9efce25e833278a1 '''parisc: Clean up fixup routines for get_user()/put_user()'''] (backported to v4.9+)
 ** parisc: Avoid stalled CPU warnings after system shutdown (backported to v4.9+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=409c1b250e30ad0e48b4d15d7319b4e18c046c4f '''parisc: fix bugs in pa_memcpy'''] (backported to v4.9+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3f795cef0ecdf9bc980dd058d49bdab4b19af1d3 '''parisc: Fix get_user() for 64-bit value on 32-bit kernel'''] (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
