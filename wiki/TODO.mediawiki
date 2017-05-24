@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-05-22 ==
+== Status & TODO 2017-05-24 ==
 
+* Important: Why does building plzip=1.6-1 creates hanging processes ?
 * STARTED: detect physically broken memory - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/,  new idea: use: PDC_PAT_MEM_PD_INFO (see pdcpat.h)
 * STARTED: Implement GENERIC_CLOCKEVENTS with cr16 cycle counter ? (kernel 4.9)
 * STARTED: Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
