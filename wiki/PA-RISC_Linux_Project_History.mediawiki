@@ -7,6 +7,8 @@ title: PA-RISC Linux Project History
 [[File:Www_parisc-linux_org-front.jpg|thumb|400px|Front of http://parisc.parisc-linux.org]]
 [[File:Www_parisc-linux_org-back.jpg|thumb|400px|Back of http://parisc.parisc-linux.org]]
 [[File:Sibaris.jpg|thumb|400px|HP C8000 used as Debian buildd server sibaris.parisc-linux.org]]
+[[File:Rp3410_panama_front.JPG|thumb|400px|HP rp3410 front - our panama buildd server since 2017]]
+[[File:Rp3410_panama_back.JPG|thumb|400px|HP rp3410 back - our panama buildd server since 2017]]
 
 ; December 1, 2000  
 : The PA-RISC web site has moved to www.parisc-linux.org domain. Besides the appearance of the Linuxcare penguin Lux (in gear suitable for working on the PA-RISC engine), the PA-RISC site is fresh with a content update, face lift and co-branding with HP.
