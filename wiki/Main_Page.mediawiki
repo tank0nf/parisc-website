@@ -30,6 +30,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''June 2017'''||New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v1.98 released] which fixes serial console on rp3410 and rp3440 servers.
+|-
 | style="vertical-align:top;" |'''May 2017'''||[mailto:roberto@debian.org Roberto C. Sánchez] sponsored a [http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html HP rp3410 server] with [[Rp3410|one 800 MHz PA8900 CPU which we upgraded to 5 GB RAM and added a 146 GB hard disc]]. The server is now reachable as [https://monitor.jrtc27.com/ panama.parisc-linux.org] and acts as a debian buildd machine. [http://osuosl.org/ Hosting is sponsored by OSU Open Source Lab]. Thanks to all people involved, especially to the great system administrators at OSUOSL (Samarendra Hedaoo and Justin Dugger).
 |-
 | style="vertical-align:top;" |'''Apr 2017'''||John Paul Adrian Glaubitz and James Clarke made the [https://lists.debian.org/debian-powerpc/2017/04/msg00023.html debian-installer available in debian-ports repositories]
