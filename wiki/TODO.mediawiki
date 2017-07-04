@@ -366,6 +366,20 @@ title: TODO
 ** parisc: Avoid stalled CPU warnings after system shutdown (backported to v4.9+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=409c1b250e30ad0e48b4d15d7319b4e18c046c4f '''parisc: fix bugs in pa_memcpy'''] (backported to v4.9+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3f795cef0ecdf9bc980dd058d49bdab4b19af1d3 '''parisc: Fix get_user() for 64-bit value on 32-bit kernel'''] (backported to v4.9+)
+* Kernel 4.12
+** (none beside backports, pull request was too late during merge window)
+* Kernel 4.13
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b0f94efd5aa8daa8a07d7601714c2573266cd4c9 '''parisc: use compat_sys_keyctl()'''] (backported to all)
+** parisc: Inline trivial exception code in lusercopy.S
+** parisc: Drop per_cpu uaccess related exception_data struct
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c8c3735997a3aa184fa81742bb6c4062a26af2f3 '''parisc: Enhance detection of synchronous cr16 clocksources''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/parisc/kernel/pdt.c?id=c9c2877d08d9aa0ca0a5c227ac795fbb76269300 '''parisc: Add Page Deallocation Table (PDT) support''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/parisc/include/asm/mmu_context.h?id=649aa24254e85bf6bd7807dd372d083707852b1f '''parisc/mm: Ensure IRQs are off in switch_mm()'''] (backported to  v4.7+)
+** parisc: Avoid zeroing gr[0] in fixup_exception()
+** parisc: Don't hardcode PSW values in gsc_*() functions
+** parisc: Don't hardcode PSW values in hpmc code
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=247462316f85a9e0479445c1a4223950b68ffac1 '''parisc: Report SIGSEGV instead of SIGBUS when running out of stack'''] (backported to all, fixes libsigsegv package)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=33f9e02495d15a061f0c94ef46f5103a2d0c20f3 '''parisc: DMA API: return error instead of BUG_ON for dma ops on non dma devs'''] (backported to v3.13+, fixes parport_pc module crash)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
