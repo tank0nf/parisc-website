@@ -380,6 +380,7 @@ title: TODO
 ** parisc: Don't hardcode PSW values in hpmc code
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=247462316f85a9e0479445c1a4223950b68ffac1 '''parisc: Report SIGSEGV instead of SIGBUS when running out of stack'''] (backported to all, fixes libsigsegv package)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=33f9e02495d15a061f0c94ef46f5103a2d0c20f3 '''parisc: DMA API: return error instead of BUG_ON for dma ops on non dma devs'''] (backported to v3.13+, fixes parport_pc module crash)
+** parisc: ->mapping_error
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
