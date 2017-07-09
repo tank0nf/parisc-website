@@ -373,8 +373,8 @@ title: TODO
 ** parisc: Inline trivial exception code in lusercopy.S
 ** parisc: Drop per_cpu uaccess related exception_data struct
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c8c3735997a3aa184fa81742bb6c4062a26af2f3 '''parisc: Enhance detection of synchronous cr16 clocksources''']
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/parisc/kernel/pdt.c?id=c9c2877d08d9aa0ca0a5c227ac795fbb76269300 '''parisc: Add Page Deallocation Table (PDT) support''']
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/parisc/include/asm/mmu_context.h?id=649aa24254e85bf6bd7807dd372d083707852b1f '''parisc/mm: Ensure IRQs are off in switch_mm()'''] (backported to  v4.7+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c9c2877d08d9aa0ca0a5c227ac795fbb76269300 '''parisc: Add Page Deallocation Table (PDT) support''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=649aa24254e85bf6bd7807dd372d083707852b1f '''parisc/mm: Ensure IRQs are off in switch_mm()'''] (backported to  v4.7+)
 ** parisc: Avoid zeroing gr[0] in fixup_exception()
 ** parisc: Don't hardcode PSW values in gsc_*() functions
 ** parisc: Don't hardcode PSW values in hpmc code
