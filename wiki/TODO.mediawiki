@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-05-24 ==
+== Status & TODO 2017-07-12 ==
 
 * Important: Why does building plzip=1.6-1 creates hanging processes ?
 * STARTED: detect physically broken memory - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/,  new idea: use: PDC_PAT_MEM_PD_INFO (see pdcpat.h)
@@ -358,7 +358,7 @@ title: TODO
 ** parisc: perf: Fix potential NULL pointer dereference
 ** parisc: Wire up statx system call
 ** parisc: Avoid compiler warnings with access_ok()
-** parisc: Fix system shutdown halt
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=73580dac7618e4bcd21679f553cf3c97323fec46 parisc: Fix system shutdown halt]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=316ec0624f951166daedbe446988ef92ae72b59f parisc: Optimize flush_kernel_vmap_range and invalidate_kernel_vmap_range]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f655322b1ba4bd46e26e307d04098f9c84df764 parisc: support R_PARISC_SECREL32 relocation in modules] (backported to v4.10+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=554bfeceb8a22d448cd986fc9efce25e833278a1 '''parisc: Fix access fault handling in pa_memcpy()'''] (backported to v4.9+)
