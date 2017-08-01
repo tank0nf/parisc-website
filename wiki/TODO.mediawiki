@@ -4,13 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-07-12 ==
+== Status & TODO 2017-08-01 ==
 
 * Palo needs better user interaction instead of "0", "1".... Howtos.
-* Important: Why does building plzip=1.6-1 creates hanging processes ?
-* STARTED: detect physically broken memory - utilize PDT (http://ftp.parisc-linux.org/docs/arch/pdc20-v1.1-Ch4-pdc.pdf (page #46)) - https://patchwork.kernel.org/patch/2541561/,  new idea: use: PDC_PAT_MEM_PD_INFO (see pdcpat.h)
-* STARTED: Implement GENERIC_CLOCKEVENTS with cr16 cycle counter ? (kernel 4.9)
-* STARTED: Remove TIF_RESTORE_SIGMASK define -> https://patchwork.kernel.org/patch/9230443/, "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
+* STARTED: detect physically broken memory - initial support now in v4.13
+* STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
 * Fix shutdown: I had issued a "shutdown -r".  As noted above, a panic occurred during the reboot (all CPUs were up). After this, stall messages were output to console after the bios version was printed.  So yes, maybe CPUs should be "stopped" before a panic reboot? (by Dave, mail from 2017-03-31) 
@@ -18,10 +16,10 @@ title: TODO
 * test and maybe issue message about de-configured processors.
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 * Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
-* Enable UBSAN and fix allouts
+* Enable UBSAN and fix fallouts
 * Enable huge pages on kernel text for C8000 as well
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
-** Fix kernel to load -fpie compiled programs not at 0x400000
+** Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * Why does CONFIG_DEBUG_TIMEKEEPING=y does not work? -> maybe: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=604a830d4fb5bf2334263bd597de22652e63b7e6* Add kasan checks ?
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
@@ -30,7 +28,6 @@ title: TODO
 * kernel work
 ** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
 ** STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
-** update defconfigs
 ** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728. Maybe this commit fixes it?: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4d22c75d4c7b5c5f4bd31054f09103ee490878fd
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
@@ -392,6 +389,10 @@ title: TODO
 ** '''parisc: Suspend lockup detectors before system halt'''
 ** '''parisc: Prevent TLB speculation on flushed pages on CPUs that only support equivalent aliases'''
 ** parisc: Extend disabled preemption in copy_user_page
+** parisc: Define CONFIG_CPU_BIG_ENDIAN
+** '''parisc: Increase thread and stack size to 32kb''' (backported to v4.11+)
+** parisc: pdc_stable: Fix locking when creating sysfs links
+** '''parisc: Handle vma's whose context is not current in flush_cache_range''' (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
