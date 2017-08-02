@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-08-01 ==
+== Status & TODO 2017-08-02 ==
 
 * Palo needs better user interaction instead of "0", "1".... Howtos.
 * STARTED: detect physically broken memory - initial support now in v4.13
@@ -380,19 +380,19 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=33f9e02495d15a061f0c94ef46f5103a2d0c20f3 '''parisc: DMA API: return error instead of BUG_ON for dma ops on non dma devs'''] (backported to v3.13+, fixes parport_pc module crash)
 ** parisc: ->mapping_error
 ** parisc: pdc_stable: constify attribute_group structures.
-** '''parisc: Disable further stack checks when panic occurs during stack check'''
-** parisc: Merge millicode routines via linker script
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5bc64bd246ca00e0bb0b7137afaf586f2f66a911 '''parisc: Disable further stack checks when panic occurs during stack check''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6cd819e8e978b361ae558056a9e79fd30e6acb0d parisc: Merge millicode routines via linker script]
 ** parisc: regenerate defconfig files
-** parisc: Fix crash when calling PDC_PAT_MEM PDT firmware function
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f520e55241e1cf0c10d308ccf47513f28533f60a parisc: Fix crash when calling PDC_PAT_MEM PDT firmware function]
 ** parisc: Add function to return DIMM slot of physical address
 ** parisc: Show DIMM slot number which holds broken memory module
-** '''parisc: Suspend lockup detectors before system halt'''
-** '''parisc: Prevent TLB speculation on flushed pages on CPUs that only support equivalent aliases'''
-** parisc: Extend disabled preemption in copy_user_page
-** parisc: Define CONFIG_CPU_BIG_ENDIAN
-** '''parisc: Increase thread and stack size to 32kb''' (backported to v4.11+)
-** parisc: pdc_stable: Fix locking when creating sysfs links
-** '''parisc: Handle vma's whose context is not current in flush_cache_range''' (backported to v4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=56188832a50f09998cb570ba3771a1d25c193c0e '''parisc: Suspend lockup detectors before system halt'''] (backported to v4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae7a609c34b6fb12328c553b5f9aab26ae74a28e '''parisc: Prevent TLB speculation on flushed pages on CPUs that only support equivalent aliases'''] (backported to v4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=56008c04ebc099940021b714da2d7779117cf6a7 parisc: Extend disabled preemption in copy_user_page]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=74ad3d28af2104b92dd83a43add79e6a8c45d8e2 parisc: Define CONFIG_CPU_BIG_ENDIAN]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8f8201dfed91a43ac38c899c82f81eef3d36afd9 '''parisc: Increase thread and stack size to 32kb'''] (backported to v4.11+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93964fd4ea6ab86a2d2853a9ae56ae0c24cbbe16 parisc: pdc_stable: Fix locking when creating sysfs links]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=13d57093c141db2036364d6be35e394fc5b64728 '''parisc: Handle vma's whose context is not current in flush_cache_range'''] (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
