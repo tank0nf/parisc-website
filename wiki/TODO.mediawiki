@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-08-02 ==
+== Status & TODO 2017-08-04 ==
 
 * Palo needs better user interaction instead of "0", "1".... Howtos.
-* STARTED: detect physically broken memory - initial support now in v4.13
+* Started: Enable UBSAN and fix fallouts
+* DONE: detect physically broken memory - initial support now in v4.13
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
@@ -16,7 +17,6 @@ title: TODO
 * test and maybe issue message about de-configured processors.
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 * Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
-* Enable UBSAN and fix fallouts
 * Enable huge pages on kernel text for C8000 as well
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
 ** Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
