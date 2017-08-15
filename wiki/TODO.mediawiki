@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-08-04 ==
+== Status & TODO 2017-08-15 ==
 
+* fix %pF and %pS usage in all kernel code
 * Palo needs better user interaction instead of "0", "1".... Howtos.
 * Started: Enable UBSAN and fix fallouts
 * DONE: detect physically broken memory - initial support now in v4.13
