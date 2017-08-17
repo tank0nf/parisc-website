@@ -395,7 +395,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93964fd4ea6ab86a2d2853a9ae56ae0c24cbbe16 parisc: pdc_stable: Fix locking when creating sysfs links]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=13d57093c141db2036364d6be35e394fc5b64728 '''parisc: Handle vma's whose context is not current in flush_cache_range'''] (backported to v4.9+)
 ** printk-formats.txt: Better describe the difference between %pS and %pF
-** '''parisc: pci memory bar assignment fails with 64bit kernels on dino/cujo'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4098116039911e8870d84c975e2ec22dab65a909 '''parisc: pci memory bar assignment fails with 64bit kernels on dino/cujo'''] (backported to all)
 
 
 == Debian kernel and userspace programs ==
