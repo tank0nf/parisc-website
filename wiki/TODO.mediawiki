@@ -7,6 +7,8 @@ title: TODO
 == Status & TODO 2017-08-17 ==
 
 * fix %pF and %pS usage in all kernel code
+* STARTED: Make kernel self-decompressing (instead of palo reading gzipped kernels)
+* implement kexec syscall
 * Palo needs better user interaction instead of "0", "1".... Howtos.
 * Started: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
@@ -41,7 +43,6 @@ title: TODO
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
-** implement kexec syscall
 ** Implement ltrace on hppa
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
@@ -102,7 +103,6 @@ title: TODO
    
 * palo (PA-RISC Boot Loader):
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
-** move decompression of Kernel to Linux kernel code instead of palo
 
 == Upstream PA-RISC-related kernel patch history ==
 * Kernel 3.9:
