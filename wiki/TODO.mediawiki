@@ -9,7 +9,6 @@ title: TODO
 * fix %pF and %pS usage in all kernel code
 * Palo needs better user interaction instead of "0", "1".... Howtos.
 * Started: Enable UBSAN and fix fallouts
-* DONE: detect physically broken memory - initial support now in v4.13
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
@@ -17,14 +16,12 @@ title: TODO
 * Fix boot crash from Al Viro with sti gfx card (24.03.17)
 * test and maybe issue message about de-configured processors.
 * Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
-* Fix palo (iplloader) to not break if /boot/vmlinux does not exist (report from Meelis Roos)
 * Enable huge pages on kernel text for C8000 as well
 * implement libnuma kernel support to report on C8000 one socket with 2 cores.
 ** Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * Why does CONFIG_DEBUG_TIMEKEEPING=y does not work? -> maybe: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=604a830d4fb5bf2334263bd597de22652e63b7e6* Add kasan checks ?
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
-* rebuild packages with kernel 4.7 which has better timing: ismrmrd, haskell-http-conduit, ... 
 * add wiki page about kernel cross-compiling
 * kernel work
 ** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
@@ -427,6 +424,9 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Add syscall ftrace support
 ** DONE: Simplify get_user()/put_user() with regard to %sr0/%sr2 usage.
 ** DONE: Add tracehook support (needed for seccomp testcases, gdb, ...)
+** DONE: Added high-resolution sched_clock clocksources in 4.7, needed for debian packages: ismrmrd, haskell-http-conduit, ... 
+** DONE: Detect physically broken memory via Page Deallocation Table (PDT), initial support in kernel 4.13
+
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
