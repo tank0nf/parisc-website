@@ -34,7 +34,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Sep 2017'''||Kernel 4.14 includes full support for Page Deallocation Table (PDT), the UBSAN checker and kernel self-decompressor.
+| style="vertical-align:top;" |'''Sep 2017'''||New Debian-9 installer image is now available at [https://cdimage.debian.org/cdimage/ports/ official cdimage places]. Many thanks to Adrian Glaubitz!<br/>
+Kernel 4.14 includes full support for Page Deallocation Table (PDT), the UBSAN checker and kernel self-decompressor.
 |-
 | style="vertical-align:top;" |'''Aug 2017'''||Kernel 4.13 includes initial Page Deallocation Table (PDT) support to avoid using broken memory by the Linux kernel.<br/>
 Dave submitted all outstanding patches for hppa to glibc v2.26. Linuxthread support was dropped and switched to the generic nptl support instead. Unwinding was fixed to support pthread cancellation.<br/>
