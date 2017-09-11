@@ -41,7 +41,7 @@ Kernel 4.14 includes full support for Page Deallocation Table (PDT), the UBSAN c
 Dave submitted all outstanding patches for hppa to glibc v2.26. Linuxthread support was dropped and switched to the generic nptl support instead. Unwinding was fixed to support pthread cancellation.<br/>
 Thomas Bogendoerfer fixed the PCI memory bar assignment on Dino/Cujo machines and as such got ATI graphic cards to work on such machines.
 |-
-| style="vertical-align:top;" |'''June 2017'''||[https://lists.debian.org/debian-hppa/2017/06/msg00006.html Mike Hosken announced a new set of Debian 9 installation medias] which are [http://prometheus.parisc-linux.org/debian-cd/debian-9.0/debian-9.0r2/ available for download]<br/>
+| style="vertical-align:top;" |'''June 2017'''||[https://lists.debian.org/debian-hppa/2017/06/msg00006.html Mike Hosken announced a new set of Debian 9 installation medias] which are [http://prometheus.parisc-linux.org/debian-cd/ available for download]<br/>
 New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v1.98 released] which fixes serial console on rp3410 and rp3440 servers.<br/>
 There are now [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.600 pre-built debian unstable packages] available.
 |-
