@@ -20,7 +20,8 @@ The latest installation medias for Debian unstable is available at either one of
 # http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/
 # http://backup.parisc-linux.org/debian-cd/
 # http://parisc.osuosl.org/debian-cd/
-# Feedback required for: http://prometheus.parisc-linux.org/debian-cd/debian-9.0/debian-9.0r1/ (Debian 9, provided by Mike Hosken)
+# http://ftp.nz.parisc-linux.org/debian-cd/ (Debian 9 & 10 NZ mirror)
+# http://ftp.de.parisc-linux.org/debian-cd/ (Debian 9 & 10 DE mirror)
 
 In those directories you find (you need to download only one of those):
 * lifimage file, used for tftp/netbooting the installation
