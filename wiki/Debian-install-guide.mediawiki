@@ -17,3 +17,33 @@ The addresses for the mirrors are -
 [http://ftp.de.parisc-linux.org http://ftp.de.parisc-linux.org] 
 
 Media can be found at under the debian-cd directory. The testing (Buster) media will be updated every two months.
+
+
+== Installation Guide ==
+stable testing what to install
+
+download burn cd dvd
+
+boot menu ipl preseed file
+
+network
+
+partman palo etc
+
+mirror
+
+popcon
+
+tasks
+
+reboot
+
+== after install ==
+sources.list
+import key
+submit install report
+deb-ports
+
+
+== list of packages in repos ==
+link to file on rouge-one
