@@ -405,7 +405,7 @@ title: TODO
 ** parisc: Drop MADV_SPACEAVAIL, MADV_VPS_PURGE and MADV_VPS_INHERIT
 ** parisc/random: Add machine specific randomness
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e35a2ce692821563583fa8b11ddf4acb24e54580 '''parisc: Enable UBSAN support''']
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e35a2ce692821563583fa8b11ddf4acb24e54580 '''parisc: Add core code for self-extracting kernel''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2f3c7b8137ef6a3f90850d7cb5dbd05d8940403a '''parisc: Add core code for self-extracting kernel''']
 ** parisc: Make existing core files reuseable for bootloader
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6adc16e08e0ee8bbc9cccf7af3882b6e1cb30c2 '''parisc: Wire up support for self-extracting kernel''']
 ** parisc/harmony: Fix section mismatches
