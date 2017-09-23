@@ -4,10 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-09-20 ==
+== Status & TODO 2017-09-23 ==
 
 * STARTED: fix %pF and %pS usage in all kernel code
-* STARTED: Make kernel self-decompressing (instead of palo reading gzipped kernels)
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
 * STARTED: Enable UBSAN and fix fallouts
@@ -424,6 +423,16 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d81f734462d439291531266c4004ab97e9a033cc '''parisc: Fix up devices below a PCI-PCI MegaRAID controller bridge''']
 ** printk-formats.txt: Add examples for %pF and %pS usage
 ** parisc: Optimize switch_mm
+** parisc: Fix too large frame size warnings
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e77900abfd8be4e207412d8b7752dbb9838e2571 parisc: Stop unwinding at start of stack]
+** parisc: Move start_parisc() into init section
+** parisc: Add wrapper for pdc_instr() firmware function
+** parisc: Add PDCE_CHECK instruction to HPMC handler
+** parisc: Check if initrd was loaded into broken RAM
+** parisc: Move init_per_cpu() into init section
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=606f95e4255845155f62504a9e1f12665b1853c8 '''parisc: Add HWPOISON page fault handler code''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=af21b01d1166248f282fc02d0f459c94de06615e '''parisc: Reintroduce option to gzip-compress the kernel''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8c031ba63f8f2a9efc471cb45b2ff18271556544 '''parisc: Unbreak bootloader due to gcc-7 optimizations''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -456,7 +465,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Add tracehook support (needed for seccomp testcases, gdb, ...)
 ** DONE: Added high-resolution sched_clock clocksources in 4.7, needed for debian packages: ismrmrd, haskell-http-conduit, ... 
 ** DONE: Detect physically broken memory via Page Deallocation Table (PDT), initial support in kernel 4.13
-
+** DONE: Make kernel self-decompressing (instead of palo reading gzipped kernels)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
