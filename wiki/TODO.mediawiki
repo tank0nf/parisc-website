@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-09-23 ==
+== Status & TODO 2017-10-19 ==
 
 * STARTED: fix %pF and %pS usage in all kernel code
 * STARTED: implement kexec syscall
@@ -433,6 +433,9 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=606f95e4255845155f62504a9e1f12665b1853c8 '''parisc: Add HWPOISON page fault handler code''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=af21b01d1166248f282fc02d0f459c94de06615e '''parisc: Reintroduce option to gzip-compress the kernel''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8c031ba63f8f2a9efc471cb45b2ff18271556544 '''parisc: Unbreak bootloader due to gcc-7 optimizations''']
+** parisc: Export __cmpxchg_u64 unconditionally
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8642b31ba9eef8a01845146a26682d4869e62513 '''parisc: Fix detection of nonsynchronous cr16 cycle counters'''] (backported to v4.13+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=374b3bf8e8b519f61eb9775888074c6e46b3bf0c '''parisc: Fix double-word compare and exchange in LWS code on 32-bit kernels'''] (backported to all/v3.13+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
