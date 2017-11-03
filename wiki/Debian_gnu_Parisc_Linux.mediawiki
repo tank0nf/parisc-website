@@ -25,7 +25,19 @@ stable testing what to install
 download burn cd dvd
 
 boot menu ipl preseed file
+== Installation Guide Stretch==
+network
 
+partman palo etc
+
+mirror
+
+popcon
+
+tasks
+
+reboot
+== Installation Guide Buster ==
 network
 
 partman palo etc
