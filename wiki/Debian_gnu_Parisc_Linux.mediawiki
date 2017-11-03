@@ -59,3 +59,7 @@ deb-ports
 
 == list of packages in repos ==
 link to file on rouge-one
+
+
+== Making installation media ==
+link to new cd page
