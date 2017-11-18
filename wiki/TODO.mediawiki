@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-10-19 ==
+== Status & TODO 2017-11-18 ==
 
 * STARTED: fix %pF and %pS usage in all kernel code
 * STARTED: implement kexec syscall
@@ -436,6 +436,12 @@ title: TODO
 ** parisc: Export __cmpxchg_u64 unconditionally
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8642b31ba9eef8a01845146a26682d4869e62513 '''parisc: Fix detection of nonsynchronous cr16 cycle counters'''] (backported to v4.13+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=374b3bf8e8b519f61eb9775888074c6e46b3bf0c '''parisc: Fix double-word compare and exchange in LWS code on 32-bit kernels'''] (backported to all/v3.13+)
+* Kernel 4.15
+** arch: Fix duplicates in Kconfig for parisc and sparc
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bc5a768e567df51f43778da381477f6555f3824c parisc: Make some PDC structures accessible in uapi headers]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3744d988c05a27f40408003352841aefadba1324 parisc: Pass endianness info to sparse]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bf7b4c1b3c92f246a535a7c792177041d0442011 '''parisc: Add CPU topology support''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=05f016d2ca7a4fab99d5d5472168506ddf95e74f '''parisc: Fix validity check of pointer size argument in new CAS implementation'''] (backported to all/v3.13+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
