@@ -35,6 +35,8 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Dec 2017'''||Development on parisc hardware emulation via qemu is ongoing. Richard Henderson maintains the [https://github.com/rth7680/qemu/commits/tgt-hppa-softmmu hppa qemu git tree] while Helge Deller works on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware parisc IODC and PDC firmware emulation via a SeaBIOS fork]. The emulation already boots a Debian install CD, runs through whole kernel initialization code and even runs quite far into the init process. 
+|-
 | style="vertical-align:top;" |'''Sep 2017'''||New Debian-9 installer image is now available at [https://cdimage.debian.org/cdimage/ports/ official cdimage places]. Many thanks to Adrian Glaubitz!<br/>
 Kernel 4.14 includes full support for Page Deallocation Table (PDT), the UBSAN checker and kernel self-decompressor.
 |-
