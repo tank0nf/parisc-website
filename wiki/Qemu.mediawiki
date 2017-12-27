@@ -17,10 +17,10 @@ qemu options:
 * -device VGA      - provide PCI VGA graphic card
 
 Examples:
-./hppa-softmmu/qemu-system-hppa  -drive file=hdd.img  -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -nographic  -serial mon:stdio
-./hppa-softmmu/qemu-system-hppa  -cdrom debian-8.0-hppa-NETINST-1.iso -nographic  -serial mon:stdio
-./hppa-softmmu/qemu-system-hppa  -device virtio-scsi-pci,id=scsi -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
-./hppa-softmmu/qemu-system-hppa  -device lsi53c895a,id=scsi      -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
+* ./hppa-softmmu/qemu-system-hppa  -drive file=hdd.img  -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -nographic  -serial mon:stdio
+* ./hppa-softmmu/qemu-system-hppa  -cdrom debian-8.0-hppa-NETINST-1.iso -nographic  -serial mon:stdio
+* ./hppa-softmmu/qemu-system-hppa  -device virtio-scsi-pci,id=scsi -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
+* ./hppa-softmmu/qemu-system-hppa  -device lsi53c895a,id=scsi      -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
 
 How to run:
-./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -boot menu=on  -serial mon:stdio
+* ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -boot menu=on  -serial mon:stdio
