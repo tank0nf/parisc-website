@@ -4,9 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2017-11-18 ==
+== Status & TODO 2018-01-02 ==
 
-* STARTED: fix %pF and %pS usage in all kernel code
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
 * STARTED: Enable UBSAN and fix fallouts
@@ -33,6 +32,7 @@ title: TODO
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 ** ALPHA processor port:
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
+*** New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
 ** Implement kernel VDSO support
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
@@ -481,6 +481,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Added high-resolution sched_clock clocksources in 4.7, needed for debian packages: ismrmrd, haskell-http-conduit, ... 
 ** DONE: Detect physically broken memory via Page Deallocation Table (PDT), initial support in kernel 4.13
 ** DONE: Make kernel self-decompressing (instead of palo reading gzipped kernels)
+** DONE: fix %pF and %pS usage in all kernel code
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
