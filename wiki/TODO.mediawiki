@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-01-02 ==
+== Status & TODO 2018-01-08 ==
 
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
@@ -448,6 +448,12 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9352aeada4d8d8753fc0e414fbfe8fdfcb68a12c '''Revert "parisc: Re-enable interrupts early"'''] (backported to v4.10+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da57c5414f49ef9e4bcb9ae0bbafd1d650b31411 '''parisc: Reduce thread stack to 16 kb''']
 ** parisc: remove duplicate includes
+** parisc: Show unhashed hardware inventory
+** parisc: Show initial kernel memory layout unhashed
+** parisc: Show unhashed HPA of Dino chip
+** parisc: Show unhashed EISA EEPROM address
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88776c0e70be0290f8357019d844aae15edaa967 '''parisc: Fix alignment of pa_tlb_lock in assembly on 32-bit SMP kernel''']  (backported to v4.0+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=310d82784fb4d60c80569f5ca9f53a7f3bf1d477 '''parisc: qemu idle sleep support''']  (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
