@@ -12,7 +12,7 @@ Howto:
 # copy (or symlink) the parisc firmware file "out/hppa-firmware.img" from seabios into the qemu "pc-bios/" directory
 # qemu-img create -f qcow2 hdd.img 30G
 # download install image: https://cdimage.debian.org/cdimage/ports/, e.g. https://cdimage.debian.org/cdimage/ports/9.0/hppa/iso-cd/debian-9.0-hppa-NETINST-1.iso
-# ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-9.0-hppa-NETINST-1.iso,type=cdrom -boot order=d -nographic -serial mon:stdio 
+# ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-9.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
 
 
 qemu options:
