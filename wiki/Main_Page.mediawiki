@@ -23,7 +23,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 ; Debian Linux:
 : The PA-RISC Linux development community is proud to have been officially part of the Debian 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
 : As of Debian 6.0 (squeeze) PA-RISC Linux was dropped in July 2011 as officially supported platform which is why the PA-RISC Linux development currently happens as Debian-unofficial architecture in the [http://www.debian-ports.org Debian Ports] project.
-: Available install images for PA-RISC, [[Debian Ports Installation | this Wiki page describes how to install Debian Linux]]:
+: If you plan to install Debian Linux, please read [[Debian Ports Installation | this Wiki on how to install Debian Linux]], and download one install image from this list:
 :* [https://cdimage.debian.org/cdimage/ports/ '''Debian cdimage repository''']
 :* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
 :* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
@@ -35,7 +35,7 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Jan 2018'''||New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v2.00 released].
+| style="vertical-align:top;" |'''Jan 2018'''||New [http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v2.00 released]. The  callee copies ABI of gcc (on 32-bit hppa) created lots of optimization issues and problems with OpenMP, so [http://gcc.gnu.org/ml/gcc-patches/2018-01/msg01518.html Dave committed a patch to switch to the caller copy ABI] instead. First Qemu-related [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=310d82784fb4d60c80569f5ca9f53a7f3bf1d477 patches to Linux kernel to reduce power consumption on the host] have been submitted and the Qemu hardware emulation works fully stable with a booted Linux. Even an emulated 32-CPU PA-RISC SMP machine was running stable.  
 |-
 | style="vertical-align:top;" |'''Dec 2017'''||Development on parisc hardware emulation via qemu is ongoing. Richard Henderson maintains the [https://github.com/rth7680/qemu/commits/tgt-hppa-softmmu hppa qemu git tree] while Helge Deller works on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware parisc IODC and PDC firmware emulation via a SeaBIOS fork]. The emulation already boots a Debian install CD, runs through whole kernel initialization code and even runs quite far into the init process. 
 |-
