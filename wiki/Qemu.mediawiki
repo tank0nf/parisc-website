@@ -2,6 +2,28 @@
 title: Qemu
 ---
 
+Qemu is still incomplete to fully support parisc.
+Mostly hardware-emulation is missing.
+
+Nevertheless, emulating a Linux system is already possible.
+
+
+HOW TO QUICK-START AND RUN A PRECOMPILED QEMU:
+----------------------------------------------
+
+# Download statically compiled qemu: ftp://parisc.parisc-linux.org/qemu/qemu.tgz  (just 8MB)
+# Untar the tar-gz file in some directory
+# Download a debian install CD into the same directory, e.g. http://ftp.nz.parisc-linux.org/debian-cd/9.3/debian-9.3-hppa-CD-1.iso
+# Run qemu (either via the provided startme.sh script), or manually:
+
+./qemu-system-hppa -drive file=hdd.img,discard=unmap -accel tcg,thread=multi -smp cpus=2 -drive file=debian-9.3-hppa-CD-1.iso,media=cdrom -m 3600M -boot menu=off,order=d -serial mon:stdio -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22
+
+
+
+
+HOW TO BUILD FROM SOURCE:
+-------------------------
+
 Richard Hendersons qemu git tree:
 * https://github.com/rth7680/qemu/commits/tgt-hppa-softmmu
 Helge Deller SeaBIOS git tree:
