@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-01-08 ==
+== Status & TODO 2018-02-06 ==
 
+* add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
 * STARTED: Enable UBSAN and fix fallouts
@@ -23,7 +24,6 @@ title: TODO
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * Why does CONFIG_DEBUG_TIMEKEEPING=y does not work? -> maybe: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=604a830d4fb5bf2334263bd597de22652e63b7e6* Add kasan checks ?
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
-* add wiki page about kernel cross-compiling
 * kernel work
 ** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
 ** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728. Maybe this commit fixes it?: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4d22c75d4c7b5c5f4bd31054f09103ee490878fd
