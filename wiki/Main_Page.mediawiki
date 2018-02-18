@@ -13,7 +13,7 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 
 == Linux distributions with support for PA-RISC Linux == 
 
-PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributions various Linux distributions], whith [http://www.gentoo.org Gentoo Linux] and [http://www.debian.org Debian] being the ones which currently provide the best support for the PA-RISC architecture.
+PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and [http://www.debian.org Debian].
 
 ; Gentoo Linux:
 : PA-RISC is a fully supported architecture of Gentoo Linux.<br>
@@ -22,7 +22,10 @@ PA-RISC Linux is currently supported by [http://wiki.parisc-linux.org/Distributi
 
 ; Debian Linux:
 : The PA-RISC Linux development community is proud to have been officially part of the Debian 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
-: As of Debian 6.0 (squeeze) PA-RISC Linux was dropped in July 2011 as officially supported platform which is why the PA-RISC Linux development currently happens as Debian-unofficial architecture in the [http://www.debian-ports.org Debian Ports] project.
+: In July 2011, PA-RISC Linux was dropped as an officially supported platform from Debian 6.0 (squeeze).  Subsequently, it became a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
+: Helge Deller and John David Anglin set up several package build servers for Debian Ports.  Overtime, this infrastructure has been improved and it now uses the same wanna-build system as the release architectures.
+: Kernel and tool chain support was also improved with the transition to Debian Ports. For example, the glibc source can now be built directly from source.
+: Today, Debian Linux for PA-RISC is usable and stable.  More than 12,500 Debian packages are available.
 : If you plan to install Debian Linux, please read [[Debian Ports Installation | this Wiki on how to install Debian Linux]], and download one install image from this list:
 :* [https://cdimage.debian.org/cdimage/ports/ '''Debian cdimage repository''']
 :* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
