@@ -459,7 +459,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0ed1fe4ad394e54783bbffa84102faf435661a2e parisc: Check if secondary CPUs want own PDC calls] 
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5ffa8518851f1401817c15d2a7eecc0373c26ff9 parisc: Use cr16 interval timers unconditionally on qemu] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=636a415bcc7f4fd020ece8fd5fc648c4cef19c34 parisc: Reduce irq overhead when run in qemu] (backported to v4.14+)
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0adb24e03a124b79130c9499731936b11ce2677d parisc: Fix ordering of cache and TLB flushes] (backported to v4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0adb24e03a124b79130c9499731936b11ce2677d '''parisc: Fix ordering of cache and TLB flushes'''] (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
