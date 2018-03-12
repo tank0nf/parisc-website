@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2018-03-03 ==
 
+* implement alternative coding for UP/SMP. See arch/x86/include/asm/alternative.h
 * add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
@@ -60,7 +61,6 @@ title: TODO
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** fix wrong _init notation in kernel
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
-** implement alternative coding for UP/SMP. See arch/x86/include/asm/alternative.h
 ** check assembly in drivers/parisc/*
 ** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
 ** arch/parisc/kernel/sys_parisc.c -> use SYSCALL_ALIAS() -> maybe
