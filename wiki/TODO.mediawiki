@@ -4,9 +4,10 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-03-03 ==
+== Status & TODO 2018-03-15 ==
 
-* implement alternative coding for UP/SMP. See arch/x86/include/asm/alternative.h
+* implement alternative coding for UP/SMP, and disable Debian kernel 32-bit UP build. See arch/x86/include/asm/alternative.h
+* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
