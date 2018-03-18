@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-03-15 ==
+== Status & TODO 2018-03-18 ==
 
 * implement alternative coding for UP/SMP, and disable Debian kernel 32-bit UP build. See arch/x86/include/asm/alternative.h
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
@@ -461,6 +461,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5ffa8518851f1401817c15d2a7eecc0373c26ff9 parisc: Use cr16 interval timers unconditionally on qemu] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=636a415bcc7f4fd020ece8fd5fc648c4cef19c34 parisc: Reduce irq overhead when run in qemu] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0adb24e03a124b79130c9499731936b11ce2677d '''parisc: Fix ordering of cache and TLB flushes'''] (backported to v4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9ef0f88fe5466c2ca1d2975549ba6be502c464c1 '''parisc: Handle case where flush_cache_range is called with no context'''] (backported to v4.9+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
