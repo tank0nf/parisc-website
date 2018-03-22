@@ -188,3 +188,8 @@ put the following lines into your '''/etc/nscd.conf''' file:<pre>
 
 The Attention LED is flashing  because there was some problem somewhen in the past.
 To turn it off, log in to the GSP console and read the error log (command: SL, then choose 'E' for error log). Accessing this error log is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level. You do not need to read all error messages. Accessing this log once is sufficient to turn the LED off.
+
+==How can I interact with the Remote Management processors like GSP or BMC?==
+
+Most PA-RISC server machines have a GSP, which you can access via ^B keys. For details see [[GuardianServiceProcessor]].
+The C8000 workstation does instead has a BMC, which you can access via ESC-( keys. For details see [[BMC]].
