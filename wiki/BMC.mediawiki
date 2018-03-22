@@ -35,7 +35,8 @@ Pressing ESC ) "reconnects" one to the system's serial console.
 The C8000 supports IPMI, and presumably a lot of these same things 
 can be done over the built-in e1000 LAN interface once configured.
 
-In [[File:Lpv00338 rx2600 zx6000.pdf]] you can find a chapter with a broader description of the BMC.
+''Thanks to Matt Turner <mattst88@gmail.com> for above info.''
 
+In [[File:Lpv00338 rx2600 zx6000.pdf]] you can find a chapter with a broader description of the BMC.
 
 '''Please note that most older parisc machines don't have a BMC, but instead a GSP, see [[GuardianServiceProcessor]].'''
