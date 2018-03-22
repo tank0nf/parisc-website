@@ -1,0 +1,41 @@
+---
+title: BMC
+---
+
+= Baseboard Management Controller (BMC)  =
+
+The C8000 has a BMC (baseboard management controller) that is active when the system is powered.
+When attached to the serial console, you can press ESC ( and you will be able to interact with the BMC:
+
+ ESC (
+ cli>help
+ CLI Commands:
+   C [<passwordstring>]  - Change Password
+   CON                   - Display Console selection
+   FPL                   - Read Forward Progress Log
+   H                     - Help (this text)
+   I <ipmi command data> - Send any IPMI message
+      req fmt: rsSA netfnlun chk1 rqSWID rqSeq cmd [data] chk2
+      resp fmt: rqSWID netfnlun chk3 rsSa rqSeqrsLun cmd ccode [data] chk4
+   INFO                  - Display BMC FW Revision
+   IPMI <ipmi command data> - Send any IPMI message
+      req fmt: netfnlun cmd [data]
+      resp fmt: ccode [data]
+   P [0,1]               - Power Control
+   Q                     - Quit/Logout
+   RS  [s]               - Reset System [and switch to sys console]
+   SD                    - Read SDR Repository
+   SE                    - Read System Event Log
+   TOC [s]               - Send an INIT/TOC [and switch to sys console]
+ cli>
+
+This most useful for being able to remotely reboot (RS command) and power on/off (P command) the system.
+Pressing ESC ) "reconnects" one to the system's serial console.
+
+The C8000 supports IPMI, and presumably a lot of these same things 
+can be done over the built-in e1000 LAN interface once configured.
+
+In [[File:Lpv00338 rx2600 zx6000.pdf]] you can find a chapter with a broader description of the BMC.
+
+
+'''Please note that most older parisc machines don't have a BMC, but instead a GSP, see [[GuardianServiceProcessor]].'''
