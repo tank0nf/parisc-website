@@ -376,6 +376,12 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 | width="50%" | Service Processor (GSP or MP) User Guide<br />
 |- valign="top"
 | width="25%" |
+[[File:Lpv00338 rx2600 zx6000.pdf]]
+| width="5%" | 14.7M
+| width="20%" | April 2003
+| width="50%" | User's Manual - HP rx2600 and zx6000 - includes info about BMC in c8000 workstation<br />
+|- bgcolor="#dcdcdc" valign="top"
+| width="25%" |
 |}<br /><br />
 
 ==PA-RISC Papers and Presentations==
