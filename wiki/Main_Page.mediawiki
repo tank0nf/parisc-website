@@ -38,7 +38,9 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Feb 2018'''||Code by Richard Henderson and Helge Deller to [https://git.qemu.org/?p=qemu.git;a=commit;h=b05631954d6dfe93340d516660397e2c1a2a5dd6 emulate a physical parisc machine (qemu-system-hppa) has been merged upstream in QEMU]. 
+| style="vertical-align:top;" |'''Mar 2018'''||New documentation on how to access the [[BMC|Baseboard Management Controller (BMC) in rp34x0 and C8000 machines]].
+|-
+| style="vertical-align:top;" |'''Feb 2018'''||[https://git.qemu.org/?p=qemu.git;a=commit;h=b05631954d6dfe93340d516660397e2c1a2a5dd6 QEMU now supports system-emulation (qemu-system-hppa)] thanks to contributions by Richard Henderson and Helge Deller.
 |-
 | style="vertical-align:top;" |'''Jan 2018'''||New [http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v2.00 released]. The  callee copies ABI of gcc (on 32-bit hppa) created lots of optimization issues and problems with OpenMP, so [http://gcc.gnu.org/ml/gcc-patches/2018-01/msg01518.html Dave committed a patch to switch to the caller copy ABI] instead. First Qemu-related [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=310d82784fb4d60c80569f5ca9f53a7f3bf1d477 patches to Linux kernel to reduce power consumption on the host] have been submitted and the Qemu hardware emulation works fully stable with a booted Linux. Even an emulated 32-CPU PA-RISC SMP machine was running stable.  
 |-
