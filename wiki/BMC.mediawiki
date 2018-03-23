@@ -4,7 +4,7 @@ title: BMC
 
 = Baseboard Management Controller (BMC)  =
 
-The C8000 has a BMC (baseboard management controller) that is active when the system is powered.
+Latest generation of servers (e.g. rp3410/rp3440) and workstations (e.g. C8000) have a BMC (baseboard management controller) that is active when the system is powered.
 When attached to the serial console, you can press ESC ( and you will be able to interact with the BMC:
 
  ESC (
