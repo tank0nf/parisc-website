@@ -192,7 +192,7 @@ Stable Debian kernel 3.12 available.
 |-
 | style="vertical-align:top;" |'''Jun&nbsp;2004&nbsp;&nbsp;&nbsp;'''||Support for PA8800/zx1 committed!
 |-
-| style="vertical-align:top;" |'''1999-2000'''||[[PA-RISC_Linux_Project_History|How it started]]
+| style="vertical-align:top;" |'''1998-2000'''||[[PA-RISC_Linux_Project_History|How it started]]
 |-
 |}
 
