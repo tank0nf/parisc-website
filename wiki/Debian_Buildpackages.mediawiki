@@ -23,6 +23,10 @@ Some other info:
 * [https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd Another description on how to set up a buildd]
 * [http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/ How to use subkeys for signing on buildds]
 
+== Tips to manually build debian Linux kernel ==
+
+* by adding "debug-info: false" to the [build] section in debian/config/hppa/defines avoids building the debug info
+
 == How to manually build debian packages ==
 
 ; How to get a specific version of a source package
@@ -129,11 +133,3 @@ Some other info:
  ./setup configure
  ./setup build
  ./setup install
-
-== PA-RISC Linux Debian Ports Support ==
-
-The hppa linux port has moved to the debian-ports distribution.
-
-For more information about debian-ports see http://www.debian-ports.org.
-
-[[Debian_Ports_Installation]] describes instructions on how to install or upgrade a PARISC box with the "Debian Ports" unstable release.
