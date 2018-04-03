@@ -478,6 +478,7 @@ title: TODO
 ** '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode'''
 ** '''parisc: Add code generator for Qemu/SeaBIOS machine info'''
 ** parisc: Fix out of array access in match_pci_device()
+** '''ipmi/parisc: Add IPMI chassis poweroff for certain HP PA-RISC and IA-64 servers'''
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
