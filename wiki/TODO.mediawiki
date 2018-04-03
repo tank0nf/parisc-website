@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-03-18 ==
+== Status & TODO 2018-04-03 ==
 
 * implement alternative coding for UP/SMP, and disable Debian kernel 32-bit UP build. See arch/x86/include/asm/alternative.h
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
@@ -16,7 +16,8 @@ title: TODO
 * STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 * Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
 * gcc optimizations:
-** _mcount can be optimized (smaller) by not subtracting offset
+** _mcount can be optimized (smaller) by not subtracting offset)
+** check if we can use -fentry from gcc for _mcount optimization
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
 * Enable huge pages on kernel text for C8000 as well
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
@@ -47,7 +48,6 @@ title: TODO
 ** Implement ltrace on hppa
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
-** modprobe ipmi_si loads the BMC driver, but it could be loaded automatically too..How to get CPU temp? (ipmi-chassis --get-chassis-status crashes the machine).
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 ** why does mc hangs when exiting on sticon ?
@@ -462,6 +462,22 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=636a415bcc7f4fd020ece8fd5fc648c4cef19c34 parisc: Reduce irq overhead when run in qemu] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0adb24e03a124b79130c9499731936b11ce2677d '''parisc: Fix ordering of cache and TLB flushes'''] (backported to v4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9ef0f88fe5466c2ca1d2975549ba6be502c464c1 '''parisc: Handle case where flush_cache_range is called with no context'''] (backported to v4.9+)
+* Kernel 4.17
+** parisc: Silence uninitialized variable warning in dbl_to_sgl_fcnvff()
+** parisc/stifb: Use fb_memset() to avoid sparse warning
+** parisc/parport_gsc: Use NULL to avoid sparse warning
+** parisc/led: Fix sparse warnings
+** parisc/gscps2: Fix sparse warnings
+** parisc: Force to various endian types for sparse
+** '''parisc: Convert MAP_TYPE to cover 4 bits on parisc'''
+** parisc: Move various functions and strings to init section
+** parisc/Kconfig: SMP kernels boot on all machines
+** '''parisc: machine_power_off() should call pm_power_off()'''
+** parisc: Directly call machine_power_off() in power button driver
+** '''parisc: Fix HPMC handler by increasing size to multiple of 16 bytes'''
+** '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode'''
+** '''parisc: Add code generator for Qemu/SeaBIOS machine info'''
+** parisc: Fix out of array access in match_pci_device()
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -496,6 +512,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Detect physically broken memory via Page Deallocation Table (PDT), initial support in kernel 4.13
 ** DONE: Make kernel self-decompressing (instead of palo reading gzipped kernels)
 ** DONE: fix %pF and %pS usage in all kernel code
+** DONE: Enabled BMC/IPMI including Remote power on/off on C8000 and rp3410 machines (kernel 4.17 and above)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
