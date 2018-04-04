@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-04-03 ==
+== Status & TODO 2018-04-04 ==
 
 * implement alternative coding for UP/SMP, and disable Debian kernel 32-bit UP build. See arch/x86/include/asm/alternative.h
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
@@ -469,16 +469,16 @@ title: TODO
 ** parisc/led: Fix sparse warnings
 ** parisc/gscps2: Fix sparse warnings
 ** parisc: Force to various endian types for sparse
-** '''parisc: Convert MAP_TYPE to cover 4 bits on parisc'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5b59a71204b0a9a55eda633347b1214642bead3 '''parisc: Convert MAP_TYPE to cover 4 bits on parisc''']
 ** parisc: Move various functions and strings to init section
 ** parisc/Kconfig: SMP kernels boot on all machines
-** '''parisc: machine_power_off() should call pm_power_off()'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24002d59376e2d19a2a523fe88d5b32e691a43af '''parisc: machine_power_off() should call pm_power_off()''']
 ** parisc: Directly call machine_power_off() in power button driver
-** '''parisc: Fix HPMC handler by increasing size to multiple of 16 bytes'''
-** '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode'''
-** '''parisc: Add code generator for Qemu/SeaBIOS machine info'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5654e156bc4d68a87bbaa6d7e020baceddf6e68 '''parisc: Fix HPMC handler by increasing size to multiple of 16 bytes''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b845f66f78bf42a4ce98e5cfe0e94fab41dd0742 '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a77ab0e7ce232a62adac3d85b9ae66d0f48385ac '''parisc: Add code generator for Qemu/SeaBIOS machine info''']
 ** parisc: Fix out of array access in match_pci_device()
-** '''ipmi/parisc: Add IPMI chassis poweroff for certain HP PA-RISC and IA-64 servers'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6185e285c5c7cfeab739bae7f206ced695f09c7 '''ipmi/parisc: Add IPMI chassis poweroff for certain HP PA-RISC and IA-64 servers''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
