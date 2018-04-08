@@ -191,5 +191,5 @@ To turn it off, log in to the GSP console and read the error log (command: SL, t
 
 ==How can I interact with the Remote Management processors like GSP or BMC?==
 
-Most PA-RISC server machines have a GSP, which you can access via ^B keys. For details see [[GuardianServiceProcessor]].
-The C8000 workstation does instead has a BMC, which you can access via ESC-( keys. For details see [[BMC]].
+Most PA-RISC server machines have a GSP, which you can access via the ^B key. For details see [[GuardianServiceProcessor]].
+Latest generation of machines (e.g. the C8000 workstation and the rp3410/rp3440 server) does instead have a BMC, which you can access via ESC-( keys. For details see [[BMC]].
