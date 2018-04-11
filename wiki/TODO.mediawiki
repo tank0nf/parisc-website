@@ -4,8 +4,10 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-04-09 ==
+== Status & TODO 2018-04-11 ==
 
+* STARTED: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
+* STARTED: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728. Maybe this commit fixes it?: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4d22c75d4c7b5c5f4bd31054f09103ee490878fd
 * implement alternative coding for UP/SMP, and disable Debian kernel 32-bit UP build. See arch/x86/include/asm/alternative.h
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
@@ -28,7 +30,6 @@ title: TODO
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * kernel work
 ** STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
-** Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728. Maybe this commit fixes it?: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4d22c75d4c7b5c5f4bd31054f09103ee490878fd
 ** convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016)
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
@@ -43,7 +44,6 @@ title: TODO
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
-** use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 ** Implement ltrace on hppa
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
