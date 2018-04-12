@@ -601,7 +601,6 @@ and just be selective about running "apt-get upgrade".
 
 = TODO Drivers =
 
-* IPMI support on rp-class / Support graceful shutdown from BMC on rp servers (`PC -GRACEFUL`)
 * write Lasi floppy driver
 * write Suckyio floppy driver
 * write spifi driver (rbrad)
