@@ -5,8 +5,6 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2018-04-12 ==
-* STARTED: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
-* STARTED: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728. Maybe this commit fixes it?: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=4d22c75d4c7b5c5f4bd31054f09103ee490878fd
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
 ** cache-less systems (avoid cache flushes), e.g. for qemu to speed up qemu and avoid syncronization 
@@ -479,6 +477,10 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a77ab0e7ce232a62adac3d85b9ae66d0f48385ac '''parisc: Add code generator for Qemu/SeaBIOS machine info''']
 ** parisc: Fix out of array access in match_pci_device()
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6185e285c5c7cfeab739bae7f206ced695f09c7 '''ipmi/parisc: Add IPMI chassis poweroff for certain HP PA-RISC and IA-64 servers''']
+** parisc/signal: Add FPE_CONDTRAP for conditional trap handling
+** parisc: Move cache flush functions into .text.hot section
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71d577db01a5177c7807a2f3d3df9bab9d21c500 parisc: Switch to generic COMPAT_BINFMT_ELF]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=67698287031be7c1821f9b151237ca8cdb231fd1 parisc: Prevent panic at system halt]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -514,6 +516,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Make kernel self-decompressing (instead of palo reading gzipped kernels)
 ** DONE: fix %pF and %pS usage in all kernel code
 ** DONE: Enabled BMC/IPMI including Remote power on/off on C8000 and rp3410 machines (kernel 4.17 and above)
+** DONE: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
+** DONE: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
