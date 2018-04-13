@@ -19,8 +19,8 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 
 * checkout out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
 * run configure, e.g.
-** (for system emulation) '''./configure' '--target-list=hppa-softmmu' --enable-numa'''
-** (for user emulation) '''./configure' '--target-list=hppa-linux-user' --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
+** (for system emulation) '''./configure --target-list=hppa-softmmu --enable-numa'''
+** (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
 * run "make"
 
 == HOW TO RUN QEMU ==
