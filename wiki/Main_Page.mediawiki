@@ -38,6 +38,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Apr 2018'''||Linux kernel now powers off rp34x0 and C8000 machines at shutdown via built-in BMC controller.
+|-
 | style="vertical-align:top;" |'''Mar 2018'''||New documentation on how to access the [[BMC|Baseboard Management Controller (BMC) in rp34x0 and C8000 machines]].
 |-
 | style="vertical-align:top;" |'''Feb 2018'''||[[Qemu|QEMU now supports system-emulation (qemu-system-hppa)]] thanks to [https://git.qemu.org/?p=qemu.git;a=commit;h=b05631954d6dfe93340d516660397e2c1a2a5dd6 contributions by Richard Henderson and Helge Deller].
