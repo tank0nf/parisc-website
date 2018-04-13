@@ -2,42 +2,38 @@
 title: Qemu
 ---
 
-Qemu is still incomplete to fully support parisc.
-Mostly hardware-emulation is missing.
+== QEMU SUPPORT STATUS REGARDING HPPA / PARISC ==
 
-Nevertheless, emulating a Linux system is already possible.
+'''As of April 2018, starting with qemu version 2.12, qemu fully supports hppa user emulation (hppa-linux-user) and hppa system emulation (qemu-system-hppa).'''
 
-
-HOW TO QUICK-START AND RUN A PRECOMPILED QEMU:
-----------------------------------------------
-
-# Download statically compiled qemu: ftp://parisc.parisc-linux.org/qemu/qemu.tgz  (just 8MB)
-# Untar the tar-gz file in some directory
-# Download a debian install CD into the same directory, e.g. http://ftp.nz.parisc-linux.org/debian-cd/9.3/debian-9.3-hppa-CD-1.iso
-# Run qemu (either via the provided startme.sh script), or manually:
-
-./qemu-system-hppa -drive file=hdd.img,discard=unmap -accel tcg,thread=multi -smp cpus=2 -drive file=debian-9.3-hppa-CD-1.iso,media=cdrom -m 3600M -boot menu=off,order=d -serial mon:stdio -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22
-
-
-
-
-HOW TO BUILD FROM SOURCE:
--------------------------
-
-Richard Hendersons qemu git tree:
+All necessary changes to qemu have been merged into qemu upstream git repository at:
+* https://git.qemu.org/?p=qemu.git;a=summary
+During development, Richard Henderson developed the hppa related patches in his qemu git tree at:
 * https://github.com/rth7680/qemu/commits/tgt-hppa-softmmu
-Helge Deller SeaBIOS git tree:
+For hppa system emulation, qemu already includes a precompiled firmware for hppa (pc-bios/hppa-firmware.img).
+
+This firmware is based on seabios and is available in Helge Deller's SeaBIOS git tree:
 * https://github.com/hdeller/seabios-hppa/commits/parisc_firmware
 
-Howto:
-# checkout out trees above, configure and build
-# copy (or symlink) the parisc firmware file "out/hppa-firmware.img" from seabios into the qemu "pc-bios/" directory
-# qemu-img create -f qcow2 hdd.img 30G
-# download install image: https://cdimage.debian.org/cdimage/ports/, e.g. https://cdimage.debian.org/cdimage/ports/9.0/hppa/iso-cd/debian-9.0-hppa-NETINST-1.iso
-# ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-9.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
+== HOW TO BUILD QEMU FROM SOURCE ==
 
+* checkout out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
+* run configure, e.g.
+** (for system emulation) '''./configure' '--target-list=hppa-softmmu' --enable-numa'''
+** (for user emulation) '''./configure' '--target-list=hppa-linux-user' --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
+* run "make"
 
-qemu options:
+== HOW TO RUN QEMU ==
+
+* Create a virtual hard disc once:
+ qemu-img create -f qcow2 hdd.img 30G
+* download a Linux install image, e.g.
+** for debian: https://cdimage.debian.org/cdimage/ports/9.0/hppa/iso-cd/debian-9.0-hppa-NETINST-1.iso
+** for gentoo: http://distfiles.gentoo.org/releases/hppa/autobuilds/
+* Run the installer:
+ ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-9.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
+
+Possible qemu options:
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
 * -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
 * -boot menu=on    - Firmware: enable interactive mode (boot prompt)
@@ -47,11 +43,8 @@ qemu options:
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
 
-Examples:
-* ./hppa-softmmu/qemu-system-hppa  -drive file=hdd.img  -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -nographic  -serial mon:stdio
-* ./hppa-softmmu/qemu-system-hppa  -cdrom debian-8.0-hppa-NETINST-1.iso -nographic  -serial mon:stdio
-* ./hppa-softmmu/qemu-system-hppa  -device virtio-scsi-pci,id=scsi -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
-* ./hppa-softmmu/qemu-system-hppa  -device lsi53c895a,id=scsi      -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
-
-How to run:
-* ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -boot menu=on  -serial mon:stdio
+Other examples:
+  ./hppa-softmmu/qemu-system-hppa  -drive file=hdd.img  -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -nographic  -serial mon:stdio
+  ./hppa-softmmu/qemu-system-hppa  -cdrom debian-8.0-hppa-NETINST-1.iso -nographic  -serial mon:stdio
+  ./hppa-softmmu/qemu-system-hppa  -device virtio-scsi-pci,id=scsi -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
+  ./hppa-softmmu/qemu-system-hppa  -device lsi53c895a,id=scsi      -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
