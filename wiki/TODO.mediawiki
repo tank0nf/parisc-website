@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-04-12 ==
+== Status & TODO 2018-04-21 ==
+* STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
 ** cache-less systems (avoid cache flushes), e.g. for qemu to speed up qemu and avoid syncronization 
