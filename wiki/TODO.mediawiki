@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-04-21 ==
+== Status & TODO 2018-05-04 ==
 * STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
@@ -482,6 +482,11 @@ title: TODO
 ** parisc: Move cache flush functions into .text.hot section
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71d577db01a5177c7807a2f3d3df9bab9d21c500 parisc: Switch to generic COMPAT_BINFMT_ELF]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=67698287031be7c1821f9b151237ca8cdb231fd1 parisc: Prevent panic at system halt]
+** parisc: time: Convert read_persistent_clock() to read_persistent_clock64()
+** parisc: Make bzImage default build target
+** parisc: Document rules regarding checksum of HPMC handler
+** parisc: drivers.c: Fix section mismatches
+** parisc: Fix section mismatches
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
