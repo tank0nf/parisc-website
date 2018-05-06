@@ -4,16 +4,17 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-05-04 ==
+== Status & TODO 2018-05-06 ==
+* Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 * STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
+** check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
 ** cache-less systems (avoid cache flushes), e.g. for qemu to speed up qemu and avoid syncronization 
-* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
-* STARTED: Enable UBSAN and fix fallouts
+* ONGOING: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
 * Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
@@ -602,6 +603,9 @@ and just be selective about running "apt-get upgrade".
 ** DONE: Domain owner before: Matt Taggart <matt@lackof.org>, Expiration Date:09-Aug-2014; Since August 2014 is Helge Deller domain owner of parisc-linux.org
 ** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
 ** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
+
+== Linus Torvalds barking at parisc ==
+* https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=19b9ad67310ed2f685062a00aec602bec33835f0
 
 = Testsuites, kernel and userspace testing tools =
 
