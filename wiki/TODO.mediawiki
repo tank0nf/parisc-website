@@ -5,7 +5,8 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2018-05-06 ==
-* Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
+* Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
+* MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 * STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
 ** check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
