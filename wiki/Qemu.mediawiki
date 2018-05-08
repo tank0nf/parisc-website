@@ -47,6 +47,8 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 TODO:
 * Boot-cd should boot the 32-bit SMP kernel by default
 * Make debian-installer install the 32-bit SMP kernel on QEMU (if started with multiple CPUs)
+* Installer: (1 of 2) A start job is running for font and keyboard layout (1min 10s / no limit)
+
 
 
 Possible qemu options:
