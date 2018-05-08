@@ -33,7 +33,7 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 * Start emulator with the installer image once:
  ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-10.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
 * Choose typical installation options, the defaults are OK.
-* Skip the step "Configure the Package manager"
+* Either skip the step "Configure the Package manager", or configure the mirror as with hostname "ftp.ports.debian.org", and directory "/debian-ports"
 * Shut down virtual machine after installation
 
 * Start emulator with installed operating system any time:
