@@ -23,15 +23,29 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 ** (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
 * run "make"
 
-== HOW TO RUN QEMU ==
+== EXAMPLE HOW TO RUN QEMU WITH DEBIAN-10 INSTALL IMAGE ==
 
 * Create a virtual hard disc once:
- qemu-img create -f qcow2 hdd.img 30G
+ qemu-img create -f qcow2 hdd.img 50G
 * download a Linux install image, e.g.
-** for debian: https://cdimage.debian.org/cdimage/ports/9.0/hppa/iso-cd/debian-9.0-hppa-NETINST-1.iso
+** for debian: https://cdimage.debian.org/cdimage/ports/10.0/hppa/iso-cd/debian-10.0-hppa-NETINST-1.iso
 ** for gentoo: http://distfiles.gentoo.org/releases/hppa/autobuilds/
-* Run the installer:
- ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-9.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
+* Start emulator with the installer image once:
+ ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -drive file=debian-10.0-hppa-NETINST-1.iso,media=cdrom -boot order=d -nographic -serial mon:stdio 
+* Choose typical installation options, the defaults are OK.
+* Skip the step "Configure the Package manager"
+* Shut down virtual machine after installation
+
+* Start emulator with installed operating system any time:
+ ./hppa-softmmu/qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=2 
+
+* Edit the sources.list (/etc/apt/sources.list) file:
+ deb http://ftp.ports.debian.org/debian-ports unstable main
+ deb [arch=all] http://ftp.debian.org/debian unstable main 
+ deb-src http://ftp.debian.org/debian unstable main
+
+
+
 
 Possible qemu options:
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
@@ -42,9 +56,3 @@ Possible qemu options:
 * -serial mon:stdio   use serial console
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
-
-Other examples:
-  ./hppa-softmmu/qemu-system-hppa  -drive file=hdd.img  -drive file=debian-8.0-hppa-NETINST-1.iso,media=cdrom -nographic  -serial mon:stdio
-  ./hppa-softmmu/qemu-system-hppa  -cdrom debian-8.0-hppa-NETINST-1.iso -nographic  -serial mon:stdio
-  ./hppa-softmmu/qemu-system-hppa  -device virtio-scsi-pci,id=scsi -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
-  ./hppa-softmmu/qemu-system-hppa  -device lsi53c895a,id=scsi      -drive file=debian-8.0-hppa-NETINST-1.iso,if=scsi,media=cdrom,bus=0  -nographic  -serial mon:stdio
