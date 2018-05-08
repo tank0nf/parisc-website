@@ -44,7 +44,9 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
 
-
+TODO:
+* Boot-cd should boot the 32-bit SMP kernel by default
+* Make debian-installer install the 32-bit SMP kernel on QEMU (if started with multiple CPUs)
 
 
 Possible qemu options:
