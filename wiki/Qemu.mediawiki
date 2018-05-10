@@ -25,7 +25,7 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 
 == PRE-INSTALLED AND READY-TO-RUN QEMU IMAGE ==
 
-* Download from http://dellerweb.de/qemu/debian-10-hdd-img.tar.bz2
+* Download from http://backup.parisc-linux.org/qemu/debian-10-hdd-img.tar.bz2
 * Unzip image: tar xvfj debian-10-hdd-img.tar.bz2
 * Run qemu:
  ./hppa-softmmu/qemu-system-hppa -drive file=debian-10-hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
