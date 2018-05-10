@@ -23,6 +23,14 @@ This firmware is based on seabios and is available in Helge Deller's SeaBIOS git
 ** (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
 * run "make"
 
+== PRE-INSTALLED AND READY-TO-RUN QEMU IMAGE ==
+
+* Download from http://dellerweb.de/qemu/debian-10-hdd-img.tar.bz2
+* Unzip image: tar xvfj debian-10-hdd-img.tar.bz2
+* Run qemu:
+ ./hppa-softmmu/qemu-system-hppa -drive file=debian-10-hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
+* Log in as root, root password is "rootme"
+
 == EXAMPLE HOW TO RUN QEMU WITH DEBIAN-10 INSTALL IMAGE ==
 
 * Create a virtual hard disc once:
