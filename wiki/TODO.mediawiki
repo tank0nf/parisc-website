@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-05-06 ==
+== Status & TODO 2018-05-18 ==
+* Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 * STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
