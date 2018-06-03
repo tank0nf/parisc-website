@@ -109,6 +109,8 @@ title: TODO
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
 
 == Upstream PA-RISC-related kernel patch history ==
+* Kernel 3.8:
+** unbreak automounter support on 64-bit kernel with 32-bit userspace
 * Kernel 3.9:
 ** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
 ** add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
