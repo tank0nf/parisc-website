@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-05-18 ==
+== Status & TODO 2018-06-07 ==
+* Drop ENOTSUP (252) constant from kernel/glibc header files. Gives problems and parisc is only platform, see libuv bug, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237
 * Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
