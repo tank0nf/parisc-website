@@ -4,12 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-06-07 ==
+== Status & TODO 2018-07-01 ==
 * Drop ENOTSUP (252) constant from kernel/glibc header files. Gives problems and parisc is only platform, see libuv bug, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237
 * Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
-* STARTED: Nicolas Piggin: Compiling parisc without -ffunction-sections?
 ** check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
@@ -488,11 +487,21 @@ title: TODO
 ** parisc: Move cache flush functions into .text.hot section
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71d577db01a5177c7807a2f3d3df9bab9d21c500 parisc: Switch to generic COMPAT_BINFMT_ELF]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=67698287031be7c1821f9b151237ca8cdb231fd1 parisc: Prevent panic at system halt]
-** parisc: time: Convert read_persistent_clock() to read_persistent_clock64()
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f76cdd00ef0e39d880139b074e3b247594dff95a parisc: time: Convert read_persistent_clock() to read_persistent_clock64()]
 ** parisc: Make bzImage default build target
 ** parisc: Document rules regarding checksum of HPMC handler
 ** parisc: drivers.c: Fix section mismatches
 ** parisc: Fix section mismatches
+* Kernel 4.18
+** parisc: Convert printk(KERN_LEVEL) to pr_lvl()
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=704e38303153c797d66c41bbe8325202f549b53c parisc: Drop struct sigaction from not exported header file]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1c971f39e62222d567f179ccaa1a186f1c203b52 parisc: Mark 16kB and 64kB page sizes BROKEN]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=435d34c7a48de5e89047ef9c7dce6528831b258b parisc: Default to 4 SMP CPUs]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2765b3edc41bdf18960ca7e6b656fb933ac191d6 parisc: Wire up io_pgetevents syscall]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=63ba82c0e63f1dd400d84e12f2142c2cb691aec1 parisc: Reduce debug output in unwind code]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24b6c22504a27210a8377e54d24d425ae414f2c1 parisc: Build kernel without -ffunction-sections]
+
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
