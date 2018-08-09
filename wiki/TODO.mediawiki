@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-07-03 ==
+== Status & TODO 2018-08-09 ==
 * IRQ Balancing seems broken with latest kernels.
 * Drop ENOTSUP (252) constant from kernel/glibc header files. Gives problems and parisc is only platform, see libuv bug, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237
 * Get rid of executable stack, maybe use gateway page instead for signal returns?
@@ -501,8 +501,8 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2765b3edc41bdf18960ca7e6b656fb933ac191d6 parisc: Wire up io_pgetevents syscall]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=63ba82c0e63f1dd400d84e12f2142c2cb691aec1 parisc: Reduce debug output in unwind code]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24b6c22504a27210a8377e54d24d425ae414f2c1 parisc: Build kernel without -ffunction-sections]
-
-
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=66509a276c8c1d19ee3f661a41b418d101c57d29 parisc: Enable CONFIG_MLONGCALLS by default]  (backported to v4.0+) 
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fedb8da96355f5f64353625bf96dc69423ad1826 parisc: Define mb() and add memory barriers to assembler unlock sequences]  (backported to v4.0+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
