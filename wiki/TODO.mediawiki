@@ -502,7 +502,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=63ba82c0e63f1dd400d84e12f2142c2cb691aec1 parisc: Reduce debug output in unwind code]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24b6c22504a27210a8377e54d24d425ae414f2c1 parisc: Build kernel without -ffunction-sections]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=66509a276c8c1d19ee3f661a41b418d101c57d29 parisc: Enable CONFIG_MLONGCALLS by default]  (backported to v4.0+) 
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fedb8da96355f5f64353625bf96dc69423ad1826 parisc: Define mb() and add memory barriers to assembler unlock sequences]  (backported to v4.0+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fedb8da96355f5f64353625bf96dc69423ad1826 '''parisc: Define mb() and add memory barriers to assembler unlock sequences''']  (backported to v4.0+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
