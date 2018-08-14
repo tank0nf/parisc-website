@@ -4,10 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-08-09 ==
+== Status & TODO 2018-08-14 ==
 * IRQ Balancing seems broken with latest kernels.
-* Drop ENOTSUP (252) constant from kernel/glibc header files. Gives problems and parisc is only platform, see libuv bug, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237
-* Get rid of executable stack, maybe use gateway page instead for signal returns?
+* Implement kernel VDSO support / Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 ** check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
@@ -41,7 +40,6 @@ title: TODO
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
 *** New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
-** Implement kernel VDSO support
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 ** Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave) 
 ** Due to very bad performance running multiple copies of dot program (Dave)
@@ -503,6 +501,16 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24b6c22504a27210a8377e54d24d425ae414f2c1 parisc: Build kernel without -ffunction-sections]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=66509a276c8c1d19ee3f661a41b418d101c57d29 parisc: Enable CONFIG_MLONGCALLS by default]  (backported to v4.0+) 
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fedb8da96355f5f64353625bf96dc69423ad1826 '''parisc: Define mb() and add memory barriers to assembler unlock sequences''']  (backported to v4.0+)
+* Kernel 4.19
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a34a9b9682a5a9de53386ed0872c7d38ca9d6b38 parisc: merge pcx_dma_ops and pcxl_dma_ops]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7f1501053811414ddeff63db8f5d41bdbe38068f parisc: always use flush_kernel_dcache_range for DMA cache maintainance]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c1f59375b3782f478ac2c488889abdc00dd8e25f '''parisc: use generic dma_noncoherent_ops''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93cb8e20d56be40c541475f77b5f565fbb385a4b '''parisc: Drop architecture-specific ENOTSUP define''']
+** parisc: Add HAVE_REGS_AND_STACK_ACCESS_API feature
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c8921d72e390cb6fca3fb2b0c2badfda851647eb '''parisc: Fix and improve kernel stack unwinding''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7797167ffde1f00446301cb22b37b7c03194cfaf '''parisc: Remove ordered stores from syscall.S'''] (backported to v4.0+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3b885ac1dc35b87a39ee176a6c7e2af9c789d8b8 '''parisc: Remove unnecessary barriers from spinlock.h'''] (backported to v4.0+)
+** parisc: prefer _THIS_IP_ and _RET_IP_ statement expressions
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -586,6 +594,7 @@ Debian kernel / Generic Kernel bugs fixed
 *** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
 *** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
 *** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: make patch for dietlibc to use LONG_LONG_PAIR for ftruncate64() and then rebuild util-vserver package
+* [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93cb8e20d56be40c541475f77b5f565fbb385a4b Dropped ENOTSUP (252) constant from kernel with v4.19]. Gave problems and parisc is only platform, see libuv bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237
 
 == Considerations between Debian unstable and Debian Jessie release ==
 Jessie was not stable on SMP machines, particularly those with PA8800/PA8900 processors.
