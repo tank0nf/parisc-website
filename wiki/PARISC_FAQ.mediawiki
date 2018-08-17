@@ -127,14 +127,16 @@ You don't need these options for non-HIL PS/2 devices:
 
 ==Can I run a 64-bit kernel on my machine?==
 
-First ask yourself: Why do I need to run a 64-bit kernel? Since parisc-linux does not yet support 64-bit userspace, there is no advantage to be gained running a 64-bit kernel on a machine with less than 3.5GB of memory. In fact, there are many disadvantages including more potential bugs, bigger data structures, slightly less performance on many common workloads.
+First ask yourself: Why do I need to run a 64-bit kernel? Since parisc-linux does not yet support 64-bit userspace, there is no advantage to be gained running a 64-bit kernel on a machine with less than 3.5GB of memory. In fact, there are many disadvantages including bigger data structures and slightly less performance on many common workloads.
 
-Only PA-RISC 2.0 CPU can run a 64-bit kernel (aka `wide mode'). Check /proc/cpuinfo if you already have linux booted. Or check firmware output at power up time. Systems running the CPU clock speed slower than 160Mhz are PA 1.x and faster than 180Mhz are PA 2.0. Systems between 160Mhz and 180Mhz are either PA 1.1 (PCX-L2, eg C160L) or PA 2.0 (PCX-U, eg C160).
+Only PA-RISC 2.0 CPU can run a 64-bit kernel (aka `wide mode'). Check /proc/cpuinfo if you already have linux booted.
+Or check firmware output at power up time. Systems running the CPU clock speed slower than 160Mhz are PA 1.x and faster than 180Mhz are PA 2.0. Systems between 160Mhz and 180Mhz are either PA 1.1 (PCX-L2, eg C160L) or PA 2.0 (PCX-U, eg C160).
 
 Platform firmware also determines the type of kernel which can be used:
 * '''64-bit Only''' : A500, L/N-class, rpXXXX, Superdome servers, and all PA-8800 CPUs must run a 64-bit kernel.
 * '''Dual Mode''' : B2000/C3000, similar J-class workstations and PA 2.0 D/K/R-class system firmware can be called from either 32-bit or 64-bit mode.
 * '''32-bit Only''' : Workstations up to and including the J2240/C360 and servers of D/R-class have 32-bit firmware.
+* Linux reports in the '''capabilities''' field of '''/proc/cpuinfo''' a combination of '''os32''' and '''os64''' which means the machine is capable to boot the respective kernel.
 
 For those who do want to test 64-bit kernels on PA 2.0 machines with 32-bit firmware, recent 2.6 64-bit kernels will auto-detect the firmware type and switch to the correct `mode' (wide or narrow).
 
