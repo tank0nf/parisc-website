@@ -510,7 +510,13 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c8921d72e390cb6fca3fb2b0c2badfda851647eb '''parisc: Fix and improve kernel stack unwinding''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7797167ffde1f00446301cb22b37b7c03194cfaf '''parisc: Remove ordered stores from syscall.S'''] (backported to v4.0+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3b885ac1dc35b87a39ee176a6c7e2af9c789d8b8 '''parisc: Remove unnecessary barriers from spinlock.h'''] (backported to v4.0+)
-** parisc: prefer _THIS_IP_ and _RET_IP_ statement expressions
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a53ec1ccf932f86845c96a5092ba4507621c84d parisc: prefer _THIS_IP_ and _RET_IP_ statement expressions]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b00ca0b8035e49ef7c466e959c5cb457a654351 '''parisc: Restore possibility to execute 64-bit applications''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6fc0cccb6b35815a7d1cfc9279cdbfc2c61d00d '''parisc: Fix ptraced 64-bit applications to call 64-bit syscalls''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=54c770da992387abfa7df4817404d000ef034fa8 parisc: Update comments in syscall.S regarding wide userland]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9e0d5c451f9e559dd06af3fff49a0d2068c634c4 parisc: Consolidate unwind initialization calls]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8801ccb9fa524c195322c26b6d44e99827772bde '''parisc: Fix boot failure of 64-bit kernel''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbf2a4b1ffab2867505be3b24221d5efa2200c91 parisc: Add hardware description to stack traces]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
