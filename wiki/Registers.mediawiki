@@ -25,7 +25,7 @@ https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentat
 |-
 |CR10 ||(CCR)                      ||lazy FPU saving*
 |-
-|CR11 ||                           ||as specified by ABI (SAR)
+|CR11 ||(SAR)                      ||as specified by ABI (5 or 6 bits depending on 32/64bit)
 |-
 |CR14 ||(interruption vector)      ||initialized to fault_vector
 |-
@@ -35,13 +35,13 @@ https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentat
 |-
 |CR17-CR22 ||                      ||interruption parameters
 |-
-|CR19 ||                           ||Interrupt Instruction Register
+|CR19 ||(IIR)                      ||Interrupt Instruction Register
 |-
-|CR20 ||                           ||Interrupt Space Register
+|CR20 ||(ISR)                      ||Interrupt Space Register
 |-
-|CR21 ||                           ||Interrupt Offset Register
+|CR21 ||(IOR)                      ||Interrupt Offset Register
 |-
-|CR22 ||                           ||Interrupt PSW
+|CR22 ||(IPSW)                     ||Interrupt PSW
 |-
 |CR23 ||(EIRR)                     ||read for pending interrupts/write clears bits
 |-
