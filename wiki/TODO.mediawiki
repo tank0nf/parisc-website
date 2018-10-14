@@ -4,13 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-08-21 ==
+== Status & TODO 2018-10-14 ==
+* Find way to extract vmlinux out of vmlinuz
 * IRQ Balancing seems broken with latest kernels.
 * Implement kernel VDSO support / Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 ** check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
-* implement alternative coding (see arch/x86/include/asm/alternative.h) for
+* STARTED: implement alternative coding (see arch/x86/include/asm/alternative.h) for
 ** UP/SMP, and disable debian kernel 32-bit UP build
 ** cache-less systems (avoid cache flushes), e.g. for qemu to speed up qemu and avoid syncronization 
 * add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
