@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2018-10-14 ==
+* Modify palo to be able to load lifimage file
 * Find way to extract vmlinux out of vmlinuz
 * IRQ Balancing seems broken with latest kernels.
 * Implement kernel VDSO support / Get rid of executable stack, maybe use gateway page instead for signal returns?
