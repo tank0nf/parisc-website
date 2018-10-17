@@ -68,3 +68,7 @@ Possible qemu options:
 * -serial mon:stdio   use serial console
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
+
+== qemu notes ==
+
+* Prefer the e1000 driver over the rtl8129 card. The latter gives irq issues with Dino emulation.
