@@ -519,6 +519,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9e0d5c451f9e559dd06af3fff49a0d2068c634c4 parisc: Consolidate unwind initialization calls]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8801ccb9fa524c195322c26b6d44e99827772bde '''parisc: Fix boot failure of 64-bit kernel''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbf2a4b1ffab2867505be3b24221d5efa2200c91 parisc: Add hardware description to stack traces]
+** parisc: Fix uninitialized variable usage in unwind.c
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
