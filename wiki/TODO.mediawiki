@@ -520,7 +520,6 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbf2a4b1ffab2867505be3b24221d5efa2200c91 parisc: Add hardware description to stack traces]
 ** parisc: Fix uninitialized variable usage in unwind.c
 * Kernel 4.20
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a34a9b9682a5a9de53386ed0872c7d38ca9d6b38 parisc: merge pcx_dma_ops and pcxl_dma_ops]
 ** parisc: remove the dead ccio-rm-dma driver
 ** parisc: Use PARISC_ITLB_TRAP constant in entry.S
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fe8376dbbd6ac1febb0fd6389e3ec4f349e70c71 parisc: Add SYSTEM_INFO and REGISTER TOC PAT functions]
