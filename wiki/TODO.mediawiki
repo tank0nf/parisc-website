@@ -4,9 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-10-14 ==
+== Status & TODO 2018-10-23 ==
 * Modify palo to be able to load lifimage file
-* Find way to extract vmlinux out of vmlinuz
 * IRQ Balancing seems broken with latest kernels.
 * Implement kernel VDSO support / Get rid of executable stack, maybe use gateway page instead for signal returns?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
@@ -520,6 +519,31 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8801ccb9fa524c195322c26b6d44e99827772bde '''parisc: Fix boot failure of 64-bit kernel''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbf2a4b1ffab2867505be3b24221d5efa2200c91 parisc: Add hardware description to stack traces]
 ** parisc: Fix uninitialized variable usage in unwind.c
+* Kernel 4.20
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a34a9b9682a5a9de53386ed0872c7d38ca9d6b38 parisc: merge pcx_dma_ops and pcxl_dma_ops]
+** parisc: remove the dead ccio-rm-dma driver
+** parisc: Use PARISC_ITLB_TRAP constant in entry.S
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fe8376dbbd6ac1febb0fd6389e3ec4f349e70c71 parisc: Add SYSTEM_INFO and REGISTER TOC PAT functions]
+** parisc: Clean up crash header output
+** parisc: dino: Utilize DINO_MASK_IRQ() macro
+** parisc: Ratelimit dino stuck interrupt warnings
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c229b3f2dd8133f61bb81d3cb018be92f4bba39 '''parisc: Fix map_pages() to not overwrite existing pte entries'''] (backported to all)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99a3ae51d557d8e38a7aece65678a31f9db215ee '''parisc: Fix exported address of os_hpmc handler'''] (backported to 4.9+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=db139d71c4c377c56a67ae219f120186ce9934d1 '''extract-vmlinux: Check for uncompressed image as fallback''']
+** parisc: Include compressed vmlinux file in vmlinuz boot kernel
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3847dab77421867fbc77faacb2f377d44e729e1b '''parisc: Add alternative coding infrastructure''']
+** parisc: Use zdep for shlw macro on PA1.1 and PA2.0
+** parisc: Drop two instructions from pte lookup code
+** parisc: Add PDC PAT cell_info() and pd_get_pdc_revisions() functions
+** parisc: Retrieve and display the PDC PAT capabilities
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a886c9791aed64d73f8c0038cc1506741ba216fa '''parisc: Reorder TLB flush timing calculation''']
+** parisc: Remove PTE load and fault check from L2_ptep macro
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d27dfa13b9f77ae7e6ed09d70a0426ed26c1a8f9 '''parisc: Release spinlocks using ordered store''']
+** parisc: Purge TLB entries after updating page table entry and set page accessed flag in TLB handler
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1138b6718ff74d2a934459643e3754423d23b5e2 '''parisc: Fix address in HPMC IVA'''] (backported to all)
+** parisc: Remove pte_inserted define
+** parisc: Optimze cache flush algorithms
+** parisc: remove check for minimum required GCC version
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -557,6 +581,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Enabled BMC/IPMI including Remote power on/off on C8000 and rp3410 machines (kernel 4.17 and above)
 ** DONE: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 ** DONE: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
+** DONE: Find way to extract vmlinux out of vmlinuz
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
