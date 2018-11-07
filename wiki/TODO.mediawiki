@@ -192,7 +192,7 @@ title: TODO
 ** parisc: sys_hpux: NUL terminator is one past the end
 ** parisc: Use get_signal() signal_setup_done()
 * Kernel 3.18
-** '''parisc: Reduce SIGRTMIN from 37 to 32 to behave like other Linux architectures''' (important ABI change!)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1f25df2eff5b25f52c139d3ff31bc883eee9a0ab '''parisc: Reduce SIGRTMIN from 37 to 32 to behave like other Linux architectures'''] (important ABI change!)
 ** parisc: Avoid using CONFIG_64BIT in userspace exported headers      
 ** parisc: Use compat layer for msgctl, shmat, shmctl and semtimedop syscalls (backported to v3.10+)
 ** parisc: Use BUILD_BUG() instead of undefined functions
