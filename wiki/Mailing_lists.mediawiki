@@ -9,7 +9,7 @@ communities closely tied to them. This primarily (but not exclusively)
 means linux kernel, gcc, binutils, and glibc work.
 
 Archives for [mailto:linux-parisc@vger.kernel.org linux-parisc] are available at:
-* |http://lore.kernel.org/linux-parisc/ complete parisc-linux mailing list archive at lore.kernel.org]
+* [http://lore.kernel.org/linux-parisc/ kernel.org archive]
 * [http://www.spinics.net/lists/linux-parisc/ spinics archive]
 * [https://marc.info/?l=linux-parisc MARC archive]
 * [http://dir.gmane.org/gmane.linux.ports.parisc gmane archive] (no web-frontend, NNTP access only)
