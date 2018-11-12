@@ -546,6 +546,10 @@ title: TODO
 ** parisc: Remove pte_inserted define
 ** parisc: Optimze cache flush algorithms
 ** parisc: remove check for minimum required GCC version
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c9fa406f62ec952bc4689b5120a02759ce42a68d parisc: Fix A500 boot crash]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=87613bb9d20c556b5eeae04f4caf40701189f07b parisc: Use LINUX_GATEWAY_SPACE constant in entry.S]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9a298b445514b3de08252c71833f9273b7727355 '''parisc64: change __kernel_suseconds_t to match glibc''']
+** parisc: Revert "Release spinlocks using ordered store"
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
