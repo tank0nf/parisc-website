@@ -17,7 +17,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 ; Gentoo Linux:
 : PA-RISC is a fully supported architecture of Gentoo Linux.<br>
-: Many thanks to the smart people of the [http://www.gentoo.org/proj/en/base/hppa Gentoo Linux HPPA Development team] for providing [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download]!
+: Many thanks to the smart people of the [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo Linux HPPA Development team] for providing [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download]!
 : If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
 
 ; Debian Linux:
