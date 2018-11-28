@@ -46,7 +46,7 @@ title: TODO
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 ** Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave)
-*** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version (related to dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev)
+*** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version. Then trigger bin-nmu of phonon package. Finally this resolves then the dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev...
 ** Due to very bad performance running multiple copies of dot program (Dave)
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
