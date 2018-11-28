@@ -533,7 +533,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c229b3f2dd8133f61bb81d3cb018be92f4bba39 '''parisc: Fix map_pages() to not overwrite existing pte entries'''] (backported to all)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99a3ae51d557d8e38a7aece65678a31f9db215ee '''parisc: Fix exported address of os_hpmc handler'''] (backported to 4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=db139d71c4c377c56a67ae219f120186ce9934d1 '''extract-vmlinux: Check for uncompressed image as fallback''']
-** parisc: Include compressed vmlinux file in vmlinuz boot kernel
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=34c201ae49fe9e0bf3b389da5869d810f201c740 parisc: Include compressed vmlinux file in vmlinuz boot kernel]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3847dab77421867fbc77faacb2f377d44e729e1b '''parisc: Add alternative coding infrastructure''']
 ** parisc: Use zdep for shlw macro on PA1.1 and PA2.0
 ** parisc: Drop two instructions from pte lookup code
