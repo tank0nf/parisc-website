@@ -102,7 +102,7 @@ title: TODO
 *** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
 ** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
-** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103
+** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103,  Work by Dave: https://gcc.gnu.org/ml/gcc-testresults/2018-11/msg03460.html
 ** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 ** debian-cd to use xorriso
 ** debian-cd: do not compress kernel.
