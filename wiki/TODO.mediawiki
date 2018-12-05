@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-11-27 ==
+== Status & TODO 2018-12-05 ==
 * Implement kernel VDSO support
 ** Get rid of executable stack, maybe use gateway page instead for signal returns?
 ** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
@@ -551,6 +551,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=87613bb9d20c556b5eeae04f4caf40701189f07b parisc: Use LINUX_GATEWAY_SPACE constant in entry.S]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9a298b445514b3de08252c71833f9273b7727355 '''parisc64: change __kernel_suseconds_t to match glibc''']
 ** parisc: Revert "Release spinlocks using ordered store"
+** [http://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/commit/?h=parisc-4.20-4&id=1e8249b8a4e960018e4baca6b523b8a4500af600 parisc: Enable -ffunction-sections for modules on 32-bit kernel] (backported to v4.18+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
