@@ -4,19 +4,17 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-12-05 ==
+== Status & TODO 2018-12-26 ==
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
-* Implement kernel VDSO support
+** Modify palo to be able to load lifimage file
+* STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 ** Get rid of executable stack, maybe use gateway page instead for signal returns?
 ** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** [[Vdso]]
-* STARTED: implement alternative coding (see arch/x86/include/asm/alternative.h) for
-** UP/SMP, and disable debian kernel 32-bit UP build
-** cache-less systems (avoid cache flushes), e.g. for qemu to speed up qemu and avoid syncronization 
+** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 * STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
-* Modify palo to be able to load lifimage file
 * IRQ Balancing seems broken with latest kernels.
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
@@ -67,12 +65,10 @@ title: TODO
 * Kernel: still missing Linux kernel development (no patches available yet):
 ** maybe implement transparent huge pages (due to cache coherency technically only possible on PA8500-PA8700 CPUs, not possible on PA8800-PA8900 CPUs)
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
-** fix wrong _init notation in kernel
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 ** check assembly in drivers/parisc/*
 ** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
 ** arch/parisc/kernel/sys_parisc.c -> use SYSCALL_ALIAS() -> maybe
-** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 
 * Kernel: Low priority patches needs further work 
 ** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
@@ -553,6 +549,16 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9a298b445514b3de08252c71833f9273b7727355 '''parisc64: change __kernel_suseconds_t to match glibc''']
 ** parisc: Revert "Release spinlocks using ordered store"
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/commit/?h=parisc-4.20-4&id=1e8249b8a4e960018e4baca6b523b8a4500af600 parisc: Enable -ffunction-sections for modules on 32-bit kernel] (backported to v4.18+)
+* Kernel 4.21
+** parisc: move __IGNORE* entries to non uapi header
+** parisc: add __NR_syscalls along with __NR_Linux_syscalls
+** parisc: remove __NR_Linux from uapi header file.
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=85e69701f58c9b2ec2975e31518b60e056bfebdf '''parisc: add system call table generation support''']
+** parisc: generate uapi header and system call table files
+** parisc: syscalls: ignore nfsservctl for other architectures
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8cc28269b9574103aae9088a02a20929ec75f983 parisc: Split out alternative live patching code]
+** parisc: Fix serio address output
+** parisc: Fix HP SDC hpa address output
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -591,6 +597,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 ** DONE: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 ** DONE: Find way to extract vmlinux out of vmlinuz
+** DONE: Implement alternative coding for UP & SMP, one debian kernel for UP and SMP, optimizations to avoid cache flushes on cache-less systems and other qemu-related speed-ups to avoid unnecessary syncronization 
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
