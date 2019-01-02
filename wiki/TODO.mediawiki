@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2018-12-26 ==
+== Status & TODO 2019-01-02 ==
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
@@ -568,6 +568,7 @@ title: TODO
 ** DONE: add gzip-support (allow loading gzipped vmlinux files)
 ** DONE: in interactive mode, add reboot option command
 ** DONE: [https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/commit/?id=70bd7a9a41e318c0575755a78c4d18ad97495c47 '''Unbreak loading Linux kernels bigger than 16 MB'''] (fixed in palo 1.96, Oct. 2016)
+** DONE: Du to alternative coding in 4.20, ship debian kernel as SMP variant only (Kernel 4.20) 
 
 Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM (Kernel 3.12)
@@ -596,8 +597,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Enabled BMC/IPMI including Remote power on/off on C8000 and rp3410 machines (kernel 4.17 and above)
 ** DONE: use CONFIG_COMPAT_BINFMT_ELF and get rid of arch/parisc/kernel/binfmt_elf32.c
 ** DONE: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
-** DONE: Find way to extract vmlinux out of vmlinuz
-** DONE: Implement alternative coding for UP & SMP, one debian kernel for UP and SMP, optimizations to avoid cache flushes on cache-less systems and other qemu-related speed-ups to avoid unnecessary syncronization 
+** DONE: Find way to extract vmlinux out of vmlinuz (Kernel 4.19)
+** DONE: Implement alternative coding for UP & SMP, one debian kernel for UP and SMP, optimizations to avoid cache flushes on cache-less systems and other qemu-related speed-ups to avoid unnecessary syncronization (Kernel 4.20) 
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
