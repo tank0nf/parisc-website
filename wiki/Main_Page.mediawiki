@@ -36,6 +36,15 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 '''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
+== Thanks == 
+
+* [http://osuosl.org Oregon State University Open Source Lab]
+** Hosting and support for parisc and panama buildd servers
+** Hosting of this Wiki (via kernel.org infrastructure)
+
+* Debian - Distribution and package support for Debian PA-RISC Linux.
+* Gentoo - Distribution of Gentoo Linux for HPPA.
+
 == PA-RISC NEWS == 
 {|
 | style="vertical-align:top;" |'''Jan 2019'''||Debian kernel 4.20 will ship as 32- and 64-bit SMP variant only, which patches itself at bootup to run faster on UP machines. 
