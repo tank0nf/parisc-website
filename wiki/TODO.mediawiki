@@ -559,6 +559,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8cc28269b9574103aae9088a02a20929ec75f983 parisc: Split out alternative live patching code]
 ** parisc: Fix serio address output
 ** parisc: Fix HP SDC hpa address output
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dfbaecb2b707cfdc5276b548d52b437384bd6483 '''parisc: Remap hugepage-aligned pages in set_kernel_text_rw()'''] (backported to 4.20) 
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
