@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-01-02 ==
+== Status & TODO 2019-01-05 ==
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
@@ -73,7 +73,7 @@ title: TODO
 * Kernel: Low priority patches needs further work 
 ** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
 ** enable 16k/64k kernel page sizes (still cacheflushing-issues with SCSI driver, additional work in glibc needed to deal with >4k page size, e.g. ld-loader alignments of data/code segments)
-** Superdome support - can someone test? Should work better now with latest kernels.
+** Superdome support - can someone test? Should work better now with latest kernels (maybe ask Dennis Clarke <dclarke@blastwave.org>, Jan 2019).
 ** Visualize FX support (will probably never happen!)
 ** implement BUG() and WARN() with inline assembly so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Probably not possible, because gcc will report "control reaches end of non-void function" warnings/errors.
 
