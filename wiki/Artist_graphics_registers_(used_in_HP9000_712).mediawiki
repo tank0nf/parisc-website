@@ -1,0 +1,26 @@
+---
+title: Artist graphics registers (used in HP9000/712)
+---
+
+Artist is the onboard graphics chip used in the HP9000/712. According to HP, it's mostly compatible to CRX. On the 712, it spans the I/O memory range 0xf4000000-0xf5ffffff.
+
+Registers discovered so far:
+
+{|
+|Offset
+|Size
+|Description
+|-
+|0x380000
+|Word
+|Unknown status register
+|-
+|0x100800
+|Word
+|Block mover source X=Bit31-16 Y=Bit15-0
+|-
+|0x100a04
+|Word
+|Block mover size Width=Bit31-16 Height=Bit15-0
+
+}
