@@ -15,6 +15,10 @@ Registers discovered so far:
 |Word
 |Unknown status register
 |-
+|0x1004a0
+|Word
+|VRAM offset (starting address) for write FIFO registers
+|-
 |0x100800
 |Word
 |Block mover source X=Bit31-16 Y=Bit15-0
@@ -22,5 +26,24 @@ Registers discovered so far:
 |0x100a04
 |Word
 |Block mover size Width=Bit31-16 Height=Bit15-0
-
+|-
+|0x100600
+|Word
+|Bit mode VRAM write FIFO
+|-
+|0x100620
+|Word
+|Byte mode VRAM write FIFO
+|-
+|0x118010
+|Word
+|foreground color used in block move operations
+|-
+|0x118014
+|Word
+|background color used in block move operations
+|-
+|0x30023c
+|Word
+|Used in selftest code, looks like signature testing result register?
 |}
