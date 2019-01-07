@@ -11,7 +11,7 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 |-
 |0x1004a0
 |Word
-|VRAM offset (starting address) for write FIFO registers
+|VRAM offset (write index) for write FIFO registers
 |-
 |0x100800
 |Word
