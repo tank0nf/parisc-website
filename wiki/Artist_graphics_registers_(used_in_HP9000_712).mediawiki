@@ -2,7 +2,7 @@
 title: Artist graphics registers (used in HP9000/712)
 ---
 
-Artist is the onboard graphics chip used in the HP9000/712. According to HP, it's mostly compatible to CRX. On the 712, it spans the I/O memory range 0xf4000000-0xf5ffffff. Unfortunately no documentation seems to be available, but this is what i figured out by looking at the memory write from the Bootrom/STI code:
+Artist is the onboard graphics chip used in the HP9000/712. According to HP, it's mostly compatible to CRX. On the 712, it spans the I/O memory range 0xf8000000-0xf9ffffff. Unfortunately no documentation seems to be available, but this is what i figured out by looking at the memory write from the Bootrom/STI code:
 
 {| class="wikitable"
 |Offset
