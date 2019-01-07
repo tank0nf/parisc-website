@@ -6,7 +6,7 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 
 Registers discovered so far:
 
-{|
+{| class="wikitable"
 |Offset
 |Size
 |Description
