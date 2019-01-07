@@ -467,6 +467,8 @@ PA-RISC 1.1 Architecture and Instruction Set Reference Manual
 | width="50%" | Compiler Optimizations for the PA-8000. Anne M. Holler. 11 pages. <br />
 |}
 
+== Undocumented chips ==
+[[Artist graphics registers (used in HP9000/712)]]
 ==OTHER USEFUL LINKS==
 
 * [http://www.hpmuseum.net/collection_document.php HP Computer Museum]
