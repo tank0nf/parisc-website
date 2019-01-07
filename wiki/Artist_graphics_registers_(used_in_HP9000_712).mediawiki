@@ -46,4 +46,8 @@ Registers discovered so far:
 |0x30023c
 |Word
 |Used in selftest code, looks like signature testing result register?
+|-
+|0x0118406c-0x011847ff
+|Word
+|Color map used by STI code - Strange offset address, maybe software configurable? One entry spans 32 bit, where Bit 23-16=R, Bit16-8=G, Bit7-0=B
 |}
