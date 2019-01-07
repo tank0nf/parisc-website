@@ -9,10 +9,6 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 |Size
 |Description
 |-
-|0x380000
-|Word
-|Unknown status register
-|-
 |0x1004a0
 |Word
 |VRAM offset (starting address) for write FIFO registers
@@ -44,6 +40,18 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 |0x30023c
 |Word
 |Used in selftest code, looks like signature testing result register?
+|-
+|-
+|0x380008
+|Word
+|Unknown status register, returning 0x20000000 to make STI happy
+|0x380000
+|Word
+|Unknown status register, returning 0 to make STI happy
+|-
+|0x380008
+|Word
+|Unknown status register, returning 0x20000000 to make STI happy
 |-
 |0x0118406c-0x011847ff
 |Word
