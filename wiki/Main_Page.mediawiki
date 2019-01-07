@@ -231,6 +231,7 @@ Stable Debian kernel 3.12 available.
 * [[TODO]]
 * [[Debian_Buildpackages]] - How to build packages for debian?
 * [[How to create Debian unstable iso images]]
+* [[Running HP-UX 9.0 on virtual HP9000/362 with MAME]]
 
 == Documentation ==
 * [[Overview_HP9000_Workstation_and_Servers]] - Overview of HP9000 Servers and Workstations
