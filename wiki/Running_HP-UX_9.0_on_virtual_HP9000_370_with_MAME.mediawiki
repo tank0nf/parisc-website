@@ -6,8 +6,9 @@ Installation instructions for HP-UX 9 on hp9k360 (needs mame newer than 2018/10/
 
 get the install images:
 
-http://bitsavers.org/bits/HP/HP_9000/HPUX_9/CD/hpux9_install.iso
-http://bitsavers.org/bits/HP/HP_9000/HPUX_9/CD/hpux_9.1_update.iso
+
+ http://bitsavers.org/bits/HP/HP_9000/HPUX_9/CD/hpux9_install.iso
+ http://bitsavers.org/bits/HP/HP_9000/HPUX_9/CD/hpux_9.1_update.iso
 
 create a harddisk image file with:
 ./chdman createhd -f -o hpuxtest.chd -s $[512*1048576]
