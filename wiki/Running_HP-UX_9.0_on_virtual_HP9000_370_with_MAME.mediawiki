@@ -18,49 +18,50 @@ where 512 is the size in Megabyte, and can be adjusted to your needs.
 
 This will boot the installer:
 
-[[File:hpux9_install1.jpg]]
+[[File:hpux9_install1.png]]
 
 Press <Enter> to continue:
 
-[[File:hpux9_install2.jpg]]
+[[File:hpux9_install2.png]]
 
 Installer searching for disks:
-[[File:hpux9_install3.jpg]]
+[[File:hpux9_install3.png]]
 
 It found our disk image:
-[[File:hpux9_install4.jpg]]
+[[File:hpux9_install4.png]]
 
 Say 'y' to have long file names:
-[[File:hpux9_install5.jpg]]
+[[File:hpux9_install5.png]]
 
 Press '1' to continue:
-[[File:hpux9_install6.jpg]]
+[[File:hpux9_install6.png]]
 
 Accept the default swap setting by pressing enter:
-[[File:hpux_install7.jpg]]
+[[File:hpux_install7.png]]
+
 And, once again, press 'y' to continue:
-[[File:hpux9_install8.jpg]]
+[[File:hpux9_install8.png]]
 
 Installer starts creating the filesystem:
-[[File:hpux9_install9.jpg]]
+[[File:hpux9_install9.png]]
 
 Installer extracting the minimum HP-UX system:
-[[File:hpux9_install11.jpg]]
+[[File:hpux9_install11.png]]
 
 The installer is now asking for the update CDROM:
-[[File:hpux9_install12.jpg]]
+[[File:hpux9_install12.png]]
 
 Enter the Menu, and select 'hpux_9.1.update.iso':
-[[File:hpux9_install13.jpg]]
+[[File:hpux9_install13.png]]
 
 After that is done, the installer shows the main menu, press enter to select all filesets:
-[[File:hpux9_install15.jpg]]
+[[File:hpux9_install15.png]]
 
 Press Enter once again to confirm that you to install these filesets:
-[[File:hpux9_install16.jpg]]
+[[File:hpux9_install16.png]]
 
 And, 'y' to really install:
-[[File:hpux9_install17.jpg]]
+[[File:hpux9_install17.png]]
 
 And this is the final install screen. After it finishes install, it will reboot into HP-UX from hard disk.
-[[File:hpux9_install18.jpg]]
+[[File:hpux9_install18.png]]
