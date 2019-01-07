@@ -23,7 +23,7 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 |-
 |0x100600
 |Word
-|Bit mode VRAM write FIFO, with every write the number of X pixels is added to the write index.
+|Word mode VRAM write FIFO, with every write the number of X pixels is added to the write index.
 |-
 |0x100620
 |Word
