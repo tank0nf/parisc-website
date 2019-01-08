@@ -13,6 +13,10 @@ Artist is the onboard graphics chip used in the HP9000/712. According to HP, it'
 |Word
 |VRAM offset (write index) for write FIFO registers
 |-
+|0x1005a0
+|Word
+|Bitmask for WRAM write FIFO - only bits set both in the data and this bitmask will be changed
+|-
 |0x100800
 |Word
 |Block mover source X=Bit31-16 Y=Bit15-0
