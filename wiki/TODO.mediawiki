@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2019-01-05 ==
+* Fix fallouts from strace
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
