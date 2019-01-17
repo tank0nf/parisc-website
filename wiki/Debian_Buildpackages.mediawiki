@@ -47,6 +47,9 @@ Some other info:
 : dch --distribution unstable --bin-nmu Rebuild b1
 : dch-git --since <commit_nr> 
 
+; How to sign packages (with debsign)
+: debsign -k <key> packagename.changes
+
 ; How to sign packages (without debsign)
 : http://purplefloyd.wordpress.com/2009/02/05/signing-deb-packages/
 
