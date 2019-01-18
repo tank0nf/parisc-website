@@ -47,7 +47,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Jan 2019'''||Debian kernel 4.20 will ship as 32- and 64-bit SMP variant only, which patches itself at bootup to run faster on UP machines. 
+| style="vertical-align:top;" |'''Jan 2019'''||Debian kernel 4.20 will ship as 32- and 64-bit SMP variant only, which patches itself at bootup to run faster on UP machines.<br>
+The OSUOSL team was so nice to upgrade the debian buildd servers: "parisc" has now two 300 GB (instead of two 68 GB) and panama three 300 GB (instead of two 18 GB) SCSI discs. Thanks!
 |-
 | style="vertical-align:top;" |'''Nov 2018'''||A new complete [http://lore.kernel.org/linux-parisc/ parisc-linux mailing list archive is now available at lore.kernel.org]. It even contains the [http://lore.kernel.org/linux-parisc/Pine.LNX.4.04.9901291134480.1532-100000@sprite.osfi-bsif.gc.ca/ very first parisc-linux mail].<br/>
 Linux kernel 4.20 includes the [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3847dab77421867fbc77faacb2f377d44e729e1b "alternative"-feature which enables us to do live-patching of the kernel code at bootup time]. With this feature we will be able to build a SMP kernel which is patched at boottime to run faster on a UP system. 
