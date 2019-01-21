@@ -23,6 +23,12 @@ Some other info:
 * [https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd Another description on how to set up a buildd]
 * [http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/ How to use subkeys for signing on buildds]
 
+== Build chroot requirements ==
+
+* openfoam requires up to 40GB disc space
+* I'm running the buildd chroot in a ramdisc. In /etc/fstab I have:
+  tmpfs /srv/buildd/unpack tmpfs size=40G 0 2
+
 == Tips to manually build debian Linux kernel ==
 
 * by adding "debug-info: false" to the [build] section in debian/config/hppa/defines avoids building the debug info
