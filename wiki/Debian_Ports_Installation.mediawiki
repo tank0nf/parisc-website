@@ -21,7 +21,7 @@ The latest installation medias for Debian unstable is available at either one of
 # http://backup.parisc-linux.org/debian-cd/
 # http://parisc.osuosl.org/debian-cd/
 # http://ftp.nz.parisc-linux.org/debian-cd/ (Debian 9 & 10 NZ mirror)
-# http://ftp.de.parisc-linux.org/debian-cd/ (Debian 9 & 10 DE mirror)
+# http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/debian-installer/debian-installer-images_20190118_hppa.tar.gz (latest Netboot images)
 
 In those directories you find (you need to download only one of those):
 * lifimage file, used for tftp/netbooting the installation
@@ -46,6 +46,7 @@ In those directories you find (you need to download only one of those):
 ** In the main menu choose to "Finish the installation" and let it reboot the machine.
 
 '''Notes:'''
+* When asked for Network mirror with the 10.0 installer, give '''ftp.ports.debian.org''' and '''/debian-ports/'''. (Avoidable when this Bug gets resolved: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=879130).
 * After reboot add this line to /etc/apt/sources.list and run '''apt-get update''':
    deb http://ftp.ports.debian.org/debian-ports unstable main
 * After reboot the sshd daemon will not accept password-logins for root. You need to log in as the user which you created during installation and then become root via "su -". To change this sshd behaviour, edit '''/etc/ssh/sshd_config''' file and change the value of '''PermitRootLogin to yes''' (not recommended!).
