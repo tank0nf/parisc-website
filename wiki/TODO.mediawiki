@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-01-20 ==
+== Status & TODO 2019-02-23 ==
 * Fix fallouts from strace
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
@@ -561,6 +561,8 @@ title: TODO
 ** parisc: Fix serio address output
 ** parisc: Fix HP SDC hpa address output
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dfbaecb2b707cfdc5276b548d52b437384bd6483 '''parisc: Remap hugepage-aligned pages in set_kernel_text_rw()'''] (backported to 4.20) 
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510 '''parisc: Fix ptrace syscall number modification'''] (backported to 4.5+)
+** CREDITS/MAINTAINERS: Retire parisc-linux.org email domain
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
