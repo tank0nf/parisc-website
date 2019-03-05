@@ -563,6 +563,28 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dfbaecb2b707cfdc5276b548d52b437384bd6483 '''parisc: Remap hugepage-aligned pages in set_kernel_text_rw()'''] (backported to 4.20) 
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510 '''parisc: Fix ptrace syscall number modification'''] (backported to 4.5+)
 ** CREDITS/MAINTAINERS: Retire parisc-linux.org email domain
+* Kernel 5.1
+** parisc: don't include <asm/cacheflush.h> in <asm/dma-mapping.h>
+** parisc: move internal implementation details out of <asm/dma-mapping.h>
+** parisc: turn GET_IOC into an inline function
+** parisc: properly type the iommu field in struct pci_hba_data
+** parisc: properly type the return value of parisc_walk_tree
+** parisc/dino: use container_of in DINO_DEV
+** parisc/lba_pci: use container_of in LBA_DEV
+** parisc: remove the HBA_DATA macro
+** '''parisc: Hide built-in serial aux port of Tosca GSP card'''
+** parisc: Show rescheduling interrupts on SMP machines only
+** '''parisc: Count IPI function call interrupts'''
+** '''parisc: Improve initial IRQ to CPU assignment'''
+** parisc: Use F_EXTEND() macro in iosapic code
+** parisc: Add constants for PDC_RELOCATE PDC call
+** '''parisc: Show machine product number during boot'''
+** parisc: Add constant for PDC_PAT_COMPLEX firmware call
+** parisc: Add constants for various PDC firmware calls
+** parisc: remove meaningless ccflags-y in arch/parisc/boot/Makefile
+** parisc: use memblock_alloc() instead of custom get_memblock()
+** parisc: replace oops_in_progress manipulation with bust_spinlocks()
+** parisc: Add PDC_CRASH_PREP PDC function number
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
