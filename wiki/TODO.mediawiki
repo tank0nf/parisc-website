@@ -572,13 +572,13 @@ title: TODO
 ** parisc/dino: use container_of in DINO_DEV
 ** parisc/lba_pci: use container_of in LBA_DEV
 ** parisc: remove the HBA_DATA macro
-** '''parisc: Hide built-in serial aux port of Tosca GSP card'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=81fe5bba88a3fbe34ee6c5d18e327c6aaacd588c '''parisc: Hide built-in serial aux port of Tosca GSP card''']
 ** parisc: Show rescheduling interrupts on SMP machines only
-** '''parisc: Count IPI function call interrupts'''
-** '''parisc: Improve initial IRQ to CPU assignment'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b102f29b2d8603f15071384e88125b8eab5f8faa '''parisc: Count IPI function call interrupts''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f73493eb4aecdd6edd8a749890e6e2dcfa0a7978 '''parisc: Improve initial IRQ to CPU assignment''']
 ** parisc: Use F_EXTEND() macro in iosapic code
 ** parisc: Add constants for PDC_RELOCATE PDC call
-** '''parisc: Show machine product number during boot'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8207d4ee44d3f525bf9aa57807ac9db5d0d90c1a '''parisc: Show machine product number during boot''']
 ** parisc: Add constant for PDC_PAT_COMPLEX firmware call
 ** parisc: Add constants for various PDC firmware calls
 ** parisc: remove meaningless ccflags-y in arch/parisc/boot/Makefile
