@@ -5,12 +5,10 @@ title: Qemu
 == QEMU SUPPORT STATUS REGARDING HPPA / PARISC ==
 
 Since April 2018, starting with qemu version 2.12, qemu fully supports hppa user emulation (hppa-linux-user) and hppa system emulation (qemu-system-hppa).
-All necessary changes to qemu have been merged into qemu upstream git repository at:
-* https://git.qemu.org/?p=qemu.git;a=summary
+All necessary changes to qemu have been merged into [https://git.qemu.org/?p=qemu.git;a=summary the qemu upstream git tree].
 
 PA-RISC machines need a firmware ("PDC" = Processor Dependend Code).
-Qemu already includes a precompiled PDC firmware for hppa (file: pc-bios/hppa-firmware.img), which is based on a fork of SeaBIOS and which is available in this git tree:
-* https://github.com/hdeller/seabios-hppa/commits/parisc_firmware
+Qemu already includes a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
 
 == HOW TO BUILD QEMU FROM SOURCE ==
 
