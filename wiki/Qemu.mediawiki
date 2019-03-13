@@ -2,31 +2,42 @@
 title: Qemu
 ---
 
-== QEMU SUPPORT STATUS REGARDING HPPA / PARISC ==
+== QEMU support status regarding hppa/parisc ==
 
-Since April 2018, starting with qemu version 2.12, qemu fully supports hppa user emulation (hppa-linux-user) and hppa system emulation (qemu-system-hppa).
-All necessary changes to qemu have been merged into [https://git.qemu.org/?p=qemu.git;a=summary the qemu upstream git tree].
+Starting with QEMU version 2.12 (April 2018), qemu fully supports hppa user emulation (hppa-linux-user) and hppa system emulation (qemu-system-hppa).
+All necessary changes have been merged into the [https://git.qemu.org/?p=qemu.git;a=summary upstream qemu git tree].
 
 PA-RISC machines need a firmware ("PDC" = Processor Dependend Code).
-Qemu already includes a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
+Qemu includes a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
 
-== HOW TO BUILD QEMU FROM SOURCE ==
+The QEMU eumulation is able to run Linux and HP-UX. Improved HP-UX support is still being worked on. 
 
-* checkout out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
-* run configure, e.g.
-** (for system emulation) '''./configure --target-list=hppa-softmmu --enable-numa'''
-** (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
-* run "make"
+QEMU on parisc has been made available by:
+* Richard Henderson: QEMU CPU emulation, QEMU hardware divers
+* Helge Deller: QEMU hardware drivers, SeaBIOS PDC firmware
+* Sven Schnelle: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
 
-== PRE-INSTALLED AND READY-TO-RUN QEMU IMAGE ==
+== Ready-to-run QEMU image for parisc ==
 
-* Download from http://backup.parisc-linux.org/qemu/debian-10-hdd-img.tar.bz2
-* Unzip image: tar xvfj debian-10-hdd-img.tar.bz2
-* Run qemu:
+Download Debian hard disc image:
+ wget http://backup.parisc-linux.org/qemu/debian-10-hdd-img.tar.bz2
+Unzip image: 
+ tar xvfj debian-10-hdd-img.tar.bz2
+Run qemu:
  ./hppa-softmmu/qemu-system-hppa -drive file=debian-10-hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
-* Log in as root, root password is "rootme"
+Log in as '''root''', root password is "'''rootme'''"
 
-== EXAMPLE HOW TO RUN QEMU WITH DEBIAN-10 INSTALL IMAGE ==
+== How to build QEMU from source ==
+
+Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
+
+Run configure, e.g.
+* (for system emulation) '''./configure --target-list=hppa-softmmu --enable-numa'''
+* (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
+
+Run "make"
+
+== How to run QEMU with Debian-10 installer image ==
 
 * Create a virtual hard disc once:
  qemu-img create -f qcow2 hdd.img 50G
@@ -47,12 +58,10 @@ Qemu already includes a precompiled PDC firmware for hppa ([https://git.qemu.org
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
 
-TODO:
-* Boot-cd should boot the 32-bit SMP kernel by default
-* Make debian-installer install the 32-bit SMP kernel on QEMU (if started with multiple CPUs)
-* Installer: (1 of 2) A start job is running for font and keyboard layout (1min 10s / no limit)
 
+== Some QEMU notes ==
 
+Prefer the e1000 driver over the rtl8129 card. The latter gives irq issues with Dino emulation.
 
 Possible qemu options:
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
@@ -63,7 +72,3 @@ Possible qemu options:
 * -serial mon:stdio   use serial console
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
-
-== qemu notes ==
-
-* Prefer the e1000 driver over the rtl8129 card. The latter gives irq issues with Dino emulation.
