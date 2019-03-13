@@ -74,3 +74,14 @@ Possible qemu options:
 * -serial mon:stdio   use serial console
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
+
+
+== Additional possible QEMU work ==
+
+* Emulate tulip network card in Qemu
+* Artist graphics emulation in Qemu
+* More correct emulation of B160L in Qemu, e.g. seriell ports, PS/2 keyboard & mouse, graphics card
+* STI text emulation in SeaBIOS with VGA
+* Elroy PCI emulation, then emulate e.g. a C3000?
+* PA2.0/64bit (low prio) 
+- ...
