@@ -78,6 +78,7 @@ Possible qemu options:
 
 == Additional possible QEMU work ==
 
+* Fix virtio-drivers in SeaBIOS (endianess-bugs, because SeaBIOS is originally only Little-endian from x86).
 * Emulate tulip network card in Qemu
 * Artist graphics emulation in Qemu
 * More correct emulation of B160L in Qemu, e.g. seriell ports, PS/2 keyboard & mouse, graphics card
