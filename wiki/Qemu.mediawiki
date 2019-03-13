@@ -4,16 +4,17 @@ title: Qemu
 
 == QEMU support status regarding hppa/parisc ==
 
-Starting with QEMU version 2.12 (April 2018), qemu fully supports hppa user emulation (hppa-linux-user) and hppa system emulation (qemu-system-hppa).
+Starting with QEMU version 2.12 (April 2018), qemu fully supports 32-bit hppa user emulation (hppa-linux-user) and 32-bit hppa system emulation (qemu-system-hppa).
 All necessary changes have been merged into the [https://git.qemu.org/?p=qemu.git;a=summary upstream qemu git tree].
 
 PA-RISC machines need a firmware ("PDC" = Processor Dependend Code).
 Qemu includes a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
 
-The QEMU eumulation is able to run Linux and HP-UX. Improved HP-UX support is still being worked on. 
+The QEMU eumulation is able to run Linux and HP-UX. Improved HP-UX support is still being worked on.
+The emulated machine is a [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] machine, with a 32-bit PA7100LC CPU.
 
 QEMU on parisc has been made available by:
-* Richard Henderson: QEMU CPU emulation, QEMU hardware divers
+* Richard Henderson: QEMU CPU emulation (32-bit only), QEMU hardware divers
 * Helge Deller: QEMU hardware drivers, SeaBIOS PDC firmware
 * Sven Schnelle: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
 
