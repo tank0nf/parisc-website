@@ -47,6 +47,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Mar 2019''' '''Feb 2019'''||Lots of fixes and improvements in the QEMU CPU- and SCSI emulation code as well as for the SeaBIOS firmware due to efforts of [mailto:svens@stackframe.org Sven Schnelle]. See the [http://parisc.wiki.kernel.org/index.php/Qemu PA-RISC Qemu Wiki page] for latest updates.<br>
+|-
 | style="vertical-align:top;" |'''Jan 2019'''||Debian kernel 4.20 will ship as 32- and 64-bit SMP variant only, which patches itself at bootup to run faster on UP machines.<br>
 The OSUOSL team was so nice to upgrade the debian buildd servers: "parisc" has now two 300 GB (instead of two 68 GB) and panama three 300 GB (instead of two 18 GB) SCSI discs. Thanks!
 |-
