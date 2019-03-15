@@ -60,7 +60,6 @@ Run "make"
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
 
-
 == Some QEMU notes ==
 
 Prefer the e1000 driver over the rtl8129 card. The latter gives irq issues with Dino emulation.
@@ -75,15 +74,26 @@ Possible qemu options:
 * -nographic       - no graphics device
 * -device VGA      - provide PCI VGA graphic card
 
+== Tips and Tricks when running an emulation ==
 
-== Additional possible QEMU work ==
+* The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
+* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
+
+== Possible emulation guest targets ==
+
+* [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
+* Linux (Debian, Gentoo), latest releases preferred
+* [https://wiki.netbsd.org/ports/hppa/ NetBSD]
+* [https://winworldpc.com/product/nextstep/3x NextSTEP]
+
+== Future QEMU work ==
 
 * Fix virtio-drivers in SeaBIOS (endianess-bugs, because SeaBIOS is originally only Little-endian from x86)
-* Emulate tulip network card in Qemu
+* Emulate Lasi (i82596) and Tulip (DEC 21x40) network cards in Qemu
 * Artist graphics emulation in Qemu
 * STI text emulation in SeaBIOS with VGA
 * More correct emulation of B160L in Qemu, e.g. seriell ports, PS/2 keyboard & mouse, graphics card
 * Elroy PCI emulation, then emulate e.g. a C3000?
-* PA2.0/64bit (low prio) 
+* PA2.0/64bit (low prio)
 * ...
 * '''Push SeaBIOS changes upstream!!'''
