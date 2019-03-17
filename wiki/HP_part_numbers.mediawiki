@@ -1,0 +1,14 @@
+---
+title: HP part numbers
+---
+
+{| class="wikitable"
+|Part number
+|CPU type
+|-
+|3AA4-4105
+|PA-8900 1GHz
+|-
+|3AA4-4107
+|PA-8900 1.1GHz
+|}
