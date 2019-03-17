@@ -78,6 +78,4 @@ title: HP part numbers
 |1ST9-0004
 |PA-8000
 |
-|-
-|1TY4-0001
 |}
