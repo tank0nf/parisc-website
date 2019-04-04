@@ -35,3 +35,5 @@ To enable kdb/kgdb, you need to pass the device you want to use to kgdb, either 
 If you want to enable kgdb via sysfs, do
 
  echo ttyS0,115200 >/sys/module/kgdboc/parameters/kgdboc
+
+Most of the PA-RISC machines have at least two serial ports, so you could also use ttyS1. In my examples i'm using ttyS0, which is also the console port.
