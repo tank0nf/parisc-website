@@ -41,7 +41,7 @@ Most of the PA-RISC machines have at least two serial ports, so you could also u
 = Entering kdb =
 There are several ways to enter kgdb:
 
-* via 'echo g >/proc/sysrq-trigger
+* echo g >/proc/sysrq-trigger
 * sending a break g on the serial console, with minicom that is ''Ctrl-A f g''
 * It will also show up on a kernel crash, as long as there's no panic command line option used
 
