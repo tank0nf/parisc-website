@@ -123,6 +123,7 @@ To set a breakpoint, use the bp command:
  root@c3750:~# cat /proc/version
  
  Entering kdb (current=0xed071530, pid 1630) on processor 0 due to Breakpoint @ 0x103478b8
+ [0]kgdb>
 
 You can now do things like inspecting registers:
 
