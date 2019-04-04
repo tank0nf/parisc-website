@@ -101,3 +101,21 @@ The [1] before the kdb prompt is the processor number kdb is currently on.
  dumpall                             First line debugging 
  dumpcpu                             Same as dumpall but only tasks on cpus
  ftdump          [skip_#lines] [cpu] Dump ftrace log
+
+To exit kdb, just type ''go'':
+
+ [1]kdb> go
+
+ root@c3750:~#
+
+The system will resume execution where it was stopped by kdb.
+
+= Using breakpoints =
+
+To set a breakpoint, use the bp command:
+
+ # enter kdb when kernel calls do_sys_open, which is the open(2) syscall
+ [1]kgdb> bp do_sys_open 
+ Instruction(i) BP #0 at 0x103478b8 (do_sys_open)
+    is enabled   addr at 00000000103478b8, hardtype=0 installed=0
+ [1]kgdb> go
