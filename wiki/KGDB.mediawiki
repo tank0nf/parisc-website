@@ -119,9 +119,9 @@ To set a breakpoint, use the bp command:
  Instruction(i) BP #0 at 0x103478b8 (do_sys_open)
     is enabled   addr at 00000000103478b8, hardtype=0 installed=0
  [1]kgdb> go
-
+ 
  root@c3750:~# cat /proc/version
-
+ 
  Entering kdb (current=0xed071530, pid 1630) on processor 0 due to Breakpoint @ 0x103478b8
 
 You can now do things like inspecting registers:
