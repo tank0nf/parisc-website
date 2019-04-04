@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-03-14 ==
+== Status & TODO 2019-04-04 ==
 * Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?)
 * Update latest QEMU successes.
 * STARTED: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
@@ -22,7 +22,6 @@ title: TODO
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
-* add wiki page about kernel cross-compiling, refer to: http://git.infradead.org/users/segher/buildall.git and https://www.kernel.org/pub/tools/crosstool/ and https://www.kernel.org/pub/linux/kernel/people/arnd/
 * STARTED: implement kexec syscall
 * STARTED: report on C8000 one socket with 2 cores (done),  NUMA support?
 * ONGOING: Enable UBSAN and fix fallouts
@@ -643,6 +642,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Linker reports "XXX referenced in section `.data.rel.ro.local' of YYY: defined in discarded section `.text._ZXXX"
 *** [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commitdiff;h=da6e19a92645583da12dc2d15f54d2bd240fd3f2;hp=7d8a636c9a234354c9b2ecf01b6e405bece190a1 binutils fix in bfd/elf32-hppa] and [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=67834 gcc upstream bug report] and [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=801531 Debian binutils bug report]
 ** DONE: Qt5/KDE signal & slot issue: Pointers to method types need canonicalization before comparison, fixed in gcc: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079
+** DONE: Add wiki page about kernel cross-compiling
 
 * glibc:
 ** DONE: Problem building libcap-ng...The problem is the call to __tls_get_addr clobbers the value loaded into %r26 for the printf call. -> http://gcc.gnu.org/bugzilla/show_bug.cgi?id=59777 
