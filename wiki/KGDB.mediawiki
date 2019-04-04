@@ -173,7 +173,9 @@ To clear a breakpoint:
 Trigger kgdb via sysfs:
  echo g >/proc/sysrq-trigger
 
-You need a client computer connected via serial cable. On this host you need the vmlinux file, ideally compiled with debug informations.
+You need a client computer connected via serial cable. On this host you need the vmlinux file, ideally compiled with debug information.
+
+Assuming you're using a USB Serial adapter with device /dev/ttyUSB0:
 
  $ hppa-linux-gnu-gdb ./vmlinux 
  GNU gdb (GDB) 8.2.50.20190111-git
