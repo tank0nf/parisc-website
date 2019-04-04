@@ -1,0 +1,37 @@
+---
+title: KGDB
+---
+
+NOTE: kgdb is not merged upstream yet
+
+= Required configuration to use KGDB/KDB for kernel debugging =
+Make sure your .config contains:
+
+ CONFIG_KGDB=y
+ CONFIG_KGDB_SERIAL_CONSOLE=y
+
+If you want to be able to use KDB (a KGDB frontend running on the console):
+
+ CONFIG_KGDB_KDB=y
+
+To enable kdb/kgdb, you need to pass the device you want to use to kgdb, either via sysfs file or palo. My palo configuration looks like this:
+
+ 0/vmlinuz HOME=/ root=/dev/sda5 panic_timeout=60 panic=10 console=ttyS0,115200 kgdboc=ttyS0,115200
+  0: 0/vmlinuz
+  1: HOME=/
+  2: root=/dev/sda5
+  3: panic_timeout=60
+  4: panic=10
+  5: console=ttyS0,115200
+  6: kgdboc=ttyS0,115200
+
+ <#>    edit the numbered field
+ 'b'    boot with this command line
+ 'r'    restore command line
+ 'l'    list dir
+ 'x'    reset and reboot machine
+ ? 0
+
+If you want to enable kgdb via sysfs, do
+
+ echo ttyS0,115200 >/sys/module/kgdboc/parameters/kgdboc
