@@ -170,6 +170,11 @@ To clear a breakpoint:
 
 = Using gdb =
 
+Trigger kgdb via sysfs:
+ echo g >/proc/sysrq-trigger
+
+You need a client computer connected via serial cable. On this host you need the vmlinux file, ideally compiled with debug informations.
+
  $ hppa-linux-gnu-gdb ./vmlinux 
  GNU gdb (GDB) 8.2.50.20190111-git
  Copyright (C) 2019 Free Software Foundation, Inc.
