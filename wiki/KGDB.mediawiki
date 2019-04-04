@@ -129,7 +129,7 @@ You can now do things like inspecting registers:
  [0]kdb> rd
  CPU: 0 PID: 1630 Comm: cat Not tainted 5.1.0-rc3+ #547
  Hardware name: 9000/785/J5000
-
+ 
       YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
  PSW: 00000000000001001111111100001111 Not tainted
  r00-03  0004ff0f ffffffff 102e5570 ef1d40c0
@@ -142,7 +142,7 @@ You can now do things like inspecting registers:
  r28-31  f9804558 f98043c8 ef1d4100 f8b1446b
  sr00-03  00000a6b 00000000 00000000 00000a6b
  sr04-07  00000000 00000000 00000000 00000000
-
+ 
  IASQ: 00000000 00000000 IAOQ: 102e52fc 102e5300
   IIR: 03ffa01f    ISR: 1024037c  IOR: 751d40c0
   CPU:        0   CR30: ef1d4000 CR31: ffffffff
