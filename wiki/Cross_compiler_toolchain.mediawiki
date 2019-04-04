@@ -1,0 +1,23 @@
+---
+title: Cross compiler toolchain
+---
+
+Cross compiling the Linux kernel for PA-RISC is easy nowadays:
+ 
+== Debian  ==
+
+  apt install gcc-hppa-linux-gnu gcc-hppa64-linux-gnu
+
+== Fedora  ==
+
+  yum install gcc-hppa64-linux-gnu gcc-hppa-linux-gnu binutils-hppa64-linux-gnu binutils-hppa-linux-gnu
+
+== Download prebuilt cross compilers for PA-RISC  ==
+
+* [https://www.kernel.org/pub/tools/crosstool/ Latest cross-compilers on kernel.org by Arnd Bergmann] 
+* [http://git.infradead.org/users/segher/buildall.git Segher Boessenkool toolchain]
+
+== How to build the kernel  ==
+
+  make ARCH=parisc menuconfig
+  make ARCH=parisc
