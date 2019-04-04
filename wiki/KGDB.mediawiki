@@ -52,51 +52,52 @@ When entered, kdb will look like this:
 
 The [1] before the kdb prompt is the processor number kdb is currently on.
 
+= Usage =
 ''help'' shows you the command list:
 
-[1]kdb> help
-Command         Usage                Description
-----------------------------------------------------------
-md              <vaddr>             Display Memory Contents, also mdWcN, e.g. md8c1
-mdr             <vaddr> <bytes>     Display Raw Memory
-mdp             <paddr> <bytes>     Display Physical Memory
-mds             <vaddr>             Display Memory Symbolically
-mm              <vaddr> <contents>  Modify Memory Contents
-go              [<vaddr>]           Continue Execution
-rd                                  Display Registers
-rm              <reg> <contents>    Modify Registers
-ef              <vaddr>             Display exception frame
-bt              [<vaddr>]           Stack traceback
-btp             <pid>               Display stack for process <pid>
-bta             [D|R|S|T|C|Z|E|U|I|M|A]
+ [1]kdb> help
+ Command         Usage                Description
+ ----------------------------------------------------------
+ md              <vaddr>             Display Memory Contents, also mdWcN, e.g. md8c1
+ mdr             <vaddr> <bytes>     Display Raw Memory
+ mdp             <paddr> <bytes>     Display Physical Memory
+ mds             <vaddr>             Display Memory Symbolically
+ mm              <vaddr> <contents>  Modify Memory Contents
+ go              [<vaddr>]           Continue Execution
+ rd                                  Display Registers
+ rm              <reg> <contents>    Modify Registers
+ ef              <vaddr>             Display exception frame
+ bt              [<vaddr>]           Stack traceback
+ btp             <pid>               Display stack for process <pid>
+ bta             [D|R|S|T|C|Z|E|U|I|M|A]
                                     Backtrace all processes matching state flag
-btc                                 Backtrace current process on each cpu
-btt             <vaddr>             Backtrace process given its struct task address
-env                                 Show environment variables
-set                                 Set environment variables
-help                                Display Help Message
-?                                   Display Help Message
-cpu             <cpunum>            Switch to new cpu
-kgdb                                Enter kgdb mode
-ps              [<flags>|A]         Display active task list
-pid             <pidnum>            Switch to another task
-reboot                              Reboot the machine immediately
-lsmod                               List loaded kernel modules
-sr              <key>               Magic SysRq key
-dmesg           [lines]             Display syslog buffer
-defcmd          name "usage" "help" Define a set of commands, down to endefcmd
-kill            <-signal> <pid>     Send a signal to a process
-summary                             Summarize the system
-per_cpu         <sym> [<bytes>] [<cpu>]
+ btc                                 Backtrace current process on each cpu
+ btt             <vaddr>             Backtrace process given its struct task address
+ env                                 Show environment variables
+ set                                 Set environment variables
+ help                                Display Help Message
+ ?                                   Display Help Message
+ cpu             <cpunum>            Switch to new cpu
+ kgdb                                Enter kgdb mode
+ ps              [<flags>|A]         Display active task list
+ pid             <pidnum>            Switch to another task
+ reboot                              Reboot the machine immediately
+ lsmod                               List loaded kernel modules
+ sr              <key>               Magic SysRq key
+ dmesg           [lines]             Display syslog buffer
+ defcmd          name "usage" "help" Define a set of commands, down to endefcmd
+ kill            <-signal> <pid>     Send a signal to a process
+ summary                             Summarize the system
+ per_cpu         <sym> [<bytes>] [<cpu>]
                                     Display per_cpu variables
-grephelp                            Display help on | grep
-bp              [<vaddr>]           Set/Display breakpoints
-bl              [<vaddr>]           Display breakpoints
-bc              <bpnum>             Clear Breakpoint
-be              <bpnum>             Enable Breakpoint
-bd              <bpnum>             Disable Breakpoint
-ss                                  Single Step
-dumpcommon                          Common kdb debugging
-dumpall                             First line debugging
-dumpcpu                             Same as dumpall but only tasks on cpus
-ftdump          [skip_#lines] [cpu] Dump ftrace log
+ grephelp                            Display help on | grep
+ bp              [<vaddr>]           Set/Display breakpoints
+ bl              [<vaddr>]           Display breakpoints
+ bc              <bpnum>             Clear Breakpoint
+ be              <bpnum>             Enable Breakpoint
+ bd              <bpnum>             Disable Breakpoint
+ ss                                  Single Step
+ dumpcommon                          Common kdb debugging
+ dumpall                             First line debugging 
+ dumpcpu                             Same as dumpall but only tasks on cpus
+ ftdump          [skip_#lines] [cpu] Dump ftrace log
