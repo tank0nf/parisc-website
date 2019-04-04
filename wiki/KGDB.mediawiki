@@ -168,7 +168,7 @@ To clear a breakpoint:
  [1]kdb> bc 0
  Breakpoint 0 at 0x103478b8 cleared
 
-= Connection with gdb =
+= Using gdb =
 
  $ hppa-linux-gnu-gdb ./vmlinux 
  GNU gdb (GDB) 8.2.50.20190111-git
