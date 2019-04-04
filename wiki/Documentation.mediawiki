@@ -12,6 +12,7 @@ title: Documentation
 * Anyone hacking code on PA-RISC must take a look at the [[ProcessorLimitations]] and their consequences
 * [[DocumentationWishList]]: wishlist for docs from HP
 * Finally there's the [[TODO]] list!
+* [[KGDB]] How to use kgdb/kdb on PA-RISC
 
 = Developments in Progress =
 
