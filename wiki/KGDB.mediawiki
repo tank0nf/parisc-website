@@ -154,8 +154,7 @@ You can now do things like inspecting registers:
  Backtrace:
   [<102e5570>] sys_openat+0x18/0x28
   [<1016c3d4>] syscall_exit+0x0/0x14
-
-
+ 
  [0]kdb>  
 
 If you want to list all breakpoints, do:
