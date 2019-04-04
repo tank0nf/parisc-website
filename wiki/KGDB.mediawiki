@@ -105,7 +105,7 @@ The [1] before the kdb prompt is the processor number kdb is currently on.
 To exit kdb, just type ''go'':
 
  [1]kdb> go
-
+ 
  root@c3750:~#
 
 The system will resume execution where it was stopped by kdb.
