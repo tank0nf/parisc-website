@@ -5,7 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2019-04-06 ==
-* Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?)
+* STARTED: Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?) - https://patchwork.kernel.org/patch/10888283/
 * Update latest QEMU successes.
 * STARTED: Fix fallouts from strace, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
