@@ -76,6 +76,7 @@ Possible qemu options:
 
 == Tips and Tricks when running an emulation ==
 
+* Linux kernel >= 4.14 runs best. Initial Linux kernel optimizations were added to kernel >= 4.9.
 * The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
 * In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
 
