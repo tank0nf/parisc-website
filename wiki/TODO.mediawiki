@@ -4,12 +4,10 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-04-04 ==
+== Status & TODO 2019-04-06 ==
 * Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?)
 * Update latest QEMU successes.
-* STARTED: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
 * STARTED: Fix fallouts from strace, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510
-* STARTED: IRQ Balancing seems broken with latest kernels, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f73493eb4aecdd6edd8a749890e6e2dcfa0a7978
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
@@ -587,6 +585,11 @@ title: TODO
 ** parisc: use memblock_alloc() instead of custom get_memblock()
 ** parisc: replace oops_in_progress manipulation with bust_spinlocks()
 ** parisc: Add PDC_CRASH_PREP PDC function number
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c2f8d7cb32cd95e3005bed58ce02afa686b9f357 Revert: parisc: Use F_EXTEND() macro in iosapic code]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d006e95b5561f708d0385e9677ffe2c46f2ae345 '''parisc: Detect QEMU earlier in boot process'''] (backported to v4.14+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45efd871bf0a47648f119d1b41467f70484de5bc '''parisc: regs_return_value() should return gpr28'''] (backported to v4.14+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f324fa58327791b2696628b31480e7e21c745706 '''parisc: also set iaoq_b in instruction_pointer_set()'''] (backported to v4.19+)
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -627,6 +630,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fix kernel writing core file, gdb reporting: BFD: Warning: /tmp/core.http.1655.ls3011.1465554447 is truncated: expected core file size >= 2187264, found: 2121728.
 ** DONE: Find way to extract vmlinux out of vmlinuz (Kernel 4.19)
 ** DONE: Implement alternative coding for UP & SMP, one debian kernel for UP and SMP, optimizations to avoid cache flushes on cache-less systems and other qemu-related speed-ups to avoid unnecessary syncronization (Kernel 4.20) 
+** DONE: IRQ Balancing was broken, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f73493eb4aecdd6edd8a749890e6e2dcfa0a7978
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
@@ -661,6 +665,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: haskell (ghc) hangs: futex(0xea00d08e, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EINVAL (Invalid argument). Solution: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=756260#15
 ** DONE: port openmpi package: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730
 ** DONE: Fix msgpuck build breakage: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
+** DONE: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
 
 == ABI breakages (HP-UX support) ==
 * [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it. 
