@@ -83,7 +83,7 @@ Possible qemu options:
 == Possible emulation guest targets ==
 
 * [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
-* Linux (Debian, Gentoo), latest releases preferred
+* Linux (Debian, Gentoo), latest releases (>= 4.14) preferred
 * [https://wiki.netbsd.org/ports/hppa/ NetBSD]
 * [https://winworldpc.com/product/nextstep/3x NextSTEP]
 
