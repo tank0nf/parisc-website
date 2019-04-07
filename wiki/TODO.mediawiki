@@ -87,12 +87,8 @@ title: TODO
 ** elfutils -- testsuite error
 ** glib2.0 -- testsuite error
 ** gtk+3.0 succeeds by adding this to debian/rules: touch testsuite/reftests/color-transition.ui.known_fail testsuite/reftests/linear-gradient-transition-to-other.ui.known_fail
-** libgadu - testsuite fails probably due to missing pthread cancellation in glibc.
 ** glibc pthread cancellation: the main issue is the target specific code needed to handle stubs and signal frames.  See linux-unwind.h and hpux-unwind.h in gcc's libgcc/config/pa directory.  The function pa32_fallback_frame_state does the hard work for linux.  Hopefully, the signal tramp hasn't changed. All the unwind tests in gcc pass, so I think the implementation there is okay. It may be we need something similar to pa32_fallback_frame_state in glibc to fix cancellation
-** heimdal suceeds by increasing timeout for iprop test to 120 seconds.
-** cupt - build errors
 ** libqb - testsuite error
-** libsoup2.4 -- testsuite error
 ** DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
 ** teach "blkid" about palo partition
 ** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
