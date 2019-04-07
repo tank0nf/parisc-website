@@ -627,6 +627,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Find way to extract vmlinux out of vmlinuz (Kernel 4.19)
 ** DONE: Implement alternative coding for UP & SMP, one debian kernel for UP and SMP, optimizations to avoid cache flushes on cache-less systems and other qemu-related speed-ups to avoid unnecessary syncronization (Kernel 4.20) 
 ** DONE: IRQ Balancing was broken, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f73493eb4aecdd6edd8a749890e6e2dcfa0a7978
+** DONE: Added kgdb and kprobes in kernel 5.2, by Sven Schnelle
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
