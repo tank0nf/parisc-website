@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-04-08 ==
+== Status & TODO 2019-04-09 ==
+* STARTED: convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 * Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * STARTED: Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?) - https://patchwork.kernel.org/patch/10888283/
-* Update latest QEMU successes.
+* Update QEMU news section
 * STARTED: Fix fallouts from strace, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
@@ -54,7 +55,6 @@ title: TODO
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** Implement ltrace on hppa
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
-** sparsemem: http://lwn.net/Articles/439472/ -> convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 ** why does mc hangs when exiting on sticon ?
