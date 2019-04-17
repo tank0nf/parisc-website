@@ -87,6 +87,22 @@ Possible qemu options:
 * [https://wiki.netbsd.org/ports/hppa/ NetBSD]
 * [https://winworldpc.com/product/nextstep/3x NextSTEP]
 
+== QEMU on NetBSD ==
+
+Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
+
+Info at https://www.netbsd.org/releases/current.html
+
+ KERNEL=netbsd
+ qemu-system-hppa \
+        -kernel ${KERNEL} \
+        -drive file=hdd.img \
+        -drive file=NetBSD-8.99.37-hppa.iso,media=cdrom \
+        -nographic \
+        -serial telnet::55555,server
+
+(info by Nick Hudson <nick.hudson@gmx.co.uk>)
+
 == Future QEMU work ==
 
 * Does HP-UX has some kind of "sleep" assembler instruction in it's idle loop which can be used to lower qemu power consumption?
