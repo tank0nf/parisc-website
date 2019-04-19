@@ -106,7 +106,7 @@ title: TODO
 
 == Upstream PA-RISC-related kernel patch history ==
 * Kernel 3.8:
-** unbreak automounter support on 64-bit kernel with 32-bit userspace
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4f4ffc3a5398ef9bdbb32db04756d7d34e356fcf unbreak automounter support on 64-bit kernel with 32-bit userspace]
 * Kernel 3.9:
 ** Integrate Dave Anglin's latest cacheflush patchset (fixes unusual userspace crashes) https://patchwork.kernel.org/patch/2480891/ - Dave 
 ** add ucmpdi2() symbol to kernel - https://patchwork.kernel.org/patch/2468471/ - Dave
@@ -583,7 +583,6 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d006e95b5561f708d0385e9677ffe2c46f2ae345 '''parisc: Detect QEMU earlier in boot process'''] (backported to v4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45efd871bf0a47648f119d1b41467f70484de5bc '''parisc: regs_return_value() should return gpr28'''] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f324fa58327791b2696628b31480e7e21c745706 '''parisc: also set iaoq_b in instruction_pointer_set()'''] (backported to v4.19+)
-
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
