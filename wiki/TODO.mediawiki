@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-04-09 ==
-* STARTED: convert to sparsemem (http://lwn.net/Articles/440056/), patch available from James
+== Status & TODO 2019-04-19 ==
+* STARTED: convert to sparsemem (http://lwn.net/Articles/440056/), will be in kernel 5.2
+* STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * Update QEMU news section
 * STARTED: Fix fallouts from strace, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510
@@ -16,7 +17,6 @@ title: TODO
 ** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** [[Vdso]]
 ** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
-* STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
@@ -96,7 +96,6 @@ title: TODO
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
 ** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
 ** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103,  Work by Dave: https://gcc.gnu.org/ml/gcc-testresults/2018-11/msg03460.html
-** gdb crashes Kernel - http://permalink.gmane.org/gmane.linux.ports.parisc/5406
 ** debian-cd to use xorriso
 ** debian-cd: do not compress kernel.
    
@@ -459,7 +458,7 @@ title: TODO
 * Kernel 4.16
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd8d0ca2563151204f3fe555dc8ca4bcfe8677a3 parisc: Hide virtual kernel memory layout] (backported to v4.15)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0ed1fe4ad394e54783bbffa84102faf435661a2e parisc: Check if secondary CPUs want own PDC calls] 
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5ffa8518851f1401817c15d2a7eecc0373c26ff9 parisc: Use cr16 interval timers unconditionally on qemu] (backported to v4.14+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5ffa8518851f1401817c15d2a7eecc0373c26ff9 parisc: Use cr16 interval timers unconditionally on qemu] (backported to v4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=636a415bcc7f4fd020ece8fd5fc648c4cef19c34 parisc: Reduce irq overhead when run in qemu] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0adb24e03a124b79130c9499731936b11ce2677d '''parisc: Fix ordering of cache and TLB flushes'''] (backported to v4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9ef0f88fe5466c2ca1d2975549ba6be502c464c1 '''parisc: Handle case where flush_cache_range is called with no context'''] (backported to v4.9+)
@@ -581,7 +580,7 @@ title: TODO
 ** parisc: replace oops_in_progress manipulation with bust_spinlocks()
 ** parisc: Add PDC_CRASH_PREP PDC function number
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c2f8d7cb32cd95e3005bed58ce02afa686b9f357 Revert: parisc: Use F_EXTEND() macro in iosapic code]
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d006e95b5561f708d0385e9677ffe2c46f2ae345 '''parisc: Detect QEMU earlier in boot process'''] (backported to v4.14+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d006e95b5561f708d0385e9677ffe2c46f2ae345 '''parisc: Detect QEMU earlier in boot process'''] (backported to v4.9+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45efd871bf0a47648f119d1b41467f70484de5bc '''parisc: regs_return_value() should return gpr28'''] (backported to v4.14+)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f324fa58327791b2696628b31480e7e21c745706 '''parisc: also set iaoq_b in instruction_pointer_set()'''] (backported to v4.19+)
 
@@ -732,5 +731,4 @@ and just be selective about running "apt-get upgrade".
 == Review all the todo entries below! ==
 
 * ns87415 dma doesn't work reliably on suckyio-systems
-
 * fix HIL problem: ksoftirqd/0 eats 56% cpu (kernel 2.4 & kernel 2.6) - see FAQ: http://www.parisc-linux.org/faq/index.html and http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled
