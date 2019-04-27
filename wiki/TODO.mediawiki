@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-04-19 ==
+== Status & TODO 2019-04-27 ==
+* Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: convert to sparsemem (http://lwn.net/Articles/440056/), will be in kernel 5.2
 * STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
