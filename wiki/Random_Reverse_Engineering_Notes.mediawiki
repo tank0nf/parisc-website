@@ -4,5 +4,5 @@ title: Random Reverse Engineering Notes
 
 Memory Layout J5000
 
-fffffff0f0400000 - likely EEPROM, 2x2864
+fffffff0f0400000 - likely FLASH
 fffffff0f05d0000 - LCD
