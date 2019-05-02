@@ -246,6 +246,7 @@ Stable Debian kernel 3.12 available.
 * [[Debian Buildpackages]] - how to build debian packages for parisc
 * [[TestCases]] - To be checked testcases which produced problems in the past
 * [[Running HP-UX 9.0 on virtual HP9000/362 with MAME]]
+* [[Hidden B/C/J Class Manufacturer and DEBUG commands]]
 
 == External Resources ==
 
