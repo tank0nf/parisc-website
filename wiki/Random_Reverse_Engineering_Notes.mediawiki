@@ -9,5 +9,5 @@ Memory Layout J5000
 
 PDC PAGE0 processor specific:
 
-0x640: code that will be executed when PDC_PROC(0) is called
-0x680: OS rendezvous code
+ 0x640: code that will be executed when PDC_PROC(0) is called
+ 0x680: OS rendezvous code
