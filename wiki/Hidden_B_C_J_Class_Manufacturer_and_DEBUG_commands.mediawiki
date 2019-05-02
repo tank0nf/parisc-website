@@ -4,10 +4,10 @@ title: Hidden B/C/J Class Manufacturer and DEBUG commands
 
 After repairing my J5000 (EEPROM was corrupted due to PDC experiments), the Bootloader showed some additional Entries:
 
-Mfg Menu: Enter command > debug
-
+ Mfg Menu: Enter command > debug
+ 
  ----- Debug Menu ------------------------------------------------------------
-
+ 
        Command                           Description
        -------                           -----------
        CLearScreen                       Clear the screen
@@ -23,7 +23,7 @@ Mfg Menu: Enter command > debug
        SPeed                             Measure various speeds
        Sys_Info_Map                      Display SYS_INFO_MAP
        TOC                               Soft boot the system
-
+ 
        BOot [PRI|ALT|<path>]             Boot from specified path
        DIsplay                           Redisplay the current menu
        HElp [<menu>|<command>]           Display help for menu or command
@@ -33,7 +33,7 @@ Mfg Menu: Enter command > debug
  Debug Menu: Enter command >
 
  Debug Menu: Enter command > mfg
-
+ 
  ----- Manufacturing Menu ----------------------------------------------------
  
        Command                           Description
@@ -55,7 +55,7 @@ Mfg Menu: Enter command > debug
        SerialNum [<serial number>]       Read or write serial number
        STable [AR|UN] <addr> ...         Read or write Stable Storage locations
        VErsion                           Display PDC internal version number
-
+ 
        BOot [PRI|ALT|<path>]             Boot from specified path
        DIsplay                           Redisplay the current menu
        HElp [<menu>|<command>]           Display help for menu or command
