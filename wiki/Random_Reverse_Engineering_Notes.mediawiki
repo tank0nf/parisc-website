@@ -4,5 +4,10 @@ title: Random Reverse Engineering Notes
 
 Memory Layout J5000
 
-fffffff0f0400000 - likely FLASH
-fffffff0f05d0000 - LCD
+ fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
+ fffffff0f05d0000 - LCD
+
+PDC PAGE0 processor specific:
+
+0x640: code that will be executed when PDC_PROC(0) is called
+0x680: OS rendezvous code
