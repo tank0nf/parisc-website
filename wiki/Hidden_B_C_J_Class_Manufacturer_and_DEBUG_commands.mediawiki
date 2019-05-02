@@ -1,0 +1,99 @@
+---
+title: Hidden B/C/J Class Manufacturer and DEBUG commands
+---
+
+After repairing my J5000 (EEPROM was corrupted due to PDC experiments), the Bootloader showed some additional Entries:
+
+Mfg Menu: Enter command > debug
+
+ ----- Debug Menu ------------------------------------------------------------
+
+       Command                           Description
+       -------                           -----------
+       CLearScreen                       Clear the screen
+       EepromFlag [<flag> [ON|OFF]]      Display or set EEPROM Flag values
+       Graphics_INfo                     Display graphics information
+       HPMC                              Generate an HPMC
+       IODC <addr> ... <arg7>            Execute IODC procedure
+       MODel                             Display model string
+       Path_INfo [<path>]                Display mnemonic path information
+       PCI_info                          Display PCI information
+       PDCE [Narrow] <arg0>...<arg7>     Execute PDC procedure
+       SideLoad [DIsplay]                Copy firmware from Sabre to Flash Rom
+       SPeed                             Measure various speeds
+       Sys_Info_Map                      Display SYS_INFO_MAP
+       TOC                               Soft boot the system
+
+       BOot [PRI|ALT|<path>]             Boot from specified path
+       DIsplay                           Redisplay the current menu
+       HElp [<menu>|<command>]           Display help for menu or command
+       RESET                             Restart the system
+       MAin                              Return to Main menu
+ -----
+ Debug Menu: Enter command >
+
+ Debug Menu: Enter command > mfg
+
+ ----- Manufacturing Menu ----------------------------------------------------
+ 
+       Command                           Description
+       -------                           -----------
+       DefaultAll                        Set all Stable Store to defined values
+       DimmRead [<slot>]                 Read serial EEPROM on DIMM/s
+       EepromRead [<addr> [<len>]]       Read EEPROM locations
+       EepromWrite <addr> <data> ...     Write EEPROM locations
+       FAn [Domain1|Domain2              Display/change fan speed settings
+           <lo> <md> <hi>]
+       LanAddress [<addr>]               Display or set system LAN address
+       LIcense [ON|OFF]                  Display or set diagnostic licensing
+       MemRead <addr> [<len>] [<type>]   Read memory locations
+       MemWrite <addr> <data> ...        Write memory locations
+       MfgConsole [<path>]               Display or modify default console path
+       MoDe [MFG|DeBug|NOrmal]           Display or change system mode
+       OVerride [ON|OFF]                 Override fan failure power down
+       ScRoll [ON|OFF]                   Display or change scrolling ability
+       SerialNum [<serial number>]       Read or write serial number
+       STable [AR|UN] <addr> ...         Read or write Stable Storage locations
+       VErsion                           Display PDC internal version number
+
+       BOot [PRI|ALT|<path>]             Boot from specified path
+       DIsplay                           Redisplay the current menu
+       HElp [<menu>|<command>]           Display help for menu or command
+       RESET                             Restart the system
+       MAin                              Return to Main menu
+ -----
+ Mfg Menu: Enter command >
+
+ Debug Menu: Enter command > eepromflag
+      0  Use eeprom LDB checks         OFF
+      1  Use EEPROM test control       OFF
+      2  Update EEPROM fwd progress    OFF
+      3  Allow HPMC PIM overwrite      OFF
+      4  LDB_DEBUG_TRAP_IGNORE_BIT     OFF
+      5  No cycle codes in halt CPU    OFF
+      6  USE_SPEC_TOC_VECTOR_BIT       OFF
+      7  Disable BCH scroll control    OFF
+      8  INIT_EEPROM_CONFIG_BIT        OFF
+      9  DISABLE_AIO_BIT               OFF
+     10  Don't do a PDC ROM checksum   OFF
+     11  Enable Serial1 remote power   OFF
+     12  DISABLE_CCP_CHASSIS           OFF
+     13  DISABLE_CCP_BIT               OFF
+     14  ENABLE_LDB_TRIG_AT_LAUNCH     OFF
+     15  Skip full calc of MEM_10MSEC  OFF
+     16  Secure mode                   OFF
+     17  Honor auto flags in MFG mode  OFF
+     18  Skip graphics init            OFF
+     19  Memory init only              OFF
+     20  Skip late self tests          OFF
+     21  Skip early self tests         OFF
+     22  Disable all FP units          OFF
+     23  Loop on early selftests       OFF
+     24  Loop on late selftests        OFF
+     25  No auto boot if uncleared PIM OFF
+     26  Error handler invokes LDB     OFF
+     27  Error handler dumps state     OFF
+     28  DISABLE_XHOST_MSG             OFF
+     29  Enable proc call trace        OFF
+     30  Always emit chassis codes     OFF
+     31  Init mem system from ROM tableOFF
