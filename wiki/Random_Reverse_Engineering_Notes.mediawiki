@@ -4,7 +4,8 @@ title: Random Reverse Engineering Notes
 
 == Memory Layout J5000 ==
 
- fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
+ fffffff0f0400000 - unknown
+ fffffff0f0500000 - EEPROM (Stable Storage)
  fffffff0f05d0000 - LCD
  fffffff0f05f1010 - Microcontroller?
  fffffff0fee00070 - (RTC?) index
