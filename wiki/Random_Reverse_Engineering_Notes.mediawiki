@@ -7,6 +7,7 @@ title: Random Reverse Engineering Notes
  fffffff0f0400000 - Scratch RAM
  fffffff0f0500000 - EEPROM (Stable Storage)
  fffffff0f05d0000 - LCD
+ fffffff0f05e0000 - Debugger card
  fffffff0f05f1010 - Microcontroller?
  fffffff0fee00070 - SuperIO index
  fffffff0fee00071 - SuperIO data
