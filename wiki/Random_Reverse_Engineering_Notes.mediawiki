@@ -7,6 +7,8 @@ title: Random Reverse Engineering Notes
  fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
  fffffff0f05d0000 - LCD
  fffffff0f05f1010 - Microcontroller?
+ fffffff0fee00070 - (RTC?) index
+ fffffff0fee00071 - (RTC?) data
 
 == PDC PAGE0 processor specific ==
 
