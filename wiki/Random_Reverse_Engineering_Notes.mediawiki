@@ -73,7 +73,7 @@ title: Random Reverse Engineering Notes
 |-
 | 0xa3
 | 0x20
-| PDC_INTIATOR
+| PDC_INITIATOR
 |-
 | 0xa5
 | 0x25
