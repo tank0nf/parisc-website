@@ -8,8 +8,8 @@ title: Random Reverse Engineering Notes
  fffffff0f0500000 - EEPROM (Stable Storage)
  fffffff0f05d0000 - LCD
  fffffff0f05f1010 - Microcontroller?
- fffffff0fee00070 - (RTC?) index
- fffffff0fee00071 - (RTC?) data
+ fffffff0fee00070 - SuperIO index
+ fffffff0fee00071 - SuperIO data
  fffffff0f05f0068 - PDH (Processor dependent hardware register)
 
 == PDC PAGE0 processor specific ==
