@@ -33,50 +33,49 @@ title: Random Reverse Engineering Notes
 |-
 | 0x81
 | 0x1a
-| EEPROM read/write
+| PDC_EEPROM
 |-
 | 0x84
 | 0x1b
-|
+| PDC_SEED_ERROR
 |-
 | 0x87
 | 0x1c
-|
+| PDC_IO
 |-
 | 0x88
 | 0x1d
-|
+| PDC_BROAD_RESET
 |-
 | 0x8a
 | 0x1e
-|
+| PDC_LAN_STATION_ID
 |-
 | 0x8b
 | 0x1f
-|
+| PDC_CHECK_RANGES
 |-
 | 0x8f
 | 0x21
-|
+| PDC_SYSTEM_INFO
 |-
 | 0x90
 | 0x22
-|
+| PDC_RDR
 |-
 | 0x91
 | 0x23
-|
+| PDC_INTRIGUE
 |-
 | 0x93
 | 0x24
-|
+| PDC_PCI
 |-
 | 0xa3
 | 0x20
-|
-|
+| PDC_INTIATOR
 |-
 | 0xa5
 | 0x25
-|
+| PDC_LINK
 |}
