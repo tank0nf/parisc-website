@@ -6,6 +6,7 @@ title: Random Reverse Engineering Notes
 
  fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
  fffffff0f05d0000 - LCD
+ fffffff0f05f1010 - Microcontroller?
 
 == PDC PAGE0 processor specific ==
 
