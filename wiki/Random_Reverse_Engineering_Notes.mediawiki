@@ -2,7 +2,6 @@
 title: Random Reverse Engineering Notes
 ---
 
-__FORCE_TOC__
 == Memory Layout J5000 ==
 
  fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
@@ -20,15 +19,41 @@ __FORCE_TOC__
 
 == Undocumented PDC routines ==
 
-0x81: EEPROM read/write
-0x84
-0x87
-0x88
-0x8a
-0x8b
-0x8f
-0x90
-0x91
-0x93
-0xa3
-0xa5
+{| class="wikitable"
+|+ARG0
+|-
+| 0x81
+| EEPROM read/write
+|-
+| 0x84
+|
+|-
+| 0x87
+|
+|-
+| 0x88
+|
+|-
+| 0x8a
+|
+|-
+| 0x8b
+|
+|-
+| 0x8f
+|
+|-
+| 0x90
+|
+|-
+| 0x91
+|
+|-
+| 0x93
+|
+|-
+| 0xa3
+|
+|-
+| 0xa5
+|}
