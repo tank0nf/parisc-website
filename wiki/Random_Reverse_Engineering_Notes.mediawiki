@@ -2,12 +2,12 @@
 title: Random Reverse Engineering Notes
 ---
 
-Memory Layout J5000
+=== Memory Layout J5000 ===
 
  fffffff0f0400000 - unknown, assumed EEPROM, but content different than what eepromread returns
  fffffff0f05d0000 - LCD
 
-PDC PAGE0 processor specific:
+=== PDC PAGE0 processor specific ===
 
  0x640: code that will be executed when PDC_PROC(0) is called, loop with nops:
    0x00000640  e81f1ff5  08000240  08000240  08000240
@@ -16,3 +16,5 @@ PDC PAGE0 processor specific:
    0x00000670  08000240  08000240  08000240  08000240
 
  0x680: OS rendezvous code
+
+=== Undocumented PDC routines ===
