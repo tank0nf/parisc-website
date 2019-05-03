@@ -18,3 +18,5 @@ title: Random Reverse Engineering Notes
  0x680: OS rendezvous code
 
 === Undocumented PDC routines ===
+
+0x81: EEPROM read/write
