@@ -20,7 +20,9 @@ title: Random Reverse Engineering Notes
 == Undocumented PDC routines ==
 
 {| class="wikitable"
-|+ARG0
+|-
+! scope="col" | ARG0
+! scope="col" | Name
 |-
 | 0x81
 | EEPROM read/write
