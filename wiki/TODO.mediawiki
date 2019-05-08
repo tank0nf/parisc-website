@@ -585,20 +585,20 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f324fa58327791b2696628b31480e7e21c745706 '''parisc: also set iaoq_b in instruction_pointer_set()'''] (backported to v4.19+)
 * Kernel 5.2
 **  parisc: Consider stack randomization for mmap base only when necessary
-**  parisc: Export running_on_qemu symbol for modules
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3e1120f4b57bc12437048494ab56648edaa5b57d parisc: Export running_on_qemu symbol for modules] (backported to v4.9+)
 **  parisc: Tune LASI LAN for QEMU
-**  parisc: Skip registering LED when running in QEMU
+**  parisc: Skip registering LED when running in QEMU (backported to v4.9+)
 **  parisc: PA-Linux requires at least 32 MB RAM
 **  parisc: Show n/a if product number not available
 **  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbdf0760990583649bfaca75fd98f76afd5f3905 '''parisc: Switch from DISCONTIGMEM to SPARSEMEM''']
-**  parisc: Add memory barrier to asm pdc and sync instructions
-**  parisc: Allow live-patching of __meminit functions
-**  parisc: Rename LEVEL to PA_ASM_LEVEL to avoid name clash with DRBD code
-**  parisc: Use PA_ASM_LEVEL in boot code
+**  parisc: Add memory barrier to asm pdc and sync instructions (backported to v4.20+)
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d19a12906e5e558c0f6b6cfece7b7caf1012ef95 parisc: Allow live-patching of __meminit functions] (backported to v4.20+)
+**  parisc: Rename LEVEL to PA_ASM_LEVEL to avoid name clash with DRBD code (backported to all)
+**  parisc: Use PA_ASM_LEVEL in boot code (backported to v4.14+)
 **  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=62217beb394e654bbd2bb87c533dadd2d8bf62c6 '''parisc: Add static branch and JUMP_LABEL feature''']
 **  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6c63ef80014b60ab13bee7e683d0a95521bb7fdd '''parisc: Remove lock code to serialize TLB operations in pacache.S''']
 **  parisc: Use ldcw instruction for SMP spinlock release barrier
-**  parisc: Add memory clobber to TLB purges
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=44224bdb99150ad17cf394973b25736cb92c246a parisc: Add memory clobber to TLB purges] (backported to v4.20+)
 **  parisc: Update huge TLB page support to use per-pagetable spinlock
 **  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b37d1c1898b288c69f3dc9267bc2c41af06f4a4b '''parisc: Use per-pagetable spinlock''']
 **  parisc: add set_fixmap()/clear_fixmap()
