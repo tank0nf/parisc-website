@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-05-07 ==
+== Status & TODO 2019-05-08 ==
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * STARTED: implement kexec syscall
@@ -590,24 +590,24 @@ title: TODO
 **  parisc: Skip registering LED when running in QEMU
 **  parisc: PA-Linux requires at least 32 MB RAM
 **  parisc: Show n/a if product number not available
-**  '''parisc: Switch from DISCONTIGMEM to SPARSEMEM'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbdf0760990583649bfaca75fd98f76afd5f3905 '''parisc: Switch from DISCONTIGMEM to SPARSEMEM''']
 **  parisc: Add memory barrier to asm pdc and sync instructions
 **  parisc: Allow live-patching of __meminit functions
 **  parisc: Rename LEVEL to PA_ASM_LEVEL to avoid name clash with DRBD code
 **  parisc: Use PA_ASM_LEVEL in boot code
-**  '''parisc: Add static branch and JUMP_LABEL feature'''
-**  '''parisc: Remove lock code to serialize TLB operations in pacache.S'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=62217beb394e654bbd2bb87c533dadd2d8bf62c6 '''parisc: Add static branch and JUMP_LABEL feature''']
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6c63ef80014b60ab13bee7e683d0a95521bb7fdd '''parisc: Remove lock code to serialize TLB operations in pacache.S''']
 **  parisc: Use ldcw instruction for SMP spinlock release barrier
 **  parisc: Add memory clobber to TLB purges
 **  parisc: Update huge TLB page support to use per-pagetable spinlock
-**  '''parisc: Use per-pagetable spinlock'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b37d1c1898b288c69f3dc9267bc2c41af06f4a4b '''parisc: Use per-pagetable spinlock''']
 **  parisc: add set_fixmap()/clear_fixmap()
-**  '''parisc: add parisc code patching'''
-**  '''parisc: add KGDB support'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=620a53d522ba007a79fffc444bd75e8d3775f5b8 '''parisc: add parisc code patching''']
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=eacbfce19d8b6dbd7958cbe01d65a21324cc2fad '''parisc: add KGDB support''']
 **  parisc: add functions required by KPROBE_EVENTS
-**  '''parisc: Implement kprobes'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8858ac8e9e9b1894f7bb218bc0035532371b8d7e '''parisc: Implement kprobes''']
 **  parisc: remove kprobes.h from generic-y
-**  '''parisc: Implement kretprobes'''
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e0b59b7b633ab72c08bb9bac36afaeaade011ddf '''parisc: Implement kretprobes''']
 **  doc: update kprobes supported architecture list
 **  parisc: remove unused flags parameter in __patch_text()
 **  parisc: update feature lists
