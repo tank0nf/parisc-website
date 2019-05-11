@@ -45,7 +45,7 @@ QEMU support is progressing quite fast. Check the [[Qemu]] page for more informa
 == SATA Controllers ==
 
 PARISC machines boot from SCSI or built-in IDE drives only.
-The following SATA PCI controllers have been reported to work:
+The following SATA PCI controllers have been reported to work on Linux, after the kernel was booted:
 * Silicon Image SiI 3112 PCI Serial ATA Controller (rev 02) (reported by Helge, in C8000)
 * Silicon Image SiI 3124 PCI-X Serial ATA Controller (rev 02) (reported by Dave, in rp3440)
 * VIA Technologies VT6421 IDE/SATA Controller (rev 50) (reported by Rolf Eike Beer, in C3600 and C8000)
