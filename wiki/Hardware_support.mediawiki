@@ -42,6 +42,13 @@ People ask about V-class. V-class has a very different architecture from other H
 
 QEMU support is progressing quite fast. Check the [[Qemu]] page for more information.
 
+== SATA Controllers ==
+
+PARISC machines boot from SCSI or built-in IDE drives only.
+The following SATA PCI controllers have been reported to work:
+* Silicon Image SiI 3112 PCI Serial ATA Controller (rev 02)
+* Silicon Image SiI 3124 PCI-X Serial ATA Controller (rev 02)
+
 == External Resources ==
 
 * http://www.openpa.net/systems/index.html - OpenPA.net Overview of PA-RISC Computers
