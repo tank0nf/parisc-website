@@ -49,7 +49,7 @@ The following SATA PCI controllers have been reported to work on Linux, after th
 * Silicon Image SiI 3112 PCI Serial ATA Controller (rev 02) (reported by Helge, in C8000)
 * Silicon Image SiI 3124 PCI-X Serial ATA Controller (rev 02) (reported by Dave, in rp3440)
 * VIA Technologies VT6421 IDE/SATA Controller (rev 50) (reported by Rolf Eike Beer, in C3600 and C8000)
-* Adaptec 1210SA, Silicon Image Sil3112 (reported by Carlo Pisani <carlojpisani@gmail.com>)
+* Adaptec 1210SA, Silicon Image Sil3112 (reported by Carlo Pisani <carlojpisani@gmail.com>, in C3600)
 
 == External Resources ==
 
