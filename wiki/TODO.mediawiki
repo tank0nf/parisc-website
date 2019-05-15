@@ -4,8 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-05-11 ==
-* STARTED: fix up __ro_after_init: http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d09e356ad06a8b6f5cceabf7c6cf05fdb62b46e5
+== Status & TODO 2019-05-15 ==
 * STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement kexec syscall
@@ -611,6 +610,9 @@ title: TODO
 **  parisc: remove unused flags parameter in __patch_text()
 **  parisc: update feature lists
 **  parisc: enable wide mode early
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e6eb5fe9123f05dcbf339ae5c0b6d32fcc0685d5 parisc: Drop LDCW barrier in CAS code when running UP]
+**  [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8d0e051cc75e2b1a7e2fd51fc56af332c9619618 parisc: Enable the ro_after_init feature]
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -657,6 +659,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Check Kernel boot code if RAM of machine is big enough (e.g. is booting on 710 machine with 60MB possible?) - https://patchwork.kernel.org/patch/10888283/
 ** DONE: convert to SPARSEMEM, instead of DISCONTIGMEM
 ** DONE: (NOT POSSIBLE:) Enable huge pages on kernel text for C8000 as well - not possible, will crash due to required equivalent aliasing of caches.
+** DONE: Enable __ro_after_init
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
