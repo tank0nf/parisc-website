@@ -2,7 +2,7 @@
 title: Repairing a non-starting C240/C360 Power supply
 ---
 
-The power supplies used in the C240/C360 (and probably other 3 digit C class models) are suffering from open resistors in the startup Path.
+The power supplies used in the C240/C360 (and probably other 3 digit C class models) are suffering from open resistors in the startup path.
 
 Symptoms are:
 
@@ -20,4 +20,4 @@ When ordering, make sure:
 * They are 1W types
 * They are inflammable MOX types
 
-The resistors are connected directly to the +325V Power rail, make sure you discharge the power supply before starting the repair. If you don't know how to discharge it, better ask someone to repair the power Supply for you. Working on High voltage circuits imposes the risk of getting an electric shock which might cause death.
+{{warning|1=The resistors are connected directly to the +325V Power rail, make sure you discharge the power supply before starting the repair. If you don't know how to discharge it, better ask someone to repair the power Supply for you. Working on High voltage circuits imposes the risk of getting an electric shock which might cause death.}}
