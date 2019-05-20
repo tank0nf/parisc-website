@@ -10,8 +10,7 @@ Symptoms are:
 * Several Plug/Unplug cycles required until Powersupply starts working
 * Long startup time
 
-In my the C240 usually required about 10 seconds before the standby fans started. I thought that's normal, but it isn't. Suddenly, the C240 didn't start at all. The reason were two 180K (R18+R29) resistors, responsible for providing a minimal voltage to the Power supply needed for startup. One of them
-was completely open, the other one had about 260K.
+My C240 usually required about 10 seconds before the standby fans started. I thought that's normal, but it isn't. Suddenly, the C240 didn't start at all. The reason were two 180K (R19+R28) resistors, responsible for providing a minimal voltage to the Power supply needed for startup. One of them was completely open, the other one had about 260K.
 
 They are easy to replace, cost is about 10 cents.
 
@@ -20,7 +19,7 @@ When ordering, make sure:
 * They are 1W types
 * They are inflammable MOX types
 
-The resistors are connected directly to the +325V Power rail, make sure you discharge the power supply before starting the repair. If you don't know how to discharge it, better ask someone to repair the power Supply for you. Working on High voltage circuits imposes the risk of getting an electric shock which might cause death.
+The resistors are connected directly to the +325V Power rail, so make sure you discharge the power supply before starting the repair! If you don't know how to discharge it, better ask someone to repair the power Supply for you. Working on High voltage circuits imposes the risk of getting an electric shock which might cause death.
 
 Location of the resistors, marked with a red circle:
 
