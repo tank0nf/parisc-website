@@ -249,6 +249,7 @@ Stable Debian kernel 3.12 available.
 * [[TestCases]] - To be checked testcases which produced problems in the past
 * [[Running HP-UX 9.0 on virtual HP9000/362 with MAME]]
 * [[Hidden B/C/J Class Manufacturer and DEBUG commands]]
+* [[Repairing a non-starting C240/C360 Power supply]]
 
 == External Resources ==
 
