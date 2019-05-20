@@ -22,5 +22,7 @@ When ordering, make sure:
 
 The resistors are connected directly to the +325V Power rail, make sure you discharge the power supply before starting the repair. If you don't know how to discharge it, better ask someone to repair the power Supply for you. Working on High voltage circuits imposes the risk of getting an electric shock which might cause death.
 
-[[File:Ps spot.jpg]]
-[[File:Ps complete.jpg]]
+Location of the resistors, marked with a red circle:
+
+[[File:Ps spot.jpg|1024px]]
+[[File:Ps complete.jpg|1024px]]
