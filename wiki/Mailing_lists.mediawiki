@@ -36,4 +36,4 @@ An archive is available at gmane.org at [http://blog.gmane.org/gmane.linux.debia
 
 == PA-RISC Gentoo mailing list ==
 
-See http://www.gentoo.org/proj/en/base/hppa for details to contact Gentoo developers.
+See https://wiki.gentoo.org/wiki/Project:HPPA for details to contact Gentoo developers.
