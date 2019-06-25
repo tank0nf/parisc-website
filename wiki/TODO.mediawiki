@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-06-06 ==
+== Status & TODO 2019-06-25 ==
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * Enable SPARSEMEM_VMEMMAP_ENABLE
@@ -621,7 +621,7 @@ title: TODO
 ** parisc: configs: Remove useless UEVENT_HELPER_PATH
 ** parisc: Kconfig: remove ARCH_DISCARD_MEMBLOCK
 ** parisc/slab: cleanup after /proc/slab_allocators removal
-
+** parisc: Fix module loading error with JUMP_LABEL feature
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
