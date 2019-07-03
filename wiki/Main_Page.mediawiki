@@ -47,6 +47,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Jul 2019'''||New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/  palo version v2.01] released.
+|-
 | style="vertical-align:top;" |'''May 2019'''||Linux kernel 5.2 supports [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbdf0760990583649bfaca75fd98f76afd5f3905 SPARSEMEM instead of DISCONTIGMEM], [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=62217beb394e654bbd2bb87c533dadd2d8bf62c6 static branches] and [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b37d1c1898b288c69f3dc9267bc2c41af06f4a4b per-pagetable spinlocks].
 |-
 | style="vertical-align:top;" |'''Apr 2019'''||[mailto:svens@stackframe.org Sven] adds [https://parisc.wiki.kernel.org/index.php/KGDB '''KGDB'''] and [https://lwn.net/Articles/132196/ '''KPROBES'''] support for the Linux kernel version 5.2.
