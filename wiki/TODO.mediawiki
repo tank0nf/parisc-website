@@ -4,9 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-06-25 ==
+== Status & TODO 2019-07-09 ==
 * Fix stifb kernel hangs with latest kernels (4.9ff)
-* STARTED: add dynamic ftrace support - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git/commit/?h=ftrace-dynamic&id=059645d9dadbd802d0487d1b8ab9b9269df18e0e, now done by Sven.
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement kexec syscall
 * ONGOING: Enable UBSAN and fix fallouts
@@ -622,6 +621,14 @@ title: TODO
 ** parisc: Kconfig: remove ARCH_DISCARD_MEMBLOCK
 ** parisc/slab: cleanup after /proc/slab_allocators removal
 ** parisc: Fix module loading error with JUMP_LABEL feature
+* Kernel 5.3
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ca6366220ed285e29ee22f4cf5c68a0397cb005 '''parisc: add dynamic ftrace''']
+** compiler.h: add CC_USING_PATCHABLE_FUNCTION_ENTRY
+** parisc: add support for patching multiple words
+** parisc: add spinlock to patch function
+** parisc: add WARN_ON() to clear_fixmap
+** parisc: use pr_debug() in kernel/module.c
+** parisc: asm: psw.h: missing header guard
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -669,6 +676,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: convert to SPARSEMEM, instead of DISCONTIGMEM
 ** DONE: (NOT POSSIBLE:) Enable huge pages on kernel text for C8000 as well - not possible, will crash due to required equivalent aliasing of caches.
 ** DONE: Enable __ro_after_init
+** DONE: add dynamic ftrace support - provided by Sven in kernel 5.3
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
