@@ -629,9 +629,9 @@ title: TODO
 ** parisc: add WARN_ON() to clear_fixmap
 ** parisc: use pr_debug() in kernel/module.c
 ** parisc: asm: psw.h: missing header guard
-** '''parisc: Fix kernel panic due invalid values in IAOQ0 or IAOQ1'''
-** '''parisc: Ensure userspace privilege for ptraced processes in regset functions'''
-** parisc: Avoid kernel panic triggered by invalid kprobe
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=10835c854685393a921b68f529bf740fa7c9984d '''parisc: Fix kernel panic due invalid values in IAOQ0 or IAOQ1'''] (backported to all)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=34c32fc603311a72cb558e5e337555434f64c27b '''parisc: Ensure userspace privilege for ptraced processes in regset functions'''] (backported to 4.7+)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=59a783dbc0d5fd6792aabff933055373b6dcbf2a '''parisc: Avoid kernel panic triggered by invalid kprobe'''] (backported to 5.2)
 ** parisc: Wire up clone3 syscall
 
 == Debian kernel and userspace programs ==
