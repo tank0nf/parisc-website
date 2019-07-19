@@ -35,6 +35,9 @@ Some other info:
 
 == How to manually build debian packages ==
 
+; Prevent mandb run
+: echo 'man-db man-db/auto-update boolean false' |sudo debconf-set-selections
+
 ; How to get a specific version of a source package
 : apt-get source packagename=version
 
