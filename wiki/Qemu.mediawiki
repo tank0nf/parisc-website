@@ -86,8 +86,13 @@ Possible qemu options:
 * Linux (Debian, Gentoo), latest releases (>= 4.14) preferred
 * [https://wiki.netbsd.org/ports/hppa/ NetBSD]
 * [https://winworldpc.com/product/nextstep/3x NextSTEP]
+* [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
 
-== QEMU on NetBSD ==
+== HP-UX ==
+
+Still LASI NIC emulation and NCR 710 Emulation needed in order to be able to boot older HP-UX releases.
+
+== NetBSD ==
 
 Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
 
@@ -102,6 +107,34 @@ Info at https://www.netbsd.org/releases/current.html
         -serial telnet::55555,server
 
 (info by Nick Hudson <nick.hudson@gmx.co.uk>)
+
+== OSF/MkLinux ==
+
+Download at ftp://ftp.cirr.com/pub/hppa/mklinux/
+The file root_ext2_g.dd.bin.gz doesn't cleanly decompress.. so I did a gzip -dc into root_ext2_g.dd.bin.
+
+MkLinux sources: https://github.com/slp/osfmk-mklinux
+
+ qemu-system-hppa -boot c -drive if=scsi,bus=0,index=3,file=root_ext2_g.dd.bin,format=raw \
+        -serial mon:stdio -nographic -m 128 
+
+It boots, but fails during device detection because Qemu currently emulates a B160, while MkLinux expects a HP700. So it fails to see the LASI chip below the GSC bridge.
+ NVM bootdata Bad Checksum (0)
+ OSF Mach boot
+ : /mach
+ text (0x95618) at 0x11000
+ data (0x48594) at 0xa8000
+ Mach 3.0 VERSION(PMK1.1): cb <pmk1_1>; Wed Nov 26 17:20:37 MET 1997; mach_kernel/PRODUCTION (cameleon)
+ HP9000/
+ unknown machine type 0x502
+ good luck :-)
+ , 0K Icache, 0K Dcache, 256 entry shared TLB)
+ Warning: unsupported module at ffc00000 (type:7 svers:0 hvers:50)
+ Stack Trace (depth=1):
+      0x00084d68
+ End of Stack 
+
+(info by Jason Stevens <neozeed@gmail.com>)
 
 == Future QEMU work ==
 
