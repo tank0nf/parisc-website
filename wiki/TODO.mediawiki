@@ -635,6 +635,13 @@ title: TODO
 ** parisc: Wire up clone3 syscall
 ** parisc: add kprobe_fault_handler()
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=69245c97560b40f88c609b078f4b51c5be81d88b parisc: Flush ITLB in flush_tlb_all_local() only on split TLB machines]
+** parisc: Mark expected switch fall-throughs in fault.c
+** parisc: Fix fall-through warnings in fpudispatch.c
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3fe6c873af2f2247544debdbe51ec29f690a2ccf parisc: Fix build of compressed kernel even with debug enabled]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e50beea8e7738377b4fa664078547be338038ff9 parisc: Strip debug info from kernel before creating compressed vmlinuz]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f2c5ed0dd5004c2cff5c0e3d430a107576fcc17f parisc: Add archclean Makefile target]
+** parisc: rename default_defconfig to defconfig
+** parisc: fix race condition in patching code
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
