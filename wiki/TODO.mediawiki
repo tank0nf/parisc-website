@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-07-18 ==
+== Status & TODO 2019-08-09 ==
+* automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement kexec syscall
