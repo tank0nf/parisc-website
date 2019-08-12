@@ -13,7 +13,6 @@ title: TODO
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* STARTED: Fix fallouts from strace, http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
@@ -691,6 +690,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: (NOT POSSIBLE:) Enable huge pages on kernel text for C8000 as well - not possible, will crash due to required equivalent aliasing of caches.
 ** DONE: Enable __ro_after_init
 ** DONE: add dynamic ftrace support - provided by Sven in kernel 5.3
+** DONE: Fix fallouts from strace: http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510, 
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
