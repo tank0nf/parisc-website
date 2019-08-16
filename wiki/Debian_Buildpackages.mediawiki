@@ -33,6 +33,9 @@ Some other info:
 
 * by adding "debug-info: false" to the [build] section in debian/config/hppa/defines avoids building the debug info
 
+Autosign packages via cron:
+* @hourly  buildd    find upload -name *changes -type f -cmin -60 -cmin +20 -exec debsign -k 43374411AA94178C84FE52A8489F10615531D26E --re-sign '{}' \;
+
 == How to manually build debian packages ==
 
 ; Prevent mandb run
