@@ -256,6 +256,7 @@ Stable Debian kernel 3.12 available.
 == External Resources ==
 
 * http://www.openpa.net/index.html - The OpenPA Project
+* http://www.wikiwand.com/en/PA-RISC - Good overview of PA-RISC, HP-UX, CDE, ...
 * http://web.archive.org/web/20040202003152/http://www.cpus.hp.com/technical_references/parisc.shtml - Historic PA-RISC Documentation from HP.com (2004) 
 * http://www.debian.org/ports/hppa/ - Debian HPPA port page
 * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
