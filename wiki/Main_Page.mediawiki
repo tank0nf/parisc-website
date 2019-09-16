@@ -47,7 +47,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Sep 2019'''||Kernel 5.4 includes kexec support and enhanced ftrace support. QEMU and SeaBIOS get LASI support (serial, network, parallel, PS/2 keyboard & mouse) and Artist graphics emulation, including STI support.
+| style="vertical-align:top;" |'''Sep 2019'''||Palo 2.12 released. Kernel 5.4 includes kexec support and enhanced ftrace support. QEMU and SeaBIOS get LASI support (serial, network, parallel, PS/2 keyboard & mouse) and Artist graphics emulation, including STI support.
 |-
 | style="vertical-align:top;" |'''Jul 2019'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ Released PALO version v2.11] with important enhancements by [mailto:James.Bottomley@HansenPartnership.com James Bottomley] like added ext4-support, IPL overlap with newer ext2/ext3 resize_inode was fixed and the iplboot bootcode loader is now placed inside the disk label.
 |-
