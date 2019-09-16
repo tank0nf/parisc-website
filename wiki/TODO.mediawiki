@@ -4,16 +4,16 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-08-12 ==
+== Status & TODO 2019-09-16 ==
+* Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
+* STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
-* STARTED: implement kexec syscall
 * ONGOING: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
-* STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
@@ -718,6 +718,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Enable __ro_after_init
 ** DONE: add dynamic ftrace support - provided by Sven in kernel 5.3
 ** DONE: Fix fallouts from strace: http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510, 
+** DONE: implement kexec syscall
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
