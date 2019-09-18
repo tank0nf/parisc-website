@@ -644,21 +644,21 @@ title: TODO
 ** parisc: rename default_defconfig to defconfig
 ** parisc: fix race condition in patching code
 * Kernel 5.4
-** '''parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=83af58f8068ea3f7b3c537c37a30887bfa585069 '''parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat''']
 ** parisc: Add ALTERNATIVE_CODE() and ALT_COND_RUN_ON_QEMU
 ** parisc: speed up flush_tlb_all_local with qemu
 ** parisc: Avoid warning when loading hppb driver
 ** parisc: Convert eisa_enumerator to use pr_cont()
 ** parisc: Drop comments which are already in pci.h
 ** parisc: Save some bytes in dino driver
-** '''parisc: Disable HP HSC-PCI Cards to prevent kernel crash''' (backported to all)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5fa1659105fac63e0f3c199b476025c2e04111ce '''parisc: Disable HP HSC-PCI Cards to prevent kernel crash'''] (backported to all)
 ** parisc: Have git ignore generated real2.S and firmware.c
 ** kprobes/parisc: remove arch_kprobe_on_func_entry()
 ** parisc/ftrace: Add ARCH_SUPPORTS_FTRACE_OPS support
 ** parisc/ftrace: Add KPROBES_ON_FTRACE
 ** parisc: Update feature list
 ** parisc: trigger die notifier chain in parisc_terminate()
-** '''kexec: add KEXEC_ELF'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=175fca3bf91a1111b7e46f6655666640556b9059 '''kexec: add KEXEC_ELF''']
 ** kexec_elf: change order of elf_*_to_cpu() functions
 ** kexec_elf: remove parsing of section headers
 ** kexec_elf: remove PURGATORY_STACK_SIZE
@@ -666,7 +666,7 @@ title: TODO
 ** kexec_elf: remove unused variable in kexec_elf_load()
 ** kexec_elf: support 32 bit ELF files
 ** parisc: add __pdc_cpu_rendezvous()
-** '''parisc: add kexec syscall support'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fc697dc0c26a5908d467454e49440862d7fe96d0 '''parisc: add kexec syscall support''']
 ** parisc: wire up kexec_file_load syscall
 ** parisc: add support for kexec_file_load() syscall
 
