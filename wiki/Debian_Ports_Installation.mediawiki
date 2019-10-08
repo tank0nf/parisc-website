@@ -46,6 +46,7 @@ In those directories you find (you need to download only one of those):
 ** In the main menu choose to "Finish the installation" and let it reboot the machine.
 
 '''Notes:'''
+* Debian installer seem to use the well-known screen utility to implement multiple tabs on a serial console, so use its key combinations to switch tabs: Ctrl+A, then 1-4
 * When asked for Network mirror with the 10.0 installer, give '''ftp.ports.debian.org''' and '''/debian-ports/'''. (Avoidable when this Bug gets resolved: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=879130).
 * After reboot add this line to /etc/apt/sources.list and run '''apt-get update''':
    deb http://ftp.ports.debian.org/debian-ports unstable main
