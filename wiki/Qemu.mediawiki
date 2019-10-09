@@ -164,13 +164,13 @@ Still need to do:
 == Screenshots ==
 
 === HP-UX booting up ===
-[[File:Qemu_sti_hpux_boot.png|800px]]
+[[File:Qemu_sti_hpux_boot.png|640px]]
 
 === HP-UX CDE Login screen ===
-[[File:Qemu_cde1.png|800px]]
+[[File:Qemu_cde1.png|640px]]
 
 === HP-UX CDE initial screen ===
-[[File:Qemu_cde3.png|800px]]
+[[File:Qemu_cde3.png|640px]]
 
 === Some applications started in CDE ===
-[[File:Qemu_cde_desktop.png|800px]]
+[[File:Qemu_cde_desktop.png|640px]]
