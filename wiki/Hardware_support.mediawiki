@@ -44,14 +44,16 @@ QEMU support is progressing quite fast. Check the [[Qemu]] page for more informa
 
 == SATA Controllers ==
 
-PARISC machines boot from SCSI or built-in IDE drives only.
+NOTE: PARISC machines boot from SCSI or built-in IDE drives only.
 The following SATA PCI controllers have been reported to work on Linux, after the kernel was booted:
-* Silicon Image SiI 3112 PCI Serial ATA Controller (rev 02) (reported by Helge, in C8000), does not support SATA-TRIM, may need "sata_sil.slow_down=1" kernel module option
-* Silicon Image SiI 3124 PCI-X Serial ATA Controller (rev 02) (reported by Dave, in rp3440, reported by Sven, in C8000)
+* Silicon Image SiI 3112 PCI Serial ATA Controller (rev 02) (reported by Helge in C8000), does not support SATA-TRIM, may need "sata_sil.slow_down=1" kernel module option
+* Silicon Image SiI 3124 PCI-X Serial ATA Controller (rev 02) (reported by Dave in rp3440, reported by Sven in C8000)
 * RAID bus controller: Silicon Image, Inc. SiI 3512 [SATALink/SATARaid] Serial ATA Controller (rev 01), in C8000 (phantom)
-* VIA Technologies VT6421 IDE/SATA Controller (rev 50) (reported by Rolf Eike Beer, in C3600 and C8000)
-* Adaptec 1210SA, Silicon Image Sil3112 (reported by Carlo Pisani <carlojpisani@gmail.com>, in C3600)
-* SYBA SY-PCX40009 PCI-X SATA II Controller (SiL3124) (reported by Carlo Pisani <carlojpisani@gmail.com>, in C3600)
+* VIA Technologies VT6421 IDE/SATA Controller (rev 50) (reported by Rolf Eike Beer in C3600 and C8000)
+* Adaptec 1210SA, Silicon Image Sil3112 (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
+* SYBA SY-PCX40009 PCI-X SATA II Controller (SiL3124) (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
+* HighPoint RocketRAID 2224 (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
+* Highpoint RocketRAID 1640 (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
 
 == External Resources ==
 
