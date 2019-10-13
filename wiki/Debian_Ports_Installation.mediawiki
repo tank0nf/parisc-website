@@ -77,6 +77,20 @@ So, if you want to switch back to sysvinit, e.g. if you do kernel developement w
 Futher instructions are on this external website:
 [http://without-systemd.org/wiki/index.php/How_to_remove_systemd_from_a_Debian_jessie/sid_installation How to remove systemd from a Debian jessie/sid installation]
 
+== Upgrade the kernel to latest stable kernel ==
+
+After installation an old Linux kernel like 4.16 is installed.
+Newer Linux kernels run much more stable and faster.<br>
+To upgrade to the latest kernel, make sure you have this additional entry in /etc/apt/sources.list:
+ deb http://ftp.ports.debian.org/debian-ports unstable main
+
+Then follow this steps:
+# Run "apt update"
+# You may run "apt search ^linux-image" to find available kernels
+# Run "apt install linux-image-parisc64/unstable"  (or linux-image-parisc/unstable for a 32-bit kernel)
+# Make sure that /boot/vmlinux and /boot/initrd.img points to the new kernel and initrd
+# Reboot
+ 
 == Technical background of the install images ==
 
 : The installer images mentioned above pull the debian packages from the repositories at 
