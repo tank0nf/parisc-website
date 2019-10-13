@@ -21,7 +21,7 @@ The latest installation medias for Debian unstable is available at either one of
 # http://backup.parisc-linux.org/debian-cd/
 # http://parisc.osuosl.org/debian-cd/
 # http://ftp.nz.parisc-linux.org/debian-cd/ (Debian 9 & 10 NZ mirror)
-# http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/debian-installer/debian-installer-images_20190118_hppa.tar.gz (latest Netboot images)
+# http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/debian-installer/ (latest Netboot images)
 
 In those directories you find (you need to download only one of those):
 * lifimage file, used for tftp/netbooting the installation
