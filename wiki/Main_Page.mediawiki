@@ -26,7 +26,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 : Helge Deller and John David Anglin set up several package build servers for Debian Ports.  Overtime, this infrastructure has been improved and it now uses the same wanna-build system as the release architectures.
 : Kernel and tool chain support was also improved with the transition to Debian Ports. For example, the glibc source can now be built directly from source.
 : Today, Debian Linux for PA-RISC is usable and stable.  More than 11,500 Debian packages are available.
-: If you plan to install Debian Linux, please read [[Debian Ports Installation | this Wiki on how to install Debian Linux]], and download one install image from this list:
+: If you plan to install Debian Linux, please read [[Debian Ports Installation | '''how to install Debian Linux''']], and download one install image from this list:
 :* [https://cdimage.debian.org/cdimage/ports/ '''Debian cdimage repository''']
 :* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
 :* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
