@@ -6,7 +6,7 @@ PA-RISC provides a spartan set of atomic locking primitives; the two instruction
 
 We have tried a number of schemes in the past, such as tagging locks with the GCC extension <tt>{{{__attribute__((aligned(16)))}}}</tt>.  This fails when dealing with objects allocated on the stack; we are only guaranteed an 8-byte alignment for these.
 
-In the kernel, we can do without the alignment when running on a PA 2.0 processor as we know they relaxed the architectural requirement.  See [http://lists.parisc-linux.org/pipermail/parisc-linux/2005-June/026670.html Jim Hull's message] for details.
+In the kernel, we can do without the alignment when running on a PA 2.0 processor as we know they relaxed the architectural requirement.  See [https://lore.kernel.org/linux-parisc/200506091732.KAA07794@lucy.cup.hp.com/#t Jim Hull's message] for details.
 
 In glibc, things are more complex.  Not only do we want to support PA 1.1 processors which require the 16-byte alignment, we also want to support locks which have been initialised to 0 (with memset).  Here's the current scheme, sometimes called Lock-Equivalent Position Deferred:
 
