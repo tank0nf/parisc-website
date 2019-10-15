@@ -474,7 +474,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=24002d59376e2d19a2a523fe88d5b32e691a43af '''parisc: machine_power_off() should call pm_power_off()''']
 ** parisc: Directly call machine_power_off() in power button driver
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5654e156bc4d68a87bbaa6d7e020baceddf6e68 '''parisc: Fix HPMC handler by increasing size to multiple of 16 bytes''']
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b845f66f78bf42a4ce98e5cfe0e94fab41dd0742 '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b845f66f78bf42a4ce98e5cfe0e94fab41dd0742 '''parisc/pci: Switch LBA PCI bus from Hard Fail to Soft Fail mode'''] (requested to be backported to all kernels)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a77ab0e7ce232a62adac3d85b9ae66d0f48385ac '''parisc: Add code generator for Qemu/SeaBIOS machine info''']
 ** parisc: Fix out of array access in match_pci_device()
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6185e285c5c7cfeab739bae7f206ced695f09c7 '''ipmi/parisc: Add IPMI chassis poweroff for certain HP PA-RISC and IA-64 servers''']
