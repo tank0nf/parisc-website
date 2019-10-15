@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-09-16 ==
+== Status & TODO 2019-10-15 ==
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
@@ -669,6 +669,11 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fc697dc0c26a5908d467454e49440862d7fe96d0 '''parisc: add kexec syscall support''']
 ** parisc: wire up kexec_file_load syscall
 ** parisc: add support for kexec_file_load() syscall
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c32c47aa364096124c9c69c1a44918433832562b parisc: Remove 32-bit DMA enforcement from sba_iommu]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=513f7f747e1cba81f28a436911fba0b485878ebd '''parisc: Fix vmap memory leak in ioremap()/iounmap()'''] (backported to v3.16+)
+** parisc: prefer __section from compiler_attributes.h
+** parisc: sysctl.c: Use CONFIG_PARISC instead of __hppa_ define
+** MAINTAINERS: Add hp_sdc drivers to parisc arch
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
