@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-10-15 ==
+== Status & TODO 2019-10-31 ==
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
@@ -76,10 +76,14 @@ title: TODO
 ** Visualize FX support (will probably never happen!)
 ** implement BUG() and WARN() with inline assembly so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Probably not possible, because gcc will report "control reaches end of non-void function" warnings/errors.
 
+* 64-bit userspace support (from Dave Anglin, Nick Hudson):
+** 64-bit userspace, [[Binutils]] 64-bit binutils needs to be fixed to get multiple stub section support.
+** glibc port (hppa64 can use the generic thread code)
+** 64-bit support in gcc is probably pretty good as 64-bit HP-UX works fine.
+** gdb could be a problem due to a lack of a maintainer.
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
 ** Fix qemu  -> Richard Henderson started userspace-qemu in 11/2016: git://github.com/rth7680/qemu.git tgt-hppa 
-** 64-bit userspace, [[Binutils]] 64-bit binutils needs to be fixed to get multiple stub section support.
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
 * userspace
 ** elfutils -- testsuite error
