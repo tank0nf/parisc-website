@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-11-18 ==
+== Status & TODO 2019-12-13 ==
 * Analyze futex hang situation with test-lock testcase in the libprelude debian package
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
@@ -679,6 +679,11 @@ title: TODO
 ** parisc: prefer __section from compiler_attributes.h
 ** parisc: sysctl.c: Use CONFIG_PARISC instead of __hppa_ define
 ** MAINTAINERS: Add hp_sdc drivers to parisc arch
+* Kernel 5.5
+** parisc: Do not hardcode registers in checksum functions
+** kexec: Fix pointer-to-int-cast warnings
+** parisc: Avoid spurious inequivalent alias kernel error messages
+** parisc: use pgtable-nopXd instead of 4level-fixup
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
