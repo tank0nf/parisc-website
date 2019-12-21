@@ -684,6 +684,10 @@ title: TODO
 ** kexec: Fix pointer-to-int-cast warnings
 ** parisc: Avoid spurious inequivalent alias kernel error messages
 ** parisc: use pgtable-nopXd instead of 4level-fixup
+** parisc: soft_offline_page() now takes the pfn
+** parisc: Fix compiler warnings in debug_core.c
+** parisc: fix compilation when KEXEC=n and KEXEC_FILE=y
+** parisc: add missing __init annotation
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
