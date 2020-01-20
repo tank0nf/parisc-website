@@ -248,7 +248,7 @@ Stable Debian kernel 3.12 available.
 * [[Debian_Buildpackages]] - How to build packages for debian?
 * [[How to create Debian unstable iso images]]
 * [[HP part numbers]]
-|[[File:Parisc-tux.png|200px]]
+|[[File:Parisc-tux1.png|200px]]
 |}
 
 == Documentation ==
