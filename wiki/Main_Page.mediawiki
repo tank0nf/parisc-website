@@ -11,7 +11,6 @@ Contact the [[Mailing lists]] if you want to volunteer your time.
 
 See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
 That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
-|[[File:Parisc-powered1.gif|125px]]
 |}
 
 == Linux distributions with support for PA-RISC Linux == 
@@ -50,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Feb 2020'''||The graphics and device patches for PA-RISC have been applied to QEMU git.  
+|-
 | style="vertical-align:top;" |'''Sep 2019'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ PALO v2.12 released]. Added [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fc697dc0c26a5908d467454e49440862d7fe96d0 kexec support] and [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=52a22e6c27be9089fdd9c4e1857939f0dec8f57c enhanced ftrace support] to Linux kernel v5.4. LASI support (serial, parallel, network, PS/2 keyboard & PS/2 mouse) and Artist graphics w/STI emulation for QEMU and SeaBIOS. 
 |-
 | style="vertical-align:top;" |'''Jul 2019'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ Released PALO version v2.11] with important enhancements by [mailto:James.Bottomley@HansenPartnership.com James Bottomley] like added ext4-support, IPL overlap with newer ext2/ext3 resize_inode was fixed and the iplboot bootcode loader is now placed inside the disk label.
@@ -248,7 +249,6 @@ Stable Debian kernel 3.12 available.
 * [[Debian_Buildpackages]] - How to build packages for debian?
 * [[How to create Debian unstable iso images]]
 * [[HP part numbers]]
-|[[File:Parisc-tux1.png|200px]]
 |}
 
 == Documentation ==
