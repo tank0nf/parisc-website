@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2019-12-13 ==
+== Status & TODO 2030-03-28 ==
 * Analyze futex hang situation with test-lock testcase in the libprelude debian package
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
@@ -688,6 +688,10 @@ title: TODO
 ** parisc: Fix compiler warnings in debug_core.c
 ** parisc: fix compilation when KEXEC=n and KEXEC_FILE=y
 ** parisc: add missing __init annotation
+* Kernel 5.6
+** parisc: Regenerate parisc defconfigs
+** parisc: map_pages(): cleanup page table initialization
+** parisc: Fix defconfig selection
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
