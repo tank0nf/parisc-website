@@ -5,6 +5,9 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2030-04-07 ==
+* upgrade libgcc via:
+** apt install -f -o Dpkg::Options::="--force-overwrite"
+** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
 * Analyze futex hang situation with test-lock testcase in the libprelude debian package
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
