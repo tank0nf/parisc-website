@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2030-04-07 ==
+== Status & TODO 2020-05-07 ==
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
@@ -701,6 +701,7 @@ title: TODO
 ** parisc: Rework arch_rw locking functions
 ** parisc: Improve interrupt handling in arch_spin_lock_flags()
 ** parisc: Replace setup_irq() by request_irq()
+** parisc: Fix kernel panic in mem_init()
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
