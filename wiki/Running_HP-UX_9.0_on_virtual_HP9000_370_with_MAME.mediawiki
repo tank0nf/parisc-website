@@ -2,7 +2,7 @@
 title: Running HP-UX 9.0 on virtual HP9000/370 with MAME
 ---
 
-Installation instructions for HP-UX 9 on hp9k360 (needs mame newer than 2018/10/23):
+Installation instructions for HP-UX 9 on hp9k370 (needs mame newer than 2018/10/23):
 
 get the install images:
 
@@ -15,7 +15,7 @@ create a harddisk image file with:
 
 where 512 is the size in Megabyte, and can be adjusted to your needs.
 
- ./mame64 hp9k360 -sl2 '' -hard hpux9.chd -cdrom hpux9_install.iso
+ ./mame64 hp9k370 -sl2 98643 -hard hpuxtest.chd -rp . -window -mouse -uimodekey DEL
 
 This will boot the installer:
 
