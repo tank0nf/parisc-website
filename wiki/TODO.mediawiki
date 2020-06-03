@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-06-01 ==
+== Status & TODO 2020-06-03 ==
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
@@ -702,6 +702,15 @@ title: TODO
 ** parisc: Improve interrupt handling in arch_spin_lock_flags()
 ** parisc: Replace setup_irq() by request_irq()
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bf71bc16e02162388808949b179d59d0b571b965 '''parisc: Fix kernel panic in mem_init()'''] (backported to all) 
+* Kernel 5.8
+** parisc: use -fno-strict-aliasing for decompressor
+** parisc: suppress error messages for 'make clean'
+** parisc: Kconfig: Update references to parisc website
+** parisc: firmware: Update references to parisc website
+** parisc: hardware: Update references to parisc website
+** parisc: module: Update references to parisc website
+** parisc: MAINTAINERS: Update references to parisc website
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6522fa409cfafbc3968679b09e4028f0609f2b9 parisc: add sysctl file interface panic_on_stackoverflow]
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
