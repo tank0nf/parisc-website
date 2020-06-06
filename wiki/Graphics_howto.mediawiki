@@ -13,6 +13,7 @@ title: Graphics howto
 : Attempts on C8000 acceleration:
 : in 2016 by Simone Mannori https://marc.info/?a=145922974200003&r=1&w=2
 : in 2017 by Tom Bogendoerfer https://marc.info/?t=150679093500001&r=1&w=2
+: in 2019 by Sven Schnelle and Tom (finally a quickfix for "ring test failed" issue) https://marc.info/?t=156971879800064&r=1&w=2
 
 
 ; GSC cards
