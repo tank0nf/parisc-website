@@ -270,6 +270,7 @@ Stable Debian kernel 3.12 available.
 * http://www.debian.org/ports/hppa/ - Debian HPPA port page
 * http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
 * http://www.hpmuseum.net/collection_document.php - HP Computer Museum
+* http://computermuseum.informatik.uni-stuttgart.de/dev/hp9000_840/ - Uni Stuttgart Computermuseum - HP 9000/840 (first PA-RISC machine) 
 * http://www.mach-linux.org/ - OSF Mach-Linux
 * http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
 * http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
