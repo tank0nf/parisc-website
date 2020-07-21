@@ -80,6 +80,11 @@ Possible qemu options:
 * The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
 * In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
 
+== qemu important patches ==
+* [https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 target/hppa: Allow, but diagnose, LDCW aligned only mod 4] - prevents crash with unaligned LDCW instruction. Missing in qemu v4.2.1, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964805
+* [https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05904.html target/hppa: Free some temps in do_sub] - fixes https://bugs.launchpad.net/qemu/+bug/1880287
+
+
 == Possible emulation guest targets ==
 
 * [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
