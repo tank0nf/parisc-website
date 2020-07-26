@@ -711,6 +711,8 @@ title: TODO
 ** parisc: module: Update references to parisc website
 ** parisc: MAINTAINERS: Update references to parisc website
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6522fa409cfafbc3968679b09e4028f0609f2b9 parisc: add sysctl file interface panic_on_stackoverflow]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 '''parisc: Add atomic64_set_release() define to avoid CPU soft lockups'''] (backported to all - fixes TLB stalls)
+** parisc: add support for cmpxchg on u8 pointers
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
