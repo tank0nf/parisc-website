@@ -8,10 +8,13 @@ title: TODO
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
+* qemu
+** Add pvpanic kernel support?
+** Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c) ?
+** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * Analyze futex hang situation with test-lock testcase in the libprelude debian package
 * Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
-* STARTED: Implement LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
@@ -87,7 +90,6 @@ title: TODO
 ** gdb could be a problem due to a lack of a maintainer.
 * Debian packages / Userspace work
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
-** Fix qemu  -> Richard Henderson started userspace-qemu in 11/2016: git://github.com/rth7680/qemu.git tgt-hppa 
 ** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
 * userspace
 ** elfutils -- testsuite error
