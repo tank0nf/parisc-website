@@ -181,7 +181,7 @@ J13 2x40 pin 1mm pitch connector:
 |PDC Flash A0
 |-
 |A35
-|
+|CLK 25MHZ
 |B35
 |
 |-
