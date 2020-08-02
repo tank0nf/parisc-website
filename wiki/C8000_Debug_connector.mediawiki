@@ -31,7 +31,7 @@ J13 2x40 pin 1mm pitch connector:
 |
 |-
 |A5
-|
+|J31 Pin 31
 |B5
 |PDC Flash DQ0
 |-
