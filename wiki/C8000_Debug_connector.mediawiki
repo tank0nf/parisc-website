@@ -11,9 +11,9 @@ J13 2x40 pin 1mm pitch connector:
 !Name
 |-
 |A1
-|GND
+| +3.3V
 |B1
-|GND
+| +5V
 |-
 |A2
 |PDC Flash RP#
@@ -206,7 +206,7 @@ J13 2x40 pin 1mm pitch connector:
 |
 |-
 |A40
-|GND
+| +5V
 |B40
-|GND
+| +3.3V
 |}
