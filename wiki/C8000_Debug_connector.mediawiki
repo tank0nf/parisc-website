@@ -21,12 +21,12 @@ J13 2x40 pin 1mm pitch connector:
 |
 |-
 |A3
-|GND
+|+3.3V
 |B3
 |
 |-
 |A4
-|GND
+|+3.3V
 |B4
 |
 |-
