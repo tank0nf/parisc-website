@@ -61,7 +61,7 @@ J13 2x40 pin 1mm pitch connector:
 |PDC Flash DQ10
 |-
 |A11
-|PDC Flash BYTE#
+|PDC Flash BYTE#/BMC SRAM LB#
 |B11
 |PDC Flash DQ3
 |-
