@@ -265,7 +265,7 @@ Stable Debian kernel 3.12 available.
 * [[Running HP-UX 9.0 on virtual HP9000/370 with MAME]]
 * [[Hidden B/C/J Class Manufacturer and DEBUG commands]]
 * [[Repairing a non-starting C240/C360 Power supply]]
-
+* [[C8000 Debug connector]]
 == External Resources ==
 
 * http://www.openpa.net/index.html - The OpenPA Project
