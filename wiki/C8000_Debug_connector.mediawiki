@@ -159,7 +159,7 @@ title: C8000 Debug connector
 |PDC Flash A8
 |-
 |A31
-|
+|PDC Flash A7
 |B31
 |PDC Flash A6
 |-
