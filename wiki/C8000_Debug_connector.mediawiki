@@ -2,6 +2,8 @@
 title: C8000 Debug connector
 ---
 
+J13 2x40 pin 1mm pitch connector:
+
 {| class="wikitable"
 !Pin
 !Name
