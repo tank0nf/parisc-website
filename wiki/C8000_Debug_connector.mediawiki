@@ -31,12 +31,12 @@ J13 2x40 pin 1mm pitch connector:
 |
 |-
 |A5
-|J31 Pin 31
+|SMBUS SCL
 |B5
 |PDC Flash DQ0
 |-
 |A6
-|
+|SMBUS SDA
 |B6
 |PDC Flash DQ8
 |-
