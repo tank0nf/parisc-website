@@ -90,6 +90,9 @@ Possible qemu options:
 * [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
 * Linux (Debian, Gentoo), Kernel >= v4.14
 * [https://wiki.netbsd.org/ports/hppa/ NetBSD]
+** at least NetBSD-8 required.
+** NetBSD-7 doesn't work, since the trap handler code is complaining about the stack pointer it sees in the trap frame. 0xa0 for the stack pointer isn't good (analyzed with Nick Hudson <nick.hudson@gmx.co.uk>):
+*** insanity: 'tf->tf_sp >= minsp && tf->tf_sp < maxsp' at trap:556 type 0xf tf 0xe00040 lwp 0xe38140 sp 0xa0 pc 0x200240
 * [https://winworldpc.com/product/nextstep/3x NextSTEP]
 * [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
 
