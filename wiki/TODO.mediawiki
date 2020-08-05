@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-06-03 ==
+== Status & TODO 2020-08-05 ==
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
@@ -715,6 +715,17 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6522fa409cfafbc3968679b09e4028f0609f2b9 parisc: add sysctl file interface panic_on_stackoverflow]
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 '''parisc: Add atomic64_set_release() define to avoid CPU soft lockups'''] (backported to all - fixes TLB stalls)
 ** parisc: add support for cmpxchg on u8 pointers
+* Kernel 5.9
+** parisc: Replace HTTP links with HTTPS ones
+** parisc: Convert to BIT_MASK() and BIT_WORD()
+** parisc: Report bad pages as HardwareCorrupted
+** Revert "parisc: Improve interrupt handling in arch_spin_lock_flags()"
+** Revert "parisc: Drop LDCW barrier in CAS code when running UP"
+** Revert "parisc: Use ldcw instruction for SMP spinlock release barrier"
+** Revert "parisc: Revert "Release spinlocks using ordered store""
+** parisc: Do not use an ordered store in pa_tlb_lock()
+** parisc: elf.h: delete a duplicated word
+** parisc: make the log level string for register dumps const
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
