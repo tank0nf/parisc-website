@@ -724,7 +724,7 @@ title: TODO
 ** Revert "parisc: Drop LDCW barrier in CAS code when running UP"
 ** Revert "parisc: Use ldcw instruction for SMP spinlock release barrier"
 ** Revert "parisc: Revert "Release spinlocks using ordered store""
-** parisc: Do not use an ordered store in pa_tlb_lock()
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e72b23dec1da5e62a0090c5da1d926778284e230 '''parisc: Do not use an ordered store in pa_tlb_lock()'''] (backported to 5.0+)
 ** parisc: elf.h: delete a duplicated word
 ** parisc: make the log level string for register dumps const
 ** sections.h: dereference_function_descriptor() returns void pointer
