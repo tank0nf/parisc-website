@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-08-05 ==
+== Status & TODO 2020-08-12 ==
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
@@ -727,6 +727,11 @@ title: TODO
 ** parisc: Do not use an ordered store in pa_tlb_lock()
 ** parisc: elf.h: delete a duplicated word
 ** parisc: make the log level string for register dumps const
+** sections.h: dereference_function_descriptor() returns void pointer
+** parisc: Whitespace cleanups in atomic.h
+** parisc: Implement __smp_store_release and __smp_load_acquire barriers
+** parisc/kernel/ftrace: Remove function callback casts
+** parisc: mask out enable and reserved bits from sba imask
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
