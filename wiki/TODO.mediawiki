@@ -729,9 +729,9 @@ title: TODO
 ** parisc: make the log level string for register dumps const
 ** sections.h: dereference_function_descriptor() returns void pointer
 ** parisc: Whitespace cleanups in atomic.h
-** parisc: Implement __smp_store_release and __smp_load_acquire barriers
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e96ebd589debd9a6a793608c4ec7019c38785dea '''parisc: Implement __smp_store_release and __smp_load_acquire barriers'''] (backported to 4.14+)
 ** parisc/kernel/ftrace: Remove function callback casts
-** parisc: mask out enable and reserved bits from sba imask
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b24993c21cbf2de11aff077a48c5cb0505a0450 '''parisc: mask out enable and reserved bits from sba imask'''] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
