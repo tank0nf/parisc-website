@@ -4,31 +4,30 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-08-12 ==
+== Status & TODO 2020-08-16 ==
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
+** Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
 * qemu
-** Add pvpanic kernel support?
-** Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c) ?
+** Add pvpanic kernel support? - maybe?
+** STARTED: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c) ?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* Analyze futex hang situation with test-lock testcase in the libprelude debian package
-* Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
+* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * ONGOING: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
-* Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
-** Get rid of executable stack, maybe use gateway page instead for signal returns?
 ** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** [[Vdso]]
-** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
+*** Get rid of executable stack, maybe use gateway page instead for signal returns?
+*** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
@@ -731,7 +730,8 @@ title: TODO
 ** parisc: Whitespace cleanups in atomic.h
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e96ebd589debd9a6a793608c4ec7019c38785dea '''parisc: Implement __smp_store_release and __smp_load_acquire barriers'''] (backported to 4.14+)
 ** parisc/kernel/ftrace: Remove function callback casts
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b24993c21cbf2de11aff077a48c5cb0505a0450 '''parisc: mask out enable and reserved bits from sba imask'''] (backported to all)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b24993c21cbf2de11aff077a48c5cb0505a0450 '''parisc: mask out enable and reserved bits from sba imask'''] (backported to all)
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6f6aea7e966cda5a817d091e938c2d9b52209893 '''parisc: fix PMD pages allocation by restoring pmd_alloc_one()''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -782,6 +782,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: add dynamic ftrace support - provided by Sven in kernel 5.3
 ** DONE: Fix fallouts from strace: http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510, 
 ** DONE: implement kexec syscall
+** DONE: Analyze futex hang (CPU soft lockup) situation with test-lock testcase in the libprelude debian package - fixed by [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 '''parisc: Add atomic64_set_release() define to avoid CPU soft lockups''']
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
