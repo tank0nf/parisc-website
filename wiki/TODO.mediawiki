@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2020-08-16 ==
+* Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
 ** Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * upgrade libgcc via:
