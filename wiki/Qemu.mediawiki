@@ -102,6 +102,9 @@ Still LASI NIC emulation and NCR 710 Emulation needed in order to be able to boo
 
 [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
 
+How to test dtwm Windows Manager:
+start "xinit", then run "/usr/dt/bin/dtwm".
+
 == NetBSD ==
 
 Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
