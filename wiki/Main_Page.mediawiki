@@ -49,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Aug 2020'''||[mailto:roger@nextmovesoftware.com Roger Sayle] fixed a long-standing [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87256 gcc compiler bug which unnecessarily slowed down compile time].  
+|-
 | style="vertical-align:top;" |'''Jul 2020'''||Helge steps up as new [https://git.kernel.org/pub/scm/linux/kernel/git/deller/rbootd.git/ rbootd] maintainer.<br>
 Dave fixes a [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 long-lasting kernel CPU soft lockup bug].<br>
 Many bugfixes [https://git.qemu.org/?p=qemu.git;a=commit;h=79826f99feb7222b7804058f0b4ace9ee0546361 1][https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 2] and improvements for qemu and preparations for qemu-5.1.0 release.
