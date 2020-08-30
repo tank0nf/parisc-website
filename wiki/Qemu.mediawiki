@@ -94,6 +94,8 @@ Log in as '''root''', root password is "'''rootme'''"
 * In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
 * How to test dtwm Windows Manager: start "xinit", then run "/usr/dt/bin/dtwm".
 
+See https://archive.org/download/hpunix/
+
 == NetBSD ==
 
 Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
