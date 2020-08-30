@@ -86,6 +86,12 @@ Log in as '''root''', root password is "'''rootme'''"
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
 
+=== Gentoo Linux ===
+
+* From https://www.gentoo.org/downloads/#hppa download the Minimal installation CD or the hppa32 netboot image (lif file)
+* Start qemu with "-cdrom <isofile>", or the lif file with "-drive file=<lif-file>", e.g. 
+ qemu-system-hppa -drive file=gentoo-2020-hppa-netboot.lif -accel tcg,thread=multi -smp cpus=2 -nographic
+
 == HP-UX ==
 
 * Still LASI NIC emulation and NCR 710 Emulation needed in order to be able to boot older HP-UX releases.
