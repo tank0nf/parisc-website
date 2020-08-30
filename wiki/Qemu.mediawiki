@@ -31,6 +31,10 @@ Possible qemu options:
 * -nographic       - disable artist graphic card emulation, so no graphics output
 * -fw_cfg opt/pdc_debug,string=255, enable all firmware debug infos
 
+When running you can press
+* ctrl-A + X           to exit qemu.
+* ctrl-A + C + ENTER   when started with "-serial mon:stdio", the serial port and the QEMU debug port are multiplexed and you can switch between them with this key combination.
+
 == How to build QEMU from source ==
 
 Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
