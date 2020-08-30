@@ -53,6 +53,7 @@ Run "make"
 
 * Linux kernel >= 4.14 runs best, with initial optimizations added for kernels >= 4.9.
 * Prefer the Tulip NIC, then e1000 over the rtl8129 card. The latter gives irq issues with Dino emulation.
+* If you try to boot older Linux install CDs, you may need to start qemu with "-boot menu=on", and then change the kernel console option to "console=ttyS0" (serial port) instead of "console=tty0" (terminal).
 
 === Debian Linux QEMU image for parisc ===
 
@@ -84,7 +85,6 @@ Log in as '''root''', root password is "'''rootme'''"
  deb http://ftp.ports.debian.org/debian-ports unstable main
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
-
 
 == HP-UX ==
 
