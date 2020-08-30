@@ -93,8 +93,9 @@ Log in as '''root''', root password is "'''rootme'''"
 * The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
 * In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
 * How to test dtwm Windows Manager: start "xinit", then run "/usr/dt/bin/dtwm".
-
-See https://archive.org/download/hpunix/
+* File downloads see https://archive.org/download/hpunix/
+* HP-UX 7.05 gives System Panic: "Unable to initialize msus structure". according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit 
+specifier", which might mean that old 7.05 doesn't know how to handle the SCSI PCI card and thus can't access the disc. Remember, a B160L is different to a HP700.
 
 == NetBSD ==
 
