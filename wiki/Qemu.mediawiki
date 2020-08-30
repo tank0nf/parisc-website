@@ -4,30 +4,32 @@ title: Qemu
 
 == QEMU support status regarding hppa/parisc ==
 
-Starting with QEMU version 2.12 (April 2018), qemu fully supports 32-bit hppa user emulation (hppa-linux-user) and 32-bit hppa system emulation (qemu-system-hppa).
+Since QEMU version 2.12 (April 2018), qemu fully supports 32-bit hppa user emulation (hppa-linux-user) and 32-bit hppa system emulation (qemu-system-hppa).
 All necessary changes have been merged into the [https://git.qemu.org/?p=qemu.git;a=summary upstream qemu git tree].
 
 PA-RISC machines need a firmware ("PDC" = Processor Dependend Code).
-Qemu includes a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
+Qemu comes with a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
 
 The emulated machine is a [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop machine], with one or more 32-bit PA7100LC CPUs.
 
-The QEMU emulation is able to run Linux and HP-UX. HP-UX support still needs improvement which is being worked on.
+The QEMU emulation is able to run Linux and HP-UX.
 
-QEMU on parisc has been made available by:
+QEMU on parisc has been developed by:
 * [mailto:rth@twiddle.net Richard Henderson]: QEMU CPU emulation (32-bit only), QEMU hardware divers
 * [mailto:deller@gmx.de Helge Deller]: QEMU hardware drivers, SeaBIOS PDC firmware
 * [mailto:svens@stackframe.org Sven Schnelle]: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
 
-== Ready-to-run QEMU image for parisc ==
+== QEMU runtime options ==
 
-Download Debian hard disc image:
- wget http://backup.parisc-linux.org/qemu/debian-10-hdd-img.tar.bz2
-Unzip image: 
- tar xvfj debian-10-hdd-img.tar.bz2
-Run qemu:
- ./hppa-softmmu/qemu-system-hppa -drive file=debian-10-hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
-Log in as '''root''', root password is "'''rootme'''"
+Possible qemu options:
+* -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
+* -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
+* -boot menu=on    - Firmware: enable interactive mode (boot prompt)
+* -boot order=c    - Firmware: Boot from hard disc
+* -boot order=d    - Firmware: Boot from CD/DVD
+* -serial mon:stdio   use serial console
+* -nographic       - disable artist graphic card emulation, so no graphics output
+* -fw_cfg pdc_debug,string=255, enable all firmware debug infos
 
 == How to build QEMU from source ==
 
@@ -39,7 +41,30 @@ Run configure, e.g.
 
 Run "make"
 
-== How to run QEMU with Debian-10 installer image ==
+== Emulation guest targets ==
+
+* Linux (Debian, Gentoo)
+* [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
+* [https://wiki.netbsd.org/ports/hppa/ NetBSD], >= 8.0
+* [https://winworldpc.com/product/nextstep/3x NextSTEP]
+* [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
+
+== Linux ==
+
+* Linux kernel >= 4.14 runs best, with initial optimizations added for kernels >= 4.9.
+* Prefer the Tulip NIC, then e1000 over the rtl8129 card. The latter gives irq issues with Dino emulation.
+
+=== Debian Linux QEMU image for parisc ===
+
+Download Debian hard disc image:
+ wget http://backup.parisc-linux.org/qemu/debian-10-hdd-img.tar.bz2
+Unzip image: 
+ tar xvfj debian-10-hdd-img.tar.bz2
+Run qemu:
+ ./hppa-softmmu/qemu-system-hppa -drive file=debian-10-hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
+Log in as '''root''', root password is "'''rootme'''"
+
+=== How to run QEMU with Debian-10 installer image ===
 
 * Create a virtual hard disc once:
  qemu-img create -f qcow2 hdd.img 50G
@@ -60,51 +85,14 @@ Run "make"
  deb [arch=all] http://ftp.debian.org/debian unstable main 
  deb-src http://ftp.debian.org/debian unstable main
 
-== Some QEMU notes ==
-
-Prefer the e1000 driver over the rtl8129 card. The latter gives irq issues with Dino emulation.
-
-Possible qemu options:
-* -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
-* -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
-* -boot menu=on    - Firmware: enable interactive mode (boot prompt)
-* -boot order=c    - Firmware: Boot from hard disc
-* -boot order=d    - Firmware: Boot from CD/DVD
-* -serial mon:stdio   use serial console
-* -nographic       - no graphics device
-* -device VGA      - provide PCI VGA graphic card
-* -fw_cfg pdc_debug,string=255, enable all firmware debug infos
-
-== Tips and Tricks when running an emulation ==
-
-* Linux kernel >= 4.14 runs best. Initial Linux kernel optimizations were added to kernel >= 4.9.
-* The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
-* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
-
-== qemu important patches ==
-* [https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 target/hppa: Allow, but diagnose, LDCW aligned only mod 4] - prevents crash with unaligned LDCW instruction. Missing in qemu v4.2.1, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964805
-* [https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05904.html target/hppa: Free some temps in do_sub] - fixes https://bugs.launchpad.net/qemu/+bug/1880287
-
-
-== Possible emulation guest targets ==
-
-* [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
-* Linux (Debian, Gentoo), Kernel >= v4.14
-* [https://wiki.netbsd.org/ports/hppa/ NetBSD]
-** at least NetBSD-8 required.
-** NetBSD-7 doesn't work, since the trap handler code is complaining about the stack pointer it sees in the trap frame. 0xa0 for the stack pointer isn't good (analyzed with Nick Hudson <nick.hudson@gmx.co.uk>):
-*** insanity: 'tf->tf_sp >= minsp && tf->tf_sp < maxsp' at trap:556 type 0xf tf 0xe00040 lwp 0xe38140 sp 0xa0 pc 0x200240
-* [https://winworldpc.com/product/nextstep/3x NextSTEP]
-* [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
 
 == HP-UX ==
 
-Still LASI NIC emulation and NCR 710 Emulation needed in order to be able to boot older HP-UX releases.
-
-[https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
-
-How to test dtwm Windows Manager:
-start "xinit", then run "/usr/dt/bin/dtwm".
+* Still LASI NIC emulation and NCR 710 Emulation needed in order to be able to boot older HP-UX releases.
+* [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
+* The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
+* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
+* How to test dtwm Windows Manager: start "xinit", then run "/usr/dt/bin/dtwm".
 
 == NetBSD ==
 
@@ -119,6 +107,10 @@ Info at https://www.netbsd.org/releases/current.html
         -drive file=NetBSD-8.99.37-hppa.iso,media=cdrom \
         -nographic \
         -serial telnet::55555,server
+
+* at least NetBSD-8 required.
+* NetBSD-7 doesn't work, since the trap handler code is complaining about the stack pointer it sees in the trap frame. 0xa0 for the stack pointer isn't good (analyzed with Nick Hudson <nick.hudson@gmx.co.uk>):
+** insanity: 'tf->tf_sp >= minsp && tf->tf_sp < maxsp' at trap:556 type 0xf tf 0xe00040 lwp 0xe38140 sp 0xa0 pc 0x200240
 
 (info by Nick Hudson <nick.hudson@gmx.co.uk>)
 
@@ -152,19 +144,11 @@ It boots, but fails during device detection because Qemu currently emulates a B1
 
 == Future QEMU work ==
 
-Upstream merging currently beeing worked on (September 2019):
-* Emulate Lasi
-* Emulate Lasi NIC (Intel Apricot i82596)
-* Artist graphics emulation
-* STI text console emulation for Linux and HP-UX
-* Add PS/2 mouse and keyboard ports
-
 Still need to do:
 * Add Dino/Lasi serial port
 * Harmony sound card in Lasi
 * Does HP-UX has some kind of "sleep" assembler instruction in it's idle loop which can be used to lower qemu power consumption?
 * Fix virtio-drivers in SeaBIOS (endianess-bugs, because SeaBIOS is originally only Little-endian from x86)
-* Emulate Tulip (DEC 21x40) network cards in Qemu
 * More correct emulation of B160L in Qemu
 * Emulate a 712 and/or j5000/c3000 machine
 * Emulate built-in LASI SCI controller instead of PCI SCSI add-on card
@@ -172,6 +156,10 @@ Still need to do:
 * PA2.0/64bit (low prio)
 * ...
 * '''Push SeaBIOS changes upstream!!'''
+
+== List of QEmu important patches ==
+* [https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 target/hppa: Allow, but diagnose, LDCW aligned only mod 4] - prevents crash with unaligned LDCW instruction. Missing in qemu v4.2.1, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964805
+* [https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05904.html target/hppa: Free some temps in do_sub] - fixes https://bugs.launchpad.net/qemu/+bug/1880287
 
 == Screenshots ==
 
