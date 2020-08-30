@@ -29,7 +29,7 @@ Possible qemu options:
 * -boot order=d    - Firmware: Boot from CD/DVD
 * -serial mon:stdio   use serial console
 * -nographic       - disable artist graphic card emulation, so no graphics output
-* -fw_cfg pdc_debug,string=255, enable all firmware debug infos
+* -fw_cfg opt/pdc_debug,string=255, enable all firmware debug infos
 
 == How to build QEMU from source ==
 
