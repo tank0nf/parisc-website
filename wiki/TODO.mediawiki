@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-08-26 ==
-* Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea)
+== Status & TODO 2020-09-14 ==
+* Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
+* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
 ** Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * upgrade libgcc via:
@@ -13,9 +14,7 @@ title: TODO
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
 * qemu
 ** Add pvpanic kernel support? - maybe?
-** STARTED: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c) ?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
@@ -23,7 +22,6 @@ title: TODO
 * ONGOING: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
-** Modify palo to be able to load lifimage file
 * STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 ** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** [[Vdso]]
@@ -40,7 +38,6 @@ title: TODO
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
-* Fix shutdown: I had issued a "shutdown -r".  As noted above, a panic occurred during the reboot (all CPUs were up). After this, stall messages were output to console after the bios version was printed.  So yes, maybe CPUs should be "stopped" before a panic reboot? (by Dave, mail from 2017-03-31) 
 * Fix boot crash from Al Viro with sti gfx card (24.03.17)
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
@@ -819,6 +816,9 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: port openmpi package: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730
 ** DONE: Fix msgpuck build breakage: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
 ** DONE: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
+
+QEMU:
+* DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
 
 == ABI breakages (HP-UX support) ==
 * [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it. 
