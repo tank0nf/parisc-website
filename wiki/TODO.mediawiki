@@ -15,7 +15,7 @@ title: TODO
 * qemu
 ** Add pvpanic kernel support? - maybe?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* automounter/autofs is broken, most likely compiler problem: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
+* DONE: autofs/automounter is broken, patch sent to list, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
