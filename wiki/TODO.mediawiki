@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-09-14 ==
+== Status & TODO 2020-09-27 ==
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
@@ -13,6 +13,7 @@ title: TODO
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
 * qemu
+** Check "IGNITE-UX install discs" from Keith Monahan (09/20)
 ** Add pvpanic kernel support? - maybe?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * DONE: autofs/automounter is broken, patch sent to list, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
