@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2020-09-27 ==
+== Status & TODO 2020-10-16 ==
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
@@ -731,6 +731,26 @@ title: TODO
 ** parisc/kernel/ftrace: Remove function callback casts
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b24993c21cbf2de11aff077a48c5cb0505a0450 '''parisc: mask out enable and reserved bits from sba imask'''] (backported to all)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6f6aea7e966cda5a817d091e938c2d9b52209893 '''parisc: fix PMD pages allocation by restoring pmd_alloc_one()''']
+* Kernel 5.10
+** parisc: disable CONFIG_IDE in defconfigs
+** fw_cfg: Add support for parisc architecture
+** parisc: Add qemu fw_cfg interface
+** parisc: Avoid external interrupts when IPI finishes
+** parisc: Drop HP-UX specific fcntl and signal flags
+** parisc: Define O_NONBLOCK to become 000200000
+** parisc: Drop useless comments in uapi/asm/signal.h
+** parisc: Add ioread64_hi_lo() and iowrite64_hi_lo()
+** parisc: Install vmlinuz instead of zImage file
+** parisc: Add MAP_UNINITIALIZED define
+** parisc/sticon: Always register sticon console driver
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7ff3f14ddc355bfbc94c766f43b90606b1f79e83 '''parisc/sticon: Add user font support''']
+** parisc: Add alternative patching to synchronize_caches define
+** parisc: Fix comments and enable interrupts later
+** parisc: Mark pointers volatile in __xchg8(), __xchg32() and __xchg64()
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=53a42b6324b8ddce1e9d2f34da2ca68ef21c2084 '''parisc: Switch to more fine grained lws locks''']
+** parisc: Rewrite tlb flush threshold calculation
+** parisc: Improve spinlock handling
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
