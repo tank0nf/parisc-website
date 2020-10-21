@@ -734,10 +734,10 @@ title: TODO
 * Kernel 5.10
 ** parisc: disable CONFIG_IDE in defconfigs
 ** fw_cfg: Add support for parisc architecture
-** parisc: Add qemu fw_cfg interface
+** ['''http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=024f5b597564acced9e69305f7a9ef1202186a61 parisc: Add qemu fw_cfg interface''']
 ** parisc: Avoid external interrupts when IPI finishes
-** parisc: Drop HP-UX specific fcntl and signal flags
-** parisc: Define O_NONBLOCK to become 000200000
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=41f5a81c07cd410917c9ae3c165b9b761d48ba75 parisc: Drop HP-UX specific fcntl and signal flags]
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=75ae04206a4d0e4f541c1d692b7febd1c0fdb814 parisc: Define O_NONBLOCK to become 000200000]
 ** parisc: Drop useless comments in uapi/asm/signal.h
 ** parisc: Add ioread64_hi_lo() and iowrite64_hi_lo()
 ** parisc: Install vmlinuz instead of zImage file
