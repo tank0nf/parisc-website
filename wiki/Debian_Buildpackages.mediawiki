@@ -16,6 +16,10 @@ title: Debian Buildpackages
 : https://salsa.debian.org/debian-ports-team/dsa-puppet
 : old repo: https://anonscm.debian.org/git/users/jrtc27/dsa-puppet.git/
 
+; How to use debian schroot
+: https://dsa.debian.org/doc/schroot/
+: List of debian porterboxes: https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc
+
 Some other info:
 
 * [https://lists.debian.org/debian-68k/2013/10/msg00006.html Setting up buildd server with btrfs]
