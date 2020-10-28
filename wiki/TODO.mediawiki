@@ -7,6 +7,7 @@ title: TODO
 == Status & TODO 2020-10-25 ==
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
+** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
 * Check Sven's HPMC patch, against https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b845f66f78bf42a4ce98e5cfe0e94fab41dd0742
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
