@@ -866,6 +866,7 @@ QEMU:
 * '''Kernel 5.10: Define O_NONBLOCK to become 000200000 (instead of 000200004):''' 
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=75ae04206a4d0e4f541c1d692b7febd1c0fdb814 '''parisc: Define O_NONBLOCK to become 000200000''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=44a4c9e443674e6cd3368d3e642dfe9c429d5525 '''parisc: Add wrapper syscalls to fix O_NONBLOCK flag usage''']
+** [https://sourceware.org/git?p=glibc.git;a=commit;h=a24f414ba11a7acdf3c5ccec3fb327fc72166556 '''GLIBC PATCH: Remove obsolete defines for HPUX support from fcntl.h and update O_NONBLOCK.''']
 
 == Considerations between Debian unstable and Debian Jessie release ==
 Jessie was not stable on SMP machines, particularly those with PA8800/PA8900 processors.
