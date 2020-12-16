@@ -759,6 +759,12 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=879bc2d27904354b98ca295b6168718e045c4aa2 '''hil/parisc: Disable HIL driver when it gets stuck''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=44a4c9e443674e6cd3368d3e642dfe9c429d5525 '''parisc: Add wrapper syscalls to fix O_NONBLOCK flag usage''']
 ** ata: pata_ns87415.c: Document support on parisc with superio chip
+* Kernel 5.11
+** parisc: pci-dma: fix warning unused-function
+** parisc/uapi: Use Kbuild logic to provide <asm/types.h>
+** parisc: Drop loops_per_jiffy from per_cpu struct
+** parisc: Use _TIF_USER_WORK_MASK in entry.S
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=22ee3ea588dfc84ccb8cea5ea37051dfed91b9b9 parisc: Make user stack size configurable]
 
 
 == Debian kernel and userspace programs ==
