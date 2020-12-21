@@ -5,13 +5,14 @@ title: GSP Update
 = GSP (Guardian Service Processor) Firmware Update =
 
 Minimum GSP Firmware for Entry-Level HP9000 Servers
- PF_CPREGSPA0112         A.01.12 rp2400/rp2450
- PF_CHARGSPC0214         C.02.14 rp2400/rp2450
- PF_CHARGSPC0214         C.02.14 rp2430/rp2470
- PF_CPREGSPA0112         A.01.12 rp5400/rp5450
- PF_CCANGSPB0220         B.02.20 rp5430/rp5470  Modell A6696B
- PF_CPREGSPA0112         A.01.12 rp7400
- PF_CCANGSPB0220         B.02.20 rp7400
+ PATCH NAME:             FIRMWARE  MACHINE
+ PF_CPREGSPA0112         A.01.12   rp2400/rp2450
+ PF_CHARGSPC0214         C.02.14   rp2400/rp2450
+ PF_CHARGSPC0214         C.02.14   rp2430/rp2470
+ PF_CPREGSPA0112         A.01.12   rp5400/rp5450
+ PF_CCANGSPB0220         B.02.20   rp5430/rp5470  Modell A6696B
+ PF_CPREGSPA0112         A.01.12   rp7400
+ PF_CCANGSPB0220         B.02.20   rp7400
 
 Latest Firmware updates:
 * Version: B.02.21 (29 Jun 2006)  File name: PF_CCANGSPB0221.tar.gz (1.2 MB)
