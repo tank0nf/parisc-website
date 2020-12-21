@@ -15,7 +15,10 @@ Minimum GSP Firmware for Entry-Level HP9000 Servers
 
 Latest Firmware updates:
 * Version: B.02.21 (29 Jun 2006)  File name: PF_CCANGSPB0221.tar.gz (1.2 MB)
- 
+
+Batteries:
+* it seems the A6696B needs a CR2032 battery replacement
+
 == Update process ==
 
 You need a FTP server.
