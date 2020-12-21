@@ -1,0 +1,126 @@
+---
+title: GSP Update
+---
+
+= GSP Firmware Update =
+
+Minimum GSP Firmware for Entry-Level HP9000 Servers
+ PF_CPREGSPA0112         A.01.12 rp2400/rp2450
+ PF_CHARGSPC0214         C.02.14 rp2400/rp2450
+ PF_CHARGSPC0214         C.02.14 rp2430/rp2470
+ PF_CPREGSPA0112         A.01.12 rp5400/rp5450
+ PF_CCANGSPB0220         B.02.20 rp5430/rp5470
+ PF_CPREGSPA0112         A.01.12 rp7400
+ PF_CCANGSPB0220         B.02.20 rp7400
+
+Latest Firmware updates:
+* Version: B.02.21 (29 Jun 2006)  File name: PF_CCANGSPB0221.tar.gz (1.2 MB)
+ 
+== Update process ==
+
+You need a FTP server.
+'''On Linux I used the vsftpd FTP server, but you need to increase the timeout values!''' 
+ idle_session_timeout=6000
+ data_connection_timeout=1200
+
+
+
+ The firmware update should take no more than 5 minutes.
+ 
+ Prior to Installation:
+ Unpacking the Firmware.
+ Download "PF_CCANGSPB0221.tar.gz" and FTP to an empty directory on an FTP server with the core I/O LAN on the same subnet as the GSP to be updated.
+ Use the "gunzip" command to unzip the patch:
+ # gunzip PF_CCANGSPB0221.tar.gz
+ Use the "tar" command to extract the firmware files:
+         # tar -xvf PF_CCANGSPB0221.tar
+         x B0221.bin, 2189356 bytes, 4277 tape blocks
+         x Resources.out, 504267 bytes, 985 tape blocks
+         x gsp_a_upg.cnf, 200 bytes, 1 tape blocks
+         x version.dat, 16 bytes, 1 tape blocks
+ Verify the checksum of the files using the "cksum" command. Results of the command should be equal to the following output:
+         # cksum
+         2674512762 2189356 B0221.bin
+         1537136308 504267  Resources.out
+         744137293 200 gsp_upg.cnf
+         4278717776 16 version.dat
+ Installation Instructions:
+ Establish a telnet session with the GSP.
+ Logon to the GSP.
+ Type CTRL-ecf to get console write access.
+ Type CTRL-b to enter the GSP.
+ Ping the LAN where the GSP files are located via the XD command item #3.
+       GSP> xd
+ 
+       XD
+ 
+       Non destructive tests :
+          1. Parameters checksum
+          2. I2C access (get Power Monitor status)
+          3. LAN access (PING)
+          4. Modem selftests
+          5. Secondary I2C access (get System status)
+ 
+       Type R to reset the GSP or [Q] to quit the diagnostic
+       menu.
+ 
+       -> Choice: 3
+       3
+       Enter IP Address:
+ This test must pass on the server being used to supply the update files.
+ Reset the GSP via the XD command (use the R option). This will free up any unallocated memory for the GSP update.
+       GSP> xd
+ 
+       XD
+ 
+       Non destructive tests :
+          1. Parameters checksum
+          2. I2C access (get Power Monitor status)
+          3. LAN access (PING)
+          4. Modem selftests
+          5. Secondary I2C access (get System status)
+ 
+       Type R to reset the GSP or [Q] to quit the diagnostic
+       menu.
+ 
+       -> Choice: r
+       r
+ 
+       The GSP is now being reset...
+ Select the GSP command XU. This command activates the upgrade mode. Update the GSP firmware to the B.02.21 firmware.
+       GSP> xu
+ 
+       XU
+ 
+       This command activates the upgrade mode. All
+       connections will be closed ,the session will be
+       aborted and the modem connection will be dropped
+       immediately, web and telnet connections will be
+       dropped upon completion. Please, confirm your
+       intention to activate the upgrade mode (Y/[N]) : y
+ 
+       y
+ 
+       Enter source system IP address:
+ 
+       Enter file path: (ENTER PATH TO THE FIRMWARE FILES)
+ 
+       Do you wish to use the default login: anonymous /
+       GSP@hp.com (Y/[N]) :
+       y (if using docs.hp.com)
+       n (if using local server and local server login is
+       needed).
+       IE: if root then supply root password
+ 
+       GSP> xu
+ 
+       -> GSP firmware upgrade in progress
+ 
+       Retrieved an upgrade file successfully.
+       Programming ROM.  Percent Complete: 100.
+ 
+       Retrieved an upgrade file successfully.
+       Programming ROM.  Percent Complete: 100.
+ 
+       -> GSP firmware upgrade complete - Web and telnet
+       connections will be dropped.  GSP will now reset....
