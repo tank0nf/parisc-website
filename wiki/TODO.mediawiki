@@ -765,7 +765,8 @@ title: TODO
 ** parisc: Drop loops_per_jiffy from per_cpu struct
 ** parisc: Use _TIF_USER_WORK_MASK in entry.S
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=22ee3ea588dfc84ccb8cea5ea37051dfed91b9b9 parisc: Make user stack size configurable]
-
+** parisc: Remove leftover reference to the power_tasklet
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00e35f2b0e8acb88d4e1aa96ff0490e3bfe46580 '''parisc: Enable -mlong-calls gcc option by default when !CONFIG_MODULES''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
