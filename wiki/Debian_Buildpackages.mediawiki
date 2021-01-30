@@ -11,7 +11,7 @@ title: Debian Buildpackages
 : Helge Deller <deller@gmx.de>, PA-RISC Kernel maintainer, buildd maintainer
 : John David Anglin <dave.anglin@bell.net>, HPPA GCC, and binutils maintainer
 
-; James Clarke provides easy-to-use scripts to set up a buildd server:
+; Jessica Clarke provides easy-to-use scripts to set up a buildd server:
 : https://wiki.debian.org/PortsDocs/BuilddSetup
 : https://salsa.debian.org/debian-ports-team/dsa-puppet
 : old repo: https://anonscm.debian.org/git/users/jrtc27/dsa-puppet.git/
@@ -19,6 +19,11 @@ title: Debian Buildpackages
 ; How to use debian schroot
 : https://dsa.debian.org/doc/schroot/
 : List of debian porterboxes: https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc
+
+; How to upload a new debian package for debian developers
+: Set up sbuild: https://wiki.debian.org/sbuild
+: Build the package on amd64 with sbuild and argument "--source-only-changes"
+: Upload the source.changes file.
 
 Some other info:
 
