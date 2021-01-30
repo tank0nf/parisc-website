@@ -24,6 +24,10 @@ title: Debian Buildpackages
 : Set up sbuild: https://wiki.debian.org/sbuild
 : Build the package on amd64 with sbuild and argument "--source-only-changes"
 : Upload the source.changes file.
+: How to create backport:
+: Wait until package is in testing (unstable isn't sufficient)
+: run "dch --bpo" on this package to get backports changelog
+: Build package with sbuild --debbuildopts="-vVERSION".  VERSION is current version of package in stable.
 
 Some other info:
 
