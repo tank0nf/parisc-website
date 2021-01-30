@@ -53,7 +53,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 |-
 | style="vertical-align:top;" |'''Dec 2020'''||Reached [http://buildd.debian.org/status/architecture.php?a=hppa&suite=sid 12.000 pre-built debian packages].
 |-
-| style="vertical-align:top;" |'''Oct 2020'''||Kernel 5.10 has a changes O_NONBLOCK to become 000200000 (instead of 000200004). This is a binary ABI change and requires userspace (glibc, dietlibc, systemd) to be recompiled with the new value. The kernel has wrapper functions which provide backwards compatibility.
+| style="vertical-align:top;" |'''Oct 2020'''||In Kernel 5.10 O_NONBLOCK was changed to become 000200000 (instead of 000200004). This is a binary ABI change and requires userspace (glibc, dietlibc, systemd) to be recompiled with the new value. The kernel has wrapper functions which provide backwards compatibility.
 |-
 | style="vertical-align:top;" |'''Aug 2020'''||[mailto:roger@nextmovesoftware.com Roger Sayle] fixed a long-standing [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87256 gcc compiler bug which unnecessarily slowed down compile time].  
 |-
