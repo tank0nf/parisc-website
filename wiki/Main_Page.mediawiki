@@ -41,7 +41,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 == Thanks == 
 
 * [http://osuosl.org Oregon State University Open Source Lab]
-** Hosting and support for parisc and panama buildd servers
+** Hosting and support for the physical parisc servers "parisc" and "panama" (since 2014)
+** Funding and provisioning of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021) 
 ** Hosting of this Wiki (via kernel.org infrastructure)
 
 * Debian - Distribution and package support for Debian PA-RISC Linux.
