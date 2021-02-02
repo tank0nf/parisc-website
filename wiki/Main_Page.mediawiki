@@ -32,8 +32,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 :* [https://cdimage.debian.org/cdimage/ports/ '''Debian cdimage repository''']
 :* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
 :* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
-:* [http://ftp.nz.parisc-linux.org/debian-cd/9.3/ Debian 9.3 (stretch) stable]
-:* [http://ftp.de.parisc-linux.org/debian-cd/10.0/ Debian 10 (buster) Testing]
+:* [http://ftp-nz.parisc-linux.org/debian-hppa-cd/  Debian 9 (stretch) and Debian 10 (buster) stable]
  
 '''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
