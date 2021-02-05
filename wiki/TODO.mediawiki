@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-02-01 ==
+== Status & TODO 2021-02-05 ==
+* Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
 * Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv[0] breaking multi-call binaries] QEMU bug.
 * Fix PGD_ORDER and pgd_spinlock() as suggested by Matthew Wilcox, see: https://lore.kernel.org/linux-parisc/20201204124402.GN11935@casper.infradead.org/
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
