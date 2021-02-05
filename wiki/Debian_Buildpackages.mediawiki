@@ -28,6 +28,7 @@ title: Debian Buildpackages
 : Wait until package is in testing (unstable isn't sufficient)
 : run "dch --bpo" on this package to get backports changelog
 : Build package with sbuild --debbuildopts="-vVERSION".  VERSION is current version of package in stable.
+: Then upload to ftp-master independen of distribution, and stretch-backports-sloppy see: https://backports.debian.org/news/buster-backports/
 
 Some other info:
 
