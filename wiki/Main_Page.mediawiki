@@ -49,9 +49,11 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Feb 2021'''||Various fixes (e.g. [https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg03433.html 1][https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg00298.html 2]) for qemu v5.2 to further improve qemu-user emulation.
+|-
 | style="vertical-align:top;" |'''Jan 2021'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ PALO v2.15 released].
-New parisc Debian build server [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-pasta "pasta"]. This build server is running in a x86-64 virtual machine with 8 CPUs and 16GB RAM inside a qemu-user parisc chroot environment. Many thanks to the [http://osuosl.org/ OSU Open Source Lab] which sponsors this VM.<br>
-Additionally there is a new parisc Debian build server [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-paq "paq"]. This build server is running on a Synology DS920+ in a x86-64 virtual machine with 3 Intel Celeron J4125 CPUs and 1.5GB RAM inside a qemu-user parisc chroot environment.
+New parisc Debian build server [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-pasta "pasta"], which runs in a qemu-user parisc chroot environment on a x86-64 virtual machine with 8 CPUs and 16GB RAM. Many thanks to the [http://osuosl.org/ OSU Open Source Lab] who sponsors this VM!<br>
+Additionally there is a new parisc Debian build server [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-paq "paq"]. This qemu-user based build server runs on a Synology DS920+ in a x86-64 virtual machine with 3 Intel Celeron J4125 CPUs and 1.5GB RAM.
 |-
 | style="vertical-align:top;" |'''Dec 2020'''||Reached [http://buildd.debian.org/status/architecture.php?a=hppa&suite=sid 12.000 pre-built debian packages].
 |-
