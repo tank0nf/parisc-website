@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-02-05 ==
+== Status & TODO 2021-02-22 ==
 * Fix qemu issue with buildd for: lilypond, fceux
 * Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
 * Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv[0] breaking multi-call binaries] QEMU bug.
@@ -769,7 +769,15 @@ title: TODO
 ** parisc: Use _TIF_USER_WORK_MASK in entry.S
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=22ee3ea588dfc84ccb8cea5ea37051dfed91b9b9 parisc: Make user stack size configurable]
 ** parisc: Remove leftover reference to the power_tasklet
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00e35f2b0e8acb88d4e1aa96ff0490e3bfe46580 '''parisc: Enable -mlong-calls gcc option by default when !CONFIG_MODULES''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00e35f2b0e8acb88d4e1aa96ff0490e3bfe46580 '''parisc: Enable -mlong-calls gcc option by default when !CONFIG_MODULES''']
+* Kernel 5.12
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7795074a04669d0a023babf786d29bf67c68783 '''parisc: Optimize per-pagetable spinlocks''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2347961b11d4079deace3c81dceed460c08a8fc1 '''binfmt_misc: pass binfmt_misc flags to the interpreter''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c70919bd9d0782a6078ccd37d7f861d514f5481e '''parisc: Fix IVT checksum calculation wrt HPMC''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=31680c1d1595a59e17c14ec036b192a95f8e5f4a parisc: Bump 64-bit IRQ stack size to 64 KB]
+** parisc: Drop out of get_whan() if task is running again
+** parisc: Use the generic devmem_is_allowed()
+** parisc: Replace test_ti_thread_flag() with test_tsk_thread_flag()
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
