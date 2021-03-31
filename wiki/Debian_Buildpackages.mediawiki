@@ -152,6 +152,13 @@ Autosign packages via cron:
 ; How to setup a dd porterbox.
 : See https://wiki.debian.org/NonDSAPorterBoxSetUp
 
+; How to import a new porterbox apt key
+: Problem is like this:
+:  Err:7 https://db.debian.org/debian-admin debian-all Release.gpg                                                                                             
+:  The following signatures were invalid: EXPKEYSIG 661EBB0E456D79AB db.debian.org archive key 2014
+: Solution: Download key from https://salsa.debian.org/debian-ports-team/dsa-puppet/-/blob/cf872d5d5fe797e40f1bdf3855cda8309e2e10e1/modules/debian-org/files/db.debian.org.gpg
+: then import it with "apt-key import db.debian.org.gpg"
+
 ; How to create a palo iplboot image from official Debian install CD
 : palo --init-tape=lifimage -k vmlinux-3.13-1-parisc.gz -k vmlinux-3.13-1-parisc64-smp.gz -r initrd.gz --commandline='0/vmlinux initrd=0/ramdisk panic_timeout=60 panic=-1 debian-installer/allow_unauthenticated=true mirror/http/hostname=mkhppa3.esiee.fr mirror/http/directory=/debian'
 
