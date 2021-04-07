@@ -781,8 +781,8 @@ title: TODO
 ** parisc: Enable -mlong-calls gcc option with CONFIG_COMPILE_TEST (backported to v5.6+)
 ** arch/parisc/kernel: remove duplicate include in ptrace
 ** parisc: math-emu: Few spelling fixes in the file fpu.h
-** parisc: avoid a warning on u8 cast for cmpxchg on u8 pointers
-** parisc: parisc-agp requires SBA IOMMU driver
+** parisc: avoid a warning on u8 cast for cmpxchg on u8 pointers (backported to v5.8+)
+** parisc: parisc-agp requires SBA IOMMU driver (backported to all)
 ** parisc: Remove duplicate struct task_struct declaration
 
 == Debian kernel and userspace programs ==
