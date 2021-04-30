@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-03-07 ==
-* Fix qemu issue with buildd for: lilypond, fceux
+== Status & TODO 2021-04-30 ==
+* QEMU issues:
+** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
+** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
 * Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
-* Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv[0] breaking multi-call binaries] QEMU bug.
 * Fix PGD_ORDER and pgd_spinlock() as suggested by Matthew Wilcox, see: https://lore.kernel.org/linux-parisc/20201204124402.GN11935@casper.infradead.org/
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
