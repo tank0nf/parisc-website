@@ -2,6 +2,8 @@
 title: HP part numbers
 ---
 
+For product numbers see: [[HP_Product_Numbers]]
+
 {| class="wikitable"
 |Part number
 |CPU type
