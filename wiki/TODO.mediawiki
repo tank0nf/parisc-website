@@ -785,6 +785,8 @@ title: TODO
 ** parisc: avoid a warning on u8 cast for cmpxchg on u8 pointers (backported to v5.8+)
 ** parisc: parisc-agp requires SBA IOMMU driver (backported to all)
 ** parisc: Remove duplicate struct task_struct declaration
+* Kernel 5.13
+** parisc: switch to generic syscall header scripts
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
