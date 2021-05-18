@@ -107,6 +107,16 @@ Log in as '''root''', root password is "'''rootme'''"
 * File downloads see https://archive.org/download/hpunix/
 * HP-UX 7.05 gives System Panic: "Unable to initialize msus structure". according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit 
 specifier", which might mean that old 7.05 doesn't know how to handle the SCSI PCI card and thus can't access the disc. Remember, a B160L is different to a HP700.
+**  https://groups.io/g/hpseries80/message/2  says: 
+ You can set the default mass storage unit with:
+  MASS STORAGE IS ":T"
+  MASS STORAGE IS ":D700"
+  MASS STORAGE IS ":D701"
+  MASS STORAGE IS ".GAMES"
+ where ":T" points it at the Tape drive, ":D700" points it at the first
+ disk drive unit, ":D701" at the second, and ".GAMES" (or ".whatever")
+ searches the disk drives for a disk with the volume label "GAMES" (or
+ "whatever") and sets the default MSUS to that drive.
 
 == NetBSD ==
 
