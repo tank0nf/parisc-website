@@ -118,6 +118,22 @@ specifier", which might mean that old 7.05 doesn't know how to handle the SCSI P
  searches the disk drives for a disk with the volume label "GAMES" (or
  "whatever") and sets the default MSUS to that drive.
 
+HP-UX 9.05 fails like this:
+     Stored message buffer up to panic:
+         Floating point coprocessor configured and enabled.
+         No BTLB entries found for processor 0
+         Unsupported module type 0x7 found
+ 
+         System Panic:
+            B2352A HP-UX (A.09.05) #2: Tue Oct 18 15:46:14 PDT 1994
+         panic: (display==0xbc00, flags==0x0) Unable to initialize msus structure
+         PC-Offset Stack Trace (read across, most recent is 1st):
+            0x000ec6f8  0x000d7e3c  0x00081e5c  0x000254c0
+         End Of Stack
+ 
+         dumping 0 bytes to dev 0xffffffff, offset 0 ...
+         Dump failed, returning 5.
+
 == NetBSD ==
 
 Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
