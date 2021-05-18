@@ -118,7 +118,7 @@ specifier", which might mean that old 7.05 doesn't know how to handle the SCSI P
  searches the disk drives for a disk with the volume label "GAMES" (or
  "whatever") and sets the default MSUS to that drive.
 
-HP-UX 9.05 fails like this: (reported 2021/05/18 by Stefano Repici <rs.rdp@zoho.eu>)
+HP-UX 9.05 fails like this: (reported 2021/05/18)
      Stored message buffer up to panic:
          Floating point coprocessor configured and enabled.
          No BTLB entries found for processor 0
