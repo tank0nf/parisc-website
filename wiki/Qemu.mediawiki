@@ -29,12 +29,14 @@ Possible qemu options:
 * -boot order=d    - Firmware: Boot from CD/DVD
 * -serial mon:stdio   use serial console
 * -nographic       - disable artist graphic card emulation, so no graphics output
-* -global -global artist.width=800 artist.height=600   set Artist graphic card to 800x600 pixel
+* -display sdl     - prefer SDL display output. Much faster than GTK.
+* -global artist.width=800 -global artist.height=600     set Artist graphic card to 800x600 pixel
 * -fw_cfg opt/pdc_debug,string=255, enable all firmware debug infos
 
 When running you can press
 * ctrl-A + X           to exit qemu.
 * ctrl-A + C + ENTER   when started with "-serial mon:stdio", the serial port and the QEMU debug port are multiplexed and you can switch between them with this key combination.
+* ctrl-Alt + F         switch to fullscreen when using SDL output
 
 == How to build QEMU from source ==
 
