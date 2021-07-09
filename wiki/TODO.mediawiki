@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2021-04-30 ==
+* Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * QEMU issues:
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
 ** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
