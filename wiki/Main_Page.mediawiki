@@ -49,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Jul 2021'''||The power supply of our old A400 server ("parisc") broke and got replaced. Machine is now back up again. 
+|-
 | style="vertical-align:top;" |'''Feb 2021'''||Various fixes (e.g. [https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg03433.html 1][https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg00298.html 2]) for qemu v5.2 to further improve qemu-user emulation.<br>
 [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7795074a04669d0a023babf786d29bf67c68783 Switch to a faster page table locking mechanism] with Linux kernel v5.12.
 |-
