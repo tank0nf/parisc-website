@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-04-30 ==
+== Status & TODO 2021-08-30 ==
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * QEMU issues:
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
@@ -788,7 +788,9 @@ title: TODO
 ** parisc: Remove duplicate struct task_struct declaration
 * Kernel 5.13
 ** parisc: switch to generic syscall header scripts
-
+* Kernel 5.14
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f6a3308d6feb351d9854eb8b3f6289a1ac163125 '''Revert "parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat"'''] (backported to 5.4+)
+* Kernel 5.15
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
 ** DONE: increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
