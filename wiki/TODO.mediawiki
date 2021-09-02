@@ -791,6 +791,20 @@ title: TODO
 * Kernel 5.14
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f6a3308d6feb351d9854eb8b3f6289a1ac163125 '''Revert "parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat"'''] (backported to 5.4+)
 * Kernel 5.15
+** parisc: switch from 'pci_' to 'dma_' API
+** parisc/parport_gsc: switch from 'pci_' to 'dma_' API
+** parisc: Increase size of gcc stack frame check
+** parisc: math-emu: Fix fall-through warnings
+** parisc: Replace symbolic permissions with octal permissions
+** parisc: math-emu: Avoid "fmt" macro collision
+** parisc: remove unused arch/parisc/boot/install.sh and its phony target
+** parisc: move core-y in arch/parisc/Makefile to arch/parisc/Kbuild
+** parisc: Fix compile failure when building 64-bit kernel natively
+** parisc: Rename PMD_ORDER to PMD_TABLE_ORDER
+** parisc: fix crash with signals and alloca
+** parisc: ccio-dma.c: Added tab instead of spaces
+** parisc: Make struct parisc_driver::remove() return void
+
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
 ** DONE: increase palo command line from 128 bytes (max from kernel is 1024 currently) -> fixed in palo 1.92. 
