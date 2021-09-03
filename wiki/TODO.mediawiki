@@ -793,17 +793,20 @@ title: TODO
 * Kernel 5.15
 ** parisc: switch from 'pci_' to 'dma_' API
 ** parisc/parport_gsc: switch from 'pci_' to 'dma_' API
-** parisc: Increase size of gcc stack frame check
-** parisc: math-emu: Fix fall-through warnings
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=55b70eed81cba1331773d4aaf5cba2bb07475cd8 parisc: Increase size of gcc stack frame check]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6f1fce595b78b775d7fb585c15c2dc3a6994f96e parisc: math-emu: Fix fall-through warnings]
 ** parisc: Replace symbolic permissions with octal permissions
 ** parisc: math-emu: Avoid "fmt" macro collision
-** parisc: remove unused arch/parisc/boot/install.sh and its phony target
-** parisc: move core-y in arch/parisc/Makefile to arch/parisc/Kbuild
-** parisc: Fix compile failure when building 64-bit kernel natively
-** parisc: Rename PMD_ORDER to PMD_TABLE_ORDER
-** parisc: fix crash with signals and alloca
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d220da0967dbda232350c5dc39317e04e0892743 parisc: remove unused arch/parisc/boot/install.sh and its phony target]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ef4661cad32b5098ffb31be3282c866befde85f parisc: move core-y in arch/parisc/Makefile to arch/parisc/Kbuild]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f6e0fe01b6b33894cf6f61b359ab5a6d2b7674e parisc: Fix compile failure when building 64-bit kernel natively]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7bf82eb3873fbbee8273f60ddef584194b99f6c1 parisc: Rename PMD_ORDER to PMD_TABLE_ORDER]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=030f653078316a9cc9ca6bd1b0234dcf858be35d '''parisc: fix crash with signals and alloca'''] (backported to all)
 ** parisc: ccio-dma.c: Added tab instead of spaces
 ** parisc: Make struct parisc_driver::remove() return void
+** parisc: Drop __arch_swab16(), arch_swab24(), _arch_swab32() and __arch_swab64() functions
+** '''parisc: Fix unaligned-access crash in bootloader''' (backported to v5.14)
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
