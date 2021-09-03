@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-08-30 ==
+== Status & TODO 2021-09-04 ==
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * QEMU issues:
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
@@ -804,8 +804,8 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=030f653078316a9cc9ca6bd1b0234dcf858be35d '''parisc: fix crash with signals and alloca'''] (backported to all)
 ** parisc: ccio-dma.c: Added tab instead of spaces
 ** parisc: Make struct parisc_driver::remove() return void
-** parisc: Drop __arch_swab16(), arch_swab24(), _arch_swab32() and __arch_swab64() functions
-** '''parisc: Fix unaligned-access crash in bootloader''' (backported to v5.14)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5a2cac908df691f1637f9272d4c6dec83239611 parisc: Drop __arch_swab16(), arch_swab24(), _arch_swab32() and __arch_swab64() functions]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c42813b71a06a2ff4a155aa87ac609feeab76cf3 '''parisc: Fix unaligned-access crash in bootloader'''] (backported to v5.14)
 
 
 == Debian kernel and userspace programs ==
