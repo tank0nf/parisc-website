@@ -4,13 +4,12 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-09-04 ==
+== Status & TODO 2021-09-11 ==
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * QEMU issues:
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
 ** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
 * Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
-* Fix PGD_ORDER and pgd_spinlock() as suggested by Matthew Wilcox, see: https://lore.kernel.org/linux-parisc/20201204124402.GN11935@casper.infradead.org/
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
@@ -27,7 +26,7 @@ title: TODO
 ** Add pvpanic kernel support? - maybe?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * DONE: autofs/automounter is broken, patch sent to list, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
-* Fix stifb kernel hangs with latest kernels (4.9ff)
+* Probably fixed: Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * ONGOING: Enable UBSAN and fix fallouts
@@ -806,7 +805,14 @@ title: TODO
 ** parisc: Make struct parisc_driver::remove() return void
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5a2cac908df691f1637f9272d4c6dec83239611 parisc: Drop __arch_swab16(), arch_swab24(), _arch_swab32() and __arch_swab64() functions]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c42813b71a06a2ff4a155aa87ac609feeab76cf3 '''parisc: Fix unaligned-access crash in bootloader'''] (backported to v5.14)
-
+** parisc: Move pci_dev_is_behind_card_dino to where it is used
+** parisc: Add missing FORCE prerequisite in Makefile
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1260dea6d2eb75706c978da828a36f0def590d3a '''parisc: Drop strnlen_user() in favour of generic version''']
+** parisc: Drop useless debug info and comments from signal.c
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3e4a1aff2a97cb4fd7f0268e4b69e8c9d3641277 parisc: Check user signal stack trampoline is inside TASK_SIZE]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e4f2006f1287e7ea17660490569cff323772dac4 parisc: Reduce sigreturn trampoline to 3 instructions]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d97180ad68bdb7ee10f327205a649bc2f558741d parisc: Mark sched_clock unstable only if clocks are not syncronized]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=671028728083e856e9919221b109e3b2cd2ccc49 '''parisc: Implement __get/put_kernel_nofault()'''] (Dropped CONFIG_SET_FS incl. KERNEL_DS and USER_DS)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
