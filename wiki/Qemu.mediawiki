@@ -44,6 +44,14 @@ When running you can press
 * qemu-system-hppa -snapshot -m 512 -device lsi,id=scsi0 -device scsi-hd,drive=drive0,bus=scsi0.0,channel=0,scsi-id=5,lun=0,bootindex=2 -drive file=hdd5.img,if=none,id=drive0 -device scsi-hd,drive=drive1,bus=scsi0.0,channel=0,scsi-id=6,lun=0,bootindex=1 -drive file=hdd2img,if=none,id=drive1 -accel tcg,thread=multi -serial mon:stdio
 * qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=2 -drive file=hdd2-.img -boot menu=on -boot order=h
 
+== QEMU special emulated assembler statements ==
+
+The emulated guest may use specific asssembler statements to control the qemu emulator:
+
+* .word 0xfffdead0  -- immediately halt the emulator, similiar to turning the machine off
+* or %r10,%r10,%r10 -- idle loop; wait for interrupt
+* or %r31,%r31,%r31 -- death loop; offline cpu (currently implemented for idle loop).
+ 
 == How to build QEMU from source ==
 
 Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
