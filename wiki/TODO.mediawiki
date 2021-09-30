@@ -5,6 +5,11 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2021-09-11 ==
+* From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
+** [1] https://github.com/rust-lang/rust/pull/87260
+** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
+** [3] https://github.com/rust-lang/rust/pull/87260#issuecomment-930223504
+** [4] https://github.com/rust-lang/libc/pull/2414
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * QEMU issues:
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
