@@ -5,6 +5,13 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2021-09-11 ==
+* qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
+ /tmp/cceXP0uE.s: Assembler messages:
+ /tmp/cceXP0uE.s:1493: Error: Invalid Shift/Extract/Deposit Condition.
+ /tmp/cceXP0uE.s:1493: Error: Undefined absolute constant: '.loc'.
+ /tmp/cceXP0uE.s:1493: Error: Field out of range [0..31] (-1).
+ /tmp/cceXP0uE.s:1493: Error: Invalid operands
+ make[4]: *** [Makefile:1117: alias.o] Error 1
 * From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
 ** [1] https://github.com/rust-lang/rust/pull/87260
 ** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
