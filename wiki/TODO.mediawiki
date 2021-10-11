@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2021-09-11 ==
+* libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 * qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
  /tmp/cceXP0uE.s: Assembler messages:
  /tmp/cceXP0uE.s:1493: Error: Invalid Shift/Extract/Deposit Condition.
