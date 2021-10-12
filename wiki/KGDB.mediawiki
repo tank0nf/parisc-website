@@ -2,7 +2,7 @@
 title: KGDB
 ---
 
-NOTE: kgdb is not merged upstream yet. It will likely be merged into linux-5.2.
+NOTE: kgdb has been merged upstream in Linux Kernel v5.2.
 
 = Required configuration to use KGDB/KDB for kernel debugging =
 Make sure your .config contains:
