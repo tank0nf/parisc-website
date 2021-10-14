@@ -4,12 +4,13 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-09-11 ==
+== Status & TODO 2021-10-14 ==
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
 ** 64bit kernel still needs patches (or gcc fix from Dave)
 * qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
+** same for abinit: https://buildd.debian.org/status/fetch.php?pkg=abinit&arch=hppa&ver=9.6.1-1&stamp=1634170491&raw=0
  /tmp/cceXP0uE.s: Assembler messages:
  /tmp/cceXP0uE.s:1493: Error: Invalid Shift/Extract/Deposit Condition.
  /tmp/cceXP0uE.s:1493: Error: Undefined absolute constant: '.loc'.
@@ -74,6 +75,7 @@ title: TODO
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
 *** New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
+*** qemu-user bug: https://gitlab.com/qemu-project/qemu/-/issues/494
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 ** Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave)
 *** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version. Then trigger bin-nmu of phonon package. Finally this resolves then the dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev...
