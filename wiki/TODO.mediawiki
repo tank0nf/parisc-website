@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-10-14 ==
+== Status & TODO 2021-11-01 ==
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
@@ -30,11 +30,8 @@ title: TODO
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
-* Check Sven's HPMC patch, against https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b845f66f78bf42a4ce98e5cfe0e94fab41dd0742
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
-* Add TOC handler - CC_MC_OS_TOC_MISSING on c8000 (Sven)
-** Enable TOC button on c8000, sending TOC via IPMI interface "toc s",
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
@@ -42,7 +39,6 @@ title: TODO
 ** Check "IGNITE-UX install discs" from Keith Monahan (09/20)
 ** Add pvpanic kernel support? - maybe?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* DONE: autofs/automounter is broken, patch sent to list, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 * Probably fixed: Fix stifb kernel hangs with latest kernels (4.9ff)
 * Add BPF assember implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
@@ -833,6 +829,43 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=671028728083e856e9919221b109e3b2cd2ccc49 '''parisc: Implement __get/put_kernel_nofault()'''] (Dropped CONFIG_SET_FS incl. KERNEL_DS and USER_DS)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90cc7bed1ed19f869ae7221a6b41887fe762a6a3 parisc: Use absolute_pointer() to define PAGE0]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9caea0007601d3bc6debec04f8b4cd6f4c2394be parisc: Declare pci_iounmap() parisc version only when CONFIG_PCI enabled]
+* Kernel 5.16
+** parisc: Make use of the helper macro kthread_run()
+** parisc: make parisc_acctyp() available outside of faults.c
+** '''parisc: Switch to ARCH_STACKWALK implementation'''
+** '''parisc: Add KFENCE support'''
+** parisc: Define FRAME_ALIGN and PRIV_USER/PRIV_KERNEL in assembly.h
+** parisc: Allocate task struct with stack frame alignment
+** parisc: Use FRAME_SIZE and FRAME_ALIGN from assembly.h
+** parisc: Use PRIV_USER instead of 3 in entry.S
+** task_stack: Fix end_of_stack() for architectures with upwards-growing stack
+** '''parisc: Fix ptrace check on syscall return''' (backported to all)
+** '''parisc: Move thread_info into task struct'''
+** parisc: Use PRIV_USER in syscall.S
+** parisc: Use PRIV_USER and PRIV_KERNEL in ptrace.h
+** parisc: Drop ifdef __KERNEL__ from non-uapi kernel headers
+** '''parisc: enhance warning regarding usage of O_NONBLOCK'''
+** parisc: Remove unused constants from asm-offsets.c
+** parisc: Update defconfigs
+** '''parisc: Fix set_fixmap() on PA1.x CPUs''' (backported to v5.3+)
+** parisc: decompressor: remove repeated depenency of misc.o
+** parisc: decompressor: clean up Makefile
+** parisc/unwind: use copy_from_kernel_nofault()
+** parisc: disable preemption during local tlb flush
+** parisc: deduplicate code in flush_cache_mm() and flush_cache_range()
+** parisc: fix preempt_count() check in entry.S
+** parisc: disable preemption in send_IPI_allbutself()
+** parisc: fix warning in flush_tlb_all
+** parisc/unwind: fix unwinder when CONFIG_64BIT is enabled
+** parisc: move virt_map macro to assembly.h
+** parisc: add PIM TOC data structures
+** parisc/firmware: add functions to retrieve TOC data
+** '''parisc: add support for TOC (transfer of control)'''
+** parisc/kgdb: add kgdb_roundup() to make kgdb work with idle polling
+** parisc: mark xchg functions notrace
+** parisc/ftrace: set function trace function
+** parisc/ftrace: use static key to enable/disable function graph tracer
+** parisc: Use swap() to swap values in setup_bootmem()
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
@@ -884,6 +917,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fix fallouts from strace: http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7dc5a071ddf69c0350396b203cba32fe5bab510, 
 ** DONE: implement kexec syscall
 ** DONE: Analyze futex hang (CPU soft lockup) situation with test-lock testcase in the libprelude debian package - fixed by [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 '''parisc: Add atomic64_set_release() define to avoid CPU soft lockups''']
+** DONE: Add TOC handler, sending TOC via IPMI interface "toc s"
+** DONE: autofs/automounter is broken, patch sent to list, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=892953
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
