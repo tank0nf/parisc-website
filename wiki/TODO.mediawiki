@@ -844,10 +844,10 @@ title: TODO
 ** parisc: Use PRIV_USER in syscall.S
 ** parisc: Use PRIV_USER and PRIV_KERNEL in ptrace.h
 ** parisc: Drop ifdef __KERNEL__ from non-uapi kernel headers
-** https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3759778e6b8c0d547d77f681a7779edccdf1710a ['''parisc: enhance warning regarding usage of O_NONBLOCK''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3759778e6b8c0d547d77f681a7779edccdf1710a '''parisc: enhance warning regarding usage of O_NONBLOCK''']
 ** parisc: Remove unused constants from asm-offsets.c
 ** parisc: Update defconfigs
-** https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e866a462867b60841202e900f10936a0478608c ['''parisc: Fix set_fixmap() on PA1.x CPUs'''] (backported to v5.3+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e866a462867b60841202e900f10936a0478608c '''parisc: Fix set_fixmap() on PA1.x CPUs'''] (backported to v5.3+)
 ** parisc: decompressor: remove repeated depenency of misc.o
 ** parisc: decompressor: clean up Makefile
 ** parisc/unwind: use copy_from_kernel_nofault()
