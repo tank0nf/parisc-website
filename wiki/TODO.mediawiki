@@ -832,22 +832,22 @@ title: TODO
 * Kernel 5.16
 ** parisc: Make use of the helper macro kthread_run()
 ** parisc: make parisc_acctyp() available outside of faults.c
-** '''parisc: Switch to ARCH_STACKWALK implementation'''
-** '''parisc: Add KFENCE support'''
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aeb1e833a4c38efffad9556cf7f458c4e5de5b45 '''parisc: Switch to ARCH_STACKWALK implementation''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ec5c115050f59114e216212837f1c1ebc54bdfc9 '''parisc: Add KFENCE support''']
 ** parisc: Define FRAME_ALIGN and PRIV_USER/PRIV_KERNEL in assembly.h
 ** parisc: Allocate task struct with stack frame alignment
 ** parisc: Use FRAME_SIZE and FRAME_ALIGN from assembly.h
 ** parisc: Use PRIV_USER instead of 3 in entry.S
 ** task_stack: Fix end_of_stack() for architectures with upwards-growing stack
-** '''parisc: Fix ptrace check on syscall return''' (backported to all)
-** '''parisc: Move thread_info into task struct'''
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8779e05ba8aaffec1829872ef9774a71f44f6580 '''parisc: Fix ptrace check on syscall return'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2214c0e77259b420402e279e9ab4277ef320d371 '''parisc: Move thread_info into task struct''']
 ** parisc: Use PRIV_USER in syscall.S
 ** parisc: Use PRIV_USER and PRIV_KERNEL in ptrace.h
 ** parisc: Drop ifdef __KERNEL__ from non-uapi kernel headers
-** '''parisc: enhance warning regarding usage of O_NONBLOCK'''
+** https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3759778e6b8c0d547d77f681a7779edccdf1710a ['''parisc: enhance warning regarding usage of O_NONBLOCK''']
 ** parisc: Remove unused constants from asm-offsets.c
 ** parisc: Update defconfigs
-** '''parisc: Fix set_fixmap() on PA1.x CPUs''' (backported to v5.3+)
+** https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e866a462867b60841202e900f10936a0478608c ['''parisc: Fix set_fixmap() on PA1.x CPUs'''] (backported to v5.3+)
 ** parisc: decompressor: remove repeated depenency of misc.o
 ** parisc: decompressor: clean up Makefile
 ** parisc/unwind: use copy_from_kernel_nofault()
@@ -860,7 +860,7 @@ title: TODO
 ** parisc: move virt_map macro to assembly.h
 ** parisc: add PIM TOC data structures
 ** parisc/firmware: add functions to retrieve TOC data
-** '''parisc: add support for TOC (transfer of control)'''
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bc294838cc3443a2fbec58f8936ad4bd0a0b3055 '''parisc: add support for TOC (transfer of control)''']
 ** parisc/kgdb: add kgdb_roundup() to make kgdb work with idle polling
 ** parisc: mark xchg functions notrace
 ** parisc/ftrace: set function trace function
