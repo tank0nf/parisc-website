@@ -787,7 +787,7 @@ title: TODO
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00e35f2b0e8acb88d4e1aa96ff0490e3bfe46580 '''parisc: Enable -mlong-calls gcc option by default when !CONFIG_MODULES'''] (backported to v5.6+)
 * Kernel 5.12
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7795074a04669d0a023babf786d29bf67c68783 '''parisc: Optimize per-pagetable spinlocks''']
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2347961b11d4079deace3c81dceed460c08a8fc1 '''binfmt_misc: pass binfmt_misc flags to the interpreter''']
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2347961b11d4079deace3c81dceed460c08a8fc1 '''binfmt_misc: pass binfmt_misc flags to the interpreter'''] (needed for better qemu-user support on all platforms)
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c70919bd9d0782a6078ccd37d7f861d514f5481e '''parisc: Fix IVT checksum calculation wrt HPMC''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=31680c1d1595a59e17c14ec036b192a95f8e5f4a parisc: Bump 64-bit IRQ stack size to 64 KB]
 ** parisc: Drop out of get_whan() if task is running again
