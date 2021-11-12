@@ -49,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Nov 2021'''||Sven fixes a [https://midnight-commander.org/ticket/3887 long-standing endianess bug in midnight commander which hangs the console when using F10 to exit]. 
+|-
 | style="vertical-align:top;" |'''Sep 2021'''||Starting with Linux kernel 5.14, you will need to specify "ARCH=parisc64" on the command line when bulding a 64-bit kernel.<br>
 Adrian announced that he built [https://lists.debian.org/debian-hppa/2021/09/msg00003.html new installation medias for debian unstable], [https://cdimage.debian.org/cdimage/ports/snapshots/2021-09-23/ ISO images are available here].
 |-
