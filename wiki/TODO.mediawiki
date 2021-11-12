@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-11-04 ==
+== Status & TODO 2021-11-12 ==
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
@@ -83,7 +83,6 @@ title: TODO
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
-** why does mc hangs when exiting on sticon ?
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 
 * Kernel: Hard to solve outstanding issues
@@ -957,9 +956,10 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: port openmpi package: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=776730
 ** DONE: Fix msgpuck build breakage: https://buildd.debian.org/status/package.php?p=msgpuck&suite=sid
 ** DONE: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
+** DONE: Why does mc hangs when exiting with F10? - https://midnight-commander.org/ticket/3887 - endianess bug in mc source code
 
-QEMU:
-* DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
+* QEMU:
+** DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it. 
