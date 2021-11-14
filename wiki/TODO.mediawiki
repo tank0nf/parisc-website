@@ -868,10 +868,10 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=014966dcf76bce5717f7d974d0410d3402a651c2 '''parisc: don't enable irqs unconditionally in handle_interruption()''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7e992711dddbdb1c27d077432d8440fefd44819f '''parisc: Don't disable interrupts in cmpxchg and futex operations''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a2e8202c7a16a85a881ad2b6e32ccbebdc01dda parisc: move CPU field back into thread_info]
-** '''parisc: Fix backtrace to always include init funtion names''' (backported to v5.4+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=279917e27edc293eb645a25428c6ab3f3bca3f86 '''parisc: Fix backtrace to always include init funtion names'''] (backported to v5.4+)
 ** parisc: Fix implicit declaration of function __kernel_text_address
-** '''parisc: Flush kernel data mapping in set_pte_at() when installing pte for user page''' (backported to v5.12+)
-** '''parisc/entry: fix trace test in syscall exit path'''  to-be-backported!
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=38860b2c8bb1b92f61396eb06a63adff916fc31d '''parisc: Flush kernel data mapping in set_pte_at() when installing pte for user page'''] (backported to v5.12+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ec18fc7831e7d79e2d536dd1f3bc0d3ba425e8a '''parisc/entry: fix trace test in syscall exit path''']  to-be-backported!
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
