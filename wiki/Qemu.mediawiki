@@ -33,6 +33,9 @@ Possible qemu options:
 * -display sdl     - prefer SDL display output. Much faster than GTK which is the default.
 * -global artist.width=800 -global artist.height=600     set Artist graphic card to 800x600 pixel
 * -fw_cfg opt/pdc_debug,string=255, enable all firmware debug infos
+for debugging:
+* -d item[,...]        QEMU_LOG      e.g in_asm,out_asm  enable logging of specified items (use '-d help' for a list of items)
+* -dfilter range[,...] QEMU_DFILTER  filter logging based on address range
 
 When running you can press
 * ctrl-A + X           to exit qemu.
