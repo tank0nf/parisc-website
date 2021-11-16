@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
 == Status & TODO 2021-11-14 ==
+* Send backport for https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ec18fc7831e7d79e2d536dd1f3bc0d3ba425e8a
 * Fix mouse in qemu (HP-UX).
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
