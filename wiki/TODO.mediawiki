@@ -4,8 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-11-14 ==
-* Send backport for https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ec18fc7831e7d79e2d536dd1f3bc0d3ba425e8a
+== Status & TODO 2021-11-18 ==
 * Fix mouse in qemu (HP-UX).
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
@@ -825,7 +824,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1260dea6d2eb75706c978da828a36f0def590d3a '''parisc: Drop strnlen_user() in favour of generic version''']
 ** parisc: Drop useless debug info and comments from signal.c
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3e4a1aff2a97cb4fd7f0268e4b69e8c9d3641277 parisc: Check user signal stack trampoline is inside TASK_SIZE]
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e4f2006f1287e7ea17660490569cff323772dac4 parisc: Reduce sigreturn trampoline to 3 instructions]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e4f2006f1287e7ea17660490569cff323772dac4 parisc: Reduce sigreturn trampoline to 3 instructions] '''(was reverted in v5.15 and v5.16)'''
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d97180ad68bdb7ee10f327205a649bc2f558741d parisc: Mark sched_clock unstable only if clocks are not syncronized]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=671028728083e856e9919221b109e3b2cd2ccc49 '''parisc: Implement __get/put_kernel_nofault()'''] (Dropped CONFIG_SET_FS incl. KERNEL_DS and USER_DS)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90cc7bed1ed19f869ae7221a6b41887fe762a6a3 parisc: Use absolute_pointer() to define PAGE0]
@@ -874,6 +873,13 @@ title: TODO
 ** parisc: Fix implicit declaration of function __kernel_text_address
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=38860b2c8bb1b92f61396eb06a63adff916fc31d '''parisc: Flush kernel data mapping in set_pte_at() when installing pte for user page'''] (backported to v5.12+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ec18fc7831e7d79e2d536dd1f3bc0d3ba425e8a '''parisc/entry: fix trace test in syscall exit path''']  to-be-backported!
+** parisc: Include stringify.h to avoid build error in crypto/api.c
+** parisc: Wire up futex_waitv
+** parisc: Wrap assembler related defines inside __ASSEMBLY__
+** ['''Revert "parisc: Reduce sigreturn trampoline to 3 instructions"'''] (reverted in v5.15 too)
+** parisc: Enable CONFIG_PRINTK_TIME=y in 32bit defconfig
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bec05f33ebc1006899c6d3e59a00c58881fe7626 '''parisc/sticon: fix reverse colors'''] (backported to all)
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
