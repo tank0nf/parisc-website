@@ -96,7 +96,6 @@ title: TODO
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 ** check assembly in drivers/parisc/*
 ** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
-** arch/parisc/kernel/sys_parisc.c -> use SYSCALL_ALIAS() -> maybe
 
 * Kernel: Low priority patches needs further work 
 ** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
