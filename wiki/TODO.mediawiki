@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-11-24 ==
+== Status & TODO 2021-12-05 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Fix mouse in qemu (HP-UX).
 * Implement TOC in qemu ?
@@ -130,8 +130,8 @@ title: TODO
 ** debian-cd: do not compress kernel.
    
 * palo (PA-RISC Boot Loader):
+** When listing directory contents, resolve and print symlink target file names too, e.g. "vmlinux -> linux-5.12.1-64bit".
 ** Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
-** Palo needs better user interaction instead of "0", "1".... Howtos.
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
 
 == Upstream PA-RISC-related kernel patch history ==
