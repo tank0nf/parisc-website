@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-12-05 ==
+== Status & TODO 2021-12-06 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Fix mouse in qemu (HP-UX).
 * Implement TOC in qemu ?
@@ -887,7 +887,7 @@ title: TODO
 ** parisc: Enable sata sil, audit and usb support on 64-bit defconfig
 ** parisc/agp: Annotate parisc agp init functions with __init
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0f9fee4cdebfbe695c297e5b603a275e2557c1cc parisc: Fix "make install" on newer debian releases] (backported to v3.13+)
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=afdb4a5b1d340e4afffc65daa21cc71890d7d589 '''parisc: Mark cr16 CPU clocksource unstable on all SMP machines'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=afdb4a5b1d340e4afffc65daa21cc71890d7d589 '''parisc: Mark cr16 CPU clocksource unstable on all SMP machines'''] (backported to v4.14+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
