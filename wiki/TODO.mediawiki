@@ -883,6 +883,11 @@ title: TODO
 ** parisc: Convert PTE lookup to use extru_safe() macro
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=98400ad75e95860e9a10ec78b0b90ab66184a2ce '''Revert "parisc: Fix backtrace to always include init funtion names"'''] (backported to v5.4+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df2ffeda6370a77011902e7c9d7a1eb1cbffed4f '''parisc: Fix extraction of hash lock bits in syscall.S''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1d7c29b77725d05faff6754d2f5e7c147aedcf93 parisc: Fix KBUILD_IMAGE for self-extracting kernel] (backported to v4.14+)
+** parisc: Enable sata sil, audit and usb support on 64-bit defconfig
+** parisc/agp: Annotate parisc agp init functions with __init
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0f9fee4cdebfbe695c297e5b603a275e2557c1cc parisc: Fix "make install" on newer debian releases] (backported to v3.13+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=afdb4a5b1d340e4afffc65daa21cc71890d7d589 '''parisc: Mark cr16 CPU clocksource unstable on all SMP machines'''] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
