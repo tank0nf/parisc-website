@@ -46,6 +46,7 @@ When running you can press
 
 * qemu-system-hppa -snapshot -m 512 -device lsi,id=scsi0 -device scsi-hd,drive=drive0,bus=scsi0.0,channel=0,scsi-id=5,lun=0,bootindex=2 -drive file=hdd5.img,if=none,id=drive0 -device scsi-hd,drive=drive1,bus=scsi0.0,channel=0,scsi-id=6,lun=0,bootindex=1 -drive file=hdd2img,if=none,id=drive1 -accel tcg,thread=multi -serial mon:stdio
 * qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=2 -drive file=hdd2-.img -boot menu=on -boot order=h
+* qemu-system-hppa -boot d -m 512 -drive file=disk.img,format=qcow2 -netdev tap,id=nic1,script=/etc/qemu-ifup -cdrom /opt/iso/HPUX_10.20.iso -device tulip,netdev=nic1,mac=01:00:11:00:00:02 -serial telnet:0.0.0.0:8001,server,nowait -monitor stdio -nographic
 
 == QEMU special emulated assembler statements ==
 
