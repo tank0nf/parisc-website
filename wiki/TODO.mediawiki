@@ -889,8 +889,8 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0f9fee4cdebfbe695c297e5b603a275e2557c1cc parisc: Fix "make install" on newer debian releases] (backported to v3.13+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=afdb4a5b1d340e4afffc65daa21cc71890d7d589 '''parisc: Mark cr16 CPU clocksource unstable on all SMP machines'''] (backported to v4.14+)
 ** parisc: Clear stale IIR value on instruction access rights trap
-** '''parisc: Correct completer in lws start''' (backported to v4.19+)
-** '''parisc: Fix mask used to select futex spinlock''' (backported to v5.10+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8f66fce0f46560b9e910787ff7ad0974441c4f9c '''parisc: Correct completer in lws start'''] (backported to v4.19+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3a5a68cff47f6eead84504c3c28376b85053242 '''parisc: Fix mask used to select futex spinlock'''] (backported to v5.10+)
 ** parisc: remove ARCH_DEFCONFIG
 
 == Debian kernel and userspace programs ==
