@@ -262,5 +262,5 @@ Rough x11perf results under MkLinux showing the difference
 |}
 
 <br>
-Copyright 2015 dukzcry <lomka@gero.in><br>
+Copyright 2015 Artem <dukzcry@ya.ru><br>
 Distributed under the Creative Commons License
