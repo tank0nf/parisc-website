@@ -49,6 +49,9 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Dec 2021'''||Richard Henderson and Helge Deller [https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html fix a mis-translation of the stby assembly instruction in Qemu].<br>
+Multiple important kernel fixes by Dave Anglin.
+|-
 | style="vertical-align:top;" |'''Nov 2021'''||Sven fixes a [https://midnight-commander.org/ticket/3887 long-standing endianess bug in midnight commander which hangs the console when using F10 to exit].<br>
 Kernel v5.16 will include [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bc294838cc3443a2fbec58f8936ad4bd0a0b3055 TOC] and [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ec5c115050f59114e216212837f1c1ebc54bdfc9 KFENCE] support.
 |-
