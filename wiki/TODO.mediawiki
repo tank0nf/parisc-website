@@ -4,14 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-12-06 ==
+== Status & TODO 2021-12-29 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Fix mouse in qemu (HP-UX).
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
 ** 64bit kernel still needs patches (or gcc fix from Dave)
-* qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
+* STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
 ** same for abinit: https://buildd.debian.org/status/fetch.php?pkg=abinit&arch=hppa&ver=9.6.1-1&stamp=1634170491&raw=0
  /tmp/cceXP0uE.s: Assembler messages:
  /tmp/cceXP0uE.s:1493: Error: Invalid Shift/Extract/Deposit Condition.
@@ -19,6 +19,7 @@ title: TODO
  /tmp/cceXP0uE.s:1493: Error: Field out of range [0..31] (-1).
  /tmp/cceXP0uE.s:1493: Error: Invalid operands
  make[4]: *** [Makefile:1117: alias.o] Error 1
+** FOUND BUG: Bug is in function atomic_store_3() in qemu source file: target/hppa/op_helper.c
 * From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
 ** [1] https://github.com/rust-lang/rust/pull/87260
 ** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
@@ -42,7 +43,7 @@ title: TODO
 ** Add pvpanic kernel support? - maybe?
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * Probably fixed: Fix stifb kernel hangs with latest kernels (4.9ff)
-* Add BPF assember implementation
+* Add BPF assembler implementation
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * ONGOING: Enable UBSAN and fix fallouts
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
@@ -63,7 +64,7 @@ title: TODO
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
-* Fix boot crash from Al Viro with sti gfx card (24.03.17)
+* Fix boot crash from Al Viro with sti gfx card (24.03.17) (probably fixed in the meantime)
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * kernel work
@@ -81,7 +82,6 @@ title: TODO
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
-** Implement ltrace on hppa
 ** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
