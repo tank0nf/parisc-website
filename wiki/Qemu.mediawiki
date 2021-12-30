@@ -129,7 +129,7 @@ Log in as '''root''', root password is "'''rootme'''"
 * LASI NIC emulation and NCR 710 emulation is needed in order to be able to boot older HP-UX releases.
 * [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
 * The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
-* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd".
+* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd" (you need to use the "-boot menu=on" qemu option)
 * How to test dtwm Windows Manager: start "xinit", then run "/usr/dt/bin/dtwm".
 * File downloads see https://archive.org/download/hpunix/
 * HP-UX 7.05 gives System Panic: "Unable to initialize msus structure". according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit 
