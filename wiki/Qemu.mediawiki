@@ -27,6 +27,7 @@ Qemu versions v6.2.0, v6.1.1 and v6.0.1 run stable, but miss this patch:
 == QEMU runtime options ==
 
 Possible qemu options:
+* -m 1G            - tell machine to have 1G of memory
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
 * -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
 * -boot menu=on    - Firmware: enable interactive mode (boot prompt)
