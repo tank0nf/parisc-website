@@ -126,6 +126,7 @@ Log in as '''root''', root password is "'''rootme'''"
 
 == HP-UX ==
 
+* '''NOTE''': Please '''keep the default screen resolution of 1280x1024 pixels'''. HP-UX may crash if you increase the width, or in graphical environment (with dtwm) the mouse won't be able to reach any line >= 1146 pxels.
 * You probably won't be able to boot an original HP-UX installed hard disc image coming from a physical machine other than a B160L. The reason is, that the HP-UX kernel from the other machine has drivers built-in and won't recognize the SCSI and network in the emulated virtual machine. 
 * LASI NIC emulation and NCR 710 emulation is needed in order to be able to boot older HP-UX releases.
 * [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
