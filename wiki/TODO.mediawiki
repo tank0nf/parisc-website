@@ -6,7 +6,7 @@ title: TODO
 
 == Status & TODO 2021-12-29 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
-* Fix mouse in qemu (HP-UX).
+* Fix mouse in qemu (HP-UX) - reported by Stefano Repici
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
