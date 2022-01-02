@@ -55,9 +55,9 @@ accidentally pick up stale data the next time around.
 If a kernel appears "hung", you may be able to determine
 where it's stuck by using the TOC (Transfer of Control) feature of PA
 firmware. A TOC is usually triggered by a small button on the back of
-the machine. On systems with GSP, you can also do this by issuing the
-'TC' command at the GSP prompt. After a TOC is triggered, the machine
-should automatically reboot.
+the machine. On systems with GSP or [[BMC]], you can also do this by issuing the
+'TC' command at the GSP prompt, or via "TOC s" on the BMC. 
+After a TOC is triggered, the machine should automatically reboot.
 
 Similar to HPMC data, the TOC data can be recovered from the firmware
 prompt. Enter 'ser pim' to display the saved data, and copy down
@@ -68,7 +68,6 @@ the TOC section of the output in your report.
 be useful to issue the command 'ser clearpim' to clear the saved data.
 This way, next time when you look at the output of 'ser pim' you can
 be sure you are not looking at stale data.
-
 
 == More advanced bug reports ==
 
