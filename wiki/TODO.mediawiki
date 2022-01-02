@@ -4,9 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2021-12-29 ==
+== Status & TODO 2022-01-02 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
-* Fix mouse in qemu (HP-UX) - reported by Stefano Repici
+* Fix mouse in qemu (HP-UX) - reported by Stefano Repici, proposed patch: https://github.com/hdeller/qemu-hppa/commit/87a657982449d5a0fa44fbb741e6276bb7f1e7c4
 * Implement TOC in qemu ?
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
