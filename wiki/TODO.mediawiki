@@ -9,6 +9,7 @@ title: TODO
 * Fix mouse in qemu (HP-UX) - reported by Stefano Repici, proposed patch: https://github.com/hdeller/qemu-hppa/commit/87a657982449d5a0fa44fbb741e6276bb7f1e7c4
 * Implement TOC in qemu ?
 * qemu build issues
+** qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
 ** kcm-fcitx5 fails to build on qemu but builds on real hardware.
 ** libime fails to build on real hardware but builds with qemu!
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
