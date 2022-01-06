@@ -15,6 +15,7 @@ title: TODO
 ** libime fails to build on real hardware but builds with qemu!
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
 ** kdenlive = Illegal instruction
+** Illegal instruction: https://buildd.debian.org/status/fetch.php?pkg=haruna&arch=hppa&ver=0.6.3.1-1&stamp=1641027396&raw=0
 * __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
 ** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
 ** 64bit kernel still needs patches (or gcc fix from Dave)
