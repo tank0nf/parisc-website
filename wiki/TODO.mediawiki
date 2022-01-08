@@ -8,6 +8,7 @@ title: TODO
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Fix mouse in qemu (HP-UX) - reported by Stefano Repici, proposed patch: https://github.com/hdeller/qemu-hppa/commit/87a657982449d5a0fa44fbb741e6276bb7f1e7c4
 * STARTED: Implement TOC in qemu
+* Add Linux kernel PIM driver - /sys/firmware/pim/*
 * SeaBIOS: Add bigger font to STI ROM 
 * qemu build issues
 ** Check qemu bug: https://gitlab.com/qemu-project/qemu/-/issues/635
