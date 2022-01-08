@@ -50,6 +50,10 @@ Some other info:
 Autosign packages via cron:
 * @hourly  buildd    find upload -name *changes -type f -cmin -60 -cmin +20 -exec debsign -k 43374411AA94178C84FE52A8489F10615531D26E --re-sign '{}' \;
 
+== Prevent regeneration of mandb ==
+
+* /var/lib/man-db/auto-update    (touch it or remove it)
+
 == How to manually build debian packages ==
 
 ; Prevent mandb run
