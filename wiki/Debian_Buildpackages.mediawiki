@@ -173,3 +173,11 @@ Autosign packages via cron:
  ./setup configure
  ./setup build
  ./setup install
+
+== How to cross-compile debian kernel on x86 for hppa ==
+
+# git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git linux-5.10.y  --depth 1
+# copy .config from debian into kernel directory
+# make ARCH=parisc64 oldconfig
+# make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
+(you may need to symlink in /usr/bin: ln -s hppa64-linux-gnu-gcc-10 hppa64-linux-gnu-gcc)
