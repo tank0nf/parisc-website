@@ -180,5 +180,6 @@ Autosign packages via cron:
 # copy .config from debian into kernel directory
 # make ARCH=parisc64 oldconfig
 # make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
-(you may need to symlink in /usr/bin: ln -s hppa64-linux-gnu-gcc-10 hppa64-linux-gnu-gcc)
-(for debian source package you may need to disable ABI checks in debian/bin/buildcheck.py)
+## (you may need to symlink in /usr/bin: ln -s hppa64-linux-gnu-gcc-10 hppa64-linux-gnu-gcc)
+## (for debian source package you may need to disable ABI checks in debian/bin/buildcheck.py)
+## for debian source drop *perf* package from: debian/control
