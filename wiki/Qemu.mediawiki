@@ -60,9 +60,10 @@ When running you can press
 The emulated guest may use specific asssembler statements to control the qemu emulator:
 
 * .word 0xfffdead0  -- immediately halt the emulator, similiar to turning the machine off
+* .word 0xfffdead1  -- reset machine
 * or %r10,%r10,%r10 -- idle loop; wait for interrupt
 * or %r31,%r31,%r31 -- death loop; offline cpu (currently implemented for idle loop).
- 
+
 == How to build QEMU from source ==
 
 Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
