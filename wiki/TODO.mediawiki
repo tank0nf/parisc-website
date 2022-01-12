@@ -903,6 +903,24 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8f66fce0f46560b9e910787ff7ad0974441c4f9c '''parisc: Correct completer in lws start'''] (backported to v4.19+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3a5a68cff47f6eead84504c3c28376b85053242 '''parisc: Fix mask used to select futex spinlock'''] (backported to v5.10+)
 ** parisc: remove ARCH_DEFCONFIG
+* Kernel 5.17
+** parisc: io: Improve the outb(), outw() and outl() macros
+** parisc: pdc_stable: use default_groups in kobj_type
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4b9d2a731c3d22a05c1bccdb11b6e00054ff5fda parisc: Switch user access functions to signal errors in r29 instead of r8]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=712a270d2db967b387338c26c3dc04ccac3fcec3 parisc: Fix pdc_toc_pim_11 and pdc_toc_pim_20 definitions] (backported to v5.16)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c1c72d9bbf2bf91670ac589adf037f433642fff5 parisc: Add kgdb io_module to read chars via PDC]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d6ab9fc74513ae6501afcdae2547334a03b9a5c9 '''parisc: Enable TOC (transfer of contents) feature unconditionally''']
+** parisc: Re-use toc_stack as hpmc_stack
+** sections: Fix __is_kernel() to include init ranges
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=68d247ad38b1ef46bd945a5220fa6d28c901c2f2 parisc: Default to 16 CPUs on 32-bit kernel]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45458aa49abe3b0ac68ce86b3d4ca3a97eaeac53 parisc: Define depi_safe macro]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=db19c6f1a2a353cc8dec35b4789733a3cf6e2838 '''parisc: Fix lpa and lpa_user defines'''] (backported to v5.2+)
+** parisc: Avoid calling faulthandler_disabled() twice
+** parisc: Don't call faulthandler_disabled() in do_page_fault()
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=20dda87bdc6567e864942ead40bc149ebbe3ae79 parisc: Enhance page fault termination message]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d0585d742ff2d82accd26c661c60a6d260429c4a '''parisc: Rewrite light-weight syscall and futex code''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72c3dd8207de4178ae50553666129af7231f86e7 '''parisc: Add lws_atomic_xchg and lws_atomic_store syscalls''']
+** parisc: decompressor: do not copy source files while building
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
