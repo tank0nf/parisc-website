@@ -911,7 +911,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c1c72d9bbf2bf91670ac589adf037f433642fff5 parisc: Add kgdb io_module to read chars via PDC]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d6ab9fc74513ae6501afcdae2547334a03b9a5c9 '''parisc: Enable TOC (transfer of contents) feature unconditionally''']
 ** parisc: Re-use toc_stack as hpmc_stack
-** sections: Fix __is_kernel() to include init ranges
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=16f035d9e264d95d61d5f4056bb00d8169a7a3d1 '''sections: Fix __is_kernel() to include init ranges''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=68d247ad38b1ef46bd945a5220fa6d28c901c2f2 parisc: Default to 16 CPUs on 32-bit kernel]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=45458aa49abe3b0ac68ce86b3d4ca3a97eaeac53 parisc: Define depi_safe macro]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=db19c6f1a2a353cc8dec35b4789733a3cf6e2838 '''parisc: Fix lpa and lpa_user defines'''] (backported to v5.2+)
