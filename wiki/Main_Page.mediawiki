@@ -49,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Jan 2022'''||Kernel v5.16 released, with as many parsic enhancements and patches than never before!
+|-
 | style="vertical-align:top;" |'''Dec 2021'''||Richard Henderson and Helge Deller [https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html fix a mis-translation of the stby assembly instruction in Qemu].<br>
 Multiple important kernel fixes by Dave Anglin.
 |-
