@@ -30,14 +30,16 @@ Possible qemu options:
 * -m 1G            - tell machine to have 1G of memory
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
 * -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
-* -boot menu=on    - Firmware: enable interactive mode (boot prompt)
+* -boot menu=on    - Firmware: enable interactive mode (same as "BOOT PRI '''IPL'''")
 * -boot order=c    - Firmware: Boot from first hard disc
 * -boot order=d    - Firmware: Boot from first CD/DVD
 * -boot order=g-m  - Firmware: Boot from SCSI ID0 ("g"), SCSI ID1 ("h"), ... SCSI ID7 ("m")
 * -serial mon:stdio - multiplex serial console to stdout
 * -nographic       - disable artist graphic card emulation, so no graphics output
-* -display sdl     - prefer SDL display output. Much faster than GTK which is the default.
-* -global artist.width=800 -global artist.height=600     set Artist graphic card to 800x600 pixel, '''IMPORTANT: FOR RUNNING HP-UX STAY WITH DEFAULT  RESOLUTION OF 1280x1024'''
+* -display sdl     - if you need graphics you should prefer SDL display output. Much faster than GTK (which is the default).
+* -vnc :1          - start graphics output on VNC output, connect to hostname:1 with any VNC viewer
+* -global artist.width=800
+* -global artist.height=600  set Artist graphic card to 800x600 pixel
 * -fw_cfg opt/pdc_debug,string=255, enable all firmware debug infos
 * -fw_cfg opt/hostid,string=334455 set the hostid to 334455 (instead of the default value 2006243326). Shown in Linux in /proc/cpuinfo, or with "uname -i" in HP/UX
 for debugging:
