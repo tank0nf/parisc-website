@@ -136,8 +136,9 @@ Log in as '''root''', root password is "'''rootme'''"
 * The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
 * In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd" (you need to use the "-boot menu=on" qemu option)
 * How to start X11, CDE or dtwm
+** CDE Login: init 4
+** CDE desktop: start "xinit", then "/usr/dt/bin/dtsession"
 ** X11: startx
-** CDE Window Manager: init 4
 ** dtwm Window Manager: start "xinit", then run "/usr/dt/bin/dtwm".
 * File downloads see https://archive.org/download/hpunix/
 * HP-UX 7.05 gives System Panic: "Unable to initialize msus structure". according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit 
