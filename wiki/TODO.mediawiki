@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2022-01-07 ==
+== Status & TODO 2022-01-22 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Fix kernel: make ARCH=parisc tools/perf
 * Fix mouse in qemu (HP-UX) - reported by Stefano Repici, proposed patch: https://github.com/hdeller/qemu-hppa/commit/87a657982449d5a0fa44fbb741e6276bb7f1e7c4
@@ -921,6 +921,11 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d0585d742ff2d82accd26c661c60a6d260429c4a '''parisc: Rewrite light-weight syscall and futex code''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72c3dd8207de4178ae50553666129af7231f86e7 '''parisc: Add lws_atomic_xchg and lws_atomic_store syscalls''']
 ** parisc: decompressor: do not copy source files while building
+** parisc: Add visible flag to toc_stack variable
+** parisc: Use safer strscpy() in setup_cmdline()
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f7ee6e37a3cadefe45378c17c4285fa41141d92 '''parisc: Autodetect default output device and set console= kernel parameter''']
+** parisc: Fix missing prototype for 'toc_intr' warning in toc.c
+** parisc: pdc_stable: Fix memory leak in pdcs_register_pathentries
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
