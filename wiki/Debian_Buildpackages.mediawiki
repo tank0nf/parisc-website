@@ -174,6 +174,9 @@ Autosign packages via cron:
  ./setup build
  ./setup install
 
+; How to cross-build debian kernel from kernel.org on Fedora 
+: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc bindeb-pkg
+
 == How to cross-compile debian kernel on x86 for hppa ==
 
 # git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git linux-5.10.y  --depth 1
