@@ -244,11 +244,11 @@ Still need to do:
 
 == Screenshots ==
 
+=== HP-UX CDE graphical Login ===
+[[File:hpux-10-cde-login.png|660 px]]
+
+=== HP-UX CDE ===
+[[File:hpux-10-cde1.png|660 px]]
+
 === HP-UX 10.20 with VUE ===
 [[File:Hpux-10-vue.png|660 px]]
-
-=== HP-UX CDE Login screen ===
-
-=== HP-UX CDE initial screen ===
-
-=== Some applications started in CDE ===
