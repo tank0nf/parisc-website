@@ -245,7 +245,7 @@ Still need to do:
 == Screenshots ==
 
 === HP-UX 10.20 with VUE ===
-[[File:Hpux-10-vue.png]]
+[[File:Hpux-10-vue.png|660 px]]
 
 === HP-UX CDE Login screen ===
 
