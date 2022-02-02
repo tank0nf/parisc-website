@@ -244,14 +244,11 @@ Still need to do:
 
 == Screenshots ==
 
-=== HP-UX booting up ===
-[[File:Qemu-hpux-cde1.png|640px]]
+=== HP-UX 10.20 with VUE ===
+[[File:Hpux-10-vue.png]]
 
 === HP-UX CDE Login screen ===
-[[File:Qemu-hpux-cde2.png|640px]]
 
 === HP-UX CDE initial screen ===
-[[File:Qemu-hpux-cde3.png|640px]]
 
 === Some applications started in CDE ===
-[[File:Qemu-hpux-cde4.png|640px]]
