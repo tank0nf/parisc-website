@@ -69,6 +69,7 @@ The emulated guest may use specific asssembler statements to control the qemu em
 
 * .word 0xfffdead0  -- immediately halt the emulator, similiar to turning the machine off
 * .word 0xfffdead1  -- reset machine
+* .word 0xfffdead2  -- restore original (pre-interrupt) values back into shadow registers, used when executing NMI instruction in qemu
 * or %r10,%r10,%r10 -- idle loop; wait for interrupt
 * or %r31,%r31,%r31 -- death loop; offline cpu (currently implemented for idle loop).
 
