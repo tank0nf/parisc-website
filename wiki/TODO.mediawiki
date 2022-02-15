@@ -926,6 +926,13 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f7ee6e37a3cadefe45378c17c4285fa41141d92 '''parisc: Autodetect default output device and set console= kernel parameter''']
 ** parisc: Fix missing prototype for 'toc_intr' warning in toc.c
 ** parisc: pdc_stable: Fix memory leak in pdcs_register_pathentries
+** parisc: Add ioread64_lo_hi() and iowrite64_lo_hi()
+** '''parisc: Show error if wrong 32/64-bit compiler is being used''' (backported to v5.15+) 
+** '''parisc: Fix some apparent put_user() failures'''
+** '''parisc: Drop __init from map_pages declaration''' (backported to v5.4+)
+** '''parisc: Fix data TLB miss in sba_unmap_sg''' (backported to all)
+** '''parisc: Fix sglist access in ccio-dma.c''' (backported to all)
+** serial: parisc: GSC: fix build when IOSAPIC is not set (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
