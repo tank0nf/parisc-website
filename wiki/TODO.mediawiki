@@ -927,12 +927,12 @@ title: TODO
 ** parisc: Fix missing prototype for 'toc_intr' warning in toc.c
 ** parisc: pdc_stable: Fix memory leak in pdcs_register_pathentries
 ** parisc: Add ioread64_lo_hi() and iowrite64_lo_hi()
-** '''parisc: Show error if wrong 32/64-bit compiler is being used''' (backported to v5.15+) 
-** '''parisc: Fix some apparent put_user() failures'''
-** '''parisc: Drop __init from map_pages declaration''' (backported to v5.4+)
-** '''parisc: Fix data TLB miss in sba_unmap_sg''' (backported to all)
-** '''parisc: Fix sglist access in ccio-dma.c''' (backported to all)
-** serial: parisc: GSC: fix build when IOSAPIC is not set (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b160628e9ebcdc85d0db9d7f423c26b3c7c179d0 '''parisc: Show error if wrong 32/64-bit compiler is being used'''] (backported to v5.15+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbd0b42350d5717786cb8257fbe5b528f3af9772 '''parisc: Fix some apparent put_user() failures''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9129886b88185962538180625ca8051362b01327 '''parisc: Drop __init from map_pages declaration'''] (backported to v5.4+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7d6f44a0fa716a82969725516dc0b16bc7cd514 '''parisc: Fix data TLB miss in sba_unmap_sg'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d7da660cab47183cded65e11b64497d0f56c6edf '''parisc: Fix sglist access in ccio-dma.c'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e8793674bb0d1135ca0e5c9f7e16fecbf815926 serial: parisc: GSC: fix build when IOSAPIC is not set] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
