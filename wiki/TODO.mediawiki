@@ -4,78 +4,57 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2022-01-22 ==
+== Status & TODO 2022-02-16 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
+* STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
+* [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
+** Get rid of executable stack, maybe use gateway page instead for signal returns?
+** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 * Fix kernel: make ARCH=parisc tools/perf
-* Fix mouse in qemu (HP-UX) - reported by Stefano Repici, proposed patch: https://github.com/hdeller/qemu-hppa/commit/87a657982449d5a0fa44fbb741e6276bb7f1e7c4
-* STARTED: Implement TOC in qemu
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
-* SeaBIOS: Add bigger font to STI ROM 
-* qemu build issues
+* Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
+* parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
+* Add BPF assembler implementation
+* Enable SPARSEMEM_VMEMMAP_ENABLE
+* ONGOING: Enable UBSAN and fix fallouts
+* STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
+* Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
+* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
+* QEMU issues:
+** Add pvpanic kernel support? - maybe?
+** Fix mouse completely with X11 sources
+** qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
+*** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
+*** Check "IGNITE-UX install discs" from Keith Monahan (09/20)
+** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
+** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
+** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
 ** Check qemu bug: https://gitlab.com/qemu-project/qemu/-/issues/635
 ** qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
 ** kcm-fcitx5 fails to build on qemu but builds on real hardware.
 ** libime fails to build on real hardware but builds with qemu!
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
-** kdenlive = Illegal instruction
-** Illegal instruction: https://buildd.debian.org/status/fetch.php?pkg=haruna&arch=hppa&ver=0.6.3.1-1&stamp=1641027396&raw=0
-* __muldi3 routine in libgcc.a in kernel uses xmpyu FP instruction (qgis mail) -> bad! -> add linker check?
-** https://patchwork.kernel.org/project/linux-parisc/patch/YWSSVwQ9tc9YaC+f@ls3530/
-** 64bit kernel still needs patches (or gcc fix from Dave)
-* STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
-** same for abinit: https://buildd.debian.org/status/fetch.php?pkg=abinit&arch=hppa&ver=9.6.1-1&stamp=1634170491&raw=0
-** Fixed: https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html
- /tmp/cceXP0uE.s: Assembler messages:
- /tmp/cceXP0uE.s:1493: Error: Invalid Shift/Extract/Deposit Condition.
- /tmp/cceXP0uE.s:1493: Error: Undefined absolute constant: '.loc'.
- /tmp/cceXP0uE.s:1493: Error: Field out of range [0..31] (-1).
- /tmp/cceXP0uE.s:1493: Error: Invalid operands
- make[4]: *** [Makefile:1117: alias.o] Error 1
-* From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
-** [1] https://github.com/rust-lang/rust/pull/87260
-** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
-** [3] https://github.com/rust-lang/rust/pull/87260#issuecomment-930223504
-** [4] https://github.com/rust-lang/libc/pull/2414
-* Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
-* QEMU issues:
-** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
-** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
-* Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
-* parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
-* qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
-** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
-* Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
-* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
+** STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
+* JAVA
+** Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
+** From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
+*** [1] https://github.com/rust-lang/rust/pull/87260
+*** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
+*** [3] https://github.com/rust-lang/rust/pull/87260#issuecomment-930223504
+*** [4] https://github.com/rust-lang/libc/pull/2414
 * upgrade libgcc via:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
-* qemu
-** Check "IGNITE-UX install discs" from Keith Monahan (09/20)
-** Add pvpanic kernel support? - maybe?
-** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
-* Probably fixed: Fix stifb kernel hangs with latest kernels (4.9ff)
-* Add BPF assembler implementation
-* Enable SPARSEMEM_VMEMMAP_ENABLE
-* ONGOING: Enable UBSAN and fix fallouts
-* STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
-* PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
-* STARTED: Implement kernel VDSO support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
-** [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
-** [[Vdso]]
-*** Get rid of executable stack, maybe use gateway page instead for signal returns?
-*** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
-* Fix kernel to load -fpie compiled programs not at 0x400000 (ELF_ET_DYN_BASE, e.g. https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-4.9.y&id=abb79a56898e044715d8efd07bc1902d27a94870)
 * gcc optimizations:
 ** _mcount can be optimized (smaller) by not subtracting offset)
 ** check if we can use -fentry from gcc for _mcount optimization
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * convert unaligned handler to use get_user/put_user inline asm
-* Fix boot crash from Al Viro with sti gfx card (24.03.17) (probably fixed in the meantime)
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * kernel work
@@ -141,6 +120,7 @@ title: TODO
 ** debian-cd: do not compress kernel.
    
 * palo (PA-RISC Boot Loader):
+** PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
 ** When listing directory contents, resolve and print symlink target file names too, e.g. "vmlinux -> linux-5.12.1-64bit".
 ** Fix palo deb package to build iplboot natively (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=851792)
 ** Modify (if possible), that palo can read (sequential) tftpbootable-vmlinuxes as well as the current boot-vmlinux images (simplifies build/handling)
@@ -1025,6 +1005,9 @@ Debian kernel / Generic Kernel bugs fixed
 
 * QEMU:
 ** DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
+** DONE: Fix mouse in with HP-UX 10 and 11 - reported by Stefano Repici
+** DONE: Add bigger font to STI ROM / SeaBIOS 
+** DONE: Implement TOC in qemu (via qemu monitor -> NMI)
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it. 
