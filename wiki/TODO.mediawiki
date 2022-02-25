@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2022-02-16 ==
+== Status & TODO 2022-02-25 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
@@ -21,6 +21,8 @@ title: TODO
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * QEMU issues:
+** check why ldd doesn't work with qemu chroot
+** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
 ** Add pvpanic kernel support? - maybe?
 ** Fix mouse completely with X11 sources
 ** qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
