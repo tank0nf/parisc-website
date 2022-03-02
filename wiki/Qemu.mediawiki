@@ -97,10 +97,12 @@ Run "make"
 * Prefer the Tulip NIC, then e1000 over the rtl8129 card. The latter gives irq issues with Dino emulation.
 * If you try to boot older Linux install CDs (Debian-5, Debian-8, Debian-9), you may need to start qemu with '''"-boot menu=on"''', and then change the kernel console option to '''"console=ttyS0"''' (serial port) instead of "console=tty0" (terminal). Then switch in GUI to the "serial0" device to see console.  Alternatively start without graphical console, e.g. with '''"-nographic"'''-
 
-=== Debian Linux QEMU image for parisc ===
+=== Ready-to-run Debian Linux QEMU images for parisc ===
 
 Download Debian hard disc image:
  wget http://dellerweb.de/qemu/debian-11-hdd.img.bz2
+or
+ wget http://dellerweb.de/qemu/debian-10-hdd.img.bz2
 Unzip image: 
  bunzip2 debian-11-hdd.img.bz2
 Run qemu:
