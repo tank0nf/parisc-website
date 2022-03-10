@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2022-02-25 ==
+== Status & TODO 2022-03-10 ==
+* Try enabling DEBUG_VM_PGTABLE in kernel
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
