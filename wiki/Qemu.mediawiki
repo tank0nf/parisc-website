@@ -46,7 +46,7 @@ Qemu standard debugging options:
 HPPA specific qemu options:
 * -global artist.width=800
 * -global artist.height=600           set Artist graphic card to 800x600 pixel
-* -fw_cfg opt/pdc_debug,string=255    enable all firmware debug infos
+* -fw_cfg opt/pdc_debug,string=255    enable all firmware debug infos (1: show PDC calls, 2: show IODC calls)
 * -fw_cfg opt/hostid,string=334455    set the hostid to 334455 (instead of the default value 2006243326). Visible in Linux in /proc/cpuinfo, and with "uname -i" in HP/UX
 * -fw_cfg opt/console,string=[serial | graphics]     set default firmware output method to serial or graphics console. When selecting serial, you need to add e.g. "-serial mon:stdio" too.
 * -fw_cfg opt/font,string=[1 | 2]      set default graphics font to HP 8x16 (#1) or Linux 16x32 (#2) font
