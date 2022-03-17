@@ -7,6 +7,7 @@ title: TODO
 == Status & TODO 2022-03-17 ==
 * DONE: Try enabling DEBUG_VM_PGTABLE in kernel
 * DONE: SLAB breaks, SLUB works (works in kernel v5.17)
+* DONE: implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime) - since v5.10
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
@@ -76,7 +77,6 @@ title: TODO
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
-** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 
 * Kernel: Hard to solve outstanding issues
