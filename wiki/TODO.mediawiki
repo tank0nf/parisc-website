@@ -4,14 +4,16 @@ title: TODO
 
 = PA-RISC Linux TODO (actually this is Helge's TODO list) =
 
-== Status & TODO 2022-03-10 ==
-* Try enabling DEBUG_VM_PGTABLE in kernel
-* STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
+== Status & TODO 2022-03-17 ==
+* DONE: Try enabling DEBUG_VM_PGTABLE in kernel
+* DONE: SLAB breaks, SLUB works (works in kernel v5.17)
+* STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** Get rid of executable stack, maybe use gateway page instead for signal returns?
 ** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
 * Fix kernel: make ARCH=parisc tools/perf
+* STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
@@ -24,7 +26,6 @@ title: TODO
 * QEMU issues:
 ** check why ldd doesn't work with qemu chroot
 ** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
-** Add pvpanic kernel support? - maybe?
 ** Fix mouse completely with X11 sources
 ** qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 *** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
@@ -57,7 +58,6 @@ title: TODO
 ** check if we can use -fentry from gcc for _mcount optimization
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
-* convert unaligned handler to use get_user/put_user inline asm
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * kernel work
@@ -75,7 +75,6 @@ title: TODO
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 *** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
 *** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
-** SLAB breaks, SLUB works, why? Mail from Guy Martin.
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
 ** implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime)
 ** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
