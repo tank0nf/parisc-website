@@ -8,6 +8,7 @@ title: TODO
 * DONE: Try enabling DEBUG_VM_PGTABLE in kernel
 * DONE: SLAB breaks, SLUB works (works in kernel v5.17)
 * DONE: implement .con_font_set (consw) in sticon.c to be able to change fonts at runtime (since v5.10)
+* DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
@@ -17,6 +18,7 @@ title: TODO
 * better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 * Add BPF assembler implementation
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
+* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
@@ -46,7 +48,8 @@ title: TODO
 ** STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
 * '''JAVA'''
 ** Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
-* Rust language
+** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
+* '''Rust language'''
 **From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
 *** [1] https://github.com/rust-lang/rust/pull/87260
 *** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
@@ -55,11 +58,17 @@ title: TODO
 * How to upgrade libgcc:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
-* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
-* gcc optimizations:
+* '''gcc compiler'''
 ** _mcount can be optimized (smaller) by not subtracting offset)
 ** check if we can use -fentry from gcc for _mcount optimization
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
+** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
+** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
+*** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
+*** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
+** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103,  Work by Dave: https://gcc.gnu.org/ml/gcc-testresults/2018-11/msg03460.html
+** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
+
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
 * kernel work
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
@@ -82,7 +91,7 @@ title: TODO
 
 * Kernel: still missing Linux kernel development (no patches available yet):
 ** maybe implement transparent huge pages (due to cache coherency technically only possible on PA8500-PA8700 CPUs, not possible on PA8800-PA8900 CPUs)
-** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
+** maybe: optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 ** check assembly in drivers/parisc/*
 
@@ -92,30 +101,15 @@ title: TODO
 ** Superdome support - can someone test? Should work better now with latest kernels (maybe ask Dennis Clarke <dclarke@blastwave.org>, Jan 2019).
 ** implement BUG() and WARN() with inline assembly so that interrupt happens in delay branch of "or,<> %r0,cond,%r0". Probably not possible, because gcc will report "control reaches end of non-void function" warnings/errors.
 
-* 64-bit userspace support (from Dave Anglin, Nick Hudson):
+* '''64-bit userspace support (from Dave Anglin, Nick Hudson)'''
 ** 64-bit userspace, [[Binutils]] 64-bit binutils needs to be fixed to get multiple stub section support.
 ** glibc port (hppa64 can use the generic thread code)
 ** 64-bit support in gcc is probably pretty good as 64-bit HP-UX works fine.
 ** gdb could be a problem due to a lack of a maintainer.
+
 * Debian packages / Userspace work
-** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
-** gcc -> join 32- and 64bit compiler, make "-m64" work, get rid of hppa64-linux-gnu-gcc
-* userspace
-** elfutils -- testsuite error
-** glib2.0 -- testsuite error
-** gtk+3.0 succeeds by adding this to debian/rules: touch testsuite/reftests/color-transition.ui.known_fail testsuite/reftests/linear-gradient-transition-to-other.ui.known_fail
-** glibc pthread cancellation: the main issue is the target specific code needed to handle stubs and signal frames.  See linux-unwind.h and hpux-unwind.h in gcc's libgcc/config/pa directory.  The function pa32_fallback_frame_state does the hard work for linux.  Hopefully, the signal tramp hasn't changed. All the unwind tests in gcc pass, so I think the implementation there is okay. It may be we need something similar to pa32_fallback_frame_state in glibc to fix cancellation
-** libqb - testsuite error
-** DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
 ** teach "blkid" about palo partition
-** STARTED: why is GNU AS so slow, e.g. when building freeorion, quantlib-swig or yade packages, testcases: openturns
-*** https://sourceware.org/bugzilla/show_bug.cgi?id=18427
-*** http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787192
 ** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
-** gcc: Add _builtin_thread_pointer() and _builtin_set_thread_pointer(), e.g.: https://gcc.gnu.org/ml/gcc-patches/2012-07/msg00428.html   for glibc: ports/sysdeps/hppa/nptl/tls.h __set_cr27()
-** provide libphobos packages - gcc-defaults - http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=763103,  Work by Dave: https://gcc.gnu.org/ml/gcc-testresults/2018-11/msg03460.html
-** debian-cd to use xorriso
-** debian-cd: do not compress kernel.
    
 * palo (PA-RISC Boot Loader):
 ** PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
