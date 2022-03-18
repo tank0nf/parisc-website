@@ -2,65 +2,65 @@
 title: TODO
 ---
 
-= PA-RISC Linux TODO (actually this is Helge's TODO list) =
+= PA-RISC Linux TODO =
 
-== Status & TODO 2022-03-17 ==
+== Status & TODO 2022-03-18 ==
 * DONE: Try enabling DEBUG_VM_PGTABLE in kernel
 * DONE: SLAB breaks, SLUB works (works in kernel v5.17)
-* DONE: implement .con_font_set (consw) in sticon.c (to be able to change fonts at runtime) - since v5.10
+* DONE: implement .con_font_set (consw) in sticon.c to be able to change fonts at runtime (since v5.10)
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * STARTED: Implement kernel [[VDSO]] support - https://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux.git/log/?h=vdso
 * [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
-** Get rid of executable stack, maybe use gateway page instead for signal returns?
-** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? similiar to commit http://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=18ad51dd342a7eb09dbcd059d0b451b616d4dafc 
+** Get rid of executable stack
+** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
+* better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
+* Add BPF assembler implementation
+* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
+* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
 * Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
-* Add BPF assembler implementation
-* Enable SPARSEMEM_VMEMMAP_ENABLE
+* STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * ONGOING: Enable UBSAN and fix fallouts
+* unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
+* Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
+* Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" -> https://lwn.net/Articles/693026/
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
-* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
-* QEMU issues:
-** check why ldd doesn't work with qemu chroot
-** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
-** Fix mouse completely with X11 sources
-** qemu: Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
-*** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
-*** Check "IGNITE-UX install discs" from Keith Monahan (09/20)
+* '''QEMU Full-system emulation'''
+** Fix mouse emulation with help of Xorg 11.6.6 sources
+** Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
+*** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
+* '''QEMU User-mode emulation'''
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
 ** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
-** Check qemu bug: https://gitlab.com/qemu-project/qemu/-/issues/635
+** check why ldd doesn't work with qemu chroot
+** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
 ** qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
 ** kcm-fcitx5 fails to build on qemu but builds on real hardware.
 ** libime fails to build on real hardware but builds with qemu!
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
 ** STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
-* JAVA
+* '''JAVA'''
 ** Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
-** From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
+* Rust language
+**From Adrian Glaubitz (9/29/2021): The Rust project merged a change [1] that allows rustc to use GCC instead of LLVM as codegen backend for generating machine code through libgccjit. This means that we are in principal able now to build Rust code for all the architectures that GCC support but LLVM doesn't, which includes hppa. Please see this [2] and this [3] comment to see how to get started with cross-building the Rust compiler for a new target using libgccjit. We will have to add these new architectures to the libc crate first, see an example PR for that here [4]. Since I can't work on all these targets myself, I wanted to ask you to help me and get the support for hppa added to libc and rustc where necessary.
 *** [1] https://github.com/rust-lang/rust/pull/87260
 *** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
 *** [3] https://github.com/rust-lang/rust/pull/87260#issuecomment-930223504
 *** [4] https://github.com/rust-lang/libc/pull/2414
-* upgrade libgcc via:
+* How to upgrade libgcc:
 ** apt install -f -o Dpkg::Options::="--force-overwrite"
 ** see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
-* STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
-* Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
-* MAYBE: Implement DCACHE_WORD_ACCESS in kernel (Complaint from Linus)
 * gcc optimizations:
 ** _mcount can be optimized (smaller) by not subtracting offset)
 ** check if we can use -fentry from gcc for _mcount optimization
 ** put PLABELS into read-only section (gcc function pa_reloc_rw_mask() needs modification, see "section mismatches" mails, 11.09.2017)
-* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * debian parisc perl bug (http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=721537) shows that mmap on parisc linux is horribly inefficient.  We allocate huge maps for small files. This should be improved. Mailthread: " parisc mmap: private file maps" ,http://www.spinics.net/lists/linux-parisc/msg05083.html  or  https://rt.perl.org/Public/Bug/Display.html?id=119567  https://rt.perl.org/Public/Bug/Display.html?id=119567 
-* unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 * kernel work
 ** trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 ** Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
@@ -68,16 +68,13 @@ title: TODO
 *** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
 *** New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
 *** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
-*** qemu-user bug: https://gitlab.com/qemu-project/qemu/-/issues/494
+*** alpha qemu-user bug: https://gitlab.com/qemu-project/qemu/-/issues/494
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
 ** Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave)
 *** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version. Then trigger bin-nmu of phonon package. Finally this resolves then the dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev...
 ** Due to very bad performance running multiple copies of dot program (Dave)
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
-*** Another issue that I have been wondering about is the performance of our kernel spinlock code.  PA 8800 and PA 8900 processors have a cache line length of 128 bytes.  I believe thereare some places where we assume 64 bytes.  We also allocate spinlocks on 16 byte boundaries. We might get better performance if we allocated on 32 (PA 1.X) and 128 (PA 2.0).  Helge: change: __PA_LDCW_ALIGNMENT
-*** I've also seen that better performance may be obtained by doing a byte store to spinlock prior to ldcw.  This dirties the cache line and allows operation in cache in certain situations. I think this mainly applies to PA 1.X but I'm not sure.  I have some example code somewhere. Helge:  change struct arch_spinlock_t; in spinlock_types.h
 ** 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
-** better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 
 * Kernel: Hard to solve outstanding issues
 ** megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian -> maybe patch https://patchwork.kernel.org/patch/7738911/ needed to enable PCI-PCI bridge?
@@ -88,7 +85,6 @@ title: TODO
 ** optimize flush_dcache_page() implementation like sparc. See Documentation/cachetlb.txt, e.g. used in aio subsystem
 ** NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 ** check assembly in drivers/parisc/*
-** use pdc_add_valid() in kern_addr_valid(),  protect against crashable acesses (like for superio-pc-drivers-detection in lp), add pdc_add_valid() to create a probe_kernel_read() implementation.
 
 * Kernel: Low priority patches needs further work 
 ** disable FP-register save/restore at kernel entry? - https://patchwork.kernel.org/patch/3975291/
