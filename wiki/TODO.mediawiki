@@ -1002,19 +1002,22 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Implement TOC in qemu (via qemu monitor -> NMI)
 
 == ABI breakages (e.g. dropped HP-UX support) ==
-* [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it. 
-* [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1f25df2eff5b25f52c139d3ff31bc883eee9a0ab Changed SIGRTMIN to 32 (from 37)]
+* '''Kernel 3.14 (EWOULDBLOCK)'''
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=f5a408d53edef3af07ac7697b8bc54a755628450 We dropped HP-UX support in kernel 3.14 by changing EWOULDBLOCK==EAGAIN.] HP-UX could be run in a VM instead or since machines are relatively cheap now, if someone needs hpux, they can buy a machine for it (or use qemu) 
+* '''Kernel 3.16 (SIGRTMIN)'''
+** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1f25df2eff5b25f52c139d3ff31bc883eee9a0ab Changed SIGRTMIN to 32 (from 37)]
 ** [http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766605 debian glibc report]  and   [http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=766635 debian kernel bug report]
 ** September 7th 2014: First delivery with vmlinux-3.16.0-4 (aka linux-image-3.16.0-4-parisc64-smp_3.16.7-1_hppa.deb)
 ** How to install:
 *** Install the new glibc debian package, then install systemd, then install the new kernel package (this will create a new initrd), reboot
-** rebuild of following packages needed:
+** rebuild of the following packages was needed:
 *** unxz-utils: rebuild unxz to fix usage of SIGXFSZ
 *** strace and gdb: fix signal names/numbers
 *** libgc: gives "Cannot set SIG_THR_RESTART handler" error since SIG_THR_RESTART has been SIGXCPU which is now used for threads
 *** (maybe) gcc-4.9 which links against libgc...? (affects objc related code only)
 *** dietlibc (patch sent upstream) - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769105   TODO: make patch for dietlibc to use LONG_LONG_PAIR for ftruncate64() and then rebuild util-vserver package
-* [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93cb8e20d56be40c541475f77b5f565fbb385a4b Dropped ENOTSUP (252) constant from kernel with v4.19]. Gave problems and parisc is only platform which defined it because of HP-UX, see libuv bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237. Nevertheless rebuild of libattr, libseliux and fakeroot necessary.
+* '''Kernel 4.19 (ENOTSUP)'''
+** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=93cb8e20d56be40c541475f77b5f565fbb385a4b Dropped ENOTSUP (252) constant from kernel with v4.19]. Gave problems and parisc is only platform which defined it because of HP-UX, see libuv bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900237. Nevertheless rebuild of libattr, libseliux and fakeroot necessary.
 * '''Kernel 5.10: Define O_NONBLOCK to become 000200000 (instead of 000200004):''' 
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=75ae04206a4d0e4f541c1d692b7febd1c0fdb814 '''parisc: Define O_NONBLOCK to become 000200000''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=44a4c9e443674e6cd3368d3e642dfe9c429d5525 '''parisc: Add wrapper syscalls to fix O_NONBLOCK flag usage''']
