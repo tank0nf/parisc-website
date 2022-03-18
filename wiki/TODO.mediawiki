@@ -15,14 +15,12 @@ title: TODO
 ** Get rid of executable stack
 ** Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
-* better implementation to get stack pointer (in return_address(), in stack checker in irq.c, ...)
 * Add BPF assembler implementation
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
-* Clean up drivers/parisc/iosapic.c  and drivers/parisc/sba_iommu.c (Mail from Carlos Bilbao)
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * ONGOING: Enable UBSAN and fix fallouts
