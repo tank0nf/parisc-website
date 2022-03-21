@@ -10,6 +10,8 @@ One other advantage of vdso is that we can expose functions from the kernel with
 === Kernel Implementation ===
 The PA-RISC implementation is largely derived from the work on PPC done by benh.
 
+vDSO support was added to kernel v5.18 in https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df24e1783e6e0eb3dc0e3ba5a8df3bb0cc537408
+
 First of all, we create a shared library during the kernel build process that contains the kernel functions we want to provide. These are linked into a .so, which we include into the kernel binary.
 
 On startup, we determine the address of this included .so in kernel virtual space (vdso32_kbase) and pin it in memory.
@@ -26,30 +28,3 @@ Next, in <tt>__libc_start_main()</tt>, we lookup and store pointers to all vdso 
 In the sysdep code, we define VSYSCALL entry points that uses these pointers to call the kernel vdso. The VSYSCALL() macro should fall back to a normal system call if the vdso entry point is not available. This allows glibc to work across old and new kernels.
 
 For library functions that can use the vsyscall, we call INLINE_VSYSCALL() instead of SYSCALL().
-
-=== Afterthoughts ===
-Of course after I got this partially working, I'm not sure it's useful anymore. Maybe somebody can convince me otherwise :)
-
-* why vdso?
-** gettimeofday? 
-** atomics?
-** sigtramp?
-
-* gettimeofday
-** how to implement?
-*** option 1) like ppc, have a datapage exposed to userspace that the vdso will look up
-**** problems: seems like we will have to update the datapage everytime we take a timer interrupt, so we replace the operations done in a syscall (called once in a while) with something done at every timer interrupt (HZ times a second)
-*** option 2) like x86, we do the regular gettimeofday() logic
-**** problems: vdso cannot touch all the kernel structures unless it is in the kernel space (set sr4-7=0, etc). To do this the vdso cannot be running in userspace. So how is it a vdso? x86 can do this because they don't have kernel vs user spaces
-
-* atomics
-** don't we need to muck with interrupts? cannot do this directly from vdso
-** use gateway page to gate and then do ssm/rsm? but then we already have lws cas. why bother? also we probably don't want the whole vdso to be mapped as a gateway page -> can't set breakpoints, and might be a security problem
-
-* sigtramp
-** purportedly this allows us to annotate the sigtramp so that tools like gdb can do "normal" cfi processing instead of having "hacks" to rewind/recover data
-** but tools like gdb and gcc *already* have this hack in it, so if we "fix" this now, all these tools need to have new logic added, tested, and for compatibility now we need to have two versions of this unwind logic. ick
-
-Kyle asserts that it's nice to have a datapage exposed by the kernel and available to userspace to expose kernel capabilities, but he wasn't able to give me any convincing examples :)
-
-so is the vdso good for anything? :)
