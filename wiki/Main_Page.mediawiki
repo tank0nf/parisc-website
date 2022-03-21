@@ -49,7 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
-
+| style="vertical-align:top;" |'''Mar 2022'''||A [https://lists.debian.org/debian-hppa/2022/03/msg00001.html new set of debian-hppa installation medias for debian unstable] provided by Adrian Glaubitz.
+|-
 | style="vertical-align:top;" |'''Feb 2022'''||Many [https://github.com/qemu/qemu/commit/8f3e5ce773c62bb5c4a847f3a9a5c98bbb3b359f Qemu patches were applied] to improve HP-UX graphics and mouse, allows up to 16 vCPUs, TOC support and much more. See our [[Qemu]] page.
 |-
 | style="vertical-align:top;" |'''Jan 2022'''||Kernel v5.16 released, with as many parisc enhancements and patches than never before!
