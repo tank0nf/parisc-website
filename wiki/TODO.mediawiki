@@ -5,7 +5,6 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-03-21 ==
-* ONGOING: unaligned warning (from glibc) when running apt-get: https://sourceware.org/bugzilla/show_bug.cgi?id=20243 (Misaligned access in res_query.c HEADER struct)
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
@@ -1003,6 +1002,7 @@ Debian kernel / Generic Kernel bugs fixed
 *** gcc-5.0 commit: https://gcc.gnu.org/viewcvs/gcc?view=revision&revision=227913
 *** packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
 *** __sync_val_compare_and_swap_8 was missing in: openvdb, idba, lizardfs, ...
+** DONE: [https://sourceware.org/bugzilla/show_bug.cgi?id=20243 Misaligned access in res_query.c HEADER struct] fixed in [https://sourceware.org/git/?p=glibc.git;a=commit;h=05dec22d7be722987ff07aebf9690f6078b3c4e9 this glibc commit] 
 
 * Debian userspace:
 ** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
