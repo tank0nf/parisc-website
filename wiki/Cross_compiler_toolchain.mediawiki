@@ -22,6 +22,10 @@ Cross compiling the Linux kernel for PA-RISC is easy nowadays:
   make ARCH=parisc menuconfig
   make ARCH=parisc
 
+Before Kernel v5.17 you need to give CROSS_COMPILE= on the command line when cross-compiling, e.g.:
+
+  make ARCH=parisc CROSS_COMPILE=hppa64-linux-gnu-   # to build a 32- or 64-bit kernel (depending on the value in the .config file)
+
 Starting with Kernel v5.17 you don't need to give CROSS_COMPILE= on the command line any longer, just run:
 
   make ARCH=parisc                         # to build a 32-bit kernel
