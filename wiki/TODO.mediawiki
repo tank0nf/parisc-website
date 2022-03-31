@@ -338,7 +338,7 @@ title: TODO
 * Kernel 4.10
 ** parisc: perf: return -EFAULT on error
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=18d98a79382cbe5a7569788d5b7b18e7015506f2 parisc: Enable KASLR]
-** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5c38602d83e584047906b41b162ababd4db4106d parisc: Re-enable interrupts early]
+** <del>[http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5c38602d83e584047906b41b162ababd4db4106d parisc: Re-enable interrupts early]</del>
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=637250cc8f5e2bfc5c3a96802d1d96b4987a1d62 parisc: Enhance CPU detection code on PAT machines]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=160494d381373cfa21208484aea4e5db2d3cb0a8 parisc: Optimize timer interrupt function]
 ** [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=41744213602a206f24adcb4a2b7551db3c700e72 '''parisc: Mark cr16 clocksource unstable on SMP systems'''] (backported to v4.8+)
@@ -533,7 +533,7 @@ title: TODO
 ** parisc: Retrieve and display the PDC PAT capabilities
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a886c9791aed64d73f8c0038cc1506741ba216fa '''parisc: Reorder TLB flush timing calculation''']
 ** parisc: Remove PTE load and fault check from L2_ptep macro
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d27dfa13b9f77ae7e6ed09d70a0426ed26c1a8f9 '''parisc: Release spinlocks using ordered store''']
+** <del>[http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d27dfa13b9f77ae7e6ed09d70a0426ed26c1a8f9 '''parisc: Release spinlocks using ordered store''']</del>
 ** parisc: Purge TLB entries after updating page table entry and set page accessed flag in TLB handler
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1138b6718ff74d2a934459643e3754423d23b5e2 '''parisc: Fix address in HPMC IVA'''] (backported to all)
 ** parisc: Remove pte_inserted define
@@ -570,7 +570,7 @@ title: TODO
 ** parisc: Show rescheduling interrupts on SMP machines only
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b102f29b2d8603f15071384e88125b8eab5f8faa '''parisc: Count IPI function call interrupts''']
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f73493eb4aecdd6edd8a749890e6e2dcfa0a7978 '''parisc: Improve initial IRQ to CPU assignment''']
-** parisc: Use F_EXTEND() macro in iosapic code
+** <del>parisc: Use F_EXTEND() macro in iosapic code</del> (reverted later on)
 ** parisc: Add constants for PDC_RELOCATE PDC call
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8207d4ee44d3f525bf9aa57807ac9db5d0d90c1a '''parisc: Show machine product number during boot''']
 ** parisc: Add constant for PDC_PAT_COMPLEX firmware call
@@ -645,7 +645,7 @@ title: TODO
 ** parisc: rename default_defconfig to defconfig
 ** parisc: fix race condition in patching code
 * Kernel 5.4
-** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=83af58f8068ea3f7b3c537c37a30887bfa585069 '''parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat''']
+** <del>[http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=83af58f8068ea3f7b3c537c37a30887bfa585069 '''parisc: Add assembly implementations for memset, strlen, strcpy, strncpy and strcat''']</del> (was reverted)
 ** parisc: Add ALTERNATIVE_CODE() and ALT_COND_RUN_ON_QEMU
 ** parisc: speed up flush_tlb_all_local with qemu
 ** parisc: Avoid warning when loading hppb driver
@@ -793,7 +793,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1260dea6d2eb75706c978da828a36f0def590d3a '''parisc: Drop strnlen_user() in favour of generic version''']
 ** parisc: Drop useless debug info and comments from signal.c
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3e4a1aff2a97cb4fd7f0268e4b69e8c9d3641277 parisc: Check user signal stack trampoline is inside TASK_SIZE]
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e4f2006f1287e7ea17660490569cff323772dac4 '''parisc: Reduce sigreturn trampoline to 3 instructions'''] '''(was reverted in v5.15 and v5.16)'''
+** <del>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e4f2006f1287e7ea17660490569cff323772dac4 '''parisc: Reduce sigreturn trampoline to 3 instructions''']</del> '''(was reverted in v5.15 and v5.16)'''
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d97180ad68bdb7ee10f327205a649bc2f558741d parisc: Mark sched_clock unstable only if clocks are not syncronized]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=671028728083e856e9919221b109e3b2cd2ccc49 '''parisc: Implement __get/put_kernel_nofault()'''] (Dropped CONFIG_SET_FS incl. KERNEL_DS and USER_DS)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90cc7bed1ed19f869ae7221a6b41887fe762a6a3 parisc: Use absolute_pointer() to define PAGE0]
@@ -838,7 +838,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=014966dcf76bce5717f7d974d0410d3402a651c2 '''parisc: don't enable irqs unconditionally in handle_interruption()''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7e992711dddbdb1c27d077432d8440fefd44819f '''parisc: Don't disable interrupts in cmpxchg and futex operations''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a2e8202c7a16a85a881ad2b6e32ccbebdc01dda parisc: move CPU field back into thread_info]
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=279917e27edc293eb645a25428c6ab3f3bca3f86 '''parisc: Fix backtrace to always include init funtion names'''] (backported to v5.4+ - and '''reverted in v5.16''')
+** <del>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=279917e27edc293eb645a25428c6ab3f3bca3f86 '''parisc: Fix backtrace to always include init funtion names''']</del> (backported to v5.4+ - and '''reverted in v5.16''')
 ** parisc: Fix implicit declaration of function __kernel_text_address
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=38860b2c8bb1b92f61396eb06a63adff916fc31d '''parisc: Flush kernel data mapping in set_pte_at() when installing pte for user page'''] (backported to v5.12+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ec18fc7831e7d79e2d536dd1f3bc0d3ba425e8a '''parisc/entry: fix trace test in syscall exit path''']  to-be-backported!
@@ -917,7 +917,23 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df24e1783e6e0eb3dc0e3ba5a8df3bb0cc537408 '''parisc: Fix handling off probe non-access faults''']
 ** parisc: Simplify fast path for non-access data TLB faults
 ** parisc: Increase parisc_cache_flush_threshold setting
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=53d862fac4a09b9c56cca0433fa9de5732fd05a1 '''parisc: Fix invalidate/flush vmap routines''']
+** <del>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=53d862fac4a09b9c56cca0433fa9de5732fd05a1 '''parisc: Fix invalidate/flush vmap routines''']</del>
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=08a491b2e4b1c4c618ee82d3f4b0ff3b20c5acf5 '''Revert "parisc: Fix invalidate/flush vmap routines"''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=939fc856676c266c3bc347c1c1661872a3725c0f parisc: Fix CPU affinity for Lasi, WAX and Dino chips]
+** parisc: Clean up cpu_check_affinity() and drop cpu_set_affinity_irq()
+** parisc: Detect hppa-suse-linux-gcc compiler for cross-building
+** parisc: Add constants for control registers and clean up mfctl()
+** parisc: Ensure set_firmware_width() is called only once
+** parisc: Switch from GENERIC_CPU_DEVICES to GENERIC_ARCH_TOPOLOGY
+** parisc: Move store_cpu_topology() into text section
+** parisc: Move CPU startup-related functions into .text section
+** parisc: Move disable_sr_hashing_asm() into .text section
+** parisc: Add PDC locking functions for rendezvous code
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88b3aac6228baaac6a3bcc0808845083b9d9f08f parisc: Implement __cpu_die() and __cpu_disable() for CPU hotplugging]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=98903688e6106d9ca68e44c7d218e61336d54631 parisc: Rewrite arch_cpu_idle_dead() for CPU hotplugging]
+** parisc: Move common_stext into .text section when CONFIG_HOTPLUG_CPU=y
+** parisc: Find a new timesync master if current CPU is removed
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a9fe7fa7d874a536e0540469f314772c054a0323 '''parisc: Fix patch code locking and flushing''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
