@@ -26,6 +26,7 @@ title: TODO
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * '''QEMU Full-system emulation'''
+** Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract work for QEMU through his company.
 ** Emulate PCI serial card (0/0/4/0 tty PCI Serial (103c1048))
 ** Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>)
 ** Fix mouse emulation with help of Xorg 11.6.6 sources
