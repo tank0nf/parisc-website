@@ -137,8 +137,10 @@ Log in as '''root''', root password is "'''rootme'''"
 * You probably won't be able to boot an original HP-UX installed hard disc image coming from a physical machine other than a B160L. The reason is, that the HP-UX kernel from the other machine has drivers built-in and won't recognize the SCSI and network in the emulated virtual machine. 
 * LASI NIC emulation and NCR 710 emulation is needed in order to be able to boot older HP-UX releases.
 * [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
-* The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
-* In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd" (you need to use the "-boot menu=on" qemu option)
+* Hints:
+** The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
+** In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd" (you need to use the "-boot menu=on" qemu option)
+** When booting HP-UX may show strange characters instead of brackets - just delete the file /etc/kbdlang, reboot and choose PS2_DIN_US language
 * How to start X11, CDE or dtwm
 ** CDE Login: init 4
 ** CDE desktop: start "xinit", then "/usr/dt/bin/dtsession"
