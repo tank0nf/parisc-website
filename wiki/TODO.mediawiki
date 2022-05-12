@@ -937,6 +937,17 @@ title: TODO
 ** parisc: Move common_stext into .text section when CONFIG_HOTPLUG_CPU=y
 ** parisc: Find a new timesync master if current CPU is removed
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a9fe7fa7d874a536e0540469f314772c054a0323 '''parisc: Fix patch code locking and flushing''']
+** Revert "parisc: Mark cr16 CPU clocksource unstable on all SMP machines"
+** Revert "parisc: Mark sched_clock unstable only if clocks are not syncronized"
+** Revert "parisc: Fix patch code locking and flushing"
+** parisc: Only list existing CPUs in cpu_possible_mask
+** parisc: Update 32- and 64-bit defconfigs
+** parisc: Re-enable GENERIC_CPU_DEVICES for !SMP
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b89966bc96a06f6ad65f64ae4b0461918fcc9d3 '''parisc: Merge model and model name into one line in /proc/cpuinfo'''] (backported to all)
+** parisc: Change MAX_ADDRESS to become unsigned long long
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=340233dcc0160aafcce46ca893d1679f16acf409 '''parisc: Mark cr16 clock unstable on all SMP machines'''] (backported to v5.16+)
+** Revert "parisc: Increase parisc_cache_flush_threshold setting"
+** parisc: Fix typos in comments
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
