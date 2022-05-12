@@ -170,21 +170,14 @@ according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug9
 
 == NetBSD ==
 
-Images at http://nycdn.netbsd.org/pub/NetBSD-daily/HEAD/latest/images/
+Relevant NetBSD/hppa links:
+* Install images: https://cdn.netbsd.org/pub/NetBSD/install-images/
+* Generic NetBSD/hppa info: http://wiki.netbsd.org/ports/hppa/
+* How to install NetBSD with qemu: http://wiki.netbsd.org/ports/hppa/qemu_hppa/
 
-Info at https://www.netbsd.org/releases/current.html
-
- KERNEL=netbsd
- qemu-system-hppa \
-        -kernel ${KERNEL} \
-        -drive file=hdd.img \
-        -drive file=NetBSD-8.99.37-hppa.iso,media=cdrom \
-        -nographic \
-        -serial telnet::55555,server
-
-* at least NetBSD-8 required.
-* NetBSD-7 doesn't work, since the trap handler code is complaining about the stack pointer it sees in the trap frame. 0xa0 for the stack pointer isn't good (analyzed with Nick Hudson <nick.hudson@gmx.co.uk>):
-** insanity: 'tf->tf_sp >= minsp && tf->tf_sp < maxsp' at trap:556 type 0xf tf 0xe00040 lwp 0xe38140 sp 0xa0 pc 0x200240
+Please note that at least NetBSD-8 required.
+NetBSD-7 doesn't work, since the NetBSD kernel trap handler code complains about the stack pointer in the trap frame. Reported error is:
+ insanity: 'tf->tf_sp >= minsp && tf->tf_sp < maxsp' at trap:556 type 0xf tf 0xe00040 lwp 0xe38140 sp 0xa0 pc 0x200240
 
 (info by Nick Hudson <nick.hudson@gmx.co.uk>)
 
