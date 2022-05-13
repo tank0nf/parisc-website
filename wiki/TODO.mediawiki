@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-03-21 ==
+== Status & TODO 2022-05-13 ==
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
@@ -28,7 +28,7 @@ title: TODO
 * '''QEMU Full-system emulation'''
 ** Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract work for QEMU through his company.
 ** Emulate PCI serial card (0/0/4/0 tty PCI Serial (103c1048))
-** Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>)
+** Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>):  Boot a qcow2 image in QEMU using the GTK, Wait a random time anywhere between 5-20s, Pause the VM, Switch to the "monitor" tab, Run "savevm foo" to save the current VM state as "foo", Type "quit" to exit QEMU, Add "-loadvm foo" to your QEMU command line and launch QEMU, Unpause the VM 
 ** Fix mouse emulation with help of Xorg 11.6.6 sources
 ** Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
