@@ -211,7 +211,7 @@ It boots, but fails during device detection because Qemu currently emulates a B1
 
 == Future QEMU work ==
 
-Still need to do:
+Possible enhancements:
 * Add Dino/Lasi serial port
 * Harmony sound card in Lasi
 * Does HP-UX has some kind of "sleep" assembler instruction in it's idle loop which can be used to lower qemu power consumption?
@@ -221,8 +221,6 @@ Still need to do:
 * Emulate built-in LASI SCI controller instead of PCI SCSI add-on card
 * Elroy PCI emulation, then emulate e.g. a C3000?
 * PA2.0/64bit (low prio)
-* ...
-* '''Push SeaBIOS changes upstream!!'''
 
 == List of QEmu important patches ==
 * [https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 target/hppa: Allow, but diagnose, LDCW aligned only mod 4] - prevents crash with unaligned LDCW instruction. Missing in qemu v4.2.1, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964805
