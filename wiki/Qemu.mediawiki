@@ -171,6 +171,7 @@ according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug9
 == NetBSD ==
 
 Relevant NetBSD/hppa links:
+* Daily install images: https://nycdn.netbsd.org/pub/NetBSD-daily/netbsd-9/latest/images/
 * Install images: https://cdn.netbsd.org/pub/NetBSD/install-images/
 * Generic NetBSD/hppa info: http://wiki.netbsd.org/ports/hppa/
 * How to install NetBSD with qemu: http://wiki.netbsd.org/ports/hppa/qemu_hppa/
