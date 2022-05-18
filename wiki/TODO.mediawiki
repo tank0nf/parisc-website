@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-05-13 ==
+== Status & TODO 2022-05-18 ==
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
@@ -18,6 +18,7 @@ title: TODO
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 * check assembly in drivers/parisc/*
+* INEQUIVALENT ALIASES occur building gnuradio on debian.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
@@ -29,7 +30,6 @@ title: TODO
 ** Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract work for QEMU through his company.
 ** Emulate PCI serial card (0/0/4/0 tty PCI Serial (103c1048))
 ** Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>):  Boot a qcow2 image in QEMU using the GTK, Wait a random time anywhere between 5-20s, Pause the VM, Switch to the "monitor" tab, Run "savevm foo" to save the current VM state as "foo", Type "quit" to exit QEMU, Add "-loadvm foo" to your QEMU command line and launch QEMU, Unpause the VM 
-** Fix mouse emulation with help of Xorg 11.6.6 sources
 ** Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 *** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
@@ -43,7 +43,6 @@ title: TODO
 ** libime fails to build on real hardware but builds with qemu!
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
 ** STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
-* INEQUIVALENT ALIASES occur building gnuradio on debian.
 * '''JAVA'''
 ** Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
@@ -1049,6 +1048,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fix mouse in with HP-UX 10 and 11 - reported by Stefano Repici
 ** DONE: Add bigger font to STI ROM / SeaBIOS 
 ** DONE: Implement TOC in qemu (via qemu monitor -> NMI)
+** DONE: Fix X11 cursor emulation in HP-UX with help of Xorg 11.6.6 sources, fixed in qemu v7.1
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * '''Kernel 3.14 (EWOULDBLOCK)'''
