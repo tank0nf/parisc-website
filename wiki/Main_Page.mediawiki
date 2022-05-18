@@ -49,6 +49,8 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''May 2022'''||[https://git.qemu.org/?p=qemu.git;a=commit;h=78ac2eebbab9150edf5d0d00e3648f5ebb599001 QEMU v7.1: Fix X11 cursor emulation in HP-UX and allow emulated PS/2 keyboard input in firmware boot menu]
+|-
 | style="vertical-align:top;" |'''Apr 2022'''||CPU Hotplug support added to Kernel v5.18.
 |-
 | style="vertical-align:top;" |'''Mar 2022'''||A [https://lists.debian.org/debian-hppa/2022/03/msg00001.html new set of debian-hppa installation medias for debian unstable] provided by Adrian Glaubitz.<br>
