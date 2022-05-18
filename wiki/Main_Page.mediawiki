@@ -51,7 +51,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 {|
 | style="vertical-align:top;" |'''May 2022'''||[https://git.qemu.org/?p=qemu.git;a=commit;h=78ac2eebbab9150edf5d0d00e3648f5ebb599001 QEMU v7.1: Fix X11 cursor emulation in HP-UX and allow emulated PS/2 keyboard input in firmware boot menu]
 |-
-| style="vertical-align:top;" |'''Apr 2022'''||CPU Hotplug support added to Kernel v5.18.
+| style="vertical-align:top;" |'''Apr 2022'''||CPU Hotplug support added to Kernel v5.18.<br>[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ PALO v2.16 released. Prior versions didn't showed all available kernels when listing /boot directory at IPL menu.]
 |-
 | style="vertical-align:top;" |'''Mar 2022'''||A [https://lists.debian.org/debian-hppa/2022/03/msg00001.html new set of debian-hppa installation medias for debian unstable] provided by Adrian Glaubitz.<br>
 16 years after the [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ initial vDSO patch by Randolf Chung Kernel], Linux kernel v5.18 will now finally include [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df24e1783e6e0eb3dc0e3ba5a8df3bb0cc537408 '''vDSO support''']. In addition Kernel v5.18 includes multiple TLB/cache-flush fixes and improvements. 
