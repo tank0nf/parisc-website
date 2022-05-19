@@ -947,6 +947,9 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=340233dcc0160aafcce46ca893d1679f16acf409 '''parisc: Mark cr16 clock unstable on all SMP machines'''] (backported to v5.16+)
 ** Revert "parisc: Increase parisc_cache_flush_threshold setting"
 ** parisc: Fix typos in comments
+** parisc: Disable debug code regarding cache flushes in handle_nadtlb_fault()
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2de8b4cc2051ee1d40eedbcf94de0e7d04507c37 '''parisc: Rewrite cache flush code for PA8800/PA8900''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=798082be69fea995a475ca1db8f9873589e207d9 '''parisc: Fix patch code locking and flushing''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
