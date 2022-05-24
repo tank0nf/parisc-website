@@ -180,8 +180,11 @@ Autosign packages via cron:
 # git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git linux-5.10.y  --depth 1
 # copy .config from debian into kernel directory
 
-; How to cross-build debian kernel from sources from kernel.org on Fedora 
-: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc bindeb-pkg
+; How to cross-build debian kernel from sources from kernel.org on Fedora
+: for 32bit: 
+:: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc bindeb-pkg
+: for 64bit: 
+:: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc64 bindeb-pkg
 : or for older kernels before v5.16: make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
 
 If you choose to build debian source package kernel, you may need to 
