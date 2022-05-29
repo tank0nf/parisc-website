@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-05-18 ==
+== Status & TODO 2022-05-29 ==
+* Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT : https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * Fix kernel: make ARCH=parisc tools/perf
