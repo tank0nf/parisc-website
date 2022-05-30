@@ -34,6 +34,11 @@ title: TODO
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 *** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
 * '''QEMU User-mode emulation'''
+** FAILURE to run 64bit host and 32bit guest, readdir() failure.
+*** https://gitlab.com/qemu-project/qemu/-/issues/263
+*** https://bugzilla.kernel.org/show_bug.cgi?id=205957
+*** https://bugs.launchpad.net/qemu/+bug/1805913
+*** https://lore.kernel.org/linux-fsdevel/20201012220620.124408-1-linus.walleij@linaro.org/
 ** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
 ** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
 ** check why ldd doesn't work with qemu chroot
