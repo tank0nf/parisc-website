@@ -36,6 +36,7 @@ title: TODO
 * '''QEMU User-mode emulation'''
 ** FAILURE to run 64bit host and 32bit guest, readdir() failure.
 *** https://gitlab.com/qemu-project/qemu/-/issues/263
+*** https://bugs.launchpad.net/qemu/+bug/1805913/+attachment/5217520/+files/readdir-bug.c  (test program)
 *** https://bugzilla.kernel.org/show_bug.cgi?id=205957
 *** https://bugs.launchpad.net/qemu/+bug/1805913
 *** https://lore.kernel.org/linux-fsdevel/20201012220620.124408-1-linus.walleij@linaro.org/
