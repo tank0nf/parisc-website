@@ -956,6 +956,15 @@ title: TODO
 ** parisc: Disable debug code regarding cache flushes in handle_nadtlb_fault()
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2de8b4cc2051ee1d40eedbcf94de0e7d04507c37 '''parisc: Rewrite cache flush code for PA8800/PA8900''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=798082be69fea995a475ca1db8f9873589e207d9 '''parisc: Fix patch code locking and flushing''']
+* Kernel 5.19
+** parisc: video: fbdev: stifb: Add sti_dump_font() to dump STI font
+** parisc: Prevent ldil() to sign-extend into upper 32 bits
+** parisc: Fix wrong comment for shr macro
+** parisc: Add dep_safe() macro to deposit a register in 32- and 64-kernels
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c1770918492414e8dc103d996f3f3860ee0bfd6c '''parisc: Optimize tmpalias function calls''']
+** parisc: Drop __ARCH_WANT_OLD_READDIR and __ARCH_WANT_SYS_OLDUMOUNT
+** parisc: Don't enforce DMA completion order in cache flushes
+** parisc: Don't hardcode assembler bit definitions in tmpalias code
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
