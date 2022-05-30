@@ -29,7 +29,6 @@ title: TODO
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
 * '''QEMU Full-system emulation'''
 ** Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract work for QEMU through his company.
-** Emulate PCI serial card (0/0/4/0 tty PCI Serial (103c1048))
 ** Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>):  Boot a qcow2 image in QEMU using the GTK, Wait a random time anywhere between 5-20s, Pause the VM, Switch to the "monitor" tab, Run "savevm foo" to save the current VM state as "foo", Type "quit" to exit QEMU, Add "-loadvm foo" to your QEMU command line and launch QEMU, Unpause the VM 
 ** Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
@@ -1050,9 +1049,10 @@ Debian kernel / Generic Kernel bugs fixed
 * QEMU:
 ** DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
 ** DONE: Fix mouse in with HP-UX 10 and 11 - reported by Stefano Repici
-** DONE: Add bigger font to STI ROM / SeaBIOS 
+** DONE: Add bigger fonts to STI ROM / SeaBIOS 
 ** DONE: Implement TOC in qemu (via qemu monitor -> NMI)
 ** DONE: Fix X11 cursor emulation in HP-UX with help of Xorg 11.6.6 sources, fixed in qemu v7.1
+** DONE: Fix serial port assignment and pass-through, fixed in qemu v7.1
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * '''Kernel 3.14 (EWOULDBLOCK)'''
