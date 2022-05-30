@@ -4,7 +4,8 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-05-29 ==
+== Status & TODO 2022-05-30 ==
+* STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT : https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
@@ -21,7 +22,6 @@ title: TODO
 * check assembly in drivers/parisc/*
 * INEQUIVALENT ALIASES occur building gnuradio on debian.
 * STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
-* STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
