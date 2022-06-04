@@ -965,6 +965,9 @@ title: TODO
 ** parisc: Drop __ARCH_WANT_OLD_READDIR and __ARCH_WANT_SYS_OLDUMOUNT
 ** parisc: Don't enforce DMA completion order in cache flushes
 ** parisc: Don't hardcode assembler bit definitions in tmpalias code
+** parisc/stifb: Implement fb_is_primary_device()
+** parisc/stifb: Keep track of hardware path of graphics card
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ba688364856ad083be537f08e86ba97f433d405 '''parisc: fix a crash with multicore scheduler''']
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
