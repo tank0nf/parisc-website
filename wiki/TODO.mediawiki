@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-05-30 ==
+== Status & TODO 2022-06-26 ==
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT : https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
@@ -968,6 +968,10 @@ title: TODO
 ** parisc/stifb: Implement fb_is_primary_device() (backported to v5.10+)
 ** parisc/stifb: Keep track of hardware path of graphics card  (backported to v5.10+) 
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ba688364856ad083be537f08e86ba97f433d405 '''parisc: fix a crash with multicore scheduler'''] (backported to v5.18)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1d0811b03eb30b2f0793acaa96c6ce90b8b9c87a parisc/stifb: Fix fb_is_primary_device() only available with CONFIG_FB_STI] (backported to v5.10+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0a1355db36718178becd2bfe728a023933d73123 '''parisc: Enable ARCH_HAS_STRICT_MODULE_RWX'''] (backported to v5.2+)
+** parisc: align '*' in comment in math-emu code
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e9ed22e6e5010997a2f922eef61ca797d0a2a246 '''parisc: Fix flush_anon_page on PA8800/PA8900'''] (backported to v5.18+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
