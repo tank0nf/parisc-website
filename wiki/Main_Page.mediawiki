@@ -49,7 +49,7 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Jun 2022'''||[mailto:sam@gentoo.org Sam James] added [https://github.com/systemd/systemd/pull/23181 seccomp support in unit files on HPPA to systemd v252] and worked on [https://lists.debian.org/debian-hppa/2022/02/msg00000.html elfutils support for HPPA].<br>[mailto:dave.anglin@bell.net John David Anglin] helped to [https://sourceware.org/bugzilla/show_bug.cgi?id=29165 fix a glibc bug about broken argv adjustments]. 
+| style="vertical-align:top;" |'''Jun 2022'''||[mailto:sam@gentoo.org Sam James] added [https://github.com/systemd/systemd/pull/23181 seccomp support in unit files on HPPA to systemd v252] and worked on [https://lists.debian.org/debian-hppa/2022/02/msg00000.html elfutils support for HPPA].<br>[mailto:dave.anglin@bell.net John David Anglin] helped to [https://sourceware.org/bugzilla/show_bug.cgi?id=29165 fix a glibc bug about broken argv adjustments]<br>[mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland] provided lots of internal cleanups to the hppa PS/2 keyboard and PS/2 mouse emulation in the upcoming QEMU v7.1 to bring the source code up to latest QEMU coding standards. 
 |-
 | style="vertical-align:top;" |'''May 2022'''||Linux kernel v5.18 released, includes vDSO-, CPU hotplug- and improved cache flushing support.<br>[https://git.qemu.org/?p=qemu.git;a=commit;h=78ac2eebbab9150edf5d0d00e3648f5ebb599001 QEMU v7.1: Fix X11 cursor emulation in HP-UX and allow emulated PS/2 keyboard input in firmware boot menu]<br>[https://git.qemu.org/?p=qemu.git;a=commit;h=0234342e0ea9411ad032dac61f3d632536bda789 QEMU v7.1: Fix serial port pass-through from host to guest]
 |-
