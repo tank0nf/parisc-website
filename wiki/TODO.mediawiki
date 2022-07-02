@@ -971,7 +971,9 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1d0811b03eb30b2f0793acaa96c6ce90b8b9c87a parisc/stifb: Fix fb_is_primary_device() only available with CONFIG_FB_STI] (backported to v5.10+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0a1355db36718178becd2bfe728a023933d73123 '''parisc: Enable ARCH_HAS_STRICT_MODULE_RWX'''] (backported to v5.2+)
 ** parisc: align '*' in comment in math-emu code
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e9ed22e6e5010997a2f922eef61ca797d0a2a246 '''parisc: Fix flush_anon_page on PA8800/PA8900'''] (backported to v5.18+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e9ed22e6e5010997a2f922eef61ca797d0a2a246 '''parisc: Fix flush_anon_page on PA8800/PA8900'''] (backported to v5.18)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=96b80fcd2705fc50ebe1f7f3ce204e861b3099ab '''parisc/unaligned: Fix emulate_ldw() breakage'''] (backported to v5.18)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aa78fa905b4431c432071a878da99c2b37fc0e79 '''parisc: Fix vDSO signal breakage on 32-bit kernel'''] (backported to v5.18)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
