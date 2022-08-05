@@ -975,6 +975,16 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e9ed22e6e5010997a2f922eef61ca797d0a2a246 '''parisc: Fix flush_anon_page on PA8800/PA8900'''] (backported to v5.18)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=96b80fcd2705fc50ebe1f7f3ce204e861b3099ab '''parisc/unaligned: Fix emulate_ldw() breakage'''] (backported to v5.18)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aa78fa905b4431c432071a878da99c2b37fc0e79 '''parisc: Fix vDSO signal breakage on 32-bit kernel'''] (backported to v5.18)
+* Kernel 5.20 / 6.0
+** parisc: Clean up names in hardware database
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cab56b51ec0e69128909cef4650e1907248d821b '''parisc: Fix device names in /proc/iomem'''] (backported to v4.9+)
+** parisc: Drop pa_swapper_pg_lock spinlock
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6431e92fc827bdd2d28f79150d90415ba9ce0d21 '''parisc: io_pgetevents_time64() needs compat syscall in 32-bit compat mode'''] (backported to v5.1+)
+** parisc: Fix comment typo in fault.c
+** parisc: Drop zero variable initialisations in mm/init.c
+** parisc: Check the return value of ioremap() in lba_driver_probe()
+** Input: gscps2 - check return value of ioremap() in gscps2_probe()
+** parisc: Do not initialise statics to 0
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
