@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-06-26 ==
-* PALO: Fix "list directory content" if /boot partition is partition #1 (Directory listing of /. -> ext2_init: bad magic 0x0 ->Failed to mount partition 2)
+== Status & TODO 2022-08-06 ==
+* Port grub2 to hppa ?
+* STARTED: PALO: Fix "list directory content" if /boot partition is partition #1 (Directory listing of /. -> ext2_init: bad magic 0x0 ->Failed to mount partition 2)
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
 * Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT : https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
 * STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
