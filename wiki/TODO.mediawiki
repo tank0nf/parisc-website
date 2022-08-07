@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-08-06 ==
+* SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
 * Port grub2 to hppa ?
 * STARTED: PALO: Fix "list directory content" if /boot partition is partition #1 (Directory listing of /. -> ext2_init: bad magic 0x0 ->Failed to mount partition 2)
 * STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
