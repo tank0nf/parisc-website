@@ -996,7 +996,8 @@ title: TODO
 ** DONE: add gzip-support (allow loading gzipped vmlinux files)
 ** DONE: in interactive mode, add reboot option command
 ** DONE: [https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/commit/?id=70bd7a9a41e318c0575755a78c4d18ad97495c47 '''Unbreak loading Linux kernels bigger than 16 MB'''] (fixed in palo 1.96, Oct. 2016)
-** DONE: Du to alternative coding in 4.20, ship debian kernel as SMP variant only (Kernel 4.20) 
+** DONE: Du to alternative coding in 4.20, ship debian kernel as SMP variant only (Kernel 4.20)
+** DONE: PALO: Enable "list directory content" of other partiton than /boot (done in v2.22)
 
 Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fixed 64bit SMP kernel & sticon on machines with more than 4GB RAM (Kernel 3.12)
