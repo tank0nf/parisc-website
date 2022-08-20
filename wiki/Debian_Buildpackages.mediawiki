@@ -185,7 +185,9 @@ Autosign packages via cron:
 :: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc bindeb-pkg
 : for 64bit: 
 :: DPKG_FLAGS="-d -nc"  make -C ../linux O=`pwd` -j 20 ARCH=parisc64 bindeb-pkg
-: or for older kernels before v5.16: make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
+: or for older kernels 
+:: v5.10: DPKG_FLAGS="-d -nc" make -C ../linux O=`pwd` -j 8 ARCH=parisc bindeb-pkg
+:: v5.16: make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
 
 If you choose to build debian source package kernel, you may need to 
 * symlink in /usr/bin: ln -s hppa64-linux-gnu-gcc-10 hppa64-linux-gnu-gcc
