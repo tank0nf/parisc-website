@@ -37,12 +37,11 @@ title: TODO
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 *** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
 * '''QEMU User-mode emulation'''
-** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
+** STARTED: libime fails to build on real hardware but builds with qemu! -> bug in kernel fldw unalignment exception handler in ALL Linux kernel ** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
 ** qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
 ** kcm-fcitx5 fails to build on qemu but builds on real hardware.
-** libime fails to build on real hardware but builds with qemu!
+releases
 ** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
-** STARTED: qemu bug building gcc-arm-none-eabi: https://buildd.debian.org/status/fetch.php?pkg=gcc-arm-none-eabi&arch=hppa&ver=15%3A10.3-2021.07-1&stamp=1633455020&raw=0
 * '''JAVA'''
 ** Finish OpenJDK, see patch and mail from Adrian Glaubitz 05.02.2021.
 ** IMPORTANT: fix OpenJDK - fixes required in zeroport (stack grows up!).
