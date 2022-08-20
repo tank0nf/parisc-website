@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-08-16 ==
+== Status & TODO 2022-08-20 ==
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
 * STARTED: Port grub2 to hppa? -> https://github.com/hdeller/grub
@@ -37,8 +37,6 @@ title: TODO
 ** STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 *** ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
 * '''QEMU User-mode emulation'''
-** Track [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries] QEMU bug.
-** Because of this bug, qemu-user still has build-problems with those packages: lilypond, fceux, perl, sane-backends
 ** check why qgis fails to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
 ** qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
 ** kcm-fcitx5 fails to build on qemu but builds on real hardware.
@@ -1084,7 +1082,9 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Implement TOC in qemu (via qemu monitor -> NMI)
 ** DONE: Fix X11 cursor emulation in HP-UX with help of Xorg 11.6.6 sources, fixed in qemu v7.1
 ** DONE: Fix serial port assignment and pass-through, fixed in qemu v7.1
-** DONE: Check why ldd doesn't work with qemu chroot -> misexecuttion of proberi instruction: https://lists.nongnu.org/archive/html/qemu-devel/2022-08/msg02338.html 
+** DONE: Check why ldd doesn't work with qemu chroot -> misexecuttion of proberi instruction: https://lists.nongnu.org/archive/html/qemu-devel/2022-08/msg02338.html
+** DONE: [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries], leads to build failures in lilypond, fceux, perl, sane-backends ... Fixed, needs [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2347961b11d4079deace3c81dceed460c08a8fc1 kernel v5.12+] and [https://git.qemu.org/?p=qemu.git;a=commit;h=6e1c0d7b951e19c53b8467e8bc4b71ee73a394ea qemu v6.0+],  alternatively patch: https://github.com/hdeller/qemu-hppa/commit/0c648cf95011215c9e3b6ffedb4be88f8ee51b02
+
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * '''Kernel 3.14 (EWOULDBLOCK)'''
