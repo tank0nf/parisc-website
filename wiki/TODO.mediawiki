@@ -98,6 +98,10 @@ title: TODO
 *** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version. Then trigger bin-nmu of phonon package. Finally this resolves then the dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev...
 ** Due to very bad performance running multiple copies of dot program (Dave)
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
+
+* Floating point NaN
+** PA-RISC uses "mips" NaN format which differs from x86, etc. It should be called PA-RISC format as I think PA was first.  The quiet NaN bit is opposite to than in current IEEE standard. 
+** Debian packages with NaN issues: libime, [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787 capnproto]
    
 * palo (PA-RISC Boot Loader):
 ** PALO - add regular rewind & load to avoid tftp boot timing issues. See mail from Frank Schreiner "PALO issues" (Dec 2018).
