@@ -99,7 +99,7 @@ title: TODO
 ** Due to very bad performance running multiple copies of dot program (Dave)
 *** In vtk6 debian package, adding DOT_NUM_THREADS = 1 helps.
 
-* Floating point NaN
+* Floating point NaN (see: https://en.wikipedia.org/wiki/NaN)
 ** PA-RISC uses "mips" NaN format which differs from x86, etc. It should be called PA-RISC format as I think PA was first.  The quiet NaN bit is opposite to than in current IEEE standard. 
 ** Debian packages with NaN issues: libime, [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787 capnproto]
    
