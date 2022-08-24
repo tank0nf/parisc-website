@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-08-20 ==
+== Status & TODO 2022-08-24 ==
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
 * STARTED: Port grub2 to hppa? -> https://github.com/hdeller/grub
@@ -891,7 +891,7 @@ title: TODO
 ** parisc: Fix missing prototype for 'toc_intr' warning in toc.c
 ** parisc: pdc_stable: Fix memory leak in pdcs_register_pathentries
 ** parisc: Add ioread64_lo_hi() and iowrite64_lo_hi()
-** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b160628e9ebcdc85d0db9d7f423c26b3c7c179d0 '''parisc: Show error if wrong 32/64-bit compiler is being used'''] (backported to v5.15+)
+** <del>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b160628e9ebcdc85d0db9d7f423c26b3c7c179d0 '''parisc: Show error if wrong 32/64-bit compiler is being used'''] (backported to v5.15+)</del> (reverted in v6.0)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbd0b42350d5717786cb8257fbe5b528f3af9772 '''parisc: Fix some apparent put_user() failures''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9129886b88185962538180625ca8051362b01327 '''parisc: Drop __init from map_pages declaration'''] (backported to v5.4+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7d6f44a0fa716a82969725516dc0b16bc7cd514 '''parisc: Fix data TLB miss in sba_unmap_sg'''] (backported to all)
@@ -971,7 +971,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e9ed22e6e5010997a2f922eef61ca797d0a2a246 '''parisc: Fix flush_anon_page on PA8800/PA8900'''] (backported to v5.18)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=96b80fcd2705fc50ebe1f7f3ce204e861b3099ab '''parisc/unaligned: Fix emulate_ldw() breakage'''] (backported to v5.18)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aa78fa905b4431c432071a878da99c2b37fc0e79 '''parisc: Fix vDSO signal breakage on 32-bit kernel'''] (backported to v5.18)
-* Kernel 5.20 / 6.0
+* Kernel 6.0
 ** parisc: Clean up names in hardware database
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cab56b51ec0e69128909cef4650e1907248d821b '''parisc: Fix device names in /proc/iomem'''] (backported to v4.9+)
 ** parisc: Drop pa_swapper_pg_lock spinlock
@@ -981,6 +981,13 @@ title: TODO
 ** parisc: Check the return value of ioremap() in lba_driver_probe()
 ** Input: gscps2 - check return value of ioremap() in gscps2_probe()
 ** parisc: Do not initialise statics to 0
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7ae1f5508d9a33fd58ed3059bd2d569961e3b8bd '''parisc: Fix exception handler for fldw and fstw instructions'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3dcfb729b5f4a0c9b50742865cd5e6c4dbcc80dc'''parisc: Make CONFIG_64BIT available for ARCH=parisc64 only'''] (backported to v5.15+)
+** Revert "parisc: Show error if wrong 32/64-bit compiler is being used"
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=591d2108f3abc4db9f9073cae37cf3591fd250d6 '''parisc: Add runtime check to prevent PA2.0 kernels on PA1.x machines''']
+** parisc: ccio-dma: Fix typo in comment
+** parisc: ccio-dma: Handle kmalloc failure in ccio_init_resources()
+** parisc: led: Move from strlcpy with unused retval to strscpy
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
