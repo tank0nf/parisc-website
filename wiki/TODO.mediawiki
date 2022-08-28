@@ -5,6 +5,8 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-08-24 ==
+* Why is compiling fife so slow with cc1plus?
+* Add vDSI trampoline to qemu
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
 * STARTED: Port grub2 to hppa? -> https://github.com/hdeller/grub
