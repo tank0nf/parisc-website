@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-08-24 ==
+* check why raft package testcases fails with io_submit()?
 * Why is compiling fife so slow with cc1plus?
 * Add vDSI trampoline to qemu
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
