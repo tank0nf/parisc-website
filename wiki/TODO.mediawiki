@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-09-16 ==
+* glibc iconv issues with qemu: https://sourceware.org/bugzilla/show_bug.cgi?id=29583
 * check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
 * check why raft package testcases fails with io_submit()?
 * Why is compiling fife so slow with cc1plus?
