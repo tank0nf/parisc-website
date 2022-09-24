@@ -50,6 +50,9 @@ Some other info:
 Autosign packages via cron:
 * @hourly  buildd    find upload -name *changes -type f -cmin -60 -cmin +20 -exec debsign -k 43374411AA94178C84FE52A8489F10615531D26E --re-sign '{}' \;
 
+* nohup nice -n 10 sbuild --apt-update --no-apt-upgrade --no-apt-distupgrade --batch --stats-dir=/home/buildd/stats --dist=sid --sbuild-mode=buildd --keyid=<key> --mail-log-to=logs@buildd.debian.org --build-dep-resolver=apt --arch=hppa --chroot=sid-hppa-sbuild --make-binNMU="Rebuild against ..." --binNMU=2 > ../build.log 2>&1 &
+* If it's a binNMU, add --make-binNMU and --binNMU options to command
+
 == Prevent regeneration of mandb ==
 
 * /var/lib/man-db/auto-update    (touch it or remove it)
