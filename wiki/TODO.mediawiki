@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-09-16 ==
+== Status & TODO 2022-09-25 ==
 * glibc iconv issues with qemu: https://sourceware.org/bugzilla/show_bug.cgi?id=29583
 * check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
 * check why raft package testcases fails with io_submit()?
@@ -993,6 +993,11 @@ title: TODO
 ** parisc: ccio-dma: Fix typo in comment
 ** parisc: ccio-dma: Handle kmalloc failure in ccio_init_resources()
 ** parisc: led: Move from strlcpy with unused retval to strscpy
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=95363747a6f39e88a3052fcf6ce6237769495ce0 '''tools/include/uapi: Fix <asm/errno.h> for parisc and xtensa'''] (backported to v5.10+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=805ce8614958c925877ba6b6dc26cdf9f8800474 '''parisc: Allow CONFIG_64BIT with ARCH=parisc'''] (backported to v5.15+)
+** parisc: remove obsolete manual allocation aligning in iosapic
+** parisc: ccio-dma: Add missing iounmap in error path in ccio_probe()
+
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
