@@ -1,0 +1,6 @@
+---
+title: PARISC Mailserver
+---
+
+* Create SSL Certificate for parisc mail server:
+https://gist.github.com/volure/8cde09610d3df08bd382
