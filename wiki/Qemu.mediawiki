@@ -18,6 +18,8 @@ QEMU on parisc has been developed by:
 * [mailto:rth@twiddle.net Richard Henderson]: QEMU CPU emulation (32-bit only), QEMU hardware divers
 * [mailto:deller@gmx.de Helge Deller]: QEMU hardware drivers, SeaBIOS PDC firmware
 * [mailto:svens@stackframe.org Sven Schnelle]: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
+QEMU on parisc might be further developed (by paid contract) via:
+* [mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland]: offers paid contract work
 
 == QEMU status overview ==
 
