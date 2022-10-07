@@ -13,8 +13,7 @@ See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x an
 That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
 |}
 
-== Linux distributions with support for PA-RISC Linux == 
-
+== Linux distributions for PA-RISC machines == 
 {|
 |- style="vertical-align:top;"
 | [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
