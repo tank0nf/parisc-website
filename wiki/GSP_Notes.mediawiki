@@ -899,16 +899,11 @@ The MPE/iX I/O path to the session port is 0/0/4/1.1
 
 <span id="HE_SL_SUM">This command displays the contents of the chassis codes and events that have been stored in non-volatile memory.</span>
 
-# Incoming -<br />
-All chassis codes as they come in except for activity updates codes from the OS.
-# Activity -<br />
-All chassis codes of level 1 or greater
-# Error -<br />
-All chassis codes of level 2 or greater
-# Current Boot -<br />
-All chassis codes between &quot;start of boot&quot; and &quot;boot complete&quot;
-# Last Boot -<br />
-The chassis codes from the previous boot
+# Incoming - All chassis codes as they come in except for activity updates codes from the OS.
+# Activity - All chassis codes of level 1 or greater
+# Error - All chassis codes of level 2 or greater
+# Current Boot - All chassis codes between &quot;start of boot&quot; and &quot;boot complete&quot;
+# Last Boot - The chassis codes from the previous boot
 
 Reading the Error Log turns off the Attention LED. Accessing this buffer is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level.
 
