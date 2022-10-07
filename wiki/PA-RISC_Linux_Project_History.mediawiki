@@ -2,6 +2,202 @@
 title: PA-RISC Linux Project History
 ---
 
+= OLD NEWS =
+{|
+| style="vertical-align:top;" |'''Dec 2020'''||Reached [http://buildd.debian.org/status/architecture.php?a=hppa&suite=sid 12.000 pre-built debian packages].
+|-
+| style="vertical-align:top;" |'''Oct 2020'''||In Kernel 5.10 O_NONBLOCK was changed to become 000200000 (instead of 000200004). This is a binary ABI change and requires userspace (glibc, dietlibc, systemd) to be recompiled with the new value. The kernel has wrapper functions which provide backwards compatibility.
+|-
+| style="vertical-align:top;" |'''Aug 2020'''||[mailto:roger@nextmovesoftware.com Roger Sayle] fixed a long-standing [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87256 gcc compiler bug which unnecessarily slowed down compile time].  
+|-
+| style="vertical-align:top;" |'''Jul 2020'''||Helge steps up as new [https://git.kernel.org/pub/scm/linux/kernel/git/deller/rbootd.git/ rbootd] maintainer.<br>
+Dave fixes a [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=be6577af0cef934ccb036445314072e8cb9217b9 long-lasting kernel CPU soft lockup bug].<br>
+Many bugfixes [https://git.qemu.org/?p=qemu.git;a=commit;h=79826f99feb7222b7804058f0b4ace9ee0546361 1][https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 2] and improvements for qemu and preparations for qemu-5.1.0 release.
+|-
+| style="vertical-align:top;" |'''Feb 2020'''||The graphics and device patches for PA-RISC have been applied to QEMU git.  
+|-
+| style="vertical-align:top;" |'''Sep 2019'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ PALO v2.12 released]. Added [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fc697dc0c26a5908d467454e49440862d7fe96d0 kexec support] and [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=52a22e6c27be9089fdd9c4e1857939f0dec8f57c enhanced ftrace support] to Linux kernel v5.4. LASI support (serial, parallel, network, PS/2 keyboard & PS/2 mouse) and Artist graphics w/STI emulation for QEMU and SeaBIOS. 
+|-
+| style="vertical-align:top;" |'''Jul 2019'''||[http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ Released PALO version v2.11] with important enhancements by [mailto:James.Bottomley@HansenPartnership.com James Bottomley] like added ext4-support, IPL overlap with newer ext2/ext3 resize_inode was fixed and the iplboot bootcode loader is now placed inside the disk label.
+|-
+| style="vertical-align:top;" |'''May 2019'''||Linux kernel 5.2 supports [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dbdf0760990583649bfaca75fd98f76afd5f3905 SPARSEMEM instead of DISCONTIGMEM], [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=62217beb394e654bbd2bb87c533dadd2d8bf62c6 static branches] and [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b37d1c1898b288c69f3dc9267bc2c41af06f4a4b per-pagetable spinlocks].
+|-
+| style="vertical-align:top;" |'''Apr 2019'''||[mailto:svens@stackframe.org Sven] adds [http://parisc.wiki.kernel.org/index.php/KGDB '''KGDB'''] and [http://lwn.net/Articles/132196/ '''KPROBES'''] support for the Linux kernel version 5.2.
+|-
+| style="vertical-align:top;" |'''Mar 2019'''||Lots of fixes and improvements in the QEMU CPU- and SCSI emulation code as well as for the SeaBIOS firmware due to efforts of [mailto:svens@stackframe.org Sven Schnelle]. See the [http://parisc.wiki.kernel.org/index.php/Qemu PA-RISC Qemu Wiki page] for latest updates.<br>
+|-
+| style="vertical-align:top;" |'''Jan 2019'''||Debian kernel 4.20 will ship built as SMP kernel only (for 32- and 64-bit), which then patches itself at bootup to run faster on uniprocessor machines if it detects only one CPU.<br>
+The OSUOSL team was so nice to upgrade the debian buildd servers: "parisc" has now two 300 GB (instead of two 68 GB) and panama three 300 GB (instead of two 18 GB) SCSI discs. Thanks!
+|-
+| style="vertical-align:top;" |'''Nov 2018'''||A new complete [http://lore.kernel.org/linux-parisc/ parisc-linux mailing list archive is now available at lore.kernel.org]. It even contains the [http://lore.kernel.org/linux-parisc/Pine.LNX.4.04.9901291134480.1532-100000@sprite.osfi-bsif.gc.ca/ very first parisc-linux mail].<br/>
+Linux kernel 4.20 includes the [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3847dab77421867fbc77faacb2f377d44e729e1b "alternative"-feature which enables us to do live-patching of the kernel code at bootup time]. With this feature we will be able to build a SMP kernel which is patched at boottime to run faster on a UP system. 
+|-
+| style="vertical-align:top;" |'''Sep 2018'''||Reached [http://buildd.debian.org/status/architecture.php?a=hppa&suite=sid 11.700 pre-built debian unstable packages].
+|-
+| style="vertical-align:top;" |'''Jul 2018'''||Dave fixed a [http://sourceware.org/ml/binutils/2018-07/msg00474.html long-standing binutils bug which generated wrong debug unwind info].<br/>
+[http://db.debian.org/machines.cgi?host=panama Debian porterbox panama.debian.net is now available].
+|-
+| style="vertical-align:top;" |'''Apr 2018'''||The Linux kernel [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6185e285c5c7cfeab739bae7f206ced695f09c7 now powers off rp34x0 and C8000 machines at shutdown via built-in BMC controller].
+|-
+| style="vertical-align:top;" |'''Mar 2018'''||New documentation on how to access the [[BMC|Baseboard Management Controller (BMC) in rp34x0 and C8000 machines]].
+|-
+| style="vertical-align:top;" |'''Feb 2018'''||[[Qemu|QEMU 2.12 supports parisc system-emulation (qemu-system-hppa)]] thanks to [https://git.qemu.org/?p=qemu.git;a=commit;h=b05631954d6dfe93340d516660397e2c1a2a5dd6 contributions by Richard Henderson and Helge Deller].
+|-
+| style="vertical-align:top;" |'''Jan 2018'''||New [http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v2.00 released]. The  callee copies ABI of gcc (on 32-bit hppa) created lots of optimization issues and problems with OpenMP, so [http://gcc.gnu.org/ml/gcc-patches/2018-01/msg01518.html Dave committed a patch to switch to the caller copy ABI] instead. First Qemu-related [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=310d82784fb4d60c80569f5ca9f53a7f3bf1d477 patches to Linux kernel to reduce power consumption on the host] have been submitted and the Qemu hardware emulation works fully stable with a booted Linux. Even an emulated 32-CPU PA-RISC SMP machine was running stable.  
+|-
+| style="vertical-align:top;" |'''Dec 2017'''||Development on parisc hardware emulation via qemu is ongoing. Richard Henderson maintains the [https://github.com/rth7680/qemu/commits/tgt-hppa-softmmu hppa qemu git tree] while Helge Deller works on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware parisc IODC and PDC firmware emulation via a SeaBIOS fork]. The emulation already boots a Debian install CD, runs through whole kernel initialization code and even runs quite far into the init process. 
+|-
+| style="vertical-align:top;" |'''Sep 2017'''||New Debian-9 installer image is now available at [https://cdimage.debian.org/cdimage/ports/ official cdimage places]. Many thanks to Adrian Glaubitz!<br/>
+Kernel 4.14 includes full support for Page Deallocation Table (PDT), the UBSAN checker and kernel self-decompressor.
+|-
+| style="vertical-align:top;" |'''Aug 2017'''||Kernel 4.13 includes initial Page Deallocation Table (PDT) support to avoid using broken memory by the Linux kernel.<br/>
+Dave submitted all outstanding patches for hppa to glibc v2.26. Linuxthread support was dropped and switched to the generic nptl support instead. Unwinding was fixed to support pthread cancellation.<br/>
+Thomas Bogendoerfer fixed the PCI memory bar assignment on Dino/Cujo machines and as such got ATI graphic cards to work on such machines.<br/>
+New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v1.99 released] which fixes problems when loading huge kernels, e.g. with kernel UBSAN support enabled.<br/>
+|-
+| style="vertical-align:top;" |'''June 2017'''||[https://lists.debian.org/debian-hppa/2017/06/msg00006.html Mike Hosken announced a new set of Debian 9 installation medias] which are [http://prometheus.parisc-linux.org/debian-cd/ available for download]<br/>
+New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo bootloader v1.98 released] which fixes serial console on rp3410 and rp3440 servers.<br/>
+There are now [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.600 pre-built debian unstable packages] available.
+|-
+| style="vertical-align:top;" |'''May 2017'''||[mailto:roberto@debian.org Roberto C. Sánchez] sponsored a [http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html HP rp3410 server] with [[Rp3410|one 800 MHz PA8900 CPU which we upgraded to 5 GB RAM and added a 146 GB hard disc]]. The server is now reachable as [https://monitor.jrtc27.com/ panama.parisc-linux.org] and acts as a debian buildd machine. [http://osuosl.org/ Hosting is sponsored by OSU Open Source Lab]. Thanks to all people involved, especially to the great system administrators at OSUOSL (Samarendra Hedaoo and Justin Dugger).
+|-
+| style="vertical-align:top;" |'''Apr 2017'''||John Paul Adrian Glaubitz and James Clarke made the [https://lists.debian.org/debian-powerpc/2017/04/msg00023.html debian-installer available in debian-ports repositories]
+|-
+| style="vertical-align:top;" |'''Feb 2017'''||Alan Modra and Dave Anglin [https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8a3cacb06d6ecfbe3ab0e0059bf6a4eb8b4b9dc6 fix pie support on hppa] and [https://sourceware.org/bugzilla/show_bug.cgi?id=21000 add -z relro support to binutils]
+|-
+| style="vertical-align:top;" |'''Jan 2017'''||[https://lists.debian.org/debian-hppa/2017/01/msg00001.html New Debian-9 installation CDs] by Mike Hosken.
+Reached [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 11.500 pre-built debian unstable packages].
+|-
+| style="vertical-align:top;" |'''Dec 2016'''||Reached more than 11.400 pre-built debian unstable packages.
+John David Anglin and John Paul Adrian Glaubitz fix the [https://buildd.debian.org/status/package.php?p=firefox&suite=sid Firefox webbrowser] with help of Michael Karcher.
+The debian buildd servers switched to a unified automated build setup by James Clarke. Status of the buildds can be seen at https://monitor.jrtc27.com/
+|-
+| style="vertical-align:top;" | '''Nov 2016'''||[https://marc.info/?l=glibc-alpha&m=147869603031638&w=2 Richard Henderson announced initial work on a user-only target of hppa to QEMU].
+The website and domain http://pateam.org has expired and all content is now archived at http://pateam.parisc-linux.org/. Thanks to Thibaut Varene for his work on pateam.org.
+|-
+| style="vertical-align:top;" |'''Oct 2016'''||New [https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/ palo v1.96 bugfix release available]. 
+|-
+| style="vertical-align:top;" |'''Sep 2016'''||Reached more than 11.300 pre-built debian unstable packages.
+Linux Kernel 4.7 now [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=54b668009076caddbede8fde513ca2c982590bfe includes a high-resolution timer] based on the cr16 clocksource.
+Debian perl transition finished.
+Debian Linux Kernel 4.7.5 available.
+|-
+| style="vertical-align:top;" |'''Aug 2016'''||Debian transitions to gcc-6 and boost1.61, Debian on hppa changes the default mpi implementation from mpich to openmpi
+|-
+| style="vertical-align:top;" |'''Jul 2016'''||Reached more than 11.200 pre-built debian unstable packages.
+|-
+| style="vertical-align:top;" |'''Jun 2016'''||Reached more than 11.100 pre-built debian unstable packages.
+|-
+| style="vertical-align:top;" |'''Apr 2016'''||Linux kernel 4.7 got improved kernel ftrace support, kernel regset support and a native high-resolution clock/timing support.
+Additional debian buildd make server added (savaria.parisc-linux.org). 
+|-
+| style="vertical-align:top;" |'''Mar 2016'''||Solved a [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70188 bug in gcc-4.9 (and higher)] which [http://article.gmane.org/gmane.linux.ports.parisc/26425 crashes kernel 4.3+ in the SCSI/block layer]. 
+|-
+| style="vertical-align:top;" |'''Feb 2016'''||We now have more than 11.000 pre-built debian unstable packages.
+Many bugs in kernel and userspace were fixed. 
+|-
+| style="vertical-align:top;" |'''Jan 2016'''||Reached more than 10.900 pre-built debian unstable packages. 
+|-
+| style="vertical-align:top;" |'''Dec 2015'''||[http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=736d2169338a50c8814efc186b5423aee43b0c68 Huge Page support for PA-RISC was added to the Linux Kernel].
+A long-standing [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=71a71fb5374a23be36a91981b5614590b9e722c3 syscall restart bug was fixed].
+|-
+| style="vertical-align:top;" |'''Oct 2015'''||Dave & Helge fixed some bugs in [https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68079 gcc] and [https://sourceware.org/bugzilla/show_bug.cgi?id=19170 glibc] which e.g. fixed the build of Qt5/KDE packages.
+For the first time ever we now have more pre-built debian packages than alpha or ppc64 and reached more than 10.800 packages.
+|-
+| style="vertical-align:top;" |'''Sep 2015'''||We have an additional Debian buildd server (phantom.parisc-linux.org with 4 x 1 GHz PA8900 CPUs, 12 GB RAM, 120 GB SSD) online.
+Dave [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=1b59ddfcf1678de38a1f8ca9fb8ea5eebeff1843 fixed 64bit CAS LWS so that we will get 64bit gcc atomic builtins].
+Helge [http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b1b4e435e4ef7de77f07bf2a42c8380b960c2d44 fixed boot problems because of early serial port irqs on C8000 with PA8900 CPUs].
+|-
+| style="vertical-align:top;" |'''Aug 2015'''||One of our buildd servers (hpviz) died. Debian-ports archive is now integrated with Debian buildd service again. 
+|-
+| style="vertical-align:top;" |'''Jul 2015'''||Reached more than 10.700 pre-built debian unstable packages. 
+|-
+| style="vertical-align:top;" |'''Jun 2015'''||Reached more than 10.600 pre-built debian unstable packages. 
+|-
+| style="vertical-align:top;" |'''Apr 2015'''||Reached more than 10.520 pre-built debian unstable packages which is just around 60 packages less than the leading debian-ports architectures alpha and ppc64. 
+|-
+| style="vertical-align:top;" |'''Mar 2015'''||Installation numbers of hppa debian machines grow to 25 in the [http://popcon.debian.org Debian Popularity Contest].
+|-
+| style="vertical-align:top;" |'''Feb 2015'''||[http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/ DEBIAN 8.0 (jessie) Installer images] and [[Debian_Ports_Installation|Installation instructions]] now available.
+|-
+| style="vertical-align:top;" |'''Jan 2015'''||Compared to other architectures on debian-ports, the PA-RISC / HPPA architecture now has the most number of packages up-to-date:  http://buildd.debian-ports.org/stats/graph2-week-big.png
+|-
+| style="vertical-align:top;" |'''Dec 2014'''||Full range of gcc atomic builtins committed into gcc-4.9 which helped us to build packages which were not posible before (in total we are now at 10.400 prebuilt debian packages).
+|-
+| style="vertical-align:top;" |'''Nov 2014'''||We now fully support systemd with debian packages glibc-2.19-13 and linux-image-3.16.0-4 (kernel 3.16.7).
+The [http://dir.gmane.org/gmane.linux.ports.parisc contents of the parisc-linux kernel mailinglist were imported into gmane.org archive]
+|-
+| style="vertical-align:top;" |'''Oct 2014'''||Reached 10.300 pre-built debian unstable packages.
+[https://patchwork.kernel.org/patch/5048751 Upcoming patches to support systemd on hppa]
+|-
+| style="vertical-align:top;" |'''Sep 2014'''||Browsers will now automatically be transferred to this Wiki if one visits http://www.parisc-linux.org.
+We now have more than 10.200 pre-built debian unstable packages.
+|-
+| style="vertical-align:top;" |'''Aug 2014'''||We now have more than 10.100 pre-built debian unstable packages.
+Helge Deller now owns and maintains the parisc-linux domain.
+|-
+| style="vertical-align:top;" |'''Jul 2014'''||New [[Debian Ports Installation | Debian unstable installer images available]]. Reached more than 10.000 pre-built debian unstable packages.
+|-
+| style="vertical-align:top;" |'''Jun 2014'''||The A500-44 is up and running as additional debian buildd server at http://parisc.osuosl.org.
+Kernel 3.15 is out.
+Added a very fast 4-way 1GHz C8000 machine with 250GB SATA SSD drive as additional Debian buildd server (sibaris.parisc-linux.org), machine and hosting sponsored by [mailto:pannonmage@googlemail.com Bálint Sándor Németh]. 
+|-
+| style="vertical-align:top;" |'''May 2014'''||More than 9900 debian packages built.
+Kernel 3.15 will be the most best kernel ever.
+The A500 (mkhppa3) buildd which was sponsored and hosted by ESIEE sadly died.
+|-
+| style="vertical-align:top;" |'''Apr 2014'''||The PARISC boot loader palo is back in debian unstable.
+More than 9750 debian packages built.
+|-
+| style="vertical-align:top;" |'''Mar 2014'''||The A500-44 which hosted our main webpage is being moved to OSUOSL.org.
+More than 9500 debian packages built.
+|-
+| style="vertical-align:top;" |'''Feb 2014'''||The new parisc Wiki is now at http://parisc.wiki.kernel.org. Contents of the old Wiki at wiki.parisc-linux.org was moved and the webpage redirects here.
+|-
+| style="vertical-align:top;" |'''Jan 2014'''||Updated [[Debian_Ports_Installation|Debian unstable install instructions]].
+More than [http://buildd.debian-ports.org/stats 8000 newly built native Debian packages] available.
+|-
+| style="vertical-align:top;" |'''Dec 2013'''||[http://unstable.buildd.net/index-hppa.html 5 buildd servers for debian unstable online].
+The servers hpviz and rio including hosting are sponsored by Dave Land (http://landcomp.net).
+Stable Debian kernel 3.12 available. 
+|-
+| style="vertical-align:top;" |'''Aug 2013'''||Linux kernel 3.11 supports C8000 workstation (SMP, serial port, FireGL card, BMC, ...)
+|-
+| style="vertical-align:top;" |'''Apr 2013'''||Website updated, added [[Debian_Ports_Installation|Debian ports installation instructions]] and updated [[TODO]] list.
+|-
+| style="vertical-align:top;" |'''Mar 2013'''||Debian 7.0 (wheezy) without HPPA.
+|-
+| style="vertical-align:top;" |'''Feb 2013'''||Many PA-RISC Linux kernel patches have been integrated into Kernel 3.8. Stability will improve even further with kernel 3.9.
+|-
+| style="vertical-align:top;" |'''Feb 2012'''||Website is back up! Work continues on the debian-ports support for HPPA.
+|-
+| style="vertical-align:top;" |'''Sep 2010'''||HPPA dropped as an official release architecture for squeeze.
+|-
+| style="vertical-align:top;" |'''Sep 2009'''||NPTL transition is ready, thanks to the efforts of Carlos!
+|-
+| style="vertical-align:top;" |'''Feb 2009'''||Debian 5.0!
+|-
+| style="vertical-align:top;" |'''Apr 2007'''||Debian 4.0!
+|-
+| style="vertical-align:top;" |'''Jul 2006'''||James fixes (mostly) parisc-linux on PA8800! w00t!
+|-
+| style="vertical-align:top;" |'''Mar 2006'''||Fixed stifb on 64-bit machines. X now works with a 64-bit kernel!
+|-
+| style="vertical-align:top;" |'''Dec 2005'''||Fixed framebuffer console on 32bit HCRX graphic cards
+|-
+| style="vertical-align:top;" |'''Dec 2005'''||PCMCIA support added (e.g. used in Tadpole PA-RISC laptops)
+|-
+| style="vertical-align:top;" |'''Jun 2005'''||Debian 3.1!
+|-
+| style="vertical-align:top;" |'''Mar 2005'''||The parisc-linux patch set is less than 200K for the first time ever! Thanks to willy for doing such a great job pushing patches upstream!
+|-
+| style="vertical-align:top;" |'''Jun&nbsp;2004&nbsp;&nbsp;&nbsp;'''||Support for PA8800/zx1 committed!
+|-
+| style="vertical-align:top;" |'''1998-2000'''||[[PA-RISC_Linux_Project_History|How it started]]
+|-
+|}
+
+
 = PROJECT HISTORY =
 
 [[File:Www_parisc-linux_org-front.jpg|thumb|400px|Front of http://parisc.parisc-linux.org]]
