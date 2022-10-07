@@ -23,8 +23,8 @@ QEMU on parisc might be further developed (by paid contract) via:
 
 == QEMU status overview ==
 
-Qemu versions v6.2.0, v6.1.1 and v6.0.1 run stable, but miss this patch:
-* [https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html target/hppa: Fix atomic_store_3 for STBY]
+Please run at least QEMU version 7.1.0 (or higher).
+Earlier versions had various bugs which are fixed in v7.1.0.
 
 == QEMU runtime options ==
 
