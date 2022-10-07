@@ -2,31 +2,31 @@
 title: Qemu
 ---
 
-== QEMU support status regarding hppa/parisc ==
+== QEMU overview ==
 
-Since QEMU version 2.12 (April 2018), qemu fully supports 32-bit hppa user emulation (hppa-linux-user) and 32-bit hppa system emulation (qemu-system-hppa).
-All necessary changes have been merged into the [https://git.qemu.org/?p=qemu.git;a=summary upstream qemu git tree].
+'''Please run at least QEMU version 7.1.0'''. Earlier versions had various bugs which are fixed in v7.1.0.
 
-PA-RISC machines need a firmware ("PDC" = Processor Dependend Code).
-Qemu comes with a precompiled PDC firmware for hppa ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS ].
+QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop machine] machine with up to 16 PA7100LC CPUs.
 
-The emulated machine is a [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop machine], with one or more 32-bit PA7100LC CPUs.
+PA-RISC machines need a firmware ("PDC" = Processor Dependend Code), and QEMU comes with a precompiled firmware ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS].
 
-The QEMU emulation is able to run Linux and HP-UX.
-
-QEMU on parisc has been developed by:
+QEMU for parisc has been developed by:
 * [mailto:rth@twiddle.net Richard Henderson]: QEMU CPU emulation (32-bit only), QEMU hardware divers
 * [mailto:deller@gmx.de Helge Deller]: QEMU hardware drivers, SeaBIOS PDC firmware
 * [mailto:svens@stackframe.org Sven Schnelle]: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
 QEMU on parisc might be further developed (by paid contract) via:
 * [mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland]: offers paid contract work
 
-== QEMU status overview ==
+== QEMU supported guest operating systems ==
 
-Please run at least QEMU version 7.1.0 (or higher).
-Earlier versions had various bugs which are fixed in v7.1.0.
+QEMU does support those operating systems as guests:
+* Linux (Debian, Gentoo)
+* [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
+* [https://wiki.netbsd.org/ports/hppa/ NetBSD], >= 8.0
+* [https://winworldpc.com/product/nextstep/3x NextSTEP]
+* [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
 
-== QEMU runtime options ==
+== QEMU command line options ==
 
 Standard qemu options:
 * -m 1G            - tell machine to have 1G of memory
@@ -85,14 +85,6 @@ Run configure, e.g.
 * (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
 
 Run "make"
-
-== Emulation guest targets ==
-
-* Linux (Debian, Gentoo)
-* [https://en.wikipedia.org/wiki/HP-UX HP-UX], versions 9.x up to 11.11
-* [https://wiki.netbsd.org/ports/hppa/ NetBSD], >= 8.0
-* [https://winworldpc.com/product/nextstep/3x NextSTEP]
-* [ftp://ftp.cirr.com/pub/hppa/mklinux/ OSF/MkLinux]
 
 == Linux ==
 
@@ -224,11 +216,6 @@ Possible enhancements:
 * Emulate built-in LASI SCI controller instead of PCI SCSI add-on card
 * Elroy PCI emulation, then emulate e.g. a C3000?
 * PA2.0/64bit (low prio)
-
-== List of QEmu important patches ==
-* [https://git.qemu.org/?p=qemu.git;a=commit;h=b1af755c33bf0d690553a5ccd93689dfd15a98e8 target/hppa: Allow, but diagnose, LDCW aligned only mod 4] - prevents crash with unaligned LDCW instruction. Missing in qemu v4.2.1, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964805
-* [https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg05904.html target/hppa: Free some temps in do_sub] - fixes https://bugs.launchpad.net/qemu/+bug/1880287
-* [https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html target/hppa: Fix atomic_store_3 for STBY]
 
 == Screenshots ==
 
