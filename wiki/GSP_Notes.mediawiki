@@ -1,0 +1,6 @@
+---
+title: GSP Notes
+---
+
+Doug Burton had written up some GSP notes, which can be found here:
+https://web.archive.org/web/20170803153455/http://drburton.net:80/GSPinfo.htm
