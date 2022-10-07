@@ -4,3 +4,1053 @@ title: GSP Notes
 
 Doug Burton had written up some GSP notes, which can be found here:
 https://web.archive.org/web/20170803153455/http://drburton.net:80/GSPinfo.htm
+
+Doug Burton allowed me to place a copy below (Oct 2022).
+
+= GSP Notes =
+
+This is a bunch of notes on how to use the GSP function of your HP server. To use, go to your console and hit Ctrl-b to enter the GSP funhouse.
+
+
+-----
+
+'''''Command line fun:'''''<br />
+You can check the GSP from the command line by running this command: '''stty +queryGSP &lt; /dev/GSPdiag1'''<br />
+It should come back with &quot;GSP is functional&quot;.
+
+You can reset the GSP ''from'' the GSP (see [[#HE_XD_SUM|below]]), but if it's hung you'll need to reset it from the command line. Run the following command on the command line to &quot;reboot&quot; the GSP (without rebooting the server):
+
+<pre>stty +resetGSP &lt; /dev/GSPdiag1</pre>
+When you run this command you will get a prompt on the console: &quot;'''Press 'p' now to clear all GSP passwords and users...'''&quot;. If you press &quot;'''p'''&quot; and then confirm it (you only have a few seconds to respond), the GSP user/password info is wiped. '''''Your LAN info is kept however'''''.
+
+On some servers you have a tiny button on the back of the server. Press it using a pen, pencil, or paper clip. This will also reboot the GSP.
+
+Generic login and password is either: <code>Admin Admin</code> or <code>&lt;Enter&gt; &lt;Enter&gt;</code> (blank blank - in other words)
+
+
+-----
+
+=== Terminal keyboard mappings ===
+
+To obtain terminal functions use the following key combinations:
+
+{|
+|width="50%"|
+===== Terminal function required =====
+|width="50%"|
+===== Key combination to use on Browser keyboard =====
+|-
+| Break
+| Control + F12
+|-
+| ClearDisplay
+| Control + F4
+|-
+| ClearLine
+| Control + F3
+|-
+| DelChar
+| Delete
+|-
+| DelLine
+| Control + F2
+|-
+| Enter
+| F12
+|-
+| F1 to F8
+| F1 to F8
+|-
+| FKeyDef (for defining function keys)
+| Control + F9
+|-
+| HardReset
+| Control + F8
+|-
+| InsChar
+| Shift + left arrow key
+|-
+| InsLine
+| Control + F1
+|-
+| Menu
+| Shift + F9
+|-
+| Modes
+| F11
+|-
+| Print
+| Control + F6
+|-
+| Select
+| Control + F5
+|-
+| Shift F1 to F8
+| Shift F1 to F8
+|-
+| SoftReset
+| Control + F7
+|-
+| Stop
+| Shift + F12
+|-
+| System
+| Shift + F11
+|-
+| User
+| F9
+|-
+| Width
+| Control + F11
+|}
+
+<span id="HELP_ON_TOPIC"></span>
+
+{|
+|width="100%"|
+= GSP Help =
+
+{|
+|+ '''HELP TOPICS'''
+| [[#HELP_ON_ADMIN|Administrator]]
+| [[#HELP_ON_HPTERM|HPterm and VT100]]
+| [[#HELP_ON_OVERVIEW|Overview]]
+|-
+| [[#HE_LIST_ADMIN|Administrator Commands]]
+| [[#HELP_ON_MODEM|Modem]]
+| [[#HELP_ON_PASSWORD|Password resetting]]
+|-
+| [[#HELP_ON_CHASSIS|Chassis codes]]
+| [[#HELP_ON_MODE|Modes of the GSP]]
+| [[#HELP_ON_PORT|Port summary]]
+|-
+| [[#HELP_ON_CMD|Command summary]]
+| [[#HE_LIST_OPER|Operator Commands]]
+| [[#HELP_ON_SESSION|Session]]
+|-
+| [[#HELP_ON_CONSOLE|Console]]
+|
+|
+|}
+|}
+
+<span id="HELP_ON_TOPIC">Links to individual command help:<br />
+</span>
+
+{|
+| [[#HE_AC_SUM|AC]] [[#HE_AR_SUM|AR]] [[#HE_CA_SUM|CA]] [[#HE_CE_SUM|CE]] [[#HE_CL_SUM|CL]] [[#HE_CO_SUM|CO]] [[#HE_CSP_SUM|CSP]] [[#HE_CT_SUM|CT]] [[#HE_DC_SUM|DC]] [[#HE_DI_SUM|DI]] [[#HE_EL_SUM|EL]] [[#HE_ER_SUM|ER]] [[#HE_HE_SUM|HE]] [[#HE_IT_SUM|IT]] [[#HE_LC_SUM|LC]] [[#HE_LS_SUM|LS]] [[#HE_MFG_SUM|MFG]] [[#HE_MR_SUM|MR]] [[#HE_MS_SUM|MS]]
+|-
+| [[#HE_OT_SUM|OT]] [[#HE_PC_SUM|PC]] [[#HE_PG_SUM|PG]] [[#HE_PS_SUM|PS]] [[#HE_QMM_SUM|QMM]] [[#HE_RS_SUM|RS]] [[#HE_SDM_SUM|SDM]] [[#HE_SE_SUM|SE]] [[#HE_SL_SUM|SL]] [[#HE_SO_SUM|SO]] [[#HE_SS_SUM|SS]] [[#HE_TC_SUM|TC]] [[#HE_TE_SUM|TE]] [[#HE_VFP_SUM|VFP]] [[#HE_VT_SUM|VT]] [[#HE_WHO_SUM|WHO]] [[#HE_XD_SUM|XD]] [[#HE_XU_SUM|XU]]
+|}
+
+
+-----
+
+<span id="HELP_ON_TOPIC"></span>
+
+<span id="HELP_ON_TOPIC"></span> <span id="HE_LIST_ADMIN"><br />
+</span>
+
+{|
+|+ '''List of Administrator Commands'''
+| [[#HE_AC_SUM|AC]] : Alert display Configuration
+| [[#HE_PC_SUM|PC]] : Remote Power Control
+|-
+| [[#HE_AR_SUM|AR]] : Automatic System Restart config.
+| [[#HE_PG_SUM|PG]] : PaGing parameter setup
+|-
+| [[#HE_CA_SUM|CA]] : Configure asynch/serial ports
+| [[#HE_PS_SUM|PS]] : Power management module Status
+|-
+| [[#HE_CL_SUM|CL]] : Console Log- view console history
+| [[#HE_RS_SUM|RS]] : Reset System through RST signal
+|-
+| [[#HE_CO_SUM|CO]] : COnsole- return to console mode
+| [[#HE_SDM_SUM|SDM]]: Set Display Mode (hex or text)
+|-
+| [[#HE_CSP_SUM|CSP]]: Connect to remote Service Proc.
+| [[#HE_SE_SUM|SE]] : SEssion- log into the system
+|-
+| [[#HE_DC_SUM|DC]] : Default Configuration
+| [[#HE_SL_SUM|SL]] : Show Logs (chassis code buffer)
+|-
+| [[#HE_DI_SUM|DI]] : DIsconnect remote or LAN console
+| [[#HE_SO_SUM|SO]] : Security options &amp; access control
+|-
+| [[#HE_EL_SUM|EL]] : Enable/disable LAN/WEB access
+| [[#HE_SS_SUM|SS]] : System Status of proc. modules
+|-
+| [[#HE_ER_SUM|ER]] : Enable/disable Remote/modem
+| [[#HE_TC_SUM|TC]] : Reset via Transfer of Control
+|-
+| [[#HE_HE_SUM|HE]] : Display HElp for menu or command
+| [[#HE_TE_SUM|TE]] : TEll- send a msg. to other users
+|-
+| [[#HE_IT_SUM|IT]] : Inactivity Timeout settings
+| [[#HE_VFP_SUM|VFP]]: Virtual Front Panel display
+|-
+| [[#HE_LC_SUM|LC]] : LAN configuration
+| [[#HE_WHO_SUM|WHO]]: Display connected GSP users
+|-
+| [[#HE_LS_SUM|LS]] : LAN Status
+| [[#HE_XD_SUM|XD]] : Diagnostics and/or Reset of GSP
+|-
+| [[#HE_MR_SUM|MR]] : Modem Reset
+| [[#HE_XU_SUM|XU]] : Upgrade the GSP Firmware
+|-
+| [[#HE_MS_SUM|MS]] : Modem Status
+|
+|}
+
+<br />
+
+<span id="HE_LIST_OPER"></span>
+
+{|
+|+ '''List of Operator Commands'''
+| [[#HE_AC_SUM|AC]] : Alert display Configuration
+| [[#HE_PC_SUM|PC]] : Remote Power Control
+|-
+| [[#HE_CA_SUM|CA]] : Configure asynch/serial ports
+| [[#HE_RS_SUM|RS]] : Reset System through RST signal
+|-
+| [[#HE_CL_SUM|CL]] : Console Log- view console history
+| [[#HE_SDM_SUM|SDM]]: Set Display Mode (hex or text)
+|-
+| [[#HE_CO_SUM|CO]] : COnsole- return to console mode
+| [[#HE_SE_SUM|SE]] : SEssion- log into the system
+|-
+| [[#HE_CSP_SUM|CSP]]: Connect to remote Service Proc.
+| [[#HE_SL_SUM|SL]] : Show Logs (chassis code buffer)
+|-
+| [[#HE_DI_SUM|DI]] : DIsconnect remote or LAN console
+| [[#HE_SS_SUM|SS]] : System Status of proc. modules
+|-
+| [[#HE_EL_SUM|EL]] : Enable/disable LAN/WEB access
+| [[#HE_TC_SUM|TC]] : Reset via Transfer of Control
+|-
+| [[#HE_ER_SUM|ER]] : Enable/disable Remote/modem
+| [[#HE_TE_SUM|TE]] : TEll- send a msg. to other users
+|-
+| [[#HE_HE_SUM|HE]] : Display HElp for menu or command
+| [[#HE_VFP_SUM|VFP]]: Virtual Front Panel display
+|-
+| [[#HE_LS_SUM|LS]] : LAN Status
+| [[#HE_WHO_SUM|WHO]]: Display connected GSP users
+|-
+| [[#HE_MR_SUM|MR]] : Modem Reset
+| [[#HE_XD_SUM|XD]] : Diagnostics and/or Reset of GSP
+|-
+| [[#HE_MS_SUM|MS]] : Modem Status
+| [[#HE_XU_SUM|XU]] : Upgrade the GSP Firmware
+|}
+
+<br />
+
+
+<span id="HELP_ON_OVERVIEW"></span>
+
+= <span id="HELP_ON_OVERVIEW">GSP Help Overview</span> =
+
+<span id="HELP_ON_OVERVIEW"></span>
+
+The Guardian Service Processor (GSP) is an independent support processor for the system console. GSP provides services that facilitate the management of the host system. Its major features are:
+
+* Always-on capability: The GSP is alive as long as the power cord is plugged in.
+* User/password access control: Supports operator and administrator users
+* Multiple access methods:
+*; Local Port
+*: use terminal or laptop computer for direct connect
+*; Remote/modem Port
+*: use dedicated modem RS-232 port and external modem
+*; LAN
+*: use telnet or web to access GSP LAN
+* Mirrored console: the system console output stream is reflected to all of the connected console users, and any user can provide input.
+* Display and/or logging of: The system console, System event logs (chassis codes), Virtual Front Panel (VFP), and system power and configuration status
+* An independent, non-mirrored session: Available from local and modem ports for GSP connection (CSP) or OS login (SE).
+* Power control, system reset, and TOC capabilities.
+
+
+
+<span id="HELP_ON_MODE"></span>
+
+== <span id="HELP_ON_MODE">GSP MODES</span> ==
+
+<span id="HELP_ON_MODE"></span>
+
+=== THE MIRRORED GSP SESSION: ===
+
+When first logging on, the user is part of the mirrored GSP session. The mirrored GSP session has three modes:
+
+# GSP Command Mode -<br />
+You are in the GSP Command Mode right now. In this mode all the GSP commands can be executed. Typically this mode is entered by typing CTRL-B from console mode.
+# <span id="HELP_ON_MODE">Console Mode -<br />
+In Console Mode the user gets access to the Unix console. This mode is entered from the GSP Command Mode using the (</span>[[#HE_CO_SUM|CO]]) command.
+# VFP or Alert Mode -<br />
+In the VFP or Alert Mode the GSP displays a representation of the front panel leds, called the Virtual Front Panel ([[#HE_VFP_SUM|VFP]]). This mode is entered from GSP Command Mode using the VFP command.
+
+See the help on those commands for more information.
+
+=== LEAVING MIRRORED GSP SESSION: ===
+
+From the local or remote/modem ports, it is also possible to leave the mirrored GSP session and connect to either the OS (see the [[#HE_SE_SUM|SE]] command) or to another GSP on the network (see the [[#HE_CSP_SUM|CSP]] command).
+
+
+
+<span id="HELP_ON_CMD"></span> <span id="HE_HE_SUM"></span>
+
+== <span id="HE_HE_SUM">GSP COMMAND HELP</span> ==
+
+<span id="HE_HE_SUM">The GSP commands can be grouped into the following categories:</span>
+
+* <span id="HE_HE_SUM">'''STATUS COMMANDS'''- Provide status on the server and the GSP.<br />
+</span>[[#HE_CL_SUM|CL]], [[#HE_LS_SUM|LS]], [[#HE_MS_SUM|MS]], [[#HE_PS_SUM|PS]], [[#HE_SL_SUM|SL]], [[#HE_SS_SUM|SS]], [[#HE_VFP_SUM|VFP]]
+* '''SERVER CONTROL'''- Alter the state of the server<br />
+[[#HE_MR_SUM|MR]], [[#HE_PC_SUM|PC]], [[#HE_RS_SUM|RS]], [[#HE_TC_SUM|TC]]
+* '''GENERAL GSP CONFIGURATION'''<br />
+[[#HE_AC_SUM|AC]], [[#HE_AR_SUM|AR]], [[#HE_DC_SUM|DC]], [[#HE_IT_SUM|IT]], [[#HE_RP_SUM|RP]], [[#HE_SDM_SUM|SDM]], [[#HE_SO_SUM|SO]], [[#HE_XD_SUM|XD]], [[#HE_XU_SUM|XU]]
+* '''GSP PORT CONFIGURATION'''- Configure LAN/WEB, remote/modem, and local ports<br />
+[[#HE_CA_SUM|CA]], [[#HE_EL_SUM|EL]], [[#HE_ER_SUM|ER]], [[#HE_LC_SUM|LC]], [[#HE_PG_SUM|PG]]
+* '''CONNECTIONS'''- Examine and make connections or change mode<br />
+[[#HE_CO_SUM|CO]], [[#HE_CSP_SUM|CSP]], [[#HE_DI_SUM|DI]], [[#HE_SE_SUM|SE]], [[#HE_TE_SUM|TE]], [[#HE_WHO_SUM|WH]]O, [[#HE_VFP_SUM|VFP]]
+
+
+
+<span id="HELP_ON_ADMIN"></span>
+
+== <span id="HELP_ON_ADMIN">OPERATOR / ADMINISTRATOR HELP</span> ==
+
+<span id="HELP_ON_ADMIN">Administrators have more capabilities than Operators.</span>
+
+Administrator-Only Commands:
+
+; <span id="HELP_ON_ADMIN"></span>[[#HE_AR_SUM|AR]]
+: (Automatic system Restart)
+; [[#HE_DC_SUM|DC]]
+: (Default Configuration)
+; [[#HE_IT_SUM|IT]]
+: (Inactivity Timeout)
+; [[#HE_LC_SUM|LC]]
+: (LAN Configuration)
+; [[#HE_PG_SUM|PG]]
+: (PaGing)
+; [[#HE_SO_SUM|SO]]
+: (Security Options)
+
+=== The GSP Command interface permission/access level: ===
+
+The GSP Command interface permission/access level is set by the first user that types CTRL-B to initiate it. If that user is an operator- user, then the command interface runs at operator access level. Even if an administrator-user logs in later or the operator-user disconnects, the access level stays the same. The access level can be changed by leaving GSP command mode and typing CTRL-B again to return.
+
+
+
+<span id="HELP_ON_CONSOLE"></span>
+
+== <span id="HELP_ON_CONSOLE">CONSOLE MODE HELP</span> ==
+
+<span id="HELP_ON_CONSOLE">Typing &quot;CO&quot; from the GSP Command interface provides a mirrored version of the OS console. All mirrored users see the same output. At any time, only one of the mirrored users has write access to the console. To get write access to the console, type CTRL-e c f (not CTRL-e CTRL-c CTRL-f).</span>
+
+<span id="HELP_ON_CONSOLE">SEE ALSO:</span> [[#HE_CO_SUM|CO]] (COnsole)
+
+
+
+<span id="HELP_ON_SESSION"></span>
+
+== <span id="HELP_ON_SESSION">SESSION MODE HELP</span> ==
+
+<span id="HELP_ON_SESSION">Typing &quot;SE&quot; from the GSP Command interface provides a non-mirrored, normal OS login. The session is not the console; it is a separate login to the OS, and the messages that the OS sends to the console will not be seen.</span>
+
+'''RECOMMENDATION:''' Use the session for ASCII screen-oriented applications (SAM) or file transfer programs (ftp) from the local or modem ports. To use these applications from the LAN, telnet directly to the system for a private login.
+
+<span id="HELP_ON_SESSION">SEE ALSO:</span> [[#HE_SE_SUM|SE]] (SEssion)
+
+
+
+<span id="HELP_ON_CHASSIS"></span>
+
+== <span id="HELP_ON_CHASSIS">CHASSIS CODES</span> ==
+
+<span id="HELP_ON_CHASSIS">Chassis codes are encoded data that provide system information to the user. Some well-known names for similar data would be Event Logs or Post Codes. Chassis codes are produced by intelligent hardware modules, the O/S, and system firmware. Use VFP to view the live chassis codes. Use SL to view the chassis code log.</span>
+
+The following severity (or alert) levels are defined:
+
+{|
+| 0. No failure
+| 6. Pending failure
+| 11. (Reserved)
+|-
+| 1. Information only
+| 7. (Reserved)
+| 12. Software Failure
+|-
+| 2. Non-urgent attention req.
+| 8. Performance Impaired
+| 13. System hang
+|-
+| 3. System blocked
+| 9. (Reserved)
+| 14. Power failure
+|-
+| 4. Unexpected configuration
+| 10. Loss of Functionality
+| 15. Fatal HW failure
+|-
+| 5. Environmental problem
+|
+|
+|}
+
+<span id="HELP_ON_CHASSIS">SEE ALSO:</span> [[#HE_SL_SUM|SL]], [[#HE_VFP_SUM|VFP]] (Show Logs, Virtual Front Panel)
+
+
+
+<span id="HELP_ON_PORT"></span>
+
+== <span id="HELP_ON_PORT">PORTS HELP</span> ==
+
+<span id="HELP_ON_PORT">The local, remote/modem, and LAN ports are actual connections on the back of the server. All ports can be used even when the server is non-functional.</span>
+
+# <span id="HELP_ON_PORT">Local port -<br />
+Provides serial port terminal access. To configure, see the</span> [[#HE_CA_SUM|CA]] (Configure Asynchronous) command.
+# Remote/Modem port -<br />
+Provides external modem access. Related commands are [[#HE_ER_SUM|ER]], [[#HE_MS_SUM|MS]], and [[#HE_MR_SUM|MR]] (Enable Remote/modem, Modem Status, Modem Reset)
+# LAN port -<br />
+Provides telnet and web access into the GSP. Related commands are [[#HE_EL_SUM|EL]], [[#HE_LC_SUM|LC]], and [[#HE_LS_SUM|LS]] (Enable LAN, LAN Configuration, and LAN Status).
+
+
+
+<span id="HELP_ON_MODEM"></span>
+
+== <span id="HELP_ON_MODEM">REMOTE/MODEM PORT HELP</span> ==
+
+<span id="HELP_ON_MODEM">The remote/modem port can be used for dial-in access to the GSP or the OS, and can be configured so that the OS or the GSP can activate a pager.</span>
+
+The remote/modem port is configured via the CA command. The ER command enables/disables the port and gives the modem control over to the GSP or the OS. See the help on those commands for more details.
+
+<span id="HELP_ON_MODEM">SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_ER_SUM|ER]], [[#HE_DI_SUM|DI]], [[#HE_MR_SUM|MR]], [[#HE_MS_SUM|MS]], [[#HE_PG_SUM|PG]] (Configure Asynchronous, Enable Remote, DIsconnect remote or LAN, Modem Reset, Modem Status, PaGing)
+
+
+
+<span id="HELP_ON_INTERN"></span>
+
+== <span id="HELP_ON_INTERN">INTERNAL PORT HELP</span> ==
+
+<span id="HELP_ON_INTERN">The Internal Port has been obsoleted.</span>
+
+<span id="HELP_ON_INTERN"></span> 
+
+<span id="HELP_ON_HPTERM"></span>
+
+== <span id="HELP_ON_HPTERM">HPTERM &amp; VT100 HELP</span> ==
+
+<span id="HELP_ON_HPTERM">'''RECOMMENDATION:''' Do not mix HP and vt100 terminal types at the same time.</span>
+
+The GSP mirrors the system console to the GSP local, remote/modem, and LAN ports. One console output stream is reflected to all of the connected console users. If several different terminal types are used simultaneously by the users, some users may see strange results.
+
+HP-UX example:<br />
+Applications which care about the terminal type (install, SAM, vi, etc.) running on HP-UX use three methods to determine the terminal type:
+
+# The application takes the terminal information from the OS. This value is set in the CA command and takes effect for all GSP ports.
+# The $TERM shell environment variable
+# The application directly queries the terminal (in this case, the write enabled terminal will establish the terminal type.)
+
+Make sure that settings #1 and #2 agree with your terminal type.
+
+MPE/iX Example:<br />
+MPE/iX only supports HPTERM terminal type. If the terminal type is set to VT100 there may be unpredictable results when some applications are run.
+
+Applications which care about terminal type are of three categories:
+
+# Block mode applications using VPlus such as NMMGR.
+# Other screen oriented applications such as HPEdit.
+# Applications running under the MPE/iX Posix environment.
+
+The application categories #1 and #2 generally get the terminal type by querying the terminal. The MPE/iX Posix applications will use the $TERM shell variable.
+
+<span id="HELP_ON_HPTERM"></span> 
+
+<span id="HELP_ON_PASSWORD"></span>
+
+== <span id="HELP_ON_PASSWORD">PASSWORDS: HOW TO RESET</span> ==
+
+<span id="HELP_ON_PASSWORD">There are several ways to reset passwords in the GSP:<br />
+</span>
+
+# In the SO command, change individual users
+# In the DC command, choose \&quot;Reset Security configuration\&quot;
+# If all passwords have been forgotten, they can be reset by hitting the reset button on the back panel of the GSP. After the GSP reboots, the local console terminal will display a message for five seconds. Responding to this message in time will allow a local user to reset the passwords.
+
+Note that the user information as well as the passwords are erased in methods 2 &amp; 3.
+
+<span id="HELP_ON_PASSWORD">SEE ALSO:</span> [[#HE_DC_SUM|DC]], [[#HE_SO_SUM|SO]] (Default Configuration, Security Options)
+
+
+
+
+-----
+
+= GSP Commands =
+
+
+-----
+
+<span id="HE_AC_SUM"></span>
+
+== <span id="HE_AC_SUM">General Configuration AC : Alert display Configuration</span> ==
+
+<span id="HE_AC_SUM">The GSP will automatically activate the ALERT DISPLAY when a chassis code with an alert level greater than or equal to the configured threshold is received. Users in console mode or GSP command mode will be returned to console mode after the alert is acknowledged. Users in VFP mode will be returned to VFP mode.</span>
+
+Alerts with level 2 or greater will go into the Error Log. If an alert is acknowledged in the ALERT DISPLAY, that alert will not light the Attention LED. Any unacknowledged alert in the Error Log will light the Attention LED. To turn off the LED, read the Error Log. Since level 2 alerts can never activate the ALERT DISPLAY, they must always be acknowledged by reading the Error Log.
+
+The setting in AC has no affect on the automatic early boot VFP. During boot, level 3 alerts and greater will always be displayed.
+
+<span id="HE_AC_SUM">SEE ALSO:</span> [[#HE_SL_SUM|SL]], [[#HE_VFP_SUM|VFP]] (Show Logs, Virtual Front Panel)
+
+
+
+<span id="HE_AR_SUM"></span>
+
+== <span id="HE_AR_SUM">General Configuration AR : Automatic System Restart configuration</span> ==
+
+<span id="HE_AR_SUM">The AR command allows the operator to enable, disable, and configure the Automatic System Restart (ASR). ASR is triggered by each alert level value that is configured. For instance, for levels 12 and higher, you would specify alerts &quot;12 13 14 15&quot; for the triggering condition.</span>
+
+The default is level 13. Setting ASR for alert levels below 10 is strongly discouraged.
+
+<span id="HE_AR_SUM">(ADMINISTRATOR level command.) SEE ALSO:</span> [[#HE_DC_SUM|DC]] (Default Configuration)
+
+<span id="HE_CA_SUM"></span> 
+
+== Port Configuration CA : Configure Asynchronous local and remote serial ports ==
+
+BAUD RATES: Input and output data rates are the same.
+
+FLOW CONTROL: Hardware uses RTS/CTS; Software uses Xon/Xoff. TERMINAL TYPE: See subject &quot;HPterm&quot;, (next page)
+
+TRANSMIT CONFIGURATION STRINGS: Disable this setting whenever the modem being used is not compatible with the supported modem (MT5634ZBA).
+
+MODEM PRESENCE: Set this to &quot;not always connected&quot; when the modem may not always be connected. For example: A modem attached through a switch. In mode &quot;not always connected&quot;, no dial-out functions are allowed: DIAL-BACK is disabled, and PAGING is not possible.
+
+MODEM PROTOCOL: CCITT is a European standard; RTS/CTS signaling is used, as well as the Ring signal. Bell is a U.S. or simple mode.
+
+SEE ALSO: [[#HE_ER_SUM|ER]] (Enable Remote/modem)
+
+
+
+<span id="HE_CE_SUM"></span>
+
+== <span id="HE_CE_SUM">Status CE : Chassis Entry- Put a repair log entry in the log history</span> ==
+
+<span id="HE_CE_SUM">Allows a CE to add an entry to the chassis logs, usually to indicate a firmware update or repair. The command prompts for a one-line text message. The message will be logged to the Error Log.</span>
+
+<span id="HE_CE_SUM">SEE ALSO:</span> [[#HE_AC_SUM|AC]], [[#HE_SL_SUM|SL]] (Alert Configuration, Show Logs)
+
+
+
+<span id="HE_CL_SUM"></span>
+
+== <span id="HE_CL_SUM">Status CL : Console Log- view the history of the Console output</span> ==
+
+<span id="HE_CL_SUM">This command displays up to 20 Kilobytes of logged console data (about 20 pages of display in text mode) sent from the system to the Console path.</span>
+
+<span id="HE_CL_SUM">SEE ALSO:</span> [[#HE_CO_SUM|CO]] (COnsole)
+
+
+
+<span id="HE_CO_SUM"></span>
+
+== <span id="HE_CO_SUM">Connection CO : COnsole- leave command mode and return to console mode</span> ==
+
+<span id="HE_CO_SUM">This command exits the GSP command interface, and connects to the system console. All mirrored users are switched. Type CTRL-B to return to the GSP command interface.</span>
+
+VT100 and HPTERM: Verify that the GSP setting in the CA command is correct and all mirrored consoles are of the same terminal type for proper operation.
+
+To run an ASCII screen-oriented application (SAM) or a file transfer program (ftp), the console is not the recommended connection. On the local or remote/modem ports, it is recommended that the SE command be used to start a private system session, so that console output and mirroring do not disrupt the application. On the LAN, connecting directly via telnet or web to the system over the system LAN is recommended.
+
+<span id="HE_CO_SUM">SEE ALSO:</span> [[#HE_SE_SUM|SE]] (SEssion)
+
+
+
+<span id="HE_CSP_SUM"></span>
+
+== <span id="HE_CSP_SUM">Connection CSP : Connect to remote Service Processor over the LAN</span> ==
+
+<span id="HE_CSP_SUM">This command allows the local or remote/modem user to connect over the GSP LAN to another GSP on the network. The user that launches the command is given a private connection to the other GSP over the LAN. To return to the original GSP, type &quot;CTRL-]&quot; to disconnect the CSP session.</span>
+
+Other mirrored GSP users are placed in console mode when this command is executed. The CSP user returns to the mirrored GSP session after ending the CSP session.
+
+<span id="HE_CSP_SUM">SEE ALSO:</span> [[#HE_LC_SUM|LC]], [[#HE_SE_SUM|SE]] (LAN Configuration, SEssion)
+
+
+
+<span id="HE_CT_SUM"></span>
+
+== <span id="HE_CT_SUM">Manufacturing CT : Configure Tracing into GSP firmware</span> ==
+
+<span id="HE_CT_SUM">This command is only available in Manufacturing Mode.</span>
+
+More detailed help is not available for this command.
+
+<span id="HE_CT_SUM"></span> 
+
+<span id="HE_DC_SUM"></span>
+
+== <span id="HE_DC_SUM">General Configuration DC : Default Configuration- reset individual or multiple parameters</span> ==
+
+<span id="HE_DC_SUM">This command sets various GSP parameters back to their default values.</span>
+
+The user may reset all or a subset of the following parameters: IP configuration, modem configuration, paging configuration, command interface configuration, disable remote access, security configuration, session configuration. For example: setting the security configuration to default will erase all users and passwords.
+
+<span id="HE_DC_SUM">(ADMINISTRATOR level command.)<br />
+SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_EL_SUM|EL]], [[#HE_ER_SUM|ER]], [[#HE_IT_SUM|IT]], [[#HE_LC_SUM|LC]], [[#HE_PG_SUM|PG]], [[#HE_SO_SUM|SO]] (Configure Asynchronous, Enable LAN, Enable Remote, Inactivity Timeouts, LAN Configuration, PaGing, Security Options)
+
+
+
+<span id="HE_DI_SUM"></span>
+
+== <span id="HE_DI_SUM">Connection DI : DIsconnect remote/modem or LAN/WEB console</span> ==
+
+<span id="HE_DI_SUM">This command disconnects the remote/modem or LAN/WEB users from the GSP. It does not disable the ports. To disable the ports, see the ER command for remote/modem and the EL command for LAN/WEB access. The TE and WHO commands are useful to identify the connected users before running this command.</span>
+
+<span id="HE_DI_SUM">SEE ALSO:</span> [[#HE_ER_SUM|ER]], [[#HE_EL_SUM|EL]], [[#HE_TE_SUM|TE]], [[#HE_WHO_SUM|WHO]] (Enable Remote/modem, Enable LAN, TEll, Who)
+
+
+
+<span id="HE_DL_SUM"></span>
+
+== <span id="HE_DL_SUM">GSP Help</span> ==
+
+<span id="HE_DL_SUM">DL COMMAND NOT SUPPORTED</span>
+
+For Display Logs, use the SL (Show Logs) command.
+
+For Disable LAN, use the EL (Enable/disable LAN) command.
+
+<span id="HE_DL_SUM">SEE ALSO:</span> [[#HE_SL_SUM|SL]], [[#HE_EL_SUM|EL]] (Show Logs, Enable LAN)
+
+
+
+<span id="HE_DR_SUM"></span>
+
+== <span id="HE_DR_SUM">GSP Help</span> ==
+
+<span id="HE_DR_SUM">DR COMMAND NOT SUPPORTED</span>
+
+Please use:
+
+ER : Enable/disable Remote console serial port modem access
+
+The DR command has been replaced by the ER command. The ER command offers a selection of configurations for the remote console serial port modem, including disabling the port.
+
+<span id="HE_DR_SUM">SEE ALSO:</span> [[#HE_ER_SUM|ER]] (Enable Remote/modem)
+
+
+
+<span id="HE_EL_SUM"></span>
+
+== <span id="HE_EL_SUM">Port Configuration EL : Enable/disable LAN/WEB console access</span> ==
+
+<span id="HE_EL_SUM">The EL command is used to set access permissions for users logging into the GSP over the LAN. The GSP can be set to allow telnet access, web access or both. It does not affect the IP configuration or the ability of the CSP command to connect over the LAN. It also does not affect the ability of the GSP to perform upgrades over the LAN (XU).</span>
+
+<span id="HE_EL_SUM">SEE ALSO:</span> [[#HE_LC_SUM|LC]], [[#HE_LS_SUM|LS]] (LAN Configuration, LAN Status)
+
+
+
+<span id="HE_ER_SUM"></span>
+
+== <span id="HE_ER_SUM">Port Configuration ER : Enable/disable Remote console serial port modem access</span> ==
+
+<span id="HE_ER_SUM">The following modes are available for the remote/modem port:</span>
+
+# LOCKED-OUT -<br />
+Lock out all dial-in access
+# GSP -<br />
+Exclusive GSP access
+# SESSION -<br />
+Modem controlled by OS; both dial-in and dial-out
+
+Dial-in to the modem results in:
+
+* Access denied under the mode: LOCKED-OUT
+* A GSP login under the mode: GSP
+* A session with the OS under the mode: SESSION (The OS must be properly configured to use the modem.)
+
+Dial-out (paging) by the OS is allowed under the mode: SESSION. (The OS must be properly configured to use the modem.)
+
+Paging by the GSP can be done under all modes. (Make sure that paging is enabled in the PG command.) GSP pages will wait until the modem is idle.
+
+Translation from older versions of the GSP:
+
+* Enable Remote = GSP
+* Disable Remote = SESSION
+* LOCKED-OUT was not available
+
+To enable/disable LAN access, use the EL command.
+
+<span id="HE_ER_SUM">SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_EL_SUM|EL]], [[#HE_MR_SUM|MR]], [[#HE_MS_SUM|MS]], [[#HE_PG_SUM|PG]] (Configure Asynchronous, Enable LAN, Modem Reset, Modem Status, PaGing)
+
+
+
+<span id="HE_IT_SUM"></span>
+
+== <span id="HE_IT_SUM">General Configuration IT : Inactivity Timeout settings</span> ==
+
+<span id="HE_IT_SUM">SESSION INACTIVITY TIMEOUT : up to 1440 minutes - typically 60 minutes<br />
+This timeout prevents sessions to the system from being inadvertently left open. A session can be started by the SE command. An open session can prevent users from logging onto the GSP through a port and can also prevent system applications from initiating an outbound connection.</span>
+
+GSP INACTIVITY TIMEOUT: up to (24x60) minutes - typically 60 minutes<br />
+This timeout prevents a user from inadvertently keeping the GSP locked in a GSP Command Interface mode preventing other users from looking at the console output. The GSP Command Interface inactivity timeout may not be deactivated.
+
+<span id="HE_IT_SUM">(ADMINISTRATOR level command.)<br />
+SEE ALSO:</span> [[#HE_ER_SUM|ER]], [[#HE_SE_SUM|SE]] (Enable Remote/modem, SEssion)
+
+
+
+<span id="HE_LC_SUM"></span>
+
+== <span id="HE_LC_SUM">Port Configuration LC : LAN configuration (IP address, etc.)</span> ==
+
+<span id="HE_LC_SUM">This command modifies the LAN configuration.</span>
+
+The GSP Host Name set in this command is displayed at the GSP command interface prompt. Typically the DNS name for the LAN IP is entered. This field can be programmed to any useful name or phrase. For clarity, it is useful to enter: &quot;GSPNAME-on-SYSTEM&quot; as the GSP Host name, so both names show up in the prompt (limit 19 chars, no spaces allowed.) The web access port number is also set by this command.
+
+<span id="HE_LC_SUM">(ADMINISTRATOR level command.)<br />
+SEE ALSO:</span> [[#HE_EL_SUM|EL]], [[#HE_LS_SUM|LS]] (Enable Remote/modem, LAN Status)
+
+
+
+<span id="HE_LR_SUM"></span>
+
+== <span id="HE_LR_SUM">GSP Help</span> ==
+
+<span id="HE_LR_SUM">LR and UR COMMANDS ARE NOT SUPPORTED</span>
+
+Please use:
+
+ER : Enable/disable Remote console serial port modem access
+
+The legacy commands LR and UR have been replaced by the ER command. The ER command offers a selection of configurations for the remote console serial port modem, including configurations for dialing in and out.
+
+<span id="HE_LR_SUM">SEE ALSO:</span> [[#HE_ER_SUM|ER]], [[#HE_PG_SUM|PG]] (Enable Remote/modem, Paging)
+
+
+
+<span id="HE_LS_SUM"></span>
+
+== <span id="HE_LS_SUM">Status LS : LAN Status</span> ==
+
+<span id="HE_LS_SUM">This command displays all parameters and the current status of connections of the GSP LAN. The LAN parameters are not modified by the execution of this command.</span>
+
+<span id="HE_LS_SUM">SEE ALSO:</span> [[#HE_EL_SUM|EL]], [[#HE_LC_SUM|LC]] (Enable LAN, LAN Configuration)
+
+
+
+<span id="HE_MFG_SUM"></span>
+
+== <span id="HE_MFG_SUM">Manufacturing MFG : Enter manufacturing mode</span> ==
+
+<span id="HE_MFG_SUM">An appropriate password must be supplied. More detailed help is not available for this command.</span>
+
+<span id="HE_MFG_SUM"></span> 
+
+<span id="HE_MR_SUM"></span>
+
+== <span id="HE_MR_SUM">Server Control MR : Modem Reset</span> ==
+
+<span id="HE_MR_SUM">This command makes the GSP send an AT Z command to the modem, which will reset it. Any modem connections will be lost. The initialization results can be viewed via the MS command.</span>
+
+<span id="HE_MR_SUM">SEE ALSO:</span> [[#HE_MS_SUM|MS]] (Modem Status)
+
+
+
+<span id="HE_MS_SUM"></span>
+
+== <span id="HE_MS_SUM">Status MS : Modem Status- show modem signals and status</span> ==
+
+<span id="HE_MS_SUM">The MS command displays the state of the modem lines connected to the remote/modem serial port. The display can be updated by hitting a Carriage Return &lt;CR&gt;. The current state of the status signals DCD, CTS, DSR, RI and the last state of the control signals DTR, RTS set by the firmware are displayed. The text under &quot;modem state&quot; is an interpretation of these signals.</span>
+
+<span id="HE_MS_SUM">SEE ALSO:</span> [[#HE_ER_SUM|ER]], [[#HE_MR_SUM|MR]] (Enable Remote/modem, Modem Reset)
+
+
+
+<span id="HE_OT_SUM"></span>
+
+== <span id="HE_OT_SUM">Manufacturing OT : OverTemperature control configuration</span> ==
+
+<span id="HE_OT_SUM">This command is only available in Manufacturing Mode.</span>
+
+More detailed help is not available for this command.
+
+<span id="HE_OT_SUM"></span> 
+
+<span id="HE_PC_SUM"></span>
+
+== <span id="HE_PC_SUM">Server Control PC : Remote Power Control - turn system power on and off</span> ==
+
+<span id="HE_PC_SUM">For proper system shutdown, shut down the OS before issuing this command.</span>
+
+This command allows the user to switch the system power ON or OFF, or Power Cycle the machine. The user can have the action take place immediately, or after a specified delay.
+
+Note this is roughly equivalent to turning the system power off at the front panel switch- there is no signal sent to the OS to bring the software down before power is turned off. To turn the system off properly, the operator must ensure that the OS is in the proper shutdown state before issuing this command, by using the proper OS commands.
+
+<span id="HE_PC_SUM">SEE ALSO:</span> [[#HE_PS_SUM|PS]] (Power Status)
+
+
+
+<span id="HE_PG_SUM"></span>
+
+== <span id="HE_PG_SUM">Port Configuration PG : PaGing parameter setup</span> ==
+
+<span id="HE_PG_SUM">When a chassis code arrives in the GSP, the paging list is checked to see if any pagers are enabled for that alert level. If so, the GSP will send a page to those pagers. Part of the alpha-numeric pager message is the string configured in this command, describing the alert level that caused the page.</span>
+
+If the modem is in use by either a dial-in connection to the GSP, a dial-in session to the OS, or a dial-out by the OS, all pages will queue up and wait until the modem is idle. Also, the modem presence in the CA command must be configured for \&quot;always connected\&quot; for paging to be possible.
+
+<span id="HE_PG_SUM">(ADMINISTRATOR level command.)<br />
+SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_ER_SUM|ER]] (Configure Asynchronous, Enable Remote/modem)
+
+
+
+<span id="HE_PS_SUM"></span>
+
+== <span id="HE_PS_SUM">Status PS : Power Status- display the status of the Power Management Module</span> ==
+
+<span id="HE_PS_SUM">This command displays on the console the status of the power management module. The firmware revision listed is the power management module firmware.</span>
+
+<span id="HE_PS_SUM">SEE ALSO:</span> [[#HE_PC_SUM|PC]], [[#HE_SS_SUM|SS]] (Power Control, System Status)
+
+
+
+<span id="HE_QMM_SUM"></span>
+
+== <span id="HE_QMM_SUM">Manufacturing QMM : Quit the Manufacturing Mode</span> ==
+
+<span id="HE_QMM_SUM">This command is only available in Manufacturing Mode.</span>
+
+More detailed help is not available for this command.
+
+<span id="HE_QMM_SUM"></span> 
+
+<span id="HE_RP_SUM"></span>
+
+== <span id="HE_RP_SUM">GSP Help</span> ==
+
+<span id="HE_RP_SUM">RP COMMAND NOT SUPPORTED</span>
+
+Please use:
+
+<span id="HE_RP_SUM"></span> [[#HE_DC_SUM|DC]] : Default Configuration- reset individual or multiple parameters
+
+SEE ALSO: [[#HE_DC_SUM|DC]], [[#HE_SO_SUM|SO]] (Default Configuration, Security Options)
+
+
+
+<span id="HE_RS_SUM"></span>
+
+== <span id="HE_RS_SUM">Server Control RS : Reset System through RST signal</span> ==
+
+<span id="HE_RS_SUM">Under normal operation, shut down the OS before issuing this command.</span>
+
+This command causes the system to be reset through the RST signal.
+
+Execution of this command irrecoverably halts all system processing and I/O activity and restarts the computer system. The effect of this command is very similar to cycling the system power- the OS is not notified, no dump is taken on the way down, etc.
+
+<span id="HE_RS_SUM">SEE ALSO:</span> [[#HE_TC_SUM|TC]] (Transfer Control)
+
+
+
+<span id="HE_SDM_SUM"></span>
+
+== <span id="HE_SDM_SUM">General Configuration SDM : Set Display Mode (hex or text)</span> ==
+
+<span id="HE_SDM_SUM">PARAMETERS: hex, text</span>
+
+This command is used to set the default display mode for chassis codes. It will affect the Virtual Front Panel (plus alerts), and the log viewer.
+
+<span id="HE_SDM_SUM">SEE ALSO:</span> [[#HE_SL_SUM|SL]], [[#HE_VFP_SUM|VFP]] (Show Logs, Virtual Front Panel)
+
+
+
+<span id="HE_SE_SUM"></span>
+
+== <span id="HE_SE_SUM">Connection SE : SEssion- log into the system on local or remote port</span> ==
+
+<span id="HE_SE_SUM">Only valid from the local or remote/modem port, SE allows the user to leave the GSP Command Interface and enter a system session. Other mirrored GSP users are placed in console mode. The session user returns to the mirrored GSP session on exit.</span>
+
+The GSP regularly checks the activity of the session and will close the connection with the system and return the port to mirroring if the timeout period has elapsed. The timeout period is set in the IT command.
+
+On HP-UX, the SE command will work on the local and remote ports.
+
+'''DEVICE FILES:''' The CA command settings must agree with the OS device settings for the session UARTS. HP-UX device files are:
+
+* Local Session: /dev/ttyd0p4
+* Remote Session: /dev/ttyd0p2
+
+'''BAUD RATE:''' If the system and the GSP Command Interface local or remote ports have been configured with different port speeds, the baud rate changes to the rate specified by the OS for the duration of the session.
+
+On MPE/iX, the SE command will only work on the connection to the remote/modem port. The CA command settings must agree with the parameters configured on the DTS User Port screen in NMMGR. An ldev must also be correctly configured in Sysgen for the I/O path to the session port.
+
+The MPE/iX I/O path to the session port is 0/0/4/1.1
+
+<span id="HE_SE_SUM">SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_ER_SUM|ER]], [[#HE_IT_SUM|IT]] (Configure Asynch., Enable Remote, Inactivity Timeouts)
+
+
+
+<span id="HE_SL_SUM"></span>
+
+== <span id="HE_SL_SUM">Status SL : Show Logs- view the chassis codes in the log history</span> ==
+
+<span id="HE_SL_SUM">This command displays the contents of the chassis codes and events that have been stored in non-volatile memory.</span>
+
+# Incoming -<br />
+All chassis codes as they come in except for activity updates codes from the OS.
+# Activity -<br />
+All chassis codes of level 1 or greater
+# Error -<br />
+All chassis codes of level 2 or greater
+# Current Boot -<br />
+All chassis codes between &quot;start of boot&quot; and &quot;boot complete&quot;
+# Last Boot -<br />
+The chassis codes from the previous boot
+
+Reading the Error Log turns off the Attention LED. Accessing this buffer is the only way to turn off the attention LED when it is flashing and alerts have not been acknowledged at the alert display level.
+
+<span id="HE_SL_SUM">SEE ALSO:</span> [[#HE_AC_SUM|AC]], [[#HE_SDM_SUM|SDM]], [[#HE_VFP_SUM|VFP]] (Alert Configuration, Set Display Mode, Virtual Front Panel)
+
+
+
+<span id="HE_SO_SUM"></span>
+
+== <span id="HE_SO_SUM">General Configuration SO : Security options &amp; access control (users, passwords, etc.)</span> ==
+
+<span id="HE_SO_SUM">This command is used to modify the security parameters of the GSP. These include user accounts, login timeouts, allowed password faults, etc. Most of the parameters are familiar; the following require some extra explanation:</span>
+
+DIAL-BACK: If configured, when the user accesses the GSP via the modem port, the GSP will hang up and dial the user back. This will not work if &quot;Modem Presence&quot; is set to &quot;not always connected&quot; in the CA command.
+
+MODE: Single/Multiple. If the mode is Single, the State will be changed to disabled after the first login.
+
+USER'S STATE: Enabled/Disabled. A disabled user's login will not be accepted.
+
+<span id="HE_SO_SUM">(ADMINISTRATOR level command.)<br />
+SEE ALSO:</span> [[#HE_CA_SUM|CA]], [[#HE_PG_SUM|PG]] (Configure Asynchronous, PaGing)
+
+
+
+<span id="HE_SS_SUM"></span>
+
+== <span id="HE_SS_SUM">Status SS : System Status- display the status of the system processors</span> ==
+
+<span id="HE_SS_SUM">The SS command displays the status of the system processors and which processor is the monarch.</span>
+
+The GSP learns the system configuration through the chassis codes it receives from the system. Therefore, there will likely be a delay between any processor configuration change and what is displayed by this command. A more reliable way to get the processor configuration information is at the BCH prompt.
+
+<span id="HE_SS_SUM">SEE ALSO:</span> [[#HE_PS_SUM|PS]] (Power Status)
+
+
+
+<span id="HE_TC_SUM"></span>
+
+== <span id="HE_TC_SUM">Server Control TC : System reset through INIT or TOC (Transfer of Control) signal</span> ==
+
+<span id="HE_TC_SUM">Under normal operation, shut down the OS before issuing this command.</span>
+
+This command causes the system to be reset through the INIT (or TOC) signal.
+
+Execution of this command irrecoverably halts all system processing and I/O activity and restarts the computer system. It is different from the RS command in that the processors are signaled to dump state on the way down.
+
+<span id="HE_TC_SUM">SEE ALSO:</span> [[#HE_RS_SUM|RS]] (ReSet)
+
+
+
+<span id="HE_TE_SUM"></span>
+
+== <span id="HE_TE_SUM">Connection TE : TEll- sends a message to other terminals</span> ==
+
+<span id="HE_TE_SUM">Up to 80 characters can be typed in and the message is broadcast to the other mirrored clients. Users in a session or CSP are not shown the message.</span>
+
+<span id="HE_TE_SUM">SEE ALSO:</span> [[#HE_WHO_SUM|WHO]]
+
+
+
+<span id="HE_UR_SUM"></span>
+
+== <span id="HE_UR_SUM">GSP Help</span> ==
+
+<span id="HE_UR_SUM">'''LR and UR COMMANDS ARE NOT SUPPORTED'''</span>
+
+Please use:
+
+ER : Enable/disable Remote console serial port modem access
+
+The legacy commands LR and UR have been replaced by the ER command. The ER command offers a selection of configurations for the remote console serial port modem, including configurations for dialing in and out.
+
+<span id="HE_UR_SUM">SEE ALSO:</span> [[#HE_ER_SUM|ER]], [[#HE_PG_SUM|PG]] (Enable Remote/modem, Paging)
+
+
+
+<span id="HE_VFP_SUM"></span>
+
+== <span id="HE_VFP_SUM">Status VFP : Virtual Front Panel display</span> ==
+
+<span id="HE_VFP_SUM">When invoked, this command will display the LED state with a text decode and the most recent Chassis Code received. At that point, the user can then proceed with the live-mode VFP display of chassis codes, or quit back to the GSP prompt.</span>
+
+There are two ways that the live display of chassis codes can be started:
+
+# LIVE MODE -<br />
+Invoked from the VFP command at the GSP prompt. To exit, you must type Q to quit to the console.
+# EARLY BOOT MODE -<br />
+When the boot sequence for the system begins, the live VFP is invoked automatically. When boot finishes, users are automatically switched to console mode.
+
+The LED state reflects the state of the front panel LED's. When system power is off, the remote LED will show &quot;OFF&quot; even though remote access may be enabled in the EL or ER commands.
+
+<span id="HE_VFP_SUM">SEE ALSO:</span> [[#HE_AC_SUM|AC]], [[#HE_SL_SUM|SL]] (Alert Configuration, Show Logs)
+
+
+
+<span id="HE_VT_SUM"></span>
+
+== <span id="HE_VT_SUM">Manufacturing VT : View Trace buffer</span> ==
+
+<span id="HE_VT_SUM">This command is only available in Manufacturing Mode.</span>
+
+More detailed help is not available for this command.
+
+<span id="HE_VT_SUM"></span> 
+
+<span id="HE_WHO_SUM"></span>
+
+== <span id="HE_WHO_SUM">Connection WHO : Display a list of GSP connected users</span> ==
+
+<span id="HE_WHO_SUM">This command displays the login name of the connected console client users and the port on which they are connected. For the LAN and WEB console clients the remote IP address is also displayed.</span>
+
+There is always one user listed for the local serial port. This is a default user name (&quot;local user&quot;) if the local console client user didn't originate the GSP Command Interface session. If the local console operator typed CTRL-B, then the login name that the local operator typed is displayed instead.
+
+<span id="HE_WHO_SUM">SEE ALSO:</span> [[#HE_TE_SUM|TE]] (TEll)
+
+
+
+<span id="HE_XD_SUM"></span>
+
+== <span id="HE_XD_SUM">General Configuration XD : Diagnostics and/or Reset of GSP</span> ==
+
+<span id="HE_XD_SUM">This command allows the user to perform some simple checks to confirm the GSP's health and its connectivity status. The following tests are available:</span>
+
+* Parameters checksum
+* I2C bus tests
+* LAN connectivity test using &quot;ping&quot;
+* Modem self-tests
+
+Also, the GSP can be reset from this command. A GSP reset can be safely performed without affecting the operation of the server.
+
+
+
+<span id="HE_XU_SUM"></span>
+
+== <span id="HE_XU_SUM">General Configuration XU : Upgrade the GSP Firmware</span> ==
+
+<span id="HE_XU_SUM">The upgrade is performed using ftp over the GSP LAN, which must therefore be operational. The user must enter the ftp server IP address, login, password, and the directory in which the upgrade files reside.</span>
+
+Modem connections will be dropped. The XU command can be run from the LAN, WEB, or local ports. If the upgrade is successful, the GSP will reboot and come up using the new firmware.
+
+If the upgrade fails, the GSP will return to the prompt with instructions on what went wrong, and what to do next.
+
+Upgrading the GSP software and rebooting the GSP can be safely performed without affecting the operation of the server.
+
+The version of GSP firmware is displayed at the top of the main help menu.
