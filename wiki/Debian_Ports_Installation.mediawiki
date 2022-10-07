@@ -6,11 +6,20 @@ title: Debian Ports Installation
 
 [[File:Sibaris.jpg|thumb|400px|In the middle you see our HP C8000 machine (sibaris) which acts as Debian buildd server and currently builds most of the hppa packages. An overview of all our build servers is at http://unstable.buildd.net/index-hppa.html]]
 
-HPPA became an officially supported Debian architecture in release 3.0 (woody) and was dropped as of stable release 6.0 (squeeze).
+HPPA became an officially supported Debian architecture in release 3.0 (woody), 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
+In July 2011, PA-RISC Linux was dropped as an officially supported platform from Debian 6.0 (squeeze).
 That's the reason that the latest available official installation CDs are available for Debian 5.0 (lenny) only.
 
-The Debian ports project hosts a parisc version of debian unstable.
+Subsequently, it became a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
+Helge Deller and John David Anglin set up several package build servers for Debian Ports. Overtime, this infrastructure has been improved and it now uses the same wanna-build system as the release architectures.
+Kernel and tool chain support was also improved with the transition to Debian Ports.
+
 Today the recommended installation of a new parisc machine is via the debian-ports unstable respository at http://debian-ports.org as described in the following section.
+An install image can be downloaded from this list:
+:* [https://cdimage.debian.org/cdimage/ports/ '''Debian all releases cdimage repository''']
+:* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
+:* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
+:* [http://ftp-nz.parisc-linux.org/debian-hppa-cd/  Debian 9 (stretch) and Debian 10 (buster) stable]
 
 If you want to install debian the hard way with many manual steps, you can read the instructions at [[Debian_Ports_Installation_Manual]].
 
