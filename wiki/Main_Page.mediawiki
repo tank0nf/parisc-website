@@ -20,19 +20,19 @@ Linux runs on most PA-RISC machines and virtualized in [[Qemu]]. In case you fac
 
 {|
 |- style="vertical-align:top;"
-| [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
-||
-'''Gentoo Linux'''
-: PA-RISC is a fully supported architecture of Gentoo Linux.<br>
-: The [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] provides [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download].
-: If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
-|- style="vertical-align:top;"
 | [[File:debian_logo.png|Debian Linux|50px|link=http://www.debian.org]]
 ||
 '''Debian Linux'''
 : PA-RISC is a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
 : Debian Linux for PA-RISC is usable and stable with more than 12,800 Debian packages available.
 : You can [https://cdimage.debian.org/cdimage/ports/current/ download the latest installation ISO here] or [http://ftp.parisc-linux.org/debian-cd/ here].
+|- style="vertical-align:top;"
+| [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
+||
+'''Gentoo Linux'''
+: PA-RISC is a fully supported architecture of Gentoo Linux.<br>
+: The [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] provides [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download].
+: If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
 |}
 
 == Thanks == 
