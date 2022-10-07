@@ -5,7 +5,8 @@ title: Main Page
 == Introduction to Linux on PA-RISC ==
 
 {|
-|The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. The port was merged into linux-2.6 and linux-3.x mainstream Linux kernel tree.
+| [[File:Parisc-powered-graphics.png|50px]]
+|| The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. The port was merged into linux-2.6 and linux-3.x mainstream Linux kernel tree.
 [[PA-RISC Linux Project History]] tells how the project got started and the first steps.
 Contact the [[Mailing lists]] if you want to volunteer your time.
 
