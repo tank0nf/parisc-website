@@ -37,3 +37,22 @@ T3:23:respawn:/sbin/getty -L ttyS3 9600 vt100
  </nowiki>
 
 Now restart init with <code>telinit q</code> and you'll be able to start sessions. To disconnect from the session, just log out. The GSP detects the line drop and puts you back into the mirrored console UART.
+
+= Remote Power On on J6000 machines =
+
+The J6700 workstation has a remote power-on feature that allows you to power up and
+shut down your workstation remotely through the RS232 port. The RS232 receive line is
+monitored by the system board Remote Power Controller (RPC). This controller responds
+to the following commands:
+{| class="wikitable" style="margin:auto"
+|-
+!Press:!!Type:!!Description
+|-
+|Esc||rsys^on||Turns the system on
+|-
+|Esc||rsys^off||Turns the system off
+|-
+|Esc||rsys^ton||Turns the system off without soft-power down
+|-
+|Esc||pic^sleep||Causes RPC to stop responding to commands
+|}
