@@ -6,10 +6,10 @@ title: Main Page
 
 {|
 | [[File:Parisc-powered-graphics.png|50px]]
-|| The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. The port was merged into linux-2.6 and linux-3.x mainstream Linux kernel tree.
-[[PA-RISC Linux Project History]] tells how the project got started and the first steps.
-Contact the [[Mailing lists]] if you want to volunteer your time.
+|| The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. 
+Today PA-RISC Linux is stable and runs on most PA-RISC machines.
 
+[[PA-RISC Linux Project History]] tells how the project got started.
 See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
 That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
 |}
