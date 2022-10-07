@@ -15,14 +15,18 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 
 == Linux distributions with support for PA-RISC Linux == 
 
-PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and [http://www.debian.org Debian].
-
-; Gentoo Linux:
+{|
+|- style="vertical-align:top;"
+| [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
+||
+'''Gentoo Linux'''
 : PA-RISC is a fully supported architecture of Gentoo Linux.<br>
-: Many thanks to the smart people of the [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo Linux HPPA Development team] for providing [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download]!
+: Many thanks to the smart people of the [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] for providing [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download]!
 : If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
-
-; Debian Linux:
+|- style="vertical-align:top;"
+| [[File:debian_logo.png|Debian Linux|50px|link=http://www.debian.org]]
+||
+'''Debian Linux'''
 : The PA-RISC Linux development community is proud to have been officially part of the Debian 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
 : In July 2011, PA-RISC Linux was dropped as an officially supported platform from Debian 6.0 (squeeze).  Subsequently, it became a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
 : Helge Deller and John David Anglin set up several package build servers for Debian Ports.  Overtime, this infrastructure has been improved and it now uses the same wanna-build system as the release architectures.
@@ -33,7 +37,9 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 :* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
 :* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
 :* [http://ftp-nz.parisc-linux.org/debian-hppa-cd/  Debian 9 (stretch) and Debian 10 (buster) stable]
- 
+|}
+
+
 '''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
 [[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
@@ -41,16 +47,10 @@ PA-RISC Linux is currently supported by [http://www.gentoo.org Gentoo Linux] and
 
 {|
 | [[File:Osl_logo.png|50px|link=http://osuosl.org]] 
-|| [http://osuosl.org Oregon State University Open Source Lab]
+|| '''[http://osuosl.org Oregon State University Open Source Lab]'''
 * Hosting and support for the physical parisc servers "parisc" and "panama" (since 2014)
 * Funding and provisioning of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021) 
 * Hosting of this Wiki (via kernel.org infrastructure)
-|-
-| [[File:debian_logo.png|50px|link=http://www.debian.org]]
-|| Debian 
-|-
-| [[File:Gentoo-logo.png|50px|link=http://www.gentoo.org]]
-|| Gentoo
 |}
 
 == PA-RISC NEWS == 
