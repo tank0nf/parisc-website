@@ -15,33 +15,25 @@ That includes boot loader, kernel, documentation, user space programs, packaging
 |}
 
 == Linux distributions for PA-RISC machines == 
+
+Linux runs on most PA-RISC machines and virtualized in [[Qemu]]. In case you face issues, check the [[PARISC FAQ]] and [[Hardware support]] sections.
+
 {|
 |- style="vertical-align:top;"
 | [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
 ||
 '''Gentoo Linux'''
 : PA-RISC is a fully supported architecture of Gentoo Linux.<br>
-: Many thanks to the smart people of the [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] for providing [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download]!
+: The [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] provides [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download].
 : If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
 |- style="vertical-align:top;"
 | [[File:debian_logo.png|Debian Linux|50px|link=http://www.debian.org]]
 ||
 '''Debian Linux'''
-: The PA-RISC Linux development community is proud to have been officially part of the Debian 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases.
-: In July 2011, PA-RISC Linux was dropped as an officially supported platform from Debian 6.0 (squeeze).  Subsequently, it became a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
-: Helge Deller and John David Anglin set up several package build servers for Debian Ports.  Overtime, this infrastructure has been improved and it now uses the same wanna-build system as the release architectures.
-: Kernel and tool chain support was also improved with the transition to Debian Ports. For example, the glibc source can now be built directly from source.
-: Today, Debian Linux for PA-RISC is usable and stable.  More than 11,500 Debian packages are available.
-: If you plan to install Debian Linux, please read [[Debian Ports Installation | '''how to install Debian Linux''']], and download one install image from this list:
-:* [https://cdimage.debian.org/cdimage/ports/ '''Debian all releases cdimage repository''']
-:* [http://backup.parisc-linux.org/debian-cd/debian-7.0/ Debian 7 (wheezy)]
-:* [http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/ Debian 8 (jessie)]
-:* [http://ftp-nz.parisc-linux.org/debian-hppa-cd/  Debian 9 (stretch) and Debian 10 (buster) stable]
+: PA-RISC is a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
+: Debian Linux for PA-RISC is usable and stable with more than 12,800 Debian packages available.
+: You can [https://cdimage.debian.org/cdimage/ports/current/ download the latest installation ISO here] or [http://ftp.parisc-linux.org/debian-cd/ here].
 |}
-
-
-'''Before downloading any ISOs for Gentoo, Debian or any other Linux distribution, first check the
-[[PARISC FAQ]] and [[Hardware support]] for issues specific to your hardware.'''
 
 == Thanks == 
 
