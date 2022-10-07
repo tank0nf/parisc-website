@@ -35,7 +35,7 @@ Linux runs on most PA-RISC machines and virtualized in [[Qemu]]. In case you fac
 : If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
 |}
 
-== Thanks == 
+== Our sponsors == 
 
 {|
 | [[File:Osl_logo.png|50px|link=http://osuosl.org]] 
