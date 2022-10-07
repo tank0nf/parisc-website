@@ -5,13 +5,13 @@ title: Main Page
 == Introduction to Linux on PA-RISC ==
 
 {|
+|- style="vertical-align:top;"
 | [[File:Parisc-powered-graphics.png|50px]]
-|| The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. 
-Today PA-RISC Linux is stable and runs on most PA-RISC machines.
-
-[[PA-RISC Linux Project History]] tells how the project got started.
-See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases.
-That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
+|| 
+'''PA-RISC Linux porting project'''
+: The PA-RISC project provides a ''native'' port of Linux to the PA-RISC architecture. 
+: Today PA-RISC Linux is stable and runs on most PA-RISC machines.
+: [[PA-RISC Linux Project History]] tells how the project got started. See the [[Hall of Fame]] for a list of folks who brought you the initial 0.9x and Debian 3.0 releases. That includes boot loader, kernel, documentation, user space programs, packaging, testing, debugging, and pulling everything together into an ISO.
 |}
 
 == Linux distributions for PA-RISC machines == 
