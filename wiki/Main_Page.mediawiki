@@ -51,7 +51,8 @@ Linux runs on most PA-RISC machines and virtualized in [[Qemu]]. In case you fac
 |-
 | style="vertical-align:top;" |'''Sep 2022'''||Lots of [https://gitlab.com/qemu-project/qemu/-/commit/36cd0aeac3337af06875e08683380389df48ccd0 enhancements to the qemu-user emulation]. Many of the debian buildd servers run now on x86 hardware which use qemu-user to build packages. 
 |-
-| style="vertical-align:top;" |'''Aug 2022'''||New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo version 2.22] released, [https://lore.kernel.org/all/15eee327-ff0a-2bea-408d-259158915813@gmx.de/ with support for booting without palo- or /boot paritions]. 
+| style="vertical-align:top;" |'''Aug 2022'''||New [https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo version 2.22] released, [https://lore.kernel.org/all/15eee327-ff0a-2bea-408d-259158915813@gmx.de/ with support for booting without palo- or /boot paritions].
+QEMU version 7.1.0 with many PA-RISC related enhancements and fixes has been released. 
 |-
 | style="vertical-align:top;" |'''Jun 2022'''||[mailto:sam@gentoo.org Sam James] added [https://github.com/systemd/systemd/pull/23181 seccomp support in unit files on HPPA to systemd v252] and worked on [https://lists.debian.org/debian-hppa/2022/02/msg00000.html elfutils support for HPPA].<br>[mailto:dave.anglin@bell.net John David Anglin] helped to [https://sourceware.org/bugzilla/show_bug.cgi?id=29165 fix a glibc bug about broken argv adjustments]<br>[mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland] provided lots of internal cleanups to the hppa PS/2 keyboard and PS/2 mouse emulation in the upcoming QEMU v7.1 to bring the source code up to latest QEMU coding standards. 
 |-
