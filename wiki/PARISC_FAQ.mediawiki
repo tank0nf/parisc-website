@@ -4,42 +4,25 @@ title: PARISC FAQ
 
 = PA-RISC LINUX FAQ =
  
-
 ==What binaries will PA-RISC Linux support?==
 
-We currently only support 32-bit ELF executables. Initial bringup work was accomplished using HP-UX emulation, but that emulation has not been maintained. Eventually, we hope to have support for HP-UX 32-bit SOM executables working again, and add support for 64-bit ELF executables, both Linux & HP-UX. We're not promising to get ''all'' HP-UX binaries running on Linux. In particular those which are multithreaded are unlikely to ever be supported.
+We currently only support 32-bit Linux ELF executables.
+Eventually, we hope to add support for 64-bit Linux ELF executables.
+HP-UX emulation was once planned but has been dropped in the meantime. 
+To run HP-UX 32-bit binaries we suggest to install HP-UX in a qemu VM.
 
 ==Will parisc-linux work on my system?==
 
-Please see [[Hardware support]].
+Most likely yes. See [[Hardware support]] for details.
 
 ==Where can I get an Install CD?==
 
-Debian suggests several methods to acquire Official Install CDs. Pre-built 600+MB ISOs can be downloaded from Debian download pages.
-
-==Why do I get "ENTRY_INIT failed" booting the Install CD?==
-
-The full error message from the IODC (firmware) looks like: <pre> ENTRY_INIT failed, status = -3: Cannot complete call without error </pre> There are three likely causes for the <code>ENTRY_INIT</code> error and different machines may return different status numbers depending on the reason type of IO device:
-# non-bootable CD drive (broken or incompatible)
-# The CD drive block size (usually a jumper on the back) is not set to 512 byte blocks.
-# The CD has bad blocks where boot data is expected (or is upside down in tray :^)
-The [[How to Burn a Boot CD]] covers many of the issues below. The following steps should help the rule out common failures: 
-# Check the integrity of the CD image file used to burn the CD. The output of <code>md5sum your_cd_img.iso</code> should match the value found in <code>md5sum.txt</code> from the original site.
-# Use <code>sea ipl</code> from the PDC menu prompt to search for bootable media (hard disk or CD). Interrupt "autoboot" to get a PDC (aka Boot Console Handler) command prompt. CD, disk, or tape drives with bootable media installed will be listed in <code>sea</code> output. <code>sea</code> is much faster if one specifies the HW Path (eg <code>sea SCSI.3.0 ipl</code>). Listen for the CD to spin up (a clue the CD is not broken) as <code>sea</code> tries to read the boot sectors off the CD drive. If a CD drive then shows up in the list, next step is to verify the CD does not have bad blocks in the vmlinuz or initrd data.
-# Test the ability to boot by trying a HP-UX install disk then run <code>sea</code> command. If that works, the Debian CD was not burned correctly or has a defective boot sector(s). If <code>sea</code> doesn't work, then it's likely the CDROM drive is either broken, misconfigured, or just incompatible. Check CD-ROM drive data sheets to verify the drive is using 512byte sectors and not 2k sectors. The IODC (PARISC "BIOS") can only deal with 512 byte sectors. Some older CD-ROMs only support 2k sectors and can not be used to boot.
-# Verify the integrity of the Debian CD. Reading the CD on another linux system using something like "<code>dd if=/dev/cdrom of=/dev/null bs=2k</code>". If all blocks are readable and a Windows machine was used to burn the CD, then the CD likely wasn't burned in "raw" mode and the boot blocks are mangled. Try burning the CD in "raw" mode. If the CD was burned without padding option, the CD integrity could also be checked with "<code>dd if=/dev/cdrom | md5sum</code>" and the result should match the value of the original iso image.
+Pre-built installation ISOs can be downloaded from Debian and Gentoo download pages.
 
 ==How can I switch the console to serial without a keyboard/monitor?==
 
-For newer workstations (4-digit B/C/J class), PDC will revert to using SERIAL_1 if a USB keyboard is not detected at boot up. For some models of older workstations, you can either remove the framebuffer card, or hold down TOC for ten seconds while booting up. However, this does not work on all models. 
-
-==Can I use the latest kernel from Linus?==
-
-Yes. We merge between the PA-RISC Linux repository and Linus' tree regularly.
-
-==How do I report a kernel problem to the PA-RISC Linux developers?==
-
-Randolph Chung wrote a small [[How to report a parisc-linux kernel problem]] just for YOU! Ok. It's not that small anymore. But not providing at least a few of the details listed in the HOWTO will just lead to folks (a) asking for the missing info and/or (b) folks ignoring you. 
+On most machines unplugging all PS/2-, HIL- and USB keyboards before turning the machine on will trigger the firmware to revert to using SERIAL_1.
+For some models of older workstations, you can either remove the framebuffer card, or hold down TOC for ten seconds while booting up.
 
 ==How do I change the palo/linux kernel boot parameters?==
 
@@ -47,13 +30,34 @@ Occasionally, one needs to change the [[kernel boot parameters]] to boot a syste
 * '''Interactive''': During bootup press the escape-key to stop auto-boot. On older machines enter "<code>BO scsi.X.0 IPL</code>" and replace X with the SCSI ID of your boot-disc. Appending <code>IPL</code> directs palo to interact with the user and offer a menu to change the boot-parameters '''for this boot only'''. On newer systems, <code>IPL</code> isn't needed since the PDC will ask <code>Interact with IPL (Y/N)?</code>  Just enter Y here and palo will let you change the parameters. 
 * '''Auto-boot''': To change the palo/linux kernel parameters '''permanently''', edit <code>/etc/palo.conf</code> and change the arguments to <code>--commandline</code> parameter. Most importantly '''run palo once''' to store the new kernel parameters on the boot disk. The new parameters will be effective for successive boots.
 
+==Can I use the latest kernel from Linus?==
+
+Yes. We merge between the PA-RISC Linux repository and Linus' tree regularly.
+
+==Can I run a 64-bit kernel on my machine?==
+
+First ask yourself: Why do I need to run a 64-bit kernel? Since parisc-linux does not yet support 64-bit userspace, there is no advantage to be gained running a 64-bit kernel on a machine with less than 3.5GB of memory. In fact, there are many disadvantages including bigger data structures and slightly less performance on many common workloads.
+
+Only PA-RISC 2.0 CPU can run a 64-bit kernel (aka `wide mode'). Check /proc/cpuinfo if you already have linux booted.
+Or check firmware output at power up time. Systems running the CPU clock speed slower than 160Mhz are PA 1.x and faster than 180Mhz are PA 2.0. Systems between 160Mhz and 180Mhz are either PA 1.1 (PCX-L2, eg C160L) or PA 2.0 (PCX-U, eg C160).
+
+Platform firmware also determines the type of kernel which can be used:
+* '''64-bit Only''' : A500, L/N-class, rpXXXX, Superdome servers, and all PA-8800 CPUs must run a 64-bit kernel.
+* '''Dual Mode''' : B2000/C3000, similar J-class workstations and PA 2.0 D/K/R-class system firmware can be called from either 32-bit or 64-bit mode.
+* '''32-bit Only''' : Workstations up to and including the J2240/C360 and servers of D/R-class have 32-bit firmware.
+* Linux reports in the '''capabilities''' field of '''/proc/cpuinfo''' a combination of '''os32''' and '''os64''' which means the machine is capable to boot the respective kernel.
+
+==How do I report a kernel problem to the PA-RISC Linux developers?==
+
+Randolph Chung wrote a small [[How to report a parisc-linux kernel problem]] just for YOU! Ok. It's not that small anymore. But not providing at least a few of the details listed in the HOWTO will just lead to folks (a) asking for the missing info and/or (b) folks ignoring you. 
+
 ==How do I get my system to boot from the network?==
 
 A long time ago, in a galaxy far, far away....well, not really. Just a long time ago Martin Petersen (with help from others) wrote this [[PARISC NFS-Root-HOWTO]] for a fledgling parisc-linux port. The "official" [[NFS-Root-Client-mini-HOWTO]] will probably serve you better. It's also called the "diskless root" if you want to search for more info. It's also worth mentioning the [[PA-RISC/Linux Boot HOWTO]]. 
 
 ==Can parisc boot from RAID1?==
 
-Yes! "resident" boot expert Martin Petersen knew you would ask! Martin wrote the [[PA-RISC RAID1 Boot HOW-TO]] to blaze a path for the weak and timid. 
+Yes, see the [[PA-RISC RAID1 Boot HOW-TO]].
 
 ==How can I check if the PDC (firmware) revision is the latest?==
 
@@ -90,7 +94,8 @@ In order to get ISA IRQs working you'll need to tell the kernel which IRQs shoul
 
 ==How do I configure and enable my HIL-, PS/2- and USB-keyboard and mouse for the console and X11?==
 
-All Linux kernels greater than version 2.4.18-pa45 - including all 2.6 Kernels - use the standard Linux input layer to access HIL-, PS/2 and USB keyboards and mice: To use your HIL-, PS/2- or USB-mouse with gpm modify your /etc/gpm.conf config file: <pre>
+Linux kernels above 2.4.18-pa45 use the standard Linux input layer to access HIL-, PS/2 and USB keyboards and mice.
+To use your HIL-, PS/2- or USB-mouse with gpm modify your /etc/gpm.conf config file: <pre>
 device=/dev/input/mice
 type=imps2</pre>
 To use your HIL-, PS/2- or USB-mouse with X-Windows (X11), configure either your /etc/X11/XF86Config-4 or /etc/X11/xorg.conf config file with following values:<pre>
@@ -124,21 +129,6 @@ You don't need these options for non-HIL PS/2 devices:
 * CONFIG_KEYBOARD_HIL
 * CONFIG_MOUSE_HIL
 * CONFIG_HIL_MLC
-
-==Can I run a 64-bit kernel on my machine?==
-
-First ask yourself: Why do I need to run a 64-bit kernel? Since parisc-linux does not yet support 64-bit userspace, there is no advantage to be gained running a 64-bit kernel on a machine with less than 3.5GB of memory. In fact, there are many disadvantages including bigger data structures and slightly less performance on many common workloads.
-
-Only PA-RISC 2.0 CPU can run a 64-bit kernel (aka `wide mode'). Check /proc/cpuinfo if you already have linux booted.
-Or check firmware output at power up time. Systems running the CPU clock speed slower than 160Mhz are PA 1.x and faster than 180Mhz are PA 2.0. Systems between 160Mhz and 180Mhz are either PA 1.1 (PCX-L2, eg C160L) or PA 2.0 (PCX-U, eg C160).
-
-Platform firmware also determines the type of kernel which can be used:
-* '''64-bit Only''' : A500, L/N-class, rpXXXX, Superdome servers, and all PA-8800 CPUs must run a 64-bit kernel.
-* '''Dual Mode''' : B2000/C3000, similar J-class workstations and PA 2.0 D/K/R-class system firmware can be called from either 32-bit or 64-bit mode.
-* '''32-bit Only''' : Workstations up to and including the J2240/C360 and servers of D/R-class have 32-bit firmware.
-* Linux reports in the '''capabilities''' field of '''/proc/cpuinfo''' a combination of '''os32''' and '''os64''' which means the machine is capable to boot the respective kernel.
-
-For those who do want to test 64-bit kernels on PA 2.0 machines with 32-bit firmware, recent 2.6 64-bit kernels will auto-detect the firmware type and switch to the correct `mode' (wide or narrow).
 
 ==How do I send Magic SysRq over lanconsole?==
 
@@ -174,18 +164,6 @@ This may be because your card is running in double buffered mode. To check this,
 
 Short Answer: Voodoo2/ATI Rage XL provide limited functionality. Long Answer: See the [[Graphics howto]].
 
-==SSH connections sometimes drop if I ssh into my PA-RISC Linux box. The nscd daemon seems to be broken.==
- 
-The glibc nscd daemon is broken since quite some time. 
-You may either just disable the nscd daemon, or alternatively 
-put the following lines into your '''/etc/nscd.conf''' file:<pre>
- # Broken on PA-RISC
- enable-cache passwd no
-
- # Broken on PA-RISC
- enable-cache group no 
-</pre>
-
 ==On my rp5470, rpXXXX machine, the Attention LED is flashing==
 
 The Attention LED is flashing  because there was some problem somewhen in the past.
@@ -195,3 +173,15 @@ To turn it off, log in to the GSP console and read the error log (command: SL, t
 
 Most PA-RISC server machines have a GSP, which you can access via the ^B key. For details see [[GuardianServiceProcessor]].
 Latest generation of machines (e.g. the C8000 workstation and the rp3410/rp3440 server) does instead have a BMC, which you can access via ESC-( keys. For details see [[BMC]].
+
+==Why do I get "ENTRY_INIT failed" booting the Install CD?==
+
+The full error message from the IODC (firmware) looks like: <pre> ENTRY_INIT failed, status = -3: Cannot complete call without error </pre> There are three likely causes for the <code>ENTRY_INIT</code> error and different machines may return different status numbers depending on the reason type of IO device:
+# non-bootable CD drive (broken or incompatible)
+# The CD drive block size (usually a jumper on the back) is not set to 512 byte blocks.
+# The CD has bad blocks where boot data is expected (or is upside down in tray :^)
+The [[How to Burn a Boot CD]] covers many of the issues below. The following steps should help the rule out common failures: 
+# Check the integrity of the CD image file used to burn the CD. The output of <code>md5sum your_cd_img.iso</code> should match the value found in <code>md5sum.txt</code> from the original site.
+# Use <code>sea ipl</code> from the PDC menu prompt to search for bootable media (hard disk or CD). Interrupt "autoboot" to get a PDC (aka Boot Console Handler) command prompt. CD, disk, or tape drives with bootable media installed will be listed in <code>sea</code> output. <code>sea</code> is much faster if one specifies the HW Path (eg <code>sea SCSI.3.0 ipl</code>). Listen for the CD to spin up (a clue the CD is not broken) as <code>sea</code> tries to read the boot sectors off the CD drive. If a CD drive then shows up in the list, next step is to verify the CD does not have bad blocks in the vmlinuz or initrd data.
+# Test the ability to boot by trying a HP-UX install disk then run <code>sea</code> command. If that works, the Debian CD was not burned correctly or has a defective boot sector(s). If <code>sea</code> doesn't work, then it's likely the CDROM drive is either broken, misconfigured, or just incompatible. Check CD-ROM drive data sheets to verify the drive is using 512byte sectors and not 2k sectors. The IODC (PARISC "BIOS") can only deal with 512 byte sectors. Some older CD-ROMs only support 2k sectors and can not be used to boot.
+# Verify the integrity of the Debian CD. Reading the CD on another linux system using something like "<code>dd if=/dev/cdrom of=/dev/null bs=2k</code>". If all blocks are readable and a Windows machine was used to burn the CD, then the CD likely wasn't burned in "raw" mode and the boot blocks are mangled. Try burning the CD in "raw" mode. If the CD was burned without padding option, the CD integrity could also be checked with "<code>dd if=/dev/cdrom | md5sum</code>" and the result should match the value of the original iso image.
