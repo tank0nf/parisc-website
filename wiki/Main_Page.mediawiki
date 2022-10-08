@@ -16,7 +16,9 @@ title: Main Page
 
 == Linux distributions for PA-RISC machines == 
 
-Linux runs on most PA-RISC machines and virtualized in [[Qemu]]. In case you face issues, check the [[PARISC FAQ]] and [[Hardware support]] sections.
+Linux runs on most physical PA-RISC machines.<br>
+You may even install PA-RISC Linux in a virtual machine with [[Qemu]].<br> 
+Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing Linux.<br>
 
 {|
 |- style="vertical-align:top;"
