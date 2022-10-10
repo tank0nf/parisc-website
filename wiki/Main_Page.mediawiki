@@ -43,12 +43,13 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 |- style="vertical-align:top;"
 | [[File:Osl_logo.png|50px|link=http://osuosl.org]] 
 || '''[http://osuosl.org Oregon State University Open Source Lab]'''
-* Hosting and support for the physical parisc servers "parisc" and "panama" (since 2014)
-* Hosting of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021) 
+* Hosting and support for the physical parisc servers "parisc" (since 2014) and "panama" (since 2017)
+* Hosting of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021)
 * Hosting of this Wiki (via kernel.org infrastructure)
 |-
 | [[File:Rp3410 small.jpg|50px]]
-|| [mailto:roberto@debian.org Roberto C. Sánchez] sponsored a [http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html HP rp3410 server] with one 800 MHz PA8900 CPU (May 2017)
+|| [mailto:roberto@debian.org Roberto C. Sánchez] sponsored a [http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html HP rp3410 server] with one 800 MHz PA8900 CPU. (May 2017)<br>
+This machine is used as [https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc Debian buildd and Porterbox machine "panama"].
 |}
 
 == PA-RISC NEWS == 
