@@ -44,7 +44,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 | [[File:Osl_logo.png|50px|link=http://osuosl.org]] 
 || '''[http://osuosl.org Oregon State University Open Source Lab]'''
 * Hosting and support for the physical parisc servers "parisc" and "panama" (since 2014)
-* Funding and provisioning of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021) 
+* Hosting of a x86 virtual machine for the qemu-user based parisc build server "pasta" (since Jan 2021) 
 * Hosting of this Wiki (via kernel.org infrastructure)
 |-
 | [[File:Rp3410 small.jpg|50px]]
