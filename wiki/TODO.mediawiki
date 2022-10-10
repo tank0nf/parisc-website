@@ -8,7 +8,7 @@ title: TODO
 * Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
 * DONE: glibc iconv issues with qemu: https://sourceware.org/bugzilla/show_bug.cgi?id=29583
 * check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
-* check why raft package testcases fails with io_submit()?
+* DONE: check why raft package testcases fails with io_submit()? -> io_submit() class functions not yet implemented in qemu-user.
 * Why is compiling fife so slow with cc1plus?
 * DONE: Add vDSO trampoline to qemu
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
