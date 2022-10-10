@@ -49,7 +49,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 |-
 | [[File:Rp3410 small.jpg|50px]]
 || [mailto:roberto@debian.org Roberto C. Sánchez] sponsored a [http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html HP rp3410 server] with one 800 MHz PA8900 CPU. (May 2017)<br>
-This machine is used as [https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc Debian buildd and Porterbox machine "panama"].
+* This machine is used as [https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc Debian buildd and Porterbox machine "panama"].
 |}
 
 == PA-RISC NEWS == 
