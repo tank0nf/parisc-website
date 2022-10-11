@@ -2,20 +2,22 @@
 title: Qemu
 ---
 
-== QEMU overview ==
+== QEMU for PA-RISC overview ==
 
-'''Please run at least QEMU version 7.1.0'''. Earlier versions had various bugs which are fixed in v7.1.0.
+'''Important: Please run at least QEMU version 7.1.0'''.<br>
+Earlier versions had various bugs which are fixed in v7.1.0.
 
-QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] machine with up to 16 PA7100LC CPUs.
+QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] machine
+* with up to 16 concurrent running PA7100LC CPUs (SMP)
+* various operating systems are supported, e.g. Linux, HP-UX and BSD variants. For details please check the sections below.
+* PA-RISC machines need a firmware ("PDC" = Processor Dependend Code), and QEMU comes with a precompiled firmware which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS].
 
-PA-RISC machines need a firmware ("PDC" = Processor Dependend Code), and QEMU comes with a precompiled firmware ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS].
-
-QEMU for parisc has been developed by:
-* [mailto:rth@twiddle.net Richard Henderson]: QEMU CPU emulation (32-bit only), QEMU hardware divers
+QEMU for PA-RISC has been developed by:
+* [mailto:rth@twiddle.net Richard Henderson]: QEMU 32-bit PA7100 CPU emulation, QEMU hardware drivers
 * [mailto:deller@gmx.de Helge Deller]: QEMU hardware drivers, SeaBIOS PDC firmware
-* [mailto:svens@stackframe.org Sven Schnelle]: Lots of fixes all over QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
-QEMU on parisc might be further developed (by paid contract) via:
-* [mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland]: offers paid contract work
+* [mailto:svens@stackframe.org Sven Schnelle]: Lots of fixes in QEMU and SeaBIOS (SCSI, CPU emulation fixes, SeaBIOS PDC firmware)
+QEMU for PA-RISC can be further developed via paid contract from:
+* [mailto:mark.cave-ayland@ilande.co.uk Mark Cave-Ayland]: offers paid contract work on QEMU for PA-RISC
 
 == QEMU supported guest operating systems ==
 
