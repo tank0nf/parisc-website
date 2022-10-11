@@ -6,7 +6,7 @@ title: Qemu
 
 '''Please run at least QEMU version 7.1.0'''. Earlier versions had various bugs which are fixed in v7.1.0.
 
-QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop machine] machine with up to 16 PA7100LC CPUs.
+QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] machine with up to 16 PA7100LC CPUs.
 
 PA-RISC machines need a firmware ("PDC" = Processor Dependend Code), and QEMU comes with a precompiled firmware ([https://git.qemu.org/?p=qemu.git;a=blob;f=pc-bios/hppa-firmware.img;h=86930974b9e12bec214fb464eee443a0d844e6ff;hb=HEAD pc-bios/hppa-firmware.img]), which is based on a [https://github.com/hdeller/seabios-hppa/commits/parisc_firmware fork of SeaBIOS].
 
