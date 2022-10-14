@@ -92,44 +92,6 @@ Yes. In general it's possible to use use ISA cards in the EISA slots. We already
 
 In order to get ISA IRQs working you'll need to tell the kernel which IRQs should be set to edge triggered mode and thus be available for ISA devices. Add the kernel boot parameter <code>eisa_irq_edge=3,4,5,7,9,10,11,14,15</code> to the palo command line and replace the numbers in this example with the ISA IRQs you need for your cards. 
 
-==How do I configure and enable my HIL-, PS/2- and USB-keyboard and mouse for the console and X11?==
-
-Linux kernels above 2.4.18-pa45 use the standard Linux input layer to access HIL-, PS/2 and USB keyboards and mice.
-To use your HIL-, PS/2- or USB-mouse with gpm modify your /etc/gpm.conf config file: <pre>
-device=/dev/input/mice
-type=imps2</pre>
-To use your HIL-, PS/2- or USB-mouse with X-Windows (X11), configure either your /etc/X11/XF86Config-4 or /etc/X11/xorg.conf config file with following values:<pre>
-Section "InputDevice"
-  Identifier "Keyboard"
-  Driver "keyboard"
-  Option "CoreKeyboard"
-  #Option "XkbLayout" "de" 
-EndSection
-
-Section "InputDevice" 
-  Identifier "Mouse" 
-  Driver "mouse"
-  Option "CorePointer"
-  Option "Device" "/dev/input/mice"
-  Option "Protocol" "ImPS/2"
-  Option "ZAxisMapping" "4 5" 
-EndSection</pre>
-
-Alternatively you might download [[this XF86Config-4 file]] and adjust the resolution and screen color depth [[as described here]] and store your new config file to the /etc/X11/ directory.
-
-==How to enable my PS/2 mouse and keyboard with Linux Kernel 2.6 ?==
-
-In the 2.6 kernel series, we switched from a PA-RISC-only PS/2 mouse/keyboard driver to the standard Linux kernel PS/2 mouse and keyboard drivers. Hence, in order to get your PS/2 mouse/keyboard, which is either directly connected to your system or via a HIL&PS2-HUB, to work you'll have to enable
-* CONFIG_KEYBOARD_ATKBD
-* CONFIG_MOUSE_PS2
-in addition to
-* CONFIG_INPUT_KEYBOARD
-* CONFIG_INPUT_MOUSE
-You don't need these options for non-HIL PS/2 devices:
-* CONFIG_KEYBOARD_HIL
-* CONFIG_MOUSE_HIL
-* CONFIG_HIL_MLC
-
 ==How do I send Magic SysRq over lanconsole?==
 
 First you have to start a telnet session on your lanconsole, login to GSP, and type 'CO' at the GSP prompt to get the system console. (You might need to type '^Ecf' to gain write access on it).
