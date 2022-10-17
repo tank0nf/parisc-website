@@ -203,7 +203,7 @@ If 32-bit applications use the "struct dirent" or "readdir()" glibc functions, e
  struct dirent *dp;
  while ( nullptr != (dp = readdir(dir)) )
 then they need to be recompiled with this flags set: 
- _LARGEFILE_SOURCE   and   _FILE_OFFSET_BITS=64
+  _FILE_OFFSET_BITS=64  _LARGEFILE_SOURCE  
  
 Solution:
 # manually add "-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" to CFLAGS,
