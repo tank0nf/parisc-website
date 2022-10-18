@@ -45,7 +45,7 @@ Standard qemu options:
 
 Qemu standard debugging options:
 * -d item[,...]        QEMU_LOG      e.g in_asm,out_asm  enable logging of specified items (use '-d help' for a list of items)
-* -dfilter range[,...] QEMU_DFILTER  filter logging based on address range
+* -dfilter 0..0xfffff  QEMU_DFILTER  filter logging based on given address range
 
 HPPA specific qemu options:
 * -global artist.width=800
