@@ -170,3 +170,81 @@ Craig Lalley <mr_lalley@yahoo.com>
       printf ("  Res3 data\n");
  }
 </code>
+
+
+----
+
+
+ STARTING EXECUTION OF MAPPER2
+ 
+ Processor Identification:
+    Hardware Model:  5E3H, Revision: 0
+    Software Model:    4H, Revision: 0
+    Hardware ID:  0, Software ID:  879970626 (unsigned decimal)
+    HP-UX Model String: 9000/800/A500-7X
+    MPE/XL Model String: e3000/A500-200-20#A
+    Processor Board Revisions:
+        CPU - CPU Chip:                   515
+        PDC - Processor Dependent Code:   43.50
+    Cache and TLB Sizes:
+        Instruction Cache:   768 K bytes, Instruction TLB:     240 entries
+        Data Cache:         1536 K bytes, Data TLB:            240 entries
+    Co-processors:  
+        Floating Point Co-processor(s) installed
+ 
+ I/O Configuration:            
+                                                Type  HW    SW    Revisions  
+ Path       Component Name                      ID    Model Model Hdwr  Firm  
+ ---------- ----------------------------------- ----- ----- ----- ----- -----
+ 0          Astro BC Runway Port                CH    582H  BH    0     0     
+ 0/0        Elroy PCI Bridge                    DH    782H  AH    0     0     
+ 0/0/0/0    Ethernet Controller                 1011H 0019H 103CH 104FH 41H   
+ 0/0/1/0    SCSI Bus Controller                 1000H 000BH 0000H 0000H 07H   
+ 0/0/1/1    SCSI Bus Controller                 1000H 000BH 0000H 0000H 07H   
+ 0/0/1/1.15.0
+             HP 18.2G ST318406LC               -     -     -     -     HP03  
+ 0/0/2/0    Symbios SCSI Controller             1000H 000FH 0000H 0000H 37H   
+ 0/0/2/0.3.0
+             HPC1537A tape drive               -     -     -     -     L411  
+ 0/0/2/1    Symbios SCSI Controller             1000H 000FH 0000H 0000H 37H   
+ 0/0/2/1.15.0
+             HP 18.2G ST318406LC               -     -     -     -     HP04  
+ 0/0/4/0    Generic System Peripheral           103CH 128DH 103CH 128EH 01H   
+ 0/0/4/1    Serial Controller                   103CH 1048H 103CH 1283H 03H   
+ 0/2        Elroy PCI Bridge                    DH    782H  AH    0     0     
+ 0/2/0/0    HP 6795A 2G/1G Fibre Chan. Adapter  103CH 1029H 103CH 128CH 0BH   
+ 0/4        Elroy PCI Bridge                    DH    782H  AH    0     0     
+ 0/4/0/0    HP 6795A 2G/1G Fibre Chan. Adapter  103CH 1029H 103CH 128CH 0BH   
+ 0/6        Elroy PCI Bridge                    DH    782H  AH    0     0     
+ 0/6/2/0    Symbios SCSI Controller             1000H 000FH 0000H 0000H 04H   
+ 0/6/2/0.6.0
+             Quantum DLT-7000 Tape drive       -     -     -     -     2255  
+ 8          Memory Controller (8 Gbytes)        1H    9BH   9H    0     0     
+             Ext -->  Sys Installed    
+             Slot 01  1024M Active   
+             Slot 02  1024M Active   
+             Slot 03  1024M Active   
+             Slot 04  1024M Active   
+             Slot 05  1024M Active   
+             Slot 06  1024M Active   
+             Slot 07  1024M Active   
+             Slot 08  1024M Active   
+ 160        Processor                           0H    5E3H  4H    0     0     
+ 162        Processor                           0H    5E3H  4H    0     0     
+ 
+    Resetting the Boot Device...
+ MPEMXR3B
+             Ext -->  Sys Installed    
+             Slot 01  1024M Active   
+             Slot 02  1024M Active   
+             Slot 03  1024M Active   
+             Slot 04  1024M Active   
+             Slot 05  1024M Active   
+             Slot 06  1024M Active   
+             Slot 07  1024M Active   
+             Slot 08  1024M Active   
+ 160        Processor                           0H    5E3H  4H    0     0     
+ 162        Processor                           0H    5E3H  4H    0     0     
+ 
+    Resetting the Boot Device...
+    Done.
