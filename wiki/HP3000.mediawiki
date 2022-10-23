@@ -173,7 +173,47 @@ Craig Lalley <mr_lalley@yahoo.com>
 
 
 ----
-
+ STARTING EXECUTION OF MAPPER
+ 
+ Processor Identification:
+    Hardware Model:  282H, Revision: 0
+    Software Model:  4H, Revision:  0
+    Hardware ID:  0, Software ID:  1731751141 (unsigned decimal)
+    Software Cap:  0x10000041
+    MPE/XL Model String: 927LX
+    Processor Board Revisions:
+        CPU - CPU Chip:                   3
+        System Controller:                1
+        PDC - Processor Dependent Code:   1.5
+    Cache and TLB Sizes:
+        Instruction Cache:  32 K bytes, Instruction TLB:  96 entries
+        Data Cache:         64 K bytes, Data TLB:         96 entries
+    Co-processors:  None installed
+ 
+ I/O Configuration:
+                                                Type  HW    SW    Revisions  
+ Path       Component Name                      ID    Mod   Mod   Hdwr  Firm  
+ ---------- ----------------------------------- ----- ----- ----- ----- -----
+ 52         HP-PB SCSI                          4H    14H   39H   0     0     
+ 52.0.0        HPC1537A tape drive              -     -     -     -     L105  
+ 52.5.0        codesrc SCSI2SD2                 -     -     -     -      6.0  
+ 52.6.0        codesrc SCSI2SD1                 -     -     -     -      6.0  
+ 56         HP-PB LAN/Console                   2H    14H   60H   0     1     
+ 62         Processor                           0H    282H  4H    0     0     
+ 63         Memory (320 M bytes)                1H    14H   9H    0     0     
+          Slot 1A - 64M
+          Slot 1B - 64M
+          Slot 2A - 32M
+          Slot 2B - 32M
+          Slot 3A - 32M
+          Slot 3B - 32M
+          Slot 4A - 16M
+          Slot 4B - 16M
+          Slot 5A - 16M
+          Slot 5B - 16M
+ 
+ RUN COMPLETED.
+----
 
  STARTING EXECUTION OF MAPPER2
  
