@@ -4,6 +4,10 @@ title: HP3000
 
 Craig Lalley <mr_lalley@yahoo.com>
 
+Links:
+http://www.3kranger.com/OpenMPE/omfreeware.shtm
+
+
  HP3000 918 LX (changed the name to "928LX 3kranger Fox")
  
  Stable storage 256 bytes, then Nvolatile storage 256 bytes.
