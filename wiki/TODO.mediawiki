@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-09-25 ==
+== Status & TODO 2022-10-27 ==
+* backtrace to glibc?
 * QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
-* stifb: Fix HCRX text scrolling, missing functions?
+* stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
 * Improve text on https://www.openpa.net
 * QEMU: Improve emulation speed on full virtualization
 * Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
@@ -101,7 +102,7 @@ title: TODO
 
 * Debian packages / Userspace work
 ** teach "blkid" about palo partition
-** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid
+** glibc: add backtrace() function, problems when building elfutils package: http://buildd.debian-ports.org/status/package.php?p=elfutils&suite=sid and dovecot https://buildd.debian.org/status/fetch.php?pkg=dovecot&arch=hppa&ver=1%3A2.3.19.1%2Bdfsg1-2%2Bb1&stamp=1666756774&raw=0
 ** Circular dependency problems with kde packages caused by vlc and ffmpeg (Dave)
 *** Solution: Rebuild ffmpeg outside the buildd (as some dependencies have probably been deleted) and upload a +b1 version. Then trigger bin-nmu of phonon package. Finally this resolves then the dependencies of vlc, ffmpeg, phonon, chromaprint, polkit-kde-agent-1, kwrited, kwallet-kf5 and  libkf5notifications-dev...
 ** Due to very bad performance running multiple copies of dot program (Dave)
