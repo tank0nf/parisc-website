@@ -1007,7 +1007,12 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=027c3d345e2a1ea61d6e4506a250eb392e6e7b18 '''parisc: Convert PDC console to an early console''']
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aca7c13d3bee81a968337a5515411409ae9d095d '''parisc: fbdev/stifb: Align graphics memory size to 4MB'''] (backported to all)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=70be49f2f6223ddd2fcddb0089a40864c37e1494 '''parisc: Fix userspace graphics card breakage due to pgtable special bit'''] (backported to v5.18+)
-
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e8a18e3f00f3ee8d07c17ab1ea3ad4df4a3b6fe0 parisc: Make 8250_gsc driver dependend on CONFIG_PARISC] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9e4e2ce1a78ed92ed91135e90c85f27d75388129 '''parisc/serial: Rename 8250_gsc.c to 8250_parisc.c''']
+** parisc: Use signed char for hardware path in pdc.h
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a0c9f1f2e53b8eb2ae43987a30e547ba56b4fa18 '''parisc: Export iosapic_serial_irq() symbol for serial port driver'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2b6ae0962b421103feb41a80406732944b0665b3 parisc: Avoid printing the hardware path twice] (backported to v4.19+)
+** MAINTAINERS: adjust entry after renaming parisc serial driver
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
