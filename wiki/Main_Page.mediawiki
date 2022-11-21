@@ -55,6 +55,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Nov 2022'''||Installed new buildd servers "paladin" (a qemu-user emulation running Debian-x86 in VirtualBox on Windows). 
+|-
 | style="vertical-align:top;" |'''Oct 2022'''||After 22 years the power supply in our A500-44 server (which was sponsored by HP) finally broke. It had hosted the ftp site and the mailing lists and was replaced by a x86-VM. Installed new buildd servers "pad" (a qemu-user emulation running Debian-x86 in VirtualBox on Windows) and "atlas" (physical C8000 machine). 
 |-
 | style="vertical-align:top;" |'''Sep 2022'''||Lots of [https://gitlab.com/qemu-project/qemu/-/commit/36cd0aeac3337af06875e08683380389df48ccd0 enhancements to the qemu-user emulation]. Many of the debian buildd servers run now on x86 hardware which use qemu-user to build packages. 
