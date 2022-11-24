@@ -141,6 +141,7 @@ Additionally there is a new parisc Debian build server [https://buildd.debian.or
 * http://tenox.pdp-11.ru/hpux/ - HP/UX ressources
 * http://www.mach-linux.org/ - OSF Mach-Linux
 * http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
+* https://github.com/larsbrinkhoff/awesome-cpus - All CPUs documented
 * http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
 * https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
 * http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
