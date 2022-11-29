@@ -5,7 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-11-28 ==
-* why does qcoro breaks qemu buildds?
+* STARTED: why does qcoro breaks qemu buildds? -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 * Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335  -> NO!
 * backtrace to glibc?
 * QEMU: Implement 32/24 bit HCRX graphics
