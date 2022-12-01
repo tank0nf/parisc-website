@@ -5,7 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-12-01 ==
-* port gccgo 
+* port [[Gccgo_for_hppa]] gccgo 
 * STARTED: why does qcoro breaks qemu buildds? -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 * Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335  -> NO!
 * Add backtrace() function to glibc -> needed to build dovecot package
