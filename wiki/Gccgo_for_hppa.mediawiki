@@ -20,8 +20,10 @@ build is simple - just add "go" to the list of languages in your gcc configure l
 gccgo exposes two interfaces, one "gccgo" command that uses traditional gcc syntax for compiling like:  gccgo -O2 -c somefile.go -o somefile.o
 The other is the "go" command which mirrors the syntax of the official go compiler.
 It appends the gcc major version at the end (to distinguish it if you have both official go and gccgo installed), so the actual binary name is go-12.
-I just symlinked /usr/local/bin/go to it.  For a sample project I am using my favorite file manager tool, which you would normally install like this:  go install github.com/gokcehan/lf
-This is the command that's crashing without GOGC=off.
+I just symlinked /usr/local/bin/go to it.  For a sample project I am using my favorite file manager tool, which you would normally install like this:
+  go install github.com/gokcehan/lf
+This is the command that's crashing without 
+  GOGC=off.
 My system is SMP so you can also set GOMAXPROCS=1 environment variable to force it serially for reproducible results.
 
 /x/sys/unix is technically not required, you can get quite far with golang without needing to talk to C at all because they implement everything in-house - direct syscalls, dns resolver, etc etc, a good chunk of glibc functionality is implemented in the runtime (included in the compiler).
