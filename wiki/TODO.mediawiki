@@ -4,10 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-11-28 ==
+== Status & TODO 2022-12-01 ==
+* port gccgo 
 * STARTED: why does qcoro breaks qemu buildds? -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 * Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335  -> NO!
-* backtrace to glibc?
+* Add backtrace() function to glibc -> needed to build dovecot package
 * QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
 * stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
