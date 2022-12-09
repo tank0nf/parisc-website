@@ -55,6 +55,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''Dec 2022'''||Adrian Glaubitz built a [https://cdimage.debian.org/cdimage/ports/snapshots/2022-12-09/debian-11.0.0-hppa-NETINST-1.iso new Debian 11 installation media].
+|-
 | style="vertical-align:top;" |'''Nov 2022'''||Installed new buildd servers "paladin" (a qemu-user emulation running Debian-x86 in VirtualBox on Windows). 
 |-
 | style="vertical-align:top;" |'''Oct 2022'''||After 22 years the power supply in our A500-44 server (which was sponsored by HP) finally broke. It had hosted the ftp site and the mailing lists and was replaced by a x86-VM. Installed new buildd servers "pad" (a qemu-user emulation running Debian-x86 in VirtualBox on Windows) and "atlas" (physical C8000 machine). 
