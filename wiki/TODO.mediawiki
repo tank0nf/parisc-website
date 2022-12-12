@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2022-12-09 ==
+* Finfish MADV transition in glibc
 * why does cfengine3 fails on qemu: https://buildd.debian.org/status/logs.php?pkg=cfengine3&arch=hppa
 * port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 * STARTED: why does qcoro breaks qemu buildds? -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
