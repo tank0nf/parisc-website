@@ -199,6 +199,9 @@ If you choose to build debian source package kernel, you may need to
 
 == Large file support for debian packages ==
 
+See debian BZ:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
+
 If 32-bit applications use the "struct dirent" or "readdir()" glibc functions, e.g. like this:
  struct dirent *dp;
  while ( nullptr != (dp = readdir(dir)) )
