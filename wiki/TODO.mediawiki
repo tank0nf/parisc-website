@@ -1161,6 +1161,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** [http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=44a4c9e443674e6cd3368d3e642dfe9c429d5525 '''parisc: Add wrapper syscalls to fix O_NONBLOCK flag usage''']
 ** [https://sourceware.org/git?p=glibc.git;a=commit;h=a24f414ba11a7acdf3c5ccec3fb327fc72166556 '''GLIBC PATCH: Remove obsolete defines for HPUX support from fcntl.h and update O_NONBLOCK.''']
 ** [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=974690 ''dietlibc Debian bug report'']
+* '''Kernel 6.1 (MADV_WIPEONFORK, MADV_KEEPONFORK, ...)'''
+** This patch [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71bdea6f798b425bc0003780b13e3fdecb16a010 '''parisc: Align parisc MADV_XXX constants with all other architectures'''] changed some MADV values to have the same number as other platforms (exception: alpha arch). Even if that's an ABI change, the patch includes a wrapper to translate the values, so that old binaries will continue to work.
 
 == Considerations between Debian unstable and Debian Jessie release ==
 Jessie was not stable on SMP machines, particularly those with PA8800/PA8900 processors.
