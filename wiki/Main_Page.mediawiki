@@ -27,7 +27,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 '''Debian Linux'''
 : PA-RISC is a non-release architecture in the [http://www.debian-ports.org Debian Ports] project.
 : Debian Linux for PA-RISC is usable and stable with more than 12,800 Debian packages available.
-: You can [https://cdimage.debian.org/cdimage/ports/current/ download the latest installation ISO here] or [http://ftp.parisc-linux.org/debian-cd/ here].
+: You can [https://cdimage.debian.org/cdimage/ports/snapshots/2022-12-09/ download the latest installation ISO here] or [http://ftp.parisc-linux.org/debian-cd/ here].
 |- style="vertical-align:top;"
 | [[File:Gentoo-logo.png|Gentoo Linux|50px|link=http://www.gentoo.org]]
 ||
