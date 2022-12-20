@@ -1018,6 +1018,17 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a0c9f1f2e53b8eb2ae43987a30e547ba56b4fa18 '''parisc: Export iosapic_serial_irq() symbol for serial port driver'''] (backported to all)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2b6ae0962b421103feb41a80406732944b0665b3 parisc: Avoid printing the hardware path twice] (backported to v4.19+)
 ** MAINTAINERS: adjust entry after renaming parisc serial driver
+* Kernel 6.2
+** parisc: Fix inconsistent indenting in setup_cmdline()
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71bdea6f798b425bc0003780b13e3fdecb16a010 '''parisc: Align parisc MADV_XXX constants with all other architectures''']
+** parisc: Drop PMD_SHIFT from calculation in pgtable.h (backported to v6.0+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7236aae5f81f3efbd93d0601e74fc05994bc2580 '''parisc: Fix locking in pdc_iodc_print() firmware call'''] (backported to v6.0+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7e6652c79ecd74e1112500668d956367dc3772a5 parisc: Drop duplicate kgdb_pdc console] (backported to v6.1+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7dc4dbfe750e1f18c511e73c8ed114da8de9ff85 parisc: Drop locking in pdc console code] (backported to v6.1+)
+** parisc: Move pdc_result struct to firmware.c
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7dc4dbfe750e1f18c511e73c8ed114da8de9ff85 '''parisc: Add missing FORCE prerequisites in Makefile'''] (backported to v5.18+) 
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4934fbfb3ff09b8500f63d4624ed8b41647bb822 parisc: Show MPE/iX model string at bootup]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=41f563ab3c33698bdfc3403c7c2e6c94e73681e4 parisc: led: Fix potential null-ptr-deref in start_task()] (backported to all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
