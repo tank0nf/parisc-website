@@ -202,6 +202,15 @@ If you choose to build debian source package kernel, you may need to
 See debian BZ:
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
 
+See musl time64 transition:
+https://musl.libc.org/time64.html
+
+See Gentoo's "On time64 and Large File Support"
+https://sourceware.org/pipermail/libc-alpha/2022-November/143386.html
+
+See Joseph Myers' comments on "[PATCH] Deprecate 32-bit off_t support":
+https://sourceware.org/pipermail/libc-alpha/2019-January/100410.html
+
 If 32-bit applications use the "struct dirent" or "readdir()" glibc functions, e.g. like this:
  struct dirent *dp;
  while ( nullptr != (dp = readdir(dir)) )
