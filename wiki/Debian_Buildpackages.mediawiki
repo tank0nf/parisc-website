@@ -199,7 +199,7 @@ If you choose to build debian source package kernel, you may need to
 
 == Large file support for debian packages ==
 
-See debian BZ:
+See debian BZ (glibc readdir() failure):
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
 
 See musl time64 transition:
