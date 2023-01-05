@@ -4,8 +4,11 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2022-12-09 ==
+== Status & TODO 2023-01-05 ==
 * Finfish MADV transition in glibc
+* rrdtool FTBFS on 32-bit arches: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026973
+* Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915
+* Check why ohcount and guile-ssh: ftbfs with qemu but built okay on real hardware: https://buildd.debian.org/status/logs.php?pkg=guile-ssh&arch=hppa and https://buildd.debian.org/status/logs.php?pkg=ohcount&ver=4.0.0-3&arch=hppa
 * fix openvswitch on qemu
 * why does cfengine3 fails on qemu: https://buildd.debian.org/status/logs.php?pkg=cfengine3&arch=hppa
 * port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
