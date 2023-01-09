@@ -201,6 +201,8 @@ If you choose to build debian source package kernel, you may need to
 
 See debian BZ (glibc readdir() failure):
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
+New BZ:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028320
 
 See musl time64 transition:
 https://musl.libc.org/time64.html
