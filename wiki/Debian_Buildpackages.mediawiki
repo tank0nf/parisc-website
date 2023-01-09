@@ -200,12 +200,14 @@ If you choose to build debian source package kernel, you may need to
 == Large file support for debian packages ==
 
 See debian BZ (glibc readdir() failure):
-https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335 <br>
 New BZ:
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028320
 
 See musl time64 transition:
 https://musl.libc.org/time64.html
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=23960
 
 See Gentoo's "On time64 and Large File Support"
 https://sourceware.org/pipermail/libc-alpha/2022-November/143386.html
