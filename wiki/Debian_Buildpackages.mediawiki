@@ -211,6 +211,8 @@ See musl time64 transition:
 https://musl.libc.org/time64.html
 
 https://sourceware.org/bugzilla/show_bug.cgi?id=23960
+Specification:
+https://www.opengroup.org/platform/lfs.html
 
 See Gentoo's "On time64 and Large File Support"
 https://sourceware.org/pipermail/libc-alpha/2022-November/143386.html
