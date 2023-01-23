@@ -220,6 +220,9 @@ https://sourceware.org/pipermail/libc-alpha/2022-November/143386.html
 See Joseph Myers' comments on "[PATCH] Deprecate 32-bit off_t support":
 https://sourceware.org/pipermail/libc-alpha/2019-January/100410.html
 
+Good summary:
+https://www.mjr19.org.uk/sw/inodes64.html
+
 If 32-bit applications use the "struct dirent" or "readdir()" glibc functions, e.g. like this:
  struct dirent *dp;
  while ( nullptr != (dp = readdir(dir)) )
