@@ -8,8 +8,7 @@ title: TODO
 * STARTED: Finfish MADV transition in glibc
 * STARTED: Improve text on https://www.openpa.net
 * Debian:
-** STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-
-bin/bugreport.cgi?bug=1027915,   patch sent
+** STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
 ** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 * STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335  -> NO!
 * QEMU issues:
