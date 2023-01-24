@@ -4,29 +4,30 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-01-05 ==
-* STARTED: Finfish MADV transition in glibc
+== Status & TODO 2023-01-24 ==
+* glibc:
+** STARTED: Finfish MADV transition in glibc
+** Add backtrace() function to glibc -> needed to build dovecot package
 * STARTED: Improve text on https://www.openpa.net
 * Debian:
 ** STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
 ** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
-* STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335  -> NO!
+* STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
 * QEMU issues:
 ** rrdtool FTBFS on 32-bit arches: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026973
-** indent, ohcount and guile-ssh: ftbfs with qemu but built okay on real hardware: https://buildd.debian.org/status/logs.php?pkg=guile-ssh&arch=hppa and https://buildd.debian.org/status/logs.php?pkg=ohcount&ver=4.0.0-3&arch=hppa
+** ohcount and guile-ssh: ftbfs with qemu but built okay on real hardware: https://buildd.debian.org/status/logs.php?pkg=guile-ssh&arch=hppa and https://buildd.debian.org/status/logs.php?pkg=ohcount&ver=4.0.0-3&arch=hppa
 ** fix openvswitch on qemu
-** cfengine3 fails on qemu: https://buildd.debian.org/status/logs.php?pkg=cfengine3&arch=hppa
-** STARTED: why does qcoro breaks qemu buildds? -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
+** DONE: indent FTBFS on qemu: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1029574 (shebang bug)
+** DONE: cfengine3 FTBFS on qemu: https://buildd.debian.org/status/logs.php?pkg=cfengine3&arch=hppa
+** DONE: qcoro FTBFS on qemu -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 ** QEMU: Improve emulation speed on full virtualization
+** check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
 * gcc compiler:
 ** Why is compiling fife so slow with cc1plus?
-* glibc:
-** Add backtrace() function to glibc -> needed to build dovecot package
 * QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
 * stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
 * Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
-* QEMU: check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
 * Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
 * SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
