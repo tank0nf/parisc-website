@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-01-24 ==
+* check results of debian strace build for kernel errors 
 * glibc:
 ** STARTED: Finfish MADV transition in glibc
 ** Add backtrace() function to glibc -> needed to build dovecot package
