@@ -20,6 +20,9 @@ title: Debian Buildpackages
 : https://dsa.debian.org/doc/schroot/
 : List of debian porterboxes: https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc
 
+; How buildds get the lists
+: ssh -l wb-buildd -S buildd.debian.org.ssh -o BatchMode=yes buildd.debian.org -MN
+
 ; How to upload a new debian package for debian developers
 : Set up sbuild: https://wiki.debian.org/sbuild
 : Build the package on amd64 with sbuild and argument "--source-only-changes"
