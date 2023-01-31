@@ -226,6 +226,9 @@ https://sourceware.org/pipermail/libc-alpha/2019-January/100410.html
 Good summary:
 https://www.mjr19.org.uk/sw/inodes64.html
 
+Examples of failing programs:
+- tar: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026204
+
 If 32-bit applications use the "struct dirent" or "readdir()" glibc functions, e.g. like this:
  struct dirent *dp;
  while ( nullptr != (dp = readdir(dir)) )
