@@ -5,11 +5,15 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-01-24 ==
-* check results of debian strace build for kernel errors 
+* STARTED: Kernel bug, see mails: VM_FAULT_RETRY fixes,  "fix livelock in uaccess"
+* QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
+* QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
+* STARTED: check qt6-base -> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030546 -  qt6-base FTBFS on hppa  and https://codereview.qt-project.org/c/qt/qtbase/+/437349/comments/
+* DONE: check results of debian strace build for kernel errors -> Fixed by kernel patch:  parisc: Wire up PTRACE_GETREGS/PTRACE_SETREGS for compat case
 * glibc:
 ** STARTED: Finfish MADV transition in glibc
 ** Add backtrace() function to glibc -> needed to build dovecot package
-* STARTED: Improve text on https://www.openpa.net
+* DONE: Improve text on https://www.openpa.net
 * Debian:
 ** STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
 ** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
