@@ -205,6 +205,8 @@ If you choose to build debian source package kernel, you may need to
 
 == Large file support for debian packages ==
 
+Typical error message: '''Value too large for defined data type'''
+
 See debian BZ (glibc readdir() failure):
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335 <br>
 New BZ:
