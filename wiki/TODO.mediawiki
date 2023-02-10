@@ -19,6 +19,7 @@ title: TODO
 ** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 * STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
 * QEMU issues:
+** devscripts FTBFS because of subversion: svnadmin: E000072: Can't check directory '.': Value too large for defined data type
 ** rrdtool FTBFS on 32-bit arches: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026973
 ** ohcount and guile-ssh: ftbfs with qemu but built okay on real hardware: https://buildd.debian.org/status/logs.php?pkg=guile-ssh&arch=hppa and https://buildd.debian.org/status/logs.php?pkg=ohcount&ver=4.0.0-3&arch=hppa
 ** fix openvswitch on qemu
