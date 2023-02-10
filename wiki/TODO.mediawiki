@@ -11,7 +11,7 @@ title: TODO
 * STARTED: check qt6-base -> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030546 -  qt6-base FTBFS on hppa  and https://codereview.qt-project.org/c/qt/qtbase/+/437349/comments/
 * DONE: check results of debian strace build for kernel errors -> Fixed by kernel patch:  parisc: Wire up PTRACE_GETREGS/PTRACE_SETREGS for compat case
 * glibc:
-** STARTED: Finfish MADV transition in glibc
+** STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
 ** Add backtrace() function to glibc -> needed to build dovecot package
 * DONE: Improve text on https://www.openpa.net
 * Debian:
