@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-01-24 ==
-* STARTED: Kernel bug, see mails: VM_FAULT_RETRY fixes,  "fix livelock in uaccess"
+== Status & TODO 2023-02-12 ==
+* STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
+* DONE: Kernel bug, see mails: VM_FAULT_RETRY fixes,  "fix livelock in uaccess"
 * QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
 * QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
 * STARTED: check qt6-base -> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030546 -  qt6-base FTBFS on hppa  and https://codereview.qt-project.org/c/qt/qtbase/+/437349/comments/
