@@ -97,13 +97,13 @@ Run "make"
 === Ready-to-run Debian Linux QEMU images for parisc ===
 
 Download Debian hard disc image:
- wget http://dellerweb.de/qemu/debian-11-hdd-2023.img.bz2
+ wget http://dellerweb.de/qemu/debian-12-hdd-2023.img.bz2
 or
  wget http://dellerweb.de/qemu/debian-10-hdd.img.bz2
 Unzip image: 
- bunzip2 debian-11-hdd-2023.img.bz2
+ bunzip2 debian-12-hdd-2023.img.bz2
 Run qemu:
- qemu-system-hppa -drive file=debian-11-hdd-2023.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
+ qemu-system-hppa -drive file=debian-12-hdd-2023.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
 Log in as '''root''', root password is "'''rootme'''"
 
 === How to run QEMU with Debian-10 installer image ===
