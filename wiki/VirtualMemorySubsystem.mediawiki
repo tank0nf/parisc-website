@@ -7,6 +7,11 @@ title: VirtualMemorySubsystem
 If you don't feel very comfortable with the Linux Virtual Memory Management, you might want to take a look here: http://www.informit.com/articles/article.asp?p=336868
 This article explain the general concepts underlying the way Linux deals with Virtual Memory (VM).
 
+== PA-RISC VIPT caches ==
+
+See this article for a good overview of the various caching architectures:
+https://www.linuxjournal.com/article/7105
+
 == Page Tables ==
 
 Currently, only 4k pages are supported.
