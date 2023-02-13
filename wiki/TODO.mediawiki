@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-02-12 ==
+* Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
 * STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
 * DONE: Kernel bug, see mails: VM_FAULT_RETRY fixes,  "fix livelock in uaccess"
 * QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
