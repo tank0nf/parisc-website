@@ -7,6 +7,8 @@ title: Qemu
 '''Important: Please run at least QEMU version 7.1.0'''.<br>
 Earlier versions had various bugs which are fixed in v7.1.0.
 
+'''Important: QEMU DOES NOT support running a 64-bit parisc kernel'''.<br>
+
 QEMU emulates a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] machine
 * with up to 16 concurrent running PA7100LC CPUs (SMP)
 * various operating systems are supported, e.g. Linux, HP-UX and BSD variants. For details please check the sections below.
