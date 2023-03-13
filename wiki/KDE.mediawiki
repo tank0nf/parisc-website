@@ -1,0 +1,9 @@
+---
+title: KDE
+---
+
+One person, nickname "jonys" used KDE on his HPPA-C8000:
+screenshot: https://imgur.com/6yPDb0M
+attached to this thread:
+https://codereview.qt-project.org/c/qt/qtbase/+/437349/comments/
+(contact Sam James)
