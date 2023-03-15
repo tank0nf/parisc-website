@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-02-12 ==
+* why doesn't kernel >= 6.1.5 boot on panama? 
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
 * STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
