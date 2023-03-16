@@ -31,7 +31,32 @@ title: Graphics howto
 : Unfortunately, the XFree86 drivers only support a frame buffer.
 : The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
 
-== Configuring XFree86 for HP graphics cards ==
+== Configuring Xorg for HP graphics cards ==
+
+Make sure you have the Xorg server package, including "xserver-xorg-input-all" installed,
+which enables Linux default input devices.
+
+Here is an example xorg.conf file for a 8-bit graphics card:
+
+ Section "ServerLayout"
+        Identifier     "X.org Configured"
+        Screen      0  "Screen0" 0 0
+ EndSection
+ 
+ Section "Serverflags"
+         Option "AutoAddDevices" "true"
+ EndSection
+ 
+ Section "Screen"
+        Identifier "Screen0"
+        '''DefaultDepth 8'''
+        SubSection "Display"
+                Viewport   0 0
+                Depth     8
+        EndSubSection
+ EndSection
+
+== Old: Configuring XFree86 for HP graphics cards ==
  
 Check dmesg output right after booting for this part:
 <pre>
