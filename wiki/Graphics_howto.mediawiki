@@ -45,6 +45,8 @@ Put that contents into the (new) file '''/etc/X11/xorg.conf.d/xorg.conf'''
         '''DefaultDepth 8'''
  EndSection
 
+See also this posting regarding X endianess https://lwn.net/Articles/921196/ if you have problems connecting remotely.
+
 == Old: Configuring XFree86 for HP graphics cards ==
  
 Check dmesg output right after booting for this part:
