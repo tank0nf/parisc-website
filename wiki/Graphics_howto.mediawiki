@@ -36,24 +36,13 @@ title: Graphics howto
 Make sure you have the Xorg server package, including "xserver-xorg-input-all" installed,
 which enables Linux default input devices.
 
-Here is an example xorg.conf file for a 8-bit graphics card:
+Here is an example xorg.conf file which is needed when you
+run on a graphics card which supports only 8 bits per pixel.
+Put that contents into the (new) file '''/etc/X11/xorg.conf.d/xorg.conf'''
 
- Section "ServerLayout"
-        Identifier     "X.org Configured"
-        Screen      0  "Screen0" 0 0
- EndSection
- 
- Section "Serverflags"
-         Option "AutoAddDevices" "true"
- EndSection
- 
  Section "Screen"
         Identifier "Screen0"
         '''DefaultDepth 8'''
-        SubSection "Display"
-                Viewport   0 0
-                Depth     8
-        EndSubSection
  EndSection
 
 == Old: Configuring XFree86 for HP graphics cards ==
