@@ -215,6 +215,9 @@ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028320
 See musl time64 transition:
 https://musl.libc.org/time64.html
 
+Debian bug (gdnsd depends on libev, both needs LFS support enabled):
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030983
+
 https://sourceware.org/bugzilla/show_bug.cgi?id=23960
 Specification:
 https://www.opengroup.org/platform/lfs.html
