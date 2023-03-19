@@ -82,16 +82,10 @@ this is a bit tricky...
 
 == Other Missing Features (related to palo, glibc, userspace etc.) ==
 
-'''''PA-hackers, please check whether the following list is up to date'''''
-
-Other items that do not fit into the other sections ...
-
 * 64 bit userland, missing bits:
 ** 64 bit binutils that will build DSO's
 ** 64 bit glibc
 ** Multiple stub sections for the 64 bit linker.
 * Low latency
 * XFree86/X.org BIOS init emulation support
-* CPU hotplug
-* HugeTLB page support
 * MSI/MSI-X PCI device support
