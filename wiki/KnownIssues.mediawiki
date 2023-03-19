@@ -32,47 +32,6 @@ Hardware drivers, networking support, file systems etc. that are expected to wor
 * matroxfb - 64 bit kernel issue: screen stays black, i.e. graphics card is not properly initialized  <-- HAS THIS BEEN FIXED?
 * Promise IDE P-ATA controller (PDC202XX_NEW) - DMA issues, but booting with 'nodma' works. Try a siimage controller if you really need IDE.
 
-== PTE/TLB issues ==
-
-Quoting [[http://article.gmane.org/gmane.linux.ports.parisc/2814 James David Anglin]]:
-
-1) minifail bug
-
-As previously identified, there is a cache flush problem in ptep_set_wrprotect.
-I did a kernel build with a "`WARN_ON(pte_present(old_pte) && pte_dirty(old_pte)`" in `ptep_set_wrprotect` an it triggered immediately.  So, we have to deal with
-a dirty cache in `ptep_set_wrprotect`.  As far as I can tell, this problem
-is fixed by putting the flush inside `preempt_disable()/preempt_enable()`.
-
-Helge is triggering other PTE issues when he runs multiple copies of
-minifail.  The minifail program fails on a UP system.  With the above fix,
-it doesn't fail.
-
-2) SMP page table entry corruption
-
-The needs to be a lock around pte updates to ensure that pte modifications
-are consistent on SMP machines.  I have done this and it helps stability
-on rp3440.
-
-3) SMP PTE/TLB consistency
-
-We are not purging existing translations when an update to a PTE value
-is done such as in `ptep_set_wrprotect`.  As a result, the parent of a fork
-doesn't immediately trigger a COW break on a page when a write occurs
-if there is an existing translation.
-
-Adding a TLB purge helps, but even this may be lost.  For example,
-
- <nowiki>
-page fault (cpu1)
- -> load old pte (cpu1)
-   -> store new pte (cpu2)
-     -> global tlb purge (cpu2)
-       -> insert old pte into tlb (cpu1)
- </nowiki>
-
-It may be possible to use locking to ensure that purges aren't lost.  However,
-this is a bit tricky...
-
 == Other Missing Features (related to palo, glibc, userspace etc.) ==
 
 * 64 bit userland, missing bits:
