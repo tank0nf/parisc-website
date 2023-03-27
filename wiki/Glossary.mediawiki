@@ -50,6 +50,8 @@ There are a ''lot'' of different codewords and jargon involved with HP hardware.
 : Hewlett Packard-Precision Bus. HP proprietary I/O bus. Aka NIO.
 ; '''IOA'''
 : IO Adapter. Aka "I/O MMU". Generally handles I/O coherency.
+; '''ITE'''
+: Internal Terminal Emulator. Describes the text display at machine startup.
 ; '''Kittyhawk'''
 : The PA-7200 based K class servers.
 ; '''Lasi'''
@@ -88,6 +90,8 @@ There are a ''lot'' of different codewords and jargon involved with HP hardware.
 : National Semiconductor PC87560UBD, aka "SuperIO". Provides IDE, USB 1.1, Floppy Disk Controller, parallel port, 2 serial ports, UIR (infrared), etc. But since National denies the existence of this chip and HP was the only client for this buggy PoS, the name "SuckyIO" has stuck.
 ; '''Summit'''
 : A proprietary bus used in the T-class.
+; '''Summit96 / Summit98'''
+: Codename for chipset of the Visualize-FX graphic card series.
 ; '''SuperIO'''
 : See [#suckyio SuckyIO].
 ; '''TOC'''
