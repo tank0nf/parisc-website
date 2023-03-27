@@ -11,10 +11,11 @@ title: Graphics howto
 
 ; PCI cards
 : '''only Vis-EG cards (8-bit colors) are supported'''. Graphic is un-accelerated.
-: The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not supported. See [[VisualizeFX]] for further progress.
-: The (older) FireGL-UX graphics card is reported by lspci as "IBM GXT6000P", Diamond-card and needs the gxt4500 fbdev kernel module. The cards seems to be initialized and reported to be OK, but the monitor turns black (tested by Dave Land). 
-: The ATI FireGL-x graphics card in the C8000 workstation is supported in un-accelerated mode.
-: Attempts on C8000 acceleration:
+: The Visualize-FX/E, FX/2, FX/4, FX/5, FX/6 and FX/10 PCI cards are not yet supported. See [[VisualizeFX]] for further progress.
+: The Fire GL-UX graphics card is reported by lspci as "IBM GXT6000P" (Diamond) and needs the gxt4500 fbdev kernel module. The cards seems to be initialized and reported to be OK, but the monitor turns black (tested by Dave Land). 
+: The ATI Fire GL-X1/X3 graphics cards in the C8000 workstation are supported in un-accelerated mode.
+: The ATI Fire GL T2-128 has not been tested yet.
+: Attempts with Fire GL-X on C8000 acceleration:
 : in 2016 by Simone Mannori https://marc.info/?a=145922974200003&r=1&w=2
 : in 2017 by Tom Bogendoerfer https://marc.info/?t=150679093500001&r=1&w=2
 : in 2019 by Sven Schnelle and Tom (finally a quickfix for "ring test failed" issue) https://marc.info/?t=156971879800064&r=1&w=2
