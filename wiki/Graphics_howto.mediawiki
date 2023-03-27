@@ -5,11 +5,14 @@ title: Graphics howto
 = Graphics cards with PA-RISC Linux =
  
 == Which HP graphics cards work with PA-RISC Linux? ==
- 
+
+'''All original HP graphics cards which can bring up a boot (IPL) screen are supported by Linux in text-mode with the STI console.<br>Bitmap graphics support (for fbdev or X11) is partially supported by some cards, for details read on...   
+'''
+
 ; PCI cards
-: '''only Vis-EG cards (8-bit color) are supported'''. Graphic is un-accelerated.
+: '''only Vis-EG cards (8-bit colors) are supported'''. Graphic is un-accelerated.
 : The FX/2, FX/4, FX/6, FX/E, FX/5 and FX/10 PCI cards are not supported. See [[VisualizeFX]] for further progress.
-: The (older) FireGL-UX graphics card is reported by lspci as "IBM GXT6000P", Diamond-card and needs the gxt4500 fbdev kernel module. The cards seems to be initialized and reported as OK, but the monitor turns black (tested by Dave Land) 
+: The (older) FireGL-UX graphics card is reported by lspci as "IBM GXT6000P", Diamond-card and needs the gxt4500 fbdev kernel module. The cards seems to be initialized and reported to be OK, but the monitor turns black (tested by Dave Land). 
 : The ATI FireGL-x graphics card in the C8000 workstation is supported in un-accelerated mode.
 : Attempts on C8000 acceleration:
 : in 2016 by Simone Mannori https://marc.info/?a=145922974200003&r=1&w=2
@@ -27,7 +30,7 @@ title: Graphics howto
 :; Thunder 2 VISUALIZE 48 XP card:
 :: ID = 0x2F8D570E (Version 8.05/12)
 :; Some Hyperion and ThunderHawk GSC cards
-:; All other HP GSC-based graphics cards are supported.
+:; All other HP GSC-based graphics cards are supported, with 8bpp and if supported by the card in 24bpp.
 :
 : Unfortunately, the XFree86 drivers only support a frame buffer.
 : The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
