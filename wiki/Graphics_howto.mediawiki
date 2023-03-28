@@ -109,8 +109,15 @@ Some graphics cards can be initialized by the linux framebuffer drivers directly
 * 3dfx Voodoo and Voodoo2
 * some ATI Mach64 (eg. Rage XL)
 * some old S3
+* Permedia 2 cards
 * some ancient framebuffer cards (eg. TGA, P9000)
-To date, Matrox Millenium I, Matrox MGA G200, Voodoo2 and ATI Rage XL cards are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
+To date,
+* Tech-Source Raptor GFX (DLabs Permedia II 2D+3D chip)
+* Matrox Millenium I
+* Matrox MGA G200
+* Voodoo2
+* ATI Rage XL cards
+are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
 
 === XFree86/X.org driver ===
 The second approach is to use the XFree86/X.org graphics card drivers. The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know. The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
