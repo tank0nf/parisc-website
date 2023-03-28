@@ -113,6 +113,9 @@ This is currently a bug/feature related to the HIL drivers. In the HIL drivers w
 <code>Jan 8 23:52:33 hp kernel: emacs(17795): unaligned access to 0x001cdaf2 at ip=0x0008930b</code>
 
 The message usually means the program in question is buggy and is not meeting address alignment requirements. The unaligned access is trapped and emulated by the kernel, so normally the message itself is simply informational. Like most architectures, PA-RISC loads (and stores) to half-words, words, doublewords have specific address alignment requirements. The address accessed must be divisible by the number of bytes being stored. E.G. word (32-bit) stores should access an address divisible by 4.
+You can control the Kernel behaviour in different ways:
+* The value in <code>/proc/sys/kernel/unaligned-trap</code> tells the kernel if the unaligned access should be emulated or not. When 1, the kernel will transparently fix the buggy program (by emulating the unaligned access). When 0, the kernel will segfault the programm, which may help if you want to run the program in a debugger to find the issue.
+* You can start your program with the prctl program. <code>prctl --unaligned=[silent|signal|always-signal|default] your_program_name</code> changes the behaviour for the started program and all it's child processes. Read the man documentation for prctl for more details.
 
 ==What about XFree and FX graphic cards?==
 
