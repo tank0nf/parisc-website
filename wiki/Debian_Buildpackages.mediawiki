@@ -207,6 +207,10 @@ If you choose to build debian source package kernel, you may need to
 
 Typical error message: '''Value too large for defined data type'''
 
+Debian RELEASE GOAL:
+https://wiki.debian.org/ReleaseGoals/64bit-time
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026204  (tar missing time64 support)
+
 See debian BZ (glibc readdir() failure):
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335 <br>
 New BZ:
