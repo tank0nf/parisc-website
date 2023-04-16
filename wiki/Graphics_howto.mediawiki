@@ -47,8 +47,17 @@ Put that contents into the (new) file '''/etc/X11/xorg.conf.d/xorg.conf'''
 
  Section "Screen"
         Identifier "Screen0"
-        '''DefaultDepth 8'''
+        '''Device      "fbX"'''   # comment out if you want to use fb0
+        '''DefaultDepth 8'''      # comment out if you want 24/32bpp
  EndSection
+ 
+ Section "Device"
+    Identifier  "fbX"
+    Driver      "fbdev"
+    Screen      0
+    Option      "fbdev" "/dev/'''fb1'''" # change to any fb[0-20] you want
+ EndSection
+
 
 See also this posting regarding X endianess https://lwn.net/Articles/921196/ if you have problems connecting remotely.
 
