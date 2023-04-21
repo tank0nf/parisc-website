@@ -3,7 +3,17 @@ title: Graphics howto
 ---
 
 = Graphics cards with PA-RISC Linux =
- 
+
+== Intro on graphics on PA-RISC Linux? ==
+
+== Useful tools when running in graphical mode ==
+
+* Switch text mode screen to another graphics card: 
+ con2fbmap 1 2    # switches tty1 to /dev/fb2  (first login screen to third graphic card, fb0 is the first graphics card)
+* Use the fbset tool to switch to another graphic mode (see /etc/fb.modes for possible values), e.g.
+ fbset  -fb /dev/fb1 1280x1024-60 -depth 8
+* [https://git.kernel.org/pub/scm/linux/kernel/git/geert/fbtest.git/ fbtest tool from Geert Uytterhoeven]
+
 == Which HP graphics cards work with PA-RISC Linux? ==
 
 '''All original HP graphics cards which can bring up a boot (IPL) screen are supported by Linux in text-mode with the STI console.<br>Bitmap graphics support (for fbdev or X11) is partially supported by some cards, for details read on...   
