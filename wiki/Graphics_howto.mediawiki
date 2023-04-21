@@ -38,8 +38,7 @@ title: Graphics howto
 
 == Configuring Xorg for HP graphics cards ==
 
-Make sure you have the Xorg server package, including "xserver-xorg-input-all" installed,
-which enables Linux default input devices.
+Make sure you have the Xorg server package '''server-xorg-video-fbdev''' and '''xserver-xorg-input-all''' installed.
 
 Here is an example xorg.conf file which is needed when you
 run on a graphics card which supports only 8 bits per pixel.
