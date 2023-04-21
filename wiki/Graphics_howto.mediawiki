@@ -120,7 +120,7 @@ Some graphics cards can be initialized by the linux framebuffer drivers directly
 * Permedia 2 cards
 * some ancient framebuffer cards (eg. TGA, P9000)
 To date,
-* pm2: ELSA Gloria 8, Tech-Source Raptor GFX (3DLabs Permedia II 2D+3D chip)
+* pm2: ELSA Gloria Synergy, Tech-Source Raptor GFX (3DLabs Permedia II 2D+3D chip)
 * Matrox Millenium I
 * Matrox MGA G200
 * Voodoo2
