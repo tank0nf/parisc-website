@@ -4,32 +4,45 @@ title: Graphics howto
 
 = Graphics cards with PA-RISC Linux =
 
-== Intro on graphics on PA-RISC Linux? ==
+Most graphics card have to be initialized by firmware before the OS driver can use the card: this may consist of wakeup sequences,
+setting up a proper color map, clearing the video memory, selecting the proper video frequency, output interface and much more.
+Usually, the graphics card contains the initialization firmware in the form of 
+* BIOS (on older ix86/PCs), 
+* EFI (new IA32 and IA64),
+* '''PDC (on PA-RISC)''', or 
+* OpenFirmware (on Sun and MACs).
+Unfortunately each flavor of firmware is not compatible on other computers. For example, PA-RISC PDC cannot initialize a PC graphics card.
+Therefore the graphics card vendors may produce respective versions for each architecture it wishes to sell a particular graphics card.
+E.g. ATI produced different 'Fire GL' graphics cards for PC, IA64, PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
 
-== Useful tools when running in graphical mode ==
+At bootup of PA-RISC machines the firmware will call the PDC ROM of PA-RISC graphic card to initialize a text mode for the IPL boot menu.
+On most graphic cards you may press the '''TAB key during bootup''' to cycle through various graphics resolutions (e.g. 800x600, 1024x768 or 1600x1200) to choose the one which suits your monitor.
+'''Please note, that if no keyboard is connected most PA-RISC machines will fall back to serial console on serial port 1.'''    
 
-* Switch text mode screen to another graphics card: 
- con2fbmap 1 2    # switches tty1 to /dev/fb2  (first login screen to third graphic card, fb0 is the first graphics card)
-* Use the fbset tool to switch to another graphic mode (see /etc/fb.modes for possible values), e.g.
- fbset  -fb /dev/fb1 1280x1024-60 -depth 8
-* [https://git.kernel.org/pub/scm/linux/kernel/git/geert/fbtest.git/ fbtest tool from Geert Uytterhoeven]
+On PA-RISC Linux two different console drivers are available:
+* STI console (sticon) supports text-mode only
+* framebuffer-based text console (fbcon)
 
-== Which HP graphics cards work with PA-RISC Linux? ==
+The '''sticon''' is a Linux driver which uses the PA-RISC graphics card PDC ROM functions to bring up a '''text-only console on native PA-RISC graphic cards only.'''<br>
+The '''fbcon Linux driver is a generic driver which renders a text console on any framebuffer device''' for which Linux has a working framebuffer (fbdev or DRM) driver, e.g. any non-PARISC Matrox or Permedia based graphics cards.
 
-'''All original HP graphics cards which can bring up a boot (IPL) screen are supported by Linux in text-mode with the STI console.<br>Bitmap graphics support (for fbdev or X11) is partially supported by some cards, for details read on...   
-'''
+Usually you want to prefer the fbcon driver, as this will allow you to use X11 and other graphics programs too.
+If Linux detects a framebuffer driver it will prefer the fbcon driver over the sticon driver automatically.
 
+=== HP graphics cards ===
+
+All original HP graphics cards which can bring up a boot (IPL) screen '''are supported at least by Linux in text-mode''' with the STI console (sticon).
+The following table summarizes the graphics mode support:
 ; PCI cards
-: '''only Vis-EG cards (8-bit colors) are supported'''. Graphic is un-accelerated.
+: Visualize-EG cards (8-bit colors) are fully supported. Graphic is un-accelerated.
 : The Visualize-FX/E, FX/2, FX/4, FX/5, FX/6 and FX/10 PCI cards are not yet supported. See [[VisualizeFX]] for further progress.
-: The Fire GL-UX graphics card is reported by lspci as "IBM GXT6000P" (Diamond) and needs the gxt4500 fbdev kernel module. The cards seems to be initialized and reported to be OK, but the monitor turns black (tested by Dave Land). 
+: The Fire GL-UX graphics card (Diamond IBM GXT6000P) needs the Linux gxt4500 fbdev kernel driver. The card seems to be initialized and reported to be OK, but the monitor stays black (tested by Dave Land). 
 : The ATI Fire GL-X1/X3 graphics cards in the C8000 workstation are supported in un-accelerated mode.
 : The ATI Fire GL T2-128 has not been tested yet.
 : Attempts with Fire GL-X on C8000 acceleration:
 : in 2016 by Simone Mannori https://marc.info/?a=145922974200003&r=1&w=2
 : in 2017 by Tom Bogendoerfer https://marc.info/?t=150679093500001&r=1&w=2
 : in 2019 by Sven Schnelle and Tom (finally a quickfix for "ring test failed" issue) https://marc.info/?t=156971879800064&r=1&w=2
-
 
 ; GSC cards
 : The following GSC cards are not yet supported, as they need patching from the Linux operating system, which is not yet implemented:
@@ -42,22 +55,50 @@ title: Graphics howto
 :: ID = 0x2F8D570E (Version 8.05/12)
 :; Some Hyperion and ThunderHawk GSC cards
 :; All other HP GSC-based graphics cards are supported, with 8bpp and if supported by the card in 24bpp.
-:
-: Unfortunately, the XFree86 drivers only support a frame buffer.
 : The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
 
-== Configuring Xorg for HP graphics cards ==
+=== Which non-HP PCI graphics cards work with PA-RISC Linux? ===
+
+This depends on which graphics card you are using.
+* PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.
+** '''Solution:''' use serial console to access the PDC boot menu (on later PA-RISC machines, like C8000, which has x86 emulator the PDC may be able to POST PC graphics cards though)
+* You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
+** '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:
+
+=== Linux framebuffer driver ===
+Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list of cards which have been reported to work with PA-RISC Linux:
+* Matrox cards (eg. Millenium I/II, MGA G200)
+* Permedia 2 cards: ELSA Gloria Synergy, Tech-Source Raptor GFX
+* 3dfx Voodoo and Voodoo2
+* Matrox Millenium I
+* Matrox MGA G200
+untested:
+* ATI Mach64 (eg. Rage XL)
+* S3
+* ancient framebuffer cards (eg. TGA, P9000)
+In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
+
+=== Useful tools when running in graphical mode (fbdev and fbcon) ===
+
+* Switch text mode screen to another graphics card: 
+ con2fbmap 1 2    # switches tty1 to /dev/fb2  (first login screen to third graphic card, fb0 is the first graphics card)
+* Use the fbset tool to switch to another graphic mode (see /etc/fb.modes for possible values), e.g.
+ fbset  -fb /dev/fb1 1280x1024-60 -depth 8
+ fbset  -fb /dev/fb1 -i                        # show current graphics resolution for framebuffer fb1
+* [https://git.kernel.org/pub/scm/linux/kernel/git/geert/fbtest.git/ fbtest tool from Geert Uytterhoeven]
+
+=== Configuring Xorg for HP graphics cards ===
 
 Make sure you have the Xorg server package '''server-xorg-video-fbdev''' and '''xserver-xorg-input-all''' installed.
 
-Here is an example xorg.conf file which is needed when you
-run on a graphics card which supports only 8 bits per pixel.
+Here is an example xorg.conf file which is needed when you run on a graphics card which supports only 8 bits per pixel.
 Put that contents into the (new) file '''/etc/X11/xorg.conf.d/xorg.conf'''
 
  Section "Screen"
         Identifier "Screen0"
         '''Device      "fbX"'''   # comment out if you want to use fb0
         '''DefaultDepth 8'''      # comment out if you want 24/32bpp
+        # Modes	"1280x1024"       # "1024x768" or "1280x1024", entry not needed but if enabled only one entry is allowed
  EndSection
  
  Section "Device"
@@ -67,75 +108,40 @@ Put that contents into the (new) file '''/etc/X11/xorg.conf.d/xorg.conf'''
     Option      "fbdev" "/dev/'''fb1'''" # change to any fb[0-20] you want
  EndSection
 
+See also this posting regarding X endianess https://lwn.net/Articles/921196/ if you have problems connecting remotely with X protocol.
 
-See also this posting regarding X endianess https://lwn.net/Articles/921196/ if you have problems connecting remotely.
-
-== Old: Configuring XFree86 for HP graphics cards ==
+=== Troubleshooting ===
  
 Check dmesg output right after booting for this part:
 <pre>
-STI GSC/PCI graphics driver version 0.9
-STI word mode ROM at f0084000, hpa at fa000000
-STI id 2d08c0a7-9a02587, conforms to spec rev. 8.07
-STI device: INTERNAL_EG_1280
+sticore: STI GSC/PCI core graphics driver Version 0.9c
+sti 0000:01:04.0: enabling SERR and PARITY (0002 -> 0142)
+sticore: STI PCI graphic ROM found at f4800000 (64 kB), fb at f8000000 (32 MB)
+sticore: STI word mode ROM supports 32 bit firmware functions.
+sticore:   id 2d08c0a7-9a02587, conforms to spec rev. 8.0a
+sticore:     built-in font #1: size 8x16, chars 0-255, bpc 16
+sticore:     built-in font #2: size 6x13, chars 0-255, bpc 13
+sticore:     built-in font #3: size 10x20, chars 0-255, bpc 40
+sticore:     using 8x16 framebuffer font VGA8x16
+sticore:     graphics card name: PCI_GRAFFITIX1280
+sticore:     located at [10/1/4/0]
+sticore: STI PCI graphic ROM found at f7000000 (2048 kB), fb at fa000000 (32 MB)
+sticore: STI word mode ROM supports 32 and 64 bit firmware functions.
+sticore:   id 35acda30-9a02587, conforms to spec rev. 8.0d
+sticore:     built-in font #1: size 10x20, chars 0-255, bpc 40
+sticore:     built-in font #2: size 8x16, chars 0-255, bpc 16
+sticore:     using 8x16 framebuffer font VGA8x16
+sticore:     graphics card name: A1299B
+sticore:     located at [10/6/2/0]
+fbcon: stifb (fb0) is primary device
 Console: switching to colour frame buffer device 160x64
-fb0: stifb 1280x1024-8 frame buffer device, id: 2d08c0a7, mmio: 0xfa100000
+fb0: stifb 1280x1024-8 frame buffer device, PCI_GRAFFITIX1280, id: 2d08c0a7, mmio: 0xf8100000
 </pre>
- 
-If that output is missing, it means the STI and STIFB drivers are not configured in the kernel. 
-One will see penguin (or two for SMP) in the top left corner at boot time as well if the kernel is correctly configured.
- 
-As "root" user, edit /etc/X11/XF86Config-4 to match the fb0 output like this:
-<pre>
-SubSection "Display"
-	Depth	8
-	Modes	"1280x1024"     # "1024x768" or "1280x1024"
-EndSubSection
-</pre>
+
+You should see one penguin (or more for SMP) in the top left corner at boot time as well if the kernel is correctly configured.
  
 Use "fbset -i" to determine the supported color depth if it's not clear from the STIFB driver output.
-IMPORTANT: Only one "Mode" can be specified!
- 
-If /etc/X11/XF86Config-4 doesn't exist or has no Subsection "Display", working examples can be found on [[ftp.parisc-linux.org]].
-
 Help on configuring mouse and keyboard is available in the [[FAQ]].
-
-== Which non-HP PCI graphics cards work with PA-RISC Linux? ==
- 
-This depends on which graphics card you are using.
-
-Most graphics card have to be initialized by firmware before the OS driver can use the card: this may consist of wakeup sequences,
-setting up a proper color map, clearing the video memory, selecting the proper video frequency, output interface and much more.
-Usually, the graphics card contains the initialization firmware in the form of BIOS (on older ix86/PCs), EFI (new IA32 and IA64),
-PDC (on PA-RISC), or OpenFirmware (on Sun and MACs).
-Unfortunately each flavor of firmware is not compatible on other computers. For example, PA-RISC PDC cannot initialize a PC graphics card.
-Therefore the graphics card vendors may produce respective versions for each architecture it wishes to sell a particular graphics card.
-E.g. ATI produces different 'Fire GL' graphics cards for PC, IA64, PA-RISC, and Sun/MAC. And HP offered "PC" variants of FX/5 and FX/10.
-
-However, this is not the case for the later PA-RISC machines, like C8000, which has x86 emulator in PDC and can POST PC graphics card http://permalink.gmane.org/gmane.linux.ports.parisc/5446
-
-'''This leads to the following problems:'''
- 
-* PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.
-** '''Solution:''' use serial console to access the PDC boot menu.
-* You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
-** '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:
-
-=== Linux framebuffer driver ===
-Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list:
-* Matrox cards (eg. Millenium I/II, MGA G200)
-* 3dfx Voodoo and Voodoo2
-* some ATI Mach64 (eg. Rage XL)
-* some old S3
-* Permedia 2 cards
-* some ancient framebuffer cards (eg. TGA, P9000)
-To date,
-* pm2: ELSA Gloria Synergy, Tech-Source Raptor GFX (3DLabs Permedia II 2D+3D chip)
-* Matrox Millenium I
-* Matrox MGA G200
-* Voodoo2
-* ATI Rage XL cards
-are reported to have worked. In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
 
 === XFree86/X.org driver ===
 The second approach is to use the XFree86/X.org graphics card drivers. The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know. The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
