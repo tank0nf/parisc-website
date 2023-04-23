@@ -56,26 +56,28 @@ Framebuffer graphics support for X11 is depend on the graphics card:
 
 === Which non-HP PCI graphics cards work with PA-RISC Linux? ===
 
-This depends on which graphics card you are using.
-* PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware.
-** '''Solution:''' use serial console to access the PDC boot menu (on later PA-RISC machines, like C8000, which has x86 emulator the PDC may be able to POST PC graphics cards though)
-* You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
-** '''Solution:''' there are two ways to get at least ''some'' non-HP graphics card working:
+This depends on which graphics card you are using.<br>
+PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use the boot menu with a non-HP graphics card. Unfortunately, no work-around is available for this problem, since this would require patching the PDC firmware. Possible workarounds are:
+# use serial console to access the PDC boot menu
+# use two graphic cards, one original HP graphics card to boot the machine and a newer/faster one for X11 
+# on later PA-RISC machines, like C8000, which has a built-in x86 emulator, the PDC may be able to POST PC graphics cards
+# You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
 
-=== Linux framebuffer driver ===
-Some graphics cards can be initialized by the linux framebuffer drivers directly, and might work on PA-RISC Linux. This is an incomplete list of cards which have been reported to work with PA-RISC Linux:
-* Matrox cards (eg. Millenium I/II, MGA G200)
-* Permedia 2 cards: ELSA Gloria Synergy, Tech-Source Raptor GFX
+Some graphics cards can be initialized by the '''Linux framebuffer drivers''' directly, and might work on PA-RISC Linux. This is an incomplete '''list of cards which have been reported to work with PA-RISC Linux''':
+* Matrox cards, e.g. Millenium I/II, MGA G200
+* Permedia 2 cards, e.g. ELSA Gloria Synergy, Tech-Source Raptor GFX
 * 3dfx Voodoo and Voodoo2
 * Matrox Millenium I
 * Matrox MGA G200
-untested:
+untested cards:
 * ATI Mach64 (eg. Rage XL)
 * S3
 * ancient framebuffer cards (eg. TGA, P9000)
-In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop. The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.
+In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop.<br>
+The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.<br>
+To initialize the Matrox Millenium graphics card properly one must physically disconnect the computer from the power line before (re)booting, as it is not sufficient to just press the power-off button.
 
-=== Useful tools when running in graphical mode (fbdev and fbcon) ===
+=== Useful Linux command line tools when running framebuffer drivers (fbdev and DRM) ===
 
 * Switch text mode screen to another graphics card: 
  con2fbmap 1 2    # switches tty1 to /dev/fb2  (first login screen to third graphic card, fb0 is the first graphics card)
@@ -139,14 +141,3 @@ You should see one penguin (or more for SMP) in the top left corner at boot time
  
 Use "fbset -i" to determine the supported color depth if it's not clear from the STIFB driver output.
 Help on configuring mouse and keyboard is available in the [[FAQ]].
-
-=== XFree86/X.org driver ===
-The second approach is to use the XFree86/X.org graphics card drivers. The XFree86/X.org server contains a small ix86-Emulator that is able to initialize some PC graphics cards on non-ix86 systems. However, we haven't heard any success stories from anyone using this approach. If you try it and it works, please let us know. The main advantage of this approach is use of advanced features (e.g. 2D/3D acceleration, graphics overlay, etc) provide by the graphics card.
- 
-Using a non-HP PCI graphics card is currently the only way to get a display with 24-bit color depth on the newer workstations (B/C/Jxxxx) running Linux/PA.
-
-Some graphics drivers might have minor issues. E.g. to ensure the Matrox Millenium graphics card will be initialized properly one must physically disconnect the computer from the power line before (re)booting - it is not sufficient to just press the power-off button.
- 
-Copyright 2004 "M. Grabert" <xam@nospam.cs.ucc.ie><br>
-Copyright 2004 "Grant Grundler" <grundler@nospam.parisc-linux.org><br>
-Distributed under the Creative Commons License
