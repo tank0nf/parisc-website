@@ -31,21 +31,20 @@ If Linux detects a framebuffer driver it will prefer the fbcon driver over the s
 
 === HP graphics cards ===
 
-All original HP graphics cards which can bring up a boot (IPL) screen '''are supported at least by Linux in text-mode''' with the STI console (sticon).
-The following table summarizes the graphics mode support:
-; PCI cards
-: Visualize-EG cards (8-bit colors) are fully supported. Graphic is un-accelerated.
-: The Visualize-FX/E, FX/2, FX/4, FX/5, FX/6 and FX/10 PCI cards are not yet supported. See [[VisualizeFX]] for further progress.
-: The Fire GL-UX graphics card (Diamond IBM GXT6000P) needs the Linux gxt4500 fbdev kernel driver. The card seems to be initialized and reported to be OK, but the monitor stays black (tested by Dave Land). 
-: The ATI Fire GL-X1/X3 graphics cards in the C8000 workstation are supported in un-accelerated mode.
-: The ATI Fire GL T2-128 has not been tested yet.
-: Attempts with Fire GL-X on C8000 acceleration:
-: in 2016 by Simone Mannori https://marc.info/?a=145922974200003&r=1&w=2
-: in 2017 by Tom Bogendoerfer https://marc.info/?t=150679093500001&r=1&w=2
-: in 2019 by Sven Schnelle and Tom (finally a quickfix for "ring test failed" issue) https://marc.info/?t=156971879800064&r=1&w=2
-
-; GSC cards
-: The following GSC cards are not yet supported, as they need patching from the Linux operating system, which is not yet implemented:
+All original HP graphics cards which can bring up a boot (IPL) screen '''are supported by Linux in text-mode''' with the STI console (sticon).<br>
+Framebuffer graphics support for X11 is depend on the graphics card:
+* '''AGP cards''' (the C8000 workstation is the only machine with AGP slots)
+** ATI Fire GL-X1/X3 graphics are supported in un-accelerated mode with Linux DRM driver
+*** there were various attempts to fix Fire GL-X acceleration: [https://marc.info/?a=145922974200003&r=1&w=2 in 2016 by Simone Mannori], [https://marc.info/?t=150679093500001&r=1&w=2 in 2017 by Tom Bogendoerfer] and [https://marc.info/?t=156971879800064&r=1&w=2 in 2019 by Sven Schnelle and Tom with a quickfix for the "ring test failed" issue]
+** ATI Fire GL T2-128 has not been tested yet.
+* ''''PCI cards'''
+** Visualize-EG cards (8-bit colors) are fully supported. Graphic is un-accelerated.
+** The Visualize-FX/E, FX/2, FX/4, FX/5, FX/6 and FX/10 PCI cards are not yet supported. See [[VisualizeFX]] for further progress.
+** The Fire GL-UX graphics card (e.g. Diamond IBM GXT6000P) needs the Linux gxt4500 fbdev kernel driver. The card seems to be initialized and reported to be OK, but the monitor stays black (tested by Dave Land in 2023). 
+* '''GSC cards'''
+** Most HP GSC-based graphics cards are supported, with 8bpp and 24bpp (if supported by the card).
+** The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
+** The following GSC cards are not yet supported, as they need patching from the Linux operating system, which is not yet implemented:
 :; Hyperdrive/Hyperbowl (A4071A) graphics card series:
 :: ID = 0x2BCB015A (Version 8.04/8)
 :: ID = 0x2BCB015A (Version 8.04/11)
@@ -54,8 +53,6 @@ The following table summarizes the graphics mode support:
 :; Thunder 2 VISUALIZE 48 XP card:
 :: ID = 0x2F8D570E (Version 8.05/12)
 :; Some Hyperion and ThunderHawk GSC cards
-:; All other HP GSC-based graphics cards are supported, with 8bpp and if supported by the card in 24bpp.
-: The available 2D and 3D HW acceleration features are not supported. See [[NGLE]] for accelerated graphics progress.
 
 === Which non-HP PCI graphics cards work with PA-RISC Linux? ===
 
