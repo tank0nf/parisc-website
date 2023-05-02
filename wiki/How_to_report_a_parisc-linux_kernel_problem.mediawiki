@@ -105,9 +105,10 @@ Several of these numbers are especially important:
 
 * The "code" at the beginning of the register dump indicates the type of "trap"
 * The r02 register is the "return pointer" - it indicates the calling function
-* The IAOQ contents specify the address of the instruction where the fault occured.
-* IIR is the faulting instruction
-* IOR, for a memory access, indicates the memory location being accessed
+* The IAOQ (CR18) contents specify the address of the instruction where the fault occured.
+* The IASQ (CR17) contents specify the address of the instruction where the fault occured.
+* IIR (CR19) is the faulting instruction
+* IOR (CR21), for a memory access, indicates the memory location being accessed
 
 
 For IAOQ and R02 addresses, it is helpful to understand
