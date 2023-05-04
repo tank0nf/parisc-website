@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-02-12 ==
+== Status & TODO 2023-05-04 ==
 * why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
@@ -1052,6 +1052,16 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=316f1f42b5cc1d95124c1f0387c867c1ba7b6d0e '''parisc: Wire up PTRACE_GETREGS/PTRACE_SETREGS for compat case'''] (backported to v4.7+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f2193bb2ee6e21d9c2da10ea3ce63b94aea69341 parisc: pdc_stable: use strscpy() to instead of strncpy()]
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88d7b12068b95731c280af8ce88e8ee9561f96de '''highmem: round down the address passed to kunmap_flush_on_unmap()'''] - (backported to all)
+* Kernel 6.3
+** no patches
+* Kernel 6.4
+** parisc: Replace regular spinlock with spin_trylock on panic path
+** parisc: Limit amount of kgdb breakpoints on parisc
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d755bd2caeb47fd806e12399fe8b56798fa5d2cc '''parisc: Ensure page alignment in flush functions'''] (backported to 6.0+)
+** parisc: Drop HP-UX constants and structs from grfioctl.h
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e3220ba3323a2c24be834aebf5d6e9f89d0993f '''parisc: Fix argument pointer in real64_call_asm()'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=567b35159e76997e95b643b9a8a5d9d2198f2522 '''parisc: Cleanup mmap implementation regarding color alignment''']
+** parisc: update kbuild doc. aliases for parisc64
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
