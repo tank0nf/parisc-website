@@ -59,6 +59,10 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''May&nbsp;2023'''||[https://patchwork.kernel.org/project/linux-parisc/patch/ZFKAK7Z4oi8f/ro4@p100/ STI text console support on 64-bit machines], e.g. this allows using all original HP graphics cards in text-mode on C8000 workstations. 
+|-
+| style="vertical-align:top;" |'''Apr&nbsp;2023'''||Debian-12 (Bookworm) preparations, with [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 13,000 pre-built packages].<br>Progress on an [https://patchwork.kernel.org/project/linux-parisc/patch/ZEWqkJekzyIlhBlW@p100/ upcoming Visualize-FX5 fbdev graphics driver].
+|-
 | style="vertical-align:top;" |'''Mar&nbsp;2023'''||[https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid More than 12,900 pre-built Debian packages available.]
 |-
 | style="vertical-align:top;" |'''Jan&nbsp;2023'''||Availability of a new [https://www.openpa.net/systems/hp-visualize_j6000_j6700.html HP J6700] dual-core debian porterbox [https://db.debian.org/machines.cgi?host=parisc parisc.debian.net], sponsored by [http://www.cypress-tech.com Cypress Technology Inc]. This machines was upgraded to 8 GB RAM and 2 x 300GB discs with parts of the former "parisc" [https://www.openpa.net/systems/hp_a400_a500.html HP A500-44] server.
