@@ -84,6 +84,11 @@ The emulated guest may use specific asssembler statements to control the qemu em
 
 Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
 
+'''IMPORTANT:'''
+If you plan to run the qemu-user static binary on Debian-11 or below, you NEED to apply this patch:
+https://github.com/hdeller/qemu-hppa/commit/540e8fb618e66b4c172cc528c12580bb09e301b6
+(linux-user: handle binfmt-misc P flag as a separate exe name)
+
 Run configure, e.g.
 * (for system emulation) '''./configure --target-list=hppa-softmmu --enable-numa'''
 * (for user emulation) '''./configure --target-list=hppa-linux-user --disable-stack-protector --prefix=/home/qemu-hppa/chroot-unstable --interp-prefix=/home/qemu-hppa/chroot-unstable --static'''
