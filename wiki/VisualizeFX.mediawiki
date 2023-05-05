@@ -71,7 +71,7 @@ Visualize FXe does get issued a PCI INT# line.
 
     id 2fc1066b-9a02587, conforms to spec rev. 8.09 <- '''Visualize FX6 in C3000'''
 
-    id 35acda30-9a02587, conforms to spec rev. 8.0d <- '''Visualize FX5 in J6000'''
+    id 35acda30-9a02587, conforms to spec rev. 8.0d <- '''Visualize FX5 in J6000,  A1299B -> FX5 (4 chips), A1262A -> FX5pro (3 chips)'''
 
     id 35acda16-9a02587, conforms to spec rev. 8.0c <- '''Visualize FXe in J6000'''
 
