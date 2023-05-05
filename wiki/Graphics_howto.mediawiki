@@ -69,6 +69,7 @@ Some graphics cards can be initialized by the '''Linux framebuffer drivers''' di
 * 3dfx Voodoo and Voodoo2
 * Matrox Millenium I
 * Matrox MGA G200
+* NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb driver)
 untested cards:
 * ATI Mach64 (eg. Rage XL)
 * S3
