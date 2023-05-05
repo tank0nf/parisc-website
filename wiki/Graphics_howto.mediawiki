@@ -63,13 +63,13 @@ PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use
 # on later PA-RISC machines, like C8000, which has a built-in x86 emulator, the PDC may be able to POST PC graphics cards
 # You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
 
-Some graphics cards can be initialized by the '''Linux framebuffer drivers''' directly, and might work on PA-RISC Linux. This is an incomplete '''list of cards which have been reported to work with PA-RISC Linux''':
+Some graphics cards can be initialized by the '''Linux framebuffer drivers''' directly, and might work on PA-RISC Linux. This is an incomplete '''list of cards which have been '''reported to work''' with PA-RISC Linux''':
 * Matrox cards, e.g. Millenium I/II, MGA G200
 * Permedia 2 cards, e.g. ELSA Gloria Synergy, Tech-Source Raptor GFX
 * 3dfx Voodoo and Voodoo2
 * Matrox Millenium I
 * Matrox MGA G200
-* NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb driver)
+* NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb and nouveau-drm driver)
 untested cards:
 * ATI Mach64 (eg. Rage XL)
 * S3
