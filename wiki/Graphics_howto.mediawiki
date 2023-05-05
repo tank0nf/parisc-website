@@ -70,6 +70,9 @@ Some graphics cards can be initialized by the '''Linux framebuffer drivers''' di
 * Matrox Millenium I
 * Matrox MGA G200
 * NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb and nouveau-drm driver)
+* ATI RV280 GL [FireMV 2200 PCI] (PCI card in C8000, radeondrmfb)
+cards with issues:
+* Matrox Millennium G450 Dual Head PCI (matroxfb: cannot determine memory size)
 untested cards:
 * ATI Mach64 (eg. Rage XL)
 * S3
