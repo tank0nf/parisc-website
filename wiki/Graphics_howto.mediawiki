@@ -89,6 +89,12 @@ To initialize the Matrox Millenium graphics card properly one must physically di
  fbset  -fb /dev/fb1 1280x1024-60 -depth 8
  fbset  -fb /dev/fb1 -i                        # show current graphics resolution for framebuffer fb1
 * [https://git.kernel.org/pub/scm/linux/kernel/git/geert/fbtest.git/ fbtest tool from Geert Uytterhoeven]
+ fbtest -f /dev/fb0
+* Switch between consoles, see https://docs.kernel.org/fb/fbcon.html and https://github.com/torvalds/linux/blob/master/Documentation/driver-api/console.rst
+ echo 1 > /sys/class/vtconsole/vtcon1/bind - attach framebuffer console to
+                                             console layer
+ echo 0 > /sys/class/vtconsole/vtcon1/bind - detach framebuffer console from
+                                             console layer
 
 === Configuring Xorg for HP graphics cards ===
 
