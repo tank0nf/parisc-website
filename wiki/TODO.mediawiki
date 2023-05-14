@@ -1062,6 +1062,8 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6e3220ba3323a2c24be834aebf5d6e9f89d0993f '''parisc: Fix argument pointer in real64_call_asm()'''] (backported to all)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=567b35159e76997e95b643b9a8a5d9d2198f2522 '''parisc: Cleanup mmap implementation regarding color alignment''']
 ** parisc: update kbuild doc. aliases for parisc64
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6f9e98849edaa8aefc4030ff3500e41556e83ff7 '''parisc: Fix encoding of swp_entry due to added SWP_EXCLUSIVE flag'''] (backported to v6.3+)
+** parisc: kexec: include reboot.h
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
