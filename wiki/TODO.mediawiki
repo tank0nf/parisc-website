@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2023-05-04 ==
 * why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
+** add CONFIG_LOCKDEP support (required to debug the panama issue, see mail from Bart Van Assche <bvanassche@acm.org> 2023/05/22)
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
 * STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
