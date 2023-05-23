@@ -108,6 +108,10 @@ This is currently a bug/feature related to the HIL drivers. In the HIL drivers w
 
 '''Update:''' Guy Martin [[http://article.gmane.org/gmane.linux.ports.parisc/278/match=use+lower+nice+level+ksoftirqd+hil+enabled posted a patch]] which solves this issue, but this patch is sadly not acceptable for upstream inclusion.
 
+==When trying to log in to the machine it times out with "Login timed out"==
+
+Change the value of <b>LOGIN_TIMEOUT</b> in <b>/etc/login.defs</b>.
+
 ==What are "unaligned access" messages about?==
 
 <code>Jan 8 23:52:33 hp kernel: emacs(17795): unaligned access to 0x001cdaf2 at ip=0x0008930b</code>
