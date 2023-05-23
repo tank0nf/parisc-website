@@ -5,8 +5,9 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-05-04 ==
-* why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
-** add CONFIG_LOCKDEP support (required to debug the panama issue, see mail from Bart Van Assche <bvanassche@acm.org> 2023/05/22)
+* STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
+** DONE: add CONFIG_LOCKDEP support (required to debug the panama issue, see mail from Bart Van Assche <bvanassche@acm.org> 2023/05/22)
+** Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
 * STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
