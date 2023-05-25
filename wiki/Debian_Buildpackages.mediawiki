@@ -60,6 +60,11 @@ Autosign packages via cron:
 
 * /var/lib/man-db/auto-update    (touch it or remove it)
 
+== Prevent cronjob errors on buildds from apt-cacher-ng ==
+
+* The cron job of apt-cacher-ng randomly reports errors:
+** Fix is to increase the value of <b>NetworkTimeout</b> in <b>/etc/apt-cacher-ng/acng.conf</b>
+
 == How to manually build debian packages ==
 
 ; Prevent mandb run
