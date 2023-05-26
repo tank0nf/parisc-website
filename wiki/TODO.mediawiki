@@ -5,19 +5,15 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-05-26 ==
-* push fbcon-64-bit-sti patches upstream
+* push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
 * STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
-** DONE: add CONFIG_LOCKDEP support (required to debug the panama issue, see mail from Bart Van Assche <bvanassche@acm.org> 2023/05/22)
 ** Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
 ** TODO: backport patch to kernels < 5.18
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2).
 * STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
-* DONE: Kernel bug, see mails: VM_FAULT_RETRY fixes,  "fix livelock in uaccess"
 * QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
 * QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
-* STARTED: check qt6-base -> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030546 -  qt6-base FTBFS on hppa  and https://codereview.qt-project.org/c/qt/qtbase/+/437349/comments/
-* DONE: check results of debian strace build for kernel errors -> Fixed by kernel patch:  parisc: Wire up PTRACE_GETREGS/PTRACE_SETREGS for compat case
 * glibc:
 ** STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
 ** Add backtrace() function to glibc -> needed to build dovecot package
@@ -1135,6 +1131,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: SLAB breaks, SLUB works (works in kernel v5.17)
 ** DONE: implement .con_font_set (consw) in sticon.c to be able to change fonts at runtime (since v5.10)
 ** DONE: Implement kernel [[VDSO]] support - [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
+** DONE: Fixed PTRACE_GETREGS/PTRACE_SETREGS for compat case, fixes strace errors 
+** DONE: add CONFIG_LOCKDEP support (v6.4)
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
