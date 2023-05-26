@@ -4,8 +4,8 @@ title: Qemu
 
 == QEMU for PA-RISC overview ==
 
-'''Important: Please run at least QEMU version 7.1.0'''.<br>
-Earlier versions had various bugs which are fixed in v7.1.0.
+'''Important: Please run at least QEMU version 8.0.0'''.<br>
+Earlier versions earlier than v7.1.0 had various strange bugs.
 
 '''Important: QEMU DOES NOT support running a 64-bit parisc kernel'''.<br>
 
