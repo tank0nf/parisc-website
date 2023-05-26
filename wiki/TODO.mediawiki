@@ -6,9 +6,10 @@ title: TODO
 
 == Status & TODO 2023-05-26 ==
 * push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
+* push visualizefx driver
 * STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
 ** Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
-** TODO: backport patch to kernels < 5.18
+** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
 ** have the arm and nios2 patches been picked up?
 * STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
 * STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
