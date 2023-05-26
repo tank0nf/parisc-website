@@ -4,7 +4,7 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-05-04 ==
+== Status & TODO 2023-05-26 ==
 * push fbcon-64-bit-sti patches upstream
 * STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
 ** DONE: add CONFIG_LOCKDEP support (required to debug the panama issue, see mail from Bart Van Assche <bvanassche@acm.org> 2023/05/22)
@@ -1068,6 +1068,15 @@ title: TODO
 ** parisc: update kbuild doc. aliases for parisc64
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6f9e98849edaa8aefc4030ff3500e41556e83ff7 '''parisc: Fix encoding of swp_entry due to added SWP_EXCLUSIVE flag'''] (backported to v6.3+)
 ** parisc: kexec: include reboot.h
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=59fa12646d9f56c842b4d5b6418ed77af625c588 parisc: Improve cache flushing for PCXL in arch_sync_dma_for_cpu()]
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d703797380c540bbeac03f104ebcfc364eaf47cc '''parisc: Flush gatt writes and adjust gatt mask in parisc_agp_mask_memory()''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6405f0829d7b1dd926ba3ca5f691cab835abfaa '''parisc: Use num_present_cpus() in alternative patching code'''] 
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=15e64ef6520ea8702998db05b87fa5c3d3d40710 '''parisc: Add lightweight spinlock checks'''] (backported to v6.1+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=adf8e96a7ea670d45b5de7594acc67e8f4787ae6 '''parisc: Enable LOCKDEP support''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2028315cf59bb899a5ac7e87dc48ecb8fac7ac24 '''parisc: Allow to reboot machine after system halt'''] (backported to v4.14+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df419492e428b6a2bce98d0f613c58a13da6666c '''parisc: Handle kprobes breakpoints only in kernel context'''] (backported to v5.18+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6888ff04e37d01295620a73f3f7efbc79f6ef152 '''parisc: Handle kgdb breakpoints only in kernel context'''] (backported to v5.4+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=61e150fb310729c98227a5edf6e4a3619edc3702 '''parisc: Fix flush_dcache_page() for usage from irq context'''] (backported to v5.18+) (and all)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
