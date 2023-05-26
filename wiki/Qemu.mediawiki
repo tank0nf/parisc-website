@@ -82,7 +82,7 @@ The emulated guest may use specific asssembler statements to control the qemu em
 
 == How to build QEMU from source ==
 
-Check out the [https://git.qemu.org/?p=qemu.git;a=summary qemu git tree]
+Check out the [https://gitlab.com/qemu-project/qemu qemu git tree]
 
 '''IMPORTANT:'''
 If you plan to run the qemu-user static binary on Debian-11 or below, you NEED to apply this patch:
