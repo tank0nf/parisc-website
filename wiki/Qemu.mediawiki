@@ -113,6 +113,9 @@ Run qemu:
  qemu-system-hppa -drive file=debian-12-hdd-2023.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 
 Log in as '''root''', root password is "'''rootme'''"
 
+If a key is missing while running apt-update, do:
+ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
+
 === How to run QEMU with Debian-10 installer image ===
 
 * Create a virtual hard disc once:
