@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-05-26 ==
+* fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587
 * push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
 * push visualizefx driver
 * STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
