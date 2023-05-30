@@ -41,31 +41,36 @@ The instructions should - with minor modifcations - work for other architectures
 === Build the debian-installer packages ===
 # Read [https://wiki.debian.org/DebianInstaller/CheckOut|on how to check out the debian installer]. It's done below.
 
-  apt-get install mr subversion
+  apt-get install mr myrepos git curl fakeroot
   apt-get build-dep debian-installer
   mkdir -p /extra/deller/DEBIAN_INSTALLER/{TEMP,bootstrap}
   
   # See: https://wiki.debian.org/DebianInstaller/CheckOut
   cd /extra/deller/DEBIAN_INSTALLER/
-  svn co svn://anonscm.debian.org/svn/d-i/trunk debian-installer
+  git clone https://salsa.debian.org/installer-team/d-i.git debian-installer
   cd debian-installer
   scripts/git-setup
-  mr -p checkout
-  
+  mr checkout 
+ 
   # check out other packes for your architecture into the packages directory
   # for a list see here: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?a=project_list;pf=d-i
   
   cd /extra/deller/DEBIAN_INSTALLER/debian-installer/packages
   
-  # for alpha:
-  git clone https://anonscm.debian.org/git/d-i/attic/aboot.git
-  git clone https://anonscm.debian.org/git/d-i/attic/aboot-installer.git
+  # in the past: for alpha:
+  # git clone https://anonscm.debian.org/git/d-i/attic/aboot.git
+  # git clone https://anonscm.debian.org/git/d-i/attic/aboot-installer.git
   # for parisc:
-  git clone https://alioth.debian.org/anonscm/git/d-i/attic/palo-installer.git
-  git clone https://alioth.debian.org/anonscm/git/d-i/attic/partman-palo.git
+  # git clone https://alioth.debian.org/anonscm/git/d-i/attic/palo-installer.git
+  # git clone https://alioth.debian.org/anonscm/git/d-i/attic/partman-palo.git
   # for sparc:
-  git clone https://alioth.debian.org/anonscm/git/d-i/attic/silo-installer.git
-  
+  # git clone https://alioth.debian.org/anonscm/git/d-i/attic/silo-installer.git
+ 
+  # palo and aboot are now in the unreleased repositories:
+  # http://ftp.ports.debian.org/debian-ports/pool-hppa/main/p/palo-installer/
+  # http://ftp.ports.debian.org/debian-ports/pool-alpha/main/a/aboot-installer/
+  # https://salsa.debian.org/debian/aboot
+ 
   # then build the debian-installer with all packages
   cd /extra/deller/DEBIAN_INSTALLER/debian-installer/installer
   export ONLINE=n
