@@ -4,19 +4,18 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-05-30 ==
+== Status & TODO 2023-06-01 ==
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
 * fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587
-* push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
-* push visualizefx driver
+* STARTED: push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
+* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
+* STARTED: push visualizefx driver
 * STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
 ** DONE/Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
 ** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
 ** have the arm and nios2 patches been picked up?
-* STARTED: Apply misisng qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
-* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
-* STARTED: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too.
-** Jens bought a C3000 workstation and added it to the machine test pool
+* STARTED: Apply missing qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
+* DONE: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too. (Jens bought a C3000 workstation and added it to the machine test pool.)
 * QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
 * QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
 * glibc:
