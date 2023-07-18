@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-06-01 ==
+* matoro - ia64 io_uring
 * check qemu-user build errors:
 ** https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
 ** https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
