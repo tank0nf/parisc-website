@@ -47,7 +47,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 * This machine is used as [https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc Debian buildd and Porterbox machine "parisc"].
 |- style="vertical-align:top;"
 | [[File:Rp3410 small.jpg|50px|link=http://www.cypress-tech.com]]
-|| [http://www.gall.de/ GALL EDV-Systeme GmbH] ([mailto:info@gall.de info@gall.de]) sponsored [https://www.openpa.net/pa-risc_graphics.html#visfx HP Visualize FX-2, FX-4 and FX-6 grahics cards] (June 2022)<br>
+|| [http://www.gall.de/ GALL EDV-Systeme GmbH] ([mailto:info@gall.de info@gall.de]) sponsored [https://www.openpa.net/pa-risc_graphics.html#visfx HP Visualize FX-2, FX-4 and FX-6 grahics cards] (June 2023)<br>
 * Those will be used to further develop the Visualize-FX fbdev and DRM graphics drivers.
 |- style="vertical-align:top;"
 |}
