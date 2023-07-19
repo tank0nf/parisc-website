@@ -39,15 +39,17 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == Our sponsors ==
 
+'''Corporate sponsors:'''
 {|
-Corporate sponsors:
 |- style="vertical-align:top;"
 | [[File:Rp3410 small.jpg|50px|link=http://www.cypress-tech.com]]
 || [http://www.cypress-tech.com Cypress Technology Inc] ([mailto:jesse@cypress-tech.com Jesse Dougherty]) sponsored a [https://www.openpa.net/systems/hp-visualize_j6000_j6700.html HP J6700 workstation] with 2 x 750MHz  PA8700 CPUs, 4GB RAM and a 72GB disc. (Oct 2022)<br>
 * This machine is used as [https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc Debian buildd and Porterbox machine "parisc"].
 |- style="vertical-align:top;"
+|}
 
-Organizational and private sponsors:
+'''Organizations and private sponsors:'''
+{|
 | [[File:Osl_logo.png|50px|link=http://osuosl.org]]
 || '''[http://osuosl.org Oregon State University Open Source Lab]'''
 * Hosting and support for the physical parisc servers "parisc" (since 2014) and "panama" (since 2017)
