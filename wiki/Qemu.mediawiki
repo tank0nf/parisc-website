@@ -139,7 +139,11 @@ If a key is missing while running apt-update, do:
 
 == HP-UX ==
 
-* You will need HP-UX installation medias (HP-UX 10.x or 11.x). Please support us by buying from [https://parisc.wiki.kernel.org/index.php/Main_Page#Our_sponsors our sponsors].
+* You will need a set of HP-UX PA-RISC installation CD-ROMS or DVDs
+** starting from [https://www.openpa.net/hp-ux_unix.html#hpux11i HP-UX 10.x up to 11.11 (11i v1)]
+** only PA-RISC installation medias are supported. CDs for Itanium-2 based HP machines are NOT supported. 
+** you may copy those CDs to ISO files for usage with qemu.
+** please support us by buying from [https://parisc.wiki.kernel.org/index.php/Main_Page#Our_sponsors our sponsors].
 * '''NOTE''': Please '''keep the default screen resolution of 1280x1024 pixels'''. HP-UX may crash if you increase the width, or in graphical environment (with dtwm) the mouse won't be able to reach any line >= 1146 pxels.
 * You probably won't be able to boot an original HP-UX installed hard disc image coming from a physical machine other than a B160L. The reason is, that the HP-UX kernel from the other machine has drivers built-in and won't recognize the SCSI and network in the emulated virtual machine. 
 * LASI NIC emulation and NCR 710 emulation is needed in order to be able to boot older HP-UX releases.
