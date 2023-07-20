@@ -69,6 +69,10 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
+| style="vertical-align:top;" |'''July&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.0.3 released with many parisc fixes (SMP CPU fixes, graphics fixes)].
+|-
+| style="vertical-align:top;" |'''June&nbsp;2023'''||Work started to implement native eBPF for Linux kernel.
+|-
 | style="vertical-align:top;" |'''May&nbsp;2023'''||[https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo version 2.24] released.<br>[https://patchwork.kernel.org/project/linux-parisc/patch/ZFKAK7Z4oi8f/ro4@p100/ STI text console support on 64-bit machines], e.g. this allows using all original HP graphics cards in text-mode on C8000 workstations.<br>[https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/commit/?h=devel Fix palo to speed up printing the IPL menu on C8000 workstations].
 |-
 | style="vertical-align:top;" |'''Apr&nbsp;2023'''||Debian-12 (Bookworm) preparations, with [https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid more than 13,000 pre-built packages].<br>Progress on an [https://patchwork.kernel.org/project/linux-parisc/patch/ZEWqkJekzyIlhBlW@p100/ upcoming Visualize-FX5 fbdev graphics driver].
