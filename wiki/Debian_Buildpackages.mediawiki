@@ -40,6 +40,12 @@ Some other info:
 * [https://www.wzdftpd.net/redmine/projects/general/wiki/DebianBuildd Another description on how to set up a buildd]
 * [http://blog.cihar.com/archives/2010/09/29/using-pgp-subkeys-signing/ How to use subkeys for signing on buildds]
 
+== Missing GPG key ==
+
+* when getting this error:
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY B523E5F3FC4E5F2C NO_PUBKEY 8D69674688B6CB36
+  run: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <PUBKEY>
+
 == Build chroot requirements ==
 
 * openfoam requires up to 40GB disc space
