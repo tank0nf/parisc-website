@@ -5,7 +5,9 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-06-01 ==
-* matoro - ia64 io_uring
+* STARTED: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
+* STARTED: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg03849.html
+* STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 * check qemu-user build errors:
 ** https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
 ** https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
@@ -15,7 +17,7 @@ title: TODO
 * STARTED: push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
 * STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
 * STARTED: push visualizefx driver
-* STARTED: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
+* MOSTLY DONE: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
 ** DONE/Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
 ** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
 ** have the arm and nios2 patches been picked up?
@@ -58,7 +60,6 @@ title: TODO
 * Fix kernel: make ARCH=parisc tools/perf
 * trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
 * Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
-* Add BPF assembler implementation
 * ONGOING: Enable UBSAN and fix fallouts* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" (see arm) -> https://lwn.net/Articles/693026/
