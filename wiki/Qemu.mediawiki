@@ -131,6 +131,12 @@ If a key is missing while running apt-update, do:
 * Start emulator with installed operating system any time:
  qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=4
 
+=== How to create chroot for linux-user ===
+
+Exampled for debian:
+ debootstrap --arch=ppc64el --include=busybox --foreign sid ppc64el-chroot
+ debootstrap --arch=alpha --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid alpha-chroot http://ftp.ports.debian.org/debian-ports/
+
 === Gentoo Linux ===
 
 * From https://www.gentoo.org/downloads/#hppa download the Minimal installation CD or the hppa32 netboot image (lif file)
