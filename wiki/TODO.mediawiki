@@ -13,7 +13,7 @@ title: TODO
 ** DONE: https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
 ** DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
-* fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587
+* DONE: fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587 -> ask to switch to v6.4 instead
 * DONE push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
 * STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
 * STARTED: push visualizefx driver
