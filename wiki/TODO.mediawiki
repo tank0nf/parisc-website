@@ -4,14 +4,14 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-06-01 ==
+== Status & TODO 2023-07-28 ==
 * DONE: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
 * ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
 * STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 * check qemu-user build errors:
 ** https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
 ** DONE: https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
-** yt, dlt-daemon
+** DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
 * fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587
 * DONE push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
