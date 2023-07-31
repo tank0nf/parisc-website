@@ -9,8 +9,7 @@ title: TODO
 * ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
 * STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 * check qemu-user build errors:
-** check vnlog
-** check 
+** check vnlog: clone/fork issue, see mail 07-31-2023.
 ** https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
 ** DONE: https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
 ** DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
