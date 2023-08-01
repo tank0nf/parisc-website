@@ -139,7 +139,7 @@ Exampled for debian:
  debootstrap --arch=alpha --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid alpha-chroot http://ftp.ports.debian.org/debian-ports/
  a=powerpc &&  debootstrap --arch=$a --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid $a-chroot http://ftp.ports.debian.org/debian-ports/
  
- --include=busybox,gpg
+ cp /etc/passwd, group, shells target/etc
 
 === Gentoo Linux ===
 
