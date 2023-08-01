@@ -134,6 +134,7 @@ If a key is missing while running apt-update, do:
 === How to create chroot for linux-user ===
 
 Exampled for debian:
+ a=armhf &&  debootstrap --arch=$a --include=busybox,gcc,gnupg --keyring=/usr/share/keyrings/debian-archive-keyring.gpg --foreign sid $a-chroot http://deb.debian.org/
  debootstrap --arch=ppc64el --include=busybox --foreign sid ppc64el-chroot
  debootstrap --arch=alpha --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid alpha-chroot http://ftp.ports.debian.org/debian-ports/
  a=powerpc &&  debootstrap --arch=$a --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid $a-chroot http://ftp.ports.debian.org/debian-ports/
