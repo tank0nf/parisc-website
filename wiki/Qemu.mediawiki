@@ -140,6 +140,7 @@ Exampled for debian:
  a=powerpc &&  debootstrap --arch=$a --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid $a-chroot http://ftp.ports.debian.org/debian-ports/
  
  cp /etc/passwd, group, shells target/etc
+ echo armhf-chroot > etc/debian_chroot
 
 === Gentoo Linux ===
 
