@@ -137,6 +137,8 @@ Exampled for debian:
  debootstrap --arch=ppc64el --include=busybox --foreign sid ppc64el-chroot
  debootstrap --arch=alpha --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid alpha-chroot http://ftp.ports.debian.org/debian-ports/
  a=powerpc &&  debootstrap --arch=$a --include=busybox --keyring=/usr/share/keyrings/debian-ports-archive-keyring.gpg --foreign sid $a-chroot http://ftp.ports.debian.org/debian-ports/
+ 
+ --include=busybox,gpg
 
 === Gentoo Linux ===
 
