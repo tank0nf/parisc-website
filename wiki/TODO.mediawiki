@@ -9,7 +9,8 @@ title: TODO
 * ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
 * STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 * check qemu-user build errors:
-** check vnlog: easy testcase for clone/fork issue, see mail 07-31-2023.
+** kronosnet - port SCTP to qemu
+** check vnlog: very easy testcase for clone/fork issue, see mail 07-31-2023.
 ** qemu brk testcases:
 *** https://lore.kernel.org/qemu-devel/CACPK8XeyqcEDyyL3Jw2WYWs_gGdtTCf2=Ly04CMgkshSMdj7RA@mail.gmail.com/#t (armhf binary on a ppc64le host)
 *** brk testcase in qemu commit: 4d1de87c75007ee7e29dd271ebb4afdcf01ad7aa
