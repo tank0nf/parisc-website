@@ -5,7 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-07-28 ==
-* Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...
+* Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %L1, %R1 for register #1)
 * MOSTLY DONE: Fix kernel 6.4 boot crash -> https://patchwork.kernel.org/project/linux-parisc/patch/20230803062404.2373480-1-rppt@kernel.org/
 * DONE: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
 * ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
