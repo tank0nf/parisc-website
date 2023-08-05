@@ -1124,6 +1124,10 @@ title: TODO
 ** parisc: Move init function declarations into header file
 ** parisc: irq: Add irq-related function declarations
 ** parisc: Refresh defconfigs
+** parport: gsc: remove DMA leftover code
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c2ff2b736c41cc63bb0aaec85cccfead9fbcfe92 '''parisc/mm: preallocate fixmap page tables at init'''] (backported to v6.3)
+** parisc: pci-dma: remove unused and dead EISA code and comment
+** parisc: unaligned: Add required spaces after ','
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
