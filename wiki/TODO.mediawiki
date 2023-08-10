@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-07-28 ==
+* kernel: drop arch/parisc/kernel/pa7300lc.c
 * QEMU: drop cpu load on panic -> implement panic_smp_self_stop() [stop cpu] and panic_blink() to sleep CPU
 * Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %L1, %R1 for register #1)
 * MOSTLY DONE: Fix kernel 6.4 boot crash -> https://patchwork.kernel.org/project/linux-parisc/patch/20230803062404.2373480-1-rppt@kernel.org/
