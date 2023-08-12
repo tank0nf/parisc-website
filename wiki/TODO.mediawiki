@@ -6,7 +6,7 @@ title: TODO
 
 == Status & TODO 2023-07-28 ==
 * graphics mmap: Make mapping aliasing physical memory.
-* kernel: drop chassis_power_off() and switch to register_sys_off_handler()
+* DONE: kernel: drop chassis_power_off() and switch to register_sys_off_handler() - https://patchwork.kernel.org/project/linux-parisc/patch/20230812203759.395651-1-deller@gmx.de/
 * kernel: drop arch/parisc/kernel/pa7300lc.c
 * QEMU: drop cpu load on panic -> implement panic_smp_self_stop() [stop cpu] and panic_blink() to sleep CPU
 * Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %L1, %R1 for register #1)
