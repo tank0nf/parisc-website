@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-07-28 ==
+* graphics mmap: Make mapping aliasing physical memory.
 * kernel: drop chassis_power_off() and switch to register_sys_off_handler()
 * kernel: drop arch/parisc/kernel/pa7300lc.c
 * QEMU: drop cpu load on panic -> implement panic_smp_self_stop() [stop cpu] and panic_blink() to sleep CPU
