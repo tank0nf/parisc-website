@@ -5,6 +5,7 @@ title: TODO
 = PA-RISC Linux TODO =
 
 == Status & TODO 2023-07-28 ==
+* STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750
 * graphics mmap: Make mapping aliasing physical memory.
 * DONE: kernel: drop chassis_power_off() and switch to register_sys_off_handler() - https://patchwork.kernel.org/project/linux-parisc/patch/20230812203759.395651-1-deller@gmx.de/
 * DONE: kernel: drop arch/parisc/kernel/pa7300lc.c
