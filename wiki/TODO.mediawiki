@@ -1149,7 +1149,7 @@ title: TODO
 ** parisc: ftrace: Add declaration for ftrace_function_trampoline()
 ** parisc: perf: Make cpu_device variable static
 ** parisc: pdt: Use PTR_ERR_OR_ZERO() to simplify code
-** {https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7a894c87374771f3cfb1b8e5453fbe03f1fb8135 '''parisc: Fix CONFIG_TLB_PTLOCK to work with lightweight spinlock checks'''] (backported to v6.4+)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7a894c87374771f3cfb1b8e5453fbe03f1fb8135 '''parisc: Fix CONFIG_TLB_PTLOCK to work with lightweight spinlock checks'''] (backported to v6.4+)
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
