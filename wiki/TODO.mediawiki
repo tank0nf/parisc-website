@@ -4,18 +4,34 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-07-28 ==
-* STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243
-* graphics mmap: Make mapping aliasing physical memory.
-* DONE: kernel: drop chassis_power_off() and switch to register_sys_off_handler() - https://patchwork.kernel.org/project/linux-parisc/patch/20230812203759.395651-1-deller@gmx.de/
-* DONE: kernel: drop arch/parisc/kernel/pa7300lc.c
-* QEMU: drop cpu load on panic -> implement panic_smp_self_stop() [stop cpu] and panic_blink() to sleep CPU
-* DONE: Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %1 and %R1 for register #1)
-* MOSTLY DONE: Fix kernel 6.4 boot crash -> https://patchwork.kernel.org/project/linux-parisc/patch/20230803062404.2373480-1-rppt@kernel.org/
-* DONE: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
-* ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
+== Status & TODO 2023-08-20 ==
 * STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
+* graphics mmap: Make mapping aliasing physical memory.
+* parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
+* QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
+* QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
+* STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243
+* STARTED: push visualizefx driver
+** STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
+* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
+* Fix kernel: make ARCH=parisc tools/perf
+* trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
+* Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
+* ONGOING: Enable UBSAN and fix fallouts* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
+* Enable SPARSEMEM_VMEMMAP_ENABLE
+* STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" (see arm) -> https://lwn.net/Articles/693026/
+* convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
+* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
+* NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
+* MOSTLY DONE: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
+** DONE/Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
+** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
+** have the arm and nios2 patches been picked up?
+* Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
+* [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
+** Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * check qemu-user build errors:
+** ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
 ** libtool: Dynamic ltdl runtime loading failure
 ** STARTED: kronosnet - port SCTP to qemu
 ** libtool FTBFS, Dynamic ltdl runtime loading, https://buildd.debian.org/status/fetch.php?pkg=libtool&arch=hppa&ver=2.4.7-7&stamp=1691050219&raw=0
@@ -28,26 +44,19 @@ title: TODO
 ** DONE: https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
 ** DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
-* DONE: fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587 -> ask to switch to v6.4 instead
-* DONE push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
-* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
-* STARTED: push visualizefx driver
-* MOSTLY DONE: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
-** DONE/Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
-** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
-** have the arm and nios2 patches been picked up?
-* DONE: Apply missing qemu patches: https://gitlab.com/laurent_vivier/qemu/-/commits/linux-user-for-8.0
-* DONE: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too. (Jens bought a C3000 workstation and added it to the machine test pool.)
-* QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
-* QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
+
 * glibc:
 ** STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
 ** Add backtrace() function to glibc -> needed to build dovecot package
+
 * DONE: Improve text on https://www.openpa.net
+
+** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
+
 * Debian:
 ** STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
-** STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 * STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
+
 * QEMU issues:
 ** devscripts FTBFS because of subversion: svnadmin: E000072: Can't check directory '.': Value too large for defined data type
 ** rrdtool FTBFS on 32-bit arches: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026973
@@ -58,34 +67,21 @@ title: TODO
 ** DONE: qcoro FTBFS on qemu -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 ** QEMU: Improve emulation speed on full virtualization
 ** check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
+
 * gcc compiler:
 ** Why is compiling fife so slow with cc1plus?
 ** asked Dave to implement gcc builtins for break asms, like on other platforms, for usage in kernel
+
 * QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
 * stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
-* Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
-* Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
-* [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
+
 * SeaBIOS and palo: muldi3 and divdi3 (from libgcc.a) trashes fr22-fr25 because of xmpyu instruction. Doesn't seem to have negative effect, but those registers should better be saved/restored in pdc_entry() and iodc_entry(), or libgcc should be fixed to not use floating point instructions.
 * STARTED: Port grub2 to hppa? -> https://github.com/hdeller/grub
-* STARTED: [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
-* Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT : https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
-* STARTED: improve unaligned handlers, e.g. to use get_user/put_user inline asm
-* Fix kernel: make ARCH=parisc tools/perf
-* trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
-* Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
-* ONGOING: Enable UBSAN and fix fallouts* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
-* Enable SPARSEMEM_VMEMMAP_ENABLE
-* STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" (see arm) -> https://lwn.net/Articles/693026/
-* convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
-* check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
-* NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
+
 * check assembly in drivers/parisc/*
 * INEQUIVALENT ALIASES occur building gnuradio on debian.
-* STARTED by Sven: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 * Add Linux kernel PIM driver - /sys/firmware/pim/*
-* parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 * STARTED: convert old-style rtc driver drivers/input/misc/hp_sdc_rtc.c to new RTC model, remove the procfs and miscdevice interfaces first and replace the ioctl with a struct rtc_class_ops. Arnd Bergmann can review those patches, but Alexandre and Alessandro are the ones who would merge them once the driver is moved to drivers/rtc. (Mail from Arnd Bergmann, 28.04.2016) - see https://patchwork.kernel.org/patch/10701397/
 * Add some cond_resched() calls to avoid RCU stalls, see commit 2a8bc5316adc998951e8f726c31e231a6021eae2
 * Check if https://lkml.org/lkml/2020/7/23/1246 was added to avoid TLB stalls (commits https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c6fe44d96fc1536af5b11cd859686453d1b7bfd1 and https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2a9127fcf2296674d58024f83981f40b128fffea) - kernel v5.9 seems good.
@@ -1210,6 +1206,16 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Implement kernel [[VDSO]] support - [https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/ Randolphs patch]
 ** DONE: Fixed PTRACE_GETREGS/PTRACE_SETREGS for compat case, fixes strace errors 
 ** DONE: add CONFIG_LOCKDEP support (v6.4)
+** DONE: kernel: drop chassis_power_off() and switch to register_sys_off_handler() - https://patchwork.kernel.org/project/linux-parisc/patch/20230812203759.395651-1-deller@gmx.de/
+** DONE: kernel: drop arch/parisc/kernel/pa7300lc.c
+** DONE: improve Unaligned handlers, e.g. emulate_std() -> clean up assembly, use LR on 32-bit...(%1 and %R1 for register #1)
+** DONE: Fix kernel 6.4 boot crash -> https://patchwork.kernel.org/project/linux-parisc/patch/20230803062404.2373480-1-rppt@kernel.org/
+** DONE: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
+** DONE: mariadb fails with io_uring, testcase https://github.com/axboe/liburing/blob/master/examples/io_uring-test.c fails too. (Jens bought a C3000 workstation and added it to the machine test pool.)
+** DONE: push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
+** DONE: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
+** DONE: Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT as in https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
+
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
@@ -1248,6 +1254,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: Fix sbuild not returning used disc size: /usr/share/perl5/Sbuild/Build.pm line 2786, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923484
 ** DONE: Why does mc hangs when exiting with F10? - https://midnight-commander.org/ticket/3887 - endianess bug in mc source code
 ** DONE: capnproto - testsuite was wrong: PARISC uses mips-floatingpoint NANs - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787
+** DONE: fix strace in debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030587 -> ask to switch to v6.4 instead
 
 * QEMU:
 ** DONE: Add kernel fw_cfg support (drivers/firmware/qemu_fw_cfg.c)
