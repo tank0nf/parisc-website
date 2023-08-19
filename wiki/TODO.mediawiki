@@ -10,7 +10,7 @@ title: TODO
 * DONE: kernel: drop chassis_power_off() and switch to register_sys_off_handler() - https://patchwork.kernel.org/project/linux-parisc/patch/20230812203759.395651-1-deller@gmx.de/
 * DONE: kernel: drop arch/parisc/kernel/pa7300lc.c
 * QEMU: drop cpu load on panic -> implement panic_smp_self_stop() [stop cpu] and panic_blink() to sleep CPU
-* Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %L1, %R1 for register #1)
+* DONE: Unalgned handler, emulate_std() -> clean up assembly, use LR on 32-bit...( %1 and %R1 for register #1)
 * MOSTLY DONE: Fix kernel 6.4 boot crash -> https://patchwork.kernel.org/project/linux-parisc/patch/20230803062404.2373480-1-rppt@kernel.org/
 * DONE: matoro - ia64 io_uring: https://lore.kernel.org/io-uring/27b05e18b406621584b29653e5aafd43@matoro.tk/T/#t
 * ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
