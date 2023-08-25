@@ -69,7 +69,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Aug&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.1.0 released].<br>[https://patchwork.kernel.org/project/linux-parisc/patch/ZOkGCSNr0VN2VIJJ@p100/ Found a 10-year old bug (since kernel 3.11) which affected 32-bit parisc kernels].<br>Many kernel bugs fixed in aio, ...
+| style="vertical-align:top;" |'''Aug&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.1.0 released].<br>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=382d4cd1847517ffcb1800fd462b625db7b2ebea Found a 10-year old bug (since kernel 3.11) which affected 32-bit parisc kernels].<br>Many kernel bugs fixed in aio, ...
 |-
 | style="vertical-align:top;" |'''July&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.0.3 released with many parisc fixes (SMP CPU fixes, graphics fixes)].
 |-
