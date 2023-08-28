@@ -6,6 +6,7 @@ title: TODO
 
 == Status & TODO 2023-08-21 ==
 * '''Kernel'''
+** Enhance PDC_CHASSIS driver to detect and report FAN and PSU issues. 
 ** STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 ** STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 ** STARTED: graphics mmap: Make mapping aliasing physical memory.
