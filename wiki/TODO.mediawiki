@@ -1153,6 +1153,7 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7a894c87374771f3cfb1b8e5453fbe03f1fb8135 '''parisc: Fix CONFIG_TLB_PTLOCK to work with lightweight spinlock checks'''] (backported to v6.4+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/ '''lib/clz_ctz.c: Fix __clzdi2() and __ctzdi2() for 32-bit kernels'''] (backported to v3.11+)  '''10-year-old-bug'''
 * Kernel 6.6
+** ['''lockdep: fix static memory detection even more''']
 ** ['''parisc: lasi: Register LASI power-off feature as sys_off_handler''']
 ** parisc: Drop the pa7300lc LPMC handler
 ** parisc: traps: Drop cpu_lpmc function pointer
