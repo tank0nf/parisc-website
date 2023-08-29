@@ -9,12 +9,7 @@ title: TODO
 ** check kselftest/nolibc: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1c59d383390f970b891b503b7f79b63a02db2ec5
 ** Enhance PDC_CHASSIS driver to detect and report FAN and PSU issues. 
 ** STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243
-** STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
 ** STARTED: graphics mmap: Make mapping aliasing physical memory.
-** MOSTLY DONE: why doesn't kernel >= 6.1.5 boot on panama? -> But boots with "no-alternatives" boot option!
-*** DONE/Reason: flush_dcache_page() re-enables the IRQs which leads to the spinlock hang in aio_complete() https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b
-*** DONE: backport patch to kernels < 5.18, mail sent to stable mailing list
-*** have the arm and nios2 patches been picked up?
 ** parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
 ** QEMU/Kernel: Add CONFIG_NO_HZ to speed up qemu
 ** convert irq handling to use CONFIG_IRQ_DOMAIN_HIERARCHY (serial port problem, action handler msising when registering irq)
@@ -1154,20 +1149,20 @@ title: TODO
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/ '''lib/clz_ctz.c: Fix __clzdi2() and __ctzdi2() for 32-bit kernels'''] (backported to v3.11+)  '''10-year-old-bug'''
 * Kernel 6.6
 ** ['''lockdep: fix static memory detection even more''']
-** ['''parisc: lasi: Register LASI power-off feature as sys_off_handler''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e71d47dc2a6c9a1ec83f015c7c3dd87b635ffcda '''parisc: lasi: Register LASI power-off feature as sys_off_handler''']
 ** parisc: Drop the pa7300lc LPMC handler
 ** parisc: traps: Drop cpu_lpmc function pointer
-** ['''parisc: Use page table locks only if DEBUG_KERNEL is enabled''']
-** ['''parisc: Fix /proc/cpuinfo output for lscpu''']
-** ['''parisc: Use generic mmap top-down layout and brk randomization''']
-** ['''parisc: Add 32-bit eBPF JIT compiler''']
-** ['''parisc: Add 64-bit eBPF JIT compiler''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=51c70a09c315fd2ad0c836392c6dab53839a59d3 '''parisc: Use page table locks only if DEBUG_KERNEL is enabled''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9f5ba4b3e1b3c123eeca5d2d09161e8720048b5c '''parisc: Fix /proc/cpuinfo output for lscpu''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3033cd4307681c60db6d08f398a64484b36e0b0f '''parisc: Use generic mmap top-down layout and brk randomization''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ceb0e7267693d3e6c43bd65695cd79d7c072a42a '''parisc: Add 32-bit eBPF JIT compiler''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c95e269773b31a93515e201fc4bce02d491216c2 '''parisc: Add 64-bit eBPF JIT compiler''']
 ** parisc: Add eBPF JIT compiler glue code and Makefile
 ** parisc: Fix comment on Elf64 function descriptor
-** ['''parisc: Wire up eBPF JIT compiler''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4800a6215e335c6dade05e10c8fdbf919c04a3a7 '''parisc: Wire up eBPF JIT compiler''']
 ** parisc: unaligned: Simplify 32-bit assembly in emulate_std()
 ** parisc: Avoid ioremap() for same addresss in iosapic_register()
-** ['''parisc: led: Reduce CPU overhead for disk & lan LED computation'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=358ad816e52d4253b38c2f312e6b1cbd89e0dbf7 '''parisc: led: Reduce CPU overhead for disk & lan LED computation'''] (backported to all)
 ** parisc: Makefile: Adjust order in which drivers should be loaded
 ** parisc: dino: Convert dino PCI bus driver to use arch_initcall()
 ** parisc: hppb: Convert HP PB bus driver to use arch_initcall()
@@ -1181,8 +1176,8 @@ title: TODO
 ** parisc: wax: Initialize wax driver via arch_initcall()
 ** parisc: asp: Initialize asp driver via arch_initcall()
 ** parisc: lasi: Initialize LASI driver via arch_initcall()
-** ['''parisc: led: Fix LAN receive and transmit LEDs'''] (backported to all)
-** ['''parisc: led: Rewrite LED/LCD driver to utilizize Linux LED subsystem''']
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4db89524b084f712a887256391fc19d9f66c8e55 '''parisc: led: Fix LAN receive and transmit LEDs'''] (backported to all)
+** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=789e527adfc335681ea4c3e347e8b500753d4fde '''parisc: led: Rewrite LED/LCD driver to utilizize Linux LED subsystem''']
 ** parisc: chassis: Do not overwrite string on LCD display
 ** parisc: ccio-dma: Create private runway procfs root entry
 
@@ -1254,7 +1249,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: push fbcon-64-bit-sti patches upstream: https://github.com/hdeller/linux/commits/drm-misc-next-with-64bit-console-final
 ** DONE: Fix kexec on PA8800/PA8900 CPUs: how to restart the CPUs on these systems?
 ** DONE: Implement ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT as in https://lwn.net/ml/linux-kernel/20190724055850.6232-14-alex@ghiti.fr/
-
+** DONE: Add eBPF JIT compiler (in kernel 6.6)
+** DONE: kernel >= 6.1.5 fails to boot on panama, boots works with "no-alternatives" boot option, Reason: flush_dcache_page() re-enabled the IRQs which led to the spinlock hang in aio_complete(), fix: https://lore.kernel.org/linux-parisc/ZGyawdtBhNnvvTv3@shell.armlinux.org.uk/T/#m96bc8e874d76b3b7bab8b40954b68e6cfb81ee2b, fix backported to kernels >= 5.18, bug was in arm and nios2 arches too.
 
 * Debian installer:
 ** DONE: test xorriso (Thomas Schmitt, scdbackup)
