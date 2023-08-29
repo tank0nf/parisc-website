@@ -4,8 +4,9 @@ title: TODO
 
 = PA-RISC Linux TODO =
 
-== Status & TODO 2023-08-21 ==
+== Status & TODO 2023-08-29 ==
 * '''Kernel'''
+** check kselftest/nolibc: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1c59d383390f970b891b503b7f79b63a02db2ec5
 ** Enhance PDC_CHASSIS driver to detect and report FAN and PSU issues. 
 ** STARTED: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243
 ** STARTED: Add BPF assembler implementation -> https://github.com/hdeller/linux/tree/for-next-bpf-jit6
@@ -1151,6 +1152,38 @@ title: TODO
 ** parisc: pdt: Use PTR_ERR_OR_ZERO() to simplify code
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7a894c87374771f3cfb1b8e5453fbe03f1fb8135 '''parisc: Fix CONFIG_TLB_PTLOCK to work with lightweight spinlock checks'''] (backported to v6.4+)
 ** [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/ '''lib/clz_ctz.c: Fix __clzdi2() and __ctzdi2() for 32-bit kernels'''] (backported to v3.11+)  '''10-year-old-bug'''
+* Kernel 6.6
+** ['''parisc: lasi: Register LASI power-off feature as sys_off_handler''']
+** parisc: Drop the pa7300lc LPMC handler
+** parisc: traps: Drop cpu_lpmc function pointer
+** ['''parisc: Use page table locks only if DEBUG_KERNEL is enabled''']
+** ['''parisc: Fix /proc/cpuinfo output for lscpu''']
+** ['''parisc: Use generic mmap top-down layout and brk randomization''']
+** ['''parisc: Add 32-bit eBPF JIT compiler''']
+** ['''parisc: Add 64-bit eBPF JIT compiler''']
+** parisc: Add eBPF JIT compiler glue code and Makefile
+** parisc: Fix comment on Elf64 function descriptor
+** ['''parisc: Wire up eBPF JIT compiler''']
+** parisc: unaligned: Simplify 32-bit assembly in emulate_std()
+** parisc: Avoid ioremap() for same addresss in iosapic_register()
+** ['''parisc: led: Reduce CPU overhead for disk & lan LED computation'''] (backported to all)
+** parisc: Makefile: Adjust order in which drivers should be loaded
+** parisc: dino: Convert dino PCI bus driver to use arch_initcall()
+** parisc: hppb: Convert HP PB bus driver to use arch_initcall()
+** parisc: eisa: Convert HP EISA bus driver to use arch_initcall()
+** parisc: ccio: Convert CCIO driver to use arch_initcall()
+** parisc: gsc: Convert GSC bus driver to use arch_initcall()
+** parisc: lba: Convert LBA PCI bus driver to use arch_initcall()
+** parisc: led: Move register_led_regions() to late_initcall()
+** parisc: sba_iommu: Convert SBA IOMMU driver to use arch_initcall()
+** parisc: iosapic: Convert I/O Sapic driver to use arch_initcall()
+** parisc: wax: Initialize wax driver via arch_initcall()
+** parisc: asp: Initialize asp driver via arch_initcall()
+** parisc: lasi: Initialize LASI driver via arch_initcall()
+** ['''parisc: led: Fix LAN receive and transmit LEDs'''] (backported to all)
+** ['''parisc: led: Rewrite LED/LCD driver to utilizize Linux LED subsystem''']
+** parisc: chassis: Do not overwrite string on LCD display
+** parisc: ccio-dma: Create private runway procfs root entry
 
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
