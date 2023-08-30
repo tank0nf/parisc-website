@@ -29,14 +29,15 @@ title: TODO
 * stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
 * check assembly in drivers/parisc/*
 
-=='''QEMU Full-system emulation'''==
+=='''QEMU'''==
+==='''Full-system emulation'''===
 * Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract work for QEMU through his company.
 * Fix migration of VMs (noticed by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>):  Boot a qcow2 image in QEMU using the GTK, Wait a random time anywhere between 5-20s, Pause the VM, Switch to the "monitor" tab, Run "savevm foo" to save the current VM state as "foo", Type "quit" to exit QEMU, Add "-loadvm foo" to your QEMU command line and launch QEMU, Unpause the VM 
 * Check "HPPA support for IGNITE-UX install discs" for HP Logic Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org> Sept 2020)
 * STARTED: Finish LASI and 82596 NIC for QEMU -> https://github.com/hdeller/qemu-hppa/commits/lasi
 * ncr53c710 driver from amiga: https://github.com/tonioni/WinUAE/blob/master/qemuvga/lsi53c710.cpp
 
-=='''QEMU User-mode emulation'''==
+==='''User-mode emulation'''===
 * Implement io_submit() syscalls, probably not possible. Check why raft package testcases which fail
 * check why qgis, plasma-framework,  kio-extras and fcitx5-chinese-addons fail to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
 * qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
@@ -57,19 +58,7 @@ title: TODO
 * DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
 
-== '''glibc'''==
-* STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
-* Add backtrace() function to glibc -> needed to build dovecot package
-
-* DONE: Improve text on https://www.openpa.net
-
-* STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
-
-=='''Debian'''==
-* STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
-* STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
-
-== '''QEMU issues'''==
+=== '''QEMU issues'''===
 * QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
 * QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
@@ -82,6 +71,19 @@ title: TODO
 * DONE: qcoro FTBFS on qemu -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
 * QEMU: Improve emulation speed on full virtualization
 * check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
+
+
+== '''glibc'''==
+* STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
+* Add backtrace() function to glibc -> needed to build dovecot package
+
+* DONE: Improve text on https://www.openpa.net
+
+* STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
+
+=='''Debian'''==
+* STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
+* STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
 
 == '''gcc compiler'''==
 * Why is compiling fife so slow with cc1plus?
