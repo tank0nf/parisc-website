@@ -63,23 +63,23 @@ PA-RISC PDC doesn't know how to use a non-HP graphics card, e.g. one can not use
 # on later PA-RISC machines, like C8000, which has a built-in x86 emulator, the PDC may be able to POST PC graphics cards
 # You have to initialize a non-HP graphics card somehow before you can use it. Unfortunately there is no generic way to do this, the initialization method is different for every type of graphics card.
 
-Some graphics cards can be initialized by the '''Linux framebuffer drivers''' directly, and might work on PA-RISC Linux. This is an incomplete '''list of cards which have been '''reported to work''' with PA-RISC Linux''':
-* Matrox cards, e.g. Millenium I/II, MGA G200
-* Permedia 2 cards, e.g. ELSA Gloria Synergy, Tech-Source Raptor GFX
-* 3dfx Voodoo and Voodoo2
-* Matrox Millenium I
-* Matrox MGA G200
-* NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb and nouveau-drm driver)
-* ATI RV280 GL [FireMV 2200 PCI] (PCI card in C8000, radeondrmfb)
-cards with issues:
-* Matrox Millennium G450 Dual Head PCI (matroxfb: cannot determine memory size)
-untested cards:
-* ATI Mach64 (eg. Rage XL)
-* S3
-* ancient framebuffer cards (eg. TGA, P9000)
+Some graphics cards can be initialized by the '''Linux framebuffer or DRM drivers''' directly, and might work on PA-RISC Linux. 
 In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop.<br>
-The Matrox G200 (rev 01) was reported to work when the matrox framebuffer driver was compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> was given on the kernel command boot line.<br>
-To initialize the Matrox Millenium graphics card properly one must physically disconnect the computer from the power line before (re)booting, as it is not sufficient to just press the power-off button.
+This is an '''incomplete list of cards''' which have been 
+* reported to work with PA-RISC Linux:
+** Matrox cards, e.g. Millenium I/II, MGA G200
+** Permedia 2 cards, e.g. ELSA Gloria Synergy, Tech-Source Raptor GFX
+** 3dfx Voodoo and Voodoo2
+** Matrox Millenium I
+** Matrox MGA G200 (works when the matrox framebuffer driver is compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> is given on the kernel command boot line)
+** NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb and nouveau-drm driver)
+** ATI RV280 GL [FireMV 2200 PCI] (PCI card in C8000, radeondrmfb)
+* cards with issues:
+** Matrox Millennium G450 Dual Head PCI (matroxfb: cannot determine memory size), must physically disconnect the computer from the power line before (re)booting, as it is not sufficient to just press the power-off button.
+* untested cards:
+** ATI Mach64 (eg. Rage XL)
+** S3
+** ancient framebuffer cards (eg. TGA, P9000)
 
 === Useful Linux command line tools when running framebuffer drivers (fbdev and DRM) ===
 
