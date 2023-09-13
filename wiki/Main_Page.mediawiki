@@ -69,7 +69,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC NEWS == 
 {|
-| style="vertical-align:top;" |'''Sep&nbsp;2023'''||Kernel 6.6 and Qemu 8.2 with SeaBIOS-hppa v9 supports Block-TLBs (BTLB) on 32-bit kernels.<br>[https://sourceware.org/bugzilla/show_bug.cgi?id=30750 Dave fixed glibc v2.38 to prevent <code>unaligned access to 0xf7ebadcd at ip 0xf5f7e307</code> syslog warnings].
+| style="vertical-align:top;" |'''Sep&nbsp;2023'''||Kernel 6.6 and Qemu 8.2 with SeaBIOS-hppa v9 supports Block-TLBs (BTLB) on 32-bit kernels.<br>Kernel 6.6 includes native eBPF JIT compiler for 32- and 64-bit kernels.<br>[https://sourceware.org/bugzilla/show_bug.cgi?id=30750 Dave fixed glibc v2.38 to prevent <code>unaligned access to 0xf7ebadcd at ip 0xf5f7e307</code> syslog warnings].
 |-
 | style="vertical-align:top;" |'''Aug&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.1.0 released].<br>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=382d4cd1847517ffcb1800fd462b625db7b2ebea Found a 10-year old bug (since kernel 3.11) which affected 32-bit parisc kernels].<br>Many kernel bugs fixed in aio, ...
 |-
