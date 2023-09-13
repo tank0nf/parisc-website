@@ -1283,6 +1283,7 @@ Debian kernel / Generic Kernel bugs fixed
 *** packages needing rebuild: libatomic-ops (gauche and libgc have copies of libatomic-ops included), x265, ceph, lizardfs, firebird2.5, gauche, idba, mapsembler2, padevchooser, filezilla, idba, http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=785654
 *** __sync_val_compare_and_swap_8 was missing in: openvdb, idba, lizardfs, ...
 ** DONE: [https://sourceware.org/bugzilla/show_bug.cgi?id=20243 Misaligned access in res_query.c HEADER struct] fixed in [https://sourceware.org/git/?p=glibc.git;a=commit;h=05dec22d7be722987ff07aebf9690f6078b3c4e9 this glibc commit] 
+** DONE: "exim4(11935): unaligned access to 0xf7ebadcd at ip 0xf5f7e307" -> https://sourceware.org/bugzilla/show_bug.cgi?id=30750  and https://sourceware.org/bugzilla/show_bug.cgi?id=20243, resolved in glibc 2.38
 
 * Debian userspace:
 ** DONE: qt4-x11: Improve atomic support on parisc (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741190)
