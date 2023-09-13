@@ -67,13 +67,12 @@ Some graphics cards can be initialized by the '''Linux framebuffer or DRM driver
 In combination with the fbdev X-server from XFree86/X.org you should able to have a nice (albeit unaccelerated) X11 desktop.<br>
 This is an '''incomplete list of cards''' which have been 
 * reported to work with PA-RISC Linux:
-** Matrox cards, e.g. Millenium I/II, MGA G200
+** ATI RV280 GL [FireMV 2200 PCI] (PCI card in C8000, radeondrmfb). Note: AGP cards have issues, see below.
 ** Permedia 2 cards, e.g. ELSA Gloria Synergy, Tech-Source Raptor GFX
 ** 3dfx Voodoo and Voodoo2
-** Matrox Millenium I
-** Matrox MGA G200 (works when the matrox framebuffer driver is compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> is given on the kernel command boot line)
 ** NVIDIA Corporation NV18GL [Quadro NVS 280 SD] (AGP card in C8000, nvidiafb and nouveau-drm driver)
-** ATI RV280 GL [FireMV 2200 PCI] (PCI card in C8000, radeondrmfb)
+** Matrox Millenium I/II
+** Matrox MGA G200 (works when the matrox framebuffer driver is compiled into the kernel and <code>video=matroxfb:init,vesa:0x1BB,mem:4m</code> is given on the kernel command boot line)
 * cards with issues:
 ** Matrox Millennium G450 Dual Head PCI (matroxfb: cannot determine memory size), must physically disconnect the computer from the power line before (re)booting, as it is not sufficient to just press the power-off button.
 * untested cards:
