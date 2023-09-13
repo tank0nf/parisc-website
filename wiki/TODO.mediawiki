@@ -1182,6 +1182,21 @@ title: TODO
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=789e527adfc335681ea4c3e347e8b500753d4fde '''parisc: led: Rewrite LED/LCD driver to utilizize Linux LED subsystem''']
 * parisc: chassis: Do not overwrite string on LCD display
 * parisc: ccio-dma: Create private runway procfs root entry
+* parisc: sba_iommu: Fix build warning if procfs if disabled
+* parisc: sba: Fix compile warning wrt list of SBA devices
+* parisc: sba-iommu: Fix sparse warnigs
+* parisc: ccio-dma: Fix sparse warnings
+* parisc: iosapic.c: Fix sparse warnings
+* parisc: drivers: Fix sparse warning
+* parisc: irq: Make irq_stack_union static to avoid sparse warning
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3f091387a39795812aab4303949bbc9baa22c077 '''parisc: shmparam.h: Document aliasing requirements of PA-RISC''']
+* parisc: Prepare for Block-TLB support on 32-bit kernel
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=eda205211a522312b667d5bd25d58bee8504c09e '''parisc: BTLB: Clear possibly existing BTLB entries''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=510610f96d65277940a02f47d7bc7a06c8a2ab7a '''parisc: BTLB: Add BTLB insert and purge firmware function wrappers''']
+* parisc: BTLB: _edata symbol has to be page aligned for BTLB support
+* parisc: firmware: Simplify calling non-PA20 functions
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5ef93d02d6c9cc3a14e7348481c9e41a528caa1 '''parisc: BTLB: Initialize BTLB tables at CPU startup''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=08700ec705043eb0cee01b35cf5b9d63f0230d12 '''linux/export: fix reference to exported functions for parisc64''']
 
 = DONE items =
 == Debian kernel and userspace programs ==
