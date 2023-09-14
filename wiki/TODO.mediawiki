@@ -127,14 +127,13 @@ title: TODO
 
 == kernel work==
 * ALPHA processor port:
-* Add https://lkml.org/lkml/2007/8/14/259 aboot patch
-* New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
-* Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
-* alpha qemu-user bug: https://gitlab.com/qemu-project/qemu/-/issues/494
-* 3.14 partly: return ((unsigned long) mapping >> 7) & ((SHMLBA >> PAGE_SHIFT) - 1); in arch/parisc/kernel/sys_parisc.c
+** Add https://lkml.org/lkml/2007/8/14/259 aboot patch
+** New one: https://patchwork.kernel.org/patch/10141217/ (alpha: fix crash if pthread_create races with signal delivery)
+** Kernel patches: http://marc.info/?t=140610652200001&r=1&w=2, The proposed fix is in: http://marc.info/?t=140675670100010&r=1&w=2, http://marc.info/?t=142327510200001&r=1&w=2, 
+
 * How to upgrade libgcc:
-* apt install -f -o Dpkg::Options::="--force-overwrite"
-* see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
+ apt install -f -o Dpkg::Options::="--force-overwrite"
+ see: https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/
 
 * Kernel: Hard to solve outstanding issues
 * megaraid on my rp5470 hangs at boot (maybe because SCSI chassis not connected)? -> use new megaraid driver for debian -> maybe patch https://patchwork.kernel.org/patch/7738911/ needed to enable PCI-PCI bridge?
