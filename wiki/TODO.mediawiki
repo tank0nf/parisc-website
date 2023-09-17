@@ -5,7 +5,11 @@ title: TODO
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
 * STARTED: BTLB support in SeaBIOS, QEMU and Kernel (see github repo)
+** Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
+* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
 * check kselftest/nolibc: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1c59d383390f970b891b503b7f79b63a02db2ec5
+* Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
+* Fix kernel: make ARCH=parisc tools/perf
 * Enhance PDC_CHASSIS driver to detect and report FAN and PSU issues. 
 * STARTED: graphics mmap: Make mapping aliasing physical memory.
 * parisc timers: convert to generic clockevent (Arnd Bergmann) - https://patchwork.kernel.org/project/linux-parisc/patch/20201008154651.1901126-14-arnd@arndb.de/
@@ -14,18 +18,14 @@ title: TODO
 * NO_IRQ -> should be converted to (0) instead of (-1) -> Helge (check assembly, check in drivers/parisc/*)
 * STARTED: Visualizefx driver
 * [https://patchwork.kernel.org/project/linux-parisc/patch/20211031204952.25678-2-svens@stackframe.org/ Visualize FX framebuffer/DRM support (by Sven Schnelle)]
-* STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
-* Fix kernel: make ARCH=parisc tools/perf
 * trace irq flags - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=24131a61ec8c2d83431cb818281d3c9db986ab08
-* Add core-objtool for parisc - http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=26660a4046b171a752e72a1dd32153230234fe3a
 * ONGOING: Enable UBSAN and fix fallouts
-* Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * Enable SPARSEMEM_VMEMMAP_ENABLE
 * STARTED: implement CONFIG_VMAP_STACK "virtually mapped stacks and thread_info cleanup" (see arm) -> https://lwn.net/Articles/693026/
 * check usage of CONFIG_MLONGCALLS, only 14MB/s with debian kernel and dd if=/dev/zero of=here bs=1k count=100000  ?
 * Implement TLB lazy_mmu_mode, see include/linux/pgtable.h and search for arch_leave_lazy_mmu_mode
 * [[VDSO]] - Review gettimeofday and clock_gettime() implementation, possibly use a light-weight-syscall and rely on cr16 and cpu speed for more accurate timing? 
-* Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
+** Enhance vDSO: gettimeofday(), getcpu(),... see e.g.c32c47aa364096124c9c69c1a44918433832562b
 * stifb: Fix HCRX text scrolling, missing functions?  - see latest patches to stifb
 * check assembly in drivers/parisc/*
 
