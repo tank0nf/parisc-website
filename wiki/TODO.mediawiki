@@ -55,19 +55,15 @@ title: TODO
 * Implement io_submit() syscalls, probably not possible.
 
 === '''QEMU issues'''===
-* QEMU: Implement 32/24 bit HCRX graphics
 * QEMU: Add support for running MPE with https://www.openpa.net (& Craig Lalley <mr_lalley@yahoo.com>)
 * QEMU/Kernel: Add diag() calls to emulate & speed up xchg() and cmp_xchg() 
+* QEMU: Improve emulation speed on full virtualization
+* QEMU: Implement 32/24 bit HCRX graphics
 * devscripts FTBFS because of subversion: svnadmin: E000072: Can't check directory '.': Value too large for defined data type
 * rrdtool FTBFS on 32-bit arches: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1026973
 * ohcount and guile-ssh: ftbfs with qemu but built okay on real hardware: https://buildd.debian.org/status/logs.php?pkg=guile-ssh&arch=hppa and https://buildd.debian.org/status/logs.php?pkg=ohcount&ver=4.0.0-3&arch=hppa
 * fix openvswitch on qemu
-* DONE: indent FTBFS on qemu: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1029574 (shebang bug)
-* DONE: cfengine3 FTBFS on qemu: https://buildd.debian.org/status/logs.php?pkg=cfengine3&arch=hppa
-* DONE: qcoro FTBFS on qemu -> Fix: CLONE_PIDFD flag not handled by clone() emulation: patch sent 
-* QEMU: Improve emulation speed on full virtualization
 * check glibc tst-pthread-timedlock-lockloop testcase failure (The futex facility returned an unexpected error code., xclock_gettime.c:29: clock_gettime (0): Unknown error -1)
-
 
 == '''glibc'''==
 * STARTED: Finfish MADV transition in glibc: glibc: https://sourceware.org/pipermail/libc-alpha/2023-February/145452.html , dietlibc: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030998
