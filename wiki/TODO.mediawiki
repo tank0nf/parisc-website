@@ -40,23 +40,17 @@ title: TODO
 
 ==='''User-mode emulation'''===
 * Implement io_submit() syscalls, probably not possible. Check why raft package testcases which fail
-* check why qgis, plasma-framework,  kio-extras and fcitx5-chinese-addons fail to build with "Illegal instruction" error (https://buildd.debian.org/status/fetch.php?pkg=qgis&arch=hppa&ver=3.22.4%2Bdfsg-3&stamp=1645691873&raw=0)
-* qemu and executable stack: The following error occurred on pacific in mlton build: /usr/lib/mlton/mlton-compile: error while loading shared libraries: libm.so.6: cannot enable executable stack as shared object requires: Invalid argument
-* More exec stack errors: openssh, lnav
-* It looks like haskell packages still fail on qemu (e.g., haskell-swish).
-* check qemu-user build errors:
-* ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
-* libtool: Dynamic ltdl runtime loading failure
 * STARTED: kronosnet - port SCTP to qemu
-* libtool FTBFS, Dynamic ltdl runtime loading, https://buildd.debian.org/status/fetch.php?pkg=libtool&arch=hppa&ver=2.4.7-7&stamp=1691050219&raw=0
-* check vnlog: very easy testcase for clone/fork issue, see mail 07-31-2023.
+* ONGOING: qemu-user brk() fixes: https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg04657.html
+* check qemu-user build errors:
+** It looks like haskell packages still fail on qemu (e.g., haskell-swish).
+** https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
+** libtool: Dynamic ltdl runtime loading failure
+** libtool FTBFS, Dynamic ltdl runtime loading, https://buildd.debian.org/status/fetch.php?pkg=libtool&arch=hppa&ver=2.4.7-7&stamp=1691050219&raw=0
+** check vnlog: very easy testcase for clone/fork issue, see mail 07-31-2023.
 * qemu brk testcases:
-* https://lore.kernel.org/qemu-devel/CACPK8XeyqcEDyyL3Jw2WYWs_gGdtTCf2=Ly04CMgkshSMdj7RA@mail.gmail.com/#t (armhf binary on a ppc64le host)
-* brk testcase in qemu commit: 4d1de87c75007ee7e29dd271ebb4afdcf01ad7aa
-* fstype testcase, static armhf
-* https://buildd.debian.org/status/fetch.php?pkg=qtwebsockets-opensource-src&arch=hppa&ver=5.15.10-2&stamp=1688842351&raw=0
-* DONE: https://buildd.debian.org/status/logs.php?pkg=dbus&ver=1.14.8-2&arch=hppa
-* DONE: yt (qemu memory issue), dlt-daemon (port 8080 used by machine)
+** https://lore.kernel.org/qemu-devel/CACPK8XeyqcEDyyL3Jw2WYWs_gGdtTCf2=Ly04CMgkshSMdj7RA@mail.gmail.com/#t (armhf binary on a ppc64le host)
+** brk testcase in qemu commit: 4d1de87c75007ee7e29dd271ebb4afdcf01ad7aa
 * ask to get palo-installer, partman-palo, aboot-installer into debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from Adrian 05/30/23
 
 === '''QEMU issues'''===
