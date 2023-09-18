@@ -4,6 +4,8 @@ title: TODO
 
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
+* ipmi-sensors: crashes A500: "ipmi-sensors --sensor-types=fan"
+* latest kernel: maxcpus=1 works, nr_cpus=1 causes a crash.
 * STARTED: BTLB support in SeaBIOS, QEMU and Kernel (see github repo)
 ** Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
 * STARTED: Add cacheflush(2) syscall (like ARC, CSKY, MIPS, and NIOS2), add to glibc, gcc and update man-pages
