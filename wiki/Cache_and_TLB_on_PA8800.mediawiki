@@ -180,8 +180,8 @@ architecture which occur in the PA8800 CPU:
         0x0000000F 00000008   IAOQ</code>
 ** Bit 28 of the space and offset are both set. Doing so will never grant a process access to instructions for which it should not have access, but it can cause execution of unexpected addresses and subsequent wrong results.
 
-* PTLBL:<br>
-Bits[4:10] of the offset are not cleared when performing a local tlb purge in wide mode as the architecture requires.
+* PTLBL:
+** Bits[4:10] of the offset are not cleared when performing a local tlb purge in wide mode as the architecture requires.
 
 * When a trap is taken with PSW C=0 and PSW Q=1, the IIASQ is not cleared as required.
 
