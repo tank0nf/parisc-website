@@ -168,8 +168,7 @@ architecture which occur in the PA8800 CPU:
 
 * A recovery counter trap that occurs on the first RFI target (IIAOQF) is not guaranteed to have the GVA in the IIASQ registers in wide mode. If software wrote a non-GVA value into them before the RFI, they will return the value written, not the GVA after the RFI.
 
-* The PA8800 violates the seven instruction pipeline rule when performing TLB inserts or PxTLBE instructions with the PSW C bit on. The instruction
-will take effect by the 12th instruction after the insert or purge. 
+* The PA8800 violates the seven instruction pipeline rule when performing TLB inserts or PxTLBE instructions with the PSW C bit on. The instruction will take effect by the 12th instruction after the insert or purge. 
 ** Note that the PA2.0 TLB insert instructions use resources that are undefined when the Q bit is on.
 ** Note also that code written to take advantage of the TLB relied-upon translation rules will not be executing TLB inserts or purges with the C bit on (and the Q bit off). (The PA8800 will use last written values of IIASQF/IIAOQF and ISR/IOR for TLB inserts when Q bit is on.)
 
@@ -189,7 +188,6 @@ Bits[4:10] of the offset are not cleared when performing a local tlb purge in wi
 * When a trap is taken with PSW W=1, the IIAOQ bits which are involved in space hashing (bits 4-10) are cleared.
 
 * When code changes from narrow to wide mode within 8 instructions of a 4GB boundary (0xffff ffe0 - 0xffff fffc), wide mode will not take effect, and the subsequent instruction address will wrap around to 0x0.
-
 
 == 3.5 Permanent Defects ==
 
