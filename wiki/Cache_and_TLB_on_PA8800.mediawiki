@@ -2,7 +2,7 @@
 title: Cache and TLB on PA8800
 ---
 
-'''Notes from PA8800 ERS:'''
+=Notes from PA8800 ERS:=
 
 ==3.2.1 Physical Address Mode==
 The PA8800 processor is the first PA-RISC processor to exclusively
@@ -157,3 +157,47 @@ The correct values for the parameters are shown below:
         I_count         0x40000         0x80000
         I_loop          1               1
         I_stride        0x80            0x80
+
+
+
+==3.4 PA2.0 Architectural Exceptions==
+The following are the PA8800's approved exceptions to the PA 2.0
+architecture which occur in the PA8800 CPU:
+
+* Purge TLB (PITLB,PDTLB -- both global and local purges) do not force bits 4:10 of the offset to 0 when space hashing is enabled in wide mode as required. Software must clear these bits. Note also that the PA2.0 architecture has been changed so PxTLBL instructions must zero the x-field (instruction bits 6:10) and must not specify address modification.
+
+* A recovery counter trap that occurs on the first RFI target (IIAOQF) is not guaranteed to have the GVA in the IIASQ registers in wide mode. If software wrote a non-GVA value into them before the RFI, they will return the value written, not the GVA after the RFI.
+
+* The PA8800 violates the seven instruction pipeline rule when performing TLB inserts or PxTLBE instructions with the PSW C bit on. The instruction
+will take effect by the 12th instruction after the insert or purge. 
+** Note that the PA2.0 TLB insert instructions use resources that are undefined when the Q bit is on.
+** Note also that code written to take advantage of the TLB relied-upon translation rules will not be executing TLB inserts or purges with the C bit on (and the Q bit off). (The PA8800 will use last written values of IIASQF/IIAOQF and ISR/IOR for TLB inserts when Q bit is on.)
+
+* FCNV will take an unimplemented trap on certain operands. The specific cases are detailed else where in this document.
+
+* "Space Crashing".
+** Software must never set common bits in the space and offset for the instruction address. For example:<code>
+        0x00FFFF08            IASQ
+        0x0000000F 00000008   IAOQ</code>
+** Bit 28 of the space and offset are both set. Doing so will never grant a process access to instructions for which it should not have access, but it can cause execution of unexpected addresses and subsequent wrong results.
+
+* PTLBL:<br>
+Bits[4:10] of the offset are not cleared when performing a local tlb purge in wide mode as the architecture requires.
+
+* When a trap is taken with PSW C=0 and PSW Q=1, the IIASQ is not cleared as required.
+
+* When a trap is taken with PSW W=1, the IIAOQ bits which are involved in space hashing (bits 4-10) are cleared.
+
+* When code changes from narrow to wide mode within 8 instructions of a 4GB boundary (0xffff ffe0 - 0xffff fffc), wide mode will not take effect, and the subsequent instruction address will wrap around to 0x0.
+
+
+== 3.5 Permanent Defects ==
+
+The following is a list of permanent defects on the PA8800 CPU:
+* The performance monitor coprocessor must only be enabled for trusted code due to the PMDIS instruction. That instruction creates a security violation if allowed to execute.
+* A B,GATE instruction executed in real mode (PSW_C = 0) is not guaranteed to promote the privilege to priv 0.
+* If a system is able to recover from an HPMC and that HPMC is taken on an IO load, that load will issue once before taking the HPMC and again after RFI'ing from the HPMC handler. This breaks the IO load's atomicity.
+* Before deconfiguring a CPU via an HPA write, it is necessary to flush the L1 cache of the CPU being deconfigured.
+* Under certain circumstances, a read_current transaction may hit the same line dirty in the L2 and a core causing a BERR (DDTS bug 254).
+* DIAG_MIB_MODE_OWN must be set to 0 (DDTS bug 204) for Pluto based systems.
+* There exist circumstances where the L2 will continuously retry a CCC forever (DDTS bug 84).
