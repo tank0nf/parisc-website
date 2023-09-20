@@ -1316,6 +1316,7 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: bug in kernel fldw unalignment exception handler which lets libime fail to build on real hardware (but builds with qemu!) 
 ** DONE: Add vDSO trampoline to qemu-user
 ** DONE: [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=970460 qemu-user: trashes argv0 breaking multi-call binaries], leads to build failures in lilypond, fceux, perl, sane-backends ... Fixed, needs [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2347961b11d4079deace3c81dceed460c08a8fc1 kernel v5.12+] and [https://git.qemu.org/?p=qemu.git;a=commit;h=6e1c0d7b951e19c53b8467e8bc4b71ee73a394ea qemu v6.0+],  or alternatively apply [https://github.com/hdeller/qemu-hppa/commit/540e8fb618e66b4c172cc528c12580bb09e301b6 linux-user: handle binfmt-misc P flag as a separate exe name]
+* DONE: BTLB support in SeaBIOS, QEMU and Kernel
 
 == ABI breakages (e.g. dropped HP-UX support) ==
 * '''Kernel 3.14 (EWOULDBLOCK)'''
