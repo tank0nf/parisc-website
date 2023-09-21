@@ -1085,12 +1085,13 @@ title: TODO
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=59fa12646d9f56c842b4d5b6418ed77af625c588 parisc: Improve cache flushing for PCXL in arch_sync_dma_for_cpu()]
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d703797380c540bbeac03f104ebcfc364eaf47cc '''parisc: Flush gatt writes and adjust gatt mask in parisc_agp_mask_memory()''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b6405f0829d7b1dd926ba3ca5f691cab835abfaa '''parisc: Use num_present_cpus() in alternative patching code'''] 
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=15e64ef6520ea8702998db05b87fa5c3d3d40710 '''parisc: Add lightweight spinlock checks'''] (backported to v6.1+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=15e64ef6520ea8702998db05b87fa5c3d3d40710 '''parisc: Add lightweight spinlock checks''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=adf8e96a7ea670d45b5de7594acc67e8f4787ae6 '''parisc: Enable LOCKDEP support''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2028315cf59bb899a5ac7e87dc48ecb8fac7ac24 '''parisc: Allow to reboot machine after system halt'''] (backported to v4.14+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df419492e428b6a2bce98d0f613c58a13da6666c '''parisc: Handle kprobes breakpoints only in kernel context'''] (backported to v5.18+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6888ff04e37d01295620a73f3f7efbc79f6ef152 '''parisc: Handle kgdb breakpoints only in kernel context'''] (backported to v5.4+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=61e150fb310729c98227a5edf6e4a3619edc3702 '''parisc: Fix flush_dcache_page() for usage from irq context'''] (backported to v5.18+) (and all)
+
 == Kernel 6.5 ==
 * parisc: Move TLB_PTLOCK option to Kconfig.debug
 * parisc: Check if IRQs are disabled when calling arch_local_irq_restore()
