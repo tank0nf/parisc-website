@@ -35,6 +35,11 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 : PA-RISC is a fully supported architecture of Gentoo Linux.<br>
 : The [https://wiki.gentoo.org/wiki/Project:HPPA Gentoo hppa team] provides [http://www.gentoo.org/main/en/where.xml Gentoo Linux installation ISOs available for download].
 : If you wish to install Gentoo Linux for PA-RISC, we suggest that your read the [http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml Handbook on how to install Gentoo Linux for PA-RISC].
+|- style="vertical-align:top;"
+| <center>[https://t2sde.org/ T2]</center>
+||
+'''T2 System Development Environment'''
+: The T2 SDE provides a port to PA-RISC which you may download [http://dl.t2sde.org/binary/ here.]
 |}
 
 == Our sponsors ==
