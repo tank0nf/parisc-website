@@ -39,7 +39,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 | <center>[https://t2sde.org/ T2]</center>
 ||
 '''T2 System Development Environment'''
-: The T2 SDE provides a port to PA-RISC which you may download [http://dl.t2sde.org/binary/ here.]
+: The [https://t2sde.org/ T2 System Development Environment] Linux distribution provides a port to PA-RISC which you may download [http://dl.t2sde.org/binary/ here.]
 |}
 
 == Our sponsors ==
