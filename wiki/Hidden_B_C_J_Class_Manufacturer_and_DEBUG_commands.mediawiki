@@ -2,6 +2,12 @@
 title: Hidden B/C/J Class Manufacturer and DEBUG commands
 ---
 
+According to some PDC docs, there seems to be a "mode byte" in NVM storage.
+Values are probably:
+* Normal mode = 0x4E
+* MFG mode = 0x4D
+* Debug mode = 0x44
+
 After repairing my J5000 (EEPROM was corrupted due to PDC experiments), the Bootloader showed some additional Entries:
 
  Mfg Menu: Enter command > debug
