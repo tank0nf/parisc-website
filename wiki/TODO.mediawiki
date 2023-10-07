@@ -4,6 +4,7 @@ title: TODO
 
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
+* rauc: FTBFS with qemu - testsuite errors
 * ipmi-sensors: crashes A500: "ipmi-sensors --sensor-types=fan"
 * DONE: latest kernel: maxcpus=1 works, nr_cpus=1 causes a crash. (patch sent)
 * Enable BlockTLB on PA1.x for STI framebuffer (see block tlb info in sti.pdf documentation) and ftp://parisc.parisc-linux.org/docs/pdc32.pdf
