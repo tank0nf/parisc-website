@@ -1193,6 +1193,8 @@ title: TODO
 * parisc: firmware: Simplify calling non-PA20 functions
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5ef93d02d6c9cc3a14e7348481c9e41a528caa1 '''parisc: BTLB: Initialize BTLB tables at CPU startup''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=08700ec705043eb0cee01b35cf5b9d63f0230d12 '''linux/export: fix reference to exported functions for parisc64''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3b3c637e4eb8d3bbe53e5692aee66add72f9851 '''parisc: Fix crash with nr_cpus=1 option'''] (backported to v5.18+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=914988e099fc658436fbd7b8f240160c352b6552 '''parisc: Restore __ldcw_align for PA-RISC 2.0 processors'''] (backported to all) ('''IMPORTANT''')
 
 = DONE items =
 == Debian kernel and userspace programs ==
