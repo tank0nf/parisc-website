@@ -1197,6 +1197,21 @@ title: TODO
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3b3c637e4eb8d3bbe53e5692aee66add72f9851 '''parisc: Fix crash with nr_cpus=1 option'''] (backported to v5.18+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=914988e099fc658436fbd7b8f240160c352b6552 '''parisc: Restore __ldcw_align for PA-RISC 2.0 processors'''] (backported to all) ('''IMPORTANT''')
 
+== Kernel 6.7 ==
+* '''parisc: Add nop instructions after TLB inserts''' (backported to all)
+* parisc: sba-iommu: Fix comment when calculating IOC number
+* parisc: Add some missing PDC functions and constants
+* '''parisc: Allow building uncompressed Linux kernel'''
+* parisc/power: Add power soft-off when running on qemu
+* parisc/power: Trivial whitespace cleanups and license update
+* parisc: Move parisc_narrow_firmware variable to header file
+* parisc/firmware: Use PDC constants for narrow/wide firmware
+* '''parisc/agp: Use 64-bit LE values in SBA IOMMU PDIR table'''
+* parisc/pdc: Add width field to struct pdc_model
+* parisc: Show default CPU PSW.W setting as reported by PDC
+* '''fbdev: stifb: Make the STI next font pointer a 32-bit signed offset''' (backported to all)
+* parisc: simplify smp_prepare_boot_cpu()
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
