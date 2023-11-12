@@ -1212,8 +1212,8 @@ title: TODO
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8a32aa17c1cd48df1ddaa78e45abcb8c7a2220d6 '''fbdev: stifb: Make the STI next font pointer a 32-bit signed offset'''] (backported to all)
 * parisc: simplify smp_prepare_boot_cpu()
 * parport: gsc: mark init function static
-* '''parisc/pgtable: Do not drop upper 5 address bits of physical address'''
-* '''parisc: Prevent booting 64-bit kernels on PA1.x machines'''
+* '''parisc/pgtable: Do not drop upper 5 address bits of physical address''' (backported to all)
+* '''parisc: Prevent booting 64-bit kernels on PA1.x machines''' (backported to v6.0+)
 
 = DONE items =
 == Debian kernel and userspace programs ==
