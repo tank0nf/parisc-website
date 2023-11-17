@@ -4,6 +4,8 @@ title: TODO
 
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
+* Fix palo on c3000 to load initrd<32MB
+* Port python-greenlet
 * Add parisc to https://www.qemu.org/docs/master/user/main.html#linux-user-space-emulator wiki
 * rauc: FTBFS with qemu - testsuite errors - https://buildd.debian.org/status/logs.php?pkg=rauc&ver=1.10.1-2&arch=hppa
 * ipmi-sensors: crashes A500: "ipmi-sensors --sensor-types=fan"
