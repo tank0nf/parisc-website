@@ -5,7 +5,8 @@ title: TODO
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
 * Fix palo on c3000 to load initrd<32MB
-* can not use register 29 in ASM_EXCEPTIONTABLE_VAR in emulate_ldd on 64bit kernel
+* can not use register 29 in ASM_EXCEPTIONTABLE_VAR in emulate_ldd on 64bit kernel (tbd=ret1) ??
+* change hande_break() to cope with user/kernel difference
 * Port python-greenlet
 * Add parisc to https://www.qemu.org/docs/master/user/main.html#linux-user-space-emulator wiki
 * rauc: FTBFS with qemu - testsuite errors - https://buildd.debian.org/status/logs.php?pkg=rauc&ver=1.10.1-2&arch=hppa
