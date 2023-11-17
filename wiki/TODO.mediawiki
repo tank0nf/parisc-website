@@ -80,6 +80,21 @@ title: TODO
 
 * STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 
+== '''executable stack'''==
+(see https://lore.kernel.org/all/87lebjz9z6.fsf@gentoo.org/)
+Starting with Kernel 5.18, the parisc Linux kernel gained support to run without executable stacks. 
+In gcc-14 GNU stack notes were enabled.
+An executable stack is still needed by applications for nested functions. They are still called via a stack trampoline.
+The GNU stack note indicates whether an object needs an executable stack or not. These notes are collected by linker. 
+The glibc loader determines whether to setup an executable stack or not.
+
+Once gcc-14 becomes the default compiler, we will have to enable GNU stack notes in previous gcc versions.
+We will still have executable stacks until everything is rebuilt.
+We will need to update that default in Binutils too.
+Currently (nov 2023), there are no architecture dependencies in the ld --enable-warn-execstack and --enable-default-execstack configure options.
+The -z execstack and -z noexecstack ld options can override the GNU notes, or lack thereof. 
+We may have to fix some assembly code.  Maybe binutils should be built with --enable-warn-execstack once we switch to gcc-14.  I don't think we want --enable-default-execstack after switching to gcc-14.
+
 =='''Debian'''==
 * STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be mounted with a minimum size of 20MB: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027915,   patch sent
 * STARTED: Activate LARGE FILE SUPPORT generally on hppa: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1020335
