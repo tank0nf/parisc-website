@@ -1233,7 +1233,8 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * parisc: simplify smp_prepare_boot_cpu()
 * parport: gsc: mark init function static
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=166b0110d1ee53290bd11618df6e3991c117495a '''parisc/pgtable: Do not drop upper 5 address bits of physical address'''] (backported to all)
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a406b8b424fa01f244c1aab02ba186258448c36b '''parisc: Prevent booting 64-bit kernels on PA1.x machines'''] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a406b8b424fa01f244c1aab02ba186258448c36b '''parisc: Prevent booting 64-bit kernels on PA1.x machines'''] (backported to v6.0+)''
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f74f820f6fc844b95f9e5e406e0a07d97510420 '''parisc: fix mmap_base calculation when stack grows upwards'''] (backported to v6.6+]
 
 = DONE items =
 == Debian kernel and userspace programs ==
