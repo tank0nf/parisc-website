@@ -1222,7 +1222,7 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * parisc: sba-iommu: Fix comment when calculating IOC number
 * parisc: Add some missing PDC functions and constants
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=01fef8267390ccb6e763a8aa90b6a10385aa3145 '''parisc: Allow building uncompressed Linux kernel''']
-* parisc/power: Add power soft-off when running on qemu
+* '''parisc/power: Add power soft-off when running on qemu''' (backported to v6.0+)
 * parisc/power: Trivial whitespace cleanups and license update
 * parisc: Move parisc_narrow_firmware variable to header file
 * parisc/firmware: Use PDC constants for narrow/wide firmware
@@ -1235,6 +1235,9 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=166b0110d1ee53290bd11618df6e3991c117495a '''parisc/pgtable: Do not drop upper 5 address bits of physical address'''] (backported to all)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a406b8b424fa01f244c1aab02ba186258448c36b '''parisc: Prevent booting 64-bit kernels on PA1.x machines'''] (backported to v6.0+)''
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f74f820f6fc844b95f9e5e406e0a07d97510420 '''parisc: fix mmap_base calculation when stack grows upwards'''] (backported to v6.6+]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=793838138c157d4c49f4fb744b170747e3dabf58 '''parisc/power: Fix power soft-off when running on qemu'''] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=793838138c157d4c49f4fb744b170747e3dabf58 '''prctl: Disable prctl(PR_SET_MDWE) on parisc'''] (backported to v6.6)
+* parisc: Replace strlcpy() with strscpy()
 
 = DONE items =
 == Debian kernel and userspace programs ==
