@@ -208,6 +208,7 @@ Autosign packages via cron:
 : or for older kernels 
 :: v5.10: DPKG_FLAGS="-d -nc" make -C ../linux O=`pwd` -j 8 ARCH=parisc bindeb-pkg
 :: v5.16: make -j 30 ARCH=parisc64 CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg
+:: v4.19: DPKG_FLAGS="-d -nc" make -C ../linux O=`pwd` -j 8 ARCH=parisc CROSS_COMPILE=hppa64-linux-gnu- bindeb-pkg (when building on fedora maybe need to remove the "bc kmod.." dependencies in scripts/package/mkdebian)
 
 If you choose to build debian source package kernel, you may need to 
 * symlink in /usr/bin: ln -s hppa64-linux-gnu-gcc-10 hppa64-linux-gnu-gcc
