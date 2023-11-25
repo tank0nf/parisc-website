@@ -33,14 +33,16 @@ QEMU does support those operating systems as guests:
 == QEMU command line options ==
 
 Standard qemu options:
+* -machine C3700   - start a 64-bit C3700 workstation
+* -machine B160L   - start a 32-bit B160L workstation (default)
+* -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
 * -m 1G            - tell machine to have 1G of memory
 * -accel tcg,thread=multi  - always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
-* -smp cpus=4      - define number of CPUs in the guest (maximum CPUs: 32) 
 * -boot menu=on    - Firmware: enable interactive mode (same as "BOOT PRI '''IPL'''")
 * -boot order=c    - Firmware: Boot from first hard disc
 * -boot order=d    - Firmware: Boot from first CD/DVD
 * -boot order=g-m  - Firmware: Boot from SCSI ID0 ("g"), SCSI ID1 ("h"), ... SCSI ID7 ("m")
-* -serial mon:stdio - multiplex serial console to stdout
+* -serial mon:stdio - multiplex serial console to stdout (you want to enable this option!)
 * -nographic       - disable artist graphic card emulation, so no graphics output
 * -display sdl     - if you need graphics you should prefer SDL display output. Much faster than GTK (which is the default).
 * -vnc :1          - start graphics output on VNC output, connect to hostname:1 with any VNC viewer
