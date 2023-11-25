@@ -242,10 +242,8 @@ Possible enhancements:
 * Does HP-UX has some kind of "sleep" assembler instruction in it's idle loop which can be used to lower qemu power consumption?
 * Fix virtio-drivers in SeaBIOS (endianess-bugs, because SeaBIOS is originally only Little-endian from x86)
 * More correct emulation of B160L in Qemu
-* Emulate a 712 and/or j5000/c3000 machine
+* Emulate a 712 and/or j5000 machine
 * Emulate built-in LASI SCI controller instead of PCI SCSI add-on card
-* Elroy PCI emulation, then emulate e.g. a C3000?
-* PA2.0/64bit (low prio)
 
 == Screenshots ==
 
