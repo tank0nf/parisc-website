@@ -1238,15 +1238,15 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=793838138c157d4c49f4fb744b170747e3dabf58 '''parisc/power: Fix power soft-off when running on qemu'''] (backported to v6.0+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=793838138c157d4c49f4fb744b170747e3dabf58 '''prctl: Disable prctl(PR_SET_MDWE) on parisc'''] (backported to v6.6)
 * parisc: Replace strlcpy() with strscpy()
-* parisc: Mark ex_table entries 32-bit aligned in assembly.h
-* parisc: Mark ex_table entries 32-bit aligned in uaccess.h
-* parisc: Mark altinstructions read-only and 32-bit aligned
-* parisc: Mark jump_table naturally aligned
-* parisc: Mark lock_aligned variables 16-byte aligned on SMP
-* parisc: Ensure 32-bit alignment on parisc unwind section
-* parisc: Use natural CPU alignment for bug_table
-* parisc: Drop the HP-UX ENOSYM and EREMOTERELEASE error codes
-* parisc: Reduce size of the bug_table on 64-bit kernel by half
+* '''parisc: Mark ex_table entries 32-bit aligned in assembly.h''' (backported to v6.0+)
+* '''parisc: Mark ex_table entries 32-bit aligned in uaccess.h''' (backported to v6.0+)
+* '''parisc: Mark altinstructions read-only and 32-bit aligned''' (backported to v6.0+)
+* '''parisc: Mark jump_table naturally aligned''' (backported to v6.0+)
+* '''parisc: Mark lock_aligned variables 16-byte aligned on SMP''' (backported to v6.0+)
+* '''parisc: Ensure 32-bit alignment on parisc unwind section''' (backported to v6.0+)
+* '''parisc: Use natural CPU alignment for bug_table''' (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5f3e299a2b1e9c3ece24a38adfc089aef307e8a '''parisc: Drop the HP-UX ENOSYM and EREMOTERELEASE error codes'''] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=43266838515d30dc0c45d5c7e6e7edacee6cce92 '''parisc: Reduce size of the bug_table on 64-bit kernel by half''']
 
 = DONE items =
 == Debian kernel and userspace programs ==
