@@ -4,6 +4,10 @@ title: TODO
 
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
+* QEMU testing, see mail from Guenter Roeck (12/6/23):
+** The e1000 and e1000-82544gc network interfaces don't work (those work fine with the 32-bit emulation)
+** ne2k_pci doesn't work anywhere. I get either a hang or a spinlock recursion error if I try.
+** hung task crashes in usb_start_wait_urb/usb_kill_urb during shutdown when booting from usb or when using an usb network interface
 * Fix palo on c3000 to load initrd<32MB
 * Setup BTLB on secondary CPUs on 32-bit kernel
 * can not use register 29 in ASM_EXCEPTIONTABLE_VAR in emulate_ldd on 64bit kernel (tbd=ret1) ??
