@@ -1251,7 +1251,7 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * '''parisc: Use natural CPU alignment for bug_table''' (backported to v6.0+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5f3e299a2b1e9c3ece24a38adfc089aef307e8a '''parisc: Drop the HP-UX ENOSYM and EREMOTERELEASE error codes'''] (backported to all)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=43266838515d30dc0c45d5c7e6e7edacee6cce92 '''parisc: Reduce size of the bug_table on 64-bit kernel by half''']
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487635756198cad563feb47539c6a37ea57f1dae parisc: Fix asm operand number out of range build error in bug table] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487635756198cad563feb47539c6a37ea57f1dae parisc: Fix asm operand number out of range build error in bug table]
 
 = DONE items =
 == Debian kernel and userspace programs ==
