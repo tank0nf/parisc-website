@@ -74,6 +74,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
+| style="vertical-align:top;" |'''Jan&nbsp;2024'''||[https://github.com/rust-lang/libc/pull/3539|Initial rust libc support for hppa] was added.
+|-
 | style="vertical-align:top;" |'''Nov&nbsp;2023'''||Upcoming Qemu v8.2 will support booting a 64-bit Linux kernel.
 |-
 | style="vertical-align:top;" |'''Sep&nbsp;2023'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=847165d7c83ddb32aefab3ad4e7424fad919eb05 Kernel 6.6] and [https://gitlab.com/qemu-project/qemu/-/commit/cb8a8b2ca9b25fdf561b0fd887df8344fe7927fd Qemu 8.2] with [https://github.com/hdeller/seabios-hppa/commit/feb446728ae83f2973b58d9542bf25491dbf888d SeaBIOS-hppa v9] supports Block-TLBs (BTLB) on 32-bit kernels.<br>Kernel 6.6 includes [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=48d25d382643a9d8867f8eb13af231268ab10db5 native eBPF JIT compiler for 32- and 64-bit kernels].<br>[https://sourceware.org/bugzilla/show_bug.cgi?id=30750 Dave fixed glibc v2.38 to prevent <code>unaligned access to 0xf7ebadcd at ip 0xf5f7e307</code> syslog warnings]<br>
