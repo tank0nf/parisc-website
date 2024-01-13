@@ -74,7 +74,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
-| style="vertical-align:top;" |'''Jan&nbsp;2024'''||[https://github.com/rust-lang/libc/pull/3539 Initial rust libc support for hppa] was added.
+| style="vertical-align:top;" |'''Jan&nbsp;2024'''||[https://github.com/rust-lang/libc/pull/3539 Initial rust libc support for hppa] was added (and temporarily removed again).
 |-
 | style="vertical-align:top;" |'''Nov&nbsp;2023'''||Upcoming Qemu v8.2 will support booting a 64-bit Linux kernel.
 |-
