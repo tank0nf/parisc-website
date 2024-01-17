@@ -1253,6 +1253,10 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=43266838515d30dc0c45d5c7e6e7edacee6cce92 '''parisc: Reduce size of the bug_table on 64-bit kernel by half''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487635756198cad563feb47539c6a37ea57f1dae parisc: Fix asm operand number out of range build error in bug table]
 
+== Kernel 6.8 ==
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=735ae74f73e55c191d48689bd11ff4a06ea0508f parisc/firmware: Fix F-extend for PDC addresses] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6472036581f947109b20664121db1d143e916f0b '''parisc/power: Fix power soft-off button emulation on qemu'''] (backported to v6.0+)
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
