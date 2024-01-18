@@ -39,7 +39,7 @@ QEMU does support those operating systems as guests:
 ! scope="col" | 
 |-
 | -machine C3700   
-| start a 64-bit C3700 workstation 
+| start a 64-bit C3700 workstation (qemu >= v8.2)
 |-
 | -machine B160L   
 | start a 32-bit B160L workstation (default)
@@ -48,7 +48,7 @@ QEMU does support those operating systems as guests:
 | define number of CPUs in the guest (maximum CPUs: 32) 
 |-
 | -m 1G            
-| tell machine to have 1G of memory
+| tell machine to have 1G of RAM memory
 |-
 | -accel tcg,thread=multi  
 | always use this to enable parallel tcg (otherwise all guest CPUs run on one host CPU)
@@ -76,6 +76,9 @@ QEMU does support those operating systems as guests:
 |-
 | -vnc :1          
 | start graphics output on VNC output, connect to hostname:1 with any VNC viewer
+|-
+| --nodefaults          
+| create an empty machines without default SCSI or network controller (qemu >= v8.2)
 |}
 
 {| class="wikitable"
@@ -116,7 +119,7 @@ QEMU does support those operating systems as guests:
 | select default graphics font: HP 8x16 (#1), HP 6x13 (#2), HP 10x20 (#3) or Linux 16x32 (#4)
 |-
 | -fw_cfg opt/power-button-enable,string=0 
-| disable power button support (from SeaBIOS v14)
+| disable power button support (from SeaBIOS v14, Qemu v8.2)
 |}
 
 {| class="wikitable"
