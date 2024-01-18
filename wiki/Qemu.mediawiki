@@ -35,6 +35,9 @@ QEMU does support those operating systems as guests:
 {| class="wikitable"
 |+ Standard qemu options:
 |-
+! scope="col" | Qemu command line option
+! scope="col" | 
+|-
 | -machine C3700   
 | start a 64-bit C3700 workstation 
 |-
@@ -78,6 +81,9 @@ QEMU does support those operating systems as guests:
 {| class="wikitable"
 |+ Qemu standard debugging options:
 |-
+! scope="col" | Qemu command line option
+! scope="col" | 
+|-
 | -d item[,...]        
 | QEMU_LOG      e.g in_asm,out_asm  
 | enable logging of specified items (use '-d help' for a list of items)
@@ -87,20 +93,49 @@ QEMU does support those operating systems as guests:
 | filter logging based on given address range
 |}
 
-HPPA specific qemu options:
-* -global artist.width=800
-* -global artist.height=600           set Artist graphic card to 800x600 pixel
-* -fw_cfg opt/pdc_debug,string=255    enable all firmware debug infos (1: show PDC calls, 2: show IODC calls)
-* -fw_cfg opt/hostid,string=334455    set the hostid to 334455 (instead of the default value 2006243326). Visible in Linux in /proc/cpuinfo, and with "uname -i" in HP/UX
-* -fw_cfg opt/console,string=[serial | graphics]     set default firmware output method to serial or graphics console. When selecting serial, you need to add e.g. "-serial mon:stdio" too.
-* -fw_cfg opt/font,string=[1-4]      select default graphics font: HP 8x16 (#1), HP 6x13 (#2), HP 10x20 (#3) or Linux 16x32 (#4)
-* -fw_cfg opt/power-button-enable,string=0 disable power button support (from SeaBIOS v14)
+{| class="wikitable"
+|+ HPPA specific qemu options:
+|-
+! scope="col" | Qemu command line option
+! scope="col" | 
+|-
+| -global artist.width=800<br>-global artist.height=600
+| set Artist graphic card to 800x600 pixel
+|-
+| -fw_cfg opt/pdc_debug,string=255    
+| enable all firmware debug infos (1: show PDC calls, 2: show IODC calls)
+|-
+| -fw_cfg opt/hostid,string=334455    
+| set the hostid to 334455 (instead of the default value 2006243326). Visible in Linux in /proc/cpuinfo, and with "uname -i" in HP/UX
+|-
+| -fw_cfg opt/console,string=[serial or graphics]     
+| set default firmware output method to serial or graphics console. When selecting serial, you need to add e.g. "-serial mon:stdio" too.
+|-
+| -fw_cfg opt/font,string=[1-4]      
+| select default graphics font: HP 8x16 (#1), HP 6x13 (#2), HP 10x20 (#3) or Linux 16x32 (#4)
+|-
+| -fw_cfg opt/power-button-enable,string=0 
+| disable power button support (from SeaBIOS v14)
+|}
 
-While running you can press
-* ctrl-A + X           to exit qemu.
-* ctrl-A + C + ENTER   when started with "-serial mon:stdio", the serial port and the QEMU debug port are multiplexed and you can switch between them with this key combination.
-* ctrl-Alt + F         switch to fullscreen when using SDL output
-* execute "NMI" in qemu monitor (ctrl-A + C) to trigger HPPA TOC (transfer-of-control = Reset) button switch
+{| class="wikitable"
+|+ While running you can press
+|-
+! scope="col" | Keyboard shortcut
+! scope="col" | 
+|-
+| ctrl-A + X           
+| to exit qemu.
+|-
+| ctrl-A + C + ENTER   
+| Start Qemu monitor. When started with "-serial mon:stdio", the serial port and the QEMU debug port are multiplexed and you can switch between them with this key combination.
+|-
+| ctrl-Alt + F         
+| switch to fullscreen when using SDL output
+|-
+| type "NMI" in qemu monitor (ctrl-A + C)
+| to trigger HPPA TOC (transfer-of-control = Reset) button switch
+|}
 
 == Examples on how to start the emulator ==
 
