@@ -82,22 +82,6 @@ QEMU does support those operating systems as guests:
 |}
 
 {| class="wikitable"
-|+ Qemu standard debugging options:
-|-
-! scope="col" | Qemu command line option
-! scope="col" | Environment variable
-! scope="col" | 
-|-
-| -d item[,...]        
-| QEMU_LOG      e.g in_asm,out_asm  
-| enable logging of specified items (use '-d help' for a list of items)
-|-
-| -dfilter 0..0xfffff  
-| QEMU_DFILTER  
-| filter logging based on given address range
-|}
-
-{| class="wikitable"
 |+ HPPA specific qemu options:
 |-
 ! scope="col" | Qemu command line option
@@ -172,6 +156,22 @@ The emulated guest may use specific asssembler statements to control the qemu em
 |-
 | or %r31,%r31,%r31
 | death loop; offline cpu (currently implemented for idle loop).
+|}
+
+{| class="wikitable"
+|+ Qemu standard debugging options:
+|-
+! scope="col" | Qemu command line option
+! scope="col" | Environment variable
+! scope="col" | 
+|-
+| -d item[,...]        
+| QEMU_LOG      e.g in_asm,out_asm  
+| enable logging of specified items (use '-d help' for a list of items)
+|-
+| -dfilter 0..0xfffff  
+| QEMU_DFILTER  
+| filter logging based on given address range
 |}
 
 == How to build QEMU from source ==
