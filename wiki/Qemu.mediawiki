@@ -72,7 +72,7 @@ QEMU does support those operating systems as guests:
 | disable artist graphic card emulation, so no graphics output
 |-
 | -display sdl     
-| if you need graphics you should prefer SDL display output. Much faster than GTK (which is the default).
+| if you need graphics you should prefer SDL display output if your run Qemu < v2.0. In previous qemu versions, GTK had a bug which slows down output.
 |-
 | -vnc :1          
 | start graphics output on VNC output, connect to hostname:1 with any VNC viewer
@@ -82,6 +82,7 @@ QEMU does support those operating systems as guests:
 |+ Qemu standard debugging options:
 |-
 ! scope="col" | Qemu command line option
+! scope="col" | Environment variable
 ! scope="col" | 
 |-
 | -d item[,...]        
@@ -148,11 +149,27 @@ QEMU does support those operating systems as guests:
 
 The emulated guest may use specific asssembler statements to control the qemu emulator:
 
-* .word 0xfffdead0  -- immediately halt the emulator, similiar to turning the machine off
-* .word 0xfffdead1  -- reset machine
-* .word 0xfffdead2  -- restore original (pre-interrupt) values back into shadow registers, used by SeaBIOS when executing NMI instruction in qemu
-* or %r10,%r10,%r10 -- idle loop; wait for interrupt
-* or %r31,%r31,%r31 -- death loop; offline cpu (currently implemented for idle loop).
+{| class="wikitable"
+|+ Standard qemu options:
+|-
+! scope="col" | Assembler mnemonic
+! scope="col" | 
+|-
+| .word 0xfffdead0
+| immediately halt the emulator, similiar to turning the machine off
+|-
+| .word 0xfffdead1
+| reset machine
+|-
+| .word 0xfffdead2
+| restore original (pre-interrupt) values back into shadow registers, used by SeaBIOS when executing NMI instruction in qemu
+|-
+| or %r10,%r10,%r10
+| idle loop; wait for interrupt
+|-
+| or %r31,%r31,%r31
+| death loop; offline cpu (currently implemented for idle loop).
+|}
 
 == How to build QEMU from source ==
 
