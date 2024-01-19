@@ -4,6 +4,7 @@ title: TODO
 
 = PA-RISC status and TODO 2023-09-12 =
 == '''Kernel''' ==
+* Implement RUST (https://github.com/rust-lang/libc/pull/3542)
 * QEMU testing, see mail from Guenter Roeck (12/6/23):
 ** The e1000 and e1000-82544gc network interfaces don't work (those work fine with the 32-bit emulation)
 ** ne2k_pci doesn't work anywhere. I get either a hang or a spinlock recursion error if I try.
