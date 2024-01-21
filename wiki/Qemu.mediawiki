@@ -333,7 +333,6 @@ Possible enhancements:
 * Harmony sound card in Lasi
 * Does HP-UX has some kind of "sleep" assembler instruction in it's idle loop which can be used to lower qemu power consumption?
 * Fix virtio-drivers in SeaBIOS (missing endianess conversions, because SeaBIOS is originally only Little-endian for x86)
-* More correct emulation of B160L in Qemu
 * Emulate a 712 and/or j5000 machine
 * Emulate built-in LASI SCSI controller instead of PCI SCSI add-on card
 
