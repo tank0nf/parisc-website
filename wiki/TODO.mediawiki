@@ -1258,6 +1258,13 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=735ae74f73e55c191d48689bd11ff4a06ea0508f parisc/firmware: Fix F-extend for PDC addresses] (backported to all)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6472036581f947109b20664121db1d143e916f0b '''parisc/power: Fix power soft-off button emulation on qemu'''] (backported to v6.0+)
 * '''[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4b088005c897a62fe98f70ab69687706cb2fad3b  fbdev: stifb: Fix crash in stifb_blank()]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2751153b9945c31eb905deb9fbe2d7f127b4b34c '''parisc: Make RO_DATA page aligned in vmlinux.lds.S''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b9402e3b97289ca9e0f0f79f4df64bd6c9176a86 parisc: Check for valid stride size for cache flushes]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c8708d758e715c3824a73bf0cda97292b52be44d '''parisc: Prevent hung tasks when printing inventory on serial console'''] (backported to v6.0+)
+* parisc: Drop unneeded semicolon in parse_tree_node()
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8b1d72395635af45410b66cc4c4ab37a12c4a831 '''parisc: Fix random data corruption from exception handler'''] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=913b9d443a0180cf0de3548f1ab3149378998486 '''parisc: BTLB: Fix crash when setting up BTLB at CPU bringup'''] (backported to v6.6+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=60365049ccbacd101654a66ddcb299abfabd4fc5 '''ipv6: Ensure natural alignment of const ipv6 loopback and router addresses''']
 
 = DONE items =
 == Debian kernel and userspace programs ==
