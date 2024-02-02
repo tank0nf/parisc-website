@@ -78,7 +78,7 @@ QEMU does support those operating systems as guests:
 | start graphics output on VNC output, connect to hostname:1 with any VNC viewer
 |-
 | --nodefaults          
-| create an empty machines without default SCSI or network controller (qemu >= v8.2)
+| create an empty machines without default SCSI or network controller (qemu >= v8.2). Add "-serial mon:stdio" to get a serial console, otherwise no output will be visible.
 |}
 
 {| class="wikitable"
