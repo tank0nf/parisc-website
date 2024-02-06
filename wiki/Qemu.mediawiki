@@ -105,8 +105,8 @@ QEMU does support those operating systems as guests:
 | -fw_cfg opt/power-button-enable,string=0 
 | disable power button support (from SeaBIOS v14, Qemu v8.2)
 |-
-| -fw_cfg opt/OS64,string=1 
-| this option is only relevant when booting a 64-bit machine and the value defaults to enabled (1). When OS64 is set to 0, the firmware will tell the OS that 64-bit firmware calls are not supported. Effectively, this prevents the OS to install a 64-bit OS (on the 64-bit machine).  (from SeaBIOS v16, Qemu v8.2)
+| -fw_cfg opt/OS64,string=3 
+| Bitmask to define the PDC_MODEL_CAPABILITIES on a 64-bit machine: 1=Allow 64-bit OS, 2=Allow 32-bit OS, 3=Allow 32- and 64-bit OS (default), available with SeaBIOS >= v16
 |}
 
 {| class="wikitable"
