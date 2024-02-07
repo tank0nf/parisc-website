@@ -75,10 +75,10 @@ QEMU does support those operating systems as guests:
 | if you need graphics you should prefer SDL display output if your run Qemu < v2.0. In previous qemu versions, GTK had a bug which slows down output.
 |-
 | -vnc :1          
-| start graphics output on VNC output, connect to hostname:1 with any VNC viewer
+| start graphics output on VNC output, connect to ''hostname'':1 with any VNC viewer
 |-
 | --nodefaults          
-| create an empty machines without default SCSI or network controller (qemu >= v8.2). Add "-serial mon:stdio" to get a serial console, otherwise no output will be visible.
+| create an empty machine without default SCSI or network controller (qemu >= v8.2). Add "-serial mon:stdio" to get a serial console, otherwise no output will be visible.
 |}
 
 {| class="wikitable"
@@ -94,7 +94,7 @@ QEMU does support those operating systems as guests:
 | enable all firmware debug infos (1: show PDC calls, 2: show IODC calls)
 |-
 | -fw_cfg opt/hostid,string=334455    
-| set the hostid to 334455 (instead of the default value 2006243326). Visible in Linux in /proc/cpuinfo, and with "uname -i" in HP/UX
+| set the hostid to ''334455'' (instead of the default value ''2006243326''). Visible in Linux in /proc/cpuinfo, and with "uname -i" in HP/UX
 |-
 | -fw_cfg opt/console,string=[serial or graphics]     
 | set default firmware output method to serial or graphics console. When selecting serial, you need to add e.g. "-serial mon:stdio" too.
