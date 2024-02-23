@@ -1266,6 +1266,10 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8b1d72395635af45410b66cc4c4ab37a12c4a831 '''parisc: Fix random data corruption from exception handler'''] (backported to v6.0+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=913b9d443a0180cf0de3548f1ab3149378998486 '''parisc: BTLB: Fix crash when setting up BTLB at CPU bringup'''] (backported to v6.6+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=60365049ccbacd101654a66ddcb299abfabd4fc5 '''ipv6: Ensure natural alignment of const ipv6 loopback and router addresses''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=882a2a724ee964c1ebe7268a91d5c8c8ddc796bf '''parisc: Fix stack unwinder''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=82b143aeb169b8b55798d7d2063032e1a6ceeeb0 '''Revert "parisc: Only list existing CPUs in cpu_possible_mask"'''] (backported to v6.0+)
+* parisc/ftrace: add missing CONFIG_DYNAMIC_FTRACE check
+* parisc/kprobes: always include asm-generic/kprobes.h
 
 = DONE items =
 == Debian kernel and userspace programs ==
