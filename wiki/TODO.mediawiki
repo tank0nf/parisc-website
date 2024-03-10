@@ -128,6 +128,7 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 ** [2] https://github.com/rust-lang/rust/pull/87260#issuecomment-930221503
 ** [3] https://github.com/rust-lang/rust/pull/87260#issuecomment-930223504
 ** [4] https://github.com/rust-lang/libc/pull/2414
+* In debian, stunnel4 requires python-cryptography package, and that was needed by something else I forgot...
 
 =='''gcc compiler'''==
 * _mcount can be optimized (smaller) by not subtracting offset)
