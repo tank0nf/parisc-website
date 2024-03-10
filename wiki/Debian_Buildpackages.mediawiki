@@ -217,6 +217,9 @@ If you choose to build debian source package kernel, you may need to
 
 == Large file support for debian packages ==
 
+STATUS: Migration has started in March 2024.
+HINTS: https://wiki.debian.org/BrainDumpT64
+
 Typical error message: '''Value too large for defined data type'''
 
 Debian RELEASE GOAL:
