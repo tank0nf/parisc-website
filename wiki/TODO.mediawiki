@@ -1274,6 +1274,19 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * parisc/ftrace: add missing CONFIG_DYNAMIC_FTRACE check
 * parisc/kprobes: always include asm-generic/kprobes.h
 
+== Kernel 6.9 ==
+* parisc: avoid c23 'nullptr' idenitifier
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e5db6a74571a8baf87a116ea39aab946283362ff '''parisc/unaligned: Rewrite 64-bit inline assembly of emulate_ldd()'''] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a2abae8f0b638c31bb9799d9dd847306e0d005bd '''parisc: Fix ip_fast_csum'''] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4408ba75e4ba80c91fde7e10bccccf388f5c09be '''parisc: Fix csum_ipv6_magic on 32-bit systems'''] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4b75b12d70506e31fc02356bbca60f8d5ca012d0 '''parisc: Fix csum_ipv6_magic on 64-bit systems'''] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0568b6f0d863643db2edcc7be31165740c89fa82 '''parisc: Strip upper 32 bit of sum in csum_ipv6_magic for 64-bit builds'''] (backported to all)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=73cb4a2d8d7e0259f94046116727084f21e4599f parisc: Use irq_enter_rcu() to fix warning at kernel/context_tracking.c:367]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=94a1b192290c9fdb33085ecacf82afb27bd63fa8 parisc: Show kernel unaligned memory accesses]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4603fbaa76b5e703b38ac8cc718102834eb6e330 '''parisc: Avoid clobbering the C/B bits in the PSW with tophys and tovirt macros'''] (backported to v5.10+)
+* parisc: make parisc_bus_type const
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=26dd48780bd2232a8f50f878929a9e448b7fd531 parisc: led: Convert to platform remove callback returning void]
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
