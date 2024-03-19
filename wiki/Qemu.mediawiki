@@ -291,6 +291,7 @@ according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug9
 === HP ODE ===
 Testing PCXW (PA8700) CPU:
 * At ISL run "ODE wdiag", use passwort quality, type "section 36/86" for CPU tests.
+L2DIAG for B160L emulation (PCXL2).
 HP ODE uses passwords, e.g. poultry. For wdiag use "quality" or "saturn".
 
 == NetBSD ==
