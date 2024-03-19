@@ -265,6 +265,7 @@ Exampled for debian:
 ** CDE desktop: start "xinit", then "/usr/dt/bin/dtsession"
 ** X11: startx
 ** dtwm Window Manager: start "xinit", then run "/usr/dt/bin/dtwm".
+
 * How to run full filesystem check: fsck -F vxfs -y -o full
 * File downloads see https://archive.org/download/hpunix/
 
@@ -286,6 +287,9 @@ HP-UX 9.05 fails when booting the install CD: (reported 2021/05/18)
          Dump failed, returning 5.
 
 according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit specifier" and "msvs" means "mass storage volume specifier" while the msvs is sometimes called an "msus". I assume HP-UX 9.05 doesn't know how to handle the emulated SCSI PCI card and thus can't access the disc. Remember, a B160L is different to a HP700, and a HP700 had a built-in LASI700 (NCR700) SCSI controller.
+
+=== HP ODE ===
+HP ODE uses passwords, e.g. poultry. For wdiag use "quality" or "saturn".
 
 == NetBSD ==
 
