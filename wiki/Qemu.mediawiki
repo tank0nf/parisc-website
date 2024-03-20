@@ -289,10 +289,8 @@ HP-UX 9.05 fails when booting the install CD: (reported 2021/05/18)
 according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug91_5917615/E2040-90001_Using_HP_BASIC_UX_6.2_Aug91_djvu.txt this document] "msus" means "mass storage unit specifier" and "msvs" means "mass storage volume specifier" while the msvs is sometimes called an "msus". I assume HP-UX 9.05 doesn't know how to handle the emulated SCSI PCI card and thus can't access the disc. Remember, a B160L is different to a HP700, and a HP700 had a built-in LASI700 (NCR700) SCSI controller.
 
 === HP ODE ===
-Testing PCXW (PA8700) CPU:
-* At ISL run "ODE wdiag", use passwort quality, type "section 36/86" for CPU tests.
-L2DIAG for B160L emulation (PCXL2).
-HP ODE uses passwords, e.g. poultry. For wdiag use "quality" or "saturn".
+The HP [[Offline Diagnostic Environment (ODE)]] is a great utility to test the quality of the QEMU emulation.
+This is an ongoing effort, see above website for details.
 
 == NetBSD ==
 
