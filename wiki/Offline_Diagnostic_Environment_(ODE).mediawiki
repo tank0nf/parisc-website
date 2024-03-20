@@ -26,7 +26,7 @@ Typing ode will start the diagnostic environment. It is possible to start a spec
  ODE L2DIAG
 
 will start the PCXL2 CPU tests for the PA7100LC CPU in the B160L.
-You will be asked for a password, in qemu it's usually 'quality'.
+You will be asked for a password, in qemu it's usually 'quality', but can be 'poultry' or 'saturn' as well.
 
 == L2DIAG ==
 
