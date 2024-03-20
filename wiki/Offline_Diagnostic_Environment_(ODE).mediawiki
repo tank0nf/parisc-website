@@ -111,6 +111,6 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 77 || ds || not investigated yet
 |-
-| 79-86 || ?? || hangs
+| 79-86 || TLB? || hangs
 |-
 |}
