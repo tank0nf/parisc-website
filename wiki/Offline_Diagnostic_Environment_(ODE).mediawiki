@@ -47,19 +47,19 @@ will start the PCXL2 CPU tests. This will ask for a password, in qemu it's usual
  Type DIAGINFO for test information.
  
  Enter password or a <CR> to exit:
-
+ 
  YOUR SELF-MAINTAINER/CHANNEL LICENSE EXPIRES IN  DAYS ON  12/31/9999
  Type HELP for command information.
  
  No other processors logged in.
  UNI-PROCESSOR MODE 
-
+ 
  L2DIAG>
 
 diaginfo provides some useful information:
 
  L2DIAG> diaginfo
-
+ 
  L2DIAG is the PCXL2 ODE based diagnostic program.  It is intended
  to test the processor of the various PCXL2 based systems in the offline
  environment.  The program consists of 119 sections, 1/119,
