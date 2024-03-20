@@ -171,6 +171,8 @@ Additionally there is a new parisc Debian build server [https://buildd.debian.or
 * [[Hidden B/C/J Class Manufacturer and DEBUG commands]]
 * [[Repairing a non-starting C240/C360 Power supply]]
 * [[C8000 Debug connector]]
+* [[Offline Diagnostic Environment (ODE)]]
+
 == External Resources ==
 
 * http://www.openpa.net/index.html - The OpenPA Project
