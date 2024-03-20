@@ -217,8 +217,9 @@ If you choose to build debian source package kernel, you may need to
 
 == Large file support for debian packages ==
 
-STATUS: Migration has started in March 2024.
-HINTS: https://wiki.debian.org/BrainDumpT64
+* STATUS: Migration has started in March 2024.
+* HINTS: https://wiki.debian.org/BrainDumpT64
+* Possible to disable -Werror=implicit-function-declaration via '''DEB_BUILD_MAINT_OPTIONS=qa=-bug-implicit-func'''  
 
 Typical error message: '''Value too large for defined data type'''
 
