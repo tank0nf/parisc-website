@@ -2,28 +2,31 @@
 title: Offline Diagnostic Environment (ODE)
 ---
 
-Offline Diagnostic Environment (ODE) is a anvironment to test various hardware present in HP700/800 servers. It is usually distributed as ISO image, which contains a LIF image with ISL + ODE binary + other data. To boot it in qemu, it is sufficient to boot it:
+Offline Diagnostic Environment (ODE) is a an environment to test HP PARISC or IA64 hardware.<br>
+It is usually distributed as ISO image, which contains a LIF image with ISL + ODE binary + other data.<br>
+To boot it in qemu, it is sufficient to boot the ISO file:
 
 == Booting ODE ==
- qemu-system-hppa -boot d -cdrom hp9000offlinediagnosticpa0512/HP9000\ Offline\ Diagnostic\ Environment\ PA0512\ \(Hewlett-Packard\ Development\ Company,\ L.P.\)\(2005\).iso
+ qemu-system-hppa -boot d -machine ''machine''  -cdrom HP_ODE_CDROM.iso
+
+Make sure to use either B160L or C3700 as ''machine'' parameter since ODE will decide at runtime based on the found machine type which test programs it will enable.
 
 This will boot to ISL:
 
  HARD Booted.
  
  ISL Revision A.00.44  Mar 12, 2003 
- 
-    
+     
     Cannot find an auto-execute file.  AUTOBOOT ABORTED.
- 
- 
+  
  ISL>
 
 Typing ode will start the diagnostic environment. It is possible to start a specific test by adding it to ode:
 
  ODE L2DIAG
 
-will start the PCXL2 CPU tests. This will ask for a password, in qemu it's usually 'quality'
+will start the PCXL2 CPU tests for the PA7100LC CPU in the B160L.
+You will be asked for a password, in qemu it's usually 'quality'.
 
 == L2DIAG ==
 
@@ -85,9 +88,9 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Tools !! Description !! Comment
 |-
-| L2DIAG || PCXL2 diag || useful for testing 32 bit CPU emulation in qemu
+| L2DIAG || PCXL2 diag || useful for testing 32 bit CPU emulation in qemu (B160L machine)
 |-
-| WDIAG  || PCXW diag || useful for testing 64 bit CPU emulation in qemu
+| WDIAG  || PCXW diag || useful for testing 64 bit CPU emulation in qemu (C3700 machine)
 |-
 |}
 
