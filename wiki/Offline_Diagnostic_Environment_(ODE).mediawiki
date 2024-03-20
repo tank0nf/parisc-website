@@ -105,9 +105,9 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 73  || b,gate || not investigated yet
 |-
-| 74 || ?? || not investiaged yet
+| 74 || ?? || not investigated yet
 |-
-| 75 || b,gate || not investiaged yet
+| 75 || b,gate || not investigated yet
 |-
 | 77 || ds || not investigated yet
 |-
