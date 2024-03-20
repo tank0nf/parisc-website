@@ -97,6 +97,8 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 65 || dcor || not investigated yet
 |-
+| 66 || shladd || not investigated yet
+|-
 | 71 || PSW-X bit || Not emulated due to performance reasons
 |-
 | 72 || ?? || not investigated yet
