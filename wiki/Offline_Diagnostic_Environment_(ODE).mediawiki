@@ -75,3 +75,8 @@ diaginfo provides some useful information:
     8.  Floating point tests, Sections  89/119 (31 sections)
 
 A test or range of test can be selected by 'section X or section X/Y' where X is the starting test number, and Y the ending test number. If only X is specified, only test X is run.
+
+Tools of interest on the ODE ISO:
+
+L2DIAG - PCXL2 diag - useful for testing 32 bit emulation in qemu
+WDIAG  - PCXW diag - useful for testing 64 bit emulation in qemu
