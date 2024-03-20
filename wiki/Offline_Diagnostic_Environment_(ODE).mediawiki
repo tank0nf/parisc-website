@@ -2,8 +2,6 @@
 title: Offline Diagnostic Environment (ODE)
 ---
 
-= Offline Diagnostic Environment =
-
 Offline Diagnostic Environment (ODE) is a anvironment to test various hardware present in HP700/800 servers. It is usually distributed as ISO image, which contains a LIF image with ISL + ODE binary + other data. To boot it in qemu, it is sufficient to boot it:
 
  qemu-system-hppa -boot d -cdrom hp9000offlinediagnosticpa0512/HP9000\ Offline\ Diagnostic\ Environment\ PA0512\ \(Hewlett-Packard\ Development\ Company,\ L.P.\)\(2005\).iso
