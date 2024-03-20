@@ -25,6 +25,8 @@ Typing ode will start the diagnostic environment. It is possible to start a spec
 
 will start the PCXL2 CPU tests. This will ask for a password, in qemu it's usually 'quality'
 
+== L2DIAG ==
+
  ISL_CMD> l2diag
  
  ***************************************************************************
