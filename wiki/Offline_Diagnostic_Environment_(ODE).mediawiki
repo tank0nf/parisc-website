@@ -20,6 +20,58 @@ This will boot to ISL:
 
 Typing ode will start the diagnostic environment. It is possible to start a specific test by adding it to ode:
 
- ODE WDIAG
+ ODE L2DIAG
 
-will start the PCXW CPU tests. This will ask for a password, in qemu it's usually 'quality'
+will start the PCXL2 CPU tests. This will ask for a password, in qemu it's usually 'quality'
+
+ ISL_CMD> l2diag
+ 
+ ***************************************************************************
+ ******                                                               ******
+ ******                             L2DIAG                            ******
+ ******                                                               ******
+ ******       Copyright (C) 1995-2000 by Hewlett-Packard Company      ******
+ ******                       All Rights Reserved                     ******
+ ******                                                               ******
+ ******   This program may only be used by HP support personnel and   ******
+ ******   those customers with the appropriate Class license or       ******
+ ******   Node license for systems specified by the license.  HP      ******
+ ******   shall not be liable for any damages resulting from misuse   ******
+ ******   or unauthorized use of this program.  This program          ******
+ ******   remains the property of HP.                                 ******
+ ******                                                               ******
+ ******                         Version A.01.13                       ******
+ ******                                                               ******
+ ***************************************************************************
+ 
+ Type DIAGINFO for test information.
+ 
+ Enter password or a <CR> to exit:
+
+ YOUR SELF-MAINTAINER/CHANNEL LICENSE EXPIRES IN  DAYS ON  12/31/9999
+ Type HELP for command information.
+ 
+ No other processors logged in.
+ UNI-PROCESSOR MODE 
+
+ L2DIAG>
+
+diaginfo provides some useful information:
+
+ L2DIAG> diaginfo
+
+ L2DIAG is the PCXL2 ODE based diagnostic program.  It is intended
+ to test the processor of the various PCXL2 based systems in the offline
+ environment.  The program consists of 119 sections, 1/119,
+ and are organized into the following groups: 
+ 
+    1.  CPU data path tests, Sections 1/6 (6 sections)
+    2.  ICACHE tests, Sections 7/10 (4 sections)
+    3.  DCACHE tests, Sections 11/17 (7 sections)
+    4.  2nd Level Cache tests, Sections 18/21 (4 sections)
+    5.  TLB tests, Sections 22/27 (6 sections)
+    6.  CPU instruction tests, Sections 28/76 (49 sections)
+    7.  CPU extended tests, Sections 77/88  (12 sections)
+    8.  Floating point tests, Sections  89/119 (31 sections)
+
+A test or range of test can be selected by 'section X or section X/Y' where X is the starting test number, and Y the ending test number. If only X is specified, only test X is run.
