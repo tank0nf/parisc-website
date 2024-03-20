@@ -93,6 +93,8 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
+| 63 || PSW-B bit || Not emulated due to performance reasons
+|-
 | 71 || PSW-X bit || Not emulated due to performance reasons
 |-
 | 72 || ?? || not investigated yet
