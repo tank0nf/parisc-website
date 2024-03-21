@@ -134,9 +134,9 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
-| 36 || ds/addc || ??? 0x000e185c: ds r0,r25,ret1 / add,c r1,r1,r1
+| 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 0x001c13c0-0x001c13c8
 |-
-| 40 || depw,cond sar || not investigated yet
+| 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??)
 |-
 | 41 || addi,cond || not investigated yet
 |-
@@ -154,5 +154,13 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 64 || b,gate || not investigated yet
 |-
-| ... || ...
+| 65 || ERROR 0121 IN SECTION 065 || not investigated yet
+|-
+| 66 || ERROR 0003 IN SECTION 066 || not investigated yet
+|-
+| 68 || ERROR 0005 IN SECTION 068 || not investigated yet
+|-
+| 73 || ERROR 0010 IN SECTION 073 || not investigated yet
+|-
+| 76 || ERROR 0005 IN SECTION 076 || not investigated yet
 |}
