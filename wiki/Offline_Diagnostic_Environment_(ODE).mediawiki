@@ -4,7 +4,10 @@ title: Offline Diagnostic Environment (ODE)
 
 Offline Diagnostic Environment (ODE) is a an environment to test HP PARISC or IA64 hardware.<br>
 It is usually distributed as ISO image, which contains a LIF image with ISL + ODE binary + other data.<br>
-To boot it in qemu, it is sufficient to boot the ISO file:
+To boot it in qemu, it is sufficient to boot the ISO file.
+
+HP provides some documentation about ODE at 
+https://support.hpe.com/connect/s/product?language=en_US&kmpmoid=4284216
 
 == Booting ODE ==
  qemu-system-hppa -boot d -machine ''machine''  -cdrom HP_ODE_CDROM.iso
@@ -88,9 +91,11 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Tools !! Description !! Comment
 |-
-| L2DIAG || PCXL2 diag || useful for testing 32 bit CPU emulation in qemu (B160L machine)
+| L2DIAG || PCXL2 PA-7300LC diag || useful for testing 32 bit CPU emulation in qemu (B160L machine)
 |-
-| WDIAG  || PCXW diag || useful for testing 64 bit CPU emulation in qemu (C3700 machine)
+| UDIAG  || PCX-U PA-8000 diag || useful for testing 64 bit CPU emulation in qemu (C3700 machine)
+|-
+| WDIAG  || PCX-W PA-8500 diag || useful for testing 64 bit CPU emulation in qemu (C3700 machine)
 |-
 |}
 
