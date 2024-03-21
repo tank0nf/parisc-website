@@ -99,9 +99,9 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 |}
 
-== Known issues/test failures ==
+== Known issues/test failures in '''WDIAG''' ==
 {| class="wikitable" style="margin:auto'
-|+ Known test failures in WDIAG
+|+ Known test failures in '''WDIAG'''
 |-
 ! Section !! Test !! Comment
 |-
@@ -125,4 +125,30 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 79-86 || TLB? || hangs
 |-
+|}
+
+
+== Known issues/test failures in '''L2DIAG''' ==
+{| class="wikitable" style="margin:auto'
+|+ Known CPU test failures in '''L2DIAG'''
+|-
+! Section !! Test !! Comment
+|-
+| 36 || ds/addc || ??? 0x000e185c: ds r0,r25,ret1 / add,c r1,r1,r1
+|-
+| 40 || depw,cond sar || not investigated yet
+|-
+| 41 || addi,cond || not investigated yet
+|-
+| 45 || sub,cond || not investigated yet
+|-
+| 54 || sub & subi,tsv,cond || not investigated yet
+|-
+| 56 || uaddcm,tc,nhc || not investigated yet
+|-
+| 58 || uaddcm & dcor || not investigated yet
+|-
+| 59 || shladd,cond || not investigated yet
+|-
+| ... || ...
 |}
