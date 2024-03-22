@@ -99,7 +99,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 |}
 
-== Known issues/test failures in '''WDIAG''' ==
+== Known issues/test failures in '''WDIAG''' in section 35/86 ==
 {| class="wikitable" style="margin:auto'
 |+ Known test failures in '''WDIAG'''
 |-
@@ -126,7 +126,6 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 | 79-86 || TLB? || hangs
 |-
 |}
-
 
 == Known issues/test failures in '''L2DIAG''' ==
 {| class="wikitable" style="margin:auto'
