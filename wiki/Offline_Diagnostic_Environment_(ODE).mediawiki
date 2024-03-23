@@ -133,7 +133,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
-| 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 0x001c13c0-0x001c13c8
+| 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 0x001c13c0-0x001c13c8 itlba; itlbp; itlbp sequence not support by qemu
 |-
 | 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??) || fixed
 |-
