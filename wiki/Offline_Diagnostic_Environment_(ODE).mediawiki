@@ -141,6 +141,8 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
+| 6 || mtctl r1,rctr || test CPU recovery counter (not implemented in qemu yet) ||
+|-
 | 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 
  IN: 
  0x001c13c0:  addi 0,r0,r1
