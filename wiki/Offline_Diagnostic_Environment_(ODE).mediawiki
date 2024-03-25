@@ -140,13 +140,13 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001c13c8:  cmpb,<>,n r1,r5,0x1c1568
  fails
 |-
-| 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??) || Sven fixed
+| 40 || depw,cond sar || fixed  (0x001a07a0:  add,tsv r13,r14,r15 ??) || Sven fixed
 |-
-| 41 || addi,cond || not investigated yet || Sven fixed
+| 41 || addi,cond || fixed || Sven fixed
 |-
-| 45 || sub,cond || not investigated yet || Sven fixed
+| 45 || sub,cond || fixed || Sven fixed
 |-
-| 54 || sub & subi,tsv,cond || not investigated yet || Sven fixed
+| 54 || sub & subi,tsv,cond || fixed || Sven fixed
 |-
 | 55 || uaddcm,tc || 
  IN: 
