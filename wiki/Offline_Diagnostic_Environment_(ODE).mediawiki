@@ -137,15 +137,15 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??) || fixed
 |-
-| 41 || addi,cond || not investigated yet || fixed
+| 41 || addi,cond || not investigated yet || Sven fixed
 |-
-| 45 || sub,cond || not investigated yet || fixed
+| 45 || sub,cond || not investigated yet || Sven fixed
 |-
-| 54 || sub & subi,tsv,cond || not investigated yet || fixed
+| 54 || sub & subi,tsv,cond || not investigated yet || Sven fixed
 |-
 | 56 || uaddcm,tc,nhc || not investigated yet
 |-
-| 58 || uaddcm & dcor || not investigated yet
+| 58 || uaddcm & dcor || not investigated yet || Dave fixed: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
 | 59 || shladd,cond || not investigated yet
 |-
