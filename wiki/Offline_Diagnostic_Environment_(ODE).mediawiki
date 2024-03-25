@@ -133,15 +133,25 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
-| 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 0x001c13c0-0x001c13c8 itlba; itlbp; itlbp sequence not supported by qemu
+| 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 
+ IN: 
+ 0x001c13c0:  addi 0,r0,r1
+ 0x001c13c4:  probe,w (sr1,r11),r12,r5
+ 0x001c13c8:  cmpb,<>,n r1,r5,0x1c1568
+ fails
 |-
-| 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??) || fixed
+| 40 || depw,cond sar || not investigated yet  (0x001a07a0:  add,tsv r13,r14,r15 ??) || Sven fixed
 |-
 | 41 || addi,cond || not investigated yet || Sven fixed
 |-
 | 45 || sub,cond || not investigated yet || Sven fixed
 |-
 | 54 || sub & subi,tsv,cond || not investigated yet || Sven fixed
+|-
+| 55 || uaddcm,tc || 
+ IN: 
+ 0x001a2b2c:  uaddcm,tc,shc r13,r14,r15
+|| r13..r15: 55555555 55555555 00000000 should not trap.
 |-
 | 56 || uaddcm,tc,nhc || not investigated yet
 |-
