@@ -151,7 +151,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 | 55 || uaddcm,tc || 
  IN: 
  0x001a2b2c:  uaddcm,tc,shc r13,r14,r15
-|| r13..r15: 55555555 55555555 00000000 should not trap.
+|| r13..r15: 55555555 55555555 00000000 should not trap.  fixed now: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05994.html
 |-
 | 56 || b,l vs. b,gate || 
  0x001ba05c:  ldil L%4000,r18
