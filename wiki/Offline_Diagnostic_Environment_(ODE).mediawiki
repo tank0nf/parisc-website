@@ -161,15 +161,27 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  IN: 
  0x001ba1c0:  addi 1,r0,ret0
 |-
-| 58 || uaddcm & dcor || not investigated yet || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
+| 58 || uaddcm & dcor || dcor/uaddcm condition misbehaviour || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
-| 59 || shladd,cond || not investigated yet
+| 59 || shladd,cond || not investigated yet, e.g. shladd,tsv,ev r13,1,r14,r15
 |-
-| 62 || ?? || not investigated yet
+| 62 || ERROR 0131 IN SECTION 062 ?? || not investigated yet
 |-
 | 63 || virt memory access / relied-upon-translation? || not investigated yet, maybe tdtlbp does not need to follow idtlba?
 |-
-| 64 || b,gate || not investigated yet
+| 64 || rfi/be,l should not exec delay slot ??? || 
+ IN: 
+ 0x001e0058:  rfi
+ ---------------- 
+ 0x001e0060:  be,l 0(sr1,r21),sr0,r31
+ ----------------
+ IN: 
+ 0x001e0064:  addi 18,r0,r18
+ ----------------
+ IN: 
+ 0x001e2000:  nop
+ 0x001e2004:  cmpib,<> 0,r18,0x1e021c
+ branches, but should not (r18 == 18, but should be 0)
 |-
 | 65 || ERROR 0121 IN SECTION 065 || not investigated yet
 |-
