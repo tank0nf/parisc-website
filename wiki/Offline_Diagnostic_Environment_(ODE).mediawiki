@@ -105,6 +105,14 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 ! Section !! Test !! Comment
 |-
+| 1 || cpu internal register tests || 
+ IN: 
+ 0x001a5660:  diag 281840
+ 0x001a5664:  nop
+ 0x001a5668:  diag 2008a6
+ 0x001a566c:  cmpb,<>,n r8,r6,0x1a585c
+ should save r8 somewhere, then second diag restores that to r6 ???
+|-
 | 63 || PSW-B bit || Not emulated due to performance reasons
 |-
 | 65 || dcor || not investigated yet || fixed by Richards patches
