@@ -160,6 +160,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001ba068:  cmpb,<>,n r0,r18,0x1ba1c0
  IN: 
  0x001ba1c0:  addi 1,r0,ret0
+|| checks that "b,gate" is not allowed in delay slot??
 |-
 | 58 || uaddcm & dcor || dcor/uaddcm condition misbehaviour || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
