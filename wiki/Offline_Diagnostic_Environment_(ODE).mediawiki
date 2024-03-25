@@ -153,7 +153,13 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001a2b2c:  uaddcm,tc,shc r13,r14,r15
 || r13..r15: 55555555 55555555 00000000 should not trap.
 |-
-| 56 || uaddcm,tc,nhc || not investigated yet
+| 56 || uaddcm,tc,nhc || 
+ 0x001ba05c:  ldil L%4000,r18
+ 0x001ba060:  b,l 0x1ba068,r31
+ 0x001ba064:  b,gate 0x1ba06c,r0
+ 0x001ba068:  cmpb,<>,n r0,r18,0x1ba1c0
+ IN: 
+ 0x001ba1c0:  addi 1,r0,ret0
 |-
 | 58 || uaddcm & dcor || not investigated yet || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
