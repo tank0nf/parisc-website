@@ -107,7 +107,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 63 || PSW-B bit || Not emulated due to performance reasons
 |-
-| 65 || dcor || not investigated yet
+| 65 || dcor || not investigated yet || fixed by Richards patches
 |-
 | 66 || shladd || not investigated yet
 |-
