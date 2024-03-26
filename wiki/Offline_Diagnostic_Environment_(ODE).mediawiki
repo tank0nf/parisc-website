@@ -117,7 +117,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 65 || dcor || not investigated yet || fixed by Richards patches
 |-
-| 66 || shladd || not investigated yet
+| 66 || shladd || not investigated yet || fixed: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06047.html
 |-
 | 71 || PSW-X bit || Not emulated due to performance reasons
 |-
