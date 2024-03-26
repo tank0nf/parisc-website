@@ -113,6 +113,27 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001a566c:  cmpb,<>,n r8,r6,0x1a585c
  should save r8 somewhere, then second diag restores that to r6 ???
 |-
+| 6 || various unknown diag instructions || 
+ IN:
+ 0x001a68dc:  diag 4008bd
+ 0x001a68e0:  ldo 0(ret1),r24
+ 0x001a68e4:  depdi 1,53,1,ret1
+ 0x001a68e8:  diag 5d1840
+ 0x001a68ec:  diag 200ba0
+ 0x001a68f0:  ssm 0,r0
+ ----------------
+ IN:
+ 0x001a68f4:  diag 2008aa
+ 0x001a68f8:  bb,<,n r10,1a,0x1a6904
+ ----------------
+ IN:
+ 0x001a68fc:  depdi 0,63,11,r1
+ 0x001a6900:  b,l,n 0x1a690c,r0
+ 0x001a6904:  depdi 0,23,24,r1
+ ----------------
+ IN:
+ 0x001a690c:  cmpb,*<>,n r1,r5,0x1a6fe4
+|-
 | 63 || PSW-B bit || Not emulated due to performance reasons
 |-
 | 65 || dcor || not investigated yet || fixed by Richards patches
