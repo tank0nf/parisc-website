@@ -174,7 +174,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 58 || uaddcm & dcor || dcor/uaddcm condition misbehaviour || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
-| 59 || shladd,cond || not investigated yet, e.g. shladd,tsv,ev r13,1,r14,r15
+| 59 || shladd,cond || fixed: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06047.html
 |-
 | 62 || ERROR 0131 IN SECTION 062 ?? || not investigated yet
 |-
