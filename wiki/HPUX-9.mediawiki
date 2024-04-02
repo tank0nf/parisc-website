@@ -1,0 +1,180 @@
+---
+title: HPUX-9
+---
+
+NOTE: This information is taken from:<br>
+https://web-docs.gsi.de/~kraemer/COLLECTION/HPUX/scratch.html<br>
+
+<h2>HP-UX 9.x/8.x installation from scratch</h2>
+<HR> 
+ 
+<h2>Prerequisites</h2> 
+ 
+HP-UX 9.x/8.x does not install on disks larger than 2GB (exactly). 
+It may boot off the <code>Install</code> media, but the subsequent
+<code>CoreOS</code> installation will fail.
+The typical message is a complaint about at least 55MB which have to
+be free for swap space.  
+
+<br> 
+HP-UX 9.x installs trouble-free only on disks listed in  
+[https://web-docs.gsi.de/~kraemer/COLLECTION/HPUX/disktab9x.txt <code>/etc/disktab/</code>],  
+the larger ones being:
+<ul> 
+<li>Quantum PD425S</li> 
+<li>Quantum LPS525S</li> 
+<li>Quantum PD1050S</li> 
+<li>Micropolis 1588[T], 660MB </li> 
+<li>Micropolis 1528, 1.4GB</li> 
+<li>Micropolis 1924, largeish ? </li> 
+<li>Seagate ST3600N, 525MB</li> 
+<li>HP C3010</li> 
+<li>HP C2247, 1GB</li> 
+<li>HP C2235, 420MB</a> 
+</li> 
+</ul> 
+
+<br> 
+HP-UX 8.x is even more restrictive,  
+[https://web-docs.gsi.de/~kraemer/COLLECTION/HPUX/disktab8x.txt <code>/etc/disktab/</code>].  
+I had to resort to the antique Seagate ST3600N to get it to install.
+
+<br>
+Some disks not listed in <code>/etc/disktab/</code> are installable too, 
+after some warnings (which can be ignored in my experience) from the installation procedure: 
+<ul> 
+<li> 
+IBM/Quantum Fireball 1280 
+</li> 
+<li> 
+IBM DPES 31080
+</li> 
+<li> 
+Seagate ST11200N
+</li> 
+</ul> 
+ 
+<br> 
+HP-UX 9.x takes at least 200MB, &gt;330MB with NLS support, plus 55MB for swap space, 
+thus a 400 to 420MB disk is minimum. If the LaserROM documentation should reside 
+on the same disk it would have to be as large as 1GB. In this case disk space
+is very tight, so one might consider to install the LaserROM on a separate
+second disk, if possible.
+<br>
+All this doesn't include user and freeware filesystems. 
+ 
+<H2>Base system</H2> 
+ 
+<h3>From CD </h3> 
+ 
+<ol> 
+<li> 
+Straightforward.  
+Insert <code>Install</code> CD, cycle power. 
+During startup press <code>ESC</code> to allow boot media select. 
+<br>
+<ul> 
+<li> On 300/400 series: 
+<br> (soon to come)
+</li>
+<li> On 700/800 series: <br>
+A bootable device list appears.
+<br>
+On some models a <code>BOOT_ADMIN</code> console will allow further actions.
+<br>
+Anyway,
+<pre> 
+boot scsi.x 
+</pre> 
+where <code>x</code> is the CD's SCSI address. 
+</li>
+</ul>
+Answer the questions and accept the defaults.
+One may alter some of the root filesystem parameters, e.g.
+increase swap space beyond the proposed value (but not larger than
+128MB if LaserROM should coexist on the same 1GB disk). 
+<br> 
+Leave/set date below Y2K. 
+</li> 
+<li> 
+On request (update): insert <code>Core OS</code> CD and proceed.
+For external CD-ROM drives this might involve power cycling.
+<br> 
+If this does not work (as experienced e.g. with series 400 systems):  
+<ol> 
+<li> 
+press <code>Reset</code>, reboot and press 
+<code>ESC</code> to allow selection of a minimal system (<code>SYSHPUX</code>).  
+</li> 
+<li> Then 
+<pre> 
+mount /dev/bsrc /UPDATE_CDROM; rm /update.lock; /etc/update 
+</pre> 
+</li> 
+</ol> 
+Accept proposed default terminal. 
+<li> 
+In the presented menu choose 
+<code>Change Source/Destination</code> and select CD-ROM, no password.  
+Press <code>Done</code>/<code>F4</code> 
+</li> 
+</li> 
+<li> 
+In the presented menu choose installation method.
+In my experience one may <code>Select all filesets</code> 
+and install just everything (ca. 160 MB) 
+</li> 
+ 
+<li> 
+Apply Y2K patches <em>(HP-UX 9.1 for series 300/400 only)</em>:  
+<br> 
+Insert CD, power cycle CD-ROM drive and  
+<pre> 
+mount /dev/bsrc /UPDATE_CDROM; rm /update.lock; /etc/update</code> 
+</pre> 
+If the mount fails, reboot and repeat. 
+<br> 
+Alternative mount method: 
+<pre> 
+mount -r -t cdfs /dev/dsk/cEd3s0 /UPDATE_CDROM         # CD with SCSI ID=3 
+rm /update.lock; /etc/update                           # or use VUE toolbox, if active 
+</pre> 
+In the presented menu change installation source to CD-ROM and 
+select/install all filesets. 
+</li> 
+<li> If available, Tools and Languages (C,Pascal,FORTRAN):<br> 
+reboot with CD inserted, (alternatively try switch off/on CD drive)<br>   
+<code>mount /dev/bsrc /UPDATE_CDROM; rm /update.lock; /etc/update</code><br> 
+or 
+<pre> 
+mount -r -t cdfs /dev/dsk/cEd3s0 /UPDATE_CDROM         # CD with SCSI ID=3 
+rm /update.lock; /etc/update                           # or use VUE toolbox, if active 
+</pre> 
+Select/install all filesets, 
+may skip NLS stuff 
+</li> 
+<li>
+On request and if the machine is already connected to a network
+one may configure it already during installation.
+Just answer the questions on 
+<br>
+network mask (e.g. 255.255.255.0) 
+<br>
+and Gateway address (e.g. 192.168.1.1 for a router),
+a (dummy) name must also be given.
+</li> 
+<li>
+After (<code>root</code>) login
+start multi-user level, includes starting VUE: 
+<pre> 
+init 3 
+</pre> 
+</li> 
+
+<li>
+<strong>Note</strong> that if one chooses to leave the date as is,
+to avoid Y2K issues, one might have to 
+<a href="faqhowto.html#Trouble">fix SAM's other date related problems</a>. 
+</li>
+ 
+</ol>
