@@ -292,6 +292,9 @@ according to [https://archive.org/stream/bitsavers_hp9000hpuxingHPBASICUX6.2Aug9
 The HP [[Offline Diagnostic Environment (ODE)]] is a great utility to test the quality of the QEMU emulation.
 This is an ongoing effort, see above website for details.
 
+=== HP-UX 9.x ===
+This does not work yet. Mostly due to missing qemu drivers. For here for some notes about how to install [[HPUX-9]].
+
 == NetBSD ==
 
 Relevant NetBSD/hppa links:
