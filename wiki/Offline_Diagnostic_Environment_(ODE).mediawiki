@@ -189,6 +189,7 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 ! Section !! Test !! Comment
 |-
 | 6 || mtctl r1,rctr || test CPU recovery counter (not implemented in qemu yet) ||
+will probably not be fixed.
 |-
 | 36 || probe,w (sr1,r11),r12,r5 does not return 0 || 
  IN: 
@@ -196,19 +197,22 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001c13c4:  probe,w (sr1,r11),r12,r5
  0x001c13c8:  cmpb,<>,n r1,r5,0x1c1568
  fails
+|| not fixed yet.
 |-
-| 40 || depw,cond sar || fixed  (0x001a07a0:  add,tsv r13,r14,r15 ??) || Sven fixed
+| 40 || depw,cond sar || fixed  (0x001a07a0:  add,tsv r13,r14,r15 ??) || fixed by Sven
 |-
-| 41 || addi,cond || fixed || Sven fixed
+| 41 || addi,cond || fixed || fixed by Sven
 |-
-| 45 || sub,cond || fixed || Sven fixed
+| 45 || sub,cond || fixed || fixed by Sven
 |-
-| 54 || sub & subi,tsv,cond || fixed || Sven fixed
+| 54 || sub & subi,tsv,cond || fixed || fixed by Sven
 |-
 | 55 || uaddcm,tc || 
  IN: 
  0x001a2b2c:  uaddcm,tc,shc r13,r14,r15
-|| r13..r15: 55555555 55555555 00000000 should not trap.  fixed now: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05994.html
+ r13..r15: 55555555 55555555 00000000 should not trap.  
+|| fixed by Richard
+https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05994.html
 |-
 | 56 || b,l vs. b,gate || 
  0x001ba05c:  ldil L%4000,r18
@@ -217,11 +221,13 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x001ba068:  cmpb,<>,n r0,r18,0x1ba1c0
  IN: 
  0x001ba1c0:  addi 1,r0,ret0
-|| checks that "b,gate" is not allowed in delay slot??
+|| NOT FIXED YET.
+checks that "b,gate" is not allowed in delay slot??
 |-
-| 58 || uaddcm & dcor || dcor/uaddcm condition misbehaviour || Richards fix: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
+| 58 || uaddcm & dcor || dcor/uaddcm condition misbehaviour || fixed by Richard:
+https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg05753.html
 |-
-| 59 || shladd,cond || fixed: https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06047.html
+| 59 || shladd,cond || || fixed by Richard
 |-
 | 62 || ERROR 0131 IN SECTION 062 ?? || not investigated yet
 |-
