@@ -154,6 +154,17 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |-
 | 79-86 || TLB? || hangs
 |-
+| 99 || UNEXPECTED TRAP# 08 , IN SECTION 99, ADDR 282120 || 
+ traps on instruction 
+ 0x00282120:   00 40 40 e9   <unknown>
+|-
+| 102 || ERROR 0030 IN SECTION 102 || 
+ 0x00283790:   b4 1a 00 cc   addi 66,r0,r26
+ 0x00283794:   b4 12 07 ff   addi -1,r0,r18
+ 0x00283798:   e8 40 40 00   blr r0,rp
+ 0x0028379c:   00 00 00 00   break 0,0
+ INT  21553: break instruction trap @ 0000000000000000:000000000028379c for 000000000000f000:0000000000001004
+|-
 |}
 
 == Known issues/test failures in '''L2DIAG''' ==
