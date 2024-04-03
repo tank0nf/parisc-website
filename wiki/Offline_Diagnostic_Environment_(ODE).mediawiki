@@ -165,6 +165,13 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x0028379c:   00 00 00 00   break 0,0
  INT  21553: break instruction trap @ 0000000000000000:000000000028379c for 000000000000f000:0000000000001004
 |-
+| 103 || ERROR 0052 IN SECTION 103 || ???
+|-
+| 104 || UNEXPECTED TRAP# 08 , IN SECTION 104, ADDR 284038 ||
+ 0x00284038:   30 85 86 06   frem,sgl fr4,fr5,fr6
+ INT  21555: illegal instruction trap @ 0000000000000000:0000000000284038 for 000000000000f000:0000000000001004
+ frem instruction not yet implemented in qemu ?
+-
 |}
 
 == Known issues/test failures in '''L2DIAG''' ==
