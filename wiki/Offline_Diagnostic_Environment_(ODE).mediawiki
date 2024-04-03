@@ -163,15 +163,23 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
  0x00283794:   b4 12 07 ff   addi -1,r0,r18
  0x00283798:   e8 40 40 00   blr r0,rp
  0x0028379c:   00 00 00 00   break 0,0
- INT  21553: break instruction trap @ 0000000000000000:000000000028379c for 000000000000f000:0000000000001004
+ INT  21553: break instruction trap @ 0000000000000000:000000000028379c
 |-
 | 103 || ERROR 0052 IN SECTION 103 || ???
 |-
 | 104 || UNEXPECTED TRAP# 08 , IN SECTION 104, ADDR 284038 ||
  0x00284038:   30 85 86 06   frem,sgl fr4,fr5,fr6
- INT  21555: illegal instruction trap @ 0000000000000000:0000000000284038 for 000000000000f000:0000000000001004
+ INT  21555: illegal instruction trap @ 0000000000000000:0000000000284038
  frem instruction not yet implemented in qemu ?
--
+|-
+| 105 ||    ||
+ 0x00284b08:   b4 03 00 00   addi 0,r0,r3
+ 0x00284b0c:   b4 12 07 e5   addi -e,r0,r18
+ 0x00284b10:   39 cf 06 0e   fadd,sgl fr14,fr15,fr14
+ 0x00284b14:   24 f0 12 2e   fstw,ma fr14,8(r7)
+ 0x00284b18:   8a 43 20 06   cmpb,<>,n r3,r18,0x285b20
+ expects fp helper handler to modify r3/r18
+|-
 |}
 
 == Known issues/test failures in '''L2DIAG''' ==
