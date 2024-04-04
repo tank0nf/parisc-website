@@ -74,7 +74,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
-| style="vertical-align:top;" |'''Mar&nbsp;2024'''||Improving 64-bit emulation in Qemu, e.g. with [https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06872.html CPU fixes from Richard] and [https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06020.html HP-UX 11 64-bit support fixes from Sven].<br>Debian 64-bit time transition is ongoing. Lots of reboot strapping for hppa necessary.
+| style="vertical-align:top;" |'''Mar&nbsp;2024'''||Improving 64-bit CPU emulation in Qemu, e.g. with [https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06872.html CPU fixes from Richard] and [https://lists.nongnu.org/archive/html/qemu-devel/2024-03/msg06020.html HP-UX 11 64-bit support fixes from Sven].<br>The [[Offline_Diagnostic_Environment_(ODE)]] CD-ROM is helpful to verify quality of Qemu CPU emulation.<br>[https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time transition is ongoing]. Lots of hppa packages have to be bootstrapped again.
 |-
 | style="vertical-align:top;" |'''Jan&nbsp;2024'''||[https://github.com/rust-lang/libc/pull/3539 Initial rust libc support for hppa] was added (and temporarily removed again).
 |-
