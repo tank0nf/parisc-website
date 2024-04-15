@@ -1472,6 +1472,7 @@ and just be selective about running "apt-get upgrade".
 
 == Linus Torvalds barking at parisc ==
 * https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=19b9ad67310ed2f685062a00aec602bec33835f0
+* about atomics in parisc and sparc: https://lore.kernel.org/lkml/CAHk-=wispSt+JezguriGPKnJ0xOUWG_LFDgaM-NVJu6cVa+-xw@mail.gmail.com/
 
 = Testsuites, kernel and userspace testing tools =
 
