@@ -1,0 +1,26 @@
+---
+title: Time64
+---
+
+Thought during debian's time64 transition:
+
+* gstreamer
+Use 1.22. It seems the actual versions have to match.  I also edited the version info gstreamer1.0 (meson.build and gstreamer.doap) so version in pkgconfig file is 1.24.0.
+Besides the gst packages, we also need an old version of webkit2gtk.  The latest version depends on features added in gstreamer 1.24.
+
+I'm having to work around issues caused by lack of clang and rust compilers.  A few packages now need 64-bit.
+
+The hard part has been setting up and maintaining chroot.  I need wxwidgets3.2 and webkit2gtk builds to complete transition for giant ffmpeg dependency loop.  Then, I should be able to an apt upgrade for chroot.
+These are the packages that I have or will do manual builds in chroot:
+gnuplot hdf5 libnsl vtk9 dbus-c++  gst-plugins-bad1.0 ibus librsvg webkit2gtk
+gst-plugins-base1.0 imagemagick libtirpc weston efl gst-plugins-good1.0 leptonlib
+pmix wxwidgets3.2 ffmpeg gstreamer1.0 libcroco poppler
+
+The gst* and  webkit2gtk sources are from trixie.  They are last versions that built on hppa.  I just did +b1 uploads for them.
+
+librsvg is last version that built on hppa.  Same for libcroco. libcroco packages have been deleted from debian archive.  However librsvg lib depends on libcroco lib.
+
+I can details of versions for other packages.  Some needed +b1 rebuilds of last versions that built.  Others, just needed to be built in chroot to fix dependencies.
+
+Current version of gnuplot needs wxwidgets3.2.  Maybe it will build after we get build of it.
+Testsuite just failed...  I have been ignoring testsuite issues.
