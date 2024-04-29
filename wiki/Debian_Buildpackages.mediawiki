@@ -33,6 +33,13 @@ title: Debian Buildpackages
 : Build package with sbuild --debbuildopts="-vVERSION".  VERSION is current version of package in stable.
 : Then upload to ftp-master independen of distribution, and stretch-backports-sloppy see: https://backports.debian.org/news/buster-backports/
 
+; How to upload a debian package to debian unreleased
+: Build with "dpkg-buildpackage -F -sa", or "sbuild --source --force-orig-source".
+: Check that the changes file: "'''Distribution: unreleased'''" & includes the sources, that is the .dsc and the .debian.tar.xz and also includes the orig tarball
+: Sign it with '''your private GPG key''' (key should be known from mini-dak) and upload it to the debian-ports archive.
+: Is using the magic +string or ~string necessary?
+:: You do not necessarily need to use it as there is no hppa specific change there, but you need to use a version that is higher than the one currently in the archive.
+
 Some other info:
 
 * [https://lists.debian.org/debian-68k/2013/10/msg00006.html Setting up buildd server with btrfs]
