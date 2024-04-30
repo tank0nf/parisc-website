@@ -2,7 +2,17 @@
 title: Time64
 ---
 
-Thought during debian's time64 transition:
+== Upgrading system to latest debian-ports binaries ==
+
+Some hints when upgrading from an older version to the time64-enabled binaries.
+
+- I had to drop all "db" entries in /etc/nsswitch.conf, otherwise I got crashes in apt/dpkg from libdb-5.3.so:
+ BDB0588 At least one secondary cursor must be specified to DB->join
+- After upgrade I had to reinstall lots of programs, specifically:
+ moreutils mc ifupdown mailutils task-ssh-server
+
+
+== Thoughts during debian's time64 transition ==
 
 * gstreamer
 Use 1.22. It seems the actual versions have to match.  I also edited the version info gstreamer1.0 (meson.build and gstreamer.doap) so version in pkgconfig file is 1.24.0.
