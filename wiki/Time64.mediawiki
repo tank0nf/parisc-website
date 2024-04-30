@@ -6,11 +6,11 @@ title: Time64
 
 Some hints when upgrading from an older version to the time64-enabled binaries.
 
-- I had to drop all "db" entries in /etc/nsswitch.conf, otherwise I got crashes in apt/dpkg from libdb-5.3.so:
- BDB0588 At least one secondary cursor must be specified to DB->join
-- After upgrade I had to reinstall lots of programs, specifically:
+# run apt-update and apt install debian-archive-keyring debian-keyring debian-ports-archive-keyring
+# I had to drop all "db" entries in /etc/nsswitch.conf, otherwise I got crashes in apt/dpkg from libdb-5.3.so:
+ BDB0588 At least one secondary cursor must be specified to DB->join#
+# After upgrade I had to reinstall lots of programs, specifically:
  moreutils mc ifupdown mailutils task-ssh-server
-
 
 == Thoughts during debian's time64 transition ==
 
