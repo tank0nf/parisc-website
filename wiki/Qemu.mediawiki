@@ -257,7 +257,7 @@ Exampled for debian:
 * LASI NIC emulation and NCR 710 emulation is needed in order to be able to boot older HP-UX releases.
 * [https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp Astrobaby wrote about his test results.]
 * Hints:
-** The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" key combination
+** The "INTERRUPT KEY" mentioned sometimes by HP-UX can be emulated with the "Ctrl-\" or "Ctrl-#" key combination
 ** In case you lost the HP-UX root password, boot at ISL 'hpux -is' and then give a new password with running "passwd" (you need to use the "-boot menu=on" qemu option)
 ** When booting HP-UX may show strange characters instead of brackets - just delete the file /etc/kbdlang, reboot and choose PS2_DIN_US language
 * How to start X11, CDE or dtwm
