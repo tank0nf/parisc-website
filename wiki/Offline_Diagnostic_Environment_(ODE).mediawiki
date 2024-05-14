@@ -183,6 +183,17 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |}
 
 == Known issues/test failures in '''L2DIAG''' ==
+
+ L2DIAG overview:
+ 1.  CPU data path tests,   Section 1/6
+ 2.  ICACHE tests,          Section 7/10
+ 3.  DCACHE tests,          Section 11/17
+ 4.  2nd Level Cache tests  Section 18/21
+ 5.  TLB tests,             Section 22/27
+ 6.  CPU instruction tests, Section 28/76
+ 7.  CPU extended tests,    Section 77/88
+ 8.  Floating point tests,  Section 89/119
+
 {| class="wikitable" style="margin:auto'
 |+ Known CPU instruction test failures in '''L2DIAG''' in section 28/76
 |-
