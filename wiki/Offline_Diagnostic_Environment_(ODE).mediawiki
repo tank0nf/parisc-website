@@ -100,6 +100,17 @@ A test or range of test can be selected by 'section X or section X/Y' where X is
 |}
 
 == Known issues/test failures in '''WDIAG''' in section 35/86 ==
+
+ WDIAG overview:
+ 1.  CPU data path tests,      Section 1/6
+ 2.  BUS-INTERFACE tests,      Section 7/10
+ 3.  CACHE tests,              Section 11/25
+ 4.  TLB tests,                Section 26/34
+ 5.  CPU instruction tests,    Section 35/86
+ 6.  CPU extended tests,       Section 87/101
+ 7.  Floating point tests,     Section 102/134
+ 8.  Multiple processor tests, Section 140/150
+
 {| class="wikitable" style="margin:auto'
 |+ Known test failures in '''WDIAG'''
 |-
