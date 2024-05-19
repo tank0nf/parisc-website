@@ -1282,6 +1282,11 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * parisc: make parisc_bus_type const
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=26dd48780bd2232a8f50f878929a9e448b7fd531 parisc: led: Convert to platform remove callback returning void]
 
+== Kernel 6.10 ==
+* parisc/math-emu: Remove unused struct 'exc_reg'
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487fa28fa8b60417642ac58e8beda6e2509d18f9 parisc: Define sigset_t in parisc uapi header]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4a599910193b85f76c100e30d8551c8794f8c2a parisc: Define HAVE_ARCH_HUGETLB_UNMAPPED_AREA]
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
