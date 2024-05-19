@@ -1284,8 +1284,8 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 
 == Kernel 6.10 ==
 * parisc/math-emu: Remove unused struct 'exc_reg'
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487fa28fa8b60417642ac58e8beda6e2509d18f9 parisc: Define sigset_t in parisc uapi header]
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4a599910193b85f76c100e30d8551c8794f8c2a parisc: Define HAVE_ARCH_HUGETLB_UNMAPPED_AREA]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487fa28fa8b60417642ac58e8beda6e2509d18f9 parisc: Define sigset_t in parisc uapi header] (backported to v6.0+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4a599910193b85f76c100e30d8551c8794f8c2a parisc: Define HAVE_ARCH_HUGETLB_UNMAPPED_AREA] (backported to v6.0+)
 
 = DONE items =
 == Debian kernel and userspace programs ==
