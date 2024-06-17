@@ -74,7 +74,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
-| style="vertical-align:top;" |'''June&nbsp;2024'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49 Dave Anglin contributed a patch] which prevents the random segfaults we faced on PA8800 and PA8900 CPU machines. 
+| style="vertical-align:top;" |'''June&nbsp;2024'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49 Dave Anglin contributed a patch] which prevents the random segfaults we faced on PA8800 and PA8900 CPU machines. It will be included in kernel 6.6.35, 6.9.6, or 6.10 (or higher).<br>
+Work has started to add clock_gettime() syscalls in kernel vDSO.
 |-
 | style="vertical-align:top;" |'''Apr&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] is going very well. Upgrades were broken until now, but since end of april 2024 it's possible again to upgrade most existing debian hppa installations to the new binaries from the debian-ports archive. Since now 64-bit time_t is enabled by default, and since the LFS64 filesystem calls are enabled by default as well, we expect much lesss problems running debian hppa.<br>[https://wiki.qemu.org/ChangeLog/9.0 Qemu 9.0 was released.] Note that the 64-bit hppa emulation is still incomplete and may work with Linux guests only.
 |-
