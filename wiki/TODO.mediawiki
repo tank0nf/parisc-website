@@ -1438,6 +1438,8 @@ Debian kernel / Generic Kernel bugs fixed
 ** [https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=974690 ''dietlibc Debian bug report'']
 * '''Kernel 6.1 (MADV_WIPEONFORK, MADV_KEEPONFORK, ...)'''
 ** This patch [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71bdea6f798b425bc0003780b13e3fdecb16a010 '''parisc: Align parisc MADV_XXX constants with all other architectures'''] changed some MADV values to have the same number as other platforms (exception: alpha arch). Even if that's an ABI change, the patch includes a wrapper to translate the values, so that old binaries will continue to work. There were build issues in aws-crt-python, qemu-user, tor browser and boringssl.
+* '''glibc 2.35 and Kernel < 6.10 (compat recv/recvfrom, sys_fanotify_mark)'''
+** Arnd Bergmann noticed that various compat syscalls changed how they were implemented in glibc and kernel. His path series [https://lore.kernel.org/lkml/20240620162316.3674955-1-arnd@kernel.org/ linux system call fixes] fixes this and suggests that people should use Debian bookworm with glibc >= 2.35 and Linux kernels >= 6.10.
 
 == Considerations between Debian unstable and Debian Jessie release ==
 Jessie was not stable on SMP machines, particularly those with PA8800/PA8900 processors.
