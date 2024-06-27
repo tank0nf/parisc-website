@@ -1441,22 +1441,6 @@ Debian kernel / Generic Kernel bugs fixed
 * '''glibc 2.35 and Kernel < 6.10 (compat recv/recvfrom, sys_fanotify_mark)'''
 ** Arnd Bergmann noticed that various compat syscalls changed how they were implemented in glibc and kernel. His path series [https://lore.kernel.org/lkml/20240620162316.3674955-1-arnd@kernel.org/ linux system call fixes] fixes this and suggests that people should use Debian bookworm with glibc >= 2.35 and Linux kernels >= 6.10.
 
-== Considerations between Debian unstable and Debian Jessie release ==
-Jessie was not stable on SMP machines, particularly those with PA8800/PA8900 processors.
-It's recommended to use kernel 4.4.15 or later. 
-The current default gcc for unstable is gcc 5.4. Most hppa fixes have been back ported to 4.9 but not all. 
-It shouldn't hurt to use binutils from unstable.
-Debian glibc 2.23 is best. Most old packages should still work although there maybe inequivalent aliasing issues
-which are relevant on PA8800. There's also a nasty issue with gmon_start being in every shared library in Jessie.
-This caused a few headaches and potentially breaks applications when it's removed from a library. If you
-stick with the glibc in Jessie, multithreaded applications may not work as well as they could,
-but maybe that's not important.
-The kernel update is the most important one.
-Since hppa moved to ports, there has been a huge number of bug fixes. System stability is
-dramatically improved and I believe more packages are available than ever before. It's better to run unstable
-and just be selective about running "apt-get upgrade".
-(by Dave Anglin)
-
 == parisc-linux.org Homepage and Debian build server infrastructure work ==
 * DONE: Ask Thibaut to add ftp mirror of http://ftp.parisc-linux.org/debian_ports on http://www.fr.parisc-linux.org/ 
 * DONE: Set up a buildd server for debian-ports/unstable & experimental -> http://unstable.buildd.net/index-hppa.html
