@@ -68,6 +68,10 @@ Dave reported this combination as working:
 You may attach an ATA-to-SD-card or ATA-to-CF-card adapter, e.g.:
 * SD To 3.5" 40Pin Male IDE Hard Disk Drive HDD Converter Card Adapter
 
+== Brackets for adding SATA drives (e.g. in rp3440 machines)  ==
+
+https://www.thingiverse.com/thing:946543
+
 == External Resources ==
 
 * http://www.openpa.net/systems/index.html - OpenPA.net Overview of PA-RISC Computers
