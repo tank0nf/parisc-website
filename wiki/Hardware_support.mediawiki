@@ -55,6 +55,19 @@ The following SATA PCI controllers have been reported to work on Linux, after th
 * HighPoint RocketRAID 2224 (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
 * Highpoint RocketRAID 1640 (reported by Carlo Pisani <carlojpisani@gmail.com> in C3600)
 
+== PCI/PCI-E Bridges with SSD/NVME drives  ==
+
+NOTE: PARISC machines boot from SCSI or built-in IDE drives only.<br>
+Dave reported this combination as working:
+* StarTech.com PCI to PCI Express Adapter Card - PCIe x1 (5V) to PCI (5V & 3.3V) slot adapter - Low Profile - PCI1PEX1
+* GLOTRENDS PA09-X1 M.2 NVMe to PCIe X1 Adapter for 2230/2242/2260/2280 M.2 NVMe SSD, PCIe X1 Installation 
+* Crucial P3 Plus 1TB PCIe Gen4 3D NAND NVMe M.2 SSD, up to 5000MB/s - CT1000P3PSSD8
+
+== Booting from internal ATA controller (SiI 0649 Ultra ATA/100 PCI to ATA Host Controller)  ==
+
+You may attach an ATA-to-SD-card or ATA-to-CF-card adapter, e.g.:
+* SD To 3.5" 40Pin Male IDE Hard Disk Drive HDD Converter Card Adapter
+
 == External Resources ==
 
 * http://www.openpa.net/systems/index.html - OpenPA.net Overview of PA-RISC Computers
