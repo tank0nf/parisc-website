@@ -74,7 +74,9 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
-| style="vertical-align:top;" |'''June&nbsp;2024'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49 Dave Anglin contributed a patch] which prevents the random segfaults we faced on PA8800 and PA8900 CPU machines. It will be included in kernel 6.6.35, 6.9.6, or 6.10 (or higher).<br>Work has started to add clock_gettime() syscalls in kernel vDSO.
+| style="vertical-align:top;" |'''Jul&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] has finished and stability of PA-Linux has improved greatly. Important next milestones will be to port rust to hppa, and maybe to add a LLVM backend for parisc.
+|-
+| style="vertical-align:top;" |'''Jun&nbsp;2024'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49 Dave Anglin contributed a patch] which prevents the random segfaults we faced on PA8800 and PA8900 CPU machines. It is included in kernel 6.6.35, 6.9.6, and 6.10.0 (and higher).<br>Work has started to add clock_gettime() syscalls in kernel vDSO.
 |-
 | style="vertical-align:top;" |'''Apr&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] is going very well. Upgrades were broken until now, but since end of april 2024 it's possible again to upgrade most existing debian hppa installations to the new binaries from the debian-ports archive. Since now 64-bit time_t is enabled by default, and since the LFS64 filesystem calls are enabled by default as well, we expect much lesss problems running debian hppa.<br>[https://wiki.qemu.org/ChangeLog/9.0 Qemu 9.0 was released.] Note that the 64-bit hppa emulation is still incomplete and may work with Linux guests only.
 |-
@@ -90,9 +92,9 @@ The [https://t2sde.org/ T2 System Development Environment] Linux distribution ad
 |-
 | style="vertical-align:top;" |'''Aug&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.1.0 released].<br>[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=382d4cd1847517ffcb1800fd462b625db7b2ebea Found a 10-year old bug (since kernel 3.11) which affected 32-bit parisc kernels].<br>Many kernel bugs fixed in aio, ...
 |-
-| style="vertical-align:top;" |'''July&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.0.3 released with many parisc fixes (SMP CPU fixes, graphics fixes)].
+| style="vertical-align:top;" |'''Jul&nbsp;2023'''||[https://www.qemu.org/ Qemu 8.0.3 released with many parisc fixes (SMP CPU fixes, graphics fixes)].
 |-
-| style="vertical-align:top;" |'''June&nbsp;2023'''||Work started to implement native eBPF for Linux kernel.
+| style="vertical-align:top;" |'''Jun&nbsp;2023'''||Work started to implement native eBPF for Linux kernel.
 |-
 | style="vertical-align:top;" |'''May&nbsp;2023'''||[https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/ palo version 2.24] released.<br>[https://patchwork.kernel.org/project/linux-parisc/patch/ZFKAK7Z4oi8f/ro4@p100/ STI text console support on 64-bit machines], e.g. this allows using all original HP graphics cards in text-mode on C8000 workstations.<br>[https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/commit/?h=devel&id=37481ef2e3776292d15883b9f4aa855d4090ee2d Fix palo to speed up printing the IPL menu on C8000 workstations].
 |-
