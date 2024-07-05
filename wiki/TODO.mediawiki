@@ -1289,8 +1289,8 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=487fa28fa8b60417642ac58e8beda6e2509d18f9 parisc: Define sigset_t in parisc uapi header] (backported to v6.0+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4a599910193b85f76c100e30d8551c8794f8c2a parisc: Define HAVE_ARCH_HUGETLB_UNMAPPED_AREA] (backported to v6.0+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49  '''parisc: Try to fix random segmentation faults in package builds'''] (backported to v6.6+) <span style="color:red">'''THE MOST IMPORTANT PATCH TO FIX CACHE ISSUES.'''</span>
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=403f17a330732a666ae793f3b15bc75bb5540524 '''parisc: use generic sys_fanotify_mark implementation'''] (should be backported)
-* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=20a50787349fadf66ac5c48f62e58d753878d2bb '''parisc: use correct compat recv/recvfrom syscalls'''] (should be backported)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=403f17a330732a666ae793f3b15bc75bb5540524 '''parisc: use generic sys_fanotify_mark implementation'''] (backported to v5.11+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=20a50787349fadf66ac5c48f62e58d753878d2bb '''parisc: use correct compat recv/recvfrom syscalls'''] (backported to v5.4+)
 
 = DONE items =
 == Debian kernel and userspace programs ==
