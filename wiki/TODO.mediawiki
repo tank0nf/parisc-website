@@ -1292,6 +1292,16 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=403f17a330732a666ae793f3b15bc75bb5540524 '''parisc: use generic sys_fanotify_mark implementation'''] (backported to v5.11+)
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=20a50787349fadf66ac5c48f62e58d753878d2bb '''parisc: use correct compat recv/recvfrom syscalls'''] (backported to v5.4+)
 
+== Kernel 6.11 
+* parisc: Clean up unistd.h file
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e23d9c0b5266e083a654b62756ede0dd5bf1ac3d '''parisc: Add 32-bit gettimeofday() and clock_gettime() vDSO functions''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f55e098b8d032ef25b576d18fb91b16ef2d1c41 '''parisc: Add 64-bit gettimeofday() and clock_gettime() vDSO functions''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cbade823342cd013f1fbd46f6e3b74825fecbc16 '''parisc: Add support for CONFIG_SYSCTL_ARCH_UNALIGN_NO_WARN''']
+* parisc: Fix warning at drivers/pci/msi/msi.h:121
+* parisc: Use max() to calculate parisc_tlb_flush_threshold
+* '''parisc: fix unaligned accesses in BPF'''
+* '''parisc: fix a possible DMA corruption'''
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
