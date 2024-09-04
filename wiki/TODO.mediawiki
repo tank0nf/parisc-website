@@ -1473,9 +1473,12 @@ Debian kernel / Generic Kernel bugs fixed
 ** DONE: DNS takeover by Thibaut Varenet on 11/11/2013 - see: http://article.gmane.org/gmane.linux.ports.parisc/5478
 ** DONE: former Server administrator of parisc-linux.org: Dann Frazier - dannf@dannf.org, former technical contact at HP: brett.johnson@hp.com, Since August 2014 administrator/owner: Helge Deller
 
-== Linus Torvalds barking at parisc ==
+== Linus Torvalds talking or working about parisc ==
 * https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=19b9ad67310ed2f685062a00aec602bec33835f0
 * about atomics in parisc and sparc: https://lore.kernel.org/lkml/CAHk-=wispSt+JezguriGPKnJ0xOUWG_LFDgaM-NVJu6cVa+-xw@mail.gmail.com/
+* While debugging a QEMU bug:
+** https://lore.kernel.org/lkml/CAHk-=wiZUidi6Gm_6XFArT621H7vAzhDA63zn2pSGJHdnjRCMA@mail.gmail.com/
+** https://lore.kernel.org/lkml/CAHk-=whWchFofUF9cai6QUixbZNGU=pqDxNUdtZvtBkbFc9QfQ@mail.gmail.com/
 
 = Testsuites, kernel and userspace testing tools =
 
