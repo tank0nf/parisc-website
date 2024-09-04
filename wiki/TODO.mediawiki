@@ -1303,7 +1303,7 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=948f991c62a4018fb81d85804eeab3029c6209f8 wireguard: allowedips: avoid unaligned 64-bit memory accesses]
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1fd2c10acb7b35d72101a4619ee5b2cddb9efd3a '''parisc: fix unaligned accesses in BPF''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7ae04ba36b381bffe2471eff3a93edced843240f '''parisc: fix a possible DMA corruption''']
-* '''parisc: Delay write-protection until mark_rodata_ro() call'''
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=213aa670153ed675a007c1f35c5db544b0fefc94 '''parisc: Delay write-protection until mark_rodata_ro() call'''] (backported to v6.10+)
 
 = DONE items =
 == Debian kernel and userspace programs ==
