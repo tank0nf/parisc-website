@@ -1299,8 +1299,10 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=cbade823342cd013f1fbd46f6e3b74825fecbc16 '''parisc: Add support for CONFIG_SYSCTL_ARCH_UNALIGN_NO_WARN''']
 * parisc: Fix warning at drivers/pci/msi/msi.h:121
 * parisc: Use max() to calculate parisc_tlb_flush_threshold
-* '''parisc: fix unaligned accesses in BPF'''
-* '''parisc: fix a possible DMA corruption'''
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=948f991c62a4018fb81d85804eeab3029c6209f8 wireguard: allowedips: avoid unaligned 64-bit memory accesses]
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1fd2c10acb7b35d72101a4619ee5b2cddb9efd3a '''parisc: fix unaligned accesses in BPF''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7ae04ba36b381bffe2471eff3a93edced843240f '''parisc: fix a possible DMA corruption''']
+* '''parisc: Delay write-protection until mark_rodata_ro() call'''
 
 = DONE items =
 == Debian kernel and userspace programs ==
