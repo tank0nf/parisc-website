@@ -74,6 +74,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
+| style="vertical-align:top;" |'''Sep&nbsp;2024'''||Qemu v9.1 released. Needs at least one patch to run stable with 64-bit CPU.
+|-
 | style="vertical-align:top;" |'''Jul&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] has finished and stability of PA-Linux has improved greatly. Important next milestones will be to port rust to hppa, and maybe to add a LLVM backend for parisc.
 |-
 | style="vertical-align:top;" |'''Jun&nbsp;2024'''||[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=72d95924ee35c8cd16ef52f912483ee938a34d49 Dave Anglin contributed a patch] which prevents the random segfaults we faced on PA8800 and PA8900 CPU machines. It is included in kernel 6.6.35, 6.9.6, and 6.10.0 (and higher).<br>Work has started to add clock_gettime() syscalls in kernel vDSO.
