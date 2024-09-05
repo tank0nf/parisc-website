@@ -74,7 +74,7 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
-| style="vertical-align:top;" |'''Sep&nbsp;2024'''||Qemu v9.1 released. Needs at least one patch to run stable with 64-bit CPU.
+| style="vertical-align:top;" |'''Sep&nbsp;2024'''||Qemu v9.1.0 released. Needs at least [https://gitlab.com/qemu-project/qemu/-/commit/ead5078cf1a5f11d16e3e8462154c859620bcc7e one patch for system-mode] and [https://gitlab.com/qemu-project/qemu/-/commit/d33d3adb573794903380e03e767e06470514cefe one patch for user-mode] to run stable with 64-bit CPUs.
 |-
 | style="vertical-align:top;" |'''Jul&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] has finished and stability of PA-Linux has improved greatly. Important next milestones will be to port rust to hppa, and maybe to add a LLVM backend for parisc.
 |-
