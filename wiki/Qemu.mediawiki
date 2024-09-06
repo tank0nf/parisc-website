@@ -4,9 +4,11 @@ title: Qemu
 
 == QEMU for PA-RISC overview ==
 
-'''Important: Please run at least QEMU version 8.0.0'''.<br>
-64-bit CPU emulation requires at least QEMU version 8.2.<br>
-''' Qemu v9.1.0 sources miss two patches to correctly emulate 64-bit CPUs: [https://gitlab.com/qemu-project/qemu/-/commit/ead5078cf1a5f11d16e3e8462154c859620bcc7e one patch for system-mode] and [https://gitlab.com/qemu-project/qemu/-/commit/d33d3adb573794903380e03e767e06470514cefe one patch for user-mode].'''
+'''Important:'''
+* Please run at least QEMU version 8.0.0
+* 64-bit CPU emulation requires at least QEMU version 8.2.
+* Idealy use stable QEMU versions v9.1.1, v9.0.3, v8.2.7 or v7.2.14
+* Qemu v9.1.0 misses two patches to correctly emulate 64-bit CPUs: [https://gitlab.com/qemu-project/qemu/-/commit/ead5078cf1a5f11d16e3e8462154c859620bcc7e one patch for system-mode] and [https://gitlab.com/qemu-project/qemu/-/commit/d33d3adb573794903380e03e767e06470514cefe one patch for user-mode].
 
 QEMU can emulate two different machines:
 * a 32-bit [https://www.openpa.net/systems/hp-visualize_b132l_b160l_b180l.html HP B160L desktop] with up to 16 concurrent PA7100LC CPUs (SMP), and
