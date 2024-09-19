@@ -1305,6 +1305,16 @@ We may have to fix some assembly code.  Maybe binutils should be built with --en
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7ae04ba36b381bffe2471eff3a93edced843240f '''parisc: fix a possible DMA corruption''']
 * [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=213aa670153ed675a007c1f35c5db544b0fefc94 '''parisc: Delay write-protection until mark_rodata_ro() call'''] (backported to v6.10+)
 
+== Kernel 6.12 ==
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b5ff52be891347f8847872c49d7a5c2fa29400a7 '''parisc: Convert to generic clockevents''']
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f31b256994acec6929306dfa86ac29716e7503d6 '''parisc: Fix stack start for ADDR_NO_RANDOMIZE personality'''] (backported to v5.2+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d24449864da5838936669618356b0e30ca2999c3 '''parisc: Fix 64-bit userspace syscall path'''] (backported to v4.19+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9542130937e9dc707dd7c6b7af73326437da2d50 '''parisc: Fix itlb miss handler for 64-bit programs'''] (backported to v4.19+)
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5d698966fa7b452035c44c937d704910bf3440dd '''parisc: Allow mmap(MAP_STACK) memory to automatically expand upwards'''] (backported to v5.10+)
+* parisc: Use PRIV_USER instead of hardcoded value
+* parisc: pdc_stable: Constify struct kobj_type
+* [https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab9a244c396aae4aaa34b2399b82fc15ec2df8c1 crypto: xor - fix template benchmarking]
+
 = DONE items =
 == Debian kernel and userspace programs ==
 * PALO (http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git/)
