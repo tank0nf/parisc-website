@@ -74,6 +74,8 @@ Check the [[PARISC FAQ]] and [[Hardware support]] if you have trouble installing
 
 == PA-RISC Linux NEWS == 
 {|
+| style="vertical-align:top;" |'''Oct&nbsp;2024'''||Support for the HPPA Architectures was added to the [https://github.com/capstone-engine/capstone/commit/9daa1ffbac35f553c4b2c0428af0b5cfdd6850d7#diff-c579e1e2290a10e71b47294265bc0be7b553b8c9fea1d3bd5b9b9546417ff5f5R2 Capstone disassembly/disassembler framework]. This library is used e.g. by qemu.
+|-
 | style="vertical-align:top;" |'''Sep&nbsp;2024'''||Qemu v9.1.0 released. Needs at least [https://gitlab.com/qemu-project/qemu/-/commit/ead5078cf1a5f11d16e3e8462154c859620bcc7e one patch for system-mode] and [https://gitlab.com/qemu-project/qemu/-/commit/d33d3adb573794903380e03e767e06470514cefe one patch for user-mode] to run stable with 64-bit CPUs.<br>Some patches for Linux kernel to fix 64-bit userspace issues.
 |-
 | style="vertical-align:top;" |'''Jul&nbsp;2024'''||The [https://wiki.debian.org/ReleaseGoals/64bit-time Debian 64-bit time_t transition] has finished and stability of PA-Linux has improved greatly. Important next milestones will be to port rust to hppa, and maybe to add a LLVM backend for parisc.
