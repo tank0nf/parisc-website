@@ -84,6 +84,8 @@ title: TODO
 * STARTED: port [[Gccgo_for_hppa]] gccgo -> https://github.com/hdeller/gcc/tree/gccgo-hppa
 
 == '''executable stack'''==
+TODO: Convert gcc nested function trampoline (pa_asm_trampoline_template) to don't need an executable stack
+
 (see https://lore.kernel.org/all/87lebjz9z6.fsf@gentoo.org/)
 Starting with Kernel 5.18, the parisc Linux kernel gained support to run without executable stacks. 
 In gcc-14 GNU stack notes were enabled.
