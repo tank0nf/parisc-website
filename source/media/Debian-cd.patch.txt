@@ -1,0 +1,145 @@
+diff --git a/CONF.sh b/CONF.sh
+index 74b81d1..7977247 100644
+--- a/CONF.sh
++++ b/CONF.sh
+@@ -46,7 +46,7 @@ unset MAXCDS            || true
+ unset MAXISOS           || true
+ unset MAXJIGDOS         || true
+ unset SPLASHPNG         || true
+-unset OMIT_MANUAL	 || true
++unset OMIT_MANUAL       || true
+ unset OMIT_RELEASE_NOTES || true
+ unset OMIT_DOC_TOOLS     || true
+ unset MAX_PKG_SIZE       || true
+@@ -62,7 +62,7 @@ export BASEDIR=`pwd`
+ # export CDNAME=debian
+ 
+ # Building wheezy cd set ...
+-export CODENAME=wheezy
++export CODENAME=unstable
+ 
+ # By default use Debian installer packages from $CODENAME
+ if [ -z "$DI_CODENAME" ]; then
+@@ -76,7 +76,7 @@ fi
+ #export DI_WWW_HOME=default
+ 
+ # Version number, "2.2 r0", "2.2 r1" etc.
+-export DEBVERSION="7.0"
++export DEBVERSION="8.0"
+ 
+ # Official or non-official set.
+ # NOTE: THE "OFFICIAL" DESIGNATION IS ONLY ALLOWED FOR IMAGES AVAILABLE
+@@ -109,23 +109,23 @@ fi
+ #	      images, however. Also, if you are using an NFS partition for
+ #	      some part of this, you must use this option.
+ # Paths to the mirrors
+-export MIRROR=/srv/mirror/debian
++export MIRROR=/extra/deller/debian-alpha-archive
+ 
+ # Path of the temporary directory
+-export TDIR=/srv/mirror/tmp
++export TDIR=/extra/deller/DEBIAN_INSTALLER/TEMP
+ 
+ # Path where the images will be written
+-export OUT=/srv/mirror/debian-cd-test
++export OUT=/extra/deller/debian-cd-created
+ 
+ # Where we keep the temporary apt stuff.
+ # This cannot reside on an NFS mount.
+-export APTTMP=/srv/mirror/tmp/apt
++export APTTMP=$TDIR/apttmp
+ 
+ # Do I want to have NONFREE merged in the CD set
+ # export NONFREE=1
+ 
+ # Do I want to have CONTRIB merged in the CD set
+-export CONTRIB=1
++# export CONTRIB=1
+ 
+ # Do I want to have NONFREE on a separate CD (the last CD of the CD set)
+ # WARNING: Don't use NONFREE and EXTRANONFREE at the same time !
+@@ -169,9 +169,13 @@ export CONTRIB=1
+ 
+ # Options
+ # export MKISOFS=mkisofs
++# export MKISOFS=genisoimage
+ # export MKISOFS_OPTS="-r"		#For normal users
+ # export MKISOFS_OPTS="-r -F ."	#For symlink farmers
+ 
++export MKISOFS="/extra/deller/t/xorriso.new/xorriso-1.3.9/xorriso/xorriso"
++export MKISOFS_OPTS="-as mkisofs -r -checksum_algorithm_iso md5"
++
+ # Override for i386 and amd64 to use xorriso instead of
+ # mkisofs/genisoimage. Allows creation of isohybrid images: ISO images
+ # that will burn correctly onto a CD and also can be written raw to a
+@@ -196,7 +200,7 @@ export CONTRIB=1
+ export ISOLINUX=1
+ 
+ # uncomment this to if you want to see more of what the Makefile is doing
+-#export VERBOSE_MAKE=1
++export VERBOSE_MAKE=1
+ 
+ # The maximum size allowed for an individual package, in bytes; if
+ # larger than this, it will be excluded (and all dependents, of
+@@ -256,6 +260,7 @@ export IMAGESUMS=1
+ # And define the set of checksum algorithms you want here. Default is
+ # all of: md5 sha1 sha512 sha256
+ # export CHECKSUMS="md5 sha1 sha512 sha256"
++export CHECKSUMS="md5"
+ 
+ # We may have to extract files from packages to put them onto the CD
+ # (e.g. bootloader files). If you make those packages (and their
+@@ -370,7 +375,7 @@ export SNAPURL=Debian=http://snapshot.debian.org/archive/debian/SNAPDATETIME/
+ 
+ # Parameters to pass to kernel (or d-i) when the CD boots. Not currently
+ # supported for all architectures.
+-#export KERNEL_PARAMS="DEBCONF_PRIORITY=critical"
++export KERNEL_PARAMS="preseed/url=http://backup.parisc-linux.org/preseed-alpha.cfg mirror/http/proxy__=http://proxy:8080"
+ 
+ # Default desktop (currently only used by win32-loader)
+ #export DESKTOP=kde
+@@ -384,7 +389,7 @@ export SNAPURL=Debian=http://snapshot.debian.org/archive/debian/SNAPDATETIME/
+ 
+ # Set to 1 to save space by omitting the installation manual. 
+ # If so the README will link to the manual on the web site.
+-#export OMIT_MANUAL=1
++export OMIT_MANUAL=1
+ 
+ # Set to 1 to save space by omitting the release notes
+ # If so we will link to them on the web site.
+@@ -396,7 +401,7 @@ export OMIT_RELEASE_NOTES=1
+ # Set to 1 to not include the doc/tools directories on CD1
+ # Useful to save space and avoids failures if you have a mirror
+ # without those directories.
+-#export OMIT_DOC_TOOLS=1
++export OMIT_DOC_TOOLS=1
+ 
+ case "$OFFICIAL" in
+     "Official")
+diff --git a/easy-build.sh b/easy-build.sh
+index 46e270f..6a9ef28 100755
+--- a/easy-build.sh
++++ b/easy-build.sh
+@@ -73,10 +73,10 @@ fi
+ ## For what release to build images
+ 
+ # The suite the installed system will be based on
+-export CODENAME=wheezy
++export CODENAME=sid
+ # The suite from which the udebs for the installer will be taken (normally
+ # the same as CODENAME)
+-export DI_CODENAME=wheezy
++export DI_CODENAME=sid
+ 
+ 
+ ## The debian-installer images to use. This must match the suite (DI_CODENAME)
+@@ -93,6 +93,9 @@ export DI_DIST=$DI_CODENAME
+ #export DI_WWW_HOME=default
+ # or, use custom / locally built images
+ #export DI_DIR="$HOME/d-i_images/%ARCH%"
++# export DI_DIR="/home/deller/DEBIAN_INSTALLER/debian-installer/debian-installer/installer/build/tmp/netboot"
++# export DI_DIR="/extra/deller/DEBIAN_INSTALLER/debian-installer/installer/build/tmp/netboot"
++export DI_DIR="/extra/deller/DEBIAN_INSTALLER/debian-installer/installer/build/tmp/netboot"
+ 
+ 
+ ## Other options

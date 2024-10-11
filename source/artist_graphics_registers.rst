@@ -1,0 +1,74 @@
+Artist graphics registers (used in HP9000/712)
+==============================================
+
+Artist is the onboard graphics chip used in the HP9000/712. According to
+HP, it's mostly compatible to CRX. On the 712, it spans the I/O memory
+range 0xf8000000-0xf9ffffff. Unfortunately no documentation seems to be
+available, but this is what i figured out by looking at the memory write
+from the Bootrom/STI code:
+
+.. list-table::
+   :header-rows: 1
+
+   - 
+      - Offset
+      - Size
+      - Description
+   - 
+      - ``0x1004a0``
+      - Word
+      - VRAM offset (write index) for write FIFO registers
+   - 
+      - ``0x1005a0``
+      - Word
+      - Bitmask for WRAM write FIFO - only bits set both in the data and
+        this bitmask will be changed
+   - 
+      - ``0x100800``
+      - Word
+      - Block mover source X=Bit31-16 Y=Bit15-0
+   - 
+      - ``0x100a04``
+      - Word
+      - Block mover size Width=Bit31-16 Height=Bit15-0
+   - 
+      - ``0x100600``
+      - Word
+      - Word mode VRAM write FIFO, with every write the number of X
+        pixels is added to the write index.
+   - 
+      - ``0x100620``
+      - Word
+      - Byte mode VRAM write FIFO, with every write the number of X
+        pixels is added to the write index
+   - 
+      - ``0x118010``
+      - Word
+      - foreground color used in block move operations
+   - 
+      - ``0x118014``
+      - Word
+      - background color used in block move operations
+   - 
+      - ``0x30023c``
+      - Word
+      - Used in selftest code, looks like signature testing result
+        register?
+   - 
+      - ``0x380008``
+      - Word
+      - Unknown status register, returning 0x20000000 to make STI happy
+   - 
+      - ``0x380000``
+      - Word
+      - Unknown status register, returning 0 to make STI happy
+   - 
+      - ``0x380008``
+      - Word
+      - Unknown status register, returning 0x20000000 to make STI happy
+   - 
+      - ``0x0118406c-0x011847ff``
+      - Word
+      - Color map used by STI code - Strange offset address, maybe
+        software configurable? One entry spans 32 bit, where Bit
+        23-16=R, Bit16-8=G, Bit7-0=B

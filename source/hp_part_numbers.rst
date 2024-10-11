@@ -1,0 +1,103 @@
+HP part numbers
+===============
+
+For product numbers see: :doc:`HP Product Numbers <hp_product_numbers>`
+
+.. list-table::
+   :header-rows: 1
+
+   - 
+
+      - Part number
+      - CPU type
+      - Clock
+   - 
+
+      - 3AA4-4105
+      - PA-8900
+      - 1GHz
+   - 
+
+      - 3AA4-4107
+      - PA-8900
+      - 1.1GHz
+   - 
+
+      - 3AA4-3206
+      - PA-8800
+      - 1GHz
+   - 
+
+      - 3AA2-3106
+      - PA-8700+
+      - 875MHz
+   - 
+
+      - 3AA2-3105
+      - PA-8700
+      - 750MHz
+   - 
+
+      - 3AA2-2306
+      - PA-8700
+      - 750MHz
+   - 
+
+      - 3AA2-2305
+      - PA-8700
+      - 650MHz
+   - 
+
+      - 3AA2-2206
+      - PA-8700
+      - 500MHz
+   - 
+
+      - 3AA2-2205
+      - PA-8700
+      - ? MHz
+   - 
+
+      - 3AA1-1106
+      - PA-8600
+      - 550MHz
+   - 
+
+      - 3AA1-1105
+      - PA-8600
+      - 500MHz
+   - 
+
+      - 3AA1-1006
+      - PA-8600
+      - 550MHz?
+   - 
+
+      - 3AA1-1005
+      - PA-8600
+      - 550MHz?
+   - 
+
+      - 1QM1-0010
+      - PA-8500
+      - 300Mhz?
+   - 
+
+      - 1QM1-0011
+      - PA-8500
+      - 367MHz
+   - 
+
+      - 1QM1-0012
+      - PA-8500
+      - 440MHz
+   - 
+
+      - 1QM1-0014
+      - PA-8500
+      - 440MHz
+   - 
+
+      - 1ST9-0004
+      - PA-8000
+      - 180MHz

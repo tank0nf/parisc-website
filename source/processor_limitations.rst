@@ -1,0 +1,128 @@
+Processor Limitations and Known Bugs
+====================================
+
+This page is a non exhaustive list of PA-RISC CPUs *features*, to be
+kept in mind when writing PA-RISC code, and especially kernel code.
+
+Cache
+-----
+
+In spite of what the arch manual says (it says the congruence stride is
+16MB), the congruence stride on all manufactured parisc processors is
+4MB. This means that any virtual addresses, regardless of space id, that
+are equal modulo 4MB have the same cache colour. (See `this thread
+<http://article.gmane.org/gmane.linux.ports.parisc/2766>`__).
+
+PA 1.1
+------
+
+Block TLB vs Variable page sizes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+PA 1.1 does **NOT** support Variable page sizes. Only PA 2.0 processors
+have that. But PA 1.1 does have "Block TLB" in some processor versions.
+Use PDC calls (firmware, see :doc:`Processor Dependent Code
+<processor_dependent_code>`) to setup the BTLB entries when available.
+
+PA 2.0
+------
+
+Specific issues of pa2.0 family.
+
+Long divides
+~~~~~~~~~~~~
+
+Unfortunately 64bit integer divides cannot be done using the FPU (the
+limit is about 52bits). This means that we must call millicode any time
+a long is divided by another long. This is really bad since the ``DS``
+instruction doesn't support 64bit division. Instead the millicode must
+perform long division (remember how long that took you in gradeschool?)
+on a 64bit integer. This can take as much as 500 cycles.
+
+Suddenly we have gone from performing two divides of type long in **60**
+cycles to one divide of type long in **500** cycles. It is **very
+important** that the appropriate casts to unsigned int are performed
+before doing divides whenever possible.
+
+Just keep that in mind when you see "``/``" operator in code.
+
+Unsigned vs Signed ints
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Under LP64, pointers are 64 bit quantities and integers are 32 bit
+quantities. In a typical array reference, the index (an *integer*) must
+be added to the base address of the array (a *pointer*) to obtain the
+address of the item being accessed. Before adding a 32bit item to a
+64bit item, the 32bit item must be sign extended to clear the garbage
+out of the top 32bits of the register. This sign extension is done with
+an extract (\`EXTRD\`) operation and takes one cycle. Here is the
+typical array reference::
+
+    register int a[];
+    register int i;
+
+    x = a[i];
+
+and the assembly code under PA1.1::
+
+    LDWX    index(base),x
+
+And finally the assembly code under PA2.0::
+
+    EXTRD,S index,63,32,temp_reg
+    LDWX    temp_reg(basereg),x
+
+The cost of a **typical array access** is now **4** cycles instead of
+**3** cycles. On average, applications doing this will suffer a 5-10%
+performance loss due to these extra extracts.
+
+PA-RISC CPU Cache Design
+~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+    "I/D": seperate Insn and Data Cache, Size is "each"
+    "I+D": combined Insn and Data Cache, Size is "combined"
+    WT == Write Through
+    WB == Write Back
+
+    PA1.x - 32 byte cacheline
+    -----
+     
+    CPU             CPU             Cache Description
+    Model           Mhz             Lx: Size/Index+Tag(Associative)
+    ========        ==========      =======================================
+    PCX             50 
+    PCX-S           50/66
+
+    PA7100/7150     99/125          L1: I/D, 1MB each max   VIPT(Direct)
+           http://cpus.hp.com/technical_references/pa7200_design.pdf
+
+    PA7200          100/120         "I+D Assist": 64x32B    VIPT(Fully)
+    2-way superscaler               L1: Same as PA7100      VIPT(Direct)
+            http://cpus.hp.com/technical_references/pa7200_design.pdf
+      
+    PA7100LC        60/80/100       "I-only Assist": 1KB    VIPT(Fully)
+    2-way superscaler               L1: I+D 2MB max         VIPT(Direct)
+           http://www.parisc-linux.org/documentation/index.html
+
+    PA7300LC        132/160/180     L1: I/D 64k each        VIPT(2-way set)
+    2-way superscaler               L2: 256KB-64MB, WT      PIPT(Direct)
+           http://cpus.hp.com/technical_references/b7300lc.shtml
+
+
+    PA 2.0
+    ------
+    - 64-byte L1 cacheline size
+    - all 4-way superscaler
+
+    PA8000          160/180         L1: I/D 0.5MB each      VIPT(Direct)
+
+    PA8200          200/240         L1: I/D 1MB each        VIPT(Direct)
+
+    PA8500          360/440         L1: I/D 0.50MB/1MB      VIPT(4-way set)
+    PA8600          440/550         L1: I/D 0.75MB/1.5MB    VIPT(4-way set)
+    PA8700          650/750         L1: I/D 0.75MB/1.5MB    VIPT(4-way set)
+    PA8700+         875             L1: I/D 0.75MB/1.5MB    VIPT(4-way set)
+
+    PA8800          900/1Ghz        L1: I/D 0.75MB/0.75MB   VIPT
+                                    L2: I+D 32MB            PIPT

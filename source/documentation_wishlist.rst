@@ -1,0 +1,21 @@
+Documentation WishList
+======================
+
+.. list-table::
+   :header-rows: 1
+
+   - 
+
+      - document/subsystem
+      - priority
+      - benefit
+   - 
+
+      - PDC PAT ERS
+      - medium
+      - currently no documentation exists for PDC on newer (post-A500) HPPA machines
+   - 
+
+      - NGLE ERS / UTD92 ARS
+      - medium
+      - graphics architecture for all pre-VisualizeFX chips (from artist in 712 to visualize eg)

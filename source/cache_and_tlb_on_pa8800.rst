@@ -1,0 +1,293 @@
+=======================
+Cache and TLB on PA8800
+=======================
+
+Notes from PA8800 ERS:
+======================
+
+3.2.1 Physical Address Mode
+---------------------------
+
+The PA8800 processor is the first PA-RISC processor to exclusively
+support a 44-bit physical address space.
+
+3.2.9 Support for Non-Equivalent Aliasing (Nva)
+-----------------------------------------------
+
+The PA8800 provides diagnose bits to provide various levels of
+non-equivalent aliasing support:
+
+#. DIAG_L2_READONLY_ENABLE - this bit causes the L2 to convert
+   private-clean lines into shared lines when they are returned from
+   either the L2 or the FSB if the cacheline maps to a page that is
+   architecturally defined as read-only....
+
+#. DIAG_L2_READONLY_RTN_BLOCK - this bit causes the L2 to keep shared
+   copies of lines that map to read-only pages. This is required for
+   directory-based systems to prevent multiple aliases of a physical
+   address to be brought into the L1 cache without a frontside bus
+   transaction to inform the directory of the new alias.
+
+#. DIAG_L2_RO_FDC_BROADCAST - this bit causes the L2 to broadcast the
+   flush transactions of lines that map to read-only pages or flushes in
+   real-mode to the frontside bus, regardless of if they hit in the
+   L2....
+
+Here is the settings of these bits for Pinnacles and Pluto based systems::
+
+                                   No NVA
+                                   Highest       Pinnacles Pluto
+                                   Performance
+           DIAG_L2_READONLY_ENABLE         0       1       1
+           DIAG_L2_READONLY_RTN_BLOCK      0       1       0
+           DIAG_L2_RO_FDC_BROADCAST        0       0       1
+
+3.3.4 Load and Clr word operation
+---------------------------------
+
+Load and Clear operation follows the PA2.0 architecture. The PA8800 does
+implement the cacheable hint for load and clear's treating these as an
+atomic read-modify-write in cache. If the line is not resident in cache,
+it will be brought in before the load is executed. The PA8800 does not
+trap LDCW's that are not 16 byte aligned. An alignment trap is taken
+only if the address is not word, or double word aligned, depending on
+the size of the LDCW.
+
+14.2 Data Cache
+---------------
+
+The PA8800 Data cache is a 4-way set associative 0.75 MB cache, split
+into two banks and interleaved on double word boundaries to allow two
+simultaneous uses of the cache. Each bank is further divided into
+independent tag and data ports, primarily to allow effective single
+cycle stores. The two tags hold identical information. Each port returns
+data in two cycles, but can start a new access every cycle. ... The
+address for an FDCE is calculated in the same fashion as a load absolute
+(i.e., a real mode address). Only one way of the referenced cache line
+will be flushed. If all ways must be flushed, four FDCEs must be
+performed to each line that needs to be flushed. A copy out will be
+performed if necessary. Space hashing is turned off, since the address
+is treated as a real mode access. A sequence of FDCEs to sequential
+addresses from 0 to the cache size must be repeated four times to
+guarantee that the whole cache has been flushed.
+
+14.2.1 Flushing the cache using FDCE instructions
+-------------------------------------------------
+
+.. note::
+
+   The following only applies to flushing the Level-1 D-cache. To flush
+   all data from the Level-1 and Level-2 caches, refer to the L2 cache
+   chapter for the proper flush loop.
+
+The only architecturally defined way of using an FDCE instruction is to
+flush the entire cache. The architecturally defined loop (as found in
+the PDC CACHE section of the IO ACD) is shown below:
+
+.. code-block:: cpp
+
+           unsigned int addr, count, loop, D_base, D_count, D_loop, D_stride;
+           addr = D_base
+           for (count = 0; count < D_count; count++) {
+                   for (loop = 0; loop < D_loop; loop++)
+                           FDCE(addr);
+                   addr += D_stride;
+           }
+
+Two of the PDC_CACHE parameters for the Dcache may not be obvious. They
+are D_count and D_loop. D_loop cannot be four because four FDCEs in a
+row to the same index may not flush all four ways (they may launch at
+the same time and choose the same way to flush). The correct values for
+the parameters are shown below::
+
+           D_base          0x0
+           D_count         0x180
+           D_loop          1
+           D_stride        0x80
+
+Flushing a range of indices with FDCE instructions is not supported on
+the PA8800 dues to interactions with the L2 cache. For more details see
+the L2 cache chapter.
+
+15.1 Overview
+-------------
+
+The PA8800 level 2 (L2) cache is a 32MB unified (instruction and data)
+cache. The cache is 4-way set associative and stores 128B lines. The tag
+array is on-chip (to minimize hit/miss detection latency), but the data
+is stored in off-chip custom DRAMs. Both tags and data are protected by
+ECC See the Error Handling chapter for how to calculate the ECC.
+
+The L2 cache is shared by both of the CPU cores on the PA-8800 die.
+Unlike the L1 caches, the index is determined from the physical address.
+Five different states are supported: invalid, instruction, shared,
+private clean, and private dirty. Private lines will only be written
+into the L2 cache when they are evicted from the L1 (i.e. the L2 cache
+is not inclusive). Shared and instruction lines will only be written to
+the L2 when they are returned from MIB to the core. In both cases,
+victim selection is done at the time a line is written into the L2.
+
+The L2 cache can take a new transaction every other core cycle. A
+hit/miss determination is available in 8 cycles: a miss in the L2 cache
+is sent to MIB and a hit in the L2 cache is queued to access the DRAM.
+The L2 cache is non-blocking and can support upto 8 outstanding hits (in
+addition to the 16 outstanding requests supported by MIB). However,
+there is a maximum limit of 4 instruction misses per core outstanding at
+any given time. ....
+
+15.2 Flushing the cache
+-----------------------
+
+FDCE/FICEs have defined behavior only when used in the architected loop
+to flush the entire cache (including the L2 cache). In previous CPUs
+(PA-8000 through PA-8700), executing FDCE/FICE instructions in virtual
+mode to flush a \*portion\* of the cache would generally flush the
+expected range of addresses if the user knew the cache organization
+including the associativity. That is not the case for the PA-8800. On
+the PA-8800, the expected addresses may not be flushed from the L2
+cache. That makes it even more important to use FDCE/FICEs only in the
+architected flush loop.
+
+The reason this is different on the PA-8800 is that FDCE/FICE
+instructions executed in virtual mode will send out their virtual
+address onto corebus, \*not\* their real address. That means the L2
+cache, which uses physical indexing, will flush a line based on the
+virtual address. The L2 cache index formed from the virtual address will
+(most likely) not be the same as the L2 index formed by the real
+address. Thus, the real address corresponding to the virtual address
+specified in the FDCE/FICE instruction will not be flushed from the L2
+cache. This is not an issue when using FDCE/FICE instructions to flush
+the entire cache, including the L2 cache.
+
+Note, even though the L2 is a shared cache, it must be flushed with both
+the FICE and FDCE loop since FICE's only flush instruction lines and
+FDCE's only flush data lines. Also, the L2 flushing loops are a
+super-set of the L1 flush loops, therefor flushing the L2 will also
+flush the L1 cache of the processor running the flush loops.
+
+15.2.1 Flushing instruction lines from the cache using FICE instructions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The only architecturally defined way of using an FICE instruction is to
+flush the entire cache. The architecturally defined loop (as found in
+the PDC CACHE section of the IO ACD) is shown below:
+
+.. code-block:: cpp
+
+           unsigned int addr, count, loop, I_base, I_count, I_loop, I_stride;
+           addr = I_base
+           for (count = 0; count < I_count; count++) {
+                   for (loop = 0; loop < I_loop; loop++)
+                           FICE(addr);
+                   addr += I_stride;
+           }
+
+Three of the PDC_CACHE parameters for the Icache may not be obvious.
+They are I_base, I_count, and I_loop.
+
+- I_loop isn't four because an FICE flushes all four ways at the given
+  index.
+
+- I_base starts the loop at an address that insures that all indices
+  will be flushed at least once, the icache index generation below.
+
+The correct values for the parameters are shown below::
+
+                           Sectoring=0     Sectoring=1
+           I_base          0x0             0x0
+           I_count         0x40000         0x80000
+           I_loop          1               1
+           I_stride        0x80            0x80
+
+3.4 PA2.0 Architectural Exceptions
+----------------------------------
+
+The following are the PA8800's approved exceptions to the PA 2.0
+architecture which occur in the PA8800 CPU:
+
+- Purge TLB (PITLB,PDTLB -- both global and local purges) do not force
+  bits 4:10 of the offset to 0 when space hashing is enabled in wide
+  mode as required. Software must clear these bits. Note also that the
+  PA2.0 architecture has been changed so PxTLBL instructions must zero
+  the x-field (instruction bits 6:10) and must not specify address
+  modification.
+
+- A recovery counter trap that occurs on the first RFI target (IIAOQF)
+  is not guaranteed to have the GVA in the IIASQ registers in wide mode.
+  If software wrote a non-GVA value into them before the RFI, they will
+  return the value written, not the GVA after the RFI.
+
+- The PA8800 violates the seven instruction pipeline rule when
+  performing TLB inserts or PxTLBE instructions with the PSW C bit on.
+  The instruction will take effect by the 12th instruction after the
+  insert or purge.
+
+  - Note that the PA2.0 TLB insert instructions use resources that are
+    undefined when the Q bit is on.
+
+  - Note also that code written to take advantage of the TLB relied-upon
+    translation rules will not be executing TLB inserts or purges with
+    the C bit on (and the Q bit off). (The PA8800 will use last written
+    values of IIASQF/IIAOQF and ISR/IOR for TLB inserts when Q bit is
+    on.)
+
+- FCNV will take an unimplemented trap on certain operands. The specific
+  cases are detailed else where in this document.
+
+- "Space Crashing".
+
+  - Software must never set common bits in the space and offset for the
+    instruction address. For example::
+
+           0x00FFFF08            IASQ
+           0x0000000F 00000008   IAOQ
+
+  - Bit 28 of the space and offset are both set. Doing so will never
+    grant a process access to instructions for which it should not have
+    access, but it can cause execution of unexpected addresses and
+    subsequent wrong results.
+
+- PTLBL:
+
+  - Bits[4:10] of the offset are not cleared when performing a local tlb
+    purge in wide mode as the architecture requires.
+
+- When a trap is taken with PSW C=0 and PSW Q=1, the IIASQ is not
+  cleared as required.
+
+- When a trap is taken with PSW W=1, the IIAOQ bits which are involved
+  in space hashing (bits 4-10) are cleared.
+
+- When code changes from narrow to wide mode within 8 instructions of a
+  4GB boundary (0xffff ffe0 - 0xffff fffc), wide mode will not take
+  effect, and the subsequent instruction address will wrap around to
+  0x0.
+
+3.5 Permanent Defects
+---------------------
+
+The following is a list of permanent defects on the PA8800 CPU:
+
+- The performance monitor coprocessor must only be enabled for trusted
+  code due to the PMDIS instruction. That instruction creates a security
+  violation if allowed to execute.
+
+- A B,GATE instruction executed in real mode (PSW_C = 0) is not
+  guaranteed to promote the privilege to priv 0.
+
+- If a system is able to recover from an HPMC and that HPMC is taken on
+  an IO load, that load will issue once before taking the HPMC and again
+  after RFI'ing from the HPMC handler. This breaks the IO load's
+  atomicity.
+
+- Before deconfiguring a CPU via an HPA write, it is necessary to flush
+  the L1 cache of the CPU being deconfigured.
+
+- Under certain circumstances, a read_current transaction may hit the
+  same line dirty in the L2 and a core causing a BERR (DDTS bug 254).
+
+- DIAG_MIB_MODE_OWN must be set to 0 (DDTS bug 204) for Pluto based
+  systems.
+
+- There exist circumstances where the L2 will continuously retry a CCC
+  forever (DDTS bug 84).

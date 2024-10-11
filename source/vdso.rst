@@ -1,0 +1,56 @@
+vDSO
+----
+
+vdso is a virtual shared object that is created by the kernel and
+visible to user processes. It is very similar to PA-RISC Linux's
+GatewayPage mechanism, but instead of being exposed as magic constants,
+it uses standard (on Linux) ELF mechanisms for linking and loading.
+
+One other advantage of vdso is that we can expose functions from the
+kernel with proper DWARF CFI information so that it becomes easier to
+unwind through them. This is useful for tools like gdb.
+
+Kernel Implementation
+~~~~~~~~~~~~~~~~~~~~~
+
+The PA-RISC implementation is largely derived from the work on PPC done
+by benh.
+
+vDSO support was added to kernel v5.18 in
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df24e1783e6e0eb3dc0e3ba5a8df3bb0cc537408
+
+First of all, we create a shared library during the kernel build process
+that contains the kernel functions we want to provide. These are linked
+into a .so, which we include into the kernel binary.
+
+On startup, we determine the address of this included .so in kernel
+virtual space (vdso32_kbase) and pin it in memory.
+
+Then we add a hook to the elf loader so that when the kernel starts an
+application, it will call arch_setup_additional_pages, which creates a
+new mapping to map the vdso into the memory space of the newly started
+application. We pass the location of the mapped vdso in an ELF AUX
+header (AT_SYSINFO_EHDR) to the dynamic linker.
+
+Userspace Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+During startup the dynamic linker looks for an AT_SYSINFO_EHDR entry. If
+it is found, it will set a variable dl_sysinfo_dso that points to the
+value of that ELF AUX header.
+
+In elf/rtld.c:dl_main(), if dl_sysinfo_dso is set, we will add a linkmap
+entry into the list that points to this vdso. This allows the dynamic
+linker to perform lookups into the vdso.
+
+Next, in ``__libc_start_main()``, we lookup and store pointers to all
+vdso symbols that glibc knows about. These are stored as ``void
+*__vdso_XXXX``.
+
+In the sysdep code, we define VSYSCALL entry points that uses these
+pointers to call the kernel vdso. The VSYSCALL() macro should fall back
+to a normal system call if the vdso entry point is not available. This
+allows glibc to work across old and new kernels.
+
+For library functions that can use the vsyscall, we call
+INLINE_VSYSCALL() instead of SYSCALL().

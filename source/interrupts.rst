@@ -1,0 +1,235 @@
+Interrupts
+==========
+
+How the hardware works
+----------------------
+
+The processor receives an interrupt when a device writes to its
+interrupt register. The OS interrupt handler then reads that register,
+determines which device interrupted and calls the appropriate handler.
+
+Some devices can be programmed to do this directly. For example,
+:doc:`PCI <pci>` cards that support MSI or MSI-X can write directly to
+the processor's interrupt register.
+
+Many devices in PA-RISC boxes are not capable of interrupting the
+processor directly in this manner. Their interrupt is instead proxied by
+an interrupt controller. Often these interrupt controllers (such as the
+one built in to Lasi) are not capable of indicating which device they
+are proxying for. Instead, the OS handler must go and read a register in
+the interrupt controller that determines which device actually
+interrupted.
+
+We have 5 different types of controller:
+
+- Asp/Lasi/Wax/Timi (now referred to as GSC-ASIC)
+- Dino (GSC-:doc:`PCI <pci>`)
+- :doc:`EISA <_eisa>`
+- :doc:`IO-SAPIC <io-sapic>`
+- `SuperIO <_superio>`
+
+How it was
+----------
+
+Since Linux represents an interrupt with a single integer, we divided
+the interrupts up into 16 regions, each of 32 or 64 interrupts
+(depending whether this was a 32- or 64-bit kernel). Each region had an
+action associated with it.
+
+We had our own IRQ handling code that had diverged significantly from
+other architectures' code. Bugs had been fixed in other architectures
+that had not propagated to our code.
+
+Recent changes
+--------------
+
+Recently, the i386 interrupt code has been moved to a generic directory
+and various architectures including PPC/PPC64, ia64, MIPS and m32r have
+been converted to use it. The PA-RISC interrupt handling code was quite
+different from the generic code, but I (Matthew_Wilcox) thought there
+was a good chance we could at least get closer to the generic code and
+share their bugfixes.
+
+Several people have attempted this before and not finished the work, so
+I decided to work in small pieces so at least the next person to attempt
+this would have a better base to start from.
+
+The first step was to switch the action handler type from
+``irq_region_ops`` to the generic ``hw_interrupt_type``. This required
+getting rid of the ``mask_irq()`` functions. They weren't needed anyway.
+
+I got confused by how the GSC-ASIC interrupts worked and rewrote the
+code. The basic problem is that the documentation describes the
+assignment of bits in the interrupt register in *big-endian* bit
+numbering. We were numbering IRQs as described in the documentation.
+This meant we were doing a lot of checking bits from the wrong end and
+subtracting things from 31.
+
+In my rewrite, we treat the documentation as buggy. The irq numbers are
+now numbered to match the little-endian bit numbers. Also, we restrict
+the irq numbers to be 0-31 instead of 63-32 on 64-bit machines. This
+means the interrupt numbers change between 2.6.10-pa3 and 2.6.10-pa4.
+
+The generic IRQ code is based around a flat array of ``irq_desc[]``. The
+PA-RISC IRQ code was based around an array of ``irq_region[]`` with
+subarrays for things that are per-IRQ. Over a series of patches, I
+introduced an array of ``irq_desc[]`` and moved elements of the
+``irq_region`` to the corresponding element of ``irq_desc``.
+
+Almost all of the interrupt types needed a piece of data to identify
+either the interrupt or the interrupt controller that this interrupt is
+for. I decided to add a ``void *`` to the generic ``irq_desc`` for this
+purpose. It would also be possible to use another array indexed by irq
+number.
+
+The ``irqbase`` element of the ``irq_region`` was not moved to the
+``irq_desc`` structure (as it is not a generic concept). Instead it was
+moved to each handler's private data structure.
+
+At this point, I turned on the generic IRQ code and deleted our old
+interrupt handling code.
+
+The ``iosapic_interrupt()`` routine is gone; the CPU now calls the
+device's interrupt handler directly from the top level interrupt
+routine.
+
+:doc:`SuperIO <_superio>` was converted to use the legacy interrupt area
+(0-15).
+
+Dino, Lasi, Asp and Wax were converted to use the dynamic :doc:`GSC <gsc>`
+interrupt area.
+
+Interrupt regions have been removed.
+
+How it works
+------------
+
+Interrupts now appear in one of three areas.
+
+- The legacy area is interrupts 0-15. They're used by :doc:`EISA <_eisa>` or
+  :doc:`SuperIO <_superio>`, or left unused.
+
+- The :doc:`GSC <gsc>` area is interrupts 16-63. They're dynamically
+  allocated for devices below Lasi or Wax (eg serial ports)
+
+- The CPU area comes after the GSC area, or after the legacy area if the
+  kernel is compiled without :doc:`GSC <gsc>` support. It's either 32 or 64
+  interrupts in size, depending on whether the kernel is 32 or 64 bit.
+
+GSC-ASIC devices (Lasi, Dino, Wax, etc) claim a CPU interrupt and
+register dynamic virtual interrupts in the :doc:`GSC <gsc>` area for
+each of their child devices that will be using them as an interrupt
+controller. This isn't quite ideal; the child devices should be
+requesting their own interrupts, possibly via a call to
+``gsc_enable_device()`` or something.
+
+Since :doc:`IO-SAPIC <io-sapic>` supports using a different CPU
+interrupt for each child interrupt, it hijacks the CPU interrupt number
+and replaces the ``cpu_interrupt_type`` with ``iosapic_interrupt_type``.
+
+When the CPU receives an interrupt, the parisc-specific interrupt code
+converts it to a virtual irq number (currently by adding
+``CPU_IRQ_BASE``). It then calls ``__do_IRQ()`` (which is generic code)
+to handle it. If the interrupt is a GSC-ASIC interrupt, that interrupt
+handler will figure out the virtual IRQ for the device that actually
+interrupted and call ``__do_IRQ()`` again.
+
+/proc/interrupts
+~~~~~~~~~~~~~~~~
+
+On a C3600 with many PCI cards::
+
+    $ cat /proc/interrupts 
+               CPU0
+      1:          0         SuperIO  ohci_hcd
+      3:       4382         SuperIO  serial
+      4:         53         SuperIO  serial
+      7:         16         SuperIO  ide0
+     32:   38404900             CPU  timer
+     33:      13140  IO-SAPIC-level  eth2
+     35:       4459  IO-SAPIC-level  SuperIO
+     36:      84951  IO-SAPIC-level  sym53c8xx, sym53c8xx
+     37:          3  IO-SAPIC-level  eth0
+     38:          0  IO-SAPIC-level  Ensoniq AudioPCI
+     39:          3  IO-SAPIC-level  eth3
+     40:          6  IO-SAPIC-level  eth4
+     41:          3  IO-SAPIC-level  eth5
+     42:          3  IO-SAPIC-level  eth6
+     43:         51  IO-SAPIC-level  eth1
+     44:         30  IO-SAPIC-level  sym53c8xx
+     45:         30  IO-SAPIC-level  sym53c8xx
+     46:          0  IO-SAPIC-level  eth7
+     47:          3  IO-SAPIC-level  eth8
+     
+
+On a 725 with many plugin cards::
+
+    $ cat /proc/interrupts 
+               CPU0
+      2:          0            EISA  cascade
+     16:         65        GSC-ASIC  2:0:1
+     17:        220        GSC-ASIC  i82596
+     18:        236        GSC-ASIC  serial
+     19:          0        GSC-ASIC  parport0
+     22:          0        GSC-ASIC  GSC PS/2 keyboard
+     23:          1        GSC-ASIC  GSC PS/2 mouse
+     25:          8        GSC-ASIC  serial
+     26:          0        GSC-ASIC  EISA
+     27:        251         GSC-PCI  acenic
+     64:      27308             CPU  timer
+     65:        522             CPU  lasi
+     66:        250             CPU  Dino [10]
+     67:       1429             CPU  zalon
+     71:          8             CPU  wax
+     
+
+The future
+----------
+
+I'd like to unify ia64 and parisc :doc:`IO-SAPIC <io-sapic>` support.
+
+CPU affinity support needs to be written for both IO-SAPIC and CPU
+interrupt types.
+
+We currently only support 62 CPU/IO-SAPIC interrupts. For Superdome, we
+need to increase that (probably to 62 per CPU).
+
+Write support for MSI/MSI-X :doc:`PCI <pci>` devices
+
+Gory Interrupt architecture details on Astro ([BCJNL]xxx0/A500) machines
+------------------------------------------------------------------------
+
+.. note::
+
+   This was written by KyleMcMartin based on what information he could
+   glean while debugging VisualizeFX. It may be inaccurate, so he would
+   appreciate it if someone with more cluons could double check it.
+
+PCI cards have three ways of generating an interrupt on these systems,
+all of which boil down to the same thing in the end, a WRITE_SHORT (from
+Astro doc) Runway transaction to a processors IO_EIR with the interrupt
+vector as payload.
+
+The three ways, which will be addressed below, are yanking the INTx wire
+down, MSI, and pure PA interrupts.
+
+Basically, when a PCI cards pulls INTx down, the IOSAPIC logic in the
+Elroy (LBA) figures some junk out that isn't really relevant here,
+mapping an interrupt line to a write address of the form 0xfee0'0000
+with the low 5 or 6 bits being the vector, and the dest EID and EID
+(???) in the middle. This is forwarded up the rope to the Astro, which
+rewrites the address to be of the form 0xffa0'0000 with the dest EID in
+there, F-extends it to a 40-bit Runway address, and blasts the vector
+onto the Runway bus at a CPU. The CPU gets hit with the write, and does
+the interrupt dance.
+
+So, anyway, the PCI INTx is the most complicated case. The other two
+ways of interrupting are to use MSI and construct the 0xfee0'0000
+address manually (and program the IOSAPIC???) and use that, or to use
+(as in VisualizeFX) the pure PA TBI mechanism, and program Elroy to
+recognize that you're writing to the CPU, and forward the write to Astro
+which will F-extend and forward it onto Runway, interrupt the processor,
+and spread love and good will throughout the world.
+
+And now someone can tell me I'm completely wrong and it's magic possums
+which run around your machine carrying messages for CPUs.

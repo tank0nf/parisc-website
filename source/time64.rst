@@ -1,0 +1,88 @@
+======
+Time64
+======
+
+Upgrading system to latest debian-ports binaries
+------------------------------------------------
+
+Some hints when upgrading from an older version to the time64-enabled
+binaries.
+
+#. run apt-update
+
+#. run apt install debian-archive-keyring debian-keyring
+   debian-ports-archive-keyring palo
+
+#. install latest stable kernel, reboot
+
+#. I had to drop all "db" entries in /etc/nsswitch.conf, otherwise I got
+   crashes in apt/dpkg from libdb-5.3.so::
+
+       BDB0588 At least one secondary cursor must be specified to DB->join#
+
+#. After upgrade I had to reinstall lots of programs, specifically::
+
+       moreutils mc ifupdown mailutils task-ssh-server``
+
+Thoughts during debian's time64 transition
+------------------------------------------
+
+- gstreamer
+
+Use 1.22. It seems the actual versions have to match. I also edited the
+version info gstreamer1.0 (meson.build and gstreamer.doap) so version in
+pkgconfig file is 1.24.0. Besides the gst packages, we also need an old
+version of webkit2gtk. The latest version depends on features added in
+gstreamer 1.24.
+
+I'm having to work around issues caused by lack of clang and rust
+compilers. A few packages now need 64-bit.
+
+The hard part has been setting up and maintaining chroot. I need
+wxwidgets3.2 and webkit2gtk builds to complete transition for giant
+ffmpeg dependency loop. Then, I should be able to an apt upgrade for
+chroot. These are the packages that I have or will do manual builds in
+chroot: gnuplot hdf5 libnsl vtk9 dbus-c++ gst-plugins-bad1.0 ibus
+librsvg webkit2gtk gst-plugins-base1.0 imagemagick libtirpc weston efl
+gst-plugins-good1.0 leptonlib pmix wxwidgets3.2 ffmpeg gstreamer1.0
+libcroco poppler
+
+The gst\* and webkit2gtk sources are from trixie. They are last versions
+that built on hppa. I just did +b1 uploads for them. We can add
+wpewebkit to the list whose version has to match gstreamer1.0 version.
+Build of wpewebkit failed for same reason as webkit2gtk.
+
+librsvg is last version that built on hppa. Same for libcroco. libcroco
+packages have been deleted from debian archive. However librsvg lib
+depends on libcroco lib.
+
+I can details of versions for other packages. Some needed +b1 rebuilds
+of last versions that built. Others, just needed to be built in chroot
+to fix dependencies.
+
+Current version of gnuplot needs wxwidgets3.2. Maybe it will build after
+we get build of it. Testsuite just failed... I have been ignoring
+testsuite issues.
+
+- A few packages now need 64-bit.
+
+There was a discussion about some packages dropping 32-bit. But that was
+scientfic libs and such:
+https://lists.debian.org/debian-devel/2024/04/msg00353.html pmix now is
+only 64-bit. I used 5.0.1-4. openmpi lib depends on libpmix2t64. So,
+this not just scientific.
+
+I'm trying to build webkit2gtk_2.42.5-1. First build failed due this
+bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066454
+
+From what I read, there are other serious bugs in this version. Also t64
+renaming hasn't been done in this version.
+
+I'm trying to build webkit2gtk_2.42.5-1. First build failed due this
+bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066454 From what
+I read, there are other serious bugs in this version. Also t64 renaming
+hasn't been done in this version. I think we need to see if we can
+remove the rust dependencies in the current version of gstreamer1.0 on
+hppa and then update to the current versions of the gst and webkit
+sources. Filed a gstreamer bug:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1069625

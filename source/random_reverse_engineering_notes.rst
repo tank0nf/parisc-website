@@ -1,0 +1,30 @@
+Random Reverse Engineering Notes
+================================
+
+Memory Layout J5000
+-------------------
+::
+
+    fffffff0f0400000 - Scratch RAM
+    fffffff0f0500000 - EEPROM (Stable Storage)
+    fffffff0f05d0000 - LCD
+    fffffff0f05e0000 - Debugger card
+    fffffff0f05f1010 - Microcontroller?
+    fffffff0f05f1038 - Bit 0: Firmware flash write enable
+    fffffff0fee00070 - SuperIO index
+    fffffff0fee00071 - SuperIO data
+    fffffff0f05f0068 - PDH (Processor dependent hardware register)
+
+PDC PAGE0 processor specific
+----------------------------
+::
+
+    0x640: code that will be executed when PDC_PROC(0) is called, loop with nops:
+      0x00000640  e81f1ff5  08000240  08000240  08000240
+      0x00000650  08000240  08000240  08000240  08000240
+      0x00000660  08000240  08000240  08000240  08000240
+      0x00000670  08000240  08000240  08000240  08000240
+
+::
+
+    0x680: OS rendezvous code

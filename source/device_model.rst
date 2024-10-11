@@ -1,0 +1,77 @@
+The PA-RISC Device Model
+========================
+
+The PA-RISC hardware is arranged in a specific way [TODO MORE HERE].
+
+The PA-RISC firmware presents the hardware in a (as much as possible)
+coherent way to the operating system, providing platform specific
+information about each device. Thusly, given how the Linux 2.6 Device
+Model works [TODO MORE - URL?], there has been interest in defining a
+``parisc_device`` device type structure:
+
+.. code-block:: cpp
+
+    struct parisc_device {
+            unsigned long   hpa;            /* Hard Physical Address */
+            struct parisc_device_id id;
+            struct parisc_driver *driver;   /* Driver for this device */
+            char            name[80];       /* The hardware description */
+            int             irq;
+            int             aux_irq;        /* Some devices have a second IRQ */
+
+            char            hw_path;        /* The module number on this bus */
+            unsigned int    num_addrs;      /* some devices have additional address ranges. */
+            unsigned long   *addr;          /* which will be stored here */
+
+    #ifdef __LP64__
+            /* parms for pdc_pat_cell_module() call */
+            unsigned long   pcell_loc;      /* Physical Cell location */
+            unsigned long   mod_index;      /* PAT specific - Misc Module info */
+
+            /* generic info returned from pdc_pat_cell_module() */
+            unsigned long   mod_info;       /* PAT specific - Misc Module info */
+            unsigned long   pmod_loc;       /* physical Module location */
+            unsigned long   mod_info;       /* PAT specific - Misc Module info */
+            unsigned long   pmod_loc;       /* physical Module location */
+    #endif
+            u64             dma_mask;       /* DMA mask for I/O */
+            struct device   dev;
+    };
+     
+
+Most of the fields are self-explanatory, yet, here is some additional info:
+
+hpa
+   This is the physical hardware address of the device, which is used by
+   many PA-RISC internal drivers to access the hardware, in particular
+   through firwmare calls.
+
+hw_path
+   This field is very PA-RISC specific and very helpful as well. Each
+   device in the PA-RISC terminology can be defined by its *hardware
+   path*, which is a succession of ``hw_path`` numbers providing a
+   *path* to follow when descending the PA-RISC devices arborescence in
+   order to reach any given device. In fact, each device has a position
+   associated to it on its given bus, which consitutes its ``hw_path``.
+   Bus bridges have positions on their parent bus as well, and it's thus
+   possible to reconstruct the full path from the *root* of the device
+   tree (usually a main bus, or the device itself if it doesn't have a
+   parent bus) to the device by using these numbers. Such a path is
+   usually represented like this: ``0/4/15/2``. See :doc:`PDC Stable
+   Storage <pdc_stable_storage>` for an example use of hardware paths.
+
+[TODO Detail 64bit only fields]
+
+dev
+   Most obviously, the ``parisc_device`` encapsulates a regular ``struct
+   device`` pointer, which makes it possible to reconstruct the device
+   tree using regular device routines.
+
+How PA-RISC Devices Are Discovered
+----------------------------------
+
+The firmware detects devices on the system, yet, it does not necessarily
+inform us about all existing devices, so we have to probe for them on
+our own. This has the significant drawback of potentially detecting
+"fake" devices, that is devices which are not physically connected (eg.
+extra serial or PS2 ports).

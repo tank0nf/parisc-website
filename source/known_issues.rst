@@ -1,0 +1,80 @@
+Known Issues with the PA-RISC Linux Kernel
+==========================================
+
+This page lists known limitations of the current implementation of the
+PA-RISC Linux **kernel**. If not mentioned otherwise, this list applies
+to the latest GIT version (at the time of this writing this means
+version 2.6.22-rc2). Please note that this list is likely to be
+incomplete and is NOT meant to be a :doc:`TODO <todo>` or "wanted
+features" page! BTW, if you think you have found a bug not listed here
+then please report it to the PA-RISC Linux mailing list.
+
+Some of the issues described here might never be resolved, partly due to
+the fact that documentation is unavailable/missing, it would not fit
+with the current kernel design or there is simply lack of manpower.
+
+Also keep an eye on the :doc:`hotspots <_hot_spots>` and the available
+:doc:`Test Cases <testcases>`.
+
+Missing/Incomplete PA-RISC specific Drivers
+-------------------------------------------
+
+- VisualizeFX graphics cards
+
+  - No graphics support written, cards can only be used in text mode via
+    the sticon driver. There is interest in a driver being written, but
+    because no programming documentation has been released by HP this
+    will be a difficult task. There is a reverse engineering attempt on
+    :doc:`VisualizeFX <visualize_fx>`.
+
+- Accelerated X11 support for Visualize-EG graphics cards
+
+  - So far there is only basic framebuffer support via stifb. Lack of
+    :doc:`manuals <documentation_wishlist>`/time. Anyway, an acceleration
+    support for :doc:`NGLE <ngle>` cards is in progress.
+
+- HP-PB bus and HP-PB cards
+
+  - This bus system and type of cards are mainly used on old HP9000/800
+    servers. Much of the programming manuals are not available, and
+    since there is not much demand to support such old machines progress
+    for these devices is almost non-existent (although some brave souls
+    have been seen hacking on them from time to time)
+
+- ccio and ncr53c8xx (ncr53c720) - apparently not 64 bit clean
+
+- ns87415 - DMA support doesn't seem to work (transfer speeds <=3MB/s)
+
+- snd_ad1889 - playing music with alsa native interface produces garbled
+  sound, OSS emu does work however. This is because alsa native use mmap
+  on the device, which parisc-linux doesn't support (yet).
+
+- EISA DMA support is not implemented yet
+
+- PCI-to-PCI bridge issue (loop in ``/proc/iomem`` ``/proc/ioports``)
+
+Broken Device Drivers and File Systems
+--------------------------------------
+
+Hardware drivers, networking support, file systems etc. that are
+expected to work on all supported architectures of the Linux kernel, but
+don't function properly on PA-RISC Linux:
+
+- matroxfb - 64 bit kernel issue: screen stays black, i.e. graphics card
+  is not properly initialized <-- HAS THIS BEEN FIXED?
+
+- Promise IDE P-ATA controller (PDC202XX_NEW) - DMA issues, but booting
+  with 'nodma' works. Try a siimage controller if you really need IDE.
+
+Other Missing Features (related to palo, glibc, userspace etc.)
+---------------------------------------------------------------
+
+- 64 bit userland, missing bits:
+
+  - 64 bit binutils that will build DSO's
+  - 64 bit glibc
+  - Multiple stub sections for the 64 bit linker.
+
+- Low latency
+- XFree86/X.org BIOS init emulation support
+- MSI/MSI-X PCI device support

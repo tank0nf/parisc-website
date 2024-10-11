@@ -1,0 +1,224 @@
+====
+KGDB
+====
+
+.. note::
+
+   kgdb has been merged upstream in Linux Kernel v5.2.
+
+Required configuration to use KGDB/KDB for kernel debugging
+===========================================================
+
+Make sure your .config contains::
+
+    CONFIG_KGDB=y
+    CONFIG_KGDB_SERIAL_CONSOLE=y
+
+If you want to be able to use KDB (a KGDB frontend running on the
+console)::
+
+    CONFIG_KGDB_KDB=y
+
+To enable kdb/kgdb, you need to pass the device you want to use to kgdb,
+either via sysfs file or palo. My palo configuration looks like this::
+
+    0/vmlinuz HOME=/ root=/dev/sda5 panic_timeout=60 panic=10 console=ttyS0,115200 kgdboc=ttyS0,115200
+     0: 0/vmlinuz
+     1: HOME=/
+     2: root=/dev/sda5
+     3: panic_timeout=60
+     4: panic=10
+     5: console=ttyS0,115200
+     6: kgdboc=ttyS0,115200
+
+    <#>    edit the numbered field
+    'b'    boot with this command line
+    'r'    restore command line
+    'l'    list dir
+    'x'    reset and reboot machine
+    ? 0
+
+If you want to enable kgdb via sysfs, do::
+
+    echo ttyS0,115200 >/sys/module/kgdboc/parameters/kgdboc
+
+Most of the PA-RISC machines have at least two serial ports, so you
+could also use ttyS1. In my examples i'm using ttyS0, which is also the
+console port.
+
+Entering kdb
+============
+
+There are several ways to enter kgdb:
+
+- ``echo g >/proc/sysrq-trigger``
+- sending a break g on the serial console, with minicom that is ``Ctrl-A f g``
+- It will also show up on a kernel crash, as long as there's no panic
+  command line option used
+
+When entered, kdb will look like this::
+
+    Entering kdb (current=0xefcccdb0, pid 0) on processor 1 due to Keyboard Entry
+    [1]kdb> 
+
+The [1] before the kdb prompt is the processor number kdb is currently
+on.
+
+Usage
+=====
+
+*help* shows you the command list::
+
+    [1]kdb> help
+    Command         Usage                Description
+    ----------------------------------------------------------
+    md              <vaddr>             Display Memory Contents, also mdWcN, e.g. md8c1
+    mdr             <vaddr> <bytes>     Display Raw Memory
+    mdp             <paddr> <bytes>     Display Physical Memory
+    mds             <vaddr>             Display Memory Symbolically
+    mm              <vaddr> <contents>  Modify Memory Contents
+    go              [<vaddr>]           Continue Execution
+    rd                                  Display Registers
+    rm              <reg> <contents>    Modify Registers
+    ef              <vaddr>             Display exception frame
+    bt              [<vaddr>]           Stack traceback
+    btp             <pid>               Display stack for process <pid>
+    bta             [D|R|S|T|C|Z|E|U|I|M|A]
+                                       Backtrace all processes matching state flag
+    btc                                 Backtrace current process on each cpu
+    btt             <vaddr>             Backtrace process given its struct task address
+    env                                 Show environment variables
+    set                                 Set environment variables
+    help                                Display Help Message
+    ?                                   Display Help Message
+    cpu             <cpunum>            Switch to new cpu
+    kgdb                                Enter kgdb mode
+    ps              [<flags>|A]         Display active task list
+    pid             <pidnum>            Switch to another task
+    reboot                              Reboot the machine immediately
+    lsmod                               List loaded kernel modules
+    sr              <key>               Magic SysRq key
+    dmesg           [lines]             Display syslog buffer
+    defcmd          name "usage" "help" Define a set of commands, down to endefcmd
+    kill            <-signal> <pid>     Send a signal to a process
+    summary                             Summarize the system
+    per_cpu         <sym> [<bytes>] [<cpu>]
+                                       Display per_cpu variables
+    grephelp                            Display help on | grep
+    bp              [<vaddr>]           Set/Display breakpoints
+    bl              [<vaddr>]           Display breakpoints
+    bc              <bpnum>             Clear Breakpoint
+    be              <bpnum>             Enable Breakpoint
+    bd              <bpnum>             Disable Breakpoint
+    ss                                  Single Step
+    dumpcommon                          Common kdb debugging
+    dumpall                             First line debugging 
+    dumpcpu                             Same as dumpall but only tasks on cpus
+    ftdump          [skip_#lines] [cpu] Dump ftrace log
+
+To exit kdb, just type *go*::
+
+    [1]kdb> go
+    root@c3750:~# 
+
+The system will resume execution where it was stopped by kdb.
+
+Using breakpoints
+=================
+
+To set a breakpoint, use the bp command::
+
+    # enter kdb when kernel calls do_sys_open, which is the open(2) syscall
+    [1]kgdb> bp do_sys_open 
+    Instruction(i) BP #0 at 0x103478b8 (do_sys_open)
+       is enabled   addr at 00000000103478b8, hardtype=0 installed=0
+    [1]kgdb> go
+
+    root@c3750:~# cat /proc/version
+
+    Entering kdb (current=0xed071530, pid 1630) on processor 0 due to Breakpoint @ 0x103478b8
+    [0]kgdb>
+
+You can now do things like inspecting registers::
+
+    [0]kdb> rd
+    CPU: 0 PID: 1630 Comm: cat Not tainted 5.1.0-rc3+ #547
+    Hardware name: 9000/785/J5000
+
+         YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
+    PSW: 00000000000001001111111100001111 Not tainted
+    r00-03  0004ff0f ffffffff 102e5570 ef1d40c0
+    r04-07  f8b2015c 00000000 f8b214e8 00000001
+    r08-11  f8b214e8 f8b214f0 f8b1da70 f8b1da70
+    r12-15  00000001 00000000 00000000 00000001
+    r16-19  0000000a f8b21648 00000000 102e5558
+    r20-23  00000113 00000000 00000000 00000000
+    r24-27  00200800 f8b1aa54 ffffff9c 10b43ce0
+    r28-31  f9804558 f98043c8 ef1d4100 f8b1446b
+    sr00-03  00000a6b 00000000 00000000 00000a6b
+    sr04-07  00000000 00000000 00000000 00000000
+
+    IASQ: 00000000 00000000 IAOQ: 102e52fc 102e5300
+     IIR: 03ffa01f    ISR: 1024037c  IOR: 751d40c0
+     CPU:        0   CR30: ef1d4000 CR31: ffffffff
+     ORIG_R28: 0000000f
+     IAOQ[0]: do_sys_open+0x0/0x228
+     IAOQ[1]: do_sys_open+0x4/0x228
+     RP(r2): sys_openat+0x18/0x28
+    Backtrace:
+     [<102e5570>] sys_openat+0x18/0x28
+     [<1016c3d4>] syscall_exit+0x0/0x14
+
+    [0]kdb>  
+
+If you want to list all breakpoints, do::
+
+    [1]kdb> bl
+    Instruction(i) BP #0 at 0x103478b8 (do_sys_open)
+        is enabled   addr at 00000000103478b8, hardtype=0 installed=0
+
+To clear a breakpoint::
+
+    [1]kdb> bc 0
+    Breakpoint 0 at 0x103478b8 cleared
+
+Using gdb
+=========
+
+Trigger kgdb via sysfs::
+
+    echo g >/proc/sysrq-trigger
+
+You need a client computer connected via serial cable. On this host you
+need the vmlinux file, ideally compiled with debug information.
+
+Assuming you're using a USB Serial adapter with device
+``/dev/ttyUSB0``::
+
+    $ hppa-linux-gnu-gdb ./vmlinux 
+    GNU gdb (GDB) 8.2.50.20190111-git
+    Copyright (C) 2019 Free Software Foundation, Inc.
+    License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.
+    Type "show copying" and "show warranty" for details.
+    This GDB was configured as "--host=x86_64-pc-linux-gnu --target=hppa-linux-gnu".
+    Type "show configuration" for configuration details.
+    For bug reporting instructions, please see:
+    <http://www.gnu.org/software/gdb/bugs/>.
+    Find the GDB manual and other documentation resources online at:
+        <http://www.gnu.org/software/gdb/documentation/>.
+
+    For help, type "help".
+    Type "apropos word" to search for commands related to "word"...
+    Reading symbols from ./vmlinux...
+    (gdb) target remote /dev/ttyUSB0
+    Remote debugging using /dev/ttyUSB0
+    arch_kgdb_breakpoint () at kernel/debug/debug_core.c:1135
+    1135		arch_kgdb_breakpoint();
+    (gdb) bt
+    #0  arch_kgdb_breakpoint () at kernel/debug/debug_core.c:1135
+    #1  kgdb_breakpoint () at kernel/debug/debug_core.c:1135
+    Backtrace stopped: previous frame identical to this frame (corrupt stack?)
+    (gdb)
+

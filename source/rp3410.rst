@@ -1,0 +1,21 @@
+rp3410 PA-RISC server
+=====================
+
+Here you find some photos of the rp3410 server which we got sponsored.
+It's a 1-CPU (2 core PA8900) machine with 5GB RAM.
+
+.. figure:: media/rp3410_panama_front.jpg
+   
+   This is the front view.
+
+.. figure:: media/rp3410_panama_back.jpg
+   
+   This is the back view.
+
+.. figure:: media/rp3410_panama_top3_assembled.jpg
+   
+   View into the machine without top cover.
+
+.. figure:: media/rp3410_panama_mainboard.jpg
+   
+   The Mainboard.

@@ -1,0 +1,84 @@
+Registers Dump
+==============
+
+Please read :doc:`this howto
+<how_to_report_a_parisc-linux_kernel_problem>` for information on
+reporting PA-RISC kernel problems.
+
+A good example is better than a long explanation, so here it is:
+
+Following is an explanation of each field of a userspace do_page_fault()
+dump, thanks to KyleMcMartin::
+
+    do_page_fault() pid=21916 command='gij-4.1.bin' type=15 address=0x00000004
+
+Self explainatory (address is the faulting address). Type 15 is a dtlb
+fault (typical on load from null pointer). Type 6 is itlb (typical on
+store to null pointer)::
+
+         YZrvWESTHLNXBCVMcbcbcbcbOGFRQPDI
+    PSW: 00000000000001001111111100001111 Not tainted
+    r00-03  000000ff0004ff0f 0000000042cdded8 0000000041655863 0000000042dc4030
+    r04-07  0000000042c5ced8 0000000042dc4030 0000000042e16600 0000000042e0e198
+    r08-11  00000000402fe690 000000004014da80 00000000402f5680 0000000040630460
+    r12-15  0000000042e165a0 0000000040391000 00000000c0381308 000000004036cf88
+    r16-19  000000004036d308 0000000000000000 0000000000000000 0000000042c5ced8
+    r20-23  0000000000000043 00000000400f93b0 0000000041655834 0000000000000800
+    r24-27  0000000000000000 0000000000000001 0000000042d93fc4 0000000000011a74
+    r28-31  0000000000000000 0000000000000800 00000000c0382180 0000000041bff5bb 
+
+General regs::
+
+    sr00-03  0000000000892800 0000000000892800 0000000000000000 0000000000892800
+    sr04-07  0000000000892800 0000000000892800 0000000000892800 0000000000892800 
+
+Space regs (this is a user space)::
+
+          VZOUICununcqcqcqcqcqcrmunTDVZOUI
+    FPSR: 00001000000010001000000000000000
+    FPER1: 00000000
+    fr00-03  0808800000000000 0000000000000000 0000000000000000 0000000000000000
+    fr04-07  4024000000000000 3fe6e2ffbde423e5 3f400000d2400000 3ff0000000000000
+    fr08-11  0000000000000028 00000000f000024c 0000000040541380 0000000000000802
+    fr12-15  42c5ced80000000b 0000000000000001 42e24000404a01d8 42c5ced8455c4108
+    fr16-19  fffffffffffff000 0000000000000000 0000000000000802 00000000405a1000
+    fr20-23  00000000455c4398 0000000040541380 42d4ce0013b13bb5 000002bb00000000
+    fr24-27  0000000600000000 00000000000225e8 5eb15c1bc135d057 14bb70f5e181fefc
+    fr28-31  5eb15c1b9efa484d 7c39793785daed7c 5eb15c1b455c4398 ec0fba0d40541380
+
+FPRs. Note that the value of ``fr0`` as printed in the line starting
+with ``fr00-03`` is bogus and should be ignored. ``fr0`` actual content
+is displayed in ``FPSR`` and ``FPER1``.
+
+::
+
+    IASQ: 0000000000892800 0000000000892800
+
+Space queues (front & back)::
+
+    IAOQ: 000000004165586f 0000000041655873
+
+The faulting address (and the next address in the queue) with the prot bits
+
+::
+
+    IIR: 0f881083    ISR: 0000000000892800  IOR: 0000000000000004
+
+IIR is the interrupting instruction register, in this case, it's::
+
+    0:   0f 88 10 83     ldw 4(ret0),r3
+
+So, can plainly see it's a null ptr deref.
+
+::
+
+    CPU:        0   CR30: 0000000114bc0000 CR31: 0000000040500000
+    ORIG_R28: 0000000000000002
+    IAOQ[0]: 0x4165586c
+    IAOQ[1]: 0x41655870
+
+Actual faulting address (with the low-bits masked)::
+
+    RP(r2): 0x41655860
+
+Return pointer.

@@ -1,0 +1,28 @@
+Harmony Audio
+=============
+
+Harmony is a really simple little audio device which is a part of the
+LASI ASIC found on many early PA-RISC boxes. Apparently it is
+programmatically equivalent to the Vivace audio device found on even
+earlier PA-RISC machines.
+
+Modus Operandi
+--------------
+
+The operation of the hardware is mostly quite simple and elegant. We
+load the next page address first, and DMA gets automatically started
+when we load the current page address. An interrupt is generated
+whenever the hardware reaches a page boundary, allowing us to load the
+next page address. Unfortunately it is not designed with separate
+playback and recording controls, we must always do both. Thus when we
+only want to record, we playback a silent buffer; and when we only want
+to playback, we record to a graveyard buffer.
+
+.. admonition:: todo
+
+    writeup something about the registers & mixer
+
+Documentation
+-------------
+
+The chip is fully documented in the `LASI <http://ftp.parisc-linux.org/docs/chips/lasi_ers.ps>`__ ERS.

@@ -1,0 +1,247 @@
+Installation of PA-RISC Linux
+=============================
+
+.. figure:: media/sibaris.jpg
+   :align: right
+   :figwidth: 400
+
+   In the middle you see our HP C8000 machine (sibaris) which acts as
+   Debian buildd server and currently builds most of the hppa packages.
+   An overview of all our build servers is at
+   http://unstable.buildd.net/index-hppa.html
+
+HPPA became an officially supported Debian architecture in release 3.0
+(woody), 3.1 (sarge), 4.0 (etch) and 5.0 (lenny) releases. In July 2011,
+PA-RISC Linux was dropped as an officially supported platform from
+Debian 6.0 (squeeze). That's the reason that the latest available
+official installation CDs are available for Debian 5.0 (lenny) only.
+
+Subsequently, it became a non-release architecture in the `Debian Ports
+<http://www.debian-ports.org>`__ project. Helge Deller and John David
+Anglin set up several package build servers for Debian Ports. Overtime,
+this infrastructure has been improved and it now uses the same
+wanna-build system as the release architectures. Kernel and tool chain
+support was also improved with the transition to Debian Ports.
+
+Today the recommended installation of a new parisc machine is via the
+debian-ports unstable respository at http://debian-ports.org as
+described in the following section. An install image can be downloaded
+from this list:
+
+- `Debian all releases cdimage repository <https://cdimage.debian.org/cdimage/ports/>`__
+
+- `Debian 7 (wheezy) <http://backup.parisc-linux.org/debian-cd/debian-7.0/>`__
+
+- `Debian 8 (jessie) <http://backup.parisc-linux.org/debian-cd/debian-8.0/hppa/>`__
+
+- `Debian 9 (stretch) and Debian 10 (buster) stable <http://ftp-nz.parisc-linux.org/debian-hppa-cd/>`__
+
+If you want to install debian the hard way with many manual steps, you
+can read the instructions at :doc:`Debian_Ports_Installation_Manual
+<debian_ports_installation_manual>`.
+
+Installation of Debian unstable via debian-ports repository
+-----------------------------------------------------------
+
+The latest installation medias for Debian unstable is available at
+either one of the following locations:
+
+#. http://ftp.debian-ports.org/debian-cd/hppa/debian-8.0/
+#. http://backup.parisc-linux.org/debian-cd/
+#. http://parisc.osuosl.org/debian-cd/
+#. http://ftp.nz.parisc-linux.org/debian-cd/ (Debian 9 & 10 NZ mirror)
+#. http://ftp.ports.debian.org/debian-ports/pool-hppa/main/d/debian-installer/ (latest Netboot images)
+
+In those directories you find (you need to download only one of those):
+
+- lifimage file, used for tftp/netbooting the installation
+- debian-8.0-hppa-NETINST-1.iso, ISO image to burn to a CD/DVD for booting
+- debian-8.0-hppa-CD-1.iso, full ISO image with all packages for booting via CD/DVD
+
+Installation instructions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Instructions to burn the ISO image on a Mac:
+  https://discussions.apple.com/thread/5132196
+
+- **IMPORTANT:** If your machine has a DVD-drive, you should better burn
+  the image to a DVD disc. The first-generation DVD-drives in some older
+  PA-RISC machines may have problems booting from e.g. a CD-RW so you
+  may get this error message: *IPL error: bad LIF magic.*
+
+- Those images should work on all machines, with 32- and 64bit kernels.
+  Installation of a C8000 workstation needs to happen via serial console
+  since the install image will not activate the ATI graphics card. After
+  installation the ATI cards will work in non-accelerated mode though.
+
+- If your machine is behind a firewall, enter the proxy at the IPL
+  command line the Linux kernel command line (change parameter 7)
+  ::
+
+    mirror/http/proxy=http://proxy:8080
+
+  adjust the proxy settings to your need
+
+- Choose the automatic disc partitioning, unless you know all details
+  about disc partitions for PA-RISC (e.g. PALO bootloader needs ext2).
+
+- The palo bootloader needs to reside on a SCSI disc. The installer will
+  detect SATA discs and will not complain if you install to a SATA disc!
+
+- At the "Software selection" screen,
+
+  - for the debian 7.0 disc: do not enable any software other than "SSH
+    server" . You can install additional software later!
+
+  - for the debian 8.0 disc: You can choose to install the KDE-, LXDE-,
+    MATE- or Xfce desktops, SSH, web- and print server. Do not choose to
+    install the GNOME desktop since it will fail (we are still having
+    problems to compile a recent-enough iceweasel on hppa!).
+
+- for the debian 7.0 disc:
+
+  - When the installation finished, do not press "Continue" to reboot
+    the machine, but instead choose "Go Back" and then in the main menu
+    choose to execute a shell. In the shell type the following command
+    to enable serial console (needed e.g. for boot console on GSP)
+    ::
+
+      echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
+
+  - Type "exit" to quit the shell and return to the main menu.
+  - In the main menu choose to "Finish the installation" and let it
+    reboot the machine.
+
+Notes
+~~~~~
+
+- Debian installer seem to use the well-known screen utility to
+  implement multiple tabs on a serial console, so use its key
+  combinations to switch tabs: Ctrl+A, then 1-4
+
+- When asked for Network mirror with the 10.0 installer, give
+  ``ftp.ports.debian.org`` and ``/debian-ports/``. (Avoidable when this
+  Bug gets resolved: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=879130).
+
+- After reboot add this line to ``/etc/apt/sources.list`` and run ``apt-get
+  update``::
+
+    deb http://ftp.ports.debian.org/debian-ports unstable main
+
+- After reboot the sshd daemon will not accept password-logins for root.
+  You need to log in as the user which you created during installation
+  and then become root via ``su -``. To change this sshd behaviour, edit
+  ``/etc/ssh/sshd_config`` file and change the value of
+  ``PermitRootLogin to yes`` (**not recommended!**).
+
+- Install latest archive keys, and configure timezone and locales:
+
+  - ``apt-get install debian-ports-archive-keyring`` - to receive the
+    latest debian ports archive keys, which avoids this warning::
+
+      W: GPG error: http://ftp.debian-ports.org *unstable InRelease:
+      The following signatures couldn't be verified because the public
+      key is not available: NO_PUBKEY AA651E74623DB0B8 or A53AB45AC448326E
+
+   - ``dpkg-reconfigure locales``
+   - ``dpkg-reconfigure tzdata``
+
+- We are happy to hear from you, if you installed PA-RISC Linux on your
+  machine. Please send us a short mail to debian-hppa@lists.debian.org.
+  Thanks!
+
+- If you install on a HP 712 workstation you may need the kernel option
+  ``hp_sdc.no_hpsdc=1`` to `avoid an endless loop of "HP SDC:
+  Transaction add failed: transaction already queued ?" messages
+  <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=787794>`__
+
+IMPORTANT NOTE (only for the debian 7.0 installer image)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- NEVER install the policykit-1 package or another one which will give
+  you the following warning. It will render your machine unbootable!
+  ::
+
+    The following packages will be REMOVED:
+      sysvinit-core
+
+- The debian 8.0 installer image does successfully installs systemd if
+  you like.
+
+How to disable systemd and switch to sysvinit
+---------------------------------------------
+
+Debian 8 installs systemd by default. There is no way around it.
+
+So, if you want to switch back to sysvinit, e.g. if you do kernel
+developement without initrd, then first install Debian as described
+above. After the first boot follow those steps and finally reboot again.
+
+#. apt-get install sysvinit-core sysvinit sysvinit-utils
+#. if you are running on serial console, either make sure that a getty
+   gets started on the ttyS0 device in /etc/inittab, or run this
+   command::
+
+     echo "T0:23:respawn:/sbin/getty -L ttyS0 9600 vt100" >> /target/etc/inittab
+
+Futher instructions are on this external website: `How to remove systemd
+from a Debian jessie/sid installation
+<http://without-systemd.org/wiki/index.php/How_to_remove_systemd_from_a_Debian_jessie/sid_installation>`__
+
+Upgrade the kernel to latest stable kernel
+------------------------------------------
+
+After installation an old Linux kernel like 4.16 is installed. Newer
+Linux kernels run much more stable and faster. To upgrade to the latest
+kernel, make sure you have this additional entry in
+``/etc/apt/sources.list``::
+
+    deb http://ftp.ports.debian.org/debian-ports unstable main
+
+Then follow this steps:
+
+#. Run ``apt update``
+
+#. You may run ``apt search ^linux-image`` to find available kernels
+
+#. Run ``apt install linux-image-parisc64/unstable`` (or
+   ``linux-image-parisc/unstable`` for a 32-bit kernel)
+
+#. Make sure that /boot/vmlinux and /boot/initrd.img points to the new
+   kernel and initrd
+
+#. Reboot
+
+Technical background of the install images
+------------------------------------------
+
+The installer images mentioned above pull the debian packages from the
+repositories at
+
+    (for debian-7.0): http://parisc.osuosl.org/debian/
+    (for debian-8.0): http://backup.parisc-linux.org/debian/
+
+which contains only the minimal set of necessary files for installation.
+
+This is realized by the
+``preseed/url=http://parisc.osuosl.org/debian/preseed.cfg`` Linux kernel
+parameter which is hardcoded in the palo bootloader code in those
+images. I would prefer to directly install from the official debian
+unstable repository at http://ftp.debian-ports.org/debian/ but this is
+not possible, because:
+
+#. The debian ports repository is a moving target, which means that the
+   Linux kernel udeb packages which are needed by the kernel on the
+   ISO/liffile may not be available any longer at a later date, and
+
+#. The debian ports repository is missing the
+   http://parisc.osuosl.org/debian/palo-installer_0.0.15_hppa.udeb and
+   http://parisc.osuosl.org/debian/partman-palo_20_hppa.udeb packages
+   which are needed to install the palo bootloader during installation.
+
+The iso images were created with debian-cd, :download:`Debian-cd.diff.gz
+<media/Debian-cd.diff.gz>` is the diff which was used to build them.
+
+See :doc:`How to create Debian unstable iso images
+<how_to_create_debian_unstable_iso_images>` on how the images were
+created.
