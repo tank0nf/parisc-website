@@ -24,6 +24,6 @@ make_venv:
 	python3 -mvenv .venv
 	source .venv/bin/activate
 	pip install --upgrade pip
-	pip install Sphinx furo
+	pip install Sphinx furo sphinx_rtd_theme
 	make html
 	deactivate

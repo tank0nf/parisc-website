@@ -8,22 +8,14 @@ Linux on PA-RISC
 - The PA-RISC project provides a *native* port of Linux to the PA-RISC
   architecture.
 
-- Today PA-RISC Linux is stable and runs on most PA-RISC machines.
-
-- :doc:`PA-RISC Linux Project History <pa-risc_linux_project_history>`
-  tells how the project got started. See the :doc:`Hall of Fame
-  <hall_of_fame>` for a list of folks who brought you the initial 0.9x
-  and Debian 3.0 releases.
-
-Linux distributions for PA-RISC machines
-----------------------------------------
-- Linux runs on most physical PA-RISC machines.
-
-- You may even install PA-RISC Linux in a virtual machine with :doc:`Qemu
-  <qemu>`.
+- Linux on PA-RISC is stable and runs on most PA-RISC machines and in
+  a virtual :doc:`Qemu <qemu>` machine.
 
 - Check the :doc:`PARISC FAQ <parisc_faq>` and :doc:`Hardware support
   <hardware_support>` if you have trouble installing Linux.
+
+Linux distributions for PA-RISC machines
+----------------------------------------
 
 .. image:: media/Debian_logo.png
    :width: 100
@@ -33,10 +25,9 @@ Debian Linux
 ~~~~~~~~~~~~
 
 - PA-RISC is a non-release architecture in the `Debian Ports
-  <http://www.debian-ports.org>`__ project.
-- Debian Linux for PA-RISC is usable and stable with more than 12,800
-  Debian packages available.
-- You can download the latest installation ISO `here
+  <http://www.debian-ports.org>`__ project with more than
+  12,000 Debian packages available.
+- You may download the latest installation ISO `here
   <https://cdimage.debian.org/cdimage/ports/snapshots/2022-12-09/>`__ or
   `here <http://ftp.parisc-linux.org/debian-cd/>`__.
 
@@ -50,9 +41,8 @@ Gentoo Linux
 - PA-RISC is a fully supported architecture of Gentoo Linux.
 - The `Gentoo hppa team <https://wiki.gentoo.org/wiki/Project:HPPA>`__
   provides `Gentoo Linux installation ISOs available for download
-  <http://www.gentoo.org/main/en/where.xml>`__.
-- If you wish to install Gentoo Linux for PA-RISC, we suggest that your
-  read the `Handbook on how to install Gentoo Linux for PA-RISC
+  <http://www.gentoo.org/main/en/where.xml>`__ and a
+  `Handbook on how to install Gentoo Linux for PA-RISC
   <http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml>`__.
 
 .. image:: media/t2logo.png
@@ -154,6 +144,8 @@ PA-RISC Linux NEWS
 
 Oct 2024
 ~~~~~~~~
+- Upon request from the kernel.org website admin, the PA-RISC Wiki is converted
+  to a ReadTheDocs static website and is moved to https://parisc.docs.kernel.org
 - `Dmitry Sibirtsev <mailto:sibirtsevdl@gmail.com>`__ added support for
   the HPPA/PA-RISC architecture to the `Capstone
   disassembly/disassembler framework
@@ -292,169 +284,7 @@ Jan 2023
   the former "parisc" `HP A500-44
   <https://www.openpa.net/systems/hp_a400_a500.html>`__ server.
 
-Dec 2022
-~~~~~~~~
-- Adrian Glaubitz built a `new Debian 11 installation media
-  <https://cdimage.debian.org/cdimage/ports/snapshots/2022-12-09/debian-11.0.0-hppa-NETINST-1.iso>`__.
-- Helge submitted many fixes for qemu , e.g. for `getsockopt()
-  <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02460.html>`__,
-  `msync() <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02218.html>`__,
-  `/proc/cpuinfo file <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02218.html>`__,
-  `madvise() <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02218.html>`__,
-  `strace <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02218.html>`__,
-  `sendmsg() <https://lists.nongnu.org/archive/html/qemu-devel/2022-12/msg02218.html>`__
-  and published an `initial port of libc for rust
-  <https://github.com/rust-lang/libc/pull/3032#issuecomment-1359127774>`__.
-- Dave `fixed a closure to function pointer bug in python-libcffi
-  <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1024271>`__ and
-  spent a large amount of time reviewing debian buildd logs, doing give
-  backs, and reporting issues. Furthermore Dave ported libffi to
-  hppa64-hpux which exposed some issues in the 32-bit linux and hpux
-  ports, e.g. `1 <https://github.com/libffi/libffi/issues/756>`__, `2
-  <https://github.com/libffi/libffi/issues/755>`__ and `3
-  <https://github.com/libffi/libffi/issues/753>`__.
-- Linux kernel v6.2 will include a `patch which allows parisc to use the
-  same MADV constants for madvise() like other platforms
-  <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=71bdea6f798b425bc0003780b13e3fdecb16a010>`__.
-
-Nov 2022
-~~~~~~~~
-- Installed new buildd servers "paladin" (a qemu-user emulation running
-  Debian-x86 in VirtualBox on Windows).
-
-Oct 2022
-~~~~~~~~
-- After 22 years the power supply in our A500-44 server (which was
-  sponsored by HP) finally broke. It had hosted the ftp site and the
-  mailing lists and was replaced by a x86-VM. Installed new buildd
-  servers "pad" (a qemu-user emulation running Debian-x86 in VirtualBox
-  on Windows) and "atlas" (physical C8000 machine).
-
-Sep 2022
-~~~~~~~~
-- Lots of `enhancements to the qemu-user emulation
-  <https://gitlab.com/qemu-project/qemu/-/commit/36cd0aeac3337af06875e08683380389df48ccd0>`__.
-  Many of the debian buildd servers run now on x86 hardware which use
-  qemu-user to build packages.
-
-Aug 2022
-~~~~~~~~
-- New `palo version 2.22
-  <https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
-  released, `with support for booting without palo- or /boot paritions
-  <https://lore.kernel.org/all/15eee327-ff0a-2bea-408d-259158915813@gmx.de/>`__.
-  QEMU version 7.1.0 with many PA-RISC related enhancements and fixes
-  has been released.
-
-Jun 2022
-~~~~~~~~
-- `Sam James <mailto:sam@gentoo.org>`__ added `seccomp support in unit
-  files on HPPA to systemd v252
-  <https://github.com/systemd/systemd/pull/23181>`__ and worked on
-  `elfutils support for HPPA
-  <https://lists.debian.org/debian-hppa/2022/02/msg00000.html>`__.
-- `John David Anglin <mailto:dave.anglin@bell.net>`__ helped to `fix a
-  glibc bug about broken argv adjustments
-  <https://sourceware.org/bugzilla/show_bug.cgi?id=29165>`__
-- `Mark Cave-Ayland <mailto:mark.cave-ayland@ilande.co.uk>`__ provided
-  lots of internal cleanups to the hppa PS/2 keyboard and PS/2 mouse
-  emulation in the upcoming QEMU v7.1 to bring the source code up to
-  latest QEMU coding standards.
-
-May 2022
-~~~~~~~~
-- Linux kernel v5.18 released, includes vDSO-, CPU hotplug- and improved
-  cache flushing support.
-- `QEMU v7.1: Fix X11 cursor emulation in HP-UX and allow emulated PS/2
-  keyboard input in firmware boot menu
-  <https://git.qemu.org/?p=qemu.git;a=commit;h=78ac2eebbab9150edf5d0d00e3648f5ebb599001>`__
-- `QEMU v7.1: Fix serial port pass-through from host to guest
-  <https://git.qemu.org/?p=qemu.git;a=commit;h=0234342e0ea9411ad032dac61f3d632536bda789>`__
-
-Apr 2022
-~~~~~~~~
-- CPU Hotplug support added to Kernel v5.18.
-- `PALO v2.16 released. Prior versions didn't showed all available
-  kernels when listing /boot directory at IPL menu.
-  <http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
-
-Mar 2022
-~~~~~~~~
-- A `new set of debian-hppa installation medias for debian unstable
-  <https://lists.debian.org/debian-hppa/2022/03/msg00001.html>`__
-  provided by Adrian Glaubitz.
-- 16 years after the `initial vDSO patch by Randolf Chung
-  <https://lore.kernel.org/linux-parisc/4544A34A.6080700@tausq.org/>`__,
-  Linux kernel v5.18 will now finally include `vDSO support
-  <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=df24e1783e6e0eb3dc0e3ba5a8df3bb0cc537408>`__.
-  In addition Kernel v5.18 includes multiple TLB/cache-flush fixes and
-  improvements.
-
-Feb 2022
-~~~~~~~~
-- Many `Qemu patches were applied
-  <https://github.com/qemu/qemu/commit/8f3e5ce773c62bb5c4a847f3a9a5c98bbb3b359f>`__
-  to improve HP-UX graphics and mouse, allows up to 16 vCPUs, TOC
-  support and much more. See our `Qemu <Qemu>`__ page.
-
-Jan 2022
-~~~~~~~~
-- Kernel v5.16 released, with as many parisc enhancements and patches than never before!
-
-Dec 2021
-~~~~~~~~
-- Richard Henderson and Helge Deller `fix a mis-translation of the stby
-  assembly instruction in Qemu
-  <https://lists.nongnu.org/archive/html/qemu-devel/2021-12/msg04501.html>`__.
-- Multiple important kernel fixes by Dave Anglin.
-
-Nov 2021
-~~~~~~~~
-- Sven fixes a `long-standing endianess bug in midnight commander which
-  hangs the console when using F10 to exit
-  <https://midnight-commander.org/ticket/3887>`__.
-- Kernel v5.16 will include `TOC
-  <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bc294838cc3443a2fbec58f8936ad4bd0a0b3055>`__
-  and `KFENCE <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ec5c115050f59114e216212837f1c1ebc54bdfc9>`__
-  support.
-
-Sep 2021
-~~~~~~~~
-- Starting with Linux kernel 5.15, you will need to specify
-  "ARCH=parisc64" on the command line when bulding a 64-bit kernel.
-- Adrian announced that he built `new installation medias for debian
-  unstable <https://lists.debian.org/debian-hppa/2021/09/msg00003.html>`__,
-  `ISO images are available here
-  <https://cdimage.debian.org/cdimage/ports/snapshots/2021-09-23/>`__.
-
-Jul 2021
-~~~~~~~~
-- The power supply of our old A400 server ("parisc") broke and got replaced. Machine is now back up again.
-
-Feb 2021
-~~~~~~~~
-- Various fixes (e.g. `1 <https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg03433.html>`__\
-  `2 <https://lists.nongnu.org/archive/html/qemu-devel/2021-02/msg00298.html>`__)
-  for qemu v5.2 to further improve qemu-user emulation.
-- `Switch to a faster page table locking mechanism
-  <http://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b7795074a04669d0a023babf786d29bf67c68783>`__
-  with Linux kernel v5.12.
-
-Jan 2021
-~~~~~~~~
-- `PALO v2.15 released
-  <http://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__.
-  New parisc Debian build server `"pasta"
-  <https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-pasta>`__,
-  which runs in a qemu-user parisc chroot environment on a x86-64
-  virtual machine with 8 CPUs and 16GB RAM. Many thanks to the `OSU Open
-  Source Lab <http://osuosl.org/>`__ who sponsors this VM!
-- Additionally there is a new parisc Debian build server `"paq"
-  <https://buildd.debian.org/status/architecture.php?a=hppa&suite=sid&buildd=buildd_hppa-paq>`__.
-  This qemu-user based build server runs on a Synology DS920+ in a
-  x86-64 virtual machine with 3 Intel Celeron J4125 CPUs and 1.5GB RAM.
-
-1998-2020
+1998-2022
 ~~~~~~~~~
 - See :doc:`PA-RISC_Linux_Project_History <pa-risc_linux_project_history>` for older news.
 

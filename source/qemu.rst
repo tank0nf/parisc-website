@@ -179,10 +179,10 @@ qemu emulator:
   restore original (pre-interrupt) values back into shadow registers,
   used by SeaBIOS when executing NMI instruction in qemu
 
-or ``%r10,%r10,%r10``
+``or %r10,%r10,%r10``
   idle loop; wait for interrupt
 
-or ``%r31,%r31,%r31``
+``or %r31,%r31,%r31``
   death loop; offline cpu (currently implemented for idle loop).
 
 Qemu standard debugging options
