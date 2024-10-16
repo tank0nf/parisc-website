@@ -18,3 +18,12 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# see mail from Konstantin Ryabitsev <konstantin@linuxfoundation.org> on 2024-10-16
+make_venv:
+	python3 -mvenv .venv
+	source .venv/bin/activate
+	pip install --upgrade pip
+	pip install Sphinx furo
+	make html
+	deactivate
