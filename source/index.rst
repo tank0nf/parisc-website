@@ -136,8 +136,9 @@ External Resources
 Archived historical webpages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
-- http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage)
+- Snapshot of former Wiki on kernel.org (2014-2024): https://web.archive.org/web/20240917210505/https://parisc.wiki.kernel.org/index.php/Main_Page
+- Old website until 2014: http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
+- http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage until 2014)
 
 PA-RISC Linux NEWS
 ------------------
