@@ -39,6 +39,7 @@ Gentoo Linux
 ~~~~~~~~~~~~
 
 - PA-RISC is a fully supported architecture of Gentoo Linux.
+
 - The `Gentoo hppa team <https://wiki.gentoo.org/wiki/Project:HPPA>`__
   provides `Gentoo Linux installation ISOs available for download
   <http://www.gentoo.org/main/en/where.xml>`__ and a
@@ -52,48 +53,41 @@ Gentoo Linux
 T2 System Development Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `T2 System Development Environment <https://t2sde.org/>`__ Linux
-distribution provides a port to PA-RISC which you may download `here.
-<http://dl.t2sde.org/binary/>`__
+- The `T2 System Development Environment <https://t2sde.org/>`__ Linux
+  distribution provides a port to PA-RISC which you may download `here.
+  <http://dl.t2sde.org/binary/>`__
 
 Our sponsors
 ------------
 
-Corporate sponsors
-~~~~~~~~~~~~~~~~~~
+- `OSUOSL - Oregon State University Open Source Lab <http://osuosl.org>`__
+
+  - Hosting and support for the physical parisc servers "parisc" (since 2014)
+    and "panama" (since 2017)
+
+  - Hosting of a x86 virtual machine for the qemu-user based parisc build
+    server "pasta" (since Jan 2021)
+
+  - Hosting of this website and documentation, Linux kernel and palo git trees and
+    parisc mailing lists via kernel.org domain (since Jan 2014)
 
 - `Cypress Technology Inc <http://www.cypress-tech.com>`__ (`Jesse
   Dougherty <mailto:jesse@cypress-tech.com>`__) sponsored a `HP J6700 workstation
   <https://www.openpa.net/systems/hp-visualize_j6000_j6700.html>`__ with
-  2 x 750MHz PA8700 CPUs, 4GB RAM and a 72GB disc. (Oct 2022)
+  2 x 750MHz PA8700 CPUs, 4GB RAM and a 72GB disc which is used as
+  `Debian buildd and Porterbox machine "parisc"
+  <https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc>`__ (Oct 2022)
 
-  - This machine is used as `Debian buildd and Porterbox machine
-    "parisc" <https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc>`__.
 
-- `GALL EDV-Systeme GmbH <http://www.gall.de/>`__ (info@gall.de)
-  sponsored `HP Visualize FX-2, FX-4 and FX-6 grahics cards
+- `Roberto C. Sánchez <mailto:roberto@debian.org>`__ sponsored a `HP rp3410 server
+  <http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html>`__ with one
+  800 MHz PA8900 CPU which is used as `Debian buildd and Porterbox machine "panama"
+  <https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc>`__ (May 2017)
+
+
+- `GALL EDV-Systeme GmbH <http://www.gall.de/>`__ sponsored
+  `HP Visualize FX-2, FX-4 and FX-6 grahics cards
   <https://www.openpa.net/pa-risc_graphics.html#visfx>`__ (June 2023)
-
-  - Those will be used to further develop the Visualize-FX fbdev and
-    DRM graphics drivers.
-
-Organizations and private sponsors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Oregon State University Open Source Lab <http://osuosl.org>`__
-
-- Hosting and support for the physical parisc servers "parisc" (since
-  2014) and "panama" (since 2017)
-- Hosting of a x86 virtual machine for the qemu-user based parisc build
-  server "pasta" (since Jan 2021)
-
-`Roberto C. Sánchez <mailto:roberto@debian.org>`__ sponsored a `HP
-rp3410 server
-<http://www.openpa.net/systems/hp-9000_rp3410_rp3440.html>`__ with one
-800 MHz PA8900 CPU. (May 2017)
-
-- This machine is used as `Debian buildd and Porterbox machine "panama"
-  <https://db.debian.org/machines.cgi?sortby=purpose&sortorder=dsc>`__.
 
 .. note::
 
@@ -101,52 +95,13 @@ rp3410 server
    hardware, or hosting services for virtual (x86) or physical (parisc)
    machines, please contact `me <mailto:deller@gmx.de>`__
 
-Resources
----------
-
-.. toctree::
-   :maxdepth: 2
-
-   faq
-   documentation
-   tool_chain
-
-External Resources
-------------------
-
-- http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo Linux Installation
-- http://www.openpa.net/index.html - The OpenPA Project
-- http://www.wikiwand.com/en/HP_9000 and http://www.wikiwand.com/en/PA-RISC - Good overview of PA-RISC, HP-UX, CDE, ...
-- http://web.archive.org/web/20040202003152/http://www.cpus.hp.com/technical_references/parisc.shtml - Historic PA-RISC Documentation from HP.com (2004)
-- https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1987-03.pdf - technical documentattion of first PA-RISC processors
-- http://www.3kranger.com/HP3000/mpeix/hard.shtm#PA-RISC - PA-RISC arch & HP3000 docs
-- http://www.debian.org/ports/hppa/ - Debian HPPA port page
-- http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
-- http://www.hpmuseum.net/collection_document.php - HP Computer Museum
-- http://computermuseum.informatik.uni-stuttgart.de/dev/hp9000_840/ - Uni Stuttgart Computermuseum - HP 9000/840 (first PA-RISC machine)
-- http://tenox.pdp-11.ru/hpux/ - HP/UX ressources
-- http://psg.skinforum.org/hpux.html - Tin Ho's "Sys Admin Pocket Survival Guide - HP-UX"
-- http://www.mach-linux.org/ - OSF Mach-Linux
-- http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
-- https://github.com/larsbrinkhoff/awesome-cpus - All CPUs documented
-- http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
-- https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
-- http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
-
-Archived historical webpages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Snapshot of former Wiki on kernel.org (2014-2024): https://web.archive.org/web/20240917210505/https://parisc.wiki.kernel.org/index.php/Main_Page
-- Old website until 2014: http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website
-- http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage until 2014)
-
 PA-RISC Linux NEWS
 ------------------
 
 Oct 2024
 ~~~~~~~~
-- Upon request from the kernel.org website admin, the PA-RISC Wiki is converted
-  to a ReadTheDocs static website and is moved to https://parisc.docs.kernel.org
+- The PA-RISC Wiki is converted to a ReadTheDocs static website and is
+  now hosted at https://parisc.docs.kernel.org
 - `Dmitry Sibirtsev <mailto:sibirtsevdl@gmail.com>`__ added support for
   the HPPA/PA-RISC architecture to the `Capstone
   disassembly/disassembler framework
@@ -289,3 +244,41 @@ Jan 2023
 ~~~~~~~~~
 - See :doc:`PA-RISC_Linux_Project_History <pa-risc_linux_project_history>` for older news.
 
+Resources
+---------
+
+.. toctree::
+   :maxdepth: 2
+
+   faq
+   documentation
+   tool_chain
+
+External Resources
+------------------
+
+- http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo Linux Installation
+- http://www.openpa.net/index.html - The OpenPA Project
+- http://www.wikiwand.com/en/HP_9000 and http://www.wikiwand.com/en/PA-RISC - Good overview of PA-RISC, HP-UX, CDE, ...
+- http://web.archive.org/web/20040202003152/http://www.cpus.hp.com/technical_references/parisc.shtml - Historic PA-RISC Documentation from HP.com (2004)
+- https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1987-03.pdf - technical documentattion of first PA-RISC processors
+- http://www.3kranger.com/HP3000/mpeix/hard.shtm#PA-RISC - PA-RISC arch & HP3000 docs
+- http://www.debian.org/ports/hppa/ - Debian HPPA port page
+- http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
+- http://www.hpmuseum.net/collection_document.php - HP Computer Museum
+- http://computermuseum.informatik.uni-stuttgart.de/dev/hp9000_840/ - Uni Stuttgart Computermuseum - HP 9000/840 (first PA-RISC machine)
+- http://tenox.pdp-11.ru/hpux/ - HP/UX ressources
+- http://psg.skinforum.org/hpux.html - Tin Ho's "Sys Admin Pocket Survival Guide - HP-UX"
+- http://www.mach-linux.org/ - OSF Mach-Linux
+- http://www.unixnerd.demon.co.uk/hp_unix.html - UnixNerds/HPUX
+- https://github.com/larsbrinkhoff/awesome-cpus - All CPUs documented
+- http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
+- https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
+- http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
+
+Archived historical webpages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- https://web.archive.org/web/20240917210505/https://parisc.wiki.kernel.org/index.php/Main_Page - Snapshot of former PA-RISC Wiki on kernel.org (2014-2024)
+- http://www.parisc-linux.org/index.html - The former and now historical PA-RISC/Linux website (2004 until 2014)
+- http://pateam.parisc-linux.org - The PA/Linux ESIEE Team (former www.pateam.org webpage until 2014)
