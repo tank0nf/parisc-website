@@ -101,7 +101,8 @@ PA-RISC Linux NEWS
 Oct 2024
 ~~~~~~~~
 - The PA-RISC Wiki is converted to a ReadTheDocs static website and is
-  now hosted at https://parisc.docs.kernel.org
+  now hosted at https://parisc.docs.kernel.org while the source is available
+  at https://github.com/hdeller/parisc-website
 - `Dmitry Sibirtsev <mailto:sibirtsevdl@gmail.com>`__ added support for
   the HPPA/PA-RISC architecture to the `Capstone
   disassembly/disassembler framework
