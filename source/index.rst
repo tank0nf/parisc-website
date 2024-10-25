@@ -100,9 +100,11 @@ PA-RISC Linux NEWS
 
 Oct 2024
 ~~~~~~~~
-- The PA-RISC Wiki is converted to a ReadTheDocs static website and is
-  now hosted at https://parisc.docs.kernel.org while the source is available
-  at https://github.com/hdeller/parisc-website
+- The PA-RISC Wiki has been replaced by a ReadTheDocs static website and
+  is now hosted at https://parisc.docs.kernel.org. The website source code
+  is available at https://github.com/hdeller/parisc-website
+- `Dave Anglin <mailto:dave.anglin@bell.net>`__ works on
+  `switching gcc to use LRA <https://gcc.gnu.org/bugzilla/show_bug.cgi?id=113933>`__
 - `Dmitry Sibirtsev <mailto:sibirtsevdl@gmail.com>`__ added support for
   the HPPA/PA-RISC architecture to the `Capstone
   disassembly/disassembler framework
