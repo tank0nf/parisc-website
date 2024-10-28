@@ -260,13 +260,13 @@ Resources
 External Resources
 ------------------
 
+- http://www.debian.org/ports/hppa/ - Debian HPPA port page
 - http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo Linux Installation
 - http://www.openpa.net/index.html - The OpenPA Project
 - http://www.wikiwand.com/en/HP_9000 and http://www.wikiwand.com/en/PA-RISC - Good overview of PA-RISC, HP-UX, CDE, ...
 - http://web.archive.org/web/20040202003152/http://www.cpus.hp.com/technical_references/parisc.shtml - Historic PA-RISC Documentation from HP.com (2004)
 - https://www.hpl.hp.com/hpjournal/pdfs/IssuePDFs/1987-03.pdf - technical documentattion of first PA-RISC processors
 - http://www.3kranger.com/HP3000/mpeix/hard.shtm#PA-RISC - PA-RISC arch & HP3000 docs
-- http://www.debian.org/ports/hppa/ - Debian HPPA port page
 - http://www.gentoo.org/doc/en/handbook/handbook-hppa.xml - Gentoo HPPA Handbook
 - http://www.hpmuseum.net/collection_document.php - HP Computer Museum
 - http://computermuseum.informatik.uni-stuttgart.de/dev/hp9000_840/ - Uni Stuttgart Computermuseum - HP 9000/840 (first PA-RISC machine)
@@ -278,6 +278,7 @@ External Resources
 - http://git.kernel.org/cgit/linux/kernel/git/deller/parisc-linux.git - Helge's PARISC Linux Kernel git tree
 - https://patchwork.kernel.org/project/linux-parisc/list - PARISC Linux Patchwork
 - http://git.kernel.org/cgit/linux/kernel/git/deller/palo.git - PALO boot loader source code
+- http://hpe.com/info/hpuxservermatrix - HP-UX Server and OS Support matrix. Includes support end dates and information which servers can run which HP-UX version.
 
 Archived historical webpages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

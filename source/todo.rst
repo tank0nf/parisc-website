@@ -106,6 +106,8 @@ Full-system emulation
 
 - STARTED: Implement HPPA-64 support in qemu
 
+- STARTED: Implement CPU reset: resettable_class_set_parent_phases(rc, NULL, hppa_cpu_reset_hold, NULL,...) https://lists.nongnu.org/archive/html/qemu-devel/2024-10/msg04876.html
+
 - Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> offers to do contract
   work for QEMU through his company.
 

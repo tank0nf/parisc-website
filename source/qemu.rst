@@ -316,6 +316,7 @@ HP-UX
 
 - You will need a set of HP-UX PA-RISC installation CD-ROMS or DVDs
 
+  - as of 2024 only booting 32-bit HP-UX is working. We are working on adding 64-bit support.
   - starting from `HP-UX 10.x up to 11.11 (11i v1) <https://www.openpa.net/hp-ux_unix.html#hpux11i>`__
   - only PA-RISC installation medias are supported. CDs for Itanium-2 based HP machines are NOT supported.
   - you may copy those CDs to ISO files for usage with qemu.
@@ -334,6 +335,10 @@ HP-UX
 
 - LASI NIC emulation and NCR 710 emulation is needed in order to be able
   to boot older HP-UX releases.
+
+- Even physical HP machines were not able to boot every HP-UX 11 minor
+  version. The HP support matrix at http://hpe.com/info/hpuxservermatrix
+  gives you an overview.
 
 - `Astrobaby wrote about his test results.  <https://astr0baby.wordpress.com/2019/04/28/running-hp-ux-11-11-on-qemu-system-hp>`__
 
