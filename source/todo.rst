@@ -412,6 +412,10 @@ kernel work
 Debian packages / Userspace work
 --------------------------------
 
+- Various big endian issues, see mail thread "s390x architecture status?": https://lists.debian.org/debian-devel/2024/10/msg00295.html
+
+- WebKitGTK still builds in s390x, but the Skia graphics library does not support big-endian machines so if the Cairo backend is ever dropped then we probably won't be able to support s390x any longer:  https://github.com/WebKit/WebKit/blob/webkitgtk-2.47.1/Source/ThirdParty/skia/include/private/base/SkLoadUserConfig.h#L56
+
 - teach "blkid" about palo partition
 
 - glibc: add backtrace() function, problems when building elfutils
