@@ -1916,6 +1916,13 @@ Kernel 6.12
 - parisc: pdc_stable: Constify struct kobj_type
 - `crypto: xor - fix template benchmarking <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ab9a244c396aae4aaa34b2399b82fc15ec2df8c1>`__
 
+.. _kernel_6.13:
+
+Kernel 6.13
+-----------
+
+- `parisc/ftrace: Fix function graph tracing disablement <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a5f05a138a8cac035bf9da9b6ed0e532bc7942c8>`__ (backported to v5.16+)
+
 .. _done_items:
 
 DONE items

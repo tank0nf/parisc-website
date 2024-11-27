@@ -332,6 +332,15 @@ How to create a palo iplboot image from official Debian install CD
 
    palo --init-tape=lifimage -k vmlinux-3.13-1-parisc.gz -k vmlinux-3.13-1-parisc64-smp.gz -r initrd.gz --commandline='0/vmlinux initrd=0/ramdisk panic_timeout=60 panic=-1 debian-installer/allow_unauthenticated=true mirror/http/hostname=mkhppa3.esiee.fr mirror/http/directory=/debian'
 
+How to prevent debian package to be built on failing architectures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please, no, don't put a specific list of architectures in d/control. The
+inability to build pandas on those architectures is a bug, whereas explicit
+architecture lists in d/control should only be used if the package
+fundamentally cannot work on others. Otherwise these failures disappear on
+buildd.d.o and porters are unaware of them.
+See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=877419#30
+
 How to build haskell/uuagc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 - http://foswiki.cs.uu.nl/foswiki/HUT/AttributeGrammarManual
