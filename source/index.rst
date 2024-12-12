@@ -98,6 +98,11 @@ Our sponsors
 PA-RISC Linux NEWS
 ------------------
 
+Dec 2024
+~~~~~~~~
+- `Qemu v9.2.0 released <https://www.qemu.org/>`__.
+  Includes some important fixes and a new SeaBIOS-hppa v17 firmware.
+
 Oct 2024
 ~~~~~~~~
 - The PA-RISC Wiki has been replaced by a ReadTheDocs static website and
