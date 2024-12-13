@@ -128,12 +128,10 @@ Full-system emulation
     Analyzer 16700A (Mail from Keith Monahan <keith@techtravels.org>
     Sept 2020)
 
-User-mode emulation
-~~~~~~~~~~~~~~~~~~~
+QEMU user-mode emulation
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-- ask to get palo-installer, partman-palo, aboot-installer into
-  debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from
-  Adrian 05/30/23
+- Building curl hangs at end of package build in stunnel
 
 - STARTED: kronosnet - port SCTP to qemu
 
@@ -165,8 +163,8 @@ User-mode emulation
 
 - Implement io_submit() syscalls, probably not possible.
 
-QEMU issues
-~~~~~~~~~~~
+QEMU system mode issues
+~~~~~~~~~~~~~~~~~~~~~~~
 
 - QEMU: Add support for running MPE with https://www.openpa.net (& Craig
   Lalley <mr_lalley@yahoo.com>)
@@ -225,6 +223,10 @@ may have to fix some assembly code. Maybe binutils should be built with
 
 Debian
 ------
+
+- ask to get palo-installer, partman-palo, aboot-installer into
+  debian-installer (import from old Git-Backup, Alex Wirt?) - Mail from
+  Adrian 05/30/23
 
 - STARTED: Fix initramfs: Bug#1027915: systemd requires /run to be
   mounted with a minimum size of 20MB:
