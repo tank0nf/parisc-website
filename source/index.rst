@@ -100,8 +100,18 @@ PA-RISC Linux NEWS
 
 Dec 2024
 ~~~~~~~~
-- `Qemu v9.2.0 released <https://www.qemu.org/>`__.
+- `Qemu v9.2.0 was released <https://www.qemu.org/>`__.
   Includes some important fixes and a new SeaBIOS-hppa v17 firmware.
+- Dave committed `a fix to glibc which implements vfork() by calling the kernel
+  vfork syscall instead of emulating it via the clone() syscall
+  <https://sourceware.org/pipermail/libc-alpha/2024-December/162834.html>`__.
+  There is quite some difference like when which process continues. This showed up
+  in the testcases of the strace package.
+- Helge authored and Dave committed `a glibc cacheflush() syscall wrapper
+  <https://sourceware.org/pipermail/libc-alpha/2024-December/163052.html>`__.
+- `Michael Lorenz reported that he has developed graphics drivers for Visualize EG,
+  HCRX and Visualize FX as well as an Xorg framebuffer driver for NetBSD
+  <https://lore.kernel.org/linux-parisc/20241216064156.6bbe1330@bushmills>`__.
 
 Oct 2024
 ~~~~~~~~

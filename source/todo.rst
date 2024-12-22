@@ -8,6 +8,14 @@ PA-RISC status and TODO 2024-04-30
 Kernel
 ------
 
+- Check graphics drivers / VisualizeFX with drivers from NetBSD - see mail thread
+  "Graphics support" from Michael Lorenz on 12/16/24 https://lore.kernel.org/linux-parisc/20241216064156.6bbe1330@bushmills/
+  Note: NetBSD drm manpage at https://man.netbsd.org/drm.4 says:
+  drm is large and complicated and has no shortage of bugs.  On systems where
+  graphics is not important, you may wish to use userconf(4) to dis- able the
+  special-purpose drm drivers for your graphics device and fall back to vga(4) or
+  genfb(4) with the default display configuration pro- vided by firmware.
+
 - Implement RUST (https://github.com/rust-lang/libc/pull/3542)
 
   - https://dreamcast.wiki/Rust_on_Dreamcast
