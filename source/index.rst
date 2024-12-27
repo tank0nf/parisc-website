@@ -112,6 +112,8 @@ Dec 2024
 - `Michael Lorenz reported that he has developed graphics drivers for Visualize EG,
   HCRX and Visualize FX as well as an Xorg framebuffer driver for NetBSD
   <https://lore.kernel.org/linux-parisc/20241216064156.6bbe1330@bushmills>`__.
+- `Paul Weissmann added a section about "PA-RISC Emulation QEMU" to the openpa.net
+  website <https://www.openpa.net/qemu_pa-risc_emulation.html>`__.
 
 Oct 2024
 ~~~~~~~~
