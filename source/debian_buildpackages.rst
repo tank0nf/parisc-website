@@ -353,6 +353,16 @@ How to build haskell/uuagc
     ./setup build
     ./setup install
 
+Debian packages and Java
+~~~~~~~~~~~~~~~~~~~~~~~~
+We don't have java support yet.
+There seems to be a possibility on the buildds to set DEB_BUILD_PROFILES=nojava, see jpeg-xl rules file:
+ # Override if profile states so:
+ ifneq (,$(filter nojava,$(DEB_BUILD_PROFILES)))
+   .... ENABLE_JNI=OFF
+ endif
+
+
 How to cross-compile debian kernel on x86 for hppa
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
