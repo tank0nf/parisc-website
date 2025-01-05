@@ -154,6 +154,11 @@ QEMU user-mode emulation
 
 - check qemu-user build errors:
 
+  - qemu can not emulate robust mutexes. That's why lmdb package and dependend
+    packages like neomutt fail to build because the
+    pthread_mutexattr_setpshared(PTHREAD_PROCESS_SHARED) call fails.
+    Solution: Allow lmdb to fall back to MDB_USE_POSIX_SEM.
+
   - Check why raft package testcases fail
 
   - It looks like haskell packages still fail on qemu (e.g.,
