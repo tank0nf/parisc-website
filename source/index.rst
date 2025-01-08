@@ -98,6 +98,11 @@ Our sponsors
 PA-RISC Linux NEWS
 ------------------
 
+Jan 2025
+~~~~~~~~
+- Maintenance update of `palo version 2.26 <https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
+  released.
+
 Dec 2024
 ~~~~~~~~
 - `Qemu v9.2.0 was released <https://www.qemu.org/>`__.

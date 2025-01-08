@@ -458,7 +458,10 @@ Debian packages / Userspace work
   opposite to than in current IEEE standard.
 
 - Debian packages with NaN issues: libime, `capnproto
-  <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787>`__
+  <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=781787>`__,
+  `python-shapely <https://buildd.debian.org/status/fetch.php?pkg=python-shapely&arch=hppa&ver=2.0.6-4%2Bb1&stamp=1735949853&raw=0>`__,
+      00800000017FF80000000000007FF80000000000007FF8000000000000
+  vs. 00800000017FF7FFFFFFFFFFFF7FF7FFFFFFFFFFFF7FF7FFFFFFFFFFFF
 
 palo (PA-RISC Boot Loader)
 --------------------------
