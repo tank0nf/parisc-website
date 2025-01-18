@@ -27,9 +27,9 @@ Debian Linux
 - PA-RISC is a non-release architecture in the `Debian Ports
   <http://www.debian-ports.org>`__ project with more than
   12,000 Debian packages available.
-- You may download the latest installation ISO `here
-  <https://cdimage.debian.org/cdimage/ports/snapshots/2022-12-09/>`__ or
-  `here <http://ftp.parisc-linux.org/debian-cd/>`__.
+- You may download the latest installation CD-ROM ISO image
+  `which has been tested from the PA-RISC FTP server <http://ftp.parisc-linux.org/debian-cd/debian-12/debian-2025-01-hppa-CD.iso>`__.
+  or `untested images from the debian CD image server <https://cdimage.debian.org/cdimage/ports/snapshots/>`__
 
 .. image:: media/Gentoo-logo.png
    :width: 100
@@ -100,6 +100,10 @@ PA-RISC Linux NEWS
 
 Jan 2025
 ~~~~~~~~
+- A new `Debian installation CD-ROM image available at
+  <http://ftp.parisc-linux.org/debian-cd/debian-12/debian-2025-01-hppa-CD.iso>`__
+  released. Please `read the notes at
+  <http://ftp.parisc-linux.org/debian-cd/debian-12/README-hppa>`__.
 - Maintenance update of `palo version 2.26 <https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
   released.
 
