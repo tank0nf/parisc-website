@@ -1940,6 +1940,17 @@ Kernel 6.13
 -----------
 
 - `parisc/ftrace: Fix function graph tracing disablement <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a5f05a138a8cac035bf9da9b6ed0e532bc7942c8>`__ (backported to v5.16+)
+- `perf tools parisc: Support syscall header <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=02f2d58f235ddcf8bc33c084cff84fd685a1be11>`__
+- parisc: get rid of private asm/unaligned.h
+
+.. _kernel_6.14:
+
+Kernel 6.14
+-----------
+
+- `parisc: Temporarily disable jump label support <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3599bae489d86fbabe039f9a2ab5472ffb04f7f1>`__ (backported to v6.12+)
+- parisc: Remove memcpy_toio and memset_io
+- `parisc: add vdso linker script to 'targets' instead of extra-y <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=36b2f3aefc486ea2f773db5c42539a52e1fcbcb3>`__
 
 .. _done_items:
 
