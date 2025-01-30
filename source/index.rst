@@ -100,14 +100,14 @@ PA-RISC Linux NEWS
 
 Jan 2025
 ~~~~~~~~
-- A new `Debian installation CD-ROM image is available at
+- A new `Debian installation CD-ROM image is available
   <http://ftp.parisc-linux.org/debian-cd/debian-12/debian-2025-01-hppa-CD.iso>`__.
-  Please `read the notes at <http://ftp.parisc-linux.org/debian-cd/debian-12/README-hppa>`__.
+  Please `read HPPA specific installation notes <http://ftp.parisc-linux.org/debian-cd/debian-12/README-hppa>`__.
 - Maintenance update of `palo version 2.26 <https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
   released.
 - Dave fixed a glibc bug: `pthread_attr_getstacksize/pthread_attr_getstack return incorrect
   main stack size <https://sourceware.org/bugzilla/show_bug.cgi?id=32574>`__
-- Various updates to debian-installer
+- Various updates to the debian-installer
 
 Dec 2024
 ~~~~~~~~
