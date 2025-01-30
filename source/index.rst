@@ -106,6 +106,9 @@ Jan 2025
   <http://ftp.parisc-linux.org/debian-cd/debian-12/README-hppa>`__.
 - Maintenance update of `palo version 2.26 <https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/>`__
   released.
+- Dave fixed a glibc bug: `pthread_attr_getstacksize/pthread_attr_getstack return incorrect
+  main stack size <https://sourceware.org/bugzilla/show_bug.cgi?id=32574>`__
+- Various updates to debian-installer
 
 Dec 2024
 ~~~~~~~~
