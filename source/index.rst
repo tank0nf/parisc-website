@@ -102,6 +102,8 @@ Feb 2025
 ~~~~~~~~
 - Dave fixed another long-standing glibc floating-point bug: `Miscompilation of sysdeps/ieee754/dbl-64/s_fma.c
   <https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111709>`__
+- The PA-RISC project participates in the GSOC 2025: `Implement LASI network or SCSI controller in qemu 
+  <https://wiki.qemu.org/Google_Summer_of_Code_2025#Implement_LASI_network_card_and/or_NCR_710_SCSI_controller_device_models>`__
 
 Jan 2025
 ~~~~~~~~
