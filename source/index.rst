@@ -98,6 +98,11 @@ Our sponsors
 PA-RISC Linux NEWS
 ------------------
 
+Feb 2025
+~~~~~~~~
+- Dave fixed another long-standing glibc floating-point bug: `Miscompilation of sysdeps/ieee754/dbl-64/s_fma.c
+  <https://gcc.gnu.org/bugzilla/show_bug.cgi?id=111709>`__
+
 Jan 2025
 ~~~~~~~~
 - A new `Debian installation CD-ROM image is available
