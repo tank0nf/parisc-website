@@ -129,6 +129,24 @@ QEMU does support those operating systems as guests:
 |-
 | type "NMI" in qemu monitor (ctrl-A + C)
 | to trigger HPPA TOC (transfer-of-control = Reset) button switch
+|-
+| ctrl-A + H
+| to display help for all the available key bindings.
+|-
+| ctrl-A + S
+| to save the VM state to a file.
+|-
+| ctrl-A + L
+| to load the VM state from a file.
+|-
+| ctrl-A + R
+| to reset the VM.
+|-
+| ctrl-A + P
+| to pause the VM.
+|-
+| ctrl-A + U
+| to unpause the VM.
 |}
 
 == Examples on how to start the emulator ==
