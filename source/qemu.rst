@@ -253,7 +253,7 @@ Then change to the QEMU source directory::
 
 Check out the `qemu git tree <https://gitlab.com/qemu-project/qemu>`__
 
-.. important::
+.. note::
 
   If you plan to run the qemu-user static binary on Debian-11 or below,
   you NEED to apply this patch: https://github.com/hdeller/qemu-hppa/commit/540e8fb618e66b4c172cc528c12580bb09e301b6

@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Linux on PA-RISC'
-copyright = '2024, PA-RISC Linux Porting Project'
+copyright = '2025, PA-RISC Linux Porting Project'
 author = 'kernel.org'
 
 
