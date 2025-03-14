@@ -21,9 +21,9 @@ help:
 
 # see mail from Konstantin Ryabitsev <konstantin@linuxfoundation.org> on 2024-10-16
 make_venv:
-	python3 -mvenv .venv
-	source .venv/bin/activate
-	pip install --upgrade pip
-	pip install Sphinx furo sphinx_rtd_theme
-	make html
+	python3 -mvenv .venv && \
+	. .venv/bin/activate && \
+	pip install --upgrade pip && \
+	pip install Sphinx furo sphinx_rtd_theme && \
+	make html && \
 	deactivate

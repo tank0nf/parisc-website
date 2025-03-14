@@ -138,28 +138,74 @@ While running you can press
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``ctrl-A + X``
-  to exit qemu.
+    to exit qemu.
 
 ``ctrl-A + C + ENTER``
-  Start Qemu monitor. When started with "-serial mon:stdio", the serial
-  port and the QEMU debug port are multiplexed and you can switch
-  between them with this key combination.
+    Start Qemu monitor. When started with "-serial mon:stdio", the serial
+    port and the QEMU debug port are multiplexed and you can switch
+    between them with this key combination.
 
 ``ctrl-Alt + F``
-  switch to fullscreen when using SDL output
+    switch to fullscreen when using SDL output
 
 type ``NMI`` in qemu monitor (``ctrl-A + C``)
-  to trigger HPPA TOC (transfer-of-control = Reset) button switch
+    to trigger HPPA TOC (transfer-of-control = Reset) button switch
+
+``ctrl-A + H``
+    to display help for all the available key bindings.
+
+``ctrl-A + S``
+    to save the VM state to a file.
+
+``ctrl-A + L``
+    to load the VM state from a file.
+
+``ctrl-A + R``
+    to reset the VM.
+
+``ctrl-A + P``
+    to pause the VM.
+
+``ctrl-A + U``
+    to unpause the VM.
+
 
 .. _examples_on_how_to_start_the_emulator:
 
 Examples on how to start the emulator
 -------------------------------------
 
-- qemu-system-hppa -snapshot -m 512 -device lsi,id=scsi0 -device scsi-hd,drive=drive0,bus=scsi0.0,channel=0,scsi-id=5,lun=0,bootindex=2 -drive file=hdd5.img,if=none,id=drive0 -device scsi-hd,drive=drive1,bus=scsi0.0,channel=0,scsi-id=6,lun=0,bootindex=1 -drive file=hdd2img,if=none,id=drive1 -accel tcg,thread=multi -serial mon:stdio
-- qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio -accel tcg,thread=multi -smp cpus=2 -drive file=hdd2-.img -boot menu=on -boot order=h
-- qemu-system-hppa -boot d -m 512 -drive file=disk.img,format=qcow2 -netdev tap,id=nic1,script=/etc/qemu-ifup -cdrom /opt/iso/HPUX_10.20.iso -device tulip,netdev=nic1,mac=01:00:11:00:00:02 -serial telnet:0.0.0.0:8001,server,nowait -monitor stdio -nographic
-- qemu-system-hppa -drive file=../qemu-images/hdd.img -kernel vmlinux -append "root=/dev/sda5 cryptomgr.notests panic=-1" -serial mon:stdio -nographic -accel tcg,thread=multi -smp cpus=3 -netdev bridge,id=hn0,br=virbr0,helper=./qemu-bridge-helper -device tulip,netdev=hn0,id=nic1
+Here are some examples of how to start the QEMU emulator for PA-RISC:
+
+1. Start QEMU with a snapshot and multiple SCSI devices::
+
+    qemu-system-hppa -snapshot -m 512 -device lsi,id=scsi0 \
+       -device scsi-hd,drive=drive0,bus=scsi0.0,channel=0,scsi-id=5,lun=0,bootindex=2 \
+       -drive file=hdd5.img,if=none,id=drive0 \
+       -device scsi-hd,drive=drive1,bus=scsi0.0,channel=0,scsi-id=6,lun=0,bootindex=1 \
+       -drive file=hdd2.img,if=none,id=drive1 \
+       -accel tcg,thread=multi -serial mon:stdio
+
+2. Start QEMU with a specific hard drive image and enable graphical boot menu::
+
+    qemu-system-hppa -drive file=hdd.img -nographic -serial mon:stdio \
+       -accel tcg,thread=multi -smp cpus=2 -drive file=hdd2.img \
+       -boot menu=on -boot order=h
+
+3. Start QEMU with a CD-ROM image and network configuration::
+
+    qemu-system-hppa -boot d -m 512 -drive file=disk.img,format=qcow2 \
+       -netdev tap,id=nic1,script=/etc/qemu-ifup -cdrom /opt/iso/HPUX_10.20.iso \
+       -device tulip,netdev=nic1,mac=01:00:11:00:00:02 \
+       -serial telnet:0.0.0.0:8001,server,nowait -monitor stdio -nographic
+
+4. Start QEMU with a kernel image and bridge networking::
+
+    qemu-system-hppa -drive file=../qemu-images/hdd.img -kernel vmlinux \
+       -append "root=/dev/sda5 cryptomgr.notests panic=-1" -serial mon:stdio \
+       -nographic -accel tcg,thread=multi -smp cpus=3 \
+       -netdev bridge,id=hn0,br=virbr0,helper=./qemu-bridge-helper \
+       -device tulip,netdev=hn0,id=nic1
 
 .. _qemu_special_emulated_assembler_statements:
 
@@ -197,6 +243,14 @@ Qemu standard debugging options
 How to build QEMU from source
 -----------------------------
 
+First clone the QEMU git tree::
+
+  git clone https://gitlab.com/qemu-project/qemu.git
+
+Then change to the QEMU source directory::
+
+  cd qemu
+
 Check out the `qemu git tree <https://gitlab.com/qemu-project/qemu>`__
 
 .. important::
@@ -207,17 +261,56 @@ Check out the `qemu git tree <https://gitlab.com/qemu-project/qemu>`__
 
 Run configure, e.g.
 
+for system emulation without networking::
+
+  ./configure --target-list=hppa-softmmu --enable-numa
+
 for system emulation::
 
-    ./configure --target-list=hppa-softmmu --enable-numa
+  ./configure --target-list=hppa-softmmu --enable-numa --enable-slirp
 
 for user emulation::
 
    ./configure --target-list=hppa-linux-user --disable-stack-protector \
-       --prefix=/home/qemu-hppa/chroot-unstable \
-       --interp-prefix=/home/qemu-hppa/chroot-unstable --static
+     --prefix=/home/qemu-hppa/chroot-unstable \
+     --interp-prefix=/home/qemu-hppa/chroot-unstable --enable-slirp --stable
 
-Run "make"
+for user emulation without networking::
+
+   ./configure --target-list=hppa-linux-user --disable-stack-protector \
+     --prefix=/home/qemu-hppa/chroot-unstable \
+     --interp-prefix=/home/qemu-hppa/chroot-unstable --stable
+
+.. note::
+   **Issues with Capstone package**
+   
+   If you encounter issues with the Capstone package during compilation, you may need to build it from source:
+   
+   1. Download Capstone from GitHub: https://github.com/capstone-engine/capstone
+   
+   2. Build with position independent code:
+   
+      .. code-block:: bash
+         
+         mkdir build && cd build
+         cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+         make
+         sudo make install
+   
+   3. You might see some warnings during compilation after this, but they can be safely ignored.
+   
+   4. Continue with QEMU compilation as normal.
+
+Run the following commands to build and install QEMU:
+
+.. code-block:: bash
+
+  make
+
+or::
+
+  make install  # This will install the built QEMU binaries to the specified prefix directory
+
 
 Linux
 -----
@@ -238,28 +331,51 @@ Linux
 Ready-to-run Debian Linux QEMU images for parisc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download Debian hard disc image::
+Download Debian-12 hard disc image::
 
-    wget http://dellerweb.de/qemu/debian-12-hdd-2023.img.bz2
+    wget http://dellerweb.de/qemu/debian-12-hdd-2023.img.bz2  # Debian 12 image
 
-or::
+Unzip Image::
 
-    wget http://dellerweb.de/qemu/debian-10-hdd.img.bz2
+    bunzip2 debian-12-hdd-2023.img.bz2  # Unzip Debian 12 image
+
+Download Debian-10 hard disc image::
+
+    wget http://dellerweb.de/qemu/debian-10-hdd.img.bz2  # Debian 10 image
 
 Unzip image::
 
-    bunzip2 debian-12-hdd-2023.img.bz2
+    bunzip2 debian-10-hdd.img.bz2  # Unzip Debian 10 image
 
-Run qemu::
+Run qemu:
 
-    qemu-system-hppa -drive file=debian-12-hdd-2023.img -nographic \
-        -serial mon:stdio -accel tcg,thread=multi -smp cpus=4
+Networking variant - with user-mode networking::
 
-Log in as **root**, root password is "**rootme**"
+    qemu-system-hppa -drive file=debian-12-hdd-2023.img -nographic \
+      -serial mon:stdio -accel tcg,thread=multi -smp cpus=4 \
+      -netdev user,id=net0 -device tulip,netdev=net0
+
+Non-networking variant::
+
+    qemu-system-hppa -drive file=debian-12-hdd-2023.img -nographic \
+      -serial mon:stdio -accel tcg,thread=multi -smp cpus=4
+
+.. note::
+  | Credentials: 
+  | **Log-in:** root
+  | **Password:** rootme
 
 If a key is missing while running apt-update, do::
 
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <KEY_ID>
+
+Replace <KEY_ID> with the actual key ID shown in the error message.
+For example, if you see an error about key '1234ABCD', run::
+
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1234ABCD
+
+Note: In newer Debian versions, apt-key is deprecated, but this approach 
+still works for the Debian images provided above.
 
 How to run QEMU with Debian-10 installer image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
