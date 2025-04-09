@@ -480,6 +480,23 @@ HP-UX
 - How to run full filesystem check: ``fsck -F vxfs -y -o full``
 - File downloads see https://archive.org/download/hpunix/
 
+HP-UX 10.20
+~~~~~~~~~~
+
+For HP-UX 10.20, you can find images at `archive.org <https://archive.org/details/hpux_20200510>`__. 
+The link contains both img and iso files for HP-UX 10.20.
+
+To run the image use the command::
+
+    qemu-system-hppa -accel tcg,thread=multi -m 512 -drive if=scsi,bus=0,index=6,file=OS_test/hpux.img,format=raw -net nic,model=tulip -net user -boot c -serial mon:stdio -nographic
+
+.. note::
+   | Credentials: 
+   | **Log-in:** root
+   | **Password:** p4ssw0rd
+
+Note that the credentials provided at the archive.org link might not be valid.
+
 HP-UX 9 is the first HP-UX release which does support the PA-RISC CPU.
 HP-UX 9.05 fails when booting the install CD (reported 2021/05/18)::
 
