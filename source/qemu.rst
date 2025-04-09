@@ -377,7 +377,7 @@ For example, if you see an error about key '1234ABCD', run::
 Note: In newer Debian versions, apt-key is deprecated, but this approach 
 still works for the Debian images provided above.
 
-If you get any error such as **'gpg not found, this operation requires gnupg or gnupg2'** be sure to run these commands::
+If you get any error such as **'gnupg, gnupg2 and gnupg1 do not seem to be installed, but one of them is required for this operation'** be sure to run these commands::
 
 Download the ASCII-armored key::
     
